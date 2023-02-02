@@ -1,25 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-import logo from "../img/logo.png";
 import "../css/Navbar.css";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
-import {
-  exploreOutline,
-  exploreFill,
-  homeFill,
-  homeOutline,
-  likeFillBlack,
-  likeFillRed,
-  likeOutline,
-  messageFill,
-  messageOutline,
-  createPostOutline,
-  createPostFill,
-  searchBarIcon,
-  searchIconFill,
-  searchIconOutline,
-} from "./SvgIcons";
+
 
 export default function Navbar({ login }) {
   const navigate = useNavigate();
