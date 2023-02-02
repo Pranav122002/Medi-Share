@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types
-
 const userSchema = new mongoose.Schema({
     med_name: {
         type: String,
@@ -8,16 +7,18 @@ const userSchema = new mongoose.Schema({
     },
     med_description: {
         type: String,
-        required: true
+        // required: true
     },
     quantity: {
         type: Number,
         required: true
     },
     expiry_date: {
-        type: Date,
+        type: String,
+        // type: Date,
         required: true
     },
+    donors: [{ type: ObjectId, ref: "USER" }],
    
 })
 
