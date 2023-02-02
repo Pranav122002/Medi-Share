@@ -71,7 +71,38 @@ export default function Navbar({ login }) {
     if (login || token) {
       return [
         <>
+        <NavLink to="/">
+            <li>
+              {" "}
+              <span className="spanicon">
+                {/* {!onHome ? homeOutline : homeFill}{" "} */}
+              </span>{" "}
+              Donate
+            </li>
+          </NavLink>
+
           <NavLink to="/">
+            <li>
+              {" "}
+              <span className="spanicon">
+                {/* {!onHome ? homeOutline : homeFill}{" "} */}
+              </span>{" "}
+              Request
+            </li>
+          </NavLink>
+
+          <NavLink to="/">
+            <li>
+              {" "}
+              <span className="spanicon">
+                {/* {!onHome ? homeOutline : homeFill}{" "} */}
+              </span>{" "}
+              Volunteer
+            </li>
+          </NavLink>
+
+
+          {/* <NavLink to="/">
             <li>
               {" "}
               <span className="spanicon">
@@ -125,17 +156,17 @@ export default function Navbar({ login }) {
               </span>
               Create
             </li>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/profile">
             <li>
-              <span className="spanicon">
+              {/* <span className="spanicon"> */}
                 <img
                   id="profilepic"
                   style={{ width: "24px", height: "24px" }}
                   src={user.Photo ? user.Photo : picLink}
                   /*src={picLink}*/ alt="profile pic"
                 />
-              </span>{" "}
+              {/* </span>{" "} */}
               Profile
             </li>
           </NavLink>
