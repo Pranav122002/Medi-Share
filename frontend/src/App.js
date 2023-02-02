@@ -16,6 +16,7 @@ import UserProfie from "./components/UserProfile";
 import MyFolliwngPost from "./screens/MyFollowingPost";
 import Chat from "./pages/Chat";
 
+
 function App() {
   const [userLogin, setUserLogin] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,6 +34,7 @@ function App() {
             <Route path="/createPost" element={<Createpost />}></Route>
             <Route path="/profile/:userid" element={<UserProfie />}></Route>
             <Route path="/followingpost" element={<MyFolliwngPost />}></Route>
+     
           </Routes>
           <ToastContainer theme="dark" />
 
