@@ -11,10 +11,12 @@ const path = require("path")
 app.use(cors())
 require('./models/user')
 require('./models/medicine')
+require('./models/available_medicine')
 app.use(express.json())
 app.use(require("./routes/auth"))
 app.use(require("./routes/user"))
 app.use(require("./routes/medicine"))
+app.use(require("./routes/available_medicine"))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(mongoUrl);

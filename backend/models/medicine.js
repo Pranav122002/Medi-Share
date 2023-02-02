@@ -7,22 +7,11 @@ const userSchema = new mongoose.Schema({
     },
     med_description: {
         type: String,
-        // required: true
-    },
-    quantity: {
-        type: Number,
         required: true
     },
-    expiry_date: {
-        type: String,
-        // type: Date,
-        required: true
-    },
-    userId: {
-        type: ObjectId,
-        ref: "USER"
-    }
-    // donors: [{ type: ObjectId, ref: "USER" }]
+ 
+  
+    
    
 })
 
