@@ -203,22 +203,7 @@ export default function Navbar({ login }) {
     if (login || token) {
       return [
         <>
-          <div id="mob-top-div">
-            <div>
-              <img
-                id="insta-logo-top"
-                src={logo}
-                alt=""
-                onClick={() => {
-                  navigate("/");
-                }}
-              />
-            </div>
-
-            <NavLink to="/messenger">
-              <span id="msg-top">{onChat ? messageFill : messageOutline}</span>
-            </NavLink>
-          </div>
+     
         </>,
       ];
     } else {
@@ -232,14 +217,7 @@ export default function Navbar({ login }) {
       <>
         <div className="navbar">
           <div className="one">
-            <img
-              id="insta-logo"
-              src={logo}
-              alt=""
-              onClick={() => {
-                navigate("/");
-              }}
-            />
+           
           </div>
           <div className="two">
             <ul className="nav-menu">{loginStatus()}</ul>

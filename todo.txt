@@ -1,0 +1,2 @@
+1
+available medicine qauntity,  medicine already registerd
