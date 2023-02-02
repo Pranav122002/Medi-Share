@@ -11,6 +11,8 @@ import Profie from "./screens/Profie";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Createpost from "./screens/Createpost";
+import Request from "./screens/Request";
+import Donate from "./screens/Donate";
 import { LoginContext } from "./context/LoginContext";
 import Modal from "./components/Modal";
 import UserProfie from "./components/UserProfile";
@@ -32,6 +34,8 @@ function App() {
             <Route path="/homepage" element={<Homepage />}></Route>
             <Route path="/messenger" element={<Chat />} />
             <Route path="/signin" element={<SignIn />}></Route>
+            <Route path="/request" element={<Request />}></Route>
+            <Route path="/donate" element={<Donate />}></Route>
             <Route exact path="/profile" element={<Profie />}></Route>
             <Route path="/createPost" element={<Createpost />}></Route>
             <Route path="/profile/:userid" element={<UserProfie />}></Route>

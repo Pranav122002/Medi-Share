@@ -32,30 +32,8 @@ export default function Navbar({ login }) {
   const [onExplore, setOnExplore] = useState(false);
   const [onLike, setOnLike] = useState(false);
 
-  var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
-  const [user, setUser] = useState("");
 
-  useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (!token) {
-      navigate("./signup");
-    } else {
-      fetch(
-        `http://localhost:5000/user/${
-          JSON.parse(localStorage.getItem("user"))._id
-        }`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          setUser(result.user);
-        });
-    }
-  }, []);
+
 
   useEffect(() => {
     setOnHome(location.pathname === "/");
@@ -71,112 +49,31 @@ export default function Navbar({ login }) {
     if (login || token) {
       return [
         <>
-        <NavLink to="/">
+         
+
+          <NavLink to="/donate">
             <li>
-              {" "}
-              <span className="spanicon">
-                {/* {!onHome ? homeOutline : homeFill}{" "} */}
-              </span>{" "}
+              
               Donate
             </li>
           </NavLink>
 
-          <NavLink to="/">
+          <NavLink to="/request">
             <li>
-              {" "}
-              <span className="spanicon">
-                {/* {!onHome ? homeOutline : homeFill}{" "} */}
-              </span>{" "}
-              Request
+              
+            Request
             </li>
           </NavLink>
 
-          <NavLink to="/">
+          <NavLink to="/volunteer">
             <li>
-              {" "}
-              <span className="spanicon">
-                {/* {!onHome ? homeOutline : homeFill}{" "} */}
-              </span>{" "}
-              Volunteer
+              
+            Volunteer
             </li>
           </NavLink>
 
 
-          {/* <NavLink to="/">
-            <li>
-              {" "}
-              <span className="spanicon">
-                {!onHome ? homeOutline : homeFill}{" "}
-              </span>{" "}
-              Home
-            </li>
-          </NavLink>
-
-          <NavLink to="/search">
-            <li>
-              {" "}
-              <span className="spanicon">
-                {!onSearch ? searchIconOutline : searchIconFill}
-              </span>{" "}
-              Search
-            </li>
-          </NavLink>
-          <NavLink to="/followingpost">
-            <li>
-              {" "}
-              <span className="spanicon">
-                {onExplore ? exploreFill : exploreOutline}{" "}
-              </span>{" "}
-              My Following
-            </li>
-          </NavLink>
-          <NavLink to="/messenger">
-            <li>
-              {" "}
-              <span className="spanicon">
-                {" "}
-                {onChat ? messageFill : messageOutline}
-              </span>{" "}
-              Messages
-            </li>
-          </NavLink>
-          <NavLink to="/notifications">
-            <li>
-              <span className="spanicon">
-                {onLike ? likeFillBlack : likeOutline}
-              </span>{" "}
-              Notifications
-            </li>
-          </NavLink>
-
-          <NavLink to="/createPost">
-            <li>
-              <span className="spanicon">
-                {onCreatePost ? createPostFill : createPostOutline}{" "}
-              </span>
-              Create
-            </li>
-          </NavLink> */}
-          <NavLink to="/profile">
-            <li>
-              {/* <span className="spanicon"> */}
-                <img
-                  id="profilepic"
-                  style={{ width: "24px", height: "24px" }}
-                  src={user.Photo ? user.Photo : picLink}
-                  /*src={picLink}*/ alt="profile pic"
-                />
-              {/* </span>{" "} */}
-              Profile
-            </li>
-          </NavLink>
-
-          <Link to="/">
-            <li onClick={() => setModalOpen(true)}>
-              <span class="material-symbols-outlined spanicon">logout</span>
-              Log Out
-            </li>
-          </Link>
+          
         </>,
       ];
     } else {
@@ -184,63 +81,7 @@ export default function Navbar({ login }) {
     }
   };
 
-  const loginStatusMobile = () => {
-    const token = localStorage.getItem("jwt");
-    if (login || token) {
-      return [
-        <>
-          <Link to="/">
-            <li>
-              <span>{!onHome ? homeOutline : homeFill}</span>
-            </li>
-          </Link>
 
-          <Link to="/profile">
-            <li>
-              <span>
-                <img
-                  id="profilepic"
-                  style={{ width: "24px", height: "24px" }}
-                  src={user.Photo ? user.Photo : picLink}
-                  /*src={picLink}*/ alt="profile pic"
-                />
-              </span>
-            </li>
-          </Link>
-          <Link to="/createPost">
-            <li>
-              <span>{onCreatePost ? createPostFill : createPostOutline}</span>
-            </li>
-          </Link>
-          <Link style={{ marginLeft: "20px" }} to="/followingpost">
-            <li>
-              <span>{onExplore ? exploreFill : exploreOutline}</span>
-            </li>
-          </Link>
-          <Link to={""}>
-            <li onClick={() => setModalOpen(true)}>
-              <span class="material-symbols-outlined">logout</span>
-            </li>
-          </Link>
-        </>,
-      ];
-    } else {
-      return [<></>];
-    }
-  };
-
-  const loginStatusMobileTop = () => {
-    const token = localStorage.getItem("jwt");
-    if (login || token) {
-      return [
-        <>
-     
-        </>,
-      ];
-    } else {
-      return [<></>];
-    }
-  };
 
   const token = localStorage.getItem("jwt");
   if (login || token) {
@@ -248,16 +89,13 @@ export default function Navbar({ login }) {
       <>
         <div className="navbar">
           <div className="one">
-           
+            
           </div>
           <div className="two">
             <ul className="nav-menu">{loginStatus()}</ul>
           </div>
         </div>
-        <div>
-          <ul className="nav-mobile-top">{loginStatusMobileTop()}</ul>
-          <ul className="nav-mobile">{loginStatusMobile()}</ul>
-        </div>
+       
       </>,
     ];
   } else {
