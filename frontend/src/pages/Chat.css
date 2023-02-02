@@ -1,0 +1,21 @@
+
+
+  
+   .container {
+     height: 80vh;
+     width: 60vw;
+     top: 15%;
+     border: 1px solid rgb(129, 121, 121);
+     background-color: white;
+     display: grid;
+     grid-template-columns: 40% 60%;
+   }
+
+   @media screen and (max-width: 800px) {
+
+    .container{
+      top: 0;
+        margin-top: 15%;
+    }
+   
+  }  
