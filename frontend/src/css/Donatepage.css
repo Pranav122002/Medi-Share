@@ -1,0 +1,30 @@
+.mainn{
+    margin-left: 34rem;
+}
+
+
+.donate-name{
+    justify-items: center;
+    margin-top: 4rem;
+    display:block;
+    width: 60rem;
+    height: 25rem;
+    margin-left: 25rem;
+    border-radius: 3rem;
+    box-shadow: 2px 2px 8px rgb(122, 122, 122);
+}
+
+.input-row{
+    width: 20rem;
+    margin-left: 20rem;
+    margin-top: 2rem;
+
+}
+
+#sub_but{
+    margin-top: 3rem;
+    margin-left: 0;
+    
+}
+
+

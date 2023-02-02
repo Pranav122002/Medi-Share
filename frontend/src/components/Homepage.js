@@ -10,7 +10,7 @@ export default function Homepage() {
 
   return (
     <div >
-     <button>donate</button>
+          
     </div>
   );
 }

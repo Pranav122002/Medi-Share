@@ -71,7 +71,7 @@ export default function Navbar({ login }) {
     if (login || token) {
       return [
         <>
-        <NavLink to="/">
+        <NavLink to="/Donatepage">
             <li>
               {" "}
               <span className="spanicon">
