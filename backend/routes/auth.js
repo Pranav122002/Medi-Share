@@ -10,12 +10,18 @@ const requireLogin = require("../middlewares/requireLogin");
 
 
 router.post("/signup", (req, res) => {
-    const { name,  email, password, location } = req.body;
+    // const { name,  email, password, location } = req.body;
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const location = req.body.location;
+    console.log(location);
     if (!name || !email || !password  || !location) {
         return res.status(422).json({ error: "Please add all the fields" })
     }
     USER.findOne({ $or: [{ email: email }, { name: name }] }).then((savedUser) => {
         if (savedUser) {
+            console.log("Hello");
             return res.status(422).json({ error: "User already exist with that email or userName" })
         }
         bcrypt.hash(password, 12).then((hashedPassword) => {
@@ -51,11 +57,11 @@ router.post("/signin", (req, res) => {
             if (match) {
                 // return res.status(200).json({ message: "Signed in Successfully" })
                 const token = jwt.sign({ _id: savedUser.id }, Jwt_secret)
-                const { _id, name, email, userName } = savedUser
+                const { _id, name, email } = savedUser
 
-                res.json({ token, user: { _id, name, email, userName } })
+                res.json({ token, user: { _id, name, email } })
 
-                console.log({ token, user: { _id, name, email, userName } })
+                console.log({ token, user: { _id, name, email } })
             } else {
                 return res.status(422).json({ error: "Invalid password" })
             }

@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require("body-parser")
 const app = express()
 const port = process.env.port || 5000;
 const mongoose = require("mongoose");
@@ -14,6 +15,8 @@ app.use(express.json())
 app.use(require("./routes/auth"))
 app.use(require("./routes/user"))
 app.use(require("./routes/medicine"))
+app.use(bodyParser.urlencoded({ extended: true }));
+
 mongoose.connect(mongoUrl);
 
 mongoose.connection.on("connected", () => {
