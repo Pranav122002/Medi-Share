@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
         // type: Date,
         required: true
     },
-    donors: [{ type: ObjectId, ref: "USER" }],
+    userId: {
+        type: ObjectId,
+        ref: "USER"
+    }
+    // donors: [{ type: ObjectId, ref: "USER" }]
    
 })
 
