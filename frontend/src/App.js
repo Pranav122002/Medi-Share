@@ -15,7 +15,7 @@ import Modal from "./components/Modal";
 import UserProfie from "./components/UserProfile";
 import MyFolliwngPost from "./screens/MyFollowingPost";
 import Chat from "./pages/Chat";
-
+import  Addmedicine from "./screens/Addmedicine";
 
 function App() {
   const [userLogin, setUserLogin] = useState(false);
@@ -34,7 +34,7 @@ function App() {
             <Route path="/createPost" element={<Createpost />}></Route>
             <Route path="/profile/:userid" element={<UserProfie />}></Route>
             <Route path="/followingpost" element={<MyFolliwngPost />}></Route>
-     
+            <Route path="/Addmedicine" element={<Addmedicine/>}></Route>
           </Routes>
           <ToastContainer theme="dark" />
 
