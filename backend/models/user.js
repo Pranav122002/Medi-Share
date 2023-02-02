@@ -6,10 +6,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userName: {
-        type: String,
-        required: true
-    },
+    // userName: {
+    //     type: String,
+    //     required: true
+    // },
     email: {
         type: String,
         required: true
@@ -18,11 +18,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Photo: {
+    location: {
         type: String,
-    },
-    followers: [{ type: ObjectId, ref: "USER" }],
-    following: [{ type: ObjectId, ref: "USER" }]
+        required: true
+    }
 })
 
 mongoose.model("USER", userSchema)

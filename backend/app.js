@@ -5,16 +5,15 @@ const mongoose = require("mongoose");
 const { mongoUrl } = require("./keys");
 const cors = require("cors");
 const path = require("path")
-const socket = require("socket.io");
+
 
 app.use(cors())
-require('./models/model')
-require('./models/post')
+require('./models/user')
+require('./models/medicine')
 app.use(express.json())
 app.use(require("./routes/auth"))
-app.use(require("./routes/createPost"))
 app.use(require("./routes/user"))
-app.use(require("./routes/messages"))
+app.use(require("./routes/medicine"))
 mongoose.connect(mongoUrl);
 
 mongoose.connection.on("connected", () => {
@@ -43,26 +42,3 @@ const server = app.listen(port, () => {
 
 })
 
-
-const io = socket(server, {
-    cors: {
-      origin: "http://localhost:3000",
-      credentials: true,
-    },
-  });
-    
-    global.onlineUsers = new Map();
-    io.on("connection", (socket) => {
-      global.chatSocket = socket;
-      socket.on("add-user", (userId) => {
-        onlineUsers.set(userId, socket.id);
-      });
-    
-      socket.on("send-msg", (data) => {
-        const sendUserSocket = onlineUsers.get(data.to);
-        if (sendUserSocket) {
-          socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-        }
-      });
-    });
-    

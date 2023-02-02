@@ -10,11 +10,11 @@ const requireLogin = require("../middlewares/requireLogin");
 
 
 router.post("/signup", (req, res) => {
-    const { name, userName, email, password } = req.body;
-    if (!name || !email || !userName || !password) {
+    const { name,  email, password, location } = req.body;
+    if (!name || !email || !password  || !location) {
         return res.status(422).json({ error: "Please add all the fields" })
     }
-    USER.findOne({ $or: [{ email: email }, { userName: userName }] }).then((savedUser) => {
+    USER.findOne({ $or: [{ email: email }, { name: name }] }).then((savedUser) => {
         if (savedUser) {
             return res.status(422).json({ error: "User already exist with that email or userName" })
         }
@@ -23,7 +23,6 @@ router.post("/signup", (req, res) => {
             const user = new USER({
                 name,
                 email,
-                userName,
                 password: hashedPassword
             })
 
@@ -69,7 +68,7 @@ const getAllUsers = async (req, res, next) => {
     try {
       const users = await USER.find({ _id: { $ne: req.params.id } }).select([
         "email",
-        "userName",
+        "name",
         "_id",
       ]);
       return res.json(users);
