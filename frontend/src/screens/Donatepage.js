@@ -1,8 +1,15 @@
 import React from 'react'
 import "../css/Donatepage.css"
+import { Link, useNavigate } from "react-router-dom";
+
 import { useState } from 'react'
 import { useEffect } from 'react'
 import View from "../components/View"
+import { toast } from 'react-toastify';
+
+ // Toast functions
+ const notifyA = (msg) => toast.error(msg)
+ const notifyB = (msg) => toast.success(msg)
 
 const getDatafromLS=()=>{
     const data = localStorage.getItem('medicines');
@@ -20,8 +27,9 @@ export const Donatepage = () => {
 
     // const [medicine, setMedicine] = useState({
     //     mname: "",
-    //     Expire: "",
+    //     expiry_date: "",
     //     Quantity: "",
+  const navigate = useNavigate()
         
 
 
@@ -55,8 +63,8 @@ export const Donatepage = () => {
     const [medicines, setmedicines]=useState(getDatafromLS());
 
   // input field states
-  const [medname, setMedname]=useState('');
-  const [expire, setExpire]=useState('');
+  const [med_name, setMedname]=useState('');
+  const [expiry_date, setexpiry_date]=useState('');
   const [quantity, setQuantity]=useState('');
 
   // form submit event
@@ -64,13 +72,13 @@ export const Donatepage = () => {
     e.preventDefault();
     // creating an object
     let medicine={
-      medname,
-      expire,
+      med_name,
+      expiry_date,
       quantity
     }
     setmedicines([...medicines,medicine]);
     setMedname('');
-    setExpire('');
+    setexpiry_date('');
     setQuantity('');
   }
 
@@ -82,6 +90,28 @@ export const Donatepage = () => {
     setmedicines(filteredMedicines);
   }
 
+
+  const donate_submit = () => {
+    const cart_data = localStorage.getItem('medicines',JSON.stringify(medicines))
+     
+    fetch("http://localhost:5000/add_many_medicine", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: (cart_data)
+    }).then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          notifyA(data.error)
+        } else {
+          notifyB(data.message)
+          navigate("/signin")
+        }
+        console.log(data)
+      })
+   
+  }
   // saving data to local storage
   useEffect(()=>{
     localStorage.setItem('medicines',JSON.stringify(medicines));
@@ -105,11 +135,11 @@ export const Donatepage = () => {
           onSubmit={handleAddMedicineSubmit}>
             <label>Medicine Name</label>
             <input type="text" className='form-control' required
-            onChange={(e)=>setMedname(e.target.value)} value={medname}></input>
+            onChange={(e)=>setMedname(e.target.value)} value={med_name}></input>
             <br></br>
-            <label>Expire</label>
+            <label>expiry_date</label>
             <input type="text" className='form-control' required
-            onChange={(e)=>setExpire(e.target.value)} value={expire}></input>
+            onChange={(e)=>setexpiry_date(e.target.value)} value={expiry_date}></input>
             <br></br>
             <label>quantity</label>
             <input type="text" className='form-control' required
@@ -128,8 +158,8 @@ export const Donatepage = () => {
                 <thead>
                   <tr>
                     <th>Quantity</th>
-                    <th>medname</th>
-                    <th>Expire</th>
+                    <th>med_name</th>
+                    <th>expiry_date</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -146,7 +176,9 @@ export const Donatepage = () => {
 
       </div>
     </div>
-
+    <div>
+              <button onClick={donate_submit}>Submit</button>
+            </div>
     </div>
             
             {/* <div className='donate-name'>
@@ -158,8 +190,8 @@ export const Donatepage = () => {
 
                 </div>
                 <div className="input-row">
-                    <label for="exipry">Expire_Date</label>
-                    <input type="date" name="Expire" id="expiry" value={medicine.Expire} min="2023-03-03"
+                    <label for="exipry">expiry_date_Date</label>
+                    <input type="date" name="expiry_date" id="expiry" value={medicine.expiry_date} min="2023-03-03"
                         onChange={handleChange} />
                 </div>
                 <div className="input-row">
@@ -174,6 +206,8 @@ export const Donatepage = () => {
             <div className='Medicine-list'>
                 <div>   </div>
             </div> */}
+
+          
         </>
     )
 }

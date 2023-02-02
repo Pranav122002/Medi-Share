@@ -7,11 +7,11 @@ const userSchema = new mongoose.Schema({
     },
     med_description: {
         type: String,
-        required: true
+        // required: true
     },
     
     expiry_date:{
-        type: Date,
+        type: String,
     },
     
     quantity: {

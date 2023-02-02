@@ -7,8 +7,8 @@ export default function View ({medicines,deleteMedicine}) {
         
         <tr key={medicine.quantity}>
             <td>{medicine.quantity}</td>
-            <td>{medicine.medname}</td>
-            <td>{medicine.expire}</td>
+            <td>{medicine.med_name}</td>
+            <td>{medicine.expiry_date}</td>
             <td className='delete-btn' >
                 <button onClick={()=>deleteMedicine(medicine.quantity)}>Click</button>
             </td>           

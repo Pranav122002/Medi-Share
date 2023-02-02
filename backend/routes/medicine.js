@@ -8,7 +8,28 @@ const requireLogin = require("../middlewares/requireLogin");
 
 
 
+// save multiple 
+router.post("/add_many_medicine", (req, res) => {
+    const array  = req.body;
+    console.log(array);
+    
 
+ 
+    MEDICINE.insertMany(array).then((savedUser) => {
+        console.log("succecc---");
+        
+
+        // const medicine = new MEDICINE({
+        //    med_name,
+        //    med_description
+          
+        // })
+        // medicine.save()
+        //         .then(user => { res.json({ message: "Registered successfully" }) })
+        //         .catch(err => { console.log(err) })
+    })
+
+})
 
 
 //add medicine
@@ -51,6 +72,34 @@ router.get("/all_medicine", (req, res) => {
     res.send(medicines)
      });
 })
+
+
+
+
+
+
+
+
+router.delete("/delete_medicine/:medicineId",  (req, res) => {
+    MEDICINE.findOne({ _id: req.params.medicineId })
+      
+        .exec((err, medicine) => {
+            if (err || !medicine) {
+                return res.status(422).json({ error: err })
+            }
+
+            // if (medicine.postedBy._id.toString() == req.user._id.toString()) {
+
+                medicine.remove()
+                    .then(result => {
+                        return res.json({ message: "Successfully deleted" })
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+            // }
+        })
+})
+
 
 
 module.exports = router;
