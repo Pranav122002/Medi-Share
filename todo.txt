@@ -1,2 +1,5 @@
 1
 available medicine qauntity,  medicine already registerd
+
+2
+host on repit 5000rs
