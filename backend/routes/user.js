@@ -24,6 +24,20 @@ router.get("/user/:id", (req, res) => {
         })
 })
 
+router.get("/users", (req, res) => {
 
+    console.log("Pranav  ----------");
+    // USER.find({})
+       
+    //     .then(user => {
+    //         console.log("Paul ------");
+            
+    //         console.log(res);
+            
+          
+    //     }).catch(err => {
+    //         return res.status(404).json({ error: "User not found" })
+    //     })
+})
   
 module.exports = router;

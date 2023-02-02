@@ -39,5 +39,18 @@ router.post("/add_medicine", (req, res) => {
 })
 
 
+router.get("/all_medicine", (req, res) => {
+    // const { med_name,   med_description } = req.body;
+
+    // if (!med_name || !med_description) {
+    //     return res.status(422).json({ error: "Please add all the fields" })
+    // }
+
+    MEDICINE.find({}, function(err, medicines) {
+    //   console.log(users);
+    res.send(medicines)
+     });
+})
+
 
 module.exports = router;

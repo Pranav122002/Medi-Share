@@ -45,7 +45,7 @@ export default function SignIn() {
           localStorage.setItem("user", JSON.stringify(data.user))
 
           setUserLogin(true)
-          navigate("/homepage")
+          navigate("/")
           // for updating profile picture on Navbar we are reloading 
           window.location.reload();
 
