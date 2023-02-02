@@ -9,8 +9,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
- 
-  
+    
+    expiry_date:{
+        type: Date,
+    },
+    
+    quantity: {
+        type: Number
+    },
+    
+    isAvailable: {
+        type: Boolean, default: false
+    }
     
    
 })

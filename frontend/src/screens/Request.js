@@ -15,7 +15,7 @@ export default function Createpost() {
     // }
 
     // Fetching all posts
-    fetch("http://localhost:5000/aam", {
+    fetch("http://localhost:5000/all_medicine", {
       method: "get",
       headers: {
         // Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -26,7 +26,8 @@ export default function Createpost() {
         console.log("fetching all medicines --------------");
         
         console.log(result);
-        setData(result);
+        setData(result[1]._id);
+        console.log(data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -38,6 +39,9 @@ export default function Createpost() {
 
     Request page
 
+    <div>
+   {data}
+   </div>
     </h1>
    </div>
   );

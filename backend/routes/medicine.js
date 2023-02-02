@@ -46,9 +46,9 @@ router.get("/all_medicine", (req, res) => {
     //     return res.status(422).json({ error: "Please add all the fields" })
     // }
 
-    MEDICINE.find({}, function(err, users) {
-      console.log(users);
-      
+    MEDICINE.find({}, function(err, medicines) {
+    //   console.log(users);
+    res.send(medicines)
      });
 })
 
