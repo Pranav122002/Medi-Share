@@ -4,7 +4,7 @@
 .one {
 
   width: 100%;
-  height: 10%;
+  height: 1rem;
 } 
  
 .two {
@@ -30,10 +30,11 @@
  
  
  #insta-logo {
-  width: 70%;
- margin: 7px  7px  7px  7px ;
+  width: 0%;
+
   object-fit: contain;
 }
+
 
 .navbar {
  
@@ -44,6 +45,7 @@
   margin: 0;
   padding: 0;
   width: 17%;
+  box-shadow: 2px 2px 8px rgb(176, 176, 176);
 
   position: fixed;
   height: 100%;
@@ -60,26 +62,34 @@
 }
 
 ul {
+  text-align: center;
+  
   width: 100%;
   display: flex;
+  margin-left: 1rem;
   flex-direction: column;
-  align-items: baseline;
+  align-items: center;
   padding-left: 0px;
 }
 
 li {
+  text-align: center;
+  align-items: center;
+  margin-left: 3rem;
+  box-shadow: 2px 2px 8px rgb(176, 176, 176);
   list-style: none;
-  width: 90%;
+  width: 70%;
   padding-left: 20px;
- 
+  background-color: #ffffff;
+  margin-top: 1rem;
   padding-top: 10px;
   padding-bottom: 10px;
 
-margin-left: 10px;
+   margin-left: 10px;
 
   display: flex;
   align-items:flex-start;
- border-radius: 18px;
+ border-radius: 25px;
 
 }
 

@@ -1,5 +1,5 @@
 .mainn{
-    margin-left: 34rem;
+    margin-left: 30rem;
 }
 
 
@@ -15,7 +15,7 @@
 }
 
 .input-row{
-    width: 20rem;
+    width: 10rem;
     margin-left: 20rem;
     margin-top: 2rem;
 
@@ -27,4 +27,72 @@
     
 }
 
+.form-group{
+    width: 70rem;
+    margin-left: 10rem;
+}
+.form-group label{    
+   padding-top: 2rem;                                                                                            
+    display: block;
+    
+}
+.form-control{
+    margin-top: 1rem;
+    width: 60%;
+    
+}
+.form-group input{    
+    border-radius: 1rem;
+    height: 3rem;
 
+ }
+
+ #add{
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem ;
+ }
+
+ #message{
+    font-size: 1.5rem;
+ }
+
+ #submit{
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+ }
+
+ #delete{
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+ }
+
+ #remove{
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+ }
+
+ .table{
+    width: 40rem;
+    margin-top: 2rem;
+    margin-left: 25rem;
+ }
+
+ .table tr th{
+    font-size: 1.5rem;
+    border: 4px solid black;
+    border: 5px black;
+ }
+
+ tr{
+   border: 4px solid black;
+ }
+ td{
+    font-size: 1.3rem;
+    
+    border: 5px black;
+ }

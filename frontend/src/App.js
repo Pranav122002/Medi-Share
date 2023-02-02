@@ -6,11 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
-
+import { Adminpage } from "./screens/Adminpage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoginContext } from "./context/LoginContext";
 import Modal from "./components/Modal";
+import { AdminRequest } from "./screens/AdminRequest";
+import { AdminDonorList } from "./screens/AdminDonorList";
+
 
 import Chat from "./pages/Chat";
 
@@ -30,8 +33,10 @@ function App() {
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/request" element={<Request />}></Route>
-            
+            <Route path="/Adminpage" element={<Adminpage/>}></Route>
             <Route path="/Donatepage" element={<Donatepage/>}></Route>
+            <Route path="/AdminRequest" element={<AdminRequest/>}></Route>
+            <Route path="/AdminDonorList" element={<AdminDonorList/>}></Route>
           </Routes>
           <ToastContainer theme="dark" />
 

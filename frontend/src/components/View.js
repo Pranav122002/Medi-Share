@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../css/Donatepage.css"
 
 export default function View ({medicines,deleteMedicine}) {
     
@@ -10,7 +10,7 @@ export default function View ({medicines,deleteMedicine}) {
             <td>{medicine.med_name}</td>
             <td>{medicine.expiry_date}</td>
             <td className='delete-btn' >
-                <button onClick={()=>deleteMedicine(medicine.quantity)}>Click</button>
+                <button id='delete' onClick={()=>deleteMedicine(medicine.quantity)}>Delete</button>
             </td>           
         </tr>            
     
