@@ -58,7 +58,9 @@ export default function SignIn() {
     <div className="signIn">
       <div>
         <div className="loginForm">
-          <img className="signUpLogo" src={logo} alt="" />
+          <div className="logo">
+            <h1>Medi-Share</h1>
+          </div>
           <div>
             <input type="email" name="email" id="email" value={email} placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
           </div>

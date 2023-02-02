@@ -10,7 +10,7 @@ export default function SignUp() {
   const navigate = useNavigate()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("")
-  const [userName, setUserName] = useState("")
+  const [location, setLocation] = useState("")
   const [password, setPassword] = useState("")
 
   // Toast functions
@@ -38,7 +38,7 @@ export default function SignUp() {
       },
       body: JSON.stringify({
         name: name,
-        userName: userName,
+        location: location,
         email: email,
         password: password
 
@@ -59,7 +59,9 @@ export default function SignUp() {
     <div className="signUp">
       <div className="form-container">
         <div className="form">
-          <img className="signUpLogo" src={logo} alt="" />
+          <div className="logo">
+            <h1>Medi-Share</h1>
+          </div>
           <p className="loginPara">
             Sign up to see photos and videos <br /> from your friends
           </p>
@@ -72,11 +74,11 @@ export default function SignUp() {
           <div>
             <input
               type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
-              value={userName}
-              onChange={(e) => { setUserName(e.target.value) }}
+              name="location"
+              id="location"
+              placeholder="location"
+              value={location}
+              onChange={(e) => { setLocation(e.target.value) }}
             />
           </div>
           <div>
