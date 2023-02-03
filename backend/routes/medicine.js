@@ -81,24 +81,37 @@ router.get("/all_medicine", (req, res) => {
 
 
 router.delete("/delete_medicine/:medicineId",  (req, res) => {
-    MEDICINE.findOne({ _id: req.params.medicineId })
-      
-        .exec((err, medicine) => {
-            if (err || !medicine) {
-                return res.status(422).json({ error: err })
-            }
-
-            // if (medicine.postedBy._id.toString() == req.user._id.toString()) {
-
-                medicine.remove()
-                    .then(result => {
-                        return res.json({ message: "Successfully deleted" })
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-            // }
-        })
+    MEDICINE.findByIdAndUpdate({ _id: req.params.medicineId },{$inc: {quantity: -1}},{new: true}, (err, med) => {
+        if(err){
+            console.log(err)
+        }
+        else{
+            console.log(med)
+        }
+    })
+        
 })
+
+
+// router.delete("/delete_many_medicine",  (req, res) => {
+//     MEDICINE.deleteMany({ _id:  })
+      
+//         .exec((err, medicine) => {
+//             if (err || !medicine) {
+//                 return res.status(422).json({ error: err })
+//             }
+
+//             // if (medicine.postedBy._id.toString() == req.user._id.toString()) {
+
+//                 medicine.remove()
+//                     .then(result => {
+//                         return res.json({ message: "Successfully deleted" })
+//                     }).catch((err) => {
+//                         console.log(err)
+//                     })
+//             // }
+//         })
+// })
 
 
 

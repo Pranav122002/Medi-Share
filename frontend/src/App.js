@@ -33,10 +33,10 @@ function App() {
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/request" element={<Request />}></Route>
-            <Route path="/Adminpage" element={<Adminpage/>}></Route>
-            <Route path="/Donatepage" element={<Donatepage/>}></Route>
-            <Route path="/AdminRequest" element={<AdminRequest/>}></Route>
-            <Route path="/AdminDonorList" element={<AdminDonorList/>}></Route>
+            <Route path="/adminpage" element={<Adminpage/>}></Route>
+            <Route path="/donatepage" element={<Donatepage/>}></Route>
+            <Route path="/adminRequest" element={<AdminRequest/>}></Route>
+            <Route path="/adminDonorList" element={<AdminDonorList/>}></Route>
           </Routes>
           <ToastContainer theme="dark" />
 

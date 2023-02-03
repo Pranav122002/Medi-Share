@@ -177,20 +177,15 @@ export const Donatepage = () => {
           {medicines.length < 1 && <div id='message'>No medicines are added yet</div>}
         </div>
 
-<<<<<<< HEAD
-        <div>
-              <button onClick={donate_submit}>Submit</button>
-=======
       </div>
     </div>
-    <div>
+
               <button id='submit' onClick={donate_submit}>Submit</button>
->>>>>>> 9dec8377114da85fdc173d78033ebd2bd689928b
             </div>
-      </div>
-    </div>
+     
+   
     
-    </div>
+   
             
             {/* <div className='donate-name'>
                 <div className="input-row">

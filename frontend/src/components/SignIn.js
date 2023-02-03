@@ -56,7 +56,7 @@ export default function SignIn() {
           // console.log(data.users.role);
 
           if (data.user.role == "admin") {
-            navigate("/admin_dashboard");
+            navigate("/adminpage");
           } else {
             navigate("/");
           }
