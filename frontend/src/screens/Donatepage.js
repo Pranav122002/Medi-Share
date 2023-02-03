@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import View from "../components/View"
 import { toast } from 'react-toastify';
+import AdminRequest from './AdminRequest';
 
  // Toast functions
  const notifyA = (msg) => toast.error(msg)
@@ -92,7 +93,8 @@ export const Donatepage = () => {
 
 
   const donate_submit = () => {
-    const cart_data = localStorage.getItem('medicines',JSON.stringify(medicines))
+    const  cart_data = localStorage.getItem('medicines',JSON.stringify(medicines))
+    console.log(cart_data)
      
     fetch("http://localhost:5000/add_many_medicine", {
       method: "post",
@@ -145,12 +147,12 @@ export const Donatepage = () => {
             <input type="text" className='form-control' required
             onChange={(e)=>setQuantity(e.target.value)} value={quantity}></input>
             <br></br>
-            <button type="submit" className='btn btn-success btn-md'>
+            <button type="submit" id='add' className='btn btn-success btn-md'>
               ADD
             </button>
           </form>
         </div>
-
+        <hr />
         <div className='view-container'>
           {medicines.length>0&&<>
             <div className='table-responsive'>
@@ -162,20 +164,28 @@ export const Donatepage = () => {
                     <th>Expiry Date</th>
                     <th>Delete</th>
                   </tr>
+                  
                 </thead>
                 <tbody>
                   <View medicines={medicines} deleteMedicine={deleteMedicine}/>
                 </tbody>
               </table>
             </div>
-            <button className='btn btn-danger btn-md'
+            <button id='remove' className='btn btn-danger btn-md'
             onClick={()=>setmedicines([])}>Remove All</button>
           </>}
-          {medicines.length < 1 && <div>No medicines are added yet</div>}
+          {medicines.length < 1 && <div id='message'>No medicines are added yet</div>}
         </div>
 
+<<<<<<< HEAD
         <div>
               <button onClick={donate_submit}>Submit</button>
+=======
+      </div>
+    </div>
+    <div>
+              <button id='submit' onClick={donate_submit}>Submit</button>
+>>>>>>> 9dec8377114da85fdc173d78033ebd2bd689928b
             </div>
       </div>
     </div>
