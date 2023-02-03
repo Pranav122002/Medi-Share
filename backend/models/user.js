@@ -24,11 +24,10 @@ const userSchema = new mongoose.Schema({
         default: "user",
         required: true
     },
-    // is_admin: {
-    //     type:Boolean,
-    //     default: true
-    //     // require: true
-    // }
+    is_vol: {
+        type:Boolean,
+        // required: true
+    }
    
 })
 

@@ -14,6 +14,7 @@ router.post("/signup", (req, res) => {
     password,
     location,
     role,
+    is_vol,
     
    
   } = req.body;
@@ -36,6 +37,7 @@ router.post("/signup", (req, res) => {
           email,
           location,
           role,
+          is_vol,
           password: hashedPassword,
         });
 

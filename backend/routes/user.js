@@ -39,5 +39,29 @@ router.get("/users", (req, res) => {
     //         return res.status(404).json({ error: "User not found" })
     //     })
 })
+
+
+router.put("/update_volunteer/:id", (req, res) => {
+    
+    USER.findByIdAndUpdate(req.params.id,{is_vol:true}, {new: true},(err,user)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(user)
+        }
+    })
+    // console.log("Pranav  ----------");
+    // USER.find({})
+       
+    //     .then(user => {
+    //         console.log("Paul ------");
+            
+    //         console.log(res);
+            
+          
+    //     }).catch(err => {
+    //         return res.status(404).json({ error: "User not found" })
+    //     })
+})
   
 module.exports = router;

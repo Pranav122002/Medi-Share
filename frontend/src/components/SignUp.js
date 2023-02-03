@@ -42,7 +42,8 @@ export default function SignUp() {
         location: location,
         email: email,
         role: role,
-        password: password
+        password: password,
+        is_vol:false
 
       })
     }).then(res => res.json())

@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoginContext } from "./context/LoginContext";
 import Modal from "./components/Modal";
+import Vol_Modal from "./components/Vol_Modal";
 import { AdminRequest } from "./screens/AdminRequest";
 import { AdminDonorList } from "./screens/AdminDonorList";
 
@@ -23,6 +24,7 @@ import  Request  from "./screens/Request";
 function App() {
   const [userLogin, setUserLogin] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [volmodalOpen, setVolModalOpen] = useState(false);
   return (
     <BrowserRouter>
       <div className="App">
@@ -41,6 +43,7 @@ function App() {
           <ToastContainer theme="dark" />
 
           {modalOpen && <Modal setModalOpen={setModalOpen}></Modal>}
+          {volmodalOpen && <Vol_Modal setVolModalOpen={setVolModalOpen}></Vol_Modal>}
         </LoginContext.Provider>
       </div>
     </BrowserRouter>
