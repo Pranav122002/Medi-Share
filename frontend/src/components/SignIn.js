@@ -4,6 +4,7 @@ import logo from "../img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { LoginContext } from "../context/LoginContext";
+import logo1 from "../img/background.png";
 
 export default function SignIn() {
   const { setUserLogin } = useContext(LoginContext)
@@ -55,7 +56,9 @@ export default function SignIn() {
   }
 
   return (
+   
     <div className="signIn">
+        
       <div>
         <div className="loginForm">
           <div className="logo">

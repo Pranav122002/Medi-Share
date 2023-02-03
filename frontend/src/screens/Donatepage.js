@@ -128,8 +128,8 @@ export const Donatepage = () => {
         <>
         <div className='mainn'>
         <div className='wrapper'>
-      <h1>Medicines App</h1>
-      <p>Add and view your medicines using local storage</p>
+      <h1>Donate medicine</h1>
+      <p>select medicines to donate</p>
       <div className='main'>
 
         <div className='form-container'>
