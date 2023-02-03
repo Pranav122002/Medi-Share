@@ -10,7 +10,8 @@ export default function SignUp() {
   const navigate = useNavigate()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("")
-  const [location, setLocation] = useState("")
+  const [role, setRole] = useState("user")
+  const [location, setlocation] = useState("")
   const [password, setPassword] = useState("")
 
   // Toast functions
@@ -40,7 +41,9 @@ export default function SignUp() {
         name: name,
         location: location,
         email: email,
-        password: password
+        role: role,
+        password: password,
+        is_vol:false
 
       })
     }).then(res => res.json())
@@ -59,9 +62,7 @@ export default function SignUp() {
     <div className="signUp">
       <div className="form-container">
         <div className="form">
-          <div className="logo">
-            <h1>Medi-Share</h1>
-          </div>
+          <img className="signUpLogo" src={logo} alt="" />
           <p className="loginPara">
             Sign up to see photos and videos <br /> from your friends
           </p>
@@ -74,11 +75,11 @@ export default function SignUp() {
           <div>
             <input
               type="text"
-              name="location"
-              id="location"
-              placeholder="location"
+              name="username"
+              id="username"
+              placeholder="Username"
               value={location}
-              onChange={(e) => { setLocation(e.target.value) }}
+              onChange={(e) => { setlocation(e.target.value) }}
             />
           </div>
           <div>

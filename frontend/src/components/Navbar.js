@@ -3,30 +3,28 @@ import "../css/Navbar.css";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/logo12.png";
 
 
 export default function Navbar({ login }) {
   const navigate = useNavigate();
   const { setModalOpen } = useContext(LoginContext);
+  const { setVolModalOpen } = useContext(LoginContext);
   const location = useLocation();
   const [onHome, setOnHome] = useState(false);
-  const [onSearch, setOnSearch] = useState(false);
-  const [onChat, setOnChat] = useState(false);
-  const [onCreatePost, setOnCreatePost] = useState(false);
-  const [onExplore, setOnExplore] = useState(false);
+  const [onRequest, setOnRequest] = useState(false);
+  const [isVol, setVol] = useState(false)
   const [onLike, setOnLike] = useState(false);
-
-
 
 
   useEffect(() => {
     setOnHome(location.pathname === "/");
-    setOnSearch(location.pathname === "/search");
-    setOnChat(location.pathname === "/messenger");
-    setOnCreatePost(location.pathname === "/createPost");
-    setOnExplore(location.pathname === "/followingpost");
-    setOnLike(location.pathname === "/notifications");
+    
+    setOnLike(location.pathname === "/request");
+    // setOnChat(location.pathname === "/messenger");
+    // setOnCreatePost(location.pathname === "/createPost");
+    // setOnExplore(location.pathname === "/followingpost");
+    // setOnLike(location.pathname === "/notifications");
+
   }, [location]);
 
   const loginStatus = () => {
@@ -52,20 +50,20 @@ export default function Navbar({ login }) {
 
           <NavLink to="/request">
             <li>
-
-              Request
+              
+            Request
             </li>
           </NavLink>
 
           <NavLink to="/volunteer">
             <li>
-
-              Volunteer
+              
+            Volunteer
             </li>
           </NavLink>
 
 
-
+          
         </>,
       ];
     } else {

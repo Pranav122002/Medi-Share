@@ -2,58 +2,71 @@ import React, { useState, useContext } from "react";
 import "../css/SignIn.css";
 import logo from "../img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { LoginContext } from "../context/LoginContext";
 import logo1 from "../img/background.png";
 
 export default function SignIn() {
-  const { setUserLogin } = useContext(LoginContext)
+  const { setUserLogin } = useContext(LoginContext);
   const navigate = useNavigate();
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user");
+  const [checked, setChecked] = useState(false);
+  const handleChange = () => {
+    setChecked(!checked);
+  };
   // Toast functions
-  const notifyA = (msg) => toast.error(msg)
-  const notifyB = (msg) => toast.success(msg)
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
 
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   const postData = () => {
     //checking email
     if (!emailRegex.test(email)) {
-      notifyA("Invalid email")
-      return
+      notifyA("Invalid email");
+      return;
     }
     // Sending data to server
     fetch("http://localhost:5000/signin", {
       method: "post",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: email,
-        password: password
-
-      })
-    }).then(res => res.json())
-      .then(data => {
+        password: password,
+        role: role,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
         if (data.error) {
-          notifyA(data.error)
+          notifyA(data.error);
         } else {
-          notifyB("Signed In Successfully")
-          console.log(data)
-          localStorage.setItem("jwt", data.token)
-          localStorage.setItem("user", JSON.stringify(data.user))
+          notifyB("Signed In Successfully");
+          console.log(data);
+          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
 
-          setUserLogin(true)
-          navigate("/")
-          // for updating profile picture on Navbar we are reloading 
-          window.location.reload();
+          setUserLogin(true);
+          console.log("role---------");
+          console.log(data);
 
+          // console.log(data.users.role);
+
+          if (data.user.role == "admin") {
+            navigate("/adminpage");
+          } else {
+            navigate("/");
+          }
+          // for updating profile picture on Navbar we are reloading
+          // window.location.reload();
         }
-        console.log(data)
-      })
-  }
+        console.log(data);
+      });
+  };
 
   return (
    
@@ -65,7 +78,16 @@ export default function SignIn() {
             <h1>Medi-Share</h1>
           </div>
           <div>
-            <input type="email" name="email" id="email" value={email} placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              placeholder="Email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </div>
           <div>
             <input
@@ -74,10 +96,28 @@ export default function SignIn() {
               id="password"
               placeholder="Password"
               value={password}
-              onChange={(e) => { setPassword(e.target.value) }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
-          <input type="submit" id="login-btn" onClick={() => { postData() }} value="Sign In" />
+          <input
+            type="submit"
+            id="login-btn"
+            onClick={() => {
+              postData();
+            }}
+            value="Sign In"
+          />
+          {/* <div id="admi">
+            <input
+              onChange={handleChange}
+              type="checkbox"
+              id="check"
+              value="Admin"
+            />{" "}
+            <h4>Admin</h4>
+          </div> */}
         </div>
         <div className="loginForm2">
           Don't have an account ?
