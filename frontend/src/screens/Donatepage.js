@@ -155,11 +155,11 @@ export const Donatepage = () => {
           {medicines.length>0&&<>
             <div className='table-responsive'>
               <table className='table'>
-                <thead>
+                <thead className='table'>
                   <tr>
                     <th>Quantity</th>
-                    <th>med_name</th>
-                    <th>expiry_date</th>
+                    <th>Medicine</th>
+                    <th>Expiry Date</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -174,11 +174,12 @@ export const Donatepage = () => {
           {medicines.length < 1 && <div>No medicines are added yet</div>}
         </div>
 
-      </div>
-    </div>
-    <div>
+        <div>
               <button onClick={donate_submit}>Submit</button>
             </div>
+      </div>
+    </div>
+    
     </div>
             
             {/* <div className='donate-name'>

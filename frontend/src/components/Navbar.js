@@ -54,7 +54,12 @@ export default function Navbar({ login }) {
             </li>
           </NavLink>
 
-
+          <Link to="/">
+            <li onClick={() => setModalOpen(true)}>
+            
+              Log Out
+            </li>
+          </Link>
           
         </>,
       ];

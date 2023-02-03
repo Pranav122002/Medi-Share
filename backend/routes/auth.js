@@ -13,11 +13,13 @@ router.post("/signup", (req, res) => {
     email,
     password,
     location,
-    role
+    role,
+    
+   
   } = req.body;
 
   
-  if (!name || !email || !password || !location || !role) {
+  if (!name || !email || !password || !location ) {
     return res.status(422).json({ error: "Please add all the fields" });
   }
   USER.findOne({ $or: [{ email: email }, { name: name }] }).then(
@@ -51,10 +53,10 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/signin", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
 
-  if (!email || !password) {
-    return res.status(422).json({ error: "Please add email and password" });
+  if (!email || !password || !role) {
+    return res.status(422).json({ error: "Please add email and password and role" });
   }
   USER.findOne({ email: email }).then((savedUser) => {
     if (!savedUser) {
@@ -66,11 +68,11 @@ router.post("/signin", (req, res) => {
         if (match) {
           // return res.status(200).json({ message: "Signed in Successfully" })
           const token = jwt.sign({ _id: savedUser.id }, Jwt_secret);
-          const { _id, name, email } = savedUser;
+          const { _id, name, email, role } = savedUser;
 
-          res.json({ token, user: { _id, name, email } });
+          res.json({ token, user: { _id, name, email, role } });
 
-          console.log({ token, user: { _id, name, email } });
+          console.log({ token, user: { _id, name, email, role } });
         } else {
           return res.status(422).json({ error: "Invalid password" });
         }

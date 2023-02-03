@@ -33,3 +33,15 @@
     cursor: pointer;
     margin-top: 8px;
 }
+
+
+#admi {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#check {
+    width: 50%;
+    height: 50%;
+}

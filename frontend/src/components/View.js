@@ -10,7 +10,9 @@ export default function View ({medicines,deleteMedicine}) {
             <td>{medicine.med_name}</td>
             <td>{medicine.expiry_date}</td>
             <td className='delete-btn' >
-                <button onClick={()=>deleteMedicine(medicine.quantity)}>Click</button>
+                <button onClick={()=>deleteMedicine(medicine.quantity)}><span class="material-symbols-outlined">
+delete
+</span></button>
             </td>           
         </tr>            
     
