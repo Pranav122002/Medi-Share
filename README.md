@@ -1,5 +1,4 @@
-# medi-share
-
+# Medi-Share
 
 Medi-Share is an online portal for donation of unused medicines for needy ones.
 
@@ -9,4 +8,5 @@ Any donor or requester can become a volunteer.
 
 NGO admins can assign tasks to volunteers.
 
-Doctors can conduct free health checkups or drives on this platform.
+Doctors can annouce health checkups or campaigns on this platform.
+

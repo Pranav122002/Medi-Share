@@ -1,3 +1,33 @@
-1
-available medicine qauntity,  medicine already registerd
+Pages 
+    signin
+    signup
+    navbar (home, donate, request, volunteer, community chat, drives)
+    home 
+    donate (form (select medicine name , give expiry_date, give quantity) )
+    request (select from available donate orders)
+    volunteer (my tasks, accept task, reject task)
+    ngo admin (assign tasks to volunteers)
+    medicines (view all medicines) 
+    profile (your donated medicines, your requested medicines)
+    community chat (all users can chat )
+    drives (available drives / campaigns, users will only view but doctors can add more)
 
+
+Roles 
+    user (donator / requester)
+    volunteer
+    ngo admin
+    doctors
+
+
+Models 
+    USER
+    MEDICINES
+    MESSAGE
+    ORDER
+
+
+Routing 
+
+
+Frontend API integrate

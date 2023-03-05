@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema.Types
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-   
     email: {
         type: String,
         required: true
@@ -22,13 +20,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: "user",
-        required: true
-    },
-    is_vol: {
-        type:Boolean,
-        // required: true
     }
-   
 })
 
 mongoose.model("USER", userSchema)
