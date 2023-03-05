@@ -1,5 +1,5 @@
 # medi-share
-This project was created during our TSEC HACKS 2023 hackathon.
+
 
 Medi-Share is an online portal for donation of unused medicines for needy ones.
 
