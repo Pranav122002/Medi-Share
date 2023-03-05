@@ -6,10 +6,21 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path")
 const mongoUrl = "mongodb://0.0.0.0:27017/medi-share";
+// const mongoUrl = "mongodb://localhost:27017/medi-share";
 
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
+
+require('./models/medicine')
+require('./models/user')
+require('./models/message')
+require('./models/order')
+
+app.use(require("./routes/auth"))
+app.use(require("./routes/order"))
+// app.use(require("./routes/user"))
+app.use(require("./routes/message"))
 
 mongoose.connect(mongoUrl);
 mongoose.connection.on("connected", () => {
