@@ -24,14 +24,14 @@ app.use(require("./routes/message"))
 
 mongoose.connect(mongoUrl);
 mongoose.connection.on("connected", () => {
-    console.log("MongoDB connection successfull ...")
+    console.log("MongoDB connection successfull...")
 })
 mongoose.connection.on("error", () => {
     console.log("MongoDB connection error !!!")
 })
 
 const server = app.listen(port, () => {
-    console.log("Server is running on port" + " " + port + " ...")
+    console.log("Server is running on port" + " " + port + "...")
 
 })
 

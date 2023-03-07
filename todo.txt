@@ -8,7 +8,7 @@ Pages
     volunteer (my tasks, accept task, reject task)
     ngo admin (assign tasks to volunteers)
     medicines (view all medicines) 
-    profile (your donated medicines, your requested medicines)
+    profile (your donated medicines, your requested medicines, logout btn)
     community chat (all users can chat )
     drives (available drives / campaigns, users will only view but doctors can add more)
 

@@ -7,7 +7,8 @@ const jwt = require("jsonwebtoken");
 const Jwt_secret = "sdfggdegerg";
 
 router.post("/signup", (req, res) => {
-  const { name, email, password, role } = req.body;
+  // const { name, email, password, role} = req.body;
+  var { name, email, password, role} = req.body;
   if (!name || !email || !password) {
     return res.status(422).json({ error: "Please add all the fields..." });
   }
@@ -18,11 +19,14 @@ router.post("/signup", (req, res) => {
         .json({ error: "User already exist with that email..." });
     }
     bcrypt.hash(password, 12).then((hashedPassword) => {
+      if (role === "") {
+        role = "user";
+      }
       const user = new USER({
         name,
         email,
         password: hashedPassword,
-        role,
+        role: role,
       });
 
       user
@@ -38,7 +42,7 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/signin", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
 
   if (!email || !password) {
     return res.status(422).json({ error: "Please add email and password..." });
@@ -53,11 +57,11 @@ router.post("/signin", (req, res) => {
         if (match) {
           // return res.status(200).json({ message: "Signed in Successfully..." })
           const token = jwt.sign({ _id: savedUser.id }, Jwt_secret);
-          const { _id, name, email } = savedUser;
+          const { _id, name, email, role } = savedUser;
 
-          res.json({ token, user: { _id, name, email } });
+          res.json({ token, user: { _id, name, email, role} });
 
-          // console.log({ token, user: { _id, name, email} });
+          // console.log({ token, user: { _id, name, email, role} });
         } else {
           return res.status(422).json({ error: "Invalid password" });
         }

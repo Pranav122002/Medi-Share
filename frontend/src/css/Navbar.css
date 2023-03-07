@@ -1,0 +1,212 @@
+
+
+
+.one {
+
+  width: 100%;
+  height: 1rem;
+} 
+ 
+.two {
+
+  width: 100%;
+
+} 
+
+
+
+.nav-mobile {
+  display: none;
+}
+.nav-mobile-top {
+  display: none;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ #insta-logo {
+  width: 0%;
+
+  object-fit: contain;
+}
+
+
+.navbar {
+ 
+ 
+  border-right: 1px solid rgb(219, 219, 219);
+  
+  
+  margin: 0;
+  padding: 0;
+  width: 17%;
+  box-shadow: 2px 2px 8px rgb(176, 176, 176);
+
+  position: fixed;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  min-width: 180px;
+
+}
+
+
+.spanicon {
+  margin-right: 10px;
+}
+
+ul {
+  text-align: center;
+  
+  width: 100%;
+  display: flex;
+  margin-left: 1rem;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
+}
+
+li {
+  text-align: center;
+  align-items: center;
+  margin-left: 3rem;
+  box-shadow: 2px 2px 8px rgb(176, 176, 176);
+  list-style: none;
+  width: 70%;
+  padding-left: 20px;
+  background-color: #ffffff;
+  margin-top: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+   margin-left: 10px;
+
+  display: flex;
+  align-items:flex-start;
+ border-radius: 25px;
+
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  width: 95%;
+  padding-left: 0px;
+  
+ 
+}
+
+.primaryBtn {
+  cursor: pointer;
+  font-weight: bolder;
+  padding: 13px 25px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: #db183c;
+  border-radius: 15px;
+  margin-left: 20px;
+  transition: all 0.25s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px -10px rgba(219, 24, 44, 0.6);
+}
+
+#profilepic {
+  border-radius: 100%;
+}
+
+.nav-menu {
+  padding-left: 0px;
+}
+
+
+ li:hover {
+       background-color: #F5F5F5;
+       color: black;
+      }
+
+.active {
+     font-weight: bolder;
+
+     }
+
+
+#logo-top{
+
+  width: 14rem;
+  margin-right: 40px;
+} 
+    
+
+
+
+
+
+ 
+
+@media screen and (max-width: 800px) {
+
+  .navbar{
+    display: none;
+  }
+  
+
+  .nav-mobile {
+    width: 100%;
+    position: fixed;
+   
+    display: flex;
+    flex-direction: row;
+   
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+   
+  }
+
+  .nav-mobile-top {
+    width: 100%;
+    position: fixed;
+   
+    display: flex;
+    flex-direction: row;
+   
+    top: 0;
+    left: 0;
+    background-color: #fff;
+   
+  }
+  #msg-top {
+    position: relative;
+    float: right;
+    margin-right: 10%;
+    
+  }
+  #insta-logo-top {
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+  }
+  #mob-top-div {
+display: flex;
+flex-direction: row;
+
+  }
+
+ .nav-mobile li {
+  justify-content: center;
+  padding-left: 0px;
+ }
+}    
+
