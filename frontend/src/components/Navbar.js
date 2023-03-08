@@ -36,6 +36,10 @@ export default function Navbar({ login }) {
           <Link to="/chat">
             <li>Chat</li>
           </Link>
+
+          <Link to="/disease_prediction">
+            <li>Disease Prediction</li>
+          </Link>
         </>,
       ];
  

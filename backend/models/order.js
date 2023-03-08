@@ -17,7 +17,11 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  status: {
+  execute_status: {
+    type: Boolean,
+    default: false,
+  },
+  verify_status: {
     type: Boolean,
     default: false,
   },
@@ -29,7 +33,7 @@ const orderSchema = new mongoose.Schema({
   requester: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "USER",
-    required: true,
+    // required: true,
   },
 });
 

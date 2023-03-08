@@ -19,10 +19,11 @@ require('./models/order')
 
 app.use(require("./routes/auth"))
 app.use(require("./routes/order"))
-// app.use(require("./routes/user"))
+app.use(require("./routes/user"))
 app.use(require("./routes/message"))
+app.use(require("./routes/medicine"))
 
-mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrl, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {
     console.log("MongoDB connection successfull...")
 })

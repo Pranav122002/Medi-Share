@@ -6,7 +6,7 @@ Pages
     donate (form (select medicine name , give expiry_date, give quantity) )
     request (select from available donate orders)
     volunteer (my tasks, accept task, reject task)
-    ngo admin (assign tasks to volunteers)
+    admin (assign tasks to volunteers)
     medicines (view all medicines) 
     profile (your donated medicines, your requested medicines, logout btn)
     community chat (all users can chat )
@@ -16,7 +16,7 @@ Pages
 Roles 
     user (donator / requester)
     volunteer
-    ngo admin
+    admin
     doctors
 
 
@@ -27,7 +27,18 @@ Models
     ORDER
 
 
-Routing 
 
 
-Frontend API integrate
+remaining :
+1. in donate page user must be able to select from medicines available instead of input of medicine name
+
+2. in signup page user must be able to select from roles (user / admin/ doctor /volunteer)
+
+3. hide orders which are executed from requests page
+
+
+
+
+
+
+

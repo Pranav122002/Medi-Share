@@ -2,6 +2,9 @@ import React, { createContext, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Donate from "./components/Donate";
+import Request from "./components/Request";
+import Medicines from "./components/Medicines";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 // import Navbar from "./components/Navbar";
@@ -17,8 +20,11 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/donate" element={<Donate />}></Route>
+          <Route path="/request" element={<Request />}></Route>
+          <Route path="/medicines" element={<Medicines />}></Route>
         </Routes>
-        <ToastContainer theme="dark" />
+        <ToastContainer theme="light" />
       </div>
     </BrowserRouter>
   );
