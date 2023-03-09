@@ -73,4 +73,24 @@ router.get("/order/:id", (req, res) => {
 });
 
 
+router.get("/mydonatedorders/:id", (req, res) => {
+  ORDER.find({donar: req.params.id})
+  .select(" -__v -execute_status -verify_status -requester ")
+  .populate("donar", "name -_id")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => console.log(err));
+});
+
+
+router.get("/myrequestedorders/:id", (req, res) => {
+  ORDER.find({requester: req.params.id})
+  .select(" -__v -execute_status -verify_status -donar")
+  .populate("requester", "name -_id")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => console.log(err));
+});
+
+
 module.exports = router;

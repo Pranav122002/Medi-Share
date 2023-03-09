@@ -11,7 +11,7 @@ Pages
     profile (your donated medicines, your requested medicines, logout btn)
     community chat (all users can chat )
     drives (available drives / campaigns, users will only view but doctors can add more)
-
+    rewards to users
 
 Roles 
     user (donator / requester)
