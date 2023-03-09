@@ -15,25 +15,13 @@
 
 
 
-.nav-mobile {
-  display: none;
-}
-.nav-mobile-top {
-  display: none;
-}
- 
- 
- 
- 
- 
- 
- 
- 
- #insta-logo {
-  width: 0%;
 
-  object-fit: contain;
-}
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 .navbar {
@@ -57,9 +45,6 @@
 }
 
 
-.spanicon {
-  margin-right: 10px;
-}
 
 ul {
   text-align: center;
@@ -104,109 +89,13 @@ a {
  
 }
 
-.primaryBtn {
-  cursor: pointer;
-  font-weight: bolder;
-  padding: 13px 25px;
-  font-size: 0.8rem;
-  border: none;
-  color: white;
-  background: #db183c;
-  border-radius: 15px;
-  margin-left: 20px;
-  transition: all 0.25s ease;
-}
-
-.primaryBtn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px -10px rgba(219, 24, 44, 0.6);
-}
-
-#profilepic {
-  border-radius: 100%;
-}
-
-.nav-menu {
-  padding-left: 0px;
-}
-
-
- li:hover {
-       background-color: #F5F5F5;
-       color: black;
-      }
-
-.active {
-     font-weight: bolder;
-
-     }
-
-
-#logo-top{
-
-  width: 14rem;
-  margin-right: 40px;
-} 
-    
 
 
 
 
 
- 
 
-@media screen and (max-width: 800px) {
 
-  .navbar{
-    display: none;
-  }
-  
 
-  .nav-mobile {
-    width: 100%;
-    position: fixed;
-   
-    display: flex;
-    flex-direction: row;
-   
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-   
-  }
 
-  .nav-mobile-top {
-    width: 100%;
-    position: fixed;
-   
-    display: flex;
-    flex-direction: row;
-   
-    top: 0;
-    left: 0;
-    background-color: #fff;
-   
-  }
-  #msg-top {
-    position: relative;
-    float: right;
-    margin-right: 10%;
-    
-  }
-  #insta-logo-top {
-    width: 50%;
-    float: left;
-    margin-left: 10px;
-  }
-  #mob-top-div {
-display: flex;
-flex-direction: row;
-
-  }
-
- .nav-mobile li {
-  justify-content: center;
-  padding-left: 0px;
- }
-}    
 

@@ -5,6 +5,7 @@ const port = process.env.port || 5000;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path")
+const socket = require("socket.io");
 const mongoUrl = "mongodb://0.0.0.0:27017/medi-share";
 // const mongoUrl = "mongodb://localhost:27017/medi-share";
 
@@ -36,3 +37,26 @@ const server = app.listen(port, () => {
 
 })
 
+
+const io = socket(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      credentials: true,
+    },
+  });
+    
+    global.onlineUsers = new Map();
+    io.on("connection", (socket) => {
+      global.chatSocket = socket;
+      socket.on("add-user", (userId) => {
+        onlineUsers.set(userId, socket.id);
+      });
+    
+      socket.on("send-msg", (data) => {
+        const sendUserSocket = onlineUsers.get(data.to);
+        if (sendUserSocket) {
+          socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+        }
+      });
+    });
+    

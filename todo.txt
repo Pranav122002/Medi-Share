@@ -34,11 +34,13 @@ remaining :
 
 2. in signup page user must be able to select from roles (user / admin/ doctor /volunteer)
 
-3. hide orders which are executed from requests page
 
 4. verify status of orders in volunteer page
 
 5. toast functions
 
+6. Doctor annoucements
 
+7. maps nearby hospitals api 
 
+8.home page

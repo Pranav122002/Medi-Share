@@ -10,7 +10,7 @@ const Messages = require("../models/message");
 
 
 
-router.post("/addmessage", async (req, res, next) => {
+router.post("/addmsg", async (req, res, next) => {
   try {
     const { from, to, message } = req.body;
     const data = await Messages.create({
@@ -26,7 +26,7 @@ router.post("/addmessage", async (req, res, next) => {
   }
 });
 
-router.post("/getmessage", async (req, res, next) => {
+router.post("/getmsg", async (req, res, next) => {
   try {
     const { from, to } = req.body;
 

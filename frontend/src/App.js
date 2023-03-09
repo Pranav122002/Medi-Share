@@ -6,6 +6,7 @@ import Donate from "./components/Donate";
 import Request from "./components/Request";
 import Medicines from "./components/Medicines";
 import Volunteer from "./components/Volunteer";
+import Chat from "./components/Chat";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/medicines" element={<Medicines />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>
+          <Route path="/chat" element={<Chat />}></Route>
         </Routes>
         <ToastContainer theme="light" />
       </div>

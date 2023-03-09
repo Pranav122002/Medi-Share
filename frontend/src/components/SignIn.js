@@ -46,8 +46,8 @@ export default function SignIn() {
 
         
 
-          if (data.user.role == "admin") {
-            navigate("/admin");
+          if (data.user.role == "doctor") {
+            navigate("/doctor");
           } else {
             navigate("/");
           }
