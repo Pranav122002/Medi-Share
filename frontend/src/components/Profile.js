@@ -9,10 +9,39 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const [donateorders, setDonateOrders] = useState([]);
+  const [user_name, setUserName] = useState("");
 
   useEffect(() => {
     fetchDonateOrders();
   }, []);
+
+
+
+  fetch(
+    `http://localhost:5000/user/${
+      JSON.parse(localStorage.getItem("user"))._id
+    }`,
+    {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    }
+  ).then((res) => res.json())
+  .then((res) => {
+  setUserName(res.name)
+})
+
+  
+
+
+
+
+  
+ 
+  
+  
+
+
 
   function fetchDonateOrders() {
     fetch(
@@ -49,6 +78,8 @@ export default function Profile() {
   return (
     <div>
          <Navbar />
+         <h3>{user_name}</h3>
+
       <div>
         <button>My Donated Orders</button>
         <ul>

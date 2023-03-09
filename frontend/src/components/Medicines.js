@@ -18,12 +18,10 @@ export default function Request() {
 
     return (
       <div>
-         <Navbar />
+        <Navbar />
         <ul>
           {medicines.map(medicines => (
-            <li key={medicines.medicine_name}> 
-            <li>{medicines.medicine_name}</li>
-            {medicines.description}</li>
+            <li key={medicines.medicine_name}> <h3>{medicines.medicine_name}</h3> <br />  <br /> {medicines.description}</li>
           ))}
         </ul>
       </div>

@@ -6,7 +6,17 @@ const ORDER = mongoose.model("ORDER");
 // Route
 router.get("/allorders", (req, res) => {
   ORDER.find()
-  .select(" -__v -execute_status -verify_status -requester -password")
+  .select(" -__v -execute_status -requester -password")
+  .populate("donar", "name -_id")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => console.log(err));
+});
+
+
+router.get("/alldonateorders", (req, res) => {
+  ORDER.find({ execute_status: false })
+  .select(" -__v -execute_status -requester -password")
   .populate("donar", "name -_id")
     .sort("-createdAt")
     .then((orders) => res.json(orders))
@@ -91,6 +101,40 @@ router.get("/myrequestedorders/:id", (req, res) => {
     .then((orders) => res.json(orders))
     .catch((err) => console.log(err));
 });
+
+
+router.get("/unverifiedorders", (req, res) => {
+  ORDER.find({verify_status: false})
+  .select(" -__v -execute_status -requester")
+  .populate("donar", "name -_id")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => console.log(err));
+});
+
+
+
+
+router.put("/verifyorder/:order_id", (req, res) => {
+
+
+    ORDER.findByIdAndUpdate(
+      req.params.order_id,
+      { $set: { verify_status: true} },
+      { new: true }
+    )
+      .then((doc) => {
+        console.log(doc);
+        res.json("Order Verified successfully...");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+ 
+   
+  });
+
+  
 
 
 module.exports = router;

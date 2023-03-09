@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 
 export default function Request() {
+  const navigate = useNavigate();
+
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
@@ -18,22 +20,21 @@ export default function Request() {
     fetchOrders();
   }, []);
 
+
   function fetchOrders() {
-    fetch("http://localhost:5000/allorders/")
+    fetch("http://localhost:5000/alldonateorders/")
       .then((response) => response.json())
       .then((data) => setOrders(data));
   }
 
 
-  // function handleClick(id) {
-  //   console.log(`${id}`);
-  // } 
 
  
 
   const putRequestData = (order_id) => {
 
 
+  
   
    
 
@@ -76,9 +77,10 @@ export default function Request() {
               .then((res) => res.json())
               .then((data) => {
                 if (data.error) {
-                  notifyA(data.error);
+                  notifyA("Failed to request order");
                 } else {
-                  notifyB(data.message);
+                  navigate("/profile");
+                  notifyB("Order Requested Successfully");
                 }
                 console.log(data);
               });
@@ -93,16 +95,20 @@ export default function Request() {
         {orders.map((orders) => (
           <li
             key={orders.medicine_name}
-            onClick={() => putRequestData(orders._id)}
+           
           >
             <p>medicine_name : </p> {orders.medicine_name}
             <br /> <p>expiry_date : </p> {orders.expiry_date}
             <br /> <p>quantity : </p> {orders.quantity}
             <br /> <p>location : </p> {orders.location}
             <br /> <p>donar : </p> {orders.donar.name}
+            <br /> <button  onClick={() => putRequestData(orders._id)} >Request</button>
           </li>
         ))}
       </ul>
+
+
+
     </div>
   );
 }

@@ -17,5 +17,27 @@ router.get("/user/:id", (req, res) => {
 
 
 
+router.put("/becomevolunteer/:id", (req, res) => {
+
+
+    USER.findByIdAndUpdate(
+      req.params.id,
+      { $set: { role: "volunteer"} },
+      { new: true }
+    )
+      .then((doc) => {
+        console.log(doc);
+        res.json("You have became Volunteer now...");
+      })
+      .catch((err) => {
+        console.error(err);
+        res.json("User not found...");
+
+      });
+ 
+   
+  });
+
+  
 
 module.exports = router;
