@@ -8,10 +8,11 @@ const Jwt_secret = "sdfggdegerg";
 
 router.post("/signup", (req, res) => {
   // const { name, email, password, role} = req.body;
-  var { name, email, password, role} = req.body;
+  var { name, email, password, role } = req.body;
   if (!name || !email || !password) {
     return res.status(422).json({ error: "Please add all the fields..." });
   }
+
   USER.findOne({ $or: [{ email: email }] }).then((savedUser) => {
     if (savedUser) {
       return res
@@ -47,6 +48,7 @@ router.post("/signin", (req, res) => {
   if (!email || !password) {
     return res.status(422).json({ error: "Please add email and password..." });
   }
+
   USER.findOne({ email: email }).then((savedUser) => {
     if (!savedUser) {
       return res.status(422).json({ error: "Invalid email" });
@@ -59,7 +61,7 @@ router.post("/signin", (req, res) => {
           const token = jwt.sign({ _id: savedUser.id }, Jwt_secret);
           const { _id, name, email, role } = savedUser;
 
-          res.json({ token, user: { _id, name, email, role} });
+          res.json({ token, user: { _id, name, email, role } });
 
           // console.log({ token, user: { _id, name, email, role} });
         } else {

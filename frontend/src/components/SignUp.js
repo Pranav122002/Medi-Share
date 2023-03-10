@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function SignUp() {
+
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,9 +20,8 @@ export default function SignUp() {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
   const postData = () => {
-    //checking email
     if (!emailRegex.test(email)) {
-      notifyA("Invalid email");
+      notifyA("Invalid email...");
       return;
     } else if (!passRegex.test(password)) {
       notifyA(
@@ -29,8 +29,6 @@ export default function SignUp() {
       );
       return;
     }
-
-    // Sending data to server
     fetch("http://localhost:5000/signup", {
       method: "post",
       headers: {
@@ -48,8 +46,8 @@ export default function SignUp() {
         if (data.error) {
           notifyA(data.error);
         } else {
-          notifyB(data.message);
           navigate("/signin");
+          notifyB(data.message);
         }
         console.log(data);
       });
@@ -98,18 +96,19 @@ export default function SignUp() {
             />
           </div>
           <div>
-            <input
-              type="text"
+            <select
               name="role"
               id="role"
-              placeholder="Role"
               value={role}
               onChange={(e) => {
                 setRole(e.target.value);
               }}
-            />
+            >
+              <option value="user">user</option>
+              <option value="volunteer">volunteer</option>
+              <option value="doctor">doctor</option>
+            </select>
           </div>
-
           <input
             type="submit"
             id="submit-btn"

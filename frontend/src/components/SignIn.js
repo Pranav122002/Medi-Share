@@ -9,7 +9,7 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
- 
+
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
@@ -22,7 +22,6 @@ export default function SignIn() {
       notifyA("Invalid email");
       return;
     }
-    // Sending data to server
     fetch("http://localhost:5000/signin", {
       method: "post",
       headers: {
@@ -39,28 +38,18 @@ export default function SignIn() {
         if (data.error) {
           notifyA(data.error);
         } else {
-          notifyB("Signed In Successfully");
+          notifyB("Signed In successfully...");
           console.log(data);
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
 
-        
-
-          if (data.user.role == "doctor") {
-            navigate("/doctor");
-          } else {
-            navigate("/");
-          }
-       
+          navigate("/home");
         }
-   
       });
   };
 
   return (
-   
     <div className="signIn">
-        
       <div>
         <div className="loginForm">
           <div className="logo">
@@ -90,7 +79,7 @@ export default function SignIn() {
               }}
             />
           </div>
-         
+
           <input
             type="submit"
             id="login-btn"
@@ -99,7 +88,6 @@ export default function SignIn() {
             }}
             value="Sign In"
           />
-       
         </div>
         <div className="loginForm2">
           Don't have an account ?

@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
-
 import { v4 as uuidv4 } from "uuid";
 
 export default function ChatContainer({ currentChat, socket }) {
+
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
-
-  
   useEffect(() => {
     fetch(
       `http://localhost:5000/user/${
@@ -21,8 +19,7 @@ export default function ChatContainer({ currentChat, socket }) {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
       }
-    )
-      .then((res) => res.json())
+    ).then((res) => res.json())
       .then((result) => {
         fetch("http://localhost:5000/getmsg", {
           method: "post",
@@ -124,7 +121,6 @@ export default function ChatContainer({ currentChat, socket }) {
           </div>
         </div>
       </div>
-
       <div className="chat-messages">
         {messages.map((message) => {
           return (
@@ -142,12 +138,10 @@ export default function ChatContainer({ currentChat, socket }) {
           );
         })}
       </div>
-
       <ChatInput handleSendMsg={handleSendMsg} />
     </Container>
   );
 }
-
 
 const Container = styled.div`
   display: grid;

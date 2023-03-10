@@ -3,12 +3,7 @@ import styled from "styled-components";
 
 export default function ChatInput({ handleSendMsg }) {
 
-
   const [msg, setMsg] = useState("");
-
-
- 
-
 
   const sendChat = (event) => {
     event.preventDefault();
@@ -17,61 +12,33 @@ export default function ChatInput({ handleSendMsg }) {
       setMsg("");
     }
   };
-  
 
   return (
     <Container>
-      <div className="button-container">
-       
-       
-      </div>
-
-
-
-
-
-
-
+      <div className="button-container"></div>
       <form className="input-container" onSubmit={(event) => sendChat(event)}>
-
-
-
         <input
           type="text"
           placeholder="Message..."
           onChange={(e) => setMsg(e.target.value)}
           value={msg}
         />
-
-
-
-
         <button id="send" type="submit">
           {/* <IoMdSend /> */}
           Send
         </button>
-
-
-
       </form>
-
-
-
-
-
-
-
     </Container>
   );
 }
 
 const Container = styled.div`
   display: grid;
-margin-left: 10px;
-margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   border: 1px solid rgb(219, 219, 219);
-border-radius: 25px;
-margin-bottom: 10px;
+  border-radius: 25px;
+  margin-bottom: 10px;
   align-items: center;
   grid-template-columns: 10% 90%;
   // background-color: #080420;
@@ -124,10 +91,7 @@ margin-bottom: 10px;
     }
   }
 
-  
   .input-container {
-
-
     display: grid;
     grid-template-columns: 50% 50%;
     width: 90%;
@@ -162,13 +126,13 @@ margin-bottom: 10px;
       justify-content: center;
       align-items: center;
       background-color: white;
-      
+
       border: none;
 
       color: rgb(0, 149, 246);
-// width: 20px;
-position: absolute;
-right: 15px;
+      // width: 20px;
+      position: absolute;
+      right: 15px;
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         padding: 0.3rem 1rem;
         svg {

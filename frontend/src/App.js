@@ -10,7 +10,6 @@ import Chat from "./components/Chat";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
-// import Navbar from "./components/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,9 +17,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        {/* <Navbar /> */}
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<SignIn />}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/donate" element={<Donate />}></Route>

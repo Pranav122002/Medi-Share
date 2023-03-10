@@ -1,42 +1,14 @@
-Pages 
-    signin
-    signup
-    navbar (home, donate, request, volunteer, community chat, drives)
-    home 
-    donate (form (select medicine name , give expiry_date, give quantity) )
-    request (select from available donate orders)
-    volunteer (my tasks, accept task, reject task)
-    admin (assign tasks to volunteers)
-    medicines (view all medicines) 
-    profile (your donated medicines, your requested medicines, logout btn)
-    community chat (all users can chat )
-    drives (available drives / campaigns, users will only view but doctors can add more)
-    rewards to users
 
-Roles 
-    user (donator / requester)
-    volunteer
-    admin
-    doctors
+Remaining :
 
+1. Doctor annoucements
 
-Models 
-    USER
-    MEDICINES
-    MESSAGE
-    ORDER
+2. Maps nearby hospitals api 
 
+3. Home page
 
+4. User rewards
 
+5. Community Global Chat
 
-remaining :
-
-2. in signup page user must be able to select from roles (user / admin/ doctor /volunteer)
-
-5. toast functions
-
-6. Doctor annoucements
-
-7. maps nearby hospitals api 
-
-8. home page
+6. Admin can assign tasks to volunteers

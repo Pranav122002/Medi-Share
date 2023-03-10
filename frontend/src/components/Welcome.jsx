@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 export default function Welcome() {
+  
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
 
@@ -33,8 +34,7 @@ export default function Welcome() {
   return (
     <Container>
       <div>
-      
-        <p id="your">Your messages</p >
+        <p id="your">Your messages</p>
         <p id="text">Send messages to other users.</p>
       </div>
     </Container>
@@ -48,16 +48,15 @@ const Container = styled.div`
   color: black;
   flex-direction: column;
 
-#your{
-  font-size: larger
- 
-}
-#text{
-  padding-left: 5px;
-  padding-right: 5px;
-  color: rgb(142, 142, 142);
-  font-size: small;
-}
+  #your {
+    font-size: larger;
+  }
+  #text {
+    padding-left: 5px;
+    padding-right: 5px;
+    color: rgb(142, 142, 142);
+    font-size: small;
+  }
   button {
     color: white;
     background-color: rgb(0, 149, 256);

@@ -7,8 +7,8 @@ import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 import Navbar from "./Navbar";
 
-
 export default function Chat() {
+
   const navigate = useNavigate();
   const socket = useRef();
   const [contacts, setContacts] = useState([]);
@@ -62,8 +62,7 @@ export default function Chat() {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
       }
-    )
-      .then((res) => res.json())
+    ).then((res) => res.json())
       .then((data) => {
         console.log("...setcontacts...");
         console.log(data);
@@ -79,8 +78,7 @@ export default function Chat() {
 
   return (
     <>
-             <Navbar />
-
+      <Navbar />
       <div className="container">
         <Contacts contacts={contacts} changeChat={handleChatChange} />
         {currentChat === undefined ? (
@@ -89,8 +87,6 @@ export default function Chat() {
           <ChatContainer currentChat={currentChat} socket={socket} />
         )}
       </div>
-     
     </>
   );
 }
-
