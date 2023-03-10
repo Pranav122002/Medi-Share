@@ -29,6 +29,10 @@ export default function Navbar({ login }) {
             <li>Medicines</li>
           </Link>
 
+          <Link to="/campaigns">
+            <li>Campaigns</li>
+          </Link>
+
           <Link to="/profile">
             <li>Profile</li>
           </Link>

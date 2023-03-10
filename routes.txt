@@ -1,0 +1,113 @@
+POST
+http://localhost:5000/signin
+
+{
+  "email":"samuel@gmail.com",
+  "password":"Adity@123"
+}
+
+
+POST
+http://localhost:5000/signup
+
+{
+  "name":"Samuel Padmadan",
+  "email":"samuel@gmail.com",
+  "password":"Adity@123",
+  "role":"user"
+}
+
+
+POST
+http://localhost:5000/addmessage
+
+{
+  "message":"bye",
+  "to":"64045f13c86765e694f6acda",
+  "from":"64045f2bc86765e694f6acdd"
+  
+}
+
+
+POST
+http://localhost:5000/getmessage
+
+{
+    "to":"64045f13c86765e694f6acda",
+  "from":"64045fff3b2b5e53f129834f"
+}
+
+GET
+http://localhost:5000/allorders
+
+
+GET
+http://localhost:5000/user/64045f2bc86765e694f6acdd
+
+
+GET
+http://localhost:5000/allmedicines
+
+
+GET
+http://localhost:5000/mydonatedorders/64045f13c86765e694f6acda
+
+
+GET
+http://localhost:5000/myrequestedorders/64045fb73b2b5e53f129834c
+
+
+GET
+http://localhost:5000/unverifiedorders
+
+
+GET
+http://localhost:5000/alldonateorders/
+
+
+PUT 
+http://localhost:5000/request/6408c69694608e2c9c4cb3e1
+
+{
+  
+  "execute_status": false,
+  "verify_status": false,
+  "requester_id":"64045fb73b2b5e53f129834c"
+}
+
+
+PUT 
+http://localhost:5000/verifyorder/6408e71f5d166fb0a1296200
+
+
+PUT 
+http://localhost:5000/becomevolunteer/64045f2bc86765e694f6acdd
+
+
+POST
+http://localhost:5000/addmedicine
+
+{
+   "medicine_name": "Loratadine",
+      "description": "Used for treating allergies and hay fever symptoms like sneezing, runny nose, and itchy/watery eyes."
+}
+
+
+POST
+http://localhost:5000/donate
+
+{
+  "medicine_name":"Crocin 500",
+  "quantity":"11",
+  "location":"Sanpada",
+  "expiry_date":"21 August 2023",
+  "donar":"64045f13c86765e694f6acda"
+  
+}
+
+
+
+
+
+
+

@@ -30,12 +30,8 @@ Models
 
 
 remaining :
-1. in donate page user must be able to select from medicines available instead of input of medicine name
 
 2. in signup page user must be able to select from roles (user / admin/ doctor /volunteer)
-
-
-4. verify status of orders in volunteer page
 
 5. toast functions
 
@@ -43,4 +39,4 @@ remaining :
 
 7. maps nearby hospitals api 
 
-8.home page
+8. home page
