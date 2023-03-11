@@ -3,6 +3,7 @@ import "../css/Donate.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
+import { Hnavbar } from "./Hnavbar";
 
 export default function Donate() {
 
@@ -54,6 +55,7 @@ export default function Donate() {
 
   return (
     <div>
+      <Hnavbar />
       <Navbar />
       <div className="donate">
         <div>

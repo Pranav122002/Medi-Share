@@ -6,6 +6,7 @@ import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 import Navbar from "./Navbar";
+import { Hnavbar } from "./Hnavbar";
 
 export default function Chat() {
 
@@ -78,6 +79,7 @@ export default function Chat() {
 
   return (
     <>
+      <Hnavbar />
       <Navbar />
       <div className="container">
         <Contacts contacts={contacts} changeChat={handleChatChange} />

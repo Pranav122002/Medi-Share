@@ -3,7 +3,7 @@ import "../css/SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
-
+import { Hnavbar } from "./Hnavbar";
 export default function Profile() {
 
   const navigate = useNavigate();
@@ -58,6 +58,7 @@ export default function Profile() {
 
   return (
     <div>
+      <Hnavbar />
       <Navbar />
       <h3>{user_name}</h3>
       <div>

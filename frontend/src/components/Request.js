@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
-
+import { Hnavbar } from "./Hnavbar";
 export default function Request() {
 
   // Toast functions
@@ -83,6 +83,7 @@ export default function Request() {
 
   return (
     <div>
+      <Hnavbar />
       <Navbar />
       <ul>
         {orders.map((orders) => (

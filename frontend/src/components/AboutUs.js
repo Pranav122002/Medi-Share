@@ -1,7 +1,11 @@
 import React from 'react'
-
+import { Hnavbar } from "./Hnavbar";
 export const AboutUs = () => {
   return (
-    <div>AboutUs</div>
+    <>
+     <Hnavbar />
+     <div>AboutUs</div>
+    </>
+    
   )
 }

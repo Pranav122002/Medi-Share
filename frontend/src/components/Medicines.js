@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import { Hnavbar } from "./Hnavbar";
 
 export default function Request() {
 
@@ -17,6 +18,7 @@ export default function Request() {
 
   return (
     <div>
+      <Hnavbar />
       <Navbar />
       <ul>
         {medicines.map((medicines) => (

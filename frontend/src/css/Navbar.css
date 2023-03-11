@@ -9,14 +9,13 @@
 
 .navbar {
   border-right: 1px solid rgb(219, 219, 219);
-
-  margin: 0;
+  border-radius: 1rem;
+  margin-left: 1rem ;
   padding: 0;
   width: 17%;
-  box-shadow: 2px 2px 8px rgb(176, 176, 176);
-
+  box-shadow: 2px 2px 9px rgb(218, 218, 218);
   position: fixed;
-  height: 100%;
+  height: 85%;
   display: flex;
   flex-direction: column;
 
@@ -25,7 +24,7 @@
 
 ul {
   text-align: center;
-
+ 
   width: 100%;
   display: flex;
   margin-left: 1rem;
@@ -35,20 +34,21 @@ ul {
 }
 
 li {
+  height: 2rem;
   text-align: center;
   align-items: center;
   margin-left: 3rem;
-  box-shadow: 2px 2px 8px rgb(176, 176, 176);
+  box-shadow: 2px 2px 9px rgb(213, 213, 213);
   list-style: none;
   width: 70%;
   padding-left: 20px;
-  background-color: #ffffff;
+  background-color: rgb(125, 212, 255);
   margin-top: 1rem;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 10px;
 
   margin-left: 10px;
-
+  color: white ;
   display: flex;
   align-items: flex-start;
   border-radius: 25px;

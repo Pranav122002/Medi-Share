@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
-
+import { Hnavbar } from "./Hnavbar";
 export default function Volunteer() {
   
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
@@ -82,6 +82,7 @@ export default function Volunteer() {
 
   return (
     <div>
+      <Hnavbar />
       <Navbar />
 
       {isVolunteer ? (
