@@ -1,3 +1,45 @@
+
+.images{
+  width: 60%;
+  height: 45rem;
+  margin-left: 30%;
+}
+
+.image{
+  box-shadow: 2px 2px 9px rgb(223, 223, 223);
+  margin-top: 2rem;
+  display: flex;
+  border-radius: 2rem;
+  justify-content: flex-start;
+  height: 13rem;
+  padding-left: 10%;
+}
+
+.image:hover{
+  box-shadow: 2px 2px 9px rgb(171, 171, 171);
+  
+}
+
+
+.image img{
+   padding-top: 0.5rem;
+   height: 12rem;
+   border-radius: 2rem;
+   margin-left: 5rem;
+}
+
+.image h1{
+  font-size: 3.5rem;
+  padding-top: 2rem;
+  margin-left: 5rem;
+}
+
+.image h2{
+  font-size: 3.5rem;
+  padding-top: 2rem;
+  margin-left: 13rem;
+}
+
 .card {
   max-width: 500px;
   height: max-content;
