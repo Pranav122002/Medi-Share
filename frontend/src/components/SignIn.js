@@ -49,11 +49,25 @@ export default function SignIn() {
   };
 
   return (
-    <div className="signIn">
-      <div>
+    <>
+      <div className="banner">
+        <img id="logo" src="./logo1.png" alt="logo" />
+        <h1>Medi Share</h1>
+        <Link className="aboutus" to="/AboutUs">
+          <span id="Aboutus" style={{ cursor: "pointer" }}>About Us</span>
+        </Link>
+      </div>
+
+      <div className="signIn">
+
+        <div className="left">
+          <h1>A Medicine Distribution System</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias dolore, optio architecto quas laborum voluptates molestiae nisi ab aut quos sit, praesentium exercitationem commodi consequuntur iure soluta. Nesciunt, mollitia rerum!</p>
+        </div>
+        <div className="middle"></div>
         <div className="loginForm">
           <div className="logo">
-            <h1>Medi-Share</h1>
+            <h1>LOGIN</h1>
           </div>
           <div>
             <input
@@ -88,14 +102,16 @@ export default function SignIn() {
             }}
             value="Sign In"
           />
+          <div className="loginForm2">
+            Don't have an account ?
+            <Link to="/signup">
+              <span style={{ color: "white", cursor: "pointer" }}> Sign Up</span>
+            </Link>
+          </div>
         </div>
-        <div className="loginForm2">
-          Don't have an account ?
-          <Link to="/signup">
-            <span style={{ color: "blue", cursor: "pointer" }}> Sign Up</span>
-          </Link>
-        </div>
+
+
       </div>
-    </div>
+    </>
   );
 }

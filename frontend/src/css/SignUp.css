@@ -1,17 +1,24 @@
 .signUp {
-  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
-  background-size: cover;
-  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 9px rgb(170, 170, 170);
+  margin-left: 8rem;
+  margin-right: 8rem;
+  border-radius: 2rem;
 }
 
 .form {
-  background-color: #fff;
+ background-color: #ffffff;
   padding: 30px;
-  border: 1px solid rgb(129, 121, 121);
-  border-radius: 1px;
+  width: 24rem;
+  height: 23rem;
+  margin-right: 6rem;
+  padding-top: 4rem;
+  animation-duration: 3s;
+  animation-name:pAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
 }
 .signUpLogo {
   width: 200px;
@@ -28,8 +35,14 @@
 }
 
 input {
-  padding: 5px;
-  margin: 3px 0px;
+
+  height: 3.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: rgb(243, 251, 255);
+  padding-left: 1.5rem;
+  margin-top: 0.8rem;
+
   outline: none;
   font-size: 16px;
   width: 100%;
@@ -42,21 +55,31 @@ input {
 }
 
 #submit-btn {
-  background-color: #1773ea;
-  border: none;
-  border-radius: 3px;
+  border-radius: 2rem;
+  background-color: rgba(0,168,255,1);
+
   color: white;
   font-weight: bold;
   padding: 5px 10px;
   width: 80%;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 2rem;
 }
 
 .form2 {
   background-color: #fff;
-  padding: 30px;
-  margin-top: 5px;
-  border: 1px solid rgb(129, 121, 121);
-  border-radius: 1px;
+  padding-right: 5rem;
+  margin-top: 3rem;
+  
 }
+
+#role{
+  border: none;
+  margin-top: 1.5rem;
+  margin-left: 5rem;
+  background-color: rgb(243, 251, 255);
+  width: 6rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+

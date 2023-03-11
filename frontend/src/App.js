@@ -12,7 +12,7 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AboutUs } from "./components/AboutUs";
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +28,7 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
+          <Route path="/AboutUs" element={<AboutUs/>}></Route>
         </Routes>
         <ToastContainer theme="light" />
       </div>
