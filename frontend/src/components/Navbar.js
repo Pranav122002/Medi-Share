@@ -21,6 +21,9 @@ export default function Navbar({ login }) {
         <Link to="/medicines">
           <li>Medicines</li>
         </Link>
+        <Link to="/search">
+          <li>Search</li>
+        </Link>
         <Link to="/campaigns">
           <li>Campaigns</li>
         </Link>

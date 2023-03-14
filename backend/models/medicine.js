@@ -9,6 +9,10 @@ const medicineSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  disease: {
+    type: String,
+    required: true,
+  },
 });
 
 mongoose.model("MEDICINE", medicineSchema);

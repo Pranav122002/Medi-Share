@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 
 export default function Request() {
-
   const [medicines, setMedicines] = useState([]);
 
   useEffect(() => {
@@ -23,9 +22,8 @@ export default function Request() {
       <ul>
         {medicines.map((medicines) => (
           <li key={medicines.medicine_name}>
-            {" "}
-            <h3>{medicines.medicine_name}</h3> <br /> <br />{" "}
-            {medicines.description}
+            <h3>{medicines.medicine_name}</h3> 
+            {medicines.description}  {medicines.disease}
           </li>
         ))}
       </ul>

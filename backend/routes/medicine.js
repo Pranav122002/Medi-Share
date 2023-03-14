@@ -13,10 +13,11 @@ router.get("/allmedicines", (req, res) => {
 
 router.post("/addmedicine", async (req, res, next) => {
   try {
-    const { medicine_name, description } = req.body;
+    const { medicine_name, description, disease } = req.body;
     const data = await MEDICINE.create({
       medicine_name: medicine_name,
       description: description,
+      disease: disease,
     });
 
     if (data) return res.json({ msg: "Medicine added..." });
