@@ -8,6 +8,8 @@ import Medicines from "./components/Medicines";
 import Volunteer from "./components/Volunteer";
 import Chat from "./components/Chat";
 import Profile from "./components/Profile";
+import Hospitals from "./components/Hospitals";
+import Search from "./components/Search";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
@@ -29,6 +31,9 @@ function App() {
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
           <Route path="/AboutUs" element={<AboutUs/>}></Route>
+          <Route path="/search" element={<Search />}></Route>
+          
+          <Route path="/nearby-hospitals" element={<Hospitals/>}></Route>
         </Routes>
         <ToastContainer theme="light" />
       </div>

@@ -27,4 +27,15 @@ router.post("/addmedicine", async (req, res, next) => {
   }
 });
 
+router.post('/search-medicines',(req,res)=>{
+  let userPattern = new RegExp(req.body.query, "i"); // add "^" at start for exact search 
+  MEDICINE.find({medicine_name:{$regex:userPattern}})
+  .select("_id medicine_name description disease")
+  .then(medicine=>{
+      res.json({medicine})
+  }).catch(err=>{
+      console.log(err)
+  })
+})
+
 module.exports = router;

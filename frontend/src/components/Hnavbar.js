@@ -11,9 +11,12 @@ export const Hnavbar = () => {
 
     
     <>
-    <div className="Hnavbar">
-        <img id="Nlogo" onClick={()=>{goHome()}} src="./logo1.png" alt="logo" />
+    <div  className="Hnavbar">
+      <div   className="logo" onClick={()=>{goHome()}}>
+
+        <img id="Nlogo" src="./logo1.png" alt="logo" />
         <h2>Medi Share</h2>
+      </div>
         <Link className="aboutus" to="/AboutUs">
           <span id="About" style={{ cursor: "pointer" }}>About Us</span>
         </Link>

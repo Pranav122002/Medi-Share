@@ -6,9 +6,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const socket = require("socket.io");
 const nodemailer = require('nodemailer');
-// const mongoUrl = "";
 // const mongoUrl = "mongodb://0.0.0.0:27017/medi-share";
-const mongoUrl = "mongodb://localhost:27017/medi-share";
+// const mongoUrl = "mongodb://localhost:27017/medi-share";
 
 app.use(cors());
 app.use(express.json());

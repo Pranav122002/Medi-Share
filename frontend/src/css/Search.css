@@ -1,0 +1,52 @@
+.searchbox {
+  position: relative;
+
+
+
+}
+
+.searchinput {
+  border-radius: 10px;
+  border: none;
+  height: 40px;
+  width: 90%;
+  font-weight: 100;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.searchcolumn {
+    position: fixed;
+    height: 100%;
+  width: 75%;
+  left: 20%;
+
+}
+.p{
+    margin-left: 5%;
+    font-size:x-large;
+    font-weight: 600;
+    display: flex;
+    justify-content: left;
+}
+
+.disease{
+  color: blue;
+}
+.link{
+  color: black;
+  list-style: none;
+  width: 90%;
+  padding-left: 20px;
+ 
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+margin-left: 10px;
+
+  display: flex;
+  align-items:flex-start;
+ border-radius: 18px;
+
+}
+
+
+

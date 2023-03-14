@@ -6,7 +6,10 @@
     box-shadow: 2px 2px 9px rgb(231, 231, 231);
     border-radius: 1rem;
 }
-
+.logo{
+    display: flex;
+    
+}
 h2{
     margin-left: 4rem;
     font-size: 1.5rem;
