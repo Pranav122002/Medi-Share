@@ -27,8 +27,8 @@ export default function Navbar({ login }) {
         <Link to="/nearby-hospitals">
           <li>Nearby Hospitals</li>
         </Link>
-        <Link to="/campaigns">
-          <li>Campaigns</li>
+        <Link to="/annoucements">
+          <li>Annoucements</li>
         </Link>
         <Link to="/profile">
           <li>Profile</li>

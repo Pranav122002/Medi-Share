@@ -17,12 +17,14 @@ require("./models/medicine");
 require("./models/user");
 require("./models/message");
 require("./models/order");
+require("./models/annoucement");
 
 app.use(require("./routes/auth"));
 app.use(require("./routes/order"));
 app.use(require("./routes/user"));
 app.use(require("./routes/message"));
 app.use(require("./routes/medicine"));
+app.use(require("./routes/annoucement"));
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {

@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.donate {
+  background-repeat: no-repeat;
+  margin-left: 20.5rem;
+  background-size: cover;
+  background-size: 100rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Form {
+  background-color: #fbfbfb;
+  padding: 30px;
+  border: 1px solid rgb(129, 121, 121);
+  border-radius: 1px;
+  border-radius: 1rem;
+  width: 24rem;
+  height: 23rem;
+  box-shadow: 2px 2px 8px rgb(129, 121, 121);
+}
+.Formcont {
+display: flex;
+justify-content: center;
+margin-bottom: 100px;
+}
+
+
+.donate input {
+  height: 3.5rem;
+  border-radius: 1.2rem;
+  border: none;
+
+  margin-top: 0.8rem;
+}
+
+#ancmt-btn {
+  font-size: 1rem;
+  margin-top: 3rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: #1773ea;
+  border: none;
+
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+
+  cursor: pointer;
+}
