@@ -5,6 +5,11 @@
     margin: 1rem;
     box-shadow: 2px 2px 9px rgb(231, 231, 231);
     border-radius: 1rem;
+    position: fixed;
+    background-color: white;
+    z-index: 45;
+    top: 0;
+    width: 98%;
 }
 .logo{
     display: flex;

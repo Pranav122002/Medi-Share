@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 
+
 export default function Donate() {
 
   const [medicine_name, setMedicineName] = useState("");
@@ -53,10 +54,13 @@ export default function Donate() {
       });
   };
 
+ 
+
   return (
     <div>
       <Hnavbar />
       <Navbar />
+     
       <div className="donate">
         <div>
           <div className="donateForm">

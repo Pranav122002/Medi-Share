@@ -7,9 +7,7 @@ export const Hnavbar = () => {
     const goHome = () => {
         navigate('/home')
     }
-  return (
-
-    
+  return ( 
     <>
     <div  className="Hnavbar">
       <div   className="logo" onClick={()=>{goHome()}}>
