@@ -6,7 +6,7 @@
 
 .donate {
   background-repeat: no-repeat;
-  margin-left: 20.5rem;
+  margin-left: 0%;
   /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
   background-size: cover;
   background-size: 100rem;
@@ -14,17 +14,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .donateForm {
   background-color: #fbfbfb;
   padding: 30px;
-  border: 1px solid rgb(129, 121, 121);
   border-radius: 1px;
   border-radius: 1rem;
   width: 24rem;
   height: 23rem;
-  box-shadow: 2px 2px 8px rgb(129, 121, 121);
+  box-shadow: 2px 2px 9px rgb(191, 191, 191);
+  align-items: center;
+  text-align: center;
+}
+
+.donateForm .logo{
+ text-align: center;
 }
 
 .loginForm2 {

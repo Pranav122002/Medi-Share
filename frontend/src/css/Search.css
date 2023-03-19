@@ -1,8 +1,25 @@
 .searchbox {
   position: relative;
+ 
+}
 
+.searchbox ul li{
+  text-align: center;
+  height: min-content;
+  width: 90%;
+  align-items: center;
+  color: white;
+}
+.searchbox ul li .p1{
+  margin-left: 4rem;
+  width: 300%;
+  text-align: start;
+}
 
-
+.searchbox ul li .p2{
+  margin-right: 4rem;
+  width: 100%;
+  text-align: end;
 }
 
 .searchinput {
@@ -14,22 +31,27 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 .searchcolumn {
-    position: fixed;
-    height: 100%;
+  margin-top: 6rem;
+  position: fixed;
+  height: 100%;
   width: 75%;
   left: 20%;
+  
 
 }
+
 .p{
     margin-left: 5%;
     font-size:x-large;
     font-weight: 600;
     display: flex;
     justify-content: left;
+  
 }
 
 .disease{
-  color: blue;
+  color: white;
+  margin-left: 2rem;
 }
 .link{
   color: black;

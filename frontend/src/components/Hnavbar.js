@@ -9,6 +9,7 @@ export const Hnavbar = () => {
     }
   return ( 
     <>
+    <div className="Hnavb">
     <div  className="Hnavbar">
       <div   className="logo" onClick={()=>{goHome()}}>
 
@@ -18,6 +19,7 @@ export const Hnavbar = () => {
         <Link className="aboutus" to="/AboutUs">
           <span id="About" style={{ cursor: "pointer" }}>About Us</span>
         </Link>
+      </div>
       </div>
     </>
   )

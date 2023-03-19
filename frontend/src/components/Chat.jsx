@@ -80,7 +80,9 @@ export default function Chat() {
   return (
     <>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
+      <div className="chatsss">
       <div className="container">
         <Contacts contacts={contacts} changeChat={handleChatChange} />
         {currentChat === undefined ? (
@@ -88,6 +90,8 @@ export default function Chat() {
         ) : (
           <ChatContainer currentChat={currentChat} socket={socket} />
         )}
+      </div>
+      </div>
       </div>
     </>
   );

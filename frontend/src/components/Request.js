@@ -92,7 +92,7 @@ export default function Request() {
             <p> Qty : {card.quantity}<br /></p>
             <p> Location : {card.location}<br /></p>
             <p> Donor : {card.donar.name}<br /></p>
-            <Button id="req_button" onClick={() => putRequestData(orders._id)}>Request</Button>
+            <Button id="req_button" onClick={() => putRequestData(card._id)}>Request</Button>
 
           </Card.Text>
 
@@ -104,6 +104,7 @@ export default function Request() {
   return (
     <div>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
       <div className="allCards">
         <div className="Cards">
@@ -123,6 +124,7 @@ export default function Request() {
           </li>
         ))}
       </ul> */}
+    </div>
     </div>
   );
 }

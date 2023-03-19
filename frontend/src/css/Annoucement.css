@@ -3,10 +3,42 @@
 * {
   font-family: "Nunito", sans-serif;
 }
+.anc{
+  margin-top: 7rem;
+  width: 80%;
+}
+
+.anc li{
+  text-align: center;
+  height: min-content;
+  width: 90%;
+  align-items: center;
+}
+
+.anc li .p1{
+  margin-left: 4rem;
+  width: 100%;
+  text-align: center;
+}
+
+.anc li .p2{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+
+.anc li .p3{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+
 
 .donate {
   background-repeat: no-repeat;
-  margin-left: 20.5rem;
+  margin-left: 0%;
   background-size: cover;
   background-size: 100rem;
   flex: 1;

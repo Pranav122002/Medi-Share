@@ -32,6 +32,7 @@ export default function Search() {
   return (
     <div>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
 
       <div className="searchcolumn">
@@ -45,18 +46,26 @@ export default function Search() {
           />
 
           <ul>
+          <li style={{backgroundColor:"white" , color:"black"}}>
+          <h3>Medicine</h3>
+          <h3 className="p1">Description</h3>
+          <h3 className="p2">Disease</h3>
+        </li>
             {searchResult.map((item) => {
               return (
+                  
                 <li className="link">
-                  Medicine name : {item.medicine_name}
-                  <p className="disease">Disease : {item.disease}</p>
-                  <p>Description : {item.description}</p>
+                  {item.medicine_name}
+                  <p className="p1">{item.description}</p>
+                  <p className="p2">{item.disease}</p>
+                 
                 </li>
               );
             })}
           </ul>
         </div>
       </div>
+    </div>
     </div>
   );
 }

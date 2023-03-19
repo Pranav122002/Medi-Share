@@ -12,6 +12,7 @@ export default function Home() {
 
 
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
       <div className="images">
 
@@ -40,6 +41,8 @@ export default function Home() {
         </Link>
 
       </div>
+      </div>
     </div>
+
   );
 }

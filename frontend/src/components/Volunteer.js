@@ -83,6 +83,7 @@ export default function Volunteer() {
   return (
     <div>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
 
       {isVolunteer ? (
@@ -111,6 +112,7 @@ export default function Volunteer() {
           </h1>
         </div>
       )}
+    </div>
     </div>
   );
 }

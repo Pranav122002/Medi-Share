@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import "../css/Profile.css"
 export default function Profile() {
 
   const navigate = useNavigate();
@@ -59,32 +60,46 @@ export default function Profile() {
   return (
     <div>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
-      <h3>{user_name}</h3>
+      <div className="contentt">
+      <h1>Welcome {user_name} !!!</h1>
       <div>
-        <button>My Donated Orders</button>
+        <h2>My Donated Orders</h2>
         <ul>
+        <li style={{backgroundColor:"white" , color:"black"}}>
+          <h3 className="pm">Name</h3>
+          <h3 className="p1">Expiry Date</h3>
+          <h3 className="p2">Quantity</h3>
+          <h3 className="p3">Location</h3>
+        </li> 
           {donateorders.map((donateorders) => (
             <li key={donateorders.medicine_name}>
-              <p>medicine_name : </p> {donateorders.medicine_name}
-              <br /> <p>expiry_date : </p> {donateorders.expiry_date}
-              <br /> <p>quantity : </p> {donateorders.quantity}
-              <br /> <p>location : </p> {donateorders.location}
-              <br /> <p>Donar : </p> {donateorders.donar.name}
+              <p className="pm">{donateorders.medicine_name}</p> 
+              <p className="p1">{donateorders.expiry_date} </p> 
+              <p className="p2">{donateorders.quantity}</p> 
+              <p className="p3"> {donateorders.location}</p>
             </li>
           ))}
         </ul>
       </div>
       <div>
-        <button>My Requested Orders</button>
+        <hr id="lin"/>
+        <h2>My Requested Orders</h2>
         <ul>
+        <li style={{backgroundColor:"white" , color:"black"}}>
+          <h3 className="pm" >Name</h3>
+          <h3 className="p1">Expiry Date</h3>
+          <h3 className="p2">Quantity</h3>
+          <h3 className="p3">Location</h3>
+        </li> 
           {requestorders.map((requestorders) => (
             <li key={requestorders.medicine_name}>
-              <p>medicine_name : </p> {requestorders.medicine_name}
-              <br /> <p>expiry_date : </p> {requestorders.expiry_date}
-              <br /> <p>quantity : </p> {requestorders.quantity}
-              <br /> <p>location : </p> {requestorders.location}
-              <br /> <p>Requester : </p> {requestorders.requester.name}
+              <p className="pm"> {requestorders.medicine_name}</p>
+              <p className="p1"> {requestorders.expiry_date}</p>
+              <p className="p2"> {requestorders.quantity}</p>
+              <p className="p3">{requestorders.location}</p> 
+            
             </li>
           ))}
         </ul>
@@ -100,6 +115,8 @@ export default function Profile() {
           Log-Out
         </button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

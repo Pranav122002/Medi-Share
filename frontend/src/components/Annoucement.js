@@ -88,9 +88,9 @@ export default function Annoucement() {
   return (
     <div>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
-
-
+      <div className="anc">
       <div>
       {isDoctor
         ?   
@@ -161,19 +161,28 @@ export default function Annoucement() {
 
 
       <ul>
+      <li style={{backgroundColor:"white" , color:"black"}}>
+          <h3>Name</h3>
+          <h3 className="p1">Date</h3>
+          <h3 className="p2">Location</h3>
+          <h3 className="p3">Description</h3>
+        </li> 
         {annoucements.map((annoucements) => (
           <li key={annoucements.title}>
-            <h2>{annoucements.title}</h2> 
-            <h2>
+            <h3>{annoucements.title}</h3> 
+            <h3 className="p1">
             {annoucements.date}  
-            </h2>
-            <h2>
+            </h3 >
+            <h3 className="p2">
             {annoucements.venue} 
-            </h2>
-          {annoucements.description} 
+            </h3>
+            <p className="p3">{annoucements.description} </p>
+          
           </li>
         ))}
       </ul>
+    </div>
+    </div>
     </div>
   );
 }

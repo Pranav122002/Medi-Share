@@ -59,6 +59,7 @@ export default function Donate() {
   return (
     <div>
       <Hnavbar />
+      <div className="bodyy">
       <Navbar />
      
       <div className="donate">
@@ -127,5 +128,6 @@ export default function Donate() {
         </div>
       </div>
     </div>
+  </div>
   );
 }

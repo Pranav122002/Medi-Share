@@ -1,8 +1,14 @@
 
+.bodyy{
+  display: flex;
+}
+
+
 .images{
+  padding-top:5%;
   width: 60%;
   height: 45rem;
-  margin-left: 30%;
+  margin-left: 10%;
 }
 
 .image{
