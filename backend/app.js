@@ -5,7 +5,8 @@ const port = process.env.port || 5000;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const socket = require("socket.io");
-const nodemailer = require('nodemailer');
+
+const mongoUrl = "mongodb+srv://test:DEbNmSrka1SrUDgg@cluster0.hw4hmcy.mongodb.net/?retryWrites=true&w=majority";
 
 // const mongoUrl = "mongodb://localhost:27017/medi-share";
 

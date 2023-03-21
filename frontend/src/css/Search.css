@@ -29,10 +29,11 @@
   width: 90%;
   font-weight: 100;
   background-color: rgba(0, 0, 0, 0.1);
+  margin-left: 35px;
 }
 .searchcolumn {
   margin-top: 6rem;
-  position: fixed;
+  position: absolute;
   height: 100%;
   width: 75%;
   left: 20%;

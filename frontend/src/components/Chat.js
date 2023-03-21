@@ -33,7 +33,6 @@ export default function Chat() {
       )
         .then((res) => res.json())
         .then((result) => {
-          console.log("...setcurrentuser...");
           console.log(result.name);
           setCurrentUser(result.name);
         });
@@ -44,7 +43,6 @@ export default function Chat() {
     if (currentUser) {
       socket.current = io("http://localhost:5000");
 
-      console.log("...socket.current...");
       console.log(socket.current);
 
       socket.current.emit("add-user", currentUser._id);
@@ -65,14 +63,12 @@ export default function Chat() {
       }
     ).then((res) => res.json())
       .then((data) => {
-        console.log("...setcontacts...");
         console.log(data);
         setContacts(data);
       });
   }, [currentUser]);
 
   const handleChatChange = (chat) => {
-    console.log("...setcurrentchat...");
     console.log(chat);
     setCurrentChat(chat);
   };
@@ -80,9 +76,7 @@ export default function Chat() {
   return (
     <>
       <Hnavbar />
-      <div className="bodyy">
       <Navbar />
-      <div className="chatsss">
       <div className="container">
         <Contacts contacts={contacts} changeChat={handleChatChange} />
         {currentChat === undefined ? (
@@ -90,8 +84,6 @@ export default function Chat() {
         ) : (
           <ChatContainer currentChat={currentChat} socket={socket} />
         )}
-      </div>
-      </div>
       </div>
     </>
   );

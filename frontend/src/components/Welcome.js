@@ -35,7 +35,7 @@ export default function Welcome() {
     <Container>
       <div>
         <p id="your">Your messages</p>
-        <p id="text">Send messages to other users.</p>
+        <p id="text">Select user and send messages.</p>
       </div>
     </Container>
   );

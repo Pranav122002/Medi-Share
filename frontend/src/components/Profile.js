@@ -104,17 +104,7 @@ export default function Profile() {
           ))}
         </ul>
       </div>
-      <div>
-        <button
-          onClick={() => {
-            localStorage.clear();
-            navigate("/signin");
-            notifyB("Logout successfull...");
-          }}
-        >
-          Log-Out
-        </button>
-      </div>
+     
     </div>
     </div>
     </div>

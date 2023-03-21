@@ -55,17 +55,21 @@ export default function Search() {
               return (
                   
                 <li className="link">
+                  <h3 style={{color: "black"}}>
+
                   {item.medicine_name}
+                  </h3>
                   <p className="p1">{item.description}</p>
-                  <p className="p2">{item.disease}</p>
+                  <p className="p2" style={{color: "blue"}}>{item.disease}</p>
                  
                 </li>
               );
             })}
           </ul>
+   </div>
+
         </div>
       </div>
-    </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-import "../css/Medicine.css"
+import "../css/Medicine.css";
 
 export default function Request() {
   const [medicines, setMedicines] = useState([]);
@@ -20,23 +20,23 @@ export default function Request() {
     <div>
       <Hnavbar />
       <div className="bodyy">
-      <Navbar />
-      <div className="list">
-      <ul>
-        <li style={{backgroundColor:"white" , color:"black"}}>
-          <h3>Medicine</h3>
-          <h3 className="p1">Description</h3>
-          <h3 className="p2">Disease</h3>
-        </li>
-        {medicines.map((medicines) => (
-          <li key={medicines.medicine_name}>
-            <h3>{medicines.medicine_name}:</h3> 
-            <p className="p1">{medicines.description}</p>
-            <p className="p2">{medicines.disease}</p>
-          </li>
-        ))}
-      </ul>
-      </div>
+        <Navbar />
+        <div className="list">
+          <ul>
+            <li style={{ backgroundColor: "white", color: "black" }}>
+              <h3>Medicine</h3>
+              <h3 className="p1">Description</h3>
+              <h3 className="p2">Disease</h3>
+            </li>
+            {medicines.map((medicines) => (
+              <li key={medicines.medicine_name}>
+                <h3>{medicines.medicine_name}:</h3>
+                <p className="p1">{medicines.description}</p>
+                <p className="p2">{medicines.disease}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

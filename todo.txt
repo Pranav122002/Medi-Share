@@ -1,14 +1,34 @@
 
 Remaining :
 
-1. Doctor annoucements
+1. Search medicines with filter disease
 
 2. Maps nearby hospitals api 
 
-3. Home page
+3. Google Cloud deploy
 
-4. User rewards
+4. Medicine expiry date check
 
 5. Community Global Chat
 
 6. Admin can assign tasks to volunteers
+
+7. Donate page UI
+
+8. Volunteer page UI (both when user is already volunteer or when user wants to become volunteer)
+(* Login with Non-Volunteer's account (aditya@gmail.com))
+
+9. Request Cards alignment
+
+11. Add annoucement form UI
+(* Login with Doctor's account (paul@gmail.com))
+
+10. Responsive
+
+12. Entire UI color
+
+13. Medi-Share logo
+
+14. About us
+
+15. Forgot password using nodemailer / sendgrid

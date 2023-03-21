@@ -102,10 +102,10 @@ export default function SignIn() {
             }}
             value="Sign In"
           />
-          <div className="loginForm2">
+          <div className="form2">
             Don't have an account ?
             <Link to="/signup">
-              <span style={{ color: "white", cursor: "pointer" }}> Sign Up</span>
+              <span style={{  color: "blue", cursor: "pointer" }}> Sign Up</span>
             </Link>
           </div>
         </div>

@@ -86,8 +86,10 @@ export default function Volunteer() {
       <div className="bodyy">
       <Navbar />
 
+
+
       {isVolunteer ? (
-        <ul>
+        <ul  className="volunteer_cunt">
           {unverifiedorders.map((unverifiedorders) => (
             <li key={unverifiedorders.medicine_name}>
               <p>medicine_name : </p> {unverifiedorders.medicine_name}
@@ -106,13 +108,14 @@ export default function Volunteer() {
           ))}
         </ul>
       ) : (
-        <div>
-          <h1>
+        <div  className="volunteer_btn">
+         <h3>You are not a Volunteer !</h3>
             <button onClick={() => becomevolunteer()}>Become Volunteer</button>
-          </h1>
+          
         </div>
       )}
     </div>
     </div>
+
   );
 }
