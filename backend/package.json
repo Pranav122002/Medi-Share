@@ -10,5 +10,15 @@
     "nodemon": "^2.0.21",
     "path": "^0.12.7",
     "socket.io": "^4.6.1"
-  }
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pranav Patil",
+  "license": "ISC",
+  "description": ""
 }
