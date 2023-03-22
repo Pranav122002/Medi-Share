@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.21",
+    "path": "^0.12.7",
+    "socket.io": "^4.6.1"
+  },
+  "name": "medi-share-production",
+  "version": "1.0.0",
+  "description": "Medi-Share",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pranav122002/Medi-Share.git"
+  },
+  "author": "Pranav Patil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pranav122002/Medi-Share/issues"
+  },
+  "homepage": "https://github.com/Pranav122002/Medi-Share#readme"
+}

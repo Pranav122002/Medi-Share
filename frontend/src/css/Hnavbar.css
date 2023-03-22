@@ -1,0 +1,43 @@
+.Hnavbar{
+    height: 4rem;
+    display: flex;
+    justify-content:flex-start;
+    margin: 1rem;
+    box-shadow: 2px 2px 9px rgb(231, 231, 231);
+    border-radius: 1rem;
+    position: fixed;
+    background-color: white;
+    z-index: 45;
+    top: 0;
+    width: 98%;
+}
+
+.Hnavb{
+    top: 0;
+    position: fixed;
+    background-color: white;
+    height: 5rem;
+    width: 100%;
+}
+.logo{
+    display: flex;
+    
+}
+h2{
+    margin-left: 4rem;
+    font-size: 1.5rem;
+
+}
+
+#Nlogo{
+    border-radius: 50%;
+    height: 3rem;
+    margin: 0.5rem;
+}
+
+#About{
+    position: absolute;
+    margin-right: 5rem;
+    right: 0;
+    font-size: 1.5rem;
+}

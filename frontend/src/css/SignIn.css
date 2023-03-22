@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+.banner{
+  height: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3rem;
+}
+
+#logo{
+    border-radius: 50%;
+    height: 4rem;
+  
+}
+
+.banner h1{
+    width: 25rem;
+    
+}
+
+.aboutus{
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-left: 26rem;
+  width: 40rem;
+  padding-top: 1rem;
+ 
+
+  
+}
+
+#Aboutus{
+ 
+}
+.signIn {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 9px rgb(170, 170, 170);
+    margin-left: 8rem;
+    margin-right: 8rem;
+    border-radius: 2rem;
+    height: 38rem;
+    
+}
+.middle{
+  border-radius: 1rem;
+  margin: 2.5rem;
+  width: 0.2rem;
+  height: 85%;
+  background-color: rgba(0,168,255,1);
+  animation-duration: 3s;
+  animation-name:paAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
+.left{
+  background: rgb(8,70,119);
+  background: linear-gradient(90deg, rgba(8,70,119,1) 0%, rgba(0,168,255,1) 100%);
+  width: 50rem;
+  
+  border-radius: 2rem;
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  
+}
+.left h1{
+  color: #ffffff;
+  padding-top: 2rem;
+  animation-duration: 3s;
+  animation-name:pAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.left p{
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 4rem;
+  animation-duration: 4s;
+  animation-name:pAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
+.loginForm {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 24rem;
+  height: 23rem;
+  margin-right: 6rem;
+  padding-top: 4rem;
+  animation-duration: 3s;
+  animation-name:pAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+
+}
+
+@keyframes pAnimation {
+  50% {
+    visibility: hidden;
+    opacity: 0.1;
+    
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes paAnimation {
+  50% {
+    visibility: hidden;
+    opacity: 0.1;
+    height: 0;
+    
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.loginForm2 {
+  background-color: rgba(0,168,255,1);
+  color: white;
+  padding: 20px;
+  margin-top: 3rem;
+ 
+
+}
+
+@keyframes slide {
+  0% {
+    width: 0;
+    
+  }
+  100% {
+    width:50rem;
+  }
+  
+}
+
+.signIn input {
+  height: 3.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: rgb(243, 251, 255);
+  padding-left: 2rem;
+  margin-top: 0.8rem;
+  
+}
+
+#login-btn {
+  font-size: 1rem;
+  margin-top: 1rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: rgba(0,168,255,1);
+  border: none;
+
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+
+  cursor: pointer;
+}
+
+#admi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#check {
+  width: 50%;
+  height: 50%;
+}

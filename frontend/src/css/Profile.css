@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.donate {
+  background-repeat: no-repeat;
+  margin-left:0%;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
+  background-size: cover;
+  background-size: 100rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contentt{
+  margin-top: 7rem;
+  width: 80%;
+}
+.contentt h1{
+  text-align: start;
+  padding-left: 6rem;
+}
+.contentt ul li{
+  width: 90%;
+  height: min-content;
+  align-items: center;
+}
+
+.contentt  li .p1{
+  margin-left: 4rem;
+  width: 100%;
+  text-align: start;
+}
+
+.contentt  li .p2{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+
+.contentt  li .p3{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+.contentt  li .pm{
+  text-align: start;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+
+.donateForm {
+  background-color: #fbfbfb;
+  padding: 30px;
+
+  border-radius: 1rem;
+  width: 24rem;
+  height: 23rem;
+
+}
+
+.loginForm2 {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 5px;
+  border: 1px solid rgb(129, 121, 121);
+  border-radius: 1rem;
+}
+
+.donate input {
+  height: 3.5rem;
+  border-radius: 1.2rem;
+  border: none;
+
+  margin-top: 0.8rem;
+}
+
+#request-btn {
+  font-size: 1rem;
+  margin-top: 3rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: #1773ea;
+  border: none;
+
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+
+  cursor: pointer;
+}
+
+
+#lin{
+  width: 80%;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
