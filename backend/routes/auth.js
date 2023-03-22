@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const USER = mongoose.model("USER");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const Jwt_secret = "sdfggdegerg";
+const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
 router.post("/signup", (req, res) => {
   // const { name, email, password, role} = req.body;
@@ -58,7 +58,7 @@ router.post("/signin", (req, res) => {
       .then((match) => {
         if (match) {
           // return res.status(200).json({ message: "Signed in Successfully..." })
-          const token = jwt.sign({ _id: savedUser.id }, Jwt_secret);
+          const token = jwt.sign({ _id: savedUser.id }, JWT_SECRET);
           const { _id, name, email, role } = savedUser;
 
           res.json({ token, user: { _id, name, email, role } });

@@ -5,10 +5,8 @@ const port = process.env.port || 5000;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const socket = require("socket.io");
+const { MONGOURI, JWT_SECRET } = require("./config/keys");
 
-const mongoUrl = "mongodb+srv://test:DEbNmSrka1SrUDgg@cluster0.hw4hmcy.mongodb.net/?retryWrites=true&w=majority";
-
-// const mongoUrl = "mongodb://localhost:27017/medi-share";
 
 app.use(cors());
 app.use(express.json());
@@ -27,7 +25,7 @@ app.use(require("./routes/message"));
 app.use(require("./routes/medicine"));
 app.use(require("./routes/annoucement"));
 
-mongoose.connect(mongoUrl, { useNewUrlParser: true });
+mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {
   console.log("MongoDB connection successfull...");
 });
