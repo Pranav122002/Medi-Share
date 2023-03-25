@@ -88,8 +88,8 @@ export default function Request() {
         <Card.Body>
           <Card.Title id="title">{card.medicine_name}</Card.Title>
           <Card.Text id="details">
-            <p>Exp Date : {card.expiry_date}<br /></p>
-            <p> Qty : {card.quantity}<br /></p>
+          <p>Expiry Date : {card.expiry_date}<br /></p>
+            <p> Quantity : {card.quantity}<br /></p>
             <p> Location : {card.location}<br /></p>
             <p> Donor : {card.donar.name}<br /></p>
             <Button id="req_button" onClick={() => putRequestData(card._id)}>Request</Button>
