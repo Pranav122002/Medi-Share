@@ -82,7 +82,7 @@ export default function Donate() {
             </div>
             <div>
               <input
-                type="text"
+                type="date"
                 name="expiry_date"
                 id="expiry_date"
                 placeholder="Expiry Date"
