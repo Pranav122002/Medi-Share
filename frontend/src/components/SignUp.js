@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 
 export default function SignUp() {
 
@@ -29,7 +30,7 @@ export default function SignUp() {
       );
       return;
     }
-    fetch("http://localhost:5000/signup", {
+    fetch(`${API_BASE_URL}/signup`,{
       method: "post",
       headers: {
         "Content-Type": "application/json",

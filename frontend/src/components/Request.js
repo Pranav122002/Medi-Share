@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import "../css/Request.css"
+import { API_BASE_URL } from "../config";
+
 export default function Request() {
 
   // Toast functions
@@ -20,13 +22,13 @@ export default function Request() {
   }, []);
 
   function fetchOrders() {
-    fetch("http://localhost:5000/alldonateorders/")
+    fetch(`${API_BASE_URL}/alldonateorders/`)
       .then((response) => response.json())
       .then((data) => setOrders(data));
   }
 
   const putRequestData = (order_id) => {
-    fetch(`http://localhost:5000/order/${order_id}`, {
+    fetch(`${API_BASE_URL}/order/${order_id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -37,7 +39,7 @@ export default function Request() {
         const verify_status = result.verify_status;
 
         fetch(
-          `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -49,7 +51,7 @@ export default function Request() {
           .then((result) => {
             const requester_id = result._id;
 
-            fetch(`http://localhost:5000/request/${order_id}`, {
+            fetch(`${API_BASE_URL}/request/${order_id}`, {
               method: "put",
               headers: {
                 "Content-Type": "application/json",

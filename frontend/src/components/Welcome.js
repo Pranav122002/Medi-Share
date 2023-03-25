@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config";
+
 
 export default function Welcome() {
   
@@ -13,7 +15,7 @@ export default function Welcome() {
       navigate("/signin");
     } else {
       fetch(
-        `http://localhost:5000/user/${
+        `${API_BASE_URL}/user/${
           JSON.parse(localStorage.getItem("user"))._id
         }`,
         {

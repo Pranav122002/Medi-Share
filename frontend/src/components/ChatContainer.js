@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
 import { v4 as uuidv4 } from "uuid";
+import { API_BASE_URL } from "../config";
 
 export default function ChatContainer({ currentChat, socket }) {
 
@@ -11,7 +12,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -21,7 +22,7 @@ export default function ChatContainer({ currentChat, socket }) {
       }
     ).then((res) => res.json())
       .then((result) => {
-        fetch("http://localhost:5000/getmsg", {
+        fetch(`${API_BASE_URL}/getmsg`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +46,7 @@ export default function ChatContainer({ currentChat, socket }) {
       if (currentChat) {
         JSON.parse(
           localStorage.getItem(
-            `http://localhost:5000/user/${
+            `${API_BASE_URL}/user/${
               JSON.parse(localStorage.getItem("user"))._id
             }`
           )
@@ -57,7 +58,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   const handleSendMsg = (msg) => {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -74,7 +75,7 @@ export default function ChatContainer({ currentChat, socket }) {
           msg,
         });
 
-        fetch("http://localhost:5000/addmsg", {
+        fetch(`${API_BASE_URL}/addmsg`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",

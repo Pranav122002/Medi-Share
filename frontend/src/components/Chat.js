@@ -7,6 +7,7 @@ import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import { API_BASE_URL } from "../config";
 
 export default function Chat() {
 
@@ -22,7 +23,7 @@ export default function Chat() {
       navigate("/signin");
     } else {
       fetch(
-        `http://localhost:5000/user/${
+        `${API_BASE_URL}/user/${
           JSON.parse(localStorage.getItem("user"))._id
         }`,
         {
@@ -41,7 +42,7 @@ export default function Chat() {
 
   useEffect(() => {
     if (currentUser) {
-      socket.current = io("http://localhost:5000");
+      socket.current = io(`${API_BASE_URL}`);
 
       console.log(socket.current);
 
@@ -51,7 +52,7 @@ export default function Chat() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/allusers/${
+      `${API_BASE_URL}/allusers/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {

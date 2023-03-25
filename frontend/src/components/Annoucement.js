@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { toast } from "react-toastify";
 import "../css/Annoucement.css";
+import { API_BASE_URL } from "../config";
 
 
 export default function Annoucement() {
@@ -27,7 +28,7 @@ export default function Annoucement() {
   });
 
   function fetchAnnoucements() {
-    fetch("http://localhost:5000/all-annoucements")
+    fetch(`${API_BASE_URL}/all-annoucements`)
       .then((response) => response.json())
       .then((data) => setAnnoucements(data));
   }
@@ -36,7 +37,7 @@ export default function Annoucement() {
   function fetchUser() {
 
       fetch(
-        `http://localhost:5000/user/${
+        `${API_BASE_URL}/user/${
           JSON.parse(localStorage.getItem("user"))._id
         }`,
         {
@@ -60,7 +61,7 @@ export default function Annoucement() {
   }
 
   const postAnnouncementData = () => {
-    fetch("http://localhost:5000/add-annoucement", {
+    fetch(`${API_BASE_URL}/add-annoucement`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

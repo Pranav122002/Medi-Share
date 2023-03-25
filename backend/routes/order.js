@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 
-router.get("/allorders", (req, res) => {
+router.get("/api/allorders", (req, res) => {
   ORDER.find()
     .select(" -__v -execute_status -requester -password")
     .populate("donar", "name -_id")
@@ -12,7 +12,7 @@ router.get("/allorders", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/alldonateorders", (req, res) => {
+router.get("/api/alldonateorders", (req, res) => {
   ORDER.find({ execute_status: false })
     .select(" -__v -execute_status -requester -password")
     .populate("donar", "name -_id")
@@ -21,7 +21,7 @@ router.get("/alldonateorders", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/donate", async (req, res, next) => {
+router.post("/api/donate", async (req, res, next) => {
   try {
     const { medicine_name, expiry_date, quantity, location, donar, requester } =
       req.body;
@@ -41,7 +41,7 @@ router.post("/donate", async (req, res, next) => {
   }
 });
 
-router.put("/request/:order_id", (req, res) => {
+router.put("/api/request/:order_id", (req, res) => {
 
 
 
@@ -89,7 +89,7 @@ ORDER.findOne({ _id: req.params.order_id })
  
 });
 
-router.get("/order/:id", (req, res) => {
+router.get("/api/order/:id", (req, res) => {
   ORDER.findOne({ _id: req.params.id })
     .then((order) => {
       return res.json(order);
@@ -99,7 +99,7 @@ router.get("/order/:id", (req, res) => {
     });
 });
 
-router.get("/mydonatedorders/:id", (req, res) => {
+router.get("/api/mydonatedorders/:id", (req, res) => {
   ORDER.find({ donar: req.params.id })
     .select(" -__v -execute_status -verify_status -requester ")
     .populate("donar", "name -_id")
@@ -108,7 +108,7 @@ router.get("/mydonatedorders/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/myrequestedorders/:id", (req, res) => {
+router.get("/api/myrequestedorders/:id", (req, res) => {
   ORDER.find({ requester: req.params.id })
     .select(" -__v -execute_status -verify_status -donar")
     .populate("requester", "name -_id")
@@ -117,7 +117,7 @@ router.get("/myrequestedorders/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/unverifiedorders", (req, res) => {
+router.get("/api/unverifiedorders", (req, res) => {
   ORDER.find({ verify_status: false })
     .select(" -__v -execute_status -requester")
     .populate("donar", "name -_id")
@@ -126,7 +126,7 @@ router.get("/unverifiedorders", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.put("/verifyorder/:order_id", (req, res) => {
+router.put("/api/verifyorder/:order_id", (req, res) => {
   ORDER.findByIdAndUpdate(
     req.params.order_id,
     { $set: { verify_status: true } },

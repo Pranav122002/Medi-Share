@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Profile.css"
+import { API_BASE_URL } from "../config";
+
 export default function Profile() {
 
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ export default function Profile() {
   }, []);
 
   fetch(
-    `http://localhost:5000/user/${
+    `${API_BASE_URL}/user/${
       JSON.parse(localStorage.getItem("user"))._id
     }`,
     {
@@ -41,7 +43,7 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `http://localhost:5000/mydonatedorders/${
+      `${API_BASE_URL}/mydonatedorders/${
         JSON.parse(localStorage.getItem("user"))._id
       }`
     ).then((response) => response.json())
@@ -50,7 +52,7 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `http://localhost:5000/myrequestedorders/${
+      `${API_BASE_URL}/myrequestedorders/${
         JSON.parse(localStorage.getItem("user"))._id
       }`
     ).then((response) => response.json())

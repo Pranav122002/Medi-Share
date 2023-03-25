@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
 
-router.get("/user/:id", (req, res) => {
+router.get("/api/user/:id", (req, res) => {
   USER.findOne({ _id: req.params.id })
     .select("-password")
     .then((user) => {
@@ -15,7 +15,7 @@ router.get("/user/:id", (req, res) => {
     });
 });
 
-router.put("/becomevolunteer/:id", (req, res) => {
+router.put("/api/becomevolunteer/:id", (req, res) => {
   USER.findByIdAndUpdate(
     req.params.id,
     { $set: { role: "volunteer" } },

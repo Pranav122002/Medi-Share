@@ -3,6 +3,8 @@ import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 import { Hnavbar } from "./Hnavbar";
+import { API_BASE_URL } from "../config";
+
 export default function Volunteer() {
   
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
@@ -22,7 +24,7 @@ export default function Volunteer() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -43,13 +45,13 @@ export default function Volunteer() {
   }
 
   function fetchUnverifiedOrders() {
-    fetch("http://localhost:5000/unverifiedorders")
+    fetch(`${API_BASE_URL}/unverifiedorders`)
       .then((response) => response.json())
       .then((data) => setUnverifiedOrders(data));
   }
 
   const verifyorder = (order_id) => {
-    fetch(`http://localhost:5000/verifyorder/${order_id}`, {
+    fetch(`${API_BASE_URL}/verifyorder/${order_id}`, {
       method: "put",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -63,7 +65,7 @@ export default function Volunteer() {
 
   const becomevolunteer = () => {
     fetch(
-      `http://localhost:5000/becomevolunteer/${
+      `${API_BASE_URL}/becomevolunteer/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {

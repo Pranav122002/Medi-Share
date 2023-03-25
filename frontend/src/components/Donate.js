@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-
+import { API_BASE_URL } from "../config";
 
 export default function Donate() {
 
@@ -19,7 +19,7 @@ export default function Donate() {
 
   const postOrderData = () => {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -30,7 +30,7 @@ export default function Donate() {
     ).then((res) => res.json())
       .then((result) => {
         const donar = result._id;
-        fetch("http://localhost:5000/donate", {
+        fetch(`${API_BASE_URL}/donate`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
