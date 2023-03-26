@@ -7,6 +7,9 @@
 * Users can message with other users.
 
 ## Installation & Running 
+https://medi-share.vercel.app/
+
+## Installation & Running 
 Clone the project:
 ```
 git clone https://github.com/Pranav122002/Medi-Share.git
