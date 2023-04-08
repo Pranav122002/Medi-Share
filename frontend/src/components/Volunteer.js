@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 import { Hnavbar } from "./Hnavbar";
 export default function Volunteer() {
-  
+
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
   const [isVolunteer, setIsVolunteer] = useState("");
 
@@ -22,8 +22,7 @@ export default function Volunteer() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -63,8 +62,7 @@ export default function Volunteer() {
 
   const becomevolunteer = () => {
     fetch(
-      `http://localhost:5000/becomevolunteer/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/becomevolunteer/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -89,7 +87,7 @@ export default function Volunteer() {
 
 
       {isVolunteer ? (
-        <ul  className="volunteer_cunt">
+        <ul>
           {unverifiedorders.map((unverifiedorders) => (
             <li key={unverifiedorders.medicine_name}>
               <p>medicine_name : </p> {unverifiedorders.medicine_name}
@@ -108,10 +106,10 @@ export default function Volunteer() {
           ))}
         </ul>
       ) : (
-        <div  className="volunteer_btn">
-         <h3>You are not a Volunteer !</h3>
+        <div>
+          <h1>
             <button onClick={() => becomevolunteer()}>Become Volunteer</button>
-          
+          </h1>
         </div>
       )}
     </div>

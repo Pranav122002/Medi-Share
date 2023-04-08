@@ -90,7 +90,7 @@
   visibility: hidden;
   opacity: 0;
 }
-.loginForm {
+.signIn .loginForm {
   background-color: #ffffff;
   padding: 30px;
   width: 24rem;
@@ -130,7 +130,7 @@
   }
 }
 
-.loginForm2 {
+.signIn .loginForm2 {
   background-color: rgba(0,168,255,1);
   color: white;
   padding: 20px;
