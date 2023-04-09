@@ -11,6 +11,8 @@ import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
 import Annoucement from "./components/Annoucement";
+import DiseasePrediction from "./components/DiseasePrediction";
+
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
@@ -28,6 +30,8 @@ function App() {
           <Route path="/donate" element={<Donate />}></Route>
           <Route path="/request" element={<Request />}></Route>
           <Route path="/medicines" element={<Medicines />}></Route>
+          <Route path="/disease-predict" element={<DiseasePrediction />}></Route>
+          
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chat" element={<Chat />}></Route>

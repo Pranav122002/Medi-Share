@@ -69,7 +69,29 @@
   bottom: 2px;
   left: 2px;
 }
+#voldiv {
+  display: flex;
+  align-items: center;
+}
+.becm {
+  position: absolute;
+    left: 50%;
+}
 
+#volbtn {
+  margin: 35px;
+
+  font-size: 1rem;
+  margin-top: 3rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: #1773ea;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 @media (min-width: 768px) {
   .volimg button {
     padding: .75rem 3rem;

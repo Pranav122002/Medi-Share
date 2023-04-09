@@ -106,9 +106,10 @@ export default function Volunteer() {
           ))}
         </ul>
       ) : (
-        <div>
+        <div id="voldiv">
+          <p className="becm">You are not a Volunteer !</p>
           <h1>
-            <button onClick={() => becomevolunteer()}>Become Volunteer</button>
+            <button id="volbtn" className="becm" onClick={() => becomevolunteer()}>Become Volunteer</button>
           </h1>
         </div>
       )}

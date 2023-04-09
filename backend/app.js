@@ -24,6 +24,7 @@ app.use(require("./routes/user"));
 app.use(require("./routes/message"));
 app.use(require("./routes/medicine"));
 app.use(require("./routes/annoucement"));
+app.use(require("./routes/disease"));
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {
