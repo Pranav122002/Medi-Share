@@ -3,8 +3,6 @@ import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 import { Hnavbar } from "./Hnavbar";
-import { API_BASE_URL } from "../config";
-
 export default function Volunteer() {
   
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
@@ -24,7 +22,7 @@ export default function Volunteer() {
 
   function fetchUser() {
     fetch(
-      `${API_BASE_URL}/user/${
+      `http://localhost:5000/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -45,13 +43,13 @@ export default function Volunteer() {
   }
 
   function fetchUnverifiedOrders() {
-    fetch(`${API_BASE_URL}/unverifiedorders`)
+    fetch("http://localhost:5000/unverifiedorders")
       .then((response) => response.json())
       .then((data) => setUnverifiedOrders(data));
   }
 
   const verifyorder = (order_id) => {
-    fetch(`${API_BASE_URL}/verifyorder/${order_id}`, {
+    fetch(`http://localhost:5000/verifyorder/${order_id}`, {
       method: "put",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -65,7 +63,7 @@ export default function Volunteer() {
 
   const becomevolunteer = () => {
     fetch(
-      `${API_BASE_URL}/becomevolunteer/${
+      `http://localhost:5000/becomevolunteer/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -110,11 +108,10 @@ export default function Volunteer() {
           ))}
         </ul>
       ) : (
-        <div id="voldiv">
-          <p className="becm">You are not a Volunteer !</p>
-          <h1>
-            <button id="volbtn" className="becm" onClick={() => becomevolunteer()}>Become Volunteer</button>
-          </h1>
+        <div  className="volunteer_btn">
+         <h3>You are not a Volunteer !</h3>
+            <button onClick={() => becomevolunteer()}>Become Volunteer</button>
+          
         </div>
       )}
     </div>
