@@ -89,24 +89,24 @@ export default function Volunteer() {
 
 
       {isVolunteer ? (
-        <ul  className="volunteer_cunt">
+        <div  className="volunteer_cunt">
           {unverifiedorders.map((unverifiedorders) => (
-            <li key={unverifiedorders.medicine_name}>
-              <p>medicine_name : </p> {unverifiedorders.medicine_name}
-              <br /> <p>expiry_date : </p> {unverifiedorders.expiry_date}
-              <br /> <p>quantity : </p> {unverifiedorders.quantity}
-              <br /> <p>location : </p> {unverifiedorders.location}
-              <br /> <p>Donar : </p> {unverifiedorders.donar.name}
-              <br />{" "}
+            <div key={unverifiedorders.medicine_name}>
+              <p>medicine_name : </p> <p className="h3">{unverifiedorders.medicine_name}</p>
+               <p>expiry_date : </p> <p className="h3">{unverifiedorders.expiry_date}</p>
+               <p>quantity : </p> <p className="h3">{unverifiedorders.quantity}</p>
+               <p>location : </p><p className="h3">{unverifiedorders.location}</p>
+               <p>Donar : </p> <p className="h3">{unverifiedorders.donar.name}</p>
+            
               <button
                 id="verify-btn"
                 onClick={() => verifyorder(unverifiedorders._id)}
               >
                 Verify
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <div  className="volunteer_btn">
          <h3>You are not a Volunteer !</h3>
