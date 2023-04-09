@@ -66,7 +66,6 @@ export default function SignUp() {
       <div className="signUp">
       <div className="left">
         <h1>A Medicine Distribution System</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias dolore, optio architecto quas laborum voluptates molestiae nisi ab aut quos sit, praesentium exercitationem commodi consequuntur iure soluta. Nesciunt, mollitia rerum!</p>
       </div>
       <div className="middle"></div>
         <div className="form-container">
