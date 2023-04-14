@@ -110,7 +110,7 @@ export default function Volunteer() {
       ) : (
         <div  className="volunteer_btn">
          <h3>You are not a Volunteer !</h3>
-            <button onClick={() => becomevolunteer()}>Become Volunteer</button>
+            <button className="vlbtn" onClick={() => becomevolunteer()}>Become Volunteer</button>
           
         </div>
       )}

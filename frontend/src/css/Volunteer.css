@@ -38,3 +38,21 @@
   font-size: large;
   font-weight: 600;
 }
+
+
+.volunteer_btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.vlbtn{
+  border-radius: 10px;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #80d4fc;
+  color: black;
+  border: none;
+
+}

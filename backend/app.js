@@ -16,7 +16,7 @@ require("./models/user");
 require("./models/message");
 require("./models/order");
 require("./models/annoucement");
-require("./models/disease");
+// require("./models/disease");
 
 app.use(require("./routes/auth"));
 app.use(require("./routes/order"));
