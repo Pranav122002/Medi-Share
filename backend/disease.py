@@ -8,13 +8,13 @@ from streamlit_option_menu import option_menu
 # loading the saved models
 
 diabetes_model = pickle.load(
-    open('C:/Users/prana/Desktop/dfg/saved models/diabetes_model.sav', 'rb'))
+    open('./ml-models/diabetes_model.sav', 'rb'))
 
 heart_disease_model = pickle.load(
-    open('C:/Users/prana/Desktop/dfg/saved models/heart_disease_model.sav', 'rb'))
+    open('./ml-models/heart_disease_model.sav', 'rb'))
 
 parkinsons_model = pickle.load(
-    open('C:/Users/prana/Desktop/dfg/saved models/parkinsons_model.sav', 'rb'))
+    open('./ml-models/parkinsons_model.sav', 'rb'))
 
 
 # sidebar for navigation
