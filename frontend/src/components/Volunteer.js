@@ -3,8 +3,6 @@ import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 import { Hnavbar } from "./Hnavbar";
-import { API_BASE_URL } from "../config";
-
 export default function Volunteer() {
   
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
@@ -24,7 +22,7 @@ export default function Volunteer() {
 
   function fetchUser() {
     fetch(
-      `${API_BASE_URL}/user/${
+      `http://localhost:5000/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -45,13 +43,13 @@ export default function Volunteer() {
   }
 
   function fetchUnverifiedOrders() {
-    fetch(`${API_BASE_URL}/unverifiedorders`)
+    fetch("http://localhost:5000/unverifiedorders")
       .then((response) => response.json())
       .then((data) => setUnverifiedOrders(data));
   }
 
   const verifyorder = (order_id) => {
-    fetch(`${API_BASE_URL}/verifyorder/${order_id}`, {
+    fetch(`http://localhost:5000/verifyorder/${order_id}`, {
       method: "put",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -65,7 +63,7 @@ export default function Volunteer() {
 
   const becomevolunteer = () => {
     fetch(
-      `${API_BASE_URL}/becomevolunteer/${
+      `http://localhost:5000/becomevolunteer/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -91,28 +89,28 @@ export default function Volunteer() {
 
 
       {isVolunteer ? (
-        <ul  className="volunteer_cunt">
+        <div  className="volunteer_cunt">
           {unverifiedorders.map((unverifiedorders) => (
-            <li key={unverifiedorders.medicine_name}>
-              <p>medicine_name : </p> {unverifiedorders.medicine_name}
-              <br /> <p>expiry_date : </p> {unverifiedorders.expiry_date}
-              <br /> <p>quantity : </p> {unverifiedorders.quantity}
-              <br /> <p>location : </p> {unverifiedorders.location}
-              <br /> <p>Donar : </p> {unverifiedorders.donar.name}
-              <br />{" "}
+            <div key={unverifiedorders.medicine_name}>
+              <p>medicine_name : </p> <p className="h3">{unverifiedorders.medicine_name}</p>
+               <p>expiry_date : </p> <p className="h3">{unverifiedorders.expiry_date}</p>
+               <p>quantity : </p> <p className="h3">{unverifiedorders.quantity}</p>
+               <p>location : </p><p className="h3">{unverifiedorders.location}</p>
+               <p>Donar : </p> <p className="h3">{unverifiedorders.donar.name}</p>
+            
               <button
                 id="verify-btn"
                 onClick={() => verifyorder(unverifiedorders._id)}
               >
                 Verify
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <div  className="volunteer_btn">
          <h3>You are not a Volunteer !</h3>
-            <button onClick={() => becomevolunteer()}>Become Volunteer</button>
+            <button className="vlbtn" onClick={() => becomevolunteer()}>Become Volunteer</button>
           
         </div>
       )}

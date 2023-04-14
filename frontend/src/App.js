@@ -6,6 +6,7 @@ import Donate from "./components/Donate";
 import Request from "./components/Request";
 import Medicines from "./components/Medicines";
 import Volunteer from "./components/Volunteer";
+import DiseasePrediction from "./components/DiseasePrediction";
 import Chat from "./components/Chat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/donate" element={<Donate />}></Route>
           <Route path="/request" element={<Request />}></Route>
           <Route path="/medicines" element={<Medicines />}></Route>
+          <Route path="/disease-predict" element={<DiseasePrediction />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
