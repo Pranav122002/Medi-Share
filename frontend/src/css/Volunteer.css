@@ -1,5 +1,7 @@
 
-
+.out_cont{
+  width: 80%;
+}
 .volunteer_cunt {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -54,4 +56,10 @@
   color: black;
   border: none;
 
+}
+
+.load{
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
