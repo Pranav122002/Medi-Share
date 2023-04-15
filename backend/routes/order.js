@@ -78,6 +78,7 @@ ORDER.findOne({ _id: req.params.order_id })
       res.json("Failed to request order...");
     }
   } else if (curr_date > exp_date) {
+    console.log("expired")
     res.json("Medicine is expired...");
   } 
   

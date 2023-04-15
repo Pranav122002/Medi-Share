@@ -76,7 +76,10 @@ export default function Request() {
                   } else if (data === "Order Requested successfully...") {
                     navigate("/profile");
                     notifyB(data);
+                  } else if (data === "Medicine is expired...") {
+                    notifyA(data);
                   }
+        
                 }
                 console.log(data);
               });

@@ -64,6 +64,7 @@ export default function SignIn() {
 
         <div className="left">
           <h1>A Medicine Distribution System</h1>
+          <p>"No one has ever become poor by giving." - Anne Frank</p>
         </div>
         <div className="middle"></div>
         <div className="loginForm">

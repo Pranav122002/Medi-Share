@@ -41,7 +41,7 @@ export default function Navbar({ login }) {
         <Link to="/chat">
           <li style={{color: "black"}} className="navli">Chat</li>
         </Link>
-        <Link to="/disease-predict">
+        <Link to="http://34.93.124.93:8501">
           <li style={{color: "black"}} className="navli">Disease Prediction</li>
         </Link>
 
