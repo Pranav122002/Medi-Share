@@ -5,9 +5,8 @@ const port = process.env.port || 5000;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const socket = require("socket.io");
-const path = require("path");
 const { MONGOURI, JWT_SECRET } = require("./config/keys");
-
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -18,6 +17,7 @@ require("./models/user");
 require("./models/message");
 require("./models/order");
 require("./models/annoucement");
+// require("./models/disease");
 
 app.use(require("./routes/auth"));
 app.use(require("./routes/order"));
@@ -25,6 +25,7 @@ app.use(require("./routes/user"));
 app.use(require("./routes/message"));
 app.use(require("./routes/medicine"));
 app.use(require("./routes/annoucement"));
+app.use(require("./routes/disease"));
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {

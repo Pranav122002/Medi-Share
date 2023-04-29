@@ -41,7 +41,7 @@ export default function Navbar({ login }) {
         <Link to="/chat">
           <li style={{color: "black"}} className="navli">Chat</li>
         </Link>
-        <Link to="/disease_prediction">
+        <Link to="/disease-predict">
           <li style={{color: "black"}} className="navli">Disease Prediction</li>
         </Link>
 

@@ -1,12 +1,13 @@
+
 import React, { useState, useEffect } from "react";
 import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 import { Hnavbar } from "./Hnavbar";
 export default function Volunteer() {
-  
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
   const [isVolunteer, setIsVolunteer] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -38,6 +39,7 @@ export default function Volunteer() {
         } else {
           setIsVolunteer(false);
         }
+        setIsLoading(false);
         console.log(isVolunteer);
       });
   }
@@ -84,38 +86,46 @@ export default function Volunteer() {
     <div>
       <Hnavbar />
       <div className="bodyy">
-      <Navbar />
+        <Navbar />
 
-
-
-      {isVolunteer ? (
-        <ul  className="volunteer_cunt">
-          {unverifiedorders.map((unverifiedorders) => (
-            <li key={unverifiedorders.medicine_name}>
-              <p>medicine_name : </p> {unverifiedorders.medicine_name}
-              <br /> <p>expiry_date : </p> {unverifiedorders.expiry_date}
-              <br /> <p>quantity : </p> {unverifiedorders.quantity}
-              <br /> <p>location : </p> {unverifiedorders.location}
-              <br /> <p>Donar : </p> {unverifiedorders.donar.name}
-              <br />{" "}
-              <button
-                id="verify-btn"
-                onClick={() => verifyorder(unverifiedorders._id)}
-              >
-                Verify
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div  className="volunteer_btn">
-         <h3>You are not a Volunteer !</h3>
-            <button onClick={() => becomevolunteer()}>Become Volunteer</button>
-          
-        </div>
-      )}
+        {isLoading ? (
+          <h1 className="load">Loading...</h1>
+        ) : (
+          <div className="out_cont"> 
+            {isVolunteer ? (
+              <div className="volunteer_cunt">
+                {unverifiedorders.map((unverifiedorders) => (
+                  <div key={unverifiedorders.medicine_name}>
+                    <p>medicine_name : </p>{" "}
+                    <p className="h3">{unverifiedorders.medicine_name}</p>
+                    <p>expiry_date : </p>{" "}
+                    <p className="h3">{unverifiedorders.expiry_date}</p>
+                    <p>quantity : </p>{" "}
+                    <p className="h3">{unverifiedorders.quantity}</p>
+                    <p>location : </p>
+                    <p className="h3">{unverifiedorders.location}</p>
+                    <p>Donar : </p>{" "}
+                    <p className="h3">{unverifiedorders.donar.name}</p>
+                    <button
+                      id="verify-btn"
+                      onClick={() => verifyorder(unverifiedorders._id)}
+                    >
+                      Verify
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="volunteer_btn">
+                <h3>You are not a Volunteer !</h3>
+                <button className="vlbtn" onClick={() => becomevolunteer()}>
+                  Become Volunteer
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
-    </div>
-
   );
 }
