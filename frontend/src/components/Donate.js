@@ -30,7 +30,7 @@ export default function Donate() {
     ).then((res) => res.json())
       .then((result) => {
         const donar = result._id;
-        fetch("http://localhost:5000/donate", {
+        fetch("http://localhost:5000/donate-medicines", {
           method: "post",
           headers: {
             "Content-Type": "application/json",

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Donate from "./components/Donate";
 import Request from "./components/Request";
+import Orders from "./components/Orders";
 import Medicines from "./components/Medicines";
 import Volunteer from "./components/Volunteer";
 import Chat from "./components/Chat";
@@ -27,8 +28,9 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
-          <Route path="/donate" element={<Donate />}></Route>
-          <Route path="/request" element={<Request />}></Route>
+          <Route path="/donate-medicines" element={<Donate />}></Route>
+          <Route path="/request-medicines" element={<Request />}></Route>
+          <Route path="/orders" element={<Orders />}></Route>
           <Route path="/medicines" element={<Medicines />}></Route>
           <Route path="/disease-predict" element={<DiseasePrediction />}></Route>
           

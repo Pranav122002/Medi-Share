@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
+  order_type: {
+    type: String,
+    required: true,
+  },
   medicine_name: {
     type: String,
     required: true,
@@ -28,7 +32,7 @@ const orderSchema = new mongoose.Schema({
   donar: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "USER",
-    required: true,
+    // required: true,
   },
   requester: {
     type: mongoose.Schema.Types.ObjectId,

@@ -14,11 +14,14 @@ export default function Navbar({ login }) {
   const loginStatus = () => {
     return [
       <>
-        <Link to="/donate">
+        <Link to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
         </Link>
-        <Link to="/request">
+        <Link to="/request-medicines">
           <li style={{color: "black"}} className="navli">Request</li>
+        </Link>
+        <Link to="/orders">
+          <li style={{color: "black"}} className="navli">Orders</li>
         </Link>
         <Link to="/volunteer">
           <li style={{color: "black"}} className="navli">Volunteer</li>
