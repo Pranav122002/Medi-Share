@@ -72,7 +72,20 @@ export default function Volunteer() {
     });
   };
 
-  const verify_request_order = (order_id) => {
+  const verify_request_order = async (order_id) => {
+
+    try {
+      const response = await fetch(`http://localhost:5000/req-order/${order_id}`, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch order details");
+      }
+      const order_data = await response.json();
+  if (order_data.isDonarFieldBlank === false) {
     fetch(`http://localhost:5000/verify-request-order/${order_id}`, {
       method: "put",
       headers: {
@@ -84,6 +97,17 @@ export default function Volunteer() {
   
       notifyB("Order verified successfully and now will be donated...");
     });
+    
+  }
+  else if (order_data.isDonarFieldBlank === true) {
+    notifyA("Order is not been donated by anyone...");
+    
+  }
+    } catch (error) {
+      console.error(error);
+    }
+
+    
   };
 
   const becomevolunteer = () => {

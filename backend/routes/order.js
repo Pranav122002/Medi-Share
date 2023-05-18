@@ -3,6 +3,32 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 
+router.get("/req-order/:order_id", (req, res) => {
+  ORDER.findOne({ _id: req.params.order_id })
+    .populate("requester", "name -_id")
+    .populate("donar", "name -_id")
+    .then((order) => {
+      if (!order) {
+        return res.status(404).json({ error: "Order not found..." });
+      }
+
+      const isDonarFieldBlank = !order.donar;
+
+      return res.json({ order, isDonarFieldBlank });
+    })
+    .catch((err) => console.log(err));
+});
+
+router.get("/order/:id", (req, res) => {
+  ORDER.findOne({ _id: req.params.id })
+    .then((order) => {
+      return res.json(order);
+    })
+    .catch((err) => {
+      return res.status(404).json({ error: "Order not found..." });
+    });
+});
+
 router.get("/allorders", (req, res) => {
   ORDER.find({ execute_status: false })
     .select(" -__v -execute_status -password")
@@ -116,7 +142,7 @@ router.put("/request/:order_id", (req, res) => {
           )
             .then((doc) => {
               console.log(doc);
-              res.json("Order Requested successfully...");
+              res.json("Order Requested successfully and now will be delivered...");
             })
             .catch((err) => {
               console.error(err);
@@ -137,15 +163,7 @@ router.put("/request/:order_id", (req, res) => {
     });
 });
 
-router.get("/order/:id", (req, res) => {
-  ORDER.findOne({ _id: req.params.id })
-    .then((order) => {
-      return res.json(order);
-    })
-    .catch((err) => {
-      return res.status(404).json({ error: "Order not found..." });
-    });
-});
+
 
 router.get("/mydonatedorders/:id", (req, res) => {
   ORDER.find({ donar: req.params.id })
