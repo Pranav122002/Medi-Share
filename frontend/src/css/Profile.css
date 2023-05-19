@@ -65,6 +65,10 @@
 
 }
 
+#credits {
+float: right;
+}
+
 .loginForm2 {
   background-color: #ffffff;
   padding: 20px;

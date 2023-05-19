@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
+const USER = mongoose.model("USER");
 
 router.get("/req-order/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })
@@ -53,6 +54,12 @@ router.post("/donate-medicines", async (req, res, next) => {
       requester: requester,
     });
     if (data) {
+
+      await USER.updateOne(
+        { _id: donar },
+        { $inc: { credits: 100 } }
+      );
+
       return res.json({ msg: "Donate Order placed successfully..." });
     } else return res.json({ msg: "Failed to place order..." });
   } catch (ex) {
@@ -81,43 +88,52 @@ router.post("/request-medicines", async (req, res, next) => {
   }
 });
 
-router.put("/donate/:order_id", (req, res) => {
-  ORDER.findOne({ _id: req.params.order_id })
-    .then((order) => {
-      if (
-        req.body.execute_status === false &&
-        req.body.verify_status === false
-      ) {
-        ORDER.findByIdAndUpdate(
-          req.params.order_id,
-          {
-            $set: {  execute_status: true,  donar: req.body.donar_id },
-          },
-          { new: true }
-        )
-          .then((doc) => {
-            console.log(doc);
-            res.json("Order Donated successfully and Volunteer will verify now...");
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      } else if (   req.body.execute_status === true &&
-        req.body.verify_status === true) {
-        res.json("Order is already executed...");
+router.put("/donate/:order_id", async (req, res) => {
+  try {
+    const order = await ORDER.findOne({ _id: req.params.order_id });
+
+    if (
+      req.body.execute_status === false &&
+      req.body.verify_status === false
+    ) {
+      const updatedOrder = await ORDER.findByIdAndUpdate(
+        req.params.order_id,
+        {
+          $set: { execute_status: true, donar: req.body.donar_id },
+        },
+        { new: true }
+      );
+
+      if (updatedOrder) {
+       
+        await USER.updateOne(
+          { _id: req.body.donar_id },
+          { $inc: { credits: 100 } }
+        );
+
+        console.log(updatedOrder);
+        return res.json("Order Donated successfully and Volunteer will verify now...");
+      } else {
+        return res.json("Failed to donate order...");
       }
-       else if (   req.body.execute_status === true &&
-        req.body.verify_status === false) {
-        res.json("Order is already donated but is not verified yet...");
-      }
-       else {
-        res.json("Failed to donate order...");
-      }
-    })
-    .catch((err) => {
-      return res.status(404).json({ error: "Order not found..." });
-    });
+    } else if (
+      req.body.execute_status === true &&
+      req.body.verify_status === true
+    ) {
+      return res.json("Order is already executed...");
+    } else if (
+      req.body.execute_status === true &&
+      req.body.verify_status === false
+    ) {
+      return res.json("Order is already donated but is not verified yet...");
+    } else {
+      return res.json("Failed to donate order...");
+    }
+  } catch (err) {
+    return res.status(404).json({ error: "Order not found..." });
+  }
 });
+
 
 router.put("/request/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })

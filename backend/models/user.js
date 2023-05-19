@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  credits: {
+    type: Number,
+    default: 0,
+  },
 });
 
 mongoose.model("USER", userSchema);

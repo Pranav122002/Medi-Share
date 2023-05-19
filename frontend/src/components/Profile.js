@@ -15,6 +15,7 @@ export default function Profile() {
   const [donateorders, setDonateOrders] = useState([]);
   const [requestorders, setRequestOrders] = useState([]);
   const [user_name, setUserName] = useState("");
+  const [credits, setCredits] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function Profile() {
     .then((res) => res.json())
     .then((res) => {
       setUserName(res.name);
+      setCredits(res.credits);
     });
 
   function fetchDonateOrders() {
@@ -72,7 +74,8 @@ export default function Profile() {
       <div className="bodyy">
         <Navbar />
         <div className="contentt">
-          <h1>Welcome {user_name} !!!</h1>
+          <h1>Welcome {user_name} !!! <span id="credits">Credits : {credits} </span></h1>
+          
           <div>
             <h2>My Donated Orders</h2>
             <ul className="proul">
