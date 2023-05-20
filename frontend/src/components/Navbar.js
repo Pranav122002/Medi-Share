@@ -14,11 +14,14 @@ export default function Navbar({ login }) {
   const loginStatus = () => {
     return [
       <>
-        <Link to="/donate">
+        <Link to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
         </Link>
-        <Link to="/request">
+        <Link to="/request-medicines">
           <li style={{color: "black"}} className="navli">Request</li>
+        </Link>
+        <Link to="/orders">
+          <li style={{color: "black"}} className="navli">Orders</li>
         </Link>
         <Link to="/volunteer">
           <li style={{color: "black"}} className="navli">Volunteer</li>
@@ -38,11 +41,11 @@ export default function Navbar({ login }) {
         <Link to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
         </Link>
-        <Link to="/chat">
-          <li style={{color: "black"}} className="navli">Chat</li>
+        <Link to="/chats">
+          <li style={{color: "black"}} className="navli">Chats</li>
         </Link>
-        <Link to="/disease-predict">
-          <li style={{color: "black"}} className="navli">Disease Prediction</li>
+        <Link to="/disease-predictions">
+          <li style={{color: "black"}} className="navli">Disease Predictions</li>
         </Link>
 
         <Link to="/signin"

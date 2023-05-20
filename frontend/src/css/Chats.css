@@ -1,0 +1,20 @@
+
+
+.linkcont{
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 30%;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    top: 0;
+    left: 0%;
+    margin-top: 15%;
+
+    width: 99vw;
+  }
+}
+
+

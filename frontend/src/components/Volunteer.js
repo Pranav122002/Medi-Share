@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
@@ -9,9 +11,12 @@ export default function Volunteer() {
   const [isVolunteer, setIsVolunteer] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
+
+ 
 
   useEffect(() => {
     fetchUnverifiedOrders();
@@ -50,8 +55,8 @@ export default function Volunteer() {
       .then((data) => setUnverifiedOrders(data));
   }
 
-  const verifyorder = (order_id) => {
-    fetch(`/verifyorder/${order_id}`, {
+  const verify_donate_order = (order_id) => {
+    fetch(`/verify-donate-order/${order_id}`, {
       method: "put",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -59,11 +64,55 @@ export default function Volunteer() {
     }).then((res) => {
       res.json();
       window.location.reload();
-      notifyB("Order verified successfully...");
+   
+      // setTimeout(function() {
+        notifyB("Donate order verified successfully...");
+      // }, 2000);
+      
     });
   };
 
+  const verify_request_order = async (order_id) => {
+
+    try {
+      const response = await fetch(`/req-order/${order_id}`, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch order details");
+      }
+      const order_data = await response.json();
+  if (order_data.isDonarFieldBlank === false) {
+    fetch(`/verify-request-order/${order_id}`, {
+      method: "put",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    }).then((res) => {
+      res.json();
+      window.location.reload();
+  
+      notifyB("Order verified successfully and now will be donated...");
+    });
+    
+  }
+  else if (order_data.isDonarFieldBlank === true) {
+    notifyA("Order is not been donated by anyone...");
+    
+  }
+    } catch (error) {
+      console.error(error);
+    }
+
+    
+  };
+
   const becomevolunteer = () => {
+   
+    
     fetch(
       `/becomevolunteer/${
         JSON.parse(localStorage.getItem("user"))._id
@@ -73,6 +122,7 @@ export default function Volunteer() {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
+       
       }
     )
       .then((res) => res.json())
@@ -94,8 +144,16 @@ export default function Volunteer() {
           <div className="out_cont"> 
             {isVolunteer ? (
               <div className="volunteer_cunt">
+
+             
+
+
                 {unverifiedorders.map((unverifiedorders) => (
+
+
                   <div key={unverifiedorders.medicine_name}>
+                    <p>order_type : </p>
+                    <p className="h3">{unverifiedorders.order_type}</p>
                     <p>medicine_name : </p>{" "}
                     <p className="h3">{unverifiedorders.medicine_name}</p>
                     <p>expiry_date : </p>{" "}
@@ -104,20 +162,43 @@ export default function Volunteer() {
                     <p className="h3">{unverifiedorders.quantity}</p>
                     <p>location : </p>
                     <p className="h3">{unverifiedorders.location}</p>
-                    <p>Donar : </p>{" "}
+
+{ unverifiedorders.order_type == "donate-order" ? ( 
+  <>
+                    <p>Donar : </p>
                     <p className="h3">{unverifiedorders.donar.name}</p>
-                    <button
+  </>
+                    ) : ( <>
+                    <p>Requester : </p>
+                    <p className="h3">{unverifiedorders.requester.name}</p>
+                    </>
+                    ) }
+                   
+
+
+{  unverifiedorders.order_type == "donate-order" ? ( <button
                       id="verify-btn"
-                      onClick={() => verifyorder(unverifiedorders._id)}
+                      onClick={() => verify_donate_order(unverifiedorders._id)}
                     >
                       Verify
-                    </button>
+                    </button>) : ( <button
+                      id="verify-btn"
+                      onClick={() => verify_request_order(unverifiedorders._id)}
+                    >
+                      Verify
+                    </button>) }
+                   
                   </div>
-                ))}
+
+
+                ))
+                
+                }
               </div>
             ) : (
               <div className="volunteer_btn">
                 <h3>You are not a Volunteer !</h3>
+               
                 <button className="vlbtn" onClick={() => becomevolunteer()}>
                   Become Volunteer
                 </button>

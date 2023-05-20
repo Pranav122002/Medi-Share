@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import "../css/Chat.css";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-import ChatContainer from "../components/ChatContainer";
-import Contacts from "../components/Contacts";
-import Welcome from "../components/Welcome";
+import ChatContainer from "./ChatContainer";
+import Contacts from "./Contacts";
+import Welcome from "./Welcome";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 

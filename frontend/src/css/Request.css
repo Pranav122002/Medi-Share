@@ -4,7 +4,7 @@
   font-family: "Nunito", sans-serif;
 }
 
-.donate {
+.request {
   background-repeat: no-repeat;
   margin-left: 0%;
   /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
@@ -14,23 +14,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
-.donateForm {
+.requestForm {
+  text-align: center;
   background-color: #fbfbfb;
   padding: 30px;
-  border-radius: 1px;
   border-radius: 1rem;
   width: 24rem;
   height: 23rem;
-  box-shadow: 2px 2px 9px rgb(191, 191, 191);
-  align-items: center;
-  text-align: center;
-}
-
-.donateForm .logo{
- text-align: center;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
 }
 
 .loginForm2 {
@@ -41,7 +34,7 @@
   border-radius: 1rem;
 }
 
-.donate input {
+.request input {
   height: 3.5rem;
   border-radius: 1.2rem;
   border: none;
@@ -52,75 +45,13 @@
 #request-btn {
   font-size: 1rem;
   margin-top: 3rem;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   border: none;
   background-color: #1773ea;
   border: none;
-
   color: white;
   font-weight: bold;
   padding: 5px 10px;
-
   cursor: pointer;
-}
 
-.allCards {
-  margin-top: 5rem;
-  height: max-content;
-  width: 90rem;
-  margin-left: 25rem;
-  position: absolute;
- 
-}
-.Cards {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.Card {
-
-  margin-left: 3rem;
-  align-items: center;
-  border: 2px;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 9px rgb(212, 212, 212);
-  text-align: center;
-}
-
-#title{
-  font-size: 1.5rem;
-  background-color: rgb(125, 212, 255);
-  margin: 1rem;
-  border-radius: 1rem;
-  color: white;
-  height: 2.5rem;
-  padding-top: 1rem;
-}
-
-#req_button{
-  background-image: linear-gradient(-180deg, rgb(4, 230, 0) 0%, #01a42ac1 100%);
-  border-radius: 1rem;
-  color: #FFFFFF;
-  font-size: 16px;
-  justify-content: center;
-  text-decoration: none;
-  width: 50%;
-  border: 0;
-  height: 3rem;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-#req_button:hover {
-  background-image: linear-gradient(-180deg, rgb(3, 198, 0) 0%, #00d736 100%);
-}
-
-@media (min-width: 768px) {
-  #req_button{
-    padding: 1rem 2rem;
-  }
 }
