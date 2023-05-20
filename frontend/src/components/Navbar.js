@@ -41,11 +41,11 @@ export default function Navbar({ login }) {
         <Link to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
         </Link>
-        <Link to="/chat">
-          <li style={{color: "black"}} className="navli">Chat</li>
+        <Link to="/chats">
+          <li style={{color: "black"}} className="navli">Chats</li>
         </Link>
-        <Link to="/disease-predict">
-          <li style={{color: "black"}} className="navli">Disease Prediction</li>
+        <Link to="/disease-predictions">
+          <li style={{color: "black"}} className="navli">Disease Predictions</li>
         </Link>
 
         <Link to="/signin"

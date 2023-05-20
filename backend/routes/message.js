@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const MESSAGE = require("../models/message");
-const GLOBALMESSAGE = require("../models/globalmessage");
+const COMMUNITYMESSAGE = require("../models/communitymessage");
 
 router.post("/addmsg", async (req, res, next) => {
   try {
@@ -40,7 +40,7 @@ router.post("/getmsg", async (req, res, next) => {
 router.post("/addmsgglobal", async (req, res, next) => {
   try {
     const { from,  message } = req.body;
-    const data = await GLOBALMESSAGE.create({
+    const data = await COMMUNITYMESSAGE.create({
       message: { text: message },
       users: [from],
       sender: from,
@@ -57,7 +57,7 @@ router.post("/addmsgglobal", async (req, res, next) => {
 router.post("/getmsgglobal", async (req, res, next) => {
   try {
     const { from } = req.body;
-    const messages = await GLOBALMESSAGE.find().sort({ updatedAt: 1 }).populate('sender');
+    const messages = await COMMUNITYMESSAGE.find().sort({ updatedAt: 1 }).populate('sender');
    
     const projectedMessages = messages.map((msg) => {
       const isFromSelf = msg.sender._id.toString() === from;

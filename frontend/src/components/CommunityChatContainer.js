@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ChatInput from "./ChatInput";
 import { v4 as uuidv4 } from "uuid";
 
-export default function ChatContainer({ currentChat, socket }) {
+export default function CommunityChatContainer({ currentChat, socket }) {
 
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();

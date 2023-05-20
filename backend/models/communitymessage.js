@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const globalmessageSchema = mongoose.Schema(
+const communitymessageSchema = mongoose.Schema(
   {
     message: {
       text: { type: String, required: true },
@@ -17,4 +17,4 @@ const globalmessageSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("GLOBALMESSAGE", globalmessageSchema);
+module.exports = mongoose.model("COMMUNITYMESSAGE", communitymessageSchema);

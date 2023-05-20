@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import "../css/Chat.css";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-import GlobalChatContainer from "./GlobalChatContainer";
+import CommunityChatContainer from "./CommunityChatContainer";
 
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 
-export default function GlobalChat() {
+export default function CommunityChat() {
   const navigate = useNavigate();
   const socket = useRef();
 
@@ -51,7 +51,7 @@ export default function GlobalChat() {
       <Hnavbar />
       <Navbar />
       <div className="container">
-        <GlobalChatContainer socket={socket} />
+        <CommunityChatContainer socket={socket} />
       </div>
     </>
   );
