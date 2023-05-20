@@ -8,6 +8,7 @@ import Orders from "./components/Orders";
 import Medicines from "./components/Medicines";
 import Volunteer from "./components/Volunteer";
 import Chat from "./components/Chat";
+import GlobalChat from "./components/GlobalChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
@@ -33,14 +34,13 @@ function App() {
           <Route path="/orders" element={<Orders />}></Route>
           <Route path="/medicines" element={<Medicines />}></Route>
           <Route path="/disease-predict" element={<DiseasePrediction />}></Route>
-          
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
-          <Route path="/AboutUs" element={<AboutUs/>}></Route>
+          <Route path="/global-chat" element={<GlobalChat />}></Route>
+          <Route path="/aboutus" element={<AboutUs/>}></Route>
           <Route path="/search-medicines" element={<Search />}></Route>
           <Route path="/annoucements" element={<Annoucement />}></Route>
-          
           <Route path="/nearby-hospitals" element={<Hospitals/>}></Route>
         </Routes>
         <ToastContainer theme="light" />

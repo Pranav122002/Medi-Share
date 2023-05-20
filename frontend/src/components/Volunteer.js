@@ -16,7 +16,7 @@ export default function Volunteer() {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
-
+ 
 
   useEffect(() => {
     fetchUnverifiedOrders();
@@ -111,6 +111,8 @@ export default function Volunteer() {
   };
 
   const becomevolunteer = () => {
+   
+    
     fetch(
       `http://localhost:5000/becomevolunteer/${
         JSON.parse(localStorage.getItem("user"))._id
@@ -120,6 +122,7 @@ export default function Volunteer() {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
+       
       }
     )
       .then((res) => res.json())
@@ -195,6 +198,7 @@ export default function Volunteer() {
             ) : (
               <div className="volunteer_btn">
                 <h3>You are not a Volunteer !</h3>
+               
                 <button className="vlbtn" onClick={() => becomevolunteer()}>
                   Become Volunteer
                 </button>
