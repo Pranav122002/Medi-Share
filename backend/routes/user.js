@@ -16,6 +16,8 @@ router.get("/user/:id", (req, res) => {
 });
 
 router.put("/becomevolunteer/:id", (req, res) => {
+  
+  
   USER.findByIdAndUpdate(
     req.params.id,
     { $set: { role: "volunteer" } },
