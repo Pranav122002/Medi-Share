@@ -14,8 +14,8 @@ import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
 import Annoucement from "./components/Annoucement";
-import Doctors from "./components/Doctors";
 import DiseasePredictions from "./components/DiseasePredictions";
+import {LandingPage} from "./components/LandingPage";
 
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
@@ -27,7 +27,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<SignIn />}></Route>
+          <Route path="/" element={<LandingPage  />}></Route>
+          <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>

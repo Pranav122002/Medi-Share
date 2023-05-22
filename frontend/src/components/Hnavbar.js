@@ -16,10 +16,10 @@ export const Hnavbar = () => {
         <img id="Nlogo" src="./logo1.png" alt="logo" />
         <h2>Medi-Share</h2>
       </div>
-        <Link className="aboutus" to="/aboutus">
-          <span id="About" style={{ cursor: "pointer" }}>About Us</span>
-        </Link>
-      </div>
+          <Link className="aboutus" to="/aboutus">
+            <span id="About" style={{ cursor: "pointer" }}>About Us</span>
+          </Link>
+        </div>
       </div>
     </>
   )
