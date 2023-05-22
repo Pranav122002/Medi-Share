@@ -17,7 +17,8 @@ require("./models/user");
 require("./models/message");
 require("./models/order");
 require("./models/annoucement");
-// require("./models/disease");
+require("./models/appointment");
+
 
 app.use(require("./routes/auth"));
 app.use(require("./routes/order"));
@@ -26,6 +27,7 @@ app.use(require("./routes/message"));
 app.use(require("./routes/medicine"));
 app.use(require("./routes/annoucement"));
 app.use(require("./routes/disease"));
+app.use(require("./routes/appointment"));
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {

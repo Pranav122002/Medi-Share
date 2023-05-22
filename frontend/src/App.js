@@ -14,6 +14,7 @@ import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
 import Annoucement from "./components/Annoucement";
+import Doctors from "./components/Doctors";
 import DiseasePredictions from "./components/DiseasePredictions";
 
 import SignUp from "./components/SignUp";
@@ -38,6 +39,7 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chats" element={<Chats />}></Route>
+          <Route path="/doctors" element={<Doctors />}></Route>
           <Route path="/personal-chat" element={<PersonalChat />}></Route>
           <Route path="/community-chat" element={<CommunityChat />}></Route>
           <Route path="/aboutus" element={<AboutUs/>}></Route>

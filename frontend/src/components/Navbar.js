@@ -38,6 +38,9 @@ export default function Navbar({ login }) {
         <Link to="/annoucements">
           <li style={{color: "black"}} className="navli">Annoucements</li>
         </Link>
+        <Link to="/doctors">
+          <li style={{color: "black"}} className="navli">Doctors</li>
+        </Link>
         <Link to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
         </Link>

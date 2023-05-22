@@ -33,6 +33,15 @@ router.put("/becomevolunteer/:id", (req, res) => {
     });
 });
 
-
+router.get("/all-doctors", (req, res) => {
+  USER.find({ role: "doctor" })
+    .then((doctors) => {
+      res.json(doctors);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Error fetching doctors" });
+    });
+});
 
 module.exports = router;
