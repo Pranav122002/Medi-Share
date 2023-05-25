@@ -5,25 +5,40 @@
 }
 
 .request {
-  background-repeat: no-repeat;
-  margin-left: 0%;
-  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
-  background-size: cover;
-  background-size: 100rem;
-  flex: 1;
+  height: 40rem;
+  margin: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  background: rgb(237, 255, 254);
+  background-image: url('../../public/request.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
 }
 
+#rcurve{
+  transform: rotate(90deg);
+  position: absolute;
+  left: 0;
+  width: 30vw;
+  opacity: 0.7;
+  filter:brightness(24);
+  filter: hue-rotate(30deg);
+  opacity: 0.6;
+  z-index: 0;
+}
 .requestForm {
   text-align: center;
   background-color: #fbfbfb;
+  box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-  border-radius: 1rem;
-  width: 24rem;
-  height: 23rem;
-  box-shadow: 2px 2px 9px rgb(220, 220, 220);
+  border-radius: 0.5rem;
+  width: 25vw;
+  height: 30rem;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 22rem;
 }
 
 .loginForm2 {
@@ -31,27 +46,83 @@
   padding: 20px;
   margin-top: 5px;
   border: 1px solid rgb(129, 121, 121);
-  border-radius: 1rem;
+  border-radius: 0.1rem;
 }
 
-.request input {
+.request .requestForm  input {
   height: 3.5rem;
-  border-radius: 1.2rem;
-  border: none;
-
+  border-radius: 0.5rem;
+  
+  width:70% ;
   margin-top: 0.8rem;
+  outline: none;
+  background: rgb(255, 255, 255);
+  color: #000000;
 }
 
-#request-btn {
-  font-size: 1rem;
+.suggestions{
+  
+  position: relative;
+  z-index: 24;
   margin-top: 3rem;
-  border-radius: 1.2rem;
+  margin-bottom: auto;
+  background: rgb(255, 255, 255);
+  width: 22vw;
+  min-width: 20rem;
+  border-radius: 0.5rem;
+}
+
+input{
   border: none;
-  background-color: #1773ea;
-  border: none;
-  color: white;
-  font-weight: bold;
-  padding: 5px 10px;
-  cursor: pointer;
+}
+
+input:focus {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #9ed2ccbb;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+@media screen and (max-width: 1000px){
+  #rcurve{
+    transform: rotate(90deg);
+    position: absolute;
+    margin-top: 10rem;
+    left: 0;
+    width: 50vw;
+    opacity: 0.7;
+    filter:brightness(24);
+    filter: hue-rotate(336deg);
+    opacity: 0.6;
+    z-index: 0;
+  }
+  .request {
+    height: 60rem;
+    width: 100%;
+    margin-top: 5rem;
+    display: block;
+    background: rgb(237, 255, 254);
+    background-image: url('../../public/request.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    padding-top: 0.5rem;
+  }
+  .requestForm {
+    text-align: center;
+    background-color: #fbfbfb;
+    box-shadow: 2px 2px 8px rgb(234, 234, 234);
+    border-radius: 0.5rem;
+    width: 75%;
+    height: 30rem;
+    margin: auto;
+    margin-top: 3rem;
+    min-width: 60%;
+  }
+  
 
 }

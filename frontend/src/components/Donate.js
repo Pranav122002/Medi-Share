@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import Medicines from "./Medicines"
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function Donate() {
 
@@ -13,12 +14,16 @@ export default function Donate() {
   const [quantity, setQuantity] = useState("");
   const [expiry_date, setExpiryDate] = useState("");
   const [location, setLocation] = useState("");
-  const [ sug , showsug] = useState(!false);
+  const [sug, showsug] = useState(!false);
 
   const handleShowsug = () => {
     showsug(false)
     console.log(sug)
   }
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+
+}, [])
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -90,7 +95,7 @@ export default function Donate() {
         <div className="donate_instru">
           <h1>Some Important Instructions for Donating</h1>
           <div className="donate_content">
-            <img src="./medicine.png" alt="" />
+            <img data-aos="fade-down-right" src="./medicine.png" alt="" />
             <div className="points">
               <p>1.The medicine to be donated should be valid and not expired or fabricated.</p>
               <p>2.The medicine name , expiry date should be visible.</p>
@@ -104,12 +109,12 @@ export default function Donate() {
 
 
 
-          <div className="donateForm">
+          <div data-aos="zoom-in" className="donateForm">
             <div className="logo">
               <h1>Donate Medicine</h1>
             </div>
             <div>
-              <input 
+              <input
                 onClick={handleShowsug}
                 type="text"
                 name="medicine_name"
@@ -161,8 +166,8 @@ export default function Donate() {
             <button className="button-53" onClick={() => { postOrderData(); }} value="Donate" type="submit" role="button">Donate</button>
 
           </div>
-          <div className={`suggestions ${sug && 'active'}`}>
-          
+          <div  className={`suggestions ${sug && 'active'}`}  >
+
             <ul>
               <li style={{ color: "black" }}>
                 <h2>Suggestions</h2>

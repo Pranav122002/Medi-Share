@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Home.css"
 import AOS from 'aos'
-import 'aos/dist/aos.css' 
+import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 
 export default function Home() {
@@ -12,12 +12,13 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 2000 });
 
-}, [])
+  }, [])
 
-  return (
+  return (<>
+    <Hnavbar />
     <div>
 
-      <Hnavbar />
+
       <div className="bodyy">
         <Navbar />
         <div className='Lcontent'>
@@ -43,37 +44,9 @@ export default function Home() {
           </div>
 
         </div>
-        <div className="images">
-
-          <Link to="/donate">
-            <div className="image">
-              <img src="./donate.png" alt="" />
-
-              <h1>DONATE</h1>
-            </div>
-          </Link>
-
-
-          <Link to="/request">
-            <div className="image">
-              <h2>REQUEST</h2>
-              <img src="./receive.png" alt="" />
-            </div>
-          </Link>
-
-
-          <Link to="/volunteer">
-            <div className="image">
-              <img src="./vollunteer.png" alt="" />
-              <h1>VOLUNTEER</h1>
-            </div>
-          </Link>
-
-
-
-        </div>
+       
       </div>
     </div>
 
-  );
+  </>);
 }

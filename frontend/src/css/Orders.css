@@ -41,15 +41,15 @@
   border-radius: 1rem;
 }
 
-.donate input {
+/* .donate input {
   height: 3.5rem;
   border-radius: 1.2rem;
   border: none;
 
   margin-top: 0.8rem;
-}
+} */
 
-#request-btn {
+/* #request-btn {
   font-size: 1rem;
   margin-top: 3rem;
   border-radius: 1.5rem;
@@ -62,41 +62,63 @@
   padding: 5px 10px;
 
   cursor: pointer;
-}
+} */
 
 .allCards {
-  margin-top: 5rem;
+  width: 90vw;
+  margin: auto;
   height: max-content;
-  width: 90rem;
-  margin-left: 25rem;
-  position: absolute;
- 
+  background: rgb(241, 251, 255);
+  
+
 }
-.Cards {
-  position: relative;
+.OCards {
+  width: 85vw;
+  margin: auto;
+}
+
+.OCards .card {
+  max-width: 100%;
+  width: 100%;
+  border: none;
+  background: white;
+}
+
+.OCards .card-body{
+  width: 100vw;
+  outline: none;
+  border: none;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 2rem;
+  
+  
+  
+}
+.OCards .card-text{
+  width: 90vw;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  
 }
 
-.Card {
+.OCards p{
+  width: 15vw;
+} 
 
-  margin-left: 3rem;
-  align-items: center;
-  border: 2px;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 9px rgb(212, 212, 212);
-  text-align: center;
-}
+
 
 #title{
-  font-size: 1.5rem;
+  
+  font-size: 1.1rem;
   background-color: rgb(125, 212, 255);
   margin: 1rem;
   border-radius: 1rem;
   color: white;
   height: 2.5rem;
   padding-top: 1rem;
+ 
+  width: 14vw;
 }
 
 #req_button{
@@ -106,13 +128,14 @@
   font-size: 16px;
   justify-content: center;
   text-decoration: none;
-  width: 50%;
+  width: 10%;
   border: 0;
   height: 3rem;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  
 }
 
 #req_button:hover {
@@ -132,8 +155,15 @@
 
 }
 
+
+
 @media (min-width: 768px) {
   #req_button{
     padding: 1rem 2rem;
   }
 }
+
+
+
+
+

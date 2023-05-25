@@ -57,6 +57,7 @@ export default function Navbar({ login }) {
         </Link>
         <Link to="/doctors">
           <li style={{color: "black"}} className="navli">Doctors</li>
+          <img className="navimg" id="mega" src="./doctor2.png" alt="" />
         </Link>
         <Link to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>

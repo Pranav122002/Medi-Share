@@ -84,16 +84,7 @@
   
 }
 
-.donate .donateForm input {
-  height: 3.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  width:70% ;
-  margin-top: 0.8rem;
-  outline: none;
-  background: rgb(255, 255, 255);
-  color: #000000;
-}
+
 
 #donate-btn {
   font-size: 1rem;
@@ -204,6 +195,28 @@
   
  
 
+}
+input{
+  
+}
+
+.donate .donateForm input:focus {
+
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #9ed2ccbb;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.donate .donateForm input {
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  width:70% ;
+  margin-top: 0.8rem;
+  background: rgb(255, 255, 255);
+  color: #000000;
 }
 
 @keyframes pAnimation {
@@ -348,7 +361,7 @@
   margin-bottom: 3rem;
   min-height: 3rem;
 }
-.suggestions.false h2{
+.suggestions.false h3:focus{
     
 }
 

@@ -15,7 +15,7 @@ export default function Orders() {
   const [order_id, setOrderId] = useState("");
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -24,10 +24,11 @@ export default function Orders() {
   function fetchOrders() {
     fetch("http://localhost:5000/allorders")
       .then((response) => response.json())
-      .then((data) => {setOrders(data);
+      .then((data) => {
+        setOrders(data);
         setIsLoading(false);
       }
-        );
+      );
   }
 
   const putDonateData = (order_id) => {
@@ -74,11 +75,10 @@ export default function Orders() {
                     navigate("/profile");
                     notifyB(data);
                   }
-                 
-                   else 
-                    {
+
+                  else {
                     notifyA(data);
-                  } 
+                  }
                 }
                 console.log(data);
               });
@@ -133,8 +133,8 @@ export default function Orders() {
                     data === "Medicine is expired..."
                   ) {
                     notifyA(data);
-                  } 
-                   else if (
+                  }
+                  else if (
                     data === "Order is not verfied by Volunteer yet..."
                   ) {
                     notifyA(data);
@@ -151,65 +151,78 @@ export default function Orders() {
 
   const renderCard = (card, index) => {
 
-    
+
     return (
       <>
-     
-      {card.order_type == "donate-order" ? (
-        <Card className="Card" style={{ width: '18rem', height: '19rem' }} key={index}>
-        <Card.Body>
-          <Card.Title id="title">{card.medicine_name}</Card.Title>
-          <Card.Text id="details">
-            <p>Expiry Date : {card.expiry_date}<br /></p>
-            <p> Quantity : {card.quantity}<br /></p>
-            <p> Location : {card.location}<br /></p>
-             <p> Donor : {card.donar.name}<br /></p> 
-            <Button id="req_button" onClick={() => putRequestData(card._id)}>Request</Button>
 
-          </Card.Text>
+        {card.order_type == "donate-order" ? (
 
-        </Card.Body>
-    
-      </Card>
-              ) : (
-                <Card className="Card" style={{ width: '18rem', height: '19rem' }} key={index}>
-                <Card.Body>
-                  <Card.Title id="title">{card.medicine_name}</Card.Title>
-                  <Card.Text id="details">
-                    <p>Expiry Date : {card.expiry_date}<br /></p>
-                    <p> Quantity : {card.quantity}<br /></p>
-                    <p> Location : {card.location}<br /></p>
-                    <p> Requester : {card.requester.name}<br /></p>
-                    <Button id="req_button" onClick={() => putDonateData(card._id)}>Donate</Button>
-        
-                  </Card.Text>
-        
-                </Card.Body>
+          <>
+          
+          
+          <Card className="Card" key={index}>
+            <Card.Body>
+              <Card.Title id="title">{card.medicine_name}</Card.Title>
+              <Card.Text id="details">
+                <p>Expiry Date : {card.expiry_date}<br /></p>
+                <p> Quantity : {card.quantity}<br /></p>
+                <p> Location : {card.location}<br /></p>
+                <p> Donor : {card.donar.name}<br /></p>
+                <Button id="req_button" onClick={() => putRequestData(card._id)}>Request</Button>
+
+              </Card.Text>
+
+            </Card.Body>
+
+          </Card>
+          </>
+        ) : (
+          <div id="OCard">
             
-              </Card> )}
-              </>
-      
+          <Card key={index}>
+            <Card.Body className="Card_body">
+              <Card.Title id="title">{card.medicine_name}</Card.Title>
+              <Card.Text id="details">
+                <p>Expiry Date : {card.expiry_date}<br /></p>
+                <p> Quantity : {card.quantity}<br /></p>
+                <p> Location : {card.location}<br /></p>
+                <p> Requester : {card.requester.name}<br /></p>
+                <Button id="req_button" onClick={() => putDonateData(card._id)}>Donate</Button>
+
+              </Card.Text>
+
+            </Card.Body>
+
+          </Card>
+          </div>)}
+      </>
+
     )
   }
-  return (
+  return (<>
+    <Hnavbar />
     <div>
-      <Hnavbar />
-      <div className="bodyy">
-      <Navbar />
-      {isLoading ? (
-        <div className="loadingcont">
 
-          <h1 className="loada">Loading...</h1>
-        </div>
-              ) : (
-                <div className="allCards">
-        <div className="Cards">
-          {orders.map(renderCard)}
-        </div>
-      </div>
-              )}
-      
-      {/* <ul>
+      <div className="bodyy">
+        <Navbar />
+        {isLoading ? (
+          <div className="loadingcont">
+
+            <h1 className="loada">Loading...</h1>
+          </div>
+        ) : (<>
+          <h1>Pending Orders</h1>
+          <div className="allCards">
+            
+            <div className="OCards">
+              
+              {orders.map(renderCard)}
+            </div>
+          </div>
+          </>
+        )}
+
+        {/* <ul>
         {orders.map((orders) => (
           <li key={orders.medicine_name}>
             <p>medicine_name : </p> {orders.medicine_name}
@@ -222,7 +235,8 @@ export default function Orders() {
           </li>
         ))}
       </ul> */}
+      </div>
     </div>
-    </div>
-  );
+
+  </>);
 }
