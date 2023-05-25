@@ -33,40 +33,40 @@ export default function Search() {
     <div>
       <Hnavbar />
       <div className="bodyy">
-      <Navbar />
+        <Navbar />
 
-      <div className="searchcolumn">
-        <div className="searchbox">
-          <input
-            className="searchinput"
-            type="text"
-            placeholder="Search medicines"
-            value={search}
-            onChange={(e) => fetchMedicines(e.target.value)}
-          />
+        <div className="searchcolumn">
+          <div className="searchbox">
+            <input
+              className="searchinput"
+              type="text"
+              placeholder="Search medicines"
+              value={search}
+              onChange={(e) => fetchMedicines(e.target.value)}
+            />
 
-          <ul>
-          <li style={{backgroundColor:"white" , color:"black"}}>
-          <h3>Medicine</h3>
-          <h3 className="p1">Description</h3>
-          <h3 className="p2">Disease</h3>
-        </li>
-            {searchResult.map((item) => {
-              return (
-                  
-                <li className="link">
-                  <h3 style={{color: "black"}}>
+            <ul>
+              <li style={{ backgroundColor: "white", color: "black" }}>
+                <h3>Medicine</h3>
+                <h3 className="p1">Description</h3>
+                <h3 className="p2">Disease</h3>
+              </li>
+              {searchResult.map((item) => {
+                return (
 
-                  {item.medicine_name}
-                  </h3>
-                  <p className="p1">{item.description}</p>
-                  <p className="p2" style={{color: "blue"}}>{item.disease}</p>
-                 
-                </li>
-              );
-            })}
-          </ul>
-   </div>
+                  <li className="link">
+                    <h3 style={{ color: "black" }}>
+
+                      {item.medicine_name}
+                    </h3>
+                    <p className="p1">{item.description}</p>
+                    <p className="p2" style={{ color: "blue" }}>{item.disease}</p>
+
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
         </div>
       </div>
