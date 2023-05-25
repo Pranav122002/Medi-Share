@@ -158,42 +158,42 @@ export default function Orders() {
         {card.order_type == "donate-order" ? (
 
           <>
-          
-          
-          <Card className="Card" key={index}>
-            <Card.Body>
-              <Card.Title id="title">{card.medicine_name}</Card.Title>
-              <Card.Text id="details">
-                <p>Expiry Date : {card.expiry_date}<br /></p>
-                <p> Quantity : {card.quantity}<br /></p>
-                <p> Location : {card.location}<br /></p>
-                <p> Donor : {card.donar.name}<br /></p>
-                <Button id="req_button" onClick={() => putRequestData(card._id)}>Request</Button>
 
-              </Card.Text>
 
-            </Card.Body>
+            <Card className="Card" key={index}>
+              <Card.Body>
+                <Card.Title id="title"><img src="pill2.png" alt="" />{card.medicine_name}</Card.Title>
+                <Card.Text id="details">
+                  <p><div className="content-details">Expiry:-</div>{card.expiry_date}<br /></p>
+                  <p><div className="content-details">Quntity:-</div>{card.quantity}<br /></p>
+                  <p><div className="content-details">Location:-</div>{card.location}<br /></p>
+                  <p><div className="content-details">Donor:-</div>{card.donar.name}<br /></p>
+                  <Button className="button-53" onClick={() => putRequestData(card._id)}>Request</Button>
+                  
+                </Card.Text>
 
-          </Card>
+              </Card.Body>
+
+            </Card>
           </>
         ) : (
           <div id="OCard">
-            
-          <Card key={index}>
-            <Card.Body className="Card_body">
-              <Card.Title id="title">{card.medicine_name}</Card.Title>
-              <Card.Text id="details">
-                <p>Expiry Date : {card.expiry_date}<br /></p>
-                <p> Quantity : {card.quantity}<br /></p>
-                <p> Location : {card.location}<br /></p>
-                <p> Requester : {card.requester.name}<br /></p>
-                <Button id="req_button" onClick={() => putDonateData(card._id)}>Donate</Button>
 
-              </Card.Text>
+            <Card key={index}>
+              <Card.Body className="Card_body">
+                <Card.Title id="title"><img src="pill2.png" alt="" />{card.medicine_name}</Card.Title>
+                <Card.Text id="details">
+                  <p><div className="content-details">Expiry:-</div>{card.expiry_date}<br /></p>
+                  <p><div className="content-details">Quntity:-</div>{card.quantity}<br /></p>
+                  <p><div className="content-details">Location:-</div>{card.location}<br /></p>
+                  <p><div className="content-details">Request By:-</div>{card.requester.name}<br /></p>
+                  <Button  className="button-53" onClick={() => putDonateData(card._id)}>Donate</Button>
 
-            </Card.Body>
+                </Card.Text>
 
-          </Card>
+              </Card.Body>
+
+            </Card>
           </div>)}
       </>
 
@@ -213,13 +213,23 @@ export default function Orders() {
         ) : (<>
           <h1>Pending Orders</h1>
           <div className="allCards">
-            
+
             <div className="OCards">
-              
+              <div className="headd">
+              <div className="heading">
+                <img id="mobpill" src="medicine.png" alt="" />
+                <p className="headp"> <img src="medicine.png" alt=""  /> Medicine Name</p>
+                <p className="headp">Expiry Date</p>
+                <p className="headp">Quantity</p>
+                <p className="headp">Location</p>
+                <p className="headp">Donor</p>
+                <p className="headp" id="action">Action</p>
+                </div>
+              </div>
               {orders.map(renderCard)}
             </div>
           </div>
-          </>
+        </>
         )}
 
         {/* <ul>
