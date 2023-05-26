@@ -37,8 +37,7 @@ export default function Profile() {
   }, []);
 
   fetch(
-    `http://localhost:5000/user/${
-      JSON.parse(localStorage.getItem("user"))._id
+    `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
     }`,
     {
       headers: {
@@ -58,8 +57,7 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `http://localhost:5000/mydonatedorders/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/mydonatedorders/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -71,8 +69,7 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `http://localhost:5000/myrequestedorders/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/myrequestedorders/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -84,8 +81,7 @@ export default function Profile() {
 
   function myAppointments() {
     fetch(
-      `http://localhost:5000/patient-appointments/${
-        JSON.parse(localStorage.getItem("user")).name
+      `http://localhost:5000/patient-appointments/${JSON.parse(localStorage.getItem("user")).name
       }`
     )
       .then((response) => response.json())
@@ -97,34 +93,40 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `http://localhost:5000/doctor-appointments/${
-        JSON.parse(localStorage.getItem("user")).name
+      `http://localhost:5000/doctor-appointments/${JSON.parse(localStorage.getItem("user")).name
       }`
     )
       .then((response) => response.json())
       .then((data) => {
         console.log("doctor appinmts = ", data);
-        
+
         setDoctorAppointments(data);
         setIsLoading(false);
       });
   }
 
   return (
-    <div>
+    <div className="profilediv">
       <Hnavbar />
       <div className="bodyy">
         <Navbar />
+        <h1>PROFILE</h1>
         <div className="contentt">
-          <h1>
-            Welcome {user_name} !!!{" "}
-            <span id="credits">Credits : {credits} </span>
-          </h1>
+          <div className="userdet">
+            <img src="./profile-pic.png" alt="" />
 
-          <div>
-            <h2>My Donated Orders</h2>
+            <h1>
+              {" "} {user_name}{" "} <br></br>
+
+            </h1>
+            <span id="credits">Credits : {credits} <br />
+              <img src="./credits.png" alt="" />
+            </span>
+          </div>
+          <div className="donatedorders">
+            <h2>My Donated Orders <img src="./donatemed.png" alt="" /></h2>
             <ul className="proul">
-              <li style={{ backgroundColor: "white", color: "black" }}>
+              <li className="profli">
                 <h3 className="pm">Name</h3>
                 <h3 className="p1">Expiry Date</h3>
                 <h3 className="p2">Quantity</h3>
@@ -135,7 +137,7 @@ export default function Profile() {
               ) : (
                 <div className="procont">
                   {donateorders.map((donateorders) => (
-                    <li key={donateorders.medicine_name}>
+                    <li className="proco" key={donateorders.medicine_name}>
                       <p className="pm">{donateorders.medicine_name}</p>
                       <p className="p1">{donateorders.expiry_date} </p>
                       <p className="p2">{donateorders.quantity}</p>
@@ -147,11 +149,11 @@ export default function Profile() {
             </ul>
           </div>
 
-          <div>
-            <hr id="lin" />
-            <h2>My Requested Orders</h2>
+          <div className="requestorders">
+            
+            <h2>My Requested Orders <img src="./requestmed.png" alt="" /></h2>
             <ul className="proul">
-              <li style={{ backgroundColor: "white", color: "black" }}>
+              <li className="profli" style={{ backgroundColor: "white", color: "black" }}>
                 <h3 className="pm">Name</h3>
                 <h3 className="p1">Expiry Date</h3>
                 <h3 className="p2">Quantity</h3>
@@ -162,7 +164,7 @@ export default function Profile() {
               ) : (
                 <div className="procont">
                   {requestorders.map((requestorders) => (
-                    <li key={requestorders.medicine_name}>
+                    <li  className="proco"  key={requestorders.medicine_name}>
                       <p className="pm"> {requestorders.medicine_name}</p>
                       <p className="p1"> {requestorders.expiry_date}</p>
                       <p className="p2"> {requestorders.quantity}</p>
@@ -176,11 +178,11 @@ export default function Profile() {
 
           {isdoctor ? (
 
-            <div>
-              <hr id="lin" />
-              <h2>My Appointments</h2>
+            <div className="appointm">
+              
+              <h2>My Appointments <img src="./appointment.png" alt="" /> </h2>
               <ul className="proul">
-                <li style={{ backgroundColor: "white", color: "black" }}>
+                <li className="profli" >
                   <h3 className="pm">Doctor Name</h3>
                   <h3 className="p1">Patient Name</h3>
                   <h3 className="p2">Date</h3>
@@ -190,7 +192,7 @@ export default function Profile() {
                 ) : (
                   <div className="procont">
                     {doctorappointments.map((doctorappointments) => (
-                      <li key={doctorappointments._id}>
+                      <li className="proco" key={doctorappointments._id}>
                         <p className="pm"> {doctorappointments.doctor_name}</p>
                         <p className="p1"> {doctorappointments.patient_name}</p>
                         <p className="p2"> {doctorappointments.appointment_date}</p>
@@ -203,11 +205,11 @@ export default function Profile() {
 
           ) : (
 
-            <div>
-              <hr id="lin" />
-              <h2>My Appointments</h2>
+            <div  className="myappoint">
+              
+              <h2>My Appointments <img src="./appointment.png" alt="" /></h2>
               <ul className="proul">
-                <li style={{ backgroundColor: "white", color: "black" }}>
+                <li className="profli" >
                   <h3 className="pm">Patient Name</h3>
                   <h3 className="p1">Doctor Name</h3>
                   <h3 className="p2">Date</h3>
@@ -217,7 +219,7 @@ export default function Profile() {
                 ) : (
                   <div className="procont">
                     {myappointments.map((myappointments) => (
-                      <li key={myappointments._id}>
+                      <li className="proco" key={myappointments._id}>
                         <p className="pm"> {myappointments.patient_name}</p>
                         <p className="p1"> {myappointments.doctor_name}</p>
                         <p className="p2"> {myappointments.appointment_date}</p>
