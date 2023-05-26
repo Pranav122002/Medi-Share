@@ -3,36 +3,92 @@
 * {
   font-family: "Nunito", sans-serif;
 }
-.anc{
-  margin-top: 7rem;
-  width: 80%;
+
+.announce .bodyy {
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background: #f1fffd;
+  padding: 1px;
+
 }
 
-.anc li{
+.anc {
+
+  border-radius: 1px;
+  margin: auto;
+  width: 88vw;
+  background: white;
+  min-height: 38vw;
+  height: max-content;
+  margin-top: 0rem;
+  background-image: url(../../public/list.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 35rem;
+  padding: 1px;
+  margin-top: 2rem;
+}
+
+.anc .ancinfo .ancflex {}
+
+.anc .ancinfo {
+  height: max-content;
+}
+
+.anc .ancinfo img {
+  width: 5rem;
+}
+
+.anc .ancinfo p {
+  font-size: 1.2vw;
+  text-align: left;
+  margin-left: 3rem;
+  width: 60%;
+}
+
+.announce .anc li {
+  height: 2rem;
+  list-style: none;
+  margin-top: 0rem;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 2rem;
+  border: 1px;
   text-align: center;
   height: min-content;
   width: 90%;
   align-items: center;
+  box-shadow: 2px 2px 8px #cdcdcd;
+  background: white;
+
 }
 
-.anc li .p1{
+.announce .anc li:hover {
+  width: 91%;
+  box-shadow: 2px 2px 11px #90c6b8;
+}
+
+.anc li .p1 {
   margin-left: 4rem;
   width: 100%;
   text-align: center;
 }
 
-.anc li .p2{
+.anc li .p2 {
   text-align: center;
   margin-right: 2rem;
   width: 100%;
- 
+
 }
 
-.anc li .p3{
+.anc li .p3 {
   text-align: center;
   margin-right: 2rem;
   width: 100%;
- 
+
 }
 
 
@@ -47,22 +103,45 @@
   align-items: center;
 } */
 
-.Form {
-  background-color: #fbfbfb;
+.AForm {
+  margin-top: 2rem;
+  background-color: #f9f9f9;
   padding: 30px;
-  border: 1px solid rgb(129, 121, 121);
-  border-radius: 1px;
-  border-radius: 1rem;
-  width: 24rem;
-  height: 23rem;
-  box-shadow: 2px 2px 8px rgb(129, 121, 121);
-}
-.Formcont {
-display: flex;
-justify-content: center;
-margin-bottom: 100px;
+  width: 30vw;
+  height: max-content;
+  box-shadow: 2px 2px 8px rgb(213, 213, 213);
+  margin-left: 10%;
 }
 
+.Formcont {
+
+  display: flex;
+  justify-content: flex-start;
+  
+}
+.AForm #title{
+    width: 70%;
+    padding: auto;
+    height: 2rem;
+    text-align: center;
+}
+
+.AForm input{
+  font-weight: 700;
+  text-align: center;
+  width: 70%;
+  min-height: 2rem;
+  margin-top: 1rem;
+}
+
+.AForm input:hover{
+  font-weight: 700;
+  text-align: center;
+  width: 75%;
+  box-shadow: 2px 2px 8px rgb(192, 255, 249);
+  min-height: 2rem;
+  margin-top: 1rem;
+}
 /* 
 .donate input {
   height: 3.5rem;
@@ -85,4 +164,157 @@ margin-bottom: 100px;
   padding: 5px 10px;
 
   cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .announce .bodyy {
+    margin: auto;
+    width: 98vw;
+    height: 100vh;
+    background: #f1fffd;
+    padding: 1px;
+  
+  }
+  .anc .ancinfo {
+    height: max-content;
+  }
+
+  .anc .ancinfo img {
+    width: 2rem;
+  }
+
+  .anc .ancinfo p {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-left: 3rem;
+    width: 60%;
+    font-weight: 700;
+  }
+
+  .anc {
+
+    border-radius: 1px;
+    margin: auto;
+    width: 95%;
+    background: white;
+    min-height: 38vw;
+    height: max-content;
+    margin-top: 0rem;
+    background-image: url(../../public/list.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 15rem;
+    padding: 1px;
+    margin-top: 2rem;
+    padding-right: 0px;
+  }
+
+  .announce .anc ul{
+    margin: 0;
+    margin-left: 0;
+    padding: 0;
+    width: 95%;
+  }
+
+  .announce .anc li {
+  height: 2rem;
+  margin: auto;
+  list-style: none;
+  margin-top: 0rem;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  display:block;
+  padding-left: 0rem;
+  border: 0px;
+  text-align: center;
+  height: min-content;
+  width: 100%;
+  align-items: center;
+  box-shadow: 2px 2px 8px #cdcdcd;
+  background: white;
+
+}
+.anc li .p1 {
+  margin-left: 0rem;
+  width: 100%;
+  text-align: center;
+}
+
+.anc li .p2 {
+  text-align: center;
+  margin-right: 0rem;
+  width: 100%;
+
+}
+
+.anc li .p3 {
+  text-align: center;
+  margin-right: 0rem;
+  width: 100%;
+
+}
+
+
+
+.AForm {
+  
+  background-color: #f9f9f9;
+  padding: 30px;
+  width: 80%;
+  height: max-content;
+  box-shadow: 2px 2px 8px rgb(213, 213, 213);
+  margin-left: 0%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Formcont {
+
+  display: flex;
+  justify-content:center;
+  
+}
+.AForm #title{
+    width: 90%;
+    padding: auto;
+    height: 2rem;
+    text-align: center;
+}
+
+.AForm input{
+  font-weight: 700;
+  text-align: center;
+  width: 90%;
+  min-height: 2rem;
+  margin-top: 1rem;
+}
+
+.AForm input:hover{
+  font-weight: 700;
+  text-align: center;
+  width: 95%;
+  box-shadow: 2px 2px 8px rgb(192, 255, 249);
+  min-height: 2rem;
+  margin-top: 1rem;
+}
+.AForm .button-53{
+  width: 90%;
+}
+
+#pp1{
+  display: none;
+
+}
+#pp2{
+  display: none;
+
+}
+#pp3{
+  display: none;
+}
+#pp4{
+  display: none;
+}
 }

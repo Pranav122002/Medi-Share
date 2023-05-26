@@ -119,24 +119,33 @@
 }
 
 .OCards .card {
-  margin-top: 1rem;
+  margin:0 ;
   max-width: 100%;
   width: 100%;
   border: none;
   background: white;
-  border-radius: 1rem;
-  box-shadow: 1px 1px 8px #bebebe;
+  box-shadow: 1px 1px 8px #d0d0d0;
   
 }
 
 .OCards .card-body{
-  width: 100vw;
+  width: 100%;
   outline: none;
   border: none;
   display: flex;
 
   
 }
+.OCards .card-body:hover {
+ 
+  box-shadow: 6px 2px 11px #a5a5a5;
+  
+}
+.OCards .card-body:hover {
+  width: 100%;
+  
+}
+
 .OCards .card-text{
   width: 90vw;
   outline: none;

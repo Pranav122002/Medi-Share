@@ -14,10 +14,10 @@ export default function Annoucement() {
   const [venue, setVenue] = useState("");
   const [description, setDescription] = useState("");
 
-    // Toast functions
-    const notifyA = (msg) => toast.error(msg);
-    const notifyB = (msg) => toast.success(msg);
-    
+  // Toast functions
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
+
   useEffect(() => {
     fetchAnnoucements();
   }, []);
@@ -35,28 +35,27 @@ export default function Annoucement() {
 
   function fetchUser() {
 
-      fetch(
-        `http://localhost:5000/user/${
-          JSON.parse(localStorage.getItem("user"))._id
-        }`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
-          },
+    fetch(
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+      }`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.role === "doctor") {
+          setIsDoctor(true);
+        } else {
+          setIsDoctor(false);
         }
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.role === "doctor") {
-            setIsDoctor(true);
-          } else {
-            setIsDoctor(false);
-          }
-         
-        });
-    
-  
-     
+
+      });
+
+
+
   }
 
   const postAnnouncementData = () => {
@@ -86,103 +85,105 @@ export default function Annoucement() {
 
 
   return (
-    <div>
+    <div className="announce">
       <Hnavbar />
       <div className="bodyy">
-      <Navbar />
-      <div className="anc">
-      <div>
-      {isDoctor
-        ?   
-         <div className="Formcont"><div className="Form">
-        <div className="logo">
-          <h1>Add Annoucement</h1>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={title}
-            placeholder="Title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="date"
-            id="date"
-            placeholder="Date"
-            value={date}
-            onChange={(e) => {
-              setDate(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="venue"
-            id="venue"
-            placeholder="Venue"
-            value={venue}
-            onChange={(e) => {
-              setVenue(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          />
-        </div>
-        <input
-          type="submit"
-          id="ancmt-btn"
-          onClick={() => {
-            postAnnouncementData();
-          }}
-          value="Add"
-        />
-      </div> </div>  : <div></div> 
-      }
-    </div>
+        <Navbar />
+
+        <div className="anc">
+          <div className="ancinfo">
+            <h1>Announcements</h1>
+            <div className="ancflex">
+
+              <p>All the camps are carried out by volunteer and certified doctors who are collabrated with us.</p>
+              <img src="./megaphone.png" alt="" />
+            </div>
+          </div>
+          <div>
+            {isDoctor
+              ?
+              <div className="Formcont"><div className="AForm">
+                <div className="logo">
+                  <h1>Add Annoucement</h1>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    value={title}
+                    placeholder="Title"
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                    }}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="date"
+                    id="date"
+                    placeholder="Date"
+                    value={date}
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                    }}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="venue"
+                    id="venue"
+                    placeholder="Venue"
+                    value={venue}
+                    onChange={(e) => {
+                      setVenue(e.target.value);
+                    }}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                    }}
+                  />
+                </div>
+                <button className="button-53" value="Add" type="submit" onClick={() => { postAnnouncementData(); }}>Add Event</button>
+              </div> </div> : <div></div>
+            }
+          </div>
 
 
+        
+          <ul>
+            <li style={{ backgroundColor: "white", color: "black" }}>
+              <h3 id="pp4" > Name</h3>
+              <h3 id="pp1" className="p1">Date</h3>
+              <h3 id="pp3"  className="p2">Venue</h3>
+              <h3 id="pp2"  className="p3">Description</h3>
+            </li>
+            {annoucements.map((annoucements) => (
+              <li key={annoucements.title}>
+                <h3 >{annoucements.title}</h3>
+                <h3 className="p1">
+                  {annoucements.date}
+                </h3 >
+                <h3 className="p2">
+                  {annoucements.venue}
+                </h3>
+                <p className="p3">{annoucements.description} </p>
 
-      <ul>
-      <li style={{backgroundColor:"white" , color:"black"}}>
-          <h3>Name</h3>
-          <h3 className="p1">Date</h3>
-          <h3 className="p2">Venue</h3>
-          <h3 className="p3">Description</h3>
-        </li> 
-        {annoucements.map((annoucements) => (
-          <li key={annoucements.title}>
-            <h3 style={{color: "black"}} >{annoucements.title}</h3> 
-            <h3 style={{color: "blue"}} className="p1">
-            {annoucements.date}  
-            </h3 >
-            <h3 className="p2">
-            {annoucements.venue} 
-            </h3>
-            <p className="p3">{annoucements.description} </p>
-          
-          </li>
-        ))}
-      </ul>
-    </div>
-    </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
