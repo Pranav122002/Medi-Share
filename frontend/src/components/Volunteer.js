@@ -131,7 +131,7 @@ export default function Volunteer() {
   };
 
   return (
-    <div>
+    <div className="vol">
       <Hnavbar />
       <div className="bodyy">
         <Navbar />
