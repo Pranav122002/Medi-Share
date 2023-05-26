@@ -16,12 +16,16 @@ import Search from "./components/Search";
 import Doctors from "./components/Doctors";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
+import Braintumor from "./components/brainTumor";
+import HeartDisease from "./components/heartDisease";
+import Pneumonia from "./components/Pneumonia";
 import {LandingPage} from "./components/LandingPage";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AboutUs } from "./components/AboutUs";
+
 function App() {
   return (
     <BrowserRouter>
@@ -47,6 +51,9 @@ function App() {
           <Route path="/search-medicines" element={<Search />}></Route>
           <Route path="/annoucements" element={<Annoucement />}></Route>
           <Route path="/nearby-hospitals" element={<Hospitals/>}></Route>
+          <Route path="/brainTumor" element={<Braintumor/>}></Route>
+          <Route path="/Pneumonia" element={<Pneumonia/>}></Route>
+          <Route path="/heartDisease" element={<HeartDisease/>}></Route>
         </Routes>
         <ToastContainer theme="light" />
       </div>
