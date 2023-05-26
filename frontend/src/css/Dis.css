@@ -1,6 +1,127 @@
-.dis{
-    position: absolute;
-  top: 30%;
-  left: 30%;
-  width: 30%;
+.dis {
+  width: 100vw;
+  margin: auto;
+  height: max-content;
+  padding-bottom: 2rem;
+  background: rgb(255, 247, 247);
 }
+
+.dise {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-evenly;
+
+}
+.dise img{
+  margin-top:3rem;
+  width: 8vw;
+}
+
+.dise a {
+  width: 15vw;
+  background: white;
+  margin-top: 2rem;
+  text-align: center;
+  font-style: none;
+  text-decoration: none;
+  height: max-content;
+  min-height: 18rem;
+  box-shadow: 2px 2px 8px rgb(236, 236, 236);
+}
+
+.dise a:hover {
+  width: 16vw;
+  background: white;
+  margin-top: 2rem;
+  text-align: center;
+  font-style: none;
+  font-size: 1.05rem;
+  text-decoration: none;
+  height: max-content;
+  min-height: 18rem;
+  box-shadow: 2px 2px 8px rgb(218, 218, 218);
+}
+
+
+.dise .Cnavli {
+  font-style: none;
+  text-decoration: none;
+  color: black;
+  display: block;
+  text-align: center;
+  width: 15vw;
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  height: max-content;
+
+  padding: 0;
+}
+
+.Cnavli h2 {
+
+  margin: 0;
+  font-style: none;
+  text-decoration: none;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.heartdis{
+  width: 90vw;
+  margin: auto;
+
+}
+
+@media screen and (max-width: 1000px) {
+
+  .dise {
+    display: block;
+    width: 90%;
+    margin: auto;
+
+  
+  }
+  .dise img{
+    width: 10rem;
+  }
+  .dise a{
+    width: 90%;
+    background: white;
+    margin-top: 2rem;
+    text-align: center;
+    font-style: none;
+    text-decoration: none;
+    height: max-content;
+    box-shadow: 2px 2px 8px rgb(236, 236, 236);
+    margin-bottom: 2rem;
+    min-height: 10rem;
+  }
+  .dise .Cnavli{
+    margin: auto;
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    width: 90%;
+    background: white;
+    height: max-content;
+    
+    padding: 0;
+
+}
+.dise .Cnavli h2{
+
+    margin: 0;
+    font-style: none;
+    text-decoration: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.Cnavli .button-53{
+  width: 80%;
+}
+} 

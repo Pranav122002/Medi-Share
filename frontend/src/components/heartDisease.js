@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../css/Dis.css"
+import Navbar from "./Navbar";
+import { Hnavbar } from "./Hnavbar";
 
 function HeartDisease() {
   const [formData, setFormData] = useState({
@@ -13,7 +16,7 @@ function HeartDisease() {
     thalach: 0,
     exang: 0,
     oldpeak: 0,
-    
+
   });
 
   const [prediction, setPrediction] = useState(null);
@@ -35,19 +38,25 @@ function HeartDisease() {
       });
   };
 
-  return (
-    <div>
+  return (<>
+    <Hnavbar />
+
+    <Navbar />
+    <div className="heartdis">
+
       <h1>Heart Disease Prediction</h1>
       <form onSubmit={handleSubmit}>
         {/* Add input fields for each feature */}
-        <label>Age:</label>
-        <input
-          type="number"
-          name="age"
-          value={formData.age}
-          onChange={handleInputChange}
-        />
-        
+
+        <div className="flexxx">
+          <label>Age:</label>
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
+            onChange={handleInputChange}
+          />
+        </div>
         <label>Sex (1 = male; 0 = female):</label>
         <input
           type="number"
@@ -127,7 +136,7 @@ function HeartDisease() {
           value={formData.oldpeak}
           onChange={handleInputChange}
         />
-        
+
         {/* Add input fields for other features */}
         <button type="submit">Predict</button>
       </form>
@@ -135,7 +144,7 @@ function HeartDisease() {
         <p>Prediction: {prediction === 1 ? "Heart Disease" : "No Heart Disease"}</p>
       )}
     </div>
-  );
+  </>);
 }
 
 export default HeartDisease;
