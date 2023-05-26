@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import H from '@here/maps-api-for-javascript';
+import "../css/Hospitals.css"
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -80,9 +81,9 @@ const Map = () => {
   }, []);
 
   return (
-    <div>
-      <input type="text" ref={searchInputRef} placeholder="Enter a location" />
-      <div ref={mapRef} style={{ height: '400px', width: '100%' }}></div>
+    <div >
+      <input className='mapsearch' type="text" ref={searchInputRef} placeholder="Enter location" />
+      <div className='minimap' ref={mapRef} style={{ height: '400px', width: '100%' }}></div>
     </div>
   );
 };

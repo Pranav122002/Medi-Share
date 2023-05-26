@@ -1,0 +1,123 @@
+.hospimain {
+    background: rgb(240, 255, 253);
+    background-image: url(../../public/hospital2.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 30rem;
+
+}
+
+.hospi {
+    width: 80vw;
+    margin: auto;
+    height: 30rem;
+
+}
+
+.hospicontent {
+    margin-top: 6rem;
+    min-height: 15rem;
+    height: max-content;
+    background: white;
+    width: 40vw;
+    font-size: 1.2vw;
+    font-weight: 700;
+    padding-top: 1px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 2px 2px 8px rgb(225, 221, 221);
+
+}
+
+.hospicontent p {
+    margin-top: 2rem;
+}
+
+.hospicontent img {
+    height: 15rem;
+}
+
+.hosp {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.mainmap {
+    width: 80vw;
+    margin: auto;
+}
+
+.mapsearch {
+    width: 70vw;
+    height: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.minimap {
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .hospimain {
+        background: rgb(240, 255, 253);
+        background-image: url(../../public/hospital2.png);
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 20rem;
+
+    }
+
+    .hospi {
+        width: 95vw;
+        margin: auto;
+        height: 30rem;
+
+    }
+    .hospicontent {
+        
+        min-height: 15rem;
+        height: max-content;
+        background: white;
+        width: 95%;
+        font-size: 1rem;
+        font-weight: 700;
+        padding-top: 1px;
+        display: block;
+       
+        box-shadow: 2px 2px 8px rgb(225, 221, 221);
+        margin: auto;
+        margin-top: 10rem;
+    
+    }
+    .hospicontent p {
+        margin-top: 2rem;
+        margin: auto;
+    }
+    
+    .hospicontent img {
+        height: 10rem;
+    }
+    .mapsearch {
+        width: 80vw;
+        height: 3rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-weight: 900;
+        font-size: 1rem;
+    }
+    
+    .minimap {
+        margin-bottom: 2rem;
+        width: 95%;
+    }
+    .mainmap {
+        width: 95vw;
+        margin: auto;
+    }
+    
+    
+}

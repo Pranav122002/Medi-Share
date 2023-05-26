@@ -6,13 +6,26 @@ import '../css/Hospitals.css';
 
 export default function Hospitals() {
   return (
-    <div>
+    <div className='hospimain'>
       <Hnavbar />
       <div>
         <Navbar />
-        <h1>Hospitals</h1>
-        <MapContainer />
+        <div className='hospi'>
+          <h1>Hospitals</h1>
+          <div className='hospicontent'>
+            <img src="./hospitals.png" alt="" />
+            <div className='hosp'>
+              <p>Need quick nearby hospital locations ?</p>
+              <p>Seach for hospitals in your vicinity now.</p>
+            </div>
+
+          </div>
+        </div>
+        <div className='mainmap'>
+          <MapContainer />
+        </div>
       </div>
+
     </div>
   );
 }
