@@ -161,15 +161,15 @@ export default function Annoucement() {
 
 
         
-          <ul>
-            <li style={{ backgroundColor: "white", color: "black" }}>
+          <ul > 
+            <li className="bord"  style={{ backgroundColor: "white", color: "black"  }}>
               <h3 id="pp4" > Name</h3>
               <h3 id="pp1" className="p1">Date</h3>
               <h3 id="pp3"  className="p2">Venue</h3>
               <h3 id="pp2"  className="p3">Description</h3>
             </li>
             {annoucements.map((annoucements) => (
-              <li key={annoucements.title}>
+              <li className="bord" key={annoucements.title}>
                 <h3 >{annoucements.title}</h3>
                 <h3 className="p1">
                   {annoucements.date}

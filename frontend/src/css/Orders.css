@@ -4,6 +4,9 @@
   font-family: "Nunito", sans-serif;
 }
 
+.Card {
+  border-radius: 20px;
+}
 /* .donate {
   background-repeat: no-repeat;
   margin-left: 0%;
@@ -64,6 +67,9 @@
   cursor: pointer;
 } */
 
+.Card_body{
+  border-radius: 20px;
+}
 .allCards {
   
   width: 100vw;
@@ -86,7 +92,7 @@
   margin: auto;
   height: max-content;
   margin-top:2rem;
-  
+
 }
 
 .OCards .button-53{
@@ -133,7 +139,7 @@
   outline: none;
   border: none;
   display: flex;
-
+  border-radius: 20px;
   
 }
 .OCards .card-body:hover {
