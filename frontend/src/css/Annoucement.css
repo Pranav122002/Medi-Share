@@ -36,7 +36,7 @@
 }
 
 
-.donate {
+/* .donate {
   background-repeat: no-repeat;
   margin-left: 0%;
   background-size: cover;
@@ -45,7 +45,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .Form {
   background-color: #fbfbfb;
@@ -63,14 +63,14 @@ justify-content: center;
 margin-bottom: 100px;
 }
 
-
+/* 
 .donate input {
   height: 3.5rem;
   border-radius: 1.2rem;
   border: none;
 
   margin-top: 0.8rem;
-}
+} */
 
 #ancmt-btn {
   font-size: 1rem;

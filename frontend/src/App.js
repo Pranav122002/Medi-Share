@@ -17,7 +17,7 @@ import Doctors from "./components/Doctors";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
 import {LandingPage} from "./components/LandingPage";
-
+import Doctors from "./components/Doctors"
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
@@ -28,7 +28,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<LandingPage  />}></Route>
+          <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>

@@ -1,67 +1,324 @@
+
 .one {
-  width: 100%;
-  height: 1rem;
+  width: 130%;
+  height: 5rem;
+  text-align: left;
+  background: white;
+  display: flex;
+  box-shadow: 2px 2px 9px rgb(233, 233, 233);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .two {
   width: 100%;
+ 
 }
 
-.navbar {
+.one img{
+  margin-left: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 2rem;
+}
+
+.one h1{
+  margin-left: 1rem;
+  font-size: 1.4vw;
+}
+
+.navbar{
   border-right: 1px solid rgb(219, 219, 219);
-  border-radius: 1rem;
-  margin-left: 1rem ;
-  margin-top: 6rem;
+  border-radius: 0rem;
+  margin-left: 0rem ;
+  margin-top: 0rem;
   padding: 0;
   width: 17%;
   box-shadow: 2px 2px 9px rgb(218, 218, 218);
-
-  height: 85%;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-
   min-width: 180px;
+  position: fixed;
+  z-index: 23;
+   
+ 
+}
+.navbar.active {
+
+ width: 6rem;
+ min-width: 0;
+ position: fixed;
+ margin-top: 0rem;
+ height: 100vh;
+ animation-name: slideN;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  position: fixed;
+  z-index: 23;
+  top: 4rem;  
+  
+} 
+.navbar.false .two img{
+  display: none;
+}
+
+.navbar.false{
+  animation-name: slideV;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+  position: fixed;
+  z-index: 23 ;
+  height: 100vh;
+  top: 4rem;
+}
+
+@keyframes slideN {
+  0% {
+    min-width:180px ;
+    width: 17%;
+    
+  }
+  100% {
+    width: 6rem;
+    min-width: 0;
+  }
+}
+
+@keyframes slidea {
+  0% {
+    
+    width: 200%;
+    
+  }
+  100% {
+    width: 6rem;
+    
+  }
+}
+
+
+
+@keyframes slideV {
+  0% {
+    
+    width: 4rem;
+    min-width: 0;
+    
+  }
+  100% {
+    min-width:180px ;
+    width: 17%;
+  }
+}
+
+.navbar.active .navli{
+  display: none;
+
+}
+@keyframes dis{
+  100%{
+    display: none;
+  }
+}
+.navbar.false .navli{
+
+  animation-duration: 0.5s;
+  animation-name:pAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.navbar.false #arrow{
+  transform: scaleX(-1);
+}
+.navbar.false ul a{
+  height: 7vh;
+}
+
+.navbar.active .two{
+ width: 2rem;
+ animation-name: slideN;
+ animation-duration: 2s;
+ animation-fill-mode: forwards;
+ 
+
+}
+.navbar.active ul img{
+  margin: auto;
+}
+
+.navbar.active .nav-menu{
+  animation-name: slideV;
+ animation-duration: 0s;
+ animation-fill-mode: forwards;
+ overflow: hidden;
+ 
+}
+
+.navbar.active ul a{
+  /* pointer-events: none; */
+  height: 7vh;
+  box-shadow: 2px 2px 9px rgb(233, 233, 233);
+  display: flex;
+  text-decoration: none;
+  background:white;
+  color: black;
+  font-size: 18px;
+  justify-content: space-between;
+  animation-name: slidea;
+ animation-duration: 0.5s;
+ animation-fill-mode: forwards;
+ overflow: hidden;
+ 
+}
+
+.navbar.active .one h1{
+  display: none;
 }
 
 ul {
   text-align: center;
- 
   width: 100%;
-  display: flex;
-  margin-left: 1rem;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 0px;
+ 
+  
 }
+
+ul img{
+  height: 2.3rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-right: 1rem;
+  
+} 
 
 li {
+
   height: 2rem;
-  text-align: center;
-  align-items: center;
-  margin-left: 3rem;
-  box-shadow: 2px 2px 9px rgb(213, 213, 213);
   list-style: none;
-  width: 70%;
-  padding-left: 20px;
-  background-color: rgb(125, 212, 255);
-  margin-top: 1rem;
+  width: max-content; 
+
+  margin-top: 0rem;
   padding-top: 15px;
   padding-bottom: 10px;
-
-  margin-left: 10px;
-  color: white ;
+  
   display: flex;
   align-items: flex-start;
-  border-radius: 25px;
+  padding-left: 2rem;
+  
+ 
 }
 
-a {
+a:hover{
+
+  font-size: 20px;
+  box-shadow: 2px 2px 9px rgb(182, 182, 182);
+
+}
+
+a:hover .navimg{
+  height: 2.6rem;
+  transform: rotate(2deg);
+}
+
+ul a{
+  height: 4.5rem;
+  box-shadow: 2px 2px 9px rgb(233, 233, 233);
+  display: flex;
   text-decoration: none;
+  background:white;
   color: black;
   font-size: 18px;
-  width: 95%;
-  padding-left: 0px;
+  width: 100%;
+  justify-content: space-between;
+  
 }
 .navli{
-  font-weight: 600;
+  
+    font-weight: 600; 
+  
+}
+
+.nav-menu{
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1000px){
+  
+  
+  .links.active .navli{
+    display: none;
+    min-width: 0;
+    animation-name: slideN;
+     animation-duration: 0.5s;
+     animation-fill-mode: forwards;
+     position: fixed;
+     z-index: 23;
+     
+   } 
+   @keyframes slideV {
+    0% {
+      
+      width: 4rem;
+      min-width: 0;
+      
+    }
+    100% {
+      min-width:300px ;
+      width: 35%;
+    }
+  }
+  .one h1{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .one{
+   
+
+  }
+  .one img{
+    margin-left: 1rem;
+    height: 1.5rem;
+  }
+  .navbar.active {
+    width: 6rem;
+    margin-left: -6rem;
+    min-width: 0;
+    animation-name: slideN;
+     animation-duration: 0.5s;
+     animation-fill-mode: forwards;
+     position: fixed;
+     z-index: 23;
+    
+     
+   } 
+   .navbar.active .nav-menu{
+      margin-left: -50vw;
+   }
+
+   .navbar.false{
+  
+   }
+   .one {
+    width: 150%;
+    height: 5rem;
+    text-align: left;
+    background: white;
+    display: flex;
+    box-shadow: 2px 2px 9px rgb(233, 233, 233);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  .one #arrow{
+   margin-left: 3rem;
+  }
+  .navbar.false .two img{
+    display: flex;
+  }
 }

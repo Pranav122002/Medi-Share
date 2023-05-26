@@ -1,65 +1,274 @@
 
+.vol .bodyy{
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background: #f1faff;
+  padding: 1px;
+}
+
+.vcontent{
+  border-radius: 1px;
+    margin: auto;
+    width: 88vw;
+    background: white;
+    min-height: 38vw;
+    height: max-content;
+    margin-top: 3rem;
+    background-repeat: no-repeat;
+    background-size: 35vw;
+    background-position: bottom right;
+    background-image: url(../../public/volunteer.jpg);
+    padding: 1px;
+}
+
+#vcurve{
+  margin-top: 3rem;
+  left: 0;
+  opacity: 0.5;
+  transform: rotate(90deg);
+  width: 50vh;
+  position: absolute;
+}
+
+.volunteer_btn{
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 9px rgb(247, 247, 247);
+  width: 50%;
+  height: 45vh;
+  margin: 10%;
+}
+
+.volunteer_btn h1{
+    font-size: 2vw;
+}
+
+.volunteer_btn h3{
+  font-size: 1.2vw;
+  margin-top: 2rem;
+}
+
+.volunteer_btn .button-53{
+  margin-top: 5rem;
+  background-color: #b7fffe;
+}
 .out_cont{
-  width: 80%;
+  width: 95%;
+  margin: auto;
 }
 .volunteer_cunt {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  width: 70%;
-  margin-left: 10%;
-  margin-top: 10%;
-}
-
-.volunteer_cunt > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  
-  width: 60%;
-  border-radius: 25px;
-  background-color: #80d4fc;
-}
-
-.volunteer_cunt p {
-  margin: 3px;
-}
-
-#verify-btn {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #00fb0d;
-  color: white;
+  width: 90vw;
+  outline: none;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  
 }
+
+.volunteer_cunt .vpending{
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  height: max-content;
+  min-height: 7rem;
+  width: 92%;
+  border: none;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 8px #e0e0e0;
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+.volunteer_cunt .vpending p{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 15vw;
+  font-weight: 700;
+  
+}
+.volunteer_cunt .vpending .button-53{
+  width: 10vw;
+  margin-right: 2rem;
+}
+
+.vpdetails{
+  display: none;
+}
+.vpending:first-child{
+  background: #f9fdff;
+}
+
 
 .h3{
   font-size: large;
   font-weight: 600;
 }
 
-.volunteer_btn{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
 
-.vlbtn{
-  border-radius: 10px;
-  padding: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #80d4fc;
-  color: black;
-  border: none;
 
-}
 
 .load{
   position: absolute;
   left: 50%;
   top: 50%;
+}
+
+.vbox{
+  display: none;
+}
+
+@media screen and (max-width: 1000px){
+  .bodyy{
+    width: 98vw;
+  }
+  .vcontent{
+      border-radius: 1px;
+      margin: auto;
+      width: 95vw;
+      background: white;
+      height: max-content;
+      min-height: 80vh;
+      margin-top: 2rem;
+      background-repeat: no-repeat;
+      background-size: 15rem;
+      background-position: bottom ;
+      background-image: url(../../public/volunteer.jpg);
+      padding: 1px;
+  }
+  #vcurve{
+    margin-top: 3rem;
+    left: 0;
+    opacity: 0.5;
+    transform: rotate(90deg);
+    width: 40vh;
+    position: absolute;
+  }
+
+  .volunteer_btn{
+    background: rgb(255, 255, 255);
+    box-shadow: 2px 2px 9px rgb(247, 247, 247);
+    width: 100%;
+    height: 40vh;
+  
+  }
+  
+  .volunteer_btn h1{
+    font-size: 1.8rem;
+}
+
+.volunteer_btn h3{
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+.volunteer_btn .button-53{
+  
+  background-color: #b7fffe;
+  border: 0 solid #E5E7EB;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: .75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 60%;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-align: center;
+  margin: auto;
+  margin-top: 2rem;
+
+}
+
+.out_cont{
+  width: 95%;
+  margin: auto;
+}
+.volunteer_cunt {
+  width: 100%;
+  outline: none;
+  border: none;
+  
+}
+.volunteer_cunt .vpending{
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  height: max-content;
+  min-height: 7rem;
+  width: 98%;
+  border: none;
+  background: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 8px #e0e0e0;
+  display: flex;
+
+  flex-wrap: wrap;
+  
+  
+}
+.volunteer_cunt .vpending p{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-top: 1rem;
+  flex: 40%;
+  font-weight: 700;
+  
+  
+}
+.volunteer_cunt .vpending .button-53{
+  width: 50%;
+  background-color: #b7ffe7;
+  border: 0 solid #E5E7EB;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: .75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  
+  position: relative;
+  cursor: pointer;
+  
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-align: center;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.vpdetails{
+  display: block;
+}
+.vpending:first-child{
+  background: #ffffff;
+}
+.vpending .p-head{
+  display: none;
+}
+.vbox{
+  margin: auto;
+  text-align: center;
+ display: block;
+  min-width: 9rem;
+}
+
 }

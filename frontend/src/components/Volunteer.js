@@ -16,7 +16,7 @@ export default function Volunteer() {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
- 
+
 
   useEffect(() => {
     fetchUnverifiedOrders();
@@ -28,8 +28,7 @@ export default function Volunteer() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -64,11 +63,11 @@ export default function Volunteer() {
     }).then((res) => {
       res.json();
       window.location.reload();
-   
+
       // setTimeout(function() {
-        notifyB("Donate order verified successfully...");
+      notifyB("Donate order verified successfully...");
       // }, 2000);
-      
+
     });
   };
 
@@ -85,44 +84,43 @@ export default function Volunteer() {
         throw new Error("Failed to fetch order details");
       }
       const order_data = await response.json();
-  if (order_data.isDonarFieldBlank === false) {
-    fetch(`http://localhost:5000/verify-request-order/${order_id}`, {
-      method: "put",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-    }).then((res) => {
-      res.json();
-      window.location.reload();
-  
-      notifyB("Order verified successfully and now will be donated...");
-    });
-    
-  }
-  else if (order_data.isDonarFieldBlank === true) {
-    notifyA("Order is not been donated by anyone...");
-    
-  }
+      if (order_data.isDonarFieldBlank === false) {
+        fetch(`http://localhost:5000/verify-request-order/${order_id}`, {
+          method: "put",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          },
+        }).then((res) => {
+          res.json();
+          window.location.reload();
+
+          notifyB("Order verified successfully and now will be donated...");
+        });
+
+      }
+      else if (order_data.isDonarFieldBlank === true) {
+        notifyA("Order is not been donated by anyone...");
+
+      }
     } catch (error) {
       console.error(error);
     }
 
-    
+
   };
 
   const becomevolunteer = () => {
-   
-    
+
+
     fetch(
-      `http://localhost:5000/becomevolunteer/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/becomevolunteer/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
-       
+
       }
     )
       .then((res) => res.json())
@@ -133,79 +131,104 @@ export default function Volunteer() {
   };
 
   return (
-    <div>
+    <div className="vol">
       <Hnavbar />
       <div className="bodyy">
         <Navbar />
+        <img id="vcurve" src="./curve2.png" alt="" />
+        <div className="vcontent">
+          <h1>Pending Verifications...</h1>
+          {isLoading ? (
+            <h1 className="load">Loading...</h1>
+          ) : (
+            <div className="out_cont">
+              {isVolunteer ? (
+                <div className="volunteer_cunt">
+                   <div className="vpending">
+                    
+                      <p className="p-head"> order_type  </p>
+                     
+                      <p className="p-head" >medicine_name  </p>{" "}
+                    
+                      <p className="p-head" >expiry_date  </p>{" "}
+                  
+                      <p className="p-head">quantity  </p>{" "}
+                      
+                      <p className="p-head" >location  </p>
 
-        {isLoading ? (
-          <h1 className="load">Loading...</h1>
-        ) : (
-          <div className="out_cont"> 
-            {isVolunteer ? (
-              <div className="volunteer_cunt">
+                     
+                      <p className="p-head">Donor / Request from</p>
 
-             
-
-
-                {unverifiedorders.map((unverifiedorders) => (
-
-
-                  <div key={unverifiedorders.medicine_name}>
-                    <p>order_type : </p>
-                    <p className="h3">{unverifiedorders.order_type}</p>
-                    <p>medicine_name : </p>{" "}
-                    <p className="h3">{unverifiedorders.medicine_name}</p>
-                    <p>expiry_date : </p>{" "}
-                    <p className="h3">{unverifiedorders.expiry_date}</p>
-                    <p>quantity : </p>{" "}
-                    <p className="h3">{unverifiedorders.quantity}</p>
-                    <p>location : </p>
-                    <p className="h3">{unverifiedorders.location}</p>
-
-{ unverifiedorders.order_type == "donate-order" ? ( 
-  <>
-                    <p>Donar : </p>
-                    <p className="h3">{unverifiedorders.donar.name}</p>
-  </>
-                    ) : ( <>
-                    <p>Requester : </p>
-                    <p className="h3">{unverifiedorders.requester.name}</p>
-                    </>
-                    ) }
-                   
+                      <p  className="p-head">Action</p>
+                      <img className="vbox" src="volunteer.jpg" alt="" />
+                      <h2 className="vbox" >Detials</h2>
+                  </div> 
 
 
-{  unverifiedorders.order_type == "donate-order" ? ( <button
-                      id="verify-btn"
-                      onClick={() => verify_donate_order(unverifiedorders._id)}
-                    >
-                      Verify
-                    </button>) : ( <button
-                      id="verify-btn"
-                      onClick={() => verify_request_order(unverifiedorders._id)}
-                    >
-                      Verify
-                    </button>) }
-                   
-                  </div>
+
+                  {unverifiedorders.map((unverifiedorders) => (
 
 
-                ))
-                
-                }
-              </div>
-            ) : (
-              <div className="volunteer_btn">
-                <h3>You are not a Volunteer !</h3>
-               
-                <button className="vlbtn" onClick={() => becomevolunteer()}>
-                  Become Volunteer
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+                    <div className="vpending" key={unverifiedorders.medicine_name}>
+                      <p className="vpdetails">order_type : </p>
+                      <p className="h3">{unverifiedorders.order_type}</p>
+                      <p className="vpdetails" >medicine_name : </p>{" "}
+                      <p className="h3">{unverifiedorders.medicine_name}</p>
+                      <p className="vpdetails" >expiry_date : </p>{" "}
+                      <p className="h3">{unverifiedorders.expiry_date}</p>
+                      <p className="vpdetails" >quantity : </p>{" "}
+                      <p className="h3">{unverifiedorders.quantity}</p>
+                      <p className="vpdetails" >location : </p>
+                      <p className="h3">{unverifiedorders.location}</p>
+
+                      {unverifiedorders.order_type == "donate-order" ? (
+                        <>
+                          <p className="vpdetails" >Donar : </p>
+                          <p className="h3">{unverifiedorders.donar.name}</p>
+                        </>
+                      ) : (<>
+                        <p className="vpdetails" >Requester : </p>
+                        <p className="h3">{unverifiedorders.requester.name}</p>
+                      </>
+                      )}
+
+
+
+                      {unverifiedorders.order_type == "donate-order" ? (<button
+                         className="button-53"
+                        onClick={() => verify_donate_order(unverifiedorders._id)}
+                      >
+                        Verify
+                      </button>) : (<button
+                       className="button-53"
+                        onClick={() => verify_request_order(unverifiedorders._id)}
+                      >
+                        Verify
+                      </button>)}
+
+                    </div>
+
+
+                  ))
+
+                  }
+                </div>
+              ) : (
+
+                <div className="volunteer_btn">
+                  <h1>Join the community Now !</h1>
+                  <h3>Become a volunteer today and help us increase the reach of our services to needy</h3>
+
+
+                  <button className="button-53" onClick={() => becomevolunteer()}>Become Volunteer</button>
+
+
+                </div>
+              )}
+            </div>
+          )}
+
+        </div>
       </div>
     </div>
   );

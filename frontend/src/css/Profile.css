@@ -4,17 +4,17 @@
   font-family: "Nunito", sans-serif;
 }
 
-.donate {
+/* .donate {
   background-repeat: no-repeat;
   margin-left:0%;
-  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
+
   background-size: cover;
   background-size: 100rem;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .contentt{
   margin-top: 7rem;
   width: 80%;
@@ -55,7 +55,7 @@
  
 }
 
-.donateForm {
+/* .donateForm {
   background-color: #fbfbfb;
   padding: 30px;
 
@@ -63,7 +63,7 @@
   width: 24rem;
   height: 23rem;
 
-}
+} */
 
 #credits {
 float: right;

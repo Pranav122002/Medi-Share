@@ -47,21 +47,50 @@ export default function SignIn() {
         }
       });
   };
+  const [showNavbar, setShowNavbar] = useState(false)
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar)
+    console.log(showNavbar)
+  }
+
+
+  const navigatee = useNavigate();
+  const goHome = () => {
+    navigate('/')
+  }
 
   return (
-    <>
-      <div className="banner">
-        <img id="logo" src="./logo1.png" alt="logo" />
-        <h1>Medi Share</h1>
-        <Link className="aboutus" to="/AboutUs">
-          <span id="Aboutus" style={{ cursor: "pointer" }}>About Us</span>
-        </Link>
+    <><div className="mainsignin">
+      <div className='Lnav'>
+        <div className='Lnav_contents'>
+          <div className="logo" onClick={() => { goHome() }}>
+
+            <img id="Nlogo" src="./logo1.png" alt="logo" />
+            <h2>Medi-Share</h2>
+          </div>
+          <div className='icon' onClick={handleShowNavbar}>
+            <div className='line'></div>
+            <div className='line'></div>
+            <div className='line'></div>
+          </div>
+          <div className={`links ${showNavbar && 'active'}`}>
+            <Link className="aboutu" to="/AboutUs">
+              <span id="Aboutt" style={{ cursor: "pointer" }}>About Us</span>
+            </Link>
+            <Link className="joinus" to="/signIn">
+              <span id="joinus" style={{ cursor: "pointer" }}>Join Us</span>
+            </Link>
+          </div>
+
+        </div>
       </div>
 
       <div className="signIn">
 
         <div className="left">
-          <h1>A Medicine Distribution System</h1>
+          <h1>Welcome to "Medi-Share"</h1>
+          <img src="./ui1.png" alt="" />
         </div>
         <div className="middle"></div>
         <div className="loginForm">
@@ -104,13 +133,14 @@ export default function SignIn() {
           <div className="form2">
             Don't have an account ?
             <Link to="/signup">
-              <span style={{  color: "blue", cursor: "pointer" }}> Sign Up</span>
+              <span style={{ color: "blue", cursor: "pointer" }}> Sign Up</span>
             </Link>
           </div>
         </div>
 
 
       </div>
+    </div>
     </>
   );
 }

@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../css/Donate.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-
+import Medicines from "./Medicines"
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function Donate() {
 
@@ -12,6 +14,16 @@ export default function Donate() {
   const [quantity, setQuantity] = useState("");
   const [expiry_date, setExpiryDate] = useState("");
   const [location, setLocation] = useState("");
+  const [sug, showsug] = useState(!false);
+
+  const handleShowsug = () => {
+    showsug(false)
+    console.log(sug)
+  }
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+
+}, [])
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -19,8 +31,7 @@ export default function Donate() {
 
   const postOrderData = () => {
     fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -53,23 +64,58 @@ export default function Donate() {
           });
       });
   };
+  const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
- 
+  const fetchMedicines = (query) => {
+    setSearch(query);
+    fetch("http://localhost:5000/search-medicines", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+      }),
+    })
+      .then((res) => res.json())
+      .then((results) => {
+        console.log("results ......", results);
+
+        setSearchResult(results.medicine);
+      });
+  };
+
 
   return (
     <div>
       <Hnavbar />
       <div className="bodyy">
-      <Navbar />
-     
-      <div className="donate">
-        <div>
-          <div className="donateForm">
+        <Navbar />
+        <div className="donate_instru">
+          <h1>Some Important Instructions for Donating</h1>
+          <div className="donate_content">
+            <img data-aos="fade-down-right" src="./medicine.png" alt="" />
+            <div className="points">
+              <p>1.The medicine to be donated should be valid and not expired or fabricated.</p>
+              <p>2.The medicine name , expiry date should be visible.</p>
+
+            </div>
+            <img id="dcurve" src="./curve2.png" alt="" />
+
+          </div>
+        </div>
+        <div className="donate">
+
+
+
+          <div data-aos="zoom-in" className="donateForm">
             <div className="logo">
               <h1>Donate Medicine</h1>
             </div>
             <div>
               <input
+                onClick={handleShowsug}
                 type="text"
                 name="medicine_name"
                 id="medicine_name"
@@ -77,6 +123,7 @@ export default function Donate() {
                 placeholder="Medicine Name"
                 onChange={(e) => {
                   setMedicineName(e.target.value);
+                  fetchMedicines(e.target.value);
                 }}
               />
             </div>
@@ -116,18 +163,36 @@ export default function Donate() {
                 }}
               />
             </div>
-            <input
-              type="submit"
-              id="donate-btn"
-              onClick={() => {
-                postOrderData();
-              }}
-              value="Donate"
-            />
+            <button className="button-53" onClick={() => { postOrderData(); }} value="Donate" type="submit" role="button">Donate</button>
+
           </div>
+          <div  className={`suggestions ${sug && 'active'}`}  >
+
+            <ul>
+              <li style={{ color: "black" }}>
+                <h2>Suggestions</h2>
+              </li>
+              {searchResult.map((item) => {
+                return (
+
+                  <li className="link">
+                    <h3 style={{ color: "black" }}>
+
+                      {item.medicine_name + ": " + "-"}
+                    </h3>
+
+                    <h3 className="p2" style={{ color: "black" }}>{item.disease}</h3>
+
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+
         </div>
+
       </div>
     </div>
-  </div>
   );
 }

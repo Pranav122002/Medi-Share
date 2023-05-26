@@ -9,7 +9,11 @@
     background-color: white;
     z-index: 45;
     top: 0;
-    width: 98%;
+    width: 100%;
+}
+
+.li{
+    
 }
 
 .Hnavb{
@@ -40,4 +44,18 @@ h2{
     margin-right: 5rem;
     right: 0;
     font-size: 1.5rem;
+}
+
+.Lnav a{
+    text-decoration: none;
+    color: black;
+    box-shadow: none;
+   
+}
+.Lnav a:hover{
+    box-shadow: none;
+}
+
+.links.active .navli{
+    display: none;
 }
