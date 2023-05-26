@@ -17,14 +17,14 @@ function DiseasePredictions() {
      <Link to="/diabetes">
           <li style={{color: "black"}} className="navli">Diabetes</li>
         </Link>
-        <Link to="/pnuemonia">
+        <Link to="/Pneumonia">
           <li style={{color: "black"}} className="navli">Pnuemonia</li>
         </Link>
-        <Link to="/heart-disease">
+        <Link to="/heartDisease">
           <li style={{color: "black"}} className="navli">Heart Disease</li>
         </Link>
-        <Link to="/cancer">
-          <li style={{color: "black"}} className="navli">Cancer</li>
+        <Link to="/brainTumor">
+          <li style={{color: "black"}} className="navli">Brain Tumor</li>
         </Link>
       </div>
 
