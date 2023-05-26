@@ -15,7 +15,7 @@ router.post("/book-appointment/:id", async (req, res, next) => {
       const user = await USER.findById(req.params.id);
       const credits = user.credits;
   
-      if (credits > 200) {
+      if (credits >= 200) {
      
         await USER.updateOne({ _id: req.params.id }, { $inc: { credits: -200 } });
   

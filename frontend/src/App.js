@@ -17,7 +17,6 @@ import Doctors from "./components/Doctors";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
 import {LandingPage} from "./components/LandingPage";
-import Doctors from "./components/Doctors"
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
