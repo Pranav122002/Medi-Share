@@ -8,6 +8,7 @@
   box-shadow: 2px 2px 9px rgb(233, 233, 233);
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
+  align-items: center;
 }
 
 .two {
@@ -15,6 +16,9 @@
  
 }
 
+.borderrad {
+  border-radius: 20px;
+}
 .one img{
   margin-left: 1rem;
   margin-top: auto;
@@ -306,6 +310,7 @@ ul a{
   
    }
    .one {
+    
     width: 150%;
     height: 5rem;
     text-align: left;
@@ -316,7 +321,7 @@ ul a{
     border-bottom-right-radius: 25px;
   }
   .one #arrow{
-   margin-left: 3rem;
+   margin-left: 4rem;
   }
   .navbar.false .two img{
     display: flex;

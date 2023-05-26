@@ -24,55 +24,55 @@ export default function Navbar({ login }) {
   const loginStatus = () => {
     return [
       <>
-        <Link to="/donate-medicines">
+        <Link className="borderrad" to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
           <img className="navimg" src="./donatemed.png" alt="" />
         </Link>
-        <Link to="/request-medicines">
+        <Link className="borderrad" to="/request-medicines">
           <li style={{color: "black"}} className="navli">Request</li>
           <img className="navimg" src="./requestmed.png" alt="" />
         </Link>
-        <Link to="/orders">
+        <Link className="borderrad" to="/orders">
           <li style={{color: "black"}} className="navli">Orders</li>
           <img className="navimg" src="./orders.png" alt="" />
         </Link>
-        <Link to="/volunteer">
+        <Link className="borderrad" to="/volunteer">
           <li style={{color: "black"}} className="navli">Volunteer</li>
           <img className="navimg" src="./verified.png " alt="" />
         </Link>
-        {/* <Link to="/medicines">
+        {/* <Link className="borderrad" to="/medicines">
           <li style={{color: "black"}} className="navli">Medicines</li>
         </Link> */}
-        <Link to="/search-medicines">
+        <Link className="borderrad" to="/search-medicines">
           <li style={{color: "black"}} className="navli">Search Medicines</li>
           <img className="navimg" src="./search-medicine.png" alt="" />
         </Link>
-        <Link to="/nearby-hospitals">
+        <Link className="borderrad" to="/nearby-hospitals">
           <li style={{color: "black"}} className="navli">Nearby Hospitals</li>
           <img className="navimg" src="./hospitals.png" alt="" />
         </Link>
-        <Link to="/annoucements">
+        <Link className="borderrad" to="/annoucements">
           <li style={{color: "black"}} className="navli">Annoucements</li>
           <img className="navimg" id="mega" src="./annoucement.png" alt="" />
         </Link>
-        <Link to="/doctors">
+        <Link className="borderrad" to="/doctors">
           <li style={{color: "black"}} className="navli">Doctors</li>
           <img className="navimg" id="mega" src="./appointment.png" alt="" />
         </Link>
-        <Link to="/profile">
+        <Link className="borderrad" to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
           <img className="navimg" src="./profile-pic.png" alt="" />
         </Link>
-        <Link to="/chats">
+        <Link className="borderrad" to="/chats">
           <li style={{color: "black"}} className="navli">Chats</li>
           <img className="navimg" src="./chats.png" alt="" />
         </Link>
-        <Link to="/disease-predictions">
+        <Link className="borderrad" to="/disease-predictions">
           <li style={{color: "black"}} className="navli">Disease Predictions</li>
           <img className="navimg" src="./diseases.png" alt="" />
         </Link>
 
-        <Link to="/signin"
+        <Link className="borderrad" to="/signin"
           onClick={() => {
             localStorage.clear();
             notifyB("Logout successfull...");

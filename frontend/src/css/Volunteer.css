@@ -60,7 +60,6 @@
   width: 90vw;
   outline: none;
   border: none;
-  
 }
 
 .volunteer_cunt .vpending{
@@ -76,7 +75,8 @@
   box-shadow: 6px 2px  11px #e0e0e0;
   display: flex;
   justify-content: flex-start;
-  
+  border-radius: 20px;
+
 }
 .volunteer_cunt .vpending:hover{
   min-height: 7.5rem;

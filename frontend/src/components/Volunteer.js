@@ -146,18 +146,18 @@ export default function Volunteer() {
                 <div className="volunteer_cunt">
                    <div className="vpending">
                     
-                      <p className="p-head"> order_type  </p>
+                      <p className="p-head"> Order Type  </p>
                      
-                      <p className="p-head" >medicine_name  </p>{" "}
+                      <p className="p-head" >Medicine Name  </p>{" "}
                     
-                      <p className="p-head" >expiry_date  </p>{" "}
+                      <p className="p-head" >Expiry Date  </p>{" "}
                   
-                      <p className="p-head">quantity  </p>{" "}
+                      <p className="p-head">Quantity  </p>{" "}
                       
-                      <p className="p-head" >location  </p>
+                      <p className="p-head" >Location  </p>
 
                      
-                      <p className="p-head">Donor / Request from</p>
+                      <p className="p-head">Donor / Requester</p>
 
                       <p  className="p-head">Action</p>
                       <img className="vbox" src="volunteer.jpg" alt="" />

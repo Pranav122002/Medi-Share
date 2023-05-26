@@ -34,7 +34,7 @@ export const Hnavbar = () => {
             <Link className="aboutu" to="/AboutUs">
               <span id="Aboutt" style={{ cursor: "pointer" }}>About Us</span>
             </Link>
-            <Link className="joinus" to="/signIn">
+            <Link className="joinus" to="/signin">
               <span id="joinus" style={{ cursor: "pointer" }}>Join Us</span>
             </Link>
           </div>

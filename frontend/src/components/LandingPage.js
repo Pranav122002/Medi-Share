@@ -39,7 +39,7 @@ export const LandingPage = () => {
                             data-aos-easing="ease-in-sine" >
                             <h1>"Help Expand the chain of donation"</h1>
                             <h2>About Medi-Share</h2>
-                            <p>"Medi-Share" is an online portal for donation of unused medicines for needy ones.The pharmaceutical industry in India suffers a significant loss every year due to the destruction of expired drugs, particularly affecting small and medium drug manufacturers. At the same time, there are many households where medicines remain unused and expire. To address these issues, Medi-Share allows individuals to donate their unused, unexpired medications to a community pharmacy or medicine bank that will distribute them to people in need, free of charge.
+                            <p>"Medi-Share" is an online portal for donation of unused medicines for needy ones. The pharmaceutical industry in India suffers a significant loss every year due to the destruction of expired drugs, particularly affecting small and medium drug manufacturers. At the same time, there are many households where medicines remain unused and expire. To address these issues, Medi-Share allows individuals to donate their unused, unexpired medications to a community pharmacy or medicine bank that will distribute them to people in need, free of charge.
                             </p>
                         </div>
                         <div className='img'>
@@ -58,7 +58,7 @@ export const LandingPage = () => {
                 <div className='Goal' data-aos="fade-up"
                     data-aos-duration="3000">
                     <h1>OUR GOAL</h1>
-                    <p>Our ultimate goal is to reduce the wastage and increase the utilization of medicines as much as possible.Along with this we plan to encourage people for donation and volunteer work for the society and build a healthy community.</p>
+                    <p>Our ultimate goal is to reduce the wastage and increase the utilization of medicines as much as possible. Along with this we plan to encourage people for donation and volunteer work for the society and build a healthy community.</p>
                 </div>
                 <div className='segment' data-aos="zoom-in">
                     <img src="./capsule.png" alt="" />
@@ -127,15 +127,7 @@ export const LandingPage = () => {
 
                 </div>
                 <div className='fback'>
-                    Build by Team
-                    <div className='footer'>
-                        <div className='fleft'>
-                            <a href="https://www.freepik.com/free-vector/solidarity-concept-illustration_14562369.htm#query=volunteer&position=2&from_view=keyword&track=sph">Image by storyset</a> on Freepik
-                        </div>
-                        <div className='fright'>
-                            <a href="https://www.freepik.com/free-vector/solidarity-concept-illustration_14562369.htm#query=volunteer&position=2&from_view=keyword&track=sph">Image by storyset</a> on Freepik
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
