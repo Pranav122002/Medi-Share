@@ -13,13 +13,13 @@ import CommunityChat from "./components/CommunityChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
+import Doctors from "./components/Doctors";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
 import Braintumor from "./components/brainTumor";
 import HeartDisease from "./components/heartDisease";
 import Pneumonia from "./components/Pneumonia";
 import {LandingPage} from "./components/LandingPage";
-import Doctors from "./components/Doctors"
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";

@@ -31,8 +31,7 @@ export default function Profile() {
 
   function fetchAppointments() {
     fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -65,8 +64,7 @@ export default function Profile() {
 
   const postBookData = (patient_name) => {
     fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -77,8 +75,7 @@ export default function Profile() {
       .then((res) => res.json())
       .then((result) => {
         fetch(
-          `http://localhost:5000/book-appointment/${
-            JSON.parse(localStorage.getItem("user"))._id
+          `http://localhost:5000/book-appointment/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             method: "post",
@@ -125,8 +122,7 @@ export default function Profile() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -164,32 +160,38 @@ export default function Profile() {
   }
 
   return (
-    <div>
+    <div className="doctor">
       <Hnavbar />
 
       <div className="bodyy">
         <Navbar />
 
-        
+        <div className="doctordetail">
+          <img id="doctorui1" src="./doctor3.png" alt="" />
+          <h1>Doctor Appointment </h1>
+          <div className="doctorp">
+            <p>Book an appointment with our affiliated doctors today.</p>
+            <p>Appointments can be booked with the credits earned on our website.</p>
+          </div>
+        </div>
+        <div className="Doctorui">
+
           <div className="">
-            {isDoctor ? (
-            
+            {isDoctor ? (<>
+              <h2>Your Appointments</h2>
               <div className="appointments-container">
-                <h2>Your Appointments</h2>
+                
                 {appointments.length > 0 ? (
                   <ul>
                     {appointments.map((appointment) => (
                       <li key={appointment._id}>
+                        <p><img src="./doctor2.png" alt="" /></p>
                         <p>Doctor: {appointment.doctor_name}</p>
                         <p>Date: {appointment.appointment_date}</p>
-                        <button
-                          type="submit"
-                          onClick={() => {
-                            confirmAppointment(appointment._id);
-                          }}
-                        >
-                          Confirm
-                        </button>
+                        <button className="button-53" type="submit" onClick={() => {confirmAppointment(appointment._id);}}>  Confirm</button>      
+                        
+                        
+                       
                       </li>
                     ))}
                   </ul>
@@ -197,17 +199,11 @@ export default function Profile() {
                   <h3 className="noaot">No appointments found.</h3>
                 )}
               </div>
-            ) : (
+              </>  ) : (<>
+              <h1>Book an appointment</h1>
               <div className="doctorcont">
-                <h3>Book an appointment with this doctors</h3>
-                <div>
-                  <ul>
-                    {doctors.map((doctor) => (
-                      <li key={doctor._id}>{doctor.name}</li>
-                    ))}
-                  </ul>
-                </div>
-
+                <img src="./doctor2.png" alt="" />
+                
                 <div>
                   <div className="book">
                     <div className="bookForm">
@@ -238,24 +234,25 @@ export default function Profile() {
                           }}
                         />
                       </div>
-
-                      <input
-                        type="submit"
-                        id="book-btn"
-                        onClick={() => {
-                          postBookData(patient);
-                        }}
-                        value="Book : 200 Credits"
-                      />
+                      <button className="button-53" value="Book : 200 Credits" type="submit" onClick={() => {postBookData(patient); }}>Book : 200 Credits</button>      
+                      
                     </div>
                   </div>
                 </div>
+                <div className="doctorslist">
+                  <ul>
+                    <h2>Doctors list</h2>
+                    {doctors.map((doctor) => (
+                      <li key={doctor._id}>{doctor.name}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            )}
+              </>)}
           </div>
-        
 
 
+        </div>
 
 
       </div>

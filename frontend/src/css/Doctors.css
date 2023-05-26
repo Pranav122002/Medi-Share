@@ -1,28 +1,119 @@
-.doctorcont{
+
+.doctor .bodyy{
+  margin: auto;
+  width: 100vw;
+  height: max-content;
+  min-height: 120vh;
+
+  background: #f1fffd;
+ 
+}
+
+#doctorui1{
+  margin-top: -2rem;
+  height: 30rem;
   position: absolute;
-  left: 30%;
-  top: 20%;
+  right: 0;
+}
+
+.doctor .doctordetail{
+  width: 100vw;
+  background: white;
+  height: 28rem;
+}
+
+.doctor .doctordetail h1{
+  position: relative;
+  z-index: 2;
+  margin-bottom: 5rem;
+}
+
+.doctor .doctorp{
+  position: relative;
+  z-index: 2;
+  background: white;
+  box-shadow: 2px 2px 8px rgb(192, 225, 226);
+  width: 40%;
+  margin-left: 15rem;
+  height: max-content;
+  padding: 1rem;
+}
+
+.doctor .doctordetail p{
+  
+  text-align: left;
+    font-size: 1.2vw;
+}
+
+.doctorcont{
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
   
 }
 
+.doctorcont img{
+  position: absolute;
+  left: 0;
+  opacity: 0.9;
+
+}
+
 .bookForm {
+  min-height: 15rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 23;
   text-align: center;
   background-color: #fbfbfb;
-  padding: 30px;
-  border-radius: 1rem;
-  width: 24rem;
-  height: 23rem;
+  padding: 30px; 
+  width: 24vw;
+  height: max-content;
   box-shadow: 2px 2px 9px rgb(220, 220, 220);
 
 }
   
 .book{
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  
 }
 
+.bookForm input{
+  font-weight: 700;
+  text-align: center;
+  width: 70%;
+  min-height: 3rem;
+  margin-top: 1rem;
+}
 
+.bookForm input:hover{
+  font-weight: 700;
+  text-align: center;
+  width: 75%;
+  box-shadow: 2px 2px 8px rgb(192, 255, 249);
+  min-height: 3rem;
+  margin-top: 1rem;
+}
+
+.doctorslist{
+  background: white;
+  min-height: 15rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 23;
+  text-align: center;
+  
+  padding: 30px; 
+  width: 24vw;
+  height: max-content;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
+}
+.doctorslist  li{
+  font-weight: 700;
+}
+.doctorslist h2{
+  margin-left: 0;
+  text-align: left;
+}
   .load{
     position: absolute;
     left: 50%;
@@ -45,7 +136,256 @@
 
 
   .noaot{
-    position: absolute;
-    left: 50%;
-    top: 30%;
+   position: relative;
+   margin: auto;
+  }
+
+  .appointments-container{
+      width: 85vw;
+      margin: auto;
+      background: rgb(253, 253, 253);
+      min-height: 10rem;
+      height: max-content;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      
+  }
+  .appointments-container ul li{
+    border-radius: 2px;
+    min-height: 4rem;
+    background: white;
+    box-shadow: 2px 2px 9px rgb(230, 230, 230);
+    height: max-content;
+    width: 85%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    
+  }
+  .appointments-container ul li:hover{
+    border-radius: 2px;
+    min-height: 4rem;
+    background: white;
+    box-shadow: 2px 2px 9px rgb(181, 224, 220);
+    height: max-content;
+    width: 86%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+  }
+  .appointments-container ul li .button-53{
+    background-color: #b7ffec;
+    border: 0 solid #E5E7EB;
+    color: #000000;
+    display: block;
+    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 15%;
+    max-width: 20%;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-align: center;
+    
+    margin-top: 0rem;
+    margin: auto;
+  }
+  .appointments-container ul li p{
+    width: 20%;
+  }
+  @media screen and (max-width: 1000px) {
+    .doctor .doctordetail h1{
+      position: relative;
+      z-index: 2;
+      margin-bottom: 2rem;
+    }
+    .doctor .doctorp{
+     
+      position: relative;
+      z-index: 2;
+      background: white;
+      box-shadow: 2px 2px 8px rgb(192, 225, 226);
+      width: 80%;
+      margin-left: 0rem;
+      height: max-content;
+      margin: auto;
+      padding: 1rem;
+    }
+    .doctor .doctordetail p{
+  
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    #doctorui1{
+      margin-top: -2rem;
+      height: 25rem;
+      position: absolute;
+      right: 0;
+    }
+    
+    .doctor .doctordetail{
+      width: 100vw;
+      background: white;
+      height: 23rem;
+    }
+
+    .doctorcont{
+      position: relative;
+      display: block;
+      
+      
+    }
+    
+    .doctorcont img{
+      position: relative;
+      left: 0;
+      opacity: 0.9;
+      width: 80vw;
+    
+    }
+
+    .bookForm {
+      min-height: 15rem;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      background-color: #fbfbfb;
+      padding: 30px; 
+      width: 80vw;
+      height: max-content;
+      margin: auto;
+      box-shadow: 2px 2px 9px rgb(220, 220, 220);
+    
+    }
+      
+    
+    .bookForm input{
+      font-weight: 700;
+      text-align: center;
+      width: 80%;
+      min-height: 3rem;
+      margin-top: 1rem;
+    }
+    
+    .bookForm input:hover{
+      font-weight: 700;
+      text-align: center;
+      width:85%;
+      box-shadow: 2px 2px 8px rgb(192, 255, 249);
+      min-height: 3rem;
+      margin-top: 1rem;
+    }
+    .bookForm .button-53{
+      width: 90%;
+    }
+    .doctorslist{
+      background: white;
+      min-height: 15rem;
+    
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 30px; 
+      width: 80vw;
+      height: max-content;
+      margin: auto;
+      margin-top: 3rem;
+      box-shadow: 2px 2px 9px rgb(220, 220, 220);
+    }
+    .doctorslist  li{
+      font-weight: 700;
+      text-align: center;
+    }
+    .doctorslist h2{
+      margin-left: 0;
+      text-align: left;
+    }
+    
+    .Doctorui h2{
+      margin: 0;
+      margin-top: 2rem;
+    }
+
+  .appointments-container{
+    text-align: center;
+      width: 92vw;
+      margin: auto;
+      background: rgb(253, 253, 253);
+      min-height: 10rem;
+      height: max-content;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      
+  }
+  .appointments-container ul{
+    padding: 0;
+    
+  }
+  .appointments-container ul li{
+    border-radius: 2px;
+    min-height: 4rem;
+    background: white;
+    box-shadow: 2px 2px 9px rgb(230, 230, 230);
+    height: max-content;
+    width: 85%;
+    display: block;
+    
+    margin: auto;
+    
+  }
+  .appointments-container ul li:hover{
+    border-radius: 2px;
+    min-height: 4rem;
+    background: white;
+    box-shadow: 2px 2px 9px rgb(181, 224, 220);
+    height: max-content;
+    width: 86%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+  }
+  .appointments-container ul li .button-53{
+    background-color: #b7ffec;
+    border: 0 solid #E5E7EB;
+    color: #000000;
+    display: block;
+    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 70%;
+    max-width: 70%;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  .appointments-container ul li p{
+    width: 70%;
+    margin: auto;
+    margin-top: 1rem;
+  }
   }

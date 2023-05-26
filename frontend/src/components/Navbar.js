@@ -26,50 +26,50 @@ export default function Navbar({ login }) {
       <>
         <Link to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
-          <img className="navimg" src="./logo1.png" alt="" />
+          <img className="navimg" src="./donatemed.png" alt="" />
         </Link>
         <Link to="/request-medicines">
           <li style={{color: "black"}} className="navli">Request</li>
-          <img className="navimg" src="./receive.png" alt="" />
+          <img className="navimg" src="./requestmed.png" alt="" />
         </Link>
         <Link to="/orders">
           <li style={{color: "black"}} className="navli">Orders</li>
-          <img className="navimg" src="./box.png" alt="" />
+          <img className="navimg" src="./orders.png" alt="" />
         </Link>
         <Link to="/volunteer">
           <li style={{color: "black"}} className="navli">Volunteer</li>
-          <img className="navimg" src="./volunteer.jpg " alt="" />
+          <img className="navimg" src="./verified.png " alt="" />
         </Link>
         {/* <Link to="/medicines">
           <li style={{color: "black"}} className="navli">Medicines</li>
         </Link> */}
         <Link to="/search-medicines">
           <li style={{color: "black"}} className="navli">Search Medicines</li>
-          <img className="navimg" src="./medicine.png" alt="" />
+          <img className="navimg" src="./search-medicine.png" alt="" />
         </Link>
         <Link to="/nearby-hospitals">
           <li style={{color: "black"}} className="navli">Nearby Hospitals</li>
-          <img className="navimg" src="./hospital.png" alt="" />
+          <img className="navimg" src="./hospitals.png" alt="" />
         </Link>
         <Link to="/annoucements">
           <li style={{color: "black"}} className="navli">Annoucements</li>
-          <img className="navimg" id="mega" src="./megaphone.png" alt="" />
+          <img className="navimg" id="mega" src="./annoucement.png" alt="" />
         </Link>
         <Link to="/doctors">
           <li style={{color: "black"}} className="navli">Doctors</li>
-          <img className="navimg" id="mega" src="./doctor2.png" alt="" />
+          <img className="navimg" id="mega" src="./appointment.png" alt="" />
         </Link>
         <Link to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
-          <img className="navimg" src="./profile.png" alt="" />
+          <img className="navimg" src="./profile-pic.png" alt="" />
         </Link>
         <Link to="/chats">
           <li style={{color: "black"}} className="navli">Chats</li>
-          <img className="navimg" src="./chat.png" alt="" />
+          <img className="navimg" src="./chats.png" alt="" />
         </Link>
         <Link to="/disease-predictions">
           <li style={{color: "black"}} className="navli">Disease Predictions</li>
-          <img className="navimg" src="./campaign.png" alt="" />
+          <img className="navimg" src="./diseases.png" alt="" />
         </Link>
 
         <Link to="/signin"
@@ -79,7 +79,7 @@ export default function Navbar({ login }) {
           }}
         >
           <li style={{ color: "red" }} className="navli">Log-Out</li>
-          <img className="navimg" src="./logout.png" alt="" />
+          <img className="navimg" src="./log-out.png" alt="" />
         </Link>
       </>,
     ];
@@ -91,9 +91,9 @@ export default function Navbar({ login }) {
       <div  onClick={handleShowVNavbar}  className={`navbar ${showVNavbar && 'active'}`}>
         <div className="one">
 
-          <img src="./pill2.png" alt="" />
+          <img src="./pills.png" alt="" />
           <h1>SERVICES</h1>
-          <img id="arrow" src="./arrow.png" alt="" />
+          <img id="arrow" src="./expand.png" alt="" />
         </div>
         <div className="two"  >
           <ul className="nav-menu">{loginStatus()}</ul>
