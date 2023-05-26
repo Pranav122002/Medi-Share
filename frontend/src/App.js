@@ -13,6 +13,7 @@ import CommunityChat from "./components/CommunityChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
+import Doctors from "./components/Doctors";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
 import {LandingPage} from "./components/LandingPage";
