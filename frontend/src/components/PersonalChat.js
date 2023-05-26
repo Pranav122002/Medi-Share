@@ -77,7 +77,8 @@ export default function Chat() {
     <>
       <Hnavbar />
       <Navbar />
-      <div className="container">
+      <h1>Personal Chat</h1>
+      <div className="chacontainer">
         <Contacts contacts={contacts} changeChat={handleChatChange} />
         {currentChat === undefined ? (
           <Welcome />

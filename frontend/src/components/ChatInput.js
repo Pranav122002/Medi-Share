@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import "../css/Chats.css"
 
 export default function ChatInput({ handleSendMsg }) {
 
@@ -14,7 +15,7 @@ export default function ChatInput({ handleSendMsg }) {
   };
 
   return (
-    <Container>
+    <Container className="imput">
       <div className="button-container"></div>
       <form className="input-container" onSubmit={(event) => sendChat(event)}>
         <input
@@ -33,6 +34,7 @@ export default function ChatInput({ handleSendMsg }) {
 }
 
 const Container = styled.div`
+  
   display: grid;
   margin-left: 10px;
   margin-right: 10px;
@@ -45,6 +47,8 @@ const Container = styled.div`
   background-color: white;
   padding-left: 10px;
   padding-right: 10px;
+  margin-top:-2vh;
+  width:65vw;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 0 1rem;
     // gap: 1rem;
@@ -94,7 +98,7 @@ const Container = styled.div`
   .input-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    width: 90%;
+    width: 80%;
     // border-radius: 2rem;
     display: flex;
     flex-direction: row;
@@ -131,8 +135,8 @@ const Container = styled.div`
 
       color: rgb(0, 149, 246);
       // width: 20px;
-      position: absolute;
-      right: 15px;
+      position: relative;
+      right: -30px;
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         padding: 0.3rem 1rem;
         svg {

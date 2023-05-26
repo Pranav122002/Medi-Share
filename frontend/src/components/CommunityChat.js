@@ -50,7 +50,8 @@ export default function CommunityChat() {
     <>
       <Hnavbar />
       <Navbar />
-      <div className="container">
+      <h1>Community Chat</h1>
+      <div className="chacontainer">
         <CommunityChatContainer socket={socket} />
       </div>
     </>

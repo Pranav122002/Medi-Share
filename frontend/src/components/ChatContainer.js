@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
 import { v4 as uuidv4 } from "uuid";
+import "../css/Chats.css"
 
 export default function ChatContainer({ currentChat, socket }) {
 
@@ -113,7 +114,7 @@ export default function ChatContainer({ currentChat, socket }) {
   }, [messages]);
 
   return (
-    <Container>
+    <Container className="chattcont">
       <div className="chat-header">
         <div className="user-details">
           <div className="username">

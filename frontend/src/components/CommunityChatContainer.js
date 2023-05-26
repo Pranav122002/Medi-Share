@@ -166,15 +166,18 @@ const Container = styled.div`
   }
 
   .chat-messages {
+    box-shadow: 2px 2px 9px rgb(216, 216, 216);
+    background:white;
     padding: 0.5rem 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     overflow: auto;
-
+    width:70vw;
     position: absolute;
-    height: 100%;
-    min-width: -webkit-fill-available;
+    padding-bottom:10rem;
+    height: max-content;
+    height:40rem;
 
     &::-webkit-scrollbar {
       width: 0.2rem;
@@ -186,7 +189,7 @@ const Container = styled.div`
     }
 
    .sendername{
-    color: blue;
+    color: green;
     font-size: x-small;
    }
 
@@ -201,8 +204,9 @@ const Container = styled.div`
         overflow-wrap: break-word;
         padding: 0.5rem;
         font-size: small;
-        border-radius: 1rem;
+        border-radius: 0.3rem;
         color: #d1d1d1;
+        margin-top:0.5rem;
 
         
         @media screen and (min-width: 720px) and (max-width: 1080px) {
@@ -223,7 +227,9 @@ const Container = styled.div`
       .content {
         background-color: rgb(239,239,239);
         color: black;
-        
+        width:30%;
+        display:flex;
+        justify-content:space-between;
       }
     }
     .recieved {
@@ -231,7 +237,9 @@ const Container = styled.div`
       .content {
         background-color: white;
         border: 1px solid rgb(239, 239,239);
-
+        width:30%;
+        display:flex;
+        justify-content:space-between;
         color: black;
       }
     }
