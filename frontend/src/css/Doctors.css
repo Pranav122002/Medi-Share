@@ -314,4 +314,78 @@
       text-align: left;
     }
     
+    .Doctorui h2{
+      margin: 0;
+      margin-top: 2rem;
+    }
+
+  .appointments-container{
+    text-align: center;
+      width: 92vw;
+      margin: auto;
+      background: rgb(253, 253, 253);
+      min-height: 10rem;
+      height: max-content;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      
+  }
+  .appointments-container ul{
+    padding: 0;
+    
+  }
+  .appointments-container ul li{
+    border-radius: 2px;
+    min-height: 4rem;
+    background: white;
+    box-shadow: 2px 2px 9px rgb(230, 230, 230);
+    height: max-content;
+    width: 85%;
+    display: block;
+    
+    margin: auto;
+    
+  }
+  .appointments-container ul li:hover{
+    border-radius: 2px;
+    min-height: 4rem;
+    background: white;
+    box-shadow: 2px 2px 9px rgb(181, 224, 220);
+    height: max-content;
+    width: 86%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+  }
+  .appointments-container ul li .button-53{
+    background-color: #b7ffec;
+    border: 0 solid #E5E7EB;
+    color: #000000;
+    display: block;
+    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 70%;
+    max-width: 70%;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  .appointments-container ul li p{
+    width: 70%;
+    margin: auto;
+    margin-top: 1rem;
+  }
   }
