@@ -20,6 +20,7 @@ import Braintumor from "./components/brainTumor";
 import HeartDisease from "./components/heartDisease";
 import Pneumonia from "./components/Pneumonia";
 import {LandingPage} from "./components/LandingPage";
+import Tasks from "./components/Tasks";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/request-medicines" element={<Request />}></Route>
           <Route path="/orders" element={<Orders />}></Route>
           <Route path="/medicines" element={<Medicines />}></Route>
+          <Route path="/tasks" element={<Tasks />}></Route>
           <Route path="/disease-predictions" element={<DiseasePredictions />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/volunteer" element={<Volunteer />}></Route>

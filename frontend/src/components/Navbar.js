@@ -47,10 +47,7 @@ export default function Navbar({ login }) {
           <li style={{color: "black"}} className="navli">Search Medicines</li>
           <img className="navimg" src="./search-medicine.png" alt="" />
         </Link>
-        <Link className="borderrad" to="/nearby-hospitals">
-          <li style={{color: "black"}} className="navli">Nearby Hospitals</li>
-          <img className="navimg" src="./hospitals.png" alt="" />
-        </Link>
+        
         <Link className="borderrad" to="/annoucements">
           <li style={{color: "black"}} className="navli">Annoucements</li>
           <img className="navimg" id="mega" src="./annoucement.png" alt="" />
@@ -58,6 +55,10 @@ export default function Navbar({ login }) {
         <Link className="borderrad" to="/doctors">
           <li style={{color: "black"}} className="navli">Doctors</li>
           <img className="navimg" id="mega" src="./appointment.png" alt="" />
+        </Link>
+        <Link className="borderrad" to="/tasks">
+          <li style={{color: "black"}} className="navli">Tasks</li>
+          <img className="navimg" src="./tasks.png" alt="" />
         </Link>
         <Link className="borderrad" to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
@@ -71,7 +72,10 @@ export default function Navbar({ login }) {
           <li style={{color: "black"}} className="navli">Disease Predictions</li>
           <img className="navimg" src="./diseases.png" alt="" />
         </Link>
-
+        <Link className="borderrad" to="/nearby-hospitals">
+          <li style={{color: "black"}} className="navli">Nearby Hospitals</li>
+          <img className="navimg" src="./hospitals.png" alt="" />
+        </Link>
         <Link className="borderrad" to="/signin"
           onClick={() => {
             localStorage.clear();

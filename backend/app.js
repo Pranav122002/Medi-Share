@@ -12,22 +12,25 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-require("./models/medicine");
-require("./models/user");
-require("./models/message");
-require("./models/order");
 require("./models/annoucement");
 require("./models/appointment");
+require("./models/communitymessage");
+require("./models/medicine");
+require("./models/message");
+require("./models/order");
+require("./models/task");
+require("./models/user");
 
 
-app.use(require("./routes/auth"));
-app.use(require("./routes/order"));
-app.use(require("./routes/user"));
-app.use(require("./routes/message"));
-app.use(require("./routes/medicine"));
 app.use(require("./routes/annoucement"));
-app.use(require("./routes/disease"));
 app.use(require("./routes/appointment"));
+app.use(require("./routes/auth"));
+app.use(require("./routes/disease"));
+app.use(require("./routes/medicine"));
+app.use(require("./routes/message"));
+app.use(require("./routes/order"));
+app.use(require("./routes/task"));
+app.use(require("./routes/user"));
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
 mongoose.connection.on("connected", () => {
