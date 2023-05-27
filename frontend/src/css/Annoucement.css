@@ -69,6 +69,10 @@
   background: white;
 
 }
+.announce .anc li:first-child{
+  background: #00BFBA;
+  color: white;
+}
 
 .announce .anc li:hover {
   width: 91%;

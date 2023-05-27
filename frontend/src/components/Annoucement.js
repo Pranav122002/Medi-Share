@@ -162,7 +162,7 @@ export default function Annoucement() {
 
         
           <ul > 
-            <li className="bord"  style={{ backgroundColor: "white", color: "black"  }}>
+            <li className="bord" >
               <h3 id="pp4" > Name</h3>
               <h3 id="pp1" className="p1">Date</h3>
               <h3 id="pp3"  className="p2">Venue</h3>

@@ -104,7 +104,8 @@
 }
 .contentt .proul .profli{
     width: 98%;
-    background: white;
+    color: white;
+    background: rgb(115, 213, 240);
     display: flex;
     justify-content: flex-start;
     box-shadow: 2px 2px 9px rgb(238, 238, 238);

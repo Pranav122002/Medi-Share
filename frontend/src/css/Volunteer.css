@@ -61,6 +61,11 @@
   outline: none;
   border: none;
 }
+.volunteer_cunt .vpending:first-child{
+  background:#00BFBA;
+  color: white;
+  font-size: 1.2rem;
+}
 
 .volunteer_cunt .vpending{
   position: relative;

@@ -174,7 +174,7 @@
 }
 
 .heading{
-  box-shadow: 2px 2px 8px #cfcfcf;
+  box-shadow: 2px 2px 8px #bababa;
   height: max-content;
   width: 85vw;
   font-size: 1.3rem;
@@ -183,8 +183,9 @@
   border: none;
   display: flex;
   justify-content: flex-start;
-  background: white;
+  background: #00BFBA;
   border-radius: 1rem;
+  color: white;
 }
 .heading img{
   padding-left: 1rem;

@@ -153,7 +153,7 @@ export default function Profile() {
             
             <h2>My Requested Orders <img src="./requestmed.png" alt="" /></h2>
             <ul className="proul">
-              <li className="profli" style={{ backgroundColor: "white", color: "black" }}>
+              <li className="profli">
                 <h3 className="pm">Name</h3>
                 <h3 className="p1">Expiry Date</h3>
                 <h3 className="p2">Quantity</h3>
