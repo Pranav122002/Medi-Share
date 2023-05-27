@@ -27,6 +27,23 @@ router.post("/addmedicine", async (req, res, next) => {
   }
 });
 
+router.post("/add-medicines", async (req, res, next) => {
+  try {
+    const medicines = req.body;
+
+    const createdMedicines = await MEDICINE.create(medicines);
+
+    if (createdMedicines.length === medicines.length) {
+      return res.json({ msg: "Medicines added successfully." });
+    } else {
+      return res.json({ msg: "Failed to add medicines." });
+    }
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+
 router.post('/search-medicines',(req,res)=>{
   let userPattern = new RegExp(req.body.query, "i"); // add "^" at start for exact search 
   MEDICINE.find({medicine_name:{$regex:userPattern}})
