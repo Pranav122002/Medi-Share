@@ -187,6 +187,7 @@ export default function Profile() {
                       <li key={appointment._id}>
                         <p><img src="./doctor2.png" alt="" /></p>
                         <p>Doctor: {appointment.doctor_name}</p>
+                        <p>Patient: {appointment.patient_name}</p>
                         <p>Date: {appointment.appointment_date}</p>
                         <button className="button-53" type="submit" onClick={() => {confirmAppointment(appointment._id);}}>  Confirm</button>      
                         
