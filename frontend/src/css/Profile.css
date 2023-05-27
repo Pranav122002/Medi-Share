@@ -29,6 +29,7 @@
   margin-top: 2rem;
   width: 85vw;
   box-shadow: 2px 2px 9px rgb(225, 225, 225);
+  background-color: #EEEEFF;
 }
 
 .contentt .userdet{
@@ -74,10 +75,11 @@
 .contentt .donatedorders{
   position: relative;
   z-index: 1;
-  background: hsl(191, 100%, 98%);
+  /* background: hsl(191, 100%, 98%); */
   padding-top: 0.1px;
   height: max-content;
   padding-bottom: 2rem;
+ 
 }
 
 .contentt h2{
@@ -173,7 +175,7 @@
 .contentt  .myappoint{
   position: relative;
   z-index: 1;
-  background: hsl(191, 100%, 98%);
+  /* background: hsl(191, 100%, 98%); */
   padding-top: 0.1px;
   height: max-content;
   padding-bottom: 2rem;
