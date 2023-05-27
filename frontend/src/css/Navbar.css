@@ -61,6 +61,7 @@
   z-index: 23;
   top: 4rem;  
   
+  
 } 
 .navbar.false .two img{
   display: none;
@@ -75,6 +76,7 @@
   z-index: 23 ;
   height: 100vh;
   top: 4rem;
+  
 }
 
 @keyframes slideN {
@@ -111,7 +113,7 @@
     
   }
   100% {
-    min-width:180px ;
+    min-width:100px ;
     width: 17%;
   }
 }
@@ -139,6 +141,7 @@
 }
 .navbar.false ul a{
   height: 7vh;
+  
 }
 
 .navbar.active .two{
@@ -146,9 +149,19 @@
  animation-name: slideN;
  animation-duration: 2s;
  animation-fill-mode: forwards;
- 
-
+ overflow: scroll;
+  height: max-content;
+  padding-bottom: 7rem;
 }
+
+.navbar.active .two::-webkit-scrollbar{
+  display: none;
+}
+
+.navbar.false .two::-webkit-scrollbar{
+  display: none;
+}
+
 .navbar.active ul img{
   margin: auto;
 }
@@ -157,9 +170,20 @@
   animation-name: slideV;
  animation-duration: 0s;
  animation-fill-mode: forwards;
- overflow: hidden;
- 
+
+
 }
+
+.navbar.false .nav-menu{
+   
+
+}
+.navbar.false .two{
+  overflow: scroll;
+  height: max-content;
+  padding-bottom: 7rem; 
+}
+
 
 .navbar.active ul a{
   /* pointer-events: none; */
@@ -250,7 +274,23 @@ ul a{
 }
 
 @media screen and (max-width: 1000px){
+
+  .navbar.active .two::-webkit-scrollbar{
+    display: none;
+  }
   
+  .navbar.false .two::-webkit-scrollbar{
+    display: none;
+  }
+
+  
+.navbar.false .one{
+  overflow: scroll;
+}
+
+  .navbar.false .two{
+    overflow: scroll;
+  }
   
   .links.active .navli{
     display: none;
@@ -260,6 +300,7 @@ ul a{
      animation-fill-mode: forwards;
      position: fixed;
      z-index: 23;
+     
      
    } 
    @keyframes slideV {
@@ -297,7 +338,7 @@ ul a{
      animation-fill-mode: forwards;
      position: fixed;
      z-index: 23;
-    
+    overflow:visible;
      
    } 
    .navbar.active .nav-menu{
@@ -305,7 +346,7 @@ ul a{
    }
 
    .navbar.false{
-  
+      overflow: scroll;
    }
    .one {
     
