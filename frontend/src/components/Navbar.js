@@ -40,6 +40,10 @@ export default function Navbar({ login }) {
           <li style={{color: "black"}} className="navli">Volunteer</li>
           <img className="navimg" src="./verified.png " alt="" />
         </Link>
+         <Link className="borderrad" to="/tasks">
+          <li style={{color: "black"}} className="navli">Tasks</li>
+          <img className="navimg" src="./tasks.png" alt="" />
+        </Link>
         {/* <Link className="borderrad" to="/medicines">
           <li style={{color: "black"}} className="navli">Medicines</li>
         </Link> */}
@@ -56,10 +60,7 @@ export default function Navbar({ login }) {
           <li style={{color: "black"}} className="navli">Doctors</li>
           <img className="navimg" id="mega" src="./appointment.png" alt="" />
         </Link>
-        <Link className="borderrad" to="/tasks">
-          <li style={{color: "black"}} className="navli">Tasks</li>
-          <img className="navimg" src="./tasks.png" alt="" />
-        </Link>
+       
         <Link className="borderrad" to="/profile">
           <li style={{color: "black"}} className="navli">Profile</li>
           <img className="navimg" src="./profile-pic.png" alt="" />
