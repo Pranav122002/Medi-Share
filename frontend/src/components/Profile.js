@@ -120,7 +120,7 @@ export default function Profile() {
 
             </h1>
             <span id="credits">Credits : {credits} <br />
-              <img src="./credits.png" alt="" />
+              <img src="./coin.png" alt="" />
             </span>
           </div>
           <div className="donatedorders">
