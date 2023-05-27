@@ -14,8 +14,7 @@ export default function Contacts({ contacts, changeChat }) {
       navigate("./signup");
     } else {
       fetch(
-        `http://localhost:5000/user/${
-          JSON.parse(localStorage.getItem("user"))._id
+        `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
         }`,
         {
           headers: {
@@ -46,9 +45,8 @@ export default function Contacts({ contacts, changeChat }) {
               return (
                 <div
                   key={contact._id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
+                  className={`contact ${index === currentSelected ? "selected" : ""
+                    }`}
                   onClick={() => changeCurrentChat(index, contact)}
                 >
                   <div className="username">
@@ -92,13 +90,16 @@ const Container = styled.div`
     }
 
     .contact {
+      box-shadow: 2px 2px 9px rgb(247, 247, 247);
       background-color: white;
-      margin-left: 20px;
+      margin-left: 0px;
       height: 7%;
       cursor: pointer;
-      width: 70%;
-     margin-top: 10px;
-     margin-bottom: 10px;
+      width: 100%;
+     margin-top: 0px;
+     margin-bottom: 0px;
+     padding:1rem;
+     padding-left:2rem;
       
       display: flex;
       
@@ -114,6 +115,9 @@ const Container = styled.div`
         }
         }
       }
+      .contact:hover{
+        box-shadow: 2px 2px 8px #b2b2b2;
+      }
     }
     .selected {
       background-color: pink;
@@ -127,7 +131,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    border-bottom: 1px solid rgb(219, 219, 219);
+    border-bottom: 2px solid rgb(219, 219, 219);
 
    
       p {

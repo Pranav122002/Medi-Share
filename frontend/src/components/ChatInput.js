@@ -48,7 +48,8 @@ const Container = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   margin-top:-2vh;
-  width:65vw;
+  width:40vw;
+  margin:auto;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 0 1rem;
     // gap: 1rem;
@@ -98,13 +99,13 @@ const Container = styled.div`
   .input-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    width: 80%;
+    width: 40vw;
     // border-radius: 2rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     // gap: 2rem;
-
+    
     background-color: #ffffff34;
     background-color: white;
     input {

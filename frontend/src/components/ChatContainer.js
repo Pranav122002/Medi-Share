@@ -160,12 +160,13 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
+      
      
       .username {
         p {
           color: black;
           font-size: large;
-          font-weight: 500;
+          font-weight: 700;
         }
       }
     }
@@ -176,6 +177,8 @@ const Container = styled.div`
 
 
   .chat-messages {
+
+  
     padding: 0.5rem 0.5rem;
     display: flex;
     flex-direction: column;
@@ -221,19 +224,28 @@ const Container = styled.div`
 
     }
     .sended {
+      width:40vw;
+      margin:0;
       justify-content: flex-end;
       .content {
+        min-width:5rem;
         background-color: rgb(239,239,239);
         color: black;
-        
+        text-align:left;
+        border-radius:5px;
+        background-color: rgb(199, 255, 238);
       }
     }
     .recieved {
+      width:40vw;
       justify-content: flex-start;
+      margin-left:1rem;
       .content {
+        text-align:left;
+        min-width:5rem;
         background-color: white;
         border: 1px solid rgb(239, 239,239);
-
+        border-radius:5px;
         color: black;
       }
     }
