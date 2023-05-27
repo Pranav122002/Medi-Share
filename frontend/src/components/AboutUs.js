@@ -2,6 +2,7 @@ import React from 'react'
 import { Hnavbar } from "./Hnavbar";
 import  Navbar from "./Navbar";
 import "../css/Aboutus.css";
+import { Link } from 'react-router-dom';
 
 export const AboutUs = () => {
   return (
@@ -15,7 +16,7 @@ export const AboutUs = () => {
 </p>
         <div className='Aboutimage'>
             <div className='imageee'>
-                <img src="" alt="img" srcset="" />
+                <img src="pranav.jpeg" alt="img" srcset="" />
                 <h2>Pranav Patil</h2>
             </div>
             <div className='imageee'>
@@ -23,14 +24,20 @@ export const AboutUs = () => {
                 <h2>Samuel Padmadan</h2>
             </div>
             <div className='imageee'>
-                <img src="" alt="img" srcset="" />
+                <img src="./paul.jpg" alt="img" srcset="" />
                 <h2>Paul Crescent Palanisamy</h2>
             </div>
             <div className='imageee'>
-                <img src="" alt="img" srcset="" />
+                <img src="aditya.jpeg" alt="img" srcset="" />
                 <h2>Aditya Patil</h2>
             </div>
+            
         </div>
+        <Link to="/">
+            <button className="button-53" value="Donate" role="button">Back to Home</button>  
+        </Link>
+        
+
      </div>
     </div>
     
