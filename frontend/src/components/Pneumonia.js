@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
+import Navbar from "./Navbar";
+import { Hnavbar } from "./Hnavbar";
 
 function Pneumonia() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -26,7 +28,10 @@ function Pneumonia() {
     }
   };
 
-  return (
+  return (<>
+    <Hnavbar />
+
+    <Navbar />
     <div>
       <h1>Chest X-ray Prediction</h1>
       <Dropzone onDrop={handleDrop} accept="image/jpeg, image/png">
@@ -45,7 +50,7 @@ function Pneumonia() {
       )}
       {prediction && <p>Prediction: {prediction}</p>}
     </div>
-  );
+  </>);
 }
 
 
