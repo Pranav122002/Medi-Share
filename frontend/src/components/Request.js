@@ -107,7 +107,7 @@ export default function Request() {
               <p>4.All the medicines are checked by our volunteers, we only accept and provide medicines which have the important information visible on them.</p>
             </div>
             
-            <img data-aos="fade-down-left" src="./pill2.png" alt="" />
+            <img data-aos="fade-down-left" src="./pills.png" alt="" />
 
           </div>
         </div>

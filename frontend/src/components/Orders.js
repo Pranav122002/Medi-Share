@@ -162,7 +162,7 @@ export default function Orders() {
 
             <Card className="Card" key={index}>
               <Card.Body>
-                <Card.Title id="title"><img src="pill2.png" alt="" />{card.medicine_name}</Card.Title>
+                <Card.Title id="title"><img src="pills.png" alt="" />{card.medicine_name}</Card.Title>
                 <Card.Text id="details">
                   <p><div className="content-details">Expiry:-</div>{card.expiry_date}<br /></p>
                   <p><div className="content-details">Quntity:-</div>{card.quantity}<br /></p>
@@ -181,7 +181,7 @@ export default function Orders() {
 
             <Card key={index}>
               <Card.Body className="Card_body">
-                <Card.Title id="title"><img src="pill2.png" alt="" />{card.medicine_name}</Card.Title>
+                <Card.Title id="title"><img src="pills.png" alt="" />{card.medicine_name}</Card.Title>
                 <Card.Text id="details">
                   <p><div className="content-details">Expiry:-</div>{card.expiry_date}<br /></p>
                   <p><div className="content-details">Quntity:-</div>{card.quantity}<br /></p>
