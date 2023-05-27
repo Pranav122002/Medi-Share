@@ -74,6 +74,22 @@
 
 }
 
+.heartdis .flexxx{
+  margin: auto;
+  width: 90%;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 2px 2px 9px rgb(236, 236, 236);
+}
+
+.heartdis .flexxx input{
+    width: 70%;
+}
+
+.heartdis .button-53{
+  margin-bottom: 2rem;
+}
+
 @media screen and (max-width: 1000px) {
 
   .dise {
