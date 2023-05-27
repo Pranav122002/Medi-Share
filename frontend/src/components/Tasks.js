@@ -189,7 +189,7 @@ export default function Tasks() {
   };
 
   return (
-    <div>
+    <div className="task">
       <Hnavbar />
 
       <div className="bodyy">

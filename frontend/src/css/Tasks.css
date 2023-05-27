@@ -1,0 +1,29 @@
+.task .allCards{
+
+    height: 100vh;
+}
+
+.task .OCards p{
+    width: 60vw;
+}
+
+.task #title{
+    width: 20vw;
+}
+
+@media screen and (max-width: 1000px){
+    
+.task #title{
+    width: 90%;
+}
+
+.task .OCards p{
+    width: 90%;
+    margin-top: 1rem;
+    
+}
+.task .content-details{
+    font-weight: 700;
+    margin-left: 0;
+}
+}

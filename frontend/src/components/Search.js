@@ -46,7 +46,7 @@ export default function Search() {
             />
 
             <ul>
-              <li style={{ backgroundColor: "white", color: "black" }}>
+              <li>
                 <h3>Medicine</h3>
                 <h3 className="p1">Description</h3>
                 <h3 className="p2">Disease</h3>
@@ -60,7 +60,7 @@ export default function Search() {
                       {item.medicine_name}
                     </h3>
                     <p className="p1">{item.description}</p>
-                    <p className="p2" style={{ color: "blue" }}>{item.disease}</p>
+                    <p className="p2" style={{ color: "black" }}>{item.disease}</p>
 
                   </li>
                 );
