@@ -21,6 +21,7 @@ Through this initiative, people can now dispose of unused medicines in a safe an
 * Users can find and view hospitals details nearby there location.
 
 ## Demo Links
+* http://34.131.3.10/
 * https://medi-share.vercel.app/
 
 ## Installation & Running 
