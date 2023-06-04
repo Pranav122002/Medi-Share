@@ -1,91 +1,121 @@
-import React, { useEffect, useRef } from 'react';
-import H from '@here/maps-api-for-javascript';
-import "../css/Hospitals.css"
+import React, { useEffect, useState, useRef } from 'react';
+import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from 'mapbox-gl-geocoder';
+// import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import mapboxSdk from '@mapbox/mapbox-sdk/services/geocoding';
+import '@mapbox/mapbox-sdk/services/geocoding';
+import 'mapbox-gl/dist/mapbox-gl.css';
+// import 'mapbox-gl-geocoder/mapbox-gl-geocoder.css';
+// import './map.css'
+// -------------------import-------------------
 
+mapboxgl.accessToken = process.env.REACT_APP_MAP_API_KEY;
+
+// -------------------token-------------------
+
+const geocodingClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+const searchHospitals = async (lng, lat, radius, limit) => {
+
+  // console.log(lng, lat)
+  try {
+    const response = await geocodingClient
+      .forwardGeocode({
+        query: 'hospital,clinic',
+        proximity: [lng, lat],
+        types: ['poi'],
+        bbox: [
+          lng - 0.5,
+          lat - 0.5,
+          lng + 0.5,
+          lat + 0.5
+        ],
+        limit: limit
+      })
+      .send();
+
+    const hospitals = response.body.features.map((feature) => ({
+      name: feature.text,
+      lng: feature.center[0],
+      lat: feature.center[1],
+    }));
+
+    return hospitals
+  } catch (error) {
+    console.error('Error searching for hospitals:', error);
+  }
+};
 const Map = () => {
-  const mapRef = useRef(null);
-  const searchInputRef = useRef(null);
+  const map = useRef(null);
+  var lng = -70.9 
+  var lat = 42.35
+  var zoom = 10
 
   useEffect(() => {
-    let map;
-    let marker;
-    let searchService;
-
-    const initializeMap = () => {
-      const platform = new window.H.service.Platform({
-        apikey: 'l3tXD7ZOmIsZClAW-Q7fX73dca8m6L-OZCSyYbEt-vU'
-      });
-
-      const defaultLayers = platform.createDefaultLayers();
-      map = new window.H.Map(
-        mapRef.current,
-        defaultLayers.vector.normal.map,
-        {
-          zoom: 10,
-          center: {lat:18.51957 , lng:73.85535}
-        }
-      );
-
-      const mapEvents = new window.H.mapevents.MapEvents(map);
-      const behavior = new window.H.mapevents.Behavior(mapEvents);
-      const ui = window.H.ui.UI.createDefault(map, defaultLayers);
-
-      marker = new window.H.map.Marker({ lat: 52.5, lng: 13.4 });
-      map.addObject(marker);
-
-      searchService = platform.getSearchService();
-
-      searchInputRef.current.addEventListener('keydown', handleSearch);
-    };
-
-    const handleSearch = (e) => {
-      if (e.key === 'Enter') {
-        searchService.geocode({
-          q: searchInputRef.current.value
-        }, showResult, handleError);
+    navigator.geolocation.getCurrentPosition(
+      successLocation,
+      errorLocation,
+      {
+          enableHighAccuracy:true
       }
-    };
-
-    const showResult = (result) => {
-      const location = result.items[0].position;
-      map.setCenter(location);
-      map.setZoom(14);
-      marker.setGeometry(location);
-
-      searchService.browse({
-        at: location.lat + ',' + location.lng,
-        q: 'hospital',
-        limit: 50
-      }, handleSearchResult, handleError);
-    };
-
-    const handleSearchResult = (result) => {
-      map.removeObjects(map.getObjects());
-
-      result.items.forEach((item) => {
-        const hospitalMarker = new window.H.map.Marker(item.position);
-        map.addObject(hospitalMarker);
+  )
+  // -------------------User-Location-------------------
+    function successLocation(position){
+      // console.log(position)
+      lng = position.coords.longitude
+      lat = position.coords.latitude
+      setupMap([lng,lat])
+    }
+    function errorLocation(){
+      setupMap([lng,lat])
+    }
+    function setupMap(center){
+      if(map.current) return;
+      map.current = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: center,
+        zoom: zoom
       });
-    };
+ 
+      const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+      });
+      
+      
+      const nav = new mapboxgl.NavigationControl();
+      map.current.addControl(geocoder, 'top-left');
+      map.current.addControl(nav, 'top-left')
+      geocoder.on('result', function (e) {
+        const marker = new mapboxgl.Marker().getLngLat(e.result.geometry.coordinates[0],e.result.geometry.coordinates[1]).addTo(map.current)
+        // console.log(e.result.geometry.coordinates[0]);
+      });
+      // -------------------Controls-------------------
 
-    const handleError = (error) => {
-      alert('Geocoding failed: ' + error);
-    };
+      map.current.on('move', () => {
+        lng = map.current.getCenter().lng.toFixed(4);
+        lat = map.current.getCenter().lat.toFixed(4);
+        zoom = map.current.getZoom().toFixed(2);
+      });
+      
 
-    initializeMap();
+      searchHospitals(lng,lat, 1,5) // longitude, latitue, radius, limit()
+      .then((result) =>{
+        result.forEach(location => {
+          const marker = new mapboxgl.Marker()
+          .setLngLat([location.lng, location.lat])
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3>`))
+          .addTo(map.current);
+        })
+      })
+      // -------------------Search-near-by-hospitals-------------------
 
-    return () => {
-      searchInputRef.current.removeEventListener('keydown', handleSearch);
-      map.dispose();
-    };
+
+    }
+
   }, []);
 
-  return (
-    <div >
-      <input className='mapsearch' type="text" ref={searchInputRef} placeholder="Enter location" />
-      <div className='minimap' ref={mapRef} style={{ height: '400px', width: '100%' }}></div>
-    </div>
-  );
+  return <div id="map" style={{ height: '600px' }}></div>;
 };
 
 export default Map;
