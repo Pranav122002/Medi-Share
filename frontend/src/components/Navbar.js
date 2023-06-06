@@ -11,6 +11,7 @@ export default function Navbar({ login }) {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const [showVNavbar, setShowVNavbar] = useState(!false)
 
@@ -19,7 +20,35 @@ export default function Navbar({ login }) {
     console.log(showVNavbar)
   }
 
+  useEffect(() => {
+    fetchUser();
+  });
 
+  const fetchUser = () => {
+    
+    fetch(
+      `http://localhost:5000/user/${
+        JSON.parse(localStorage.getItem("user"))._id
+      }`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.subscription === true) {
+          setIsSubscribed(true);
+        }
+  
+        
+      });
+
+    
+  }
+
+ 
  
   const loginStatus = () => {
     return [
@@ -65,7 +94,12 @@ export default function Navbar({ login }) {
           <li style={{color: "black"}} className="navli">Profile</li>
           <img className="navimg" src="./profile-pic.png" alt="" />
         </Link>
-        <Link className="borderrad" to="/chats">
+
+
+{isSubscribed ? ( <div>
+
+
+  <Link className="borderrad" to="/chats">
           <li style={{color: "black"}} className="navli">Chats</li>
           <img className="navimg" src="./chats.png" alt="" />
         </Link>
@@ -73,6 +107,41 @@ export default function Navbar({ login }) {
           <li style={{color: "black"}} className="navli">Disease Predictions</li>
           <img className="navimg" src="./diseases.png" alt="" />
         </Link>
+
+
+</div> ) : (
+
+<div>
+
+
+<Link className="borderrad" to="/subscribe">
+          <li style={{color: "black"}} className="navli">Chats</li>
+          <img className="navimg" src="./chats.png" alt="" />
+        </Link>
+        <Link className="borderrad" to="/subscribe">
+          <li style={{color: "black"}} className="navli">Disease Predictions</li>
+          <img className="navimg" src="./diseases.png" alt="" />
+        </Link>
+
+
+
+
+
+</div>
+
+
+)}
+
+
+
+
+
+        
+
+
+
+
+
         <Link className="borderrad" to="/nearby-hospitals">
           <li style={{color: "black"}} className="navli">Nearby Hospitals</li>
           <img className="navimg" src="./hospitals.png" alt="" />

@@ -44,4 +44,37 @@ router.get("/all-doctors", (req, res) => {
     });
 });
 
+router.put("/subscribe/:id", async (req, res) => {
+  try {
+    const user = await USER.findById(req.params.id);
+
+  
+
+    const user_credits = user.credits;
+
+    if (user_credits >= 2000) {
+      const updatedUser = await USER.findByIdAndUpdate(
+        req.params.id,
+        { $set: { subscription: true }, $inc: { credits: -2000 } },
+        { new: true }
+      );
+
+
+      res.json("You have now subscribed to Medi-Share...");
+    } else {
+
+
+      res.json(
+        "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
+      );
+    }
+  } catch (err) {
+    console.error(err);
+
+
+    res.json("An error occurred...");
+  }
+});
+
+
 module.exports = router;

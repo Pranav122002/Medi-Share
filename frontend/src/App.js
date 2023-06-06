@@ -23,6 +23,7 @@ import {LandingPage} from "./components/LandingPage";
 import Tasks from "./components/Tasks";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import Subscribe from "./components/Subscribe";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AboutUs } from "./components/AboutUs";
@@ -56,6 +57,7 @@ function App() {
           <Route path="/brainTumor" element={<Braintumor/>}></Route>
           <Route path="/Pneumonia" element={<Pneumonia/>}></Route>
           <Route path="/heartDisease" element={<HeartDisease/>}></Route>
+          <Route path="/subscribe" element={<Subscribe/>}></Route>
         </Routes>
         <ToastContainer theme="light" />
       </div>

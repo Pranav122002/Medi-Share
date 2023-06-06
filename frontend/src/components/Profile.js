@@ -5,12 +5,14 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Profile.css";
+
 export default function Profile() {
+
   const navigate = useNavigate();
 
-  // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
+
   const [isdoctor, setIsDoctor] = useState("");
   const [donateorders, setDonateOrders] = useState([]);
   const [requestorders, setRequestOrders] = useState([]);
@@ -37,7 +39,8 @@ export default function Profile() {
   }, []);
 
   fetch(
-    `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+    `http://localhost:5000/user/${
+      JSON.parse(localStorage.getItem("user"))._id
     }`,
     {
       headers: {
@@ -57,7 +60,8 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `http://localhost:5000/mydonatedorders/${JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/mydonatedorders/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -69,7 +73,8 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `http://localhost:5000/myrequestedorders/${JSON.parse(localStorage.getItem("user"))._id
+      `http://localhost:5000/myrequestedorders/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -81,7 +86,8 @@ export default function Profile() {
 
   function myAppointments() {
     fetch(
-      `http://localhost:5000/patient-appointments/${JSON.parse(localStorage.getItem("user")).name
+      `http://localhost:5000/patient-appointments/${
+        JSON.parse(localStorage.getItem("user")).name
       }`
     )
       .then((response) => response.json())
@@ -93,7 +99,8 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `http://localhost:5000/doctor-appointments/${JSON.parse(localStorage.getItem("user")).name
+      `http://localhost:5000/doctor-appointments/${
+        JSON.parse(localStorage.getItem("user")).name
       }`
     )
       .then((response) => response.json())
@@ -116,15 +123,19 @@ export default function Profile() {
             <img src="./profile-pic.png" alt="" />
 
             <h1>
-              {" "} {user_name}{" "} <br></br>
-
+              {" "}
+              {user_name} <br></br>
             </h1>
-            <span id="credits">Credits : {credits} <br />
+            <span id="credits">
+              Credits : {credits} <br />
               <img src="./rupee.png" alt="" />
             </span>
+            
           </div>
           <div className="donatedorders">
-            <h2>My Donated Orders <img src="./donatemed.png" alt="" /></h2>
+            <h2>
+              My Donated Orders <img src="./donatemed.png" alt="" />
+            </h2>
             <ul className="proul">
               <li className="profli">
                 <h3 className="pm">Name</h3>
@@ -150,8 +161,9 @@ export default function Profile() {
           </div>
 
           <div className="requestorders">
-            
-            <h2>My Requested Orders <img src="./requestmed.png" alt="" /></h2>
+            <h2>
+              My Requested Orders <img src="./requestmed.png" alt="" />
+            </h2>
             <ul className="proul">
               <li className="profli">
                 <h3 className="pm">Name</h3>
@@ -164,7 +176,7 @@ export default function Profile() {
               ) : (
                 <div className="procont">
                   {requestorders.map((requestorders) => (
-                    <li  className="proco"  key={requestorders.medicine_name}>
+                    <li className="proco" key={requestorders.medicine_name}>
                       <p className="pm"> {requestorders.medicine_name}</p>
                       <p className="p1"> {requestorders.expiry_date}</p>
                       <p className="p2"> {requestorders.quantity}</p>
@@ -177,12 +189,12 @@ export default function Profile() {
           </div>
 
           {isdoctor ? (
-
             <div className="appointm">
-              
-              <h2>My Appointments <img src="./appointment.png" alt="" /> </h2>
+              <h2>
+                My Appointments <img src="./appointment.png" alt="" />{" "}
+              </h2>
               <ul className="proul">
-                <li className="profli" >
+                <li className="profli">
                   <h3 className="pm">Doctor Name</h3>
                   <h3 className="p1">Patient Name</h3>
                   <h3 className="p2">Date</h3>
@@ -195,21 +207,23 @@ export default function Profile() {
                       <li className="proco" key={doctorappointments._id}>
                         <p className="pm"> {doctorappointments.doctor_name}</p>
                         <p className="p1"> {doctorappointments.patient_name}</p>
-                        <p className="p2"> {doctorappointments.appointment_date}</p>
+                        <p className="p2">
+                          {" "}
+                          {doctorappointments.appointment_date}
+                        </p>
                       </li>
                     ))}
                   </div>
                 )}
               </ul>
             </div>
-
           ) : (
-
-            <div  className="myappoint">
-              
-              <h2>My Appointments <img src="./appointment.png" alt="" /></h2>
+            <div className="myappoint">
+              <h2>
+                My Appointments <img src="./appointment.png" alt="" />
+              </h2>
               <ul className="proul">
-                <li className="profli" >
+                <li className="profli">
                   <h3 className="pm">Patient Name</h3>
                   <h3 className="p1">Doctor Name</h3>
                   <h3 className="p2">Date</h3>
@@ -229,7 +243,6 @@ export default function Profile() {
                 )}
               </ul>
             </div>
-
           )}
         </div>
       </div>
