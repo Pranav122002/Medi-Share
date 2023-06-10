@@ -6,8 +6,33 @@ import "../css/Home.css"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
+import { UserContext } from './UserContext';
 
 export default function Home() {
+
+  const { updateUser } = useContext(UserContext);
+  useEffect(() => {
+    const fetchUser = () => {
+      console.log("user is fetched !!!");
+      
+      fetch(
+        `http://localhost:5000/user/${
+          JSON.parse(localStorage.getItem('user'))._id
+        }`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          updateUser(res);
+        });
+    };
+
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     AOS.init({ duration: 2000 });

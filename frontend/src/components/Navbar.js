@@ -3,6 +3,7 @@ import "../css/Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { UserContext } from './UserContext';
 
 export default function Navbar({ login }) {
   const navigate = useNavigate();
@@ -11,42 +12,29 @@ export default function Navbar({ login }) {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
-  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const [showVNavbar, setShowVNavbar] = useState(!false)
+
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const { user } = useContext(UserContext);
+  
+  useEffect(() => {
+    if (user && user.subscription) {
+      setIsSubscribed(true);
+    }
+  }, [user]);
+ 
+
 
   const handleShowVNavbar = () => {
     setShowVNavbar(!showVNavbar)
     console.log(showVNavbar)
   }
 
-  useEffect(() => {
-    fetchUser();
-  });
-
-  const fetchUser = () => {
-    
-    fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
-      }`,
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.subscription === true) {
-          setIsSubscribed(true);
-        }
   
-        
-      });
 
-    
-  }
+  
 
  
  

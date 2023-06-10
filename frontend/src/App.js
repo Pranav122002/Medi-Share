@@ -27,9 +27,12 @@ import Subscribe from "./components/Subscribe";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AboutUs } from "./components/AboutUs";
+import { UserProvider } from './components/UserContext';
 
 function App() {
   return (
+    <UserProvider>
+
     <BrowserRouter>
       <div className="App">
         <Routes>
@@ -62,6 +65,8 @@ function App() {
         <ToastContainer theme="light" />
       </div>
     </BrowserRouter>
+    </UserProvider>
+
   );
 }
 

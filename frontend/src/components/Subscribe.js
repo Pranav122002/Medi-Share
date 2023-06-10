@@ -9,35 +9,10 @@ export default function Subscribe() {
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
+  const navigate = useNavigate();
 
-  const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-  const fetchUser = () => {
-    fetch(
-      `http://localhost:5000/user/${
-        JSON.parse(localStorage.getItem("user"))._id
-      }`,
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.subscription === true) {
-          setIsSubscribed(true);
-        }
-  
-        setIsLoading(false);
-      });
-
-  }
 
 
   const subscribe = () => {
@@ -56,13 +31,13 @@ export default function Subscribe() {
       .then((res) => {
         if (res === "You have now subscribed to Medi-Share...") {
           notifyB(res);
-          setIsSubscribed(true);
+      navigate("/home");
         } else if (
           res ===
           "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
         ) {
           notifyA(res);
-          setIsSubscribed(false);
+         
         } else {
           notifyA("Error");
         }
@@ -78,13 +53,9 @@ export default function Subscribe() {
         <div className="bodyy">
           <Navbar />
 
-          {isLoading ? (
-            <h1 className="loada">Loading...</h1>
-          ) : (
+          
             <div>
-              {isSubscribed ? (
-                <h1>Your subscription is on</h1>
-              ) : (
+             
                 <div>
                   <h1>
                     Please Subscribe to Medi-Share to access features like Chats
@@ -98,11 +69,13 @@ export default function Subscribe() {
                     Subscribe
                   </button>
                 </div>
-              )}
+             
             </div>
-          )}
+          
         </div>
       </div>
     </>
   );
+
+ 
 }
