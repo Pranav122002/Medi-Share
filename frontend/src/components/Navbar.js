@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from './UserContext';
 
-export default function Navbar({ login }) {
+export default function Navbar() {
   const navigate = useNavigate();
 
   // Toast functions

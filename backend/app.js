@@ -14,18 +14,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./models/annoucement");
 require("./models/appointment");
-require("./models/communitymessage");
-require("./models/medicine");
+require("./models/personal_message");
 require("./models/message");
+require("./models/medicine");
 require("./models/order");
 require("./models/task");
 require("./models/user");
 
-
 app.use(require("./routes/annoucement"));
 app.use(require("./routes/appointment"));
 app.use(require("./routes/auth"));
-app.use(require("./routes/disease"));
 app.use(require("./routes/medicine"));
 app.use(require("./routes/message"));
 app.use(require("./routes/order"));
@@ -51,17 +49,39 @@ const io = socket(server, {
   },
 });
 
-global.onlineUsers = new Map();
+const onlineUsers = new Map();
+
 io.on("connection", (socket) => {
-  global.chatSocket = socket;
+
+  socket.on("message", (message) => {
+    io.emit("message", message);
+  });
+
+  
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id);
   });
 
-  socket.on("send-msg", (data) => {
-    const sendUserSocket = onlineUsers.get(data.to);
-    if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+  socket.on("personal-message", (message) => {
+    const { sender_id, receiver_id } = message;
+
+    const senderSocketId = onlineUsers.get(sender_id);
+    if (senderSocketId) {
+      io.to(senderSocketId).emit("personal-message", message);
+    }
+
+    const recipientSocketId = onlineUsers.get(receiver_id);
+    if (recipientSocketId) {
+      io.to(recipientSocketId).emit("personal-message", message);
     }
   });
+
+  socket.on("disconnect", () => {
+    onlineUsers.forEach((socketId, userId) => {
+      if (socketId === socket.id) {
+        onlineUsers.delete(userId);
+      }
+    });
+  });
 });
+

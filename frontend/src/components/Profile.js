@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Profile.css";
+import { UserContext } from "./UserContext";
 
 export default function Profile() {
-
   const navigate = useNavigate();
 
   const notifyA = (msg) => toast.error(msg);
@@ -20,7 +20,41 @@ export default function Profile() {
   const [doctorappointments, setDoctorAppointments] = useState([]);
   const [user_name, setUserName] = useState("");
   const [credits, setCredits] = useState("");
+  const [isSubscribed, setSubscription] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  const { updateUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const fetchUser = () => {
+      fetch(
+        `http://localhost:5000/user/${
+          JSON.parse(localStorage.getItem("user"))._id
+        }`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          console.log("res = ", res);
+
+          updateUser(res);
+          setUserName(res.name);
+          setCredits(res.credits);
+          setSubscription(res.subscription);
+
+          if (res.role === "doctor") {
+            setIsDoctor(true);
+          }
+          setIsLoading(false);
+        });
+    };
+
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     fetchDonateOrders();
@@ -37,26 +71,6 @@ export default function Profile() {
   useEffect(() => {
     doctorAppointments();
   }, []);
-
-  fetch(
-    `http://localhost:5000/user/${
-      JSON.parse(localStorage.getItem("user"))._id
-    }`,
-    {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      setUserName(res.name);
-      setCredits(res.credits);
-
-      if (res.role === "doctor") {
-        setIsDoctor(true);
-      }
-    });
 
   function fetchDonateOrders() {
     fetch(
@@ -112,6 +126,36 @@ export default function Profile() {
       });
   }
 
+  const subscribe = () => {
+    fetch(
+      `http://localhost:5000/subscribe/${
+        JSON.parse(localStorage.getItem("user"))._id
+      }`,
+      {
+        method: "put",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res === "You have now subscribed to Medi-Share...") {
+          notifyB(res);
+      navigate("/home");
+        } else if (
+          res ===
+          "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
+        ) {
+          notifyA(res);
+         
+        } else {
+          notifyA("Error");
+        }
+      });
+  };
+
+
   return (
     <div className="profilediv">
       <Hnavbar />
@@ -126,11 +170,22 @@ export default function Profile() {
               {" "}
               {user_name} <br></br>
             </h1>
+            <h1>
+             {isLoading ? (
+                <p >Loading...</p>
+              ) : (
+                <p>
+                  {isSubscribed ? ( <p>Subscription : ON</p> ) : (<button onClick={() => {
+                      subscribe();
+                    }}>Subscribe</button> )} 
+                </p>
+              ) }
+               
+            </h1>
             <span id="credits">
               Credits : {credits} <br />
               <img src="./rupee.png" alt="" />
             </span>
-            
           </div>
           <div className="donatedorders">
             <h2>

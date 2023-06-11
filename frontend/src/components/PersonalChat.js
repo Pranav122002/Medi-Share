@@ -1,91 +1,171 @@
-import React, { useEffect, useState, useRef } from "react";
-import "../css/Chat.css";
-import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
-import ChatContainer from "./ChatContainer";
-import Contacts from "./Contacts";
-import Welcome from "./Welcome";
+import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 
-export default function Chat() {
+const socket = io("http://localhost:5000");
 
-  const navigate = useNavigate();
-  const socket = useRef();
-  const [contacts, setContacts] = useState([]);
-  const [currentChat, setCurrentChat] = useState(undefined);
-  const [currentUser, setCurrentUser] = useState(undefined);
+const PersonalChat = () => {
+  const [userid, setUserId] = useState("");
+  const [username, setUserName] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (!token) {
-      navigate("/signin");
-    } else {
-      fetch(
-        `http://localhost:5000/user/${
-          JSON.parse(localStorage.getItem("user"))._id
-        }`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result.name);
-          setCurrentUser(result.name);
-        });
-    }
+    fetch(
+      `http://localhost:5000/user/${
+        JSON.parse(localStorage.getItem("user"))._id
+      }`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setUserId(result._id);
+        setUserName(result.name);
+      });
   }, []);
 
   useEffect(() => {
-    if (currentUser) {
-      socket.current = io("http://localhost:5000");
+    if (selectedUser) {
+      fetch(
+        `http://localhost:5000/all-personal-messages/${
+          JSON.parse(localStorage.getItem("user"))._id
+        }/${selectedUser._id}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setMessages(data);
+          console.log("data = ", data);
+        })
+        .catch((error) => {
+          console.error("Error fetching personal messages:", error);
+        });
 
-      console.log(socket.current);
-
-      socket.current.emit("add-user", currentUser._id);
+      socket.on("personal-message", (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+      });
     }
-  }, [currentUser]);
+
+    return () => {
+      socket.off("personal-message");
+    };
+  }, [selectedUser]);
+
+  useEffect(() => {
+    if (userid) {
+      // socket = io("http://localhost:5000");
+      socket.emit("add-user", userid);
+    }
+  }, [userid]);
 
   useEffect(() => {
     fetch(
       `http://localhost:5000/allusers/${
         JSON.parse(localStorage.getItem("user"))._id
-      }`,
-      {
-        method: "get",
+      }`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+      });
+  }, []);
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleUserSelection = (user) => {
+    setSelectedUser(user);
+  };
+
+  const sendPersonalMessage = () => {
+    if (selectedUser) {
+      const senderId = JSON.parse(localStorage.getItem("user"))._id;
+
+      socket.emit("personal-message", {
+        message: inputValue,
+        sender_name: username,
+        receiver_name: selectedUser.name,
+        sender_id: senderId,
+        receiver_id: selectedUser._id,
+      });
+
+      fetch("http://localhost:5000/save-personal-message", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
-      }
-    ).then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setContacts(data);
-      });
-  }, [currentUser]);
+        body: JSON.stringify({
+          message: inputValue,
+          sender_name: username,
+          receiver_name: selectedUser.name,
+          sender_id: senderId,
+          receiver_id: selectedUser._id,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Personal message saved:", data);
+        })
+        .catch((error) => {
+          console.error("Error saving personal message:", error);
+        });
 
-  const handleChatChange = (chat) => {
-    console.log(chat);
-    setCurrentChat(chat);
+      setInputValue("");
+    }
   };
 
   return (
-    <>
+    <div>
       <Hnavbar />
-      <Navbar />
-      <h1>Personal Chat</h1>
-      <div className="chacontainer">
-        <Contacts contacts={contacts} changeChat={handleChatChange} />
-        {currentChat === undefined ? (
-          <Welcome />
-        ) : (
-          <ChatContainer currentChat={currentChat} socket={socket} />
-        )}
+      <div>
+        <div className="bodyy">
+          <Navbar />
+
+          <div>
+            <div>
+              <h2>User List:</h2>
+              {users.map((user) => (
+                <p key={user._id} onClick={() => handleUserSelection(user)}>
+                  {user.name}
+                </p>
+              ))}
+            </div>
+            <div>
+              <h2>Selected User:</h2>
+              {selectedUser && <p>{selectedUser.name}</p>}
+            </div>
+            <div>
+              <h2>Personal Messages:</h2>
+              {messages.map((message, index) => (
+                <p key={index}>
+                  Message: {message.message} | Sender: {message.sender_name} |
+                  Receiver: {message.receiver_name}
+                </p>
+              ))}
+            </div>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <button onClick={sendPersonalMessage} disabled={!selectedUser}>
+              Send Personal Message
+            </button>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default PersonalChat;

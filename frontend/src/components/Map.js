@@ -9,7 +9,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // import './map.css'
 // -------------------import-------------------
 
-mapboxgl.accessToken = process.env.REACT_APP_MAP_API_KEY;
+// mapboxgl.accessToken = process.env.REACT_APP_MAP_API_KEY;
+mapboxgl.accessToken = "pk.eyJ1IjoicGF1bGNyZXNjZW50IiwiYSI6ImNrdmtudHl2djM3cWwycHBndnoxb2lsMTYifQ.d5gqVMqERBOsWSQ04gWzcg";
 
 // -------------------token-------------------
 
