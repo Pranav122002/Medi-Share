@@ -23,6 +23,7 @@ import {LandingPage} from "./components/LandingPage";
 import Tasks from "./components/Tasks";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import Analytics from "./components/Analytics";
 import Subscribe from "./components/Subscribe";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/analytics" element={<Analytics />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>

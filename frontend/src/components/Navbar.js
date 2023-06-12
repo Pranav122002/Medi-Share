@@ -16,12 +16,16 @@ export default function Navbar() {
   const [showVNavbar, setShowVNavbar] = useState(!false)
 
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const { user } = useContext(UserContext);
   
   useEffect(() => {
     if (user && user.subscription) {
       setIsSubscribed(true);
+    }
+    if (user && user.role === "admin") {
+      setIsAdmin(true);
     }
   }, [user]);
  
@@ -41,6 +45,12 @@ export default function Navbar() {
   const loginStatus = () => {
     return [
       <>
+      {isAdmin ? (<Link className="borderrad" to="/analytics">
+          <li style={{color: "black"}} className="navli">Analytics</li>
+          <img className="navimg" src="./analysis.png" alt="" />
+        </Link>) : ( <div></div> ) }
+        
+
         <Link className="borderrad" to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
           <img className="navimg" src="./donatemed.png" alt="" />

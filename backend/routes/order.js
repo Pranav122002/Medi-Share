@@ -4,6 +4,70 @@ const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
 
+router.get("/api/all-remaining-orders", (req, res) => {
+  ORDER.find({ execute_status: false })
+    .select(" -__v -execute_status -password")
+    .populate("requester", "name -_id")
+    .populate("donar", "name -_id")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => console.log(err));
+});
+router.get("/api/all-orders", async (req, res) => {
+  const {
+    orderType,
+    medicineName,
+    executeStatus,
+    verifyStatus,
+    donarName,
+    requesterName,
+  } = req.query;
+
+  const filter = {};
+  if (orderType) filter.order_type = orderType;
+  if (medicineName) filter.medicine_name = medicineName;
+  if (executeStatus) filter.execute_status = executeStatus;
+  if (verifyStatus) filter.verify_status = verifyStatus;
+
+  if (donarName) {
+    try {
+      const donarUser = await USER.findOne({ name: donarName });
+      filter.donar = donarUser._id.toString();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  if (requesterName) {
+    try {
+      const requesterUser = await USER.findOne({ name: requesterName });
+      filter.requester = requesterUser._id.toString();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  
+
+  ORDER.find(filter)
+    .populate("requester", "-password")
+    .populate("donar", "-password")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.get("/api/all-donate-orders", (req, res) => {
+  ORDER.find({ order_type: "donate-order" })
+    .populate("requester", "name -_id")
+    .populate("donar", "name -_id")
+    .sort("-createdAt")
+    .then((orders) => res.json(orders))
+    .catch((err) => console.log(err));
+});
+
 router.get("/api/req-order/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })
     .populate("requester", "name -_id")
@@ -30,16 +94,6 @@ router.get("/api/order/:id", (req, res) => {
     });
 });
 
-router.get("/api/allorders", (req, res) => {
-  ORDER.find({ execute_status: false })
-    .select(" -__v -execute_status -password")
-    .populate("requester", "name -_id")
-    .populate("donar", "name -_id")
-    .sort("-createdAt")
-    .then((orders) => res.json(orders))
-    .catch((err) => console.log(err));
-});
-
 router.post("/api/donate-medicines", async (req, res, next) => {
   try {
     const { medicine_name, expiry_date, quantity, location, donar, requester } =
@@ -54,11 +108,7 @@ router.post("/api/donate-medicines", async (req, res, next) => {
       requester: requester,
     });
     if (data) {
-
-      await USER.updateOne(
-        { _id: donar },
-        { $inc: { credits: 100 } }
-      );
+      await USER.updateOne({ _id: donar }, { $inc: { credits: 100 } });
 
       return res.json({ msg: "Donate Order placed successfully..." });
     } else return res.json({ msg: "Failed to place order..." });
@@ -92,10 +142,7 @@ router.put("/api/donate/:order_id", async (req, res) => {
   try {
     const order = await ORDER.findOne({ _id: req.params.order_id });
 
-    if (
-      req.body.execute_status === false &&
-      req.body.verify_status === false
-    ) {
+    if (req.body.execute_status === false && req.body.verify_status === false) {
       const updatedOrder = await ORDER.findByIdAndUpdate(
         req.params.order_id,
         {
@@ -105,14 +152,15 @@ router.put("/api/donate/:order_id", async (req, res) => {
       );
 
       if (updatedOrder) {
-       
         await USER.updateOne(
           { _id: req.body.donar_id },
           { $inc: { credits: 100 } }
         );
 
         console.log(updatedOrder);
-        return res.json("Order Donated successfully and Volunteer will verify now...");
+        return res.json(
+          "Order Donated successfully and Volunteer will verify now..."
+        );
       } else {
         return res.json("Failed to donate order...");
       }
@@ -133,7 +181,6 @@ router.put("/api/donate/:order_id", async (req, res) => {
     return res.status(404).json({ error: "Order not found..." });
   }
 });
-
 
 router.put("/api/request/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })
@@ -158,7 +205,9 @@ router.put("/api/request/:order_id", (req, res) => {
           )
             .then((doc) => {
               console.log(doc);
-              res.json("Order Requested successfully and now will be delivered...");
+              res.json(
+                "Order Requested successfully and now will be delivered..."
+              );
             })
             .catch((err) => {
               console.error(err);
@@ -178,8 +227,6 @@ router.put("/api/request/:order_id", (req, res) => {
       return res.status(404).json({ error: "Order not found..." });
     });
 });
-
-
 
 router.get("/api/mydonatedorders/:id", (req, res) => {
   ORDER.find({ donar: req.params.id })
@@ -227,7 +274,7 @@ router.put("/api/verify-donate-order/:order_id", (req, res) => {
 router.put("/api/verify-request-order/:order_id", (req, res) => {
   ORDER.findByIdAndUpdate(
     req.params.order_id,
-    { $set: { verify_status: true} },
+    { $set: { verify_status: true } },
     { new: true }
   )
     .then((doc) => {

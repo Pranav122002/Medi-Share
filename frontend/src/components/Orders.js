@@ -24,7 +24,7 @@ export default function Orders() {
 
 
   function fetchOrders() {
-    fetch(`${API_BASE_URL}/allorders`)
+    fetch(`${API_BASE_URL}/all-remaining-orders`)
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);

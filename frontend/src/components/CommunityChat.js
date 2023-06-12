@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-import { API_BASE_URL } from "../config";
-const socket = io(`${API_BASE_URL}`);
+import { BASE_URL, API_BASE_URL } from '../config.js';
+
+const socket = io(`${BASE_URL}`);
 
 const Chat = () => {
   const [username, setUserName] = useState("");

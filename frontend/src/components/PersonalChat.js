@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-import { API_BASE_URL } from "../config";
+import { BASE_URL, API_BASE_URL } from '../config.js';
 
-const socket = io(`${API_BASE_URL}`);
+
+const socket = io(`${BASE_URL}`);
 
 const PersonalChat = () => {
 
