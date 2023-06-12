@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { REACT_APP_MAP_API_KEY } from "../keys";
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from 'mapbox-gl-geocoder';
 // import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
@@ -9,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // import './map.css'
 // -------------------import-------------------
 
-mapboxgl.accessToken = process.env.REACT_APP_MAP_API_KEY;
+mapboxgl.accessToken = REACT_APP_MAP_API_KEY;
 
 // -------------------token-------------------
 

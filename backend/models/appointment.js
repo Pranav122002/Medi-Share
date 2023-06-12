@@ -22,4 +22,4 @@ const appointmentSchema = new mongoose.Schema({
 
 });
 
-mongoose.model("APPOINTMENT", appointmentSchema);
+module.exports = mongoose.model("APPOINTMENT", appointmentSchema);

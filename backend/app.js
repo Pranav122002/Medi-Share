@@ -30,10 +30,17 @@ app.use(require("./routes/order"));
 app.use(require("./routes/task"));
 app.use(require("./routes/user"));
 
+
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
+let isMongoDBConnected = false; 
+
 mongoose.connection.on("connected", () => {
-  console.log("MongoDB connection successfull...");
+  if (!isMongoDBConnected) {
+    console.log("MongoDB connection successful...");
+    isMongoDBConnected = true;
+  }
 });
+
 mongoose.connection.on("error", () => {
   console.log("MongoDB connection error !!!");
 });
