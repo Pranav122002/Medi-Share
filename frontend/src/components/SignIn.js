@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "../css/SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 
 export default function SignIn() {
 
@@ -22,7 +23,7 @@ export default function SignIn() {
       notifyA("Invalid email");
       return;
     }
-    fetch("http://localhost:5000/signin", {
+    fetch(`${API_BASE_URL}/signin"`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

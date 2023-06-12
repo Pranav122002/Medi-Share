@@ -8,6 +8,7 @@ import { Hnavbar } from "./Hnavbar";
 import "../css/Tasks.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { API_BASE_URL } from "../config";
 
 export default function Tasks() {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ export default function Tasks() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -76,7 +77,7 @@ export default function Tasks() {
   //   function fetchMyTasks() {
   //     console.log("myname is = ", myname);
 
-  //     fetch("http://localhost:5000/my-tasks", {
+  //     fetch(`${API_BASE_URL}/my-tasks`, {
   //       headers: {
   //         Authorization: "Bearer " + localStorage.getItem("jwt"),
   //       },
@@ -94,7 +95,7 @@ export default function Tasks() {
 
   const fetchMyTasks = () => {
     const userName = JSON.parse(localStorage.getItem("user")).name;
-    fetch(`http://localhost:5000/my-tasks/${userName}`, {
+    fetch(`${API_BASE_URL}/my-tasks/${userName}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -109,7 +110,7 @@ export default function Tasks() {
   };
 
   function fetchTasks() {
-    fetch("http://localhost:5000/all-tasks", {
+    fetch(`${API_BASE_URL}/all-tasks`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -123,7 +124,7 @@ export default function Tasks() {
 
   const postTaskData = () => {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -134,7 +135,7 @@ export default function Tasks() {
     )
       .then((res) => res.json())
       .then((result) => {
-        fetch("http://localhost:5000/assign-task", {
+        fetch(`${API_BASE_URL}/assign-task`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",

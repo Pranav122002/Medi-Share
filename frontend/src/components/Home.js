@@ -7,6 +7,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 import { UserContext } from './UserContext';
+import { API_BASE_URL } from "../config";
 
 export default function Home() {
 
@@ -16,7 +17,7 @@ export default function Home() {
       console.log("user is fetched !!!");
       
       fetch(
-        `http://localhost:5000/user/${
+        `${API_BASE_URL}/user/${
           JSON.parse(localStorage.getItem('user'))._id
         }`,
         {

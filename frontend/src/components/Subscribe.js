@@ -5,6 +5,8 @@ import { Hnavbar } from "./Hnavbar";
 import "../css/Home.css";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
+
 export default function Subscribe() {
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -17,7 +19,7 @@ export default function Subscribe() {
 
   const subscribe = () => {
     fetch(
-      `http://localhost:5000/subscribe/${
+      `${API_BASE_URL}/subscribe/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {

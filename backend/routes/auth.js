@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
-router.post("/signup", (req, res) => {
+router.post("/api/signup", (req, res) => {
   // const { name, email, password, role} = req.body;
   var { name, email, password, role } = req.body;
   if (!name || !email || !password) {
@@ -42,7 +42,7 @@ router.post("/signup", (req, res) => {
   });
 });
 
-router.post("/signin", (req, res) => {
+router.post("/api/signin", (req, res) => {
   const { email, password, role } = req.body;
 
   if (!email || !password) {
@@ -72,7 +72,7 @@ router.post("/signin", (req, res) => {
   });
 });
 
-router.get("/allusers/:id", async (req, res, next) => {
+router.get("/api/allusers/:id", async (req, res, next) => {
   try {
     const users = await USER.find({ _id: { $ne: req.params.id } }).select([
       "email",

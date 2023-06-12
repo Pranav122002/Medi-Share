@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-const socket = io("http://localhost:5000");
+import { API_BASE_URL } from "../config";
+const socket = io(`${API_BASE_URL}`);
 
 const Chat = () => {
   const [username, setUserName] = useState("");
@@ -11,7 +12,7 @@ const Chat = () => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-messages")
+    fetch(`${API_BASE_URL}/all-messages`)
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
@@ -36,7 +37,7 @@ const Chat = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -63,7 +64,7 @@ const Chat = () => {
       createdAt: new Date().toISOString(),
     });
 
-    fetch("http://localhost:5000/save-message", {
+    fetch(`${API_BASE_URL}/save-message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

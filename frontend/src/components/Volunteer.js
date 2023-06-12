@@ -6,6 +6,8 @@ import "../css/Volunteer.css";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 import { Hnavbar } from "./Hnavbar";
+import { API_BASE_URL } from "../config";
+
 export default function Volunteer() {
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
   const [isVolunteer, setIsVolunteer] = useState("");
@@ -28,7 +30,7 @@ export default function Volunteer() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -49,13 +51,13 @@ export default function Volunteer() {
   }
 
   function fetchUnverifiedOrders() {
-    fetch("http://localhost:5000/unverifiedorders")
+    fetch(`${API_BASE_URL}/unverifiedorders`)
       .then((response) => response.json())
       .then((data) => setUnverifiedOrders(data));
   }
 
   const verify_donate_order = (order_id) => {
-    fetch(`http://localhost:5000/verify-donate-order/${order_id}`, {
+    fetch(`${API_BASE_URL}/verify-donate-order/${order_id}`, {
       method: "put",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -74,7 +76,7 @@ export default function Volunteer() {
   const verify_request_order = async (order_id) => {
 
     try {
-      const response = await fetch(`http://localhost:5000/req-order/${order_id}`, {
+      const response = await fetch(`${API_BASE_URL}/req-order/${order_id}`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -85,7 +87,7 @@ export default function Volunteer() {
       }
       const order_data = await response.json();
       if (order_data.isDonarFieldBlank === false) {
-        fetch(`http://localhost:5000/verify-request-order/${order_id}`, {
+        fetch(`${API_BASE_URL}/verify-request-order/${order_id}`, {
           method: "put",
           headers: {
             Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -113,7 +115,7 @@ export default function Volunteer() {
 
 
     fetch(
-      `http://localhost:5000/becomevolunteer/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/becomevolunteer/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",

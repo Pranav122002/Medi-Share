@@ -3,6 +3,7 @@ import "../css/Search.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import { API_BASE_URL } from "../config";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function Search() {
 
   const fetchMedicines = (query) => {
     setSearch(query);
-    fetch("http://localhost:5000/search-medicines", {
+    fetch(`${API_BASE_URL}/search-medicines`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

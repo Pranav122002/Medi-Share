@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import { API_BASE_URL } from "../config";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function Profile() {
 
   function fetchAppointments() {
     fetch(
-      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -43,7 +44,7 @@ export default function Profile() {
       .then((userData) => {
         const docName = userData.name;
 
-        fetch(`http://localhost:5000/my-appointments/${docName}`, {
+        fetch(`${API_BASE_URL}/my-appointments/${docName}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("jwt"),
           },
@@ -64,7 +65,7 @@ export default function Profile() {
 
   const postBookData = (patient_name) => {
     fetch(
-      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -75,7 +76,7 @@ export default function Profile() {
       .then((res) => res.json())
       .then((result) => {
         fetch(
-          `http://localhost:5000/book-appointment/${JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/book-appointment/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             method: "post",
@@ -102,7 +103,7 @@ export default function Profile() {
   };
 
   function confirmAppointment(appointmentId) {
-    fetch(`http://localhost:5000/confirm-appointment/${appointmentId}`, {
+    fetch(`${API_BASE_URL}/confirm-appointment/${appointmentId}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +123,7 @@ export default function Profile() {
 
   function fetchUser() {
     fetch(
-      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -144,7 +145,7 @@ export default function Profile() {
   }
 
   function fetchDoctors() {
-    fetch("http://localhost:5000/all-doctors", {
+    fetch(`${API_BASE_URL}/all-doctors`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

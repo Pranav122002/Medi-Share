@@ -7,6 +7,7 @@ import { Hnavbar } from "./Hnavbar";
 import Medicines from "./Medicines"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { API_BASE_URL } from "../config";
 
 export default function Donate() {
 
@@ -31,7 +32,7 @@ export default function Donate() {
 
   const postOrderData = () => {
     fetch(
-      `http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -41,7 +42,7 @@ export default function Donate() {
     ).then((res) => res.json())
       .then((result) => {
         const donar = result._id;
-        fetch("http://localhost:5000/donate-medicines", {
+        fetch(`${API_BASE_URL}/donate-medicines`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +70,7 @@ export default function Donate() {
 
   const fetchMedicines = (query) => {
     setSearch(query);
-    fetch("http://localhost:5000/search-medicines", {
+    fetch(`${API_BASE_URL}/search-medicines`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
 
-router.get("/user/:id", (req, res) => {
+router.get("/api/user/:id", (req, res) => {
   USER.findOne({ _id: req.params.id })
     .select("-password")
     .then((user) => {
@@ -15,7 +15,7 @@ router.get("/user/:id", (req, res) => {
     });
 });
 
-router.put("/becomevolunteer/:id", (req, res) => {
+router.put("/api/becomevolunteer/:id", (req, res) => {
   
   
   USER.findByIdAndUpdate(
@@ -33,7 +33,7 @@ router.put("/becomevolunteer/:id", (req, res) => {
     });
 });
 
-router.get("/all-doctors", (req, res) => {
+router.get("/api/all-doctors", (req, res) => {
   USER.find({ role: "doctor" })
     .then((doctors) => {
       res.json(doctors);
@@ -44,7 +44,7 @@ router.get("/all-doctors", (req, res) => {
     });
 });
 
-router.put("/subscribe/:id", async (req, res) => {
+router.put("/api/subscribe/:id", async (req, res) => {
   try {
     const user = await USER.findById(req.params.id);
 
@@ -76,7 +76,7 @@ router.put("/subscribe/:id", async (req, res) => {
   }
 });
 
-router.get("/all-personal-users/:id", async (req, res, next) => {
+router.get("/api/all-personal-users/:id", async (req, res, next) => {
   try {
     const personal_users = await USER.find({
       _id: { $ne: req.params.id },

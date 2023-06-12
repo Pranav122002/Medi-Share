@@ -3,7 +3,7 @@ const router = express.Router();
 const MESSAGE = require("../models/message");
 const PERSONAL_MESSAGE = require("../models/personal_message");
 
-router.get("/all-messages", async (req, res) => {
+router.get("/api/all-messages", async (req, res) => {
   try {
     const messages = await MESSAGE.find()
     .sort({ createdAt: 1 });
@@ -14,7 +14,7 @@ router.get("/all-messages", async (req, res) => {
   }
 });
 
-router.get("/all-personal-messages/:senderId/:receiverId", async (req, res) => {
+router.get("/api/all-personal-messages/:senderId/:receiverId", async (req, res) => {
   const { senderId, receiverId } = req.params;
 
   try {
@@ -32,7 +32,7 @@ router.get("/all-personal-messages/:senderId/:receiverId", async (req, res) => {
   }
 });
 
-router.post("/save-message", async (req, res) => {
+router.post("/api/save-message", async (req, res) => {
   const { message, sender_name, sender_id, sender_role } = req.body;
 
   try {
@@ -52,7 +52,7 @@ router.post("/save-message", async (req, res) => {
   }
 });
 
-router.post("/save-personal-message", async (req, res) => {
+router.post("/api/save-personal-message", async (req, res) => {
   const { message, sender_name, receiver_name, sender_id, receiver_id } = req.body;
 
   try {

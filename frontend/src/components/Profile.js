@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Profile.css";
 import { UserContext } from "./UserContext";
+import { API_BASE_URL } from "../config";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchUser = () => {
       fetch(
-        `http://localhost:5000/user/${
+        `${API_BASE_URL}/user/${
           JSON.parse(localStorage.getItem("user"))._id
         }`,
         {
@@ -74,7 +75,7 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `http://localhost:5000/mydonatedorders/${
+      `${API_BASE_URL}/mydonatedorders/${
         JSON.parse(localStorage.getItem("user"))._id
       }`
     )
@@ -87,7 +88,7 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `http://localhost:5000/myrequestedorders/${
+      `${API_BASE_URL}/myrequestedorders/${
         JSON.parse(localStorage.getItem("user"))._id
       }`
     )
@@ -100,7 +101,7 @@ export default function Profile() {
 
   function myAppointments() {
     fetch(
-      `http://localhost:5000/patient-appointments/${
+      `${API_BASE_URL}/patient-appointments/${
         JSON.parse(localStorage.getItem("user")).name
       }`
     )
@@ -113,7 +114,7 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `http://localhost:5000/doctor-appointments/${
+      `${API_BASE_URL}/doctor-appointments/${
         JSON.parse(localStorage.getItem("user")).name
       }`
     )
@@ -128,7 +129,7 @@ export default function Profile() {
 
   const subscribe = () => {
     fetch(
-      `http://localhost:5000/subscribe/${
+      `${API_BASE_URL}/subscribe/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {

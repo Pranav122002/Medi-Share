@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const TASK = mongoose.model("TASK");
 
-router.post("/assign-task", async (req, res, next) => {
+router.post("/api/assign-task", async (req, res, next) => {
   try {
     const { task_info, deadline, volunteer_email, volunteer_name } = req.body;
 
@@ -22,7 +22,7 @@ router.post("/assign-task", async (req, res, next) => {
   }
 });
 
-router.get("/all-tasks", (req, res) => {
+router.get("/api/all-tasks", (req, res) => {
   TASK.find({ })
     .select(" -__v ")
   
@@ -31,7 +31,7 @@ router.get("/all-tasks", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/my-tasks/:myname", (req, res) => {
+router.get("/api/my-tasks/:myname", (req, res) => {
   const volunteerName = req.params.myname;
   TASK.find({ volunteer_name: volunteerName })
     .sort("-createdAt")

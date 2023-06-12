@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
-router.post("/book-appointment/:id", async (req, res, next) => {
+router.post("/api/book-appointment/:id", async (req, res, next) => {
   try {
     const { doctor_name, patient_name, appointment_date } = req.body;
 
@@ -40,7 +40,7 @@ router.post("/book-appointment/:id", async (req, res, next) => {
   }
 });
 
-router.get("/my-appointments/:name", async (req, res, next) => {
+router.get("/api/my-appointments/:name", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
       doctor_name: req.params.name,
@@ -52,7 +52,7 @@ router.get("/my-appointments/:name", async (req, res, next) => {
   }
 });
 
-router.get("/doctor-appointments/:name", async (req, res, next) => {
+router.get("/api/doctor-appointments/:name", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
       doctor_name: req.params.name,
@@ -65,7 +65,7 @@ router.get("/doctor-appointments/:name", async (req, res, next) => {
   }
 });
 
-router.get("/patient-appointments/:name", async (req, res, next) => {
+router.get("/api/patient-appointments/:name", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
       patient_name: req.params.name,
@@ -78,7 +78,7 @@ router.get("/patient-appointments/:name", async (req, res, next) => {
   }
 });
 
-router.put("/confirm-appointment/:id", async (req, res, next) => {
+router.put("/api/confirm-appointment/:id", async (req, res, next) => {
   try {
     const appointment = await APPOINTMENT.findByIdAndUpdate(
       req.params.id,

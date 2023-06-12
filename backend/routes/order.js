@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
 
-router.get("/req-order/:order_id", (req, res) => {
+router.get("/api/req-order/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })
     .populate("requester", "name -_id")
     .populate("donar", "name -_id")
@@ -20,7 +20,7 @@ router.get("/req-order/:order_id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/order/:id", (req, res) => {
+router.get("/api/order/:id", (req, res) => {
   ORDER.findOne({ _id: req.params.id })
     .then((order) => {
       return res.json(order);
@@ -30,7 +30,7 @@ router.get("/order/:id", (req, res) => {
     });
 });
 
-router.get("/allorders", (req, res) => {
+router.get("/api/allorders", (req, res) => {
   ORDER.find({ execute_status: false })
     .select(" -__v -execute_status -password")
     .populate("requester", "name -_id")
@@ -40,7 +40,7 @@ router.get("/allorders", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/donate-medicines", async (req, res, next) => {
+router.post("/api/donate-medicines", async (req, res, next) => {
   try {
     const { medicine_name, expiry_date, quantity, location, donar, requester } =
       req.body;
@@ -67,7 +67,7 @@ router.post("/donate-medicines", async (req, res, next) => {
   }
 });
 
-router.post("/request-medicines", async (req, res, next) => {
+router.post("/api/request-medicines", async (req, res, next) => {
   try {
     const { medicine_name, expiry_date, quantity, location, donar, requester } =
       req.body;
@@ -88,7 +88,7 @@ router.post("/request-medicines", async (req, res, next) => {
   }
 });
 
-router.put("/donate/:order_id", async (req, res) => {
+router.put("/api/donate/:order_id", async (req, res) => {
   try {
     const order = await ORDER.findOne({ _id: req.params.order_id });
 
@@ -135,7 +135,7 @@ router.put("/donate/:order_id", async (req, res) => {
 });
 
 
-router.put("/request/:order_id", (req, res) => {
+router.put("/api/request/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })
     .then((order) => {
       const curr_date = new Date();
@@ -181,7 +181,7 @@ router.put("/request/:order_id", (req, res) => {
 
 
 
-router.get("/mydonatedorders/:id", (req, res) => {
+router.get("/api/mydonatedorders/:id", (req, res) => {
   ORDER.find({ donar: req.params.id })
     .select(" -__v -execute_status -verify_status -requester ")
     .populate("donar", "name -_id")
@@ -190,7 +190,7 @@ router.get("/mydonatedorders/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/myrequestedorders/:id", (req, res) => {
+router.get("/api/myrequestedorders/:id", (req, res) => {
   ORDER.find({ requester: req.params.id })
     .select(" -__v -execute_status -verify_status -donar")
     .populate("requester", "name -_id")
@@ -199,7 +199,7 @@ router.get("/myrequestedorders/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/unverifiedorders", (req, res) => {
+router.get("/api/unverifiedorders", (req, res) => {
   ORDER.find({ verify_status: false })
     .select(" -__v -execute_status ")
     .populate("donar", "name -_id")
@@ -209,7 +209,7 @@ router.get("/unverifiedorders", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.put("/verify-donate-order/:order_id", (req, res) => {
+router.put("/api/verify-donate-order/:order_id", (req, res) => {
   ORDER.findByIdAndUpdate(
     req.params.order_id,
     { $set: { verify_status: true } },
@@ -224,7 +224,7 @@ router.put("/verify-donate-order/:order_id", (req, res) => {
     });
 });
 
-router.put("/verify-request-order/:order_id", (req, res) => {
+router.put("/api/verify-request-order/:order_id", (req, res) => {
   ORDER.findByIdAndUpdate(
     req.params.order_id,
     { $set: { verify_status: true} },

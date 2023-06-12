@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Medicine.css";
+import { API_BASE_URL } from "../config";
 
 export default function Request() {
   const [medicines, setMedicines] = useState([]);
@@ -11,7 +12,7 @@ export default function Request() {
   }, []);
 
   function fetchMedicines() {
-    fetch("http://localhost:5000/allmedicines")
+    fetch(`${API_BASE_URL}/allmedicines`)
       .then((response) => response.json())
       .then((data) => setMedicines(data));
   }

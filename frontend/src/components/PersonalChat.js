@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import { API_BASE_URL } from "../config";
 
-const socket = io("http://localhost:5000");
+const socket = io(`${API_BASE_URL}`);
 
 const PersonalChat = () => {
 
@@ -16,7 +17,7 @@ const PersonalChat = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/user/${
+      `${API_BASE_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
@@ -35,7 +36,7 @@ const PersonalChat = () => {
   useEffect(() => {
     if (selectedUser) {
       fetch(
-        `http://localhost:5000/all-personal-messages/${
+        `${API_BASE_URL}/all-personal-messages/${
           JSON.parse(localStorage.getItem("user"))._id
         }/${selectedUser._id}`
       )
@@ -60,14 +61,14 @@ const PersonalChat = () => {
 
   useEffect(() => {
     if (userid) {
-      // socket = io("http://localhost:5000");
+      // socket = io(`${API_BASE_URL}`);
       socket.emit("add-user", userid);
     }
   }, [userid]);
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/all-personal-users/${
+      `${API_BASE_URL}/all-personal-users/${
         JSON.parse(localStorage.getItem("user"))._id
       }`
     )
@@ -101,7 +102,7 @@ const PersonalChat = () => {
         createdAt: new Date().toISOString(),
       });
 
-      fetch("http://localhost:5000/save-personal-message", {
+      fetch(`${API_BASE_URL}/save-personal-message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

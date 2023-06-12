@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const ANNOUCEMENT = mongoose.model("ANNOUCEMENT");
 
-router.get("/all-annoucements", (req, res) => {
+router.get("/api/all-annoucements", (req, res) => {
   ANNOUCEMENT.find()
     .select(" -__v ")
     .sort("-createdAt")
@@ -11,7 +11,7 @@ router.get("/all-annoucements", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/add-annoucement", async (req, res, next) => {
+router.post("/api/add-annoucement", async (req, res, next) => {
   try {
     const { title, description, date, venue } = req.body;
     const data = await ANNOUCEMENT.create({
