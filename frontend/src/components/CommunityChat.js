@@ -6,6 +6,7 @@ const socket = io("http://localhost:5000");
 
 const Chat = () => {
   const [username, setUserName] = useState("");
+  const [userrole, setUserRole] = useState("");
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -47,6 +48,7 @@ const Chat = () => {
       .then((res) => res.json())
       .then((result) => {
         setUserName(result.name);
+        setUserRole(result.role);
       });
   }, []);
 
@@ -57,6 +59,8 @@ const Chat = () => {
       message: inputValue,
       sender_name: username,
       sender_id: senderId,
+      sender_role: userrole,
+      createdAt: new Date().toISOString(),
     });
 
     fetch("http://localhost:5000/save-message", {
@@ -68,6 +72,7 @@ const Chat = () => {
         message: inputValue,
         sender_name: username,
         sender_id: senderId,
+        sender_role: userrole,
       }),
     })
       .then((response) => response.json())
@@ -91,7 +96,7 @@ const Chat = () => {
             <div>
               {messages.map((message, index) => (
                 <p key={index}>
-                  Message: {message.message}| Sender : {message.sender_name}
+                  Message: {message.message} | Sender : {message.sender_name}  | Role : {message.sender_role}  | timestamp : {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
                 </p>
               ))}
             </div>

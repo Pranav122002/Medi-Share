@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   credits: {
     type: Number,
-    default: 0,
+    default: 1000,
   },
   subscription: {
     type: Boolean,

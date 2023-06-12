@@ -52,10 +52,10 @@ router.put("/subscribe/:id", async (req, res) => {
 
     const user_credits = user.credits;
 
-    if (user_credits >= 2000) {
+    if (user_credits >= 1000) {
       const updatedUser = await USER.findByIdAndUpdate(
         req.params.id,
-        { $set: { subscription: true }, $inc: { credits: -2000 } },
+        { $set: { subscription: true }, $inc: { credits: -1000 } },
         { new: true }
       );
 
@@ -76,5 +76,16 @@ router.put("/subscribe/:id", async (req, res) => {
   }
 });
 
+router.get("/all-personal-users/:id", async (req, res, next) => {
+  try {
+    const personal_users = await USER.find({
+      _id: { $ne: req.params.id },
+      role: { $in: ["volunteer", "doctor"] },
+    }).select(["email", "name", "_id"]);
+    return res.json(personal_users);
+  } catch (ex) {
+    next(ex);
+  }
+});
 
 module.exports = router;

@@ -33,13 +33,14 @@ router.get("/all-personal-messages/:senderId/:receiverId", async (req, res) => {
 });
 
 router.post("/save-message", async (req, res) => {
-  const { message, sender_name, sender_id } = req.body;
+  const { message, sender_name, sender_id, sender_role } = req.body;
 
   try {
     const newMessage = new MESSAGE({
       message: message,
       sender_name: sender_name,
       sender_id: sender_id,
+      sender_role: sender_role,
     });
 
     const savedMessage = await newMessage.save();

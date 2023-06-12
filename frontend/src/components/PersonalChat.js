@@ -6,6 +6,7 @@ import { Hnavbar } from "./Hnavbar";
 const socket = io("http://localhost:5000");
 
 const PersonalChat = () => {
+
   const [userid, setUserId] = useState("");
   const [username, setUserName] = useState("");
   const [messages, setMessages] = useState([]);
@@ -66,7 +67,7 @@ const PersonalChat = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/allusers/${
+      `http://localhost:5000/all-personal-users/${
         JSON.parse(localStorage.getItem("user"))._id
       }`
     )
@@ -75,7 +76,7 @@ const PersonalChat = () => {
         setUsers(data);
       })
       .catch((error) => {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching personal users:", error);
       });
   }, []);
 
@@ -97,6 +98,7 @@ const PersonalChat = () => {
         receiver_name: selectedUser.name,
         sender_id: senderId,
         receiver_id: selectedUser._id,
+        createdAt: new Date().toISOString(),
       });
 
       fetch("http://localhost:5000/save-personal-message", {
@@ -149,7 +151,7 @@ const PersonalChat = () => {
               {messages.map((message, index) => (
                 <p key={index}>
                   Message: {message.message} | Sender: {message.sender_name} |
-                  Receiver: {message.receiver_name}
+                  Receiver: {message.receiver_name} | timestamp : {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
                 </p>
               ))}
             </div>
