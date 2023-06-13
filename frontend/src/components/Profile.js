@@ -17,7 +17,7 @@ export default function Profile() {
   const [isdoctor, setIsDoctor] = useState("");
   const [donateorders, setDonateOrders] = useState([]);
   const [requestorders, setRequestOrders] = useState([]);
-  const [myappointments, setMyAppointments] = useState([]);
+  const [patientappointments, setPatientAppointments] = useState([]);
   const [doctorappointments, setDoctorAppointments] = useState([]);
   const [user_name, setUserName] = useState("");
   const [credits, setCredits] = useState("");
@@ -29,9 +29,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchUser = () => {
       fetch(
-        `${API_BASE_URL}/user/${
-          JSON.parse(localStorage.getItem("user"))._id
-        }`,
+        `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -66,7 +64,7 @@ export default function Profile() {
   }, []);
 
   useEffect(() => {
-    myAppointments();
+    patientAppointments();
   }, []);
 
   useEffect(() => {
@@ -99,15 +97,15 @@ export default function Profile() {
       });
   }
 
-  function myAppointments() {
+  function patientAppointments() {
     fetch(
       `${API_BASE_URL}/patient-appointments/${
-        JSON.parse(localStorage.getItem("user")).name
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
       .then((data) => {
-        setMyAppointments(data);
+        setPatientAppointments(data);
         setIsLoading(false);
       });
   }
@@ -115,12 +113,12 @@ export default function Profile() {
   function doctorAppointments() {
     fetch(
       `${API_BASE_URL}/doctor-appointments/${
-        JSON.parse(localStorage.getItem("user")).name
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("doctor appinmts = ", data);
+        
 
         setDoctorAppointments(data);
         setIsLoading(false);
@@ -143,19 +141,17 @@ export default function Profile() {
       .then((res) => {
         if (res === "You have now subscribed to Medi-Share...") {
           notifyB(res);
-      navigate("/home");
+          navigate("/home");
         } else if (
           res ===
           "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
         ) {
           notifyA(res);
-         
         } else {
           notifyA("Error");
         }
       });
   };
-
 
   return (
     <div className="profilediv">
@@ -172,16 +168,23 @@ export default function Profile() {
               {user_name} <br></br>
             </h1>
             <h1>
-             {isLoading ? (
-                <p >Loading...</p>
+              {isLoading ? (
+                <p>Loading...</p>
               ) : (
                 <p>
-                  {isSubscribed ? ( <p>Subscription : ON</p> ) : (<button onClick={() => {
-                      subscribe();
-                    }}>Subscribe</button> )} 
+                  {isSubscribed ? (
+                    <p>Subscription : ON</p>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        subscribe();
+                      }}
+                    >
+                      Subscribe
+                    </button>
+                  )}
                 </p>
-              ) }
-               
+              )}
             </h1>
             <span id="credits">
               Credits : {credits} <br />
@@ -254,6 +257,8 @@ export default function Profile() {
                   <h3 className="pm">Doctor Name</h3>
                   <h3 className="p1">Patient Name</h3>
                   <h3 className="p2">Date</h3>
+                  <h3 className="p2">Time</h3>
+                  <h3 className="p2">Status</h3>
                 </li>
                 {isLoading ? (
                   <h1 className="loada">Loading...</h1>
@@ -261,12 +266,18 @@ export default function Profile() {
                   <div className="procont">
                     {doctorappointments.map((doctorappointments) => (
                       <li className="proco" key={doctorappointments._id}>
-                        <p className="pm"> {doctorappointments.doctor_name}</p>
-                        <p className="p1"> {doctorappointments.patient_name}</p>
-                        <p className="p2">
-                          {" "}
-                          {doctorappointments.appointment_date}
-                        </p>
+                        <p className="pm"> {doctorappointments.doctor.name}</p>
+                        <p className="p1"> {doctorappointments.patient.name}</p>
+                        <p className="p1"> {doctorappointments.appointment_date}</p>
+                        <p className="p1"> {doctorappointments.appointment_time}</p>
+                        {!doctorappointments.confirm_status &&
+                        !doctorappointments.reject_status ? (
+                          <p className="p2">Pending</p>
+                        ) : doctorappointments.confirm_status ? (
+                          <p className="p2">Confirmed</p>
+                        ) : (
+                          <p className="p2">Rejected</p>
+                        )}
                       </li>
                     ))}
                   </div>
@@ -283,16 +294,27 @@ export default function Profile() {
                   <h3 className="pm">Patient Name</h3>
                   <h3 className="p1">Doctor Name</h3>
                   <h3 className="p2">Date</h3>
+                  <h3 className="p2">Time</h3>
+                  <h3 className="p2">Status</h3>
                 </li>
                 {isLoading ? (
                   <h1 className="loada">Loading...</h1>
                 ) : (
                   <div className="procont">
-                    {myappointments.map((myappointments) => (
-                      <li className="proco" key={myappointments._id}>
-                        <p className="pm"> {myappointments.patient_name}</p>
-                        <p className="p1"> {myappointments.doctor_name}</p>
-                        <p className="p2"> {myappointments.appointment_date}</p>
+                    {patientappointments.map((patientappointments) => (
+                      <li className="proco" key={patientappointments._id}>
+                        <p className="pm"> {patientappointments.patient.name}</p>
+                        <p className="p1"> {patientappointments.doctor.name}</p>
+                        <p className="p2"> {patientappointments.appointment_date}</p>
+                        <p className="p2"> {patientappointments.appointment_time}</p>
+                        {!patientappointments.confirm_status &&
+                        !patientappointments.reject_status ? (
+                          <p className="p2">Pending</p>
+                        ) : patientappointments.confirm_status ? (
+                          <p className="p2">Confirmed</p>
+                        ) : (
+                          <p className="p2">Rejected</p>
+                        )}
                       </li>
                     ))}
                   </div>

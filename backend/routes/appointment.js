@@ -7,20 +7,25 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
+
 router.post("/api/book-appointment/:id", async (req, res, next) => {
   try {
-    const { doctor_name, patient_name, appointment_date } = req.body;
+    const { doctor, patient, appointment_date, appointment_time } = req.body;
 
-    const user = await USER.findById(req.params.id);
-    const credits = user.credits;
+  
 
-    if (credits >= 200) {
-      await USER.updateOne({ _id: req.params.id }, { $inc: { credits: -200 } });
+    // const user = await USER.findById(req.params.id);
+    // const credits = user.credits;
+
+    // if (credits >= 200) {
+    //   await USER.updateOne({ _id: req.params.id }, { $inc: { credits: -200 } });
+
 
       const data = await APPOINTMENT.create({
-        doctor_name: doctor_name,
-        patient_name: patient_name,
+        doctor: doctor,
+        patient: patient,
         appointment_date: appointment_date,
+        appointment_time: appointment_time,
       });
 
       if (data) {
@@ -30,34 +35,36 @@ router.post("/api/book-appointment/:id", async (req, res, next) => {
       } else {
         return res.json({ msg: "Failed to place the appointment..." });
       }
-    } else {
-      return res.json({
-        msg: "Insufficient credits. Please earn your credits to book an appointment...",
-      });
-    }
+    // } else {
+    //   return res.json({
+    //     msg: "Insufficient credits. Please earn your credits to book an appointment...",
+    //   });
+    // }
   } catch (ex) {
     next(ex);
   }
 });
 
-router.get("/api/my-appointments/:name", async (req, res, next) => {
+router.get("/api/my-appointments/:id", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
-      doctor_name: req.params.name,
-      confirm_status: false,
-    });
+      doctor: req.params.id,
+    })
+      .populate("doctor", "-password")
+      .populate("patient", "-password");
     res.json(appointments);
   } catch (error) {
     next(error);
   }
 });
 
-router.get("/api/doctor-appointments/:name", async (req, res, next) => {
+router.get("/api/doctor-appointments/:id", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
-      doctor_name: req.params.name,
-      confirm_status: true,
-    });
+      doctor: req.params.id,
+    
+    }).populate("doctor", "-password")
+    .populate("patient", "-password");
 
     res.json(appointments);
   } catch (error) {
@@ -65,12 +72,12 @@ router.get("/api/doctor-appointments/:name", async (req, res, next) => {
   }
 });
 
-router.get("/api/patient-appointments/:name", async (req, res, next) => {
+router.get("/api/patient-appointments/:id", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
-      patient_name: req.params.name,
-      confirm_status: true,
-    });
+      patient: req.params.id,
+    }).populate("doctor", "-password")
+    .populate("patient", "-password");
 
     res.json(appointments);
   } catch (error) {
@@ -82,7 +89,21 @@ router.put("/api/confirm-appointment/:id", async (req, res, next) => {
   try {
     const appointment = await APPOINTMENT.findByIdAndUpdate(
       req.params.id,
-      { confirm_status: true },
+      { reject_status: false, confirm_status: true },
+      { new: true }
+    );
+
+    res.json(appointment);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/api/reject-appointment/:id", async (req, res, next) => {
+  try {
+    const appointment = await APPOINTMENT.findByIdAndUpdate(
+      req.params.id,
+      { confirm_status: false, reject_status: true },
       { new: true }
     );
 
