@@ -9,6 +9,7 @@ export default function SignUp() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,6 +39,7 @@ export default function SignUp() {
       body: JSON.stringify({
         name: name,
         email: email,
+        phone_number: phoneNumber,
         role: role,
         password: password,
       }),
@@ -126,6 +128,19 @@ export default function SignUp() {
                   }}
                 />
               </div>
+              <div>
+  <input
+    type="text"
+    name="phone_number"
+    id="phone_number"
+    placeholder="Phone Number"
+    value={phoneNumber}
+    onChange={(e) => {
+      setPhoneNumber(e.target.value);
+    }}
+  />
+</div>
+
 
               <div></div>
               <div>

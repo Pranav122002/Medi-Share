@@ -94,8 +94,13 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        notifyB("Appointment confirmed successfully...");
-        navigate("/profile");
+        if (data == "Patient has insufficient credits. Please reject the appointment...") {
+          notifyA("Patient has insufficient credits. Please reject the appointment...");
+        } else {
+
+          notifyB("Appointment confirmed successfully...");
+          navigate("/profile");
+        }
       })
       .catch((error) => {
         console.log(error);

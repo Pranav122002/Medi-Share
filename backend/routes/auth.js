@@ -8,8 +8,8 @@ const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
 router.post("/api/signup", (req, res) => {
   // const { name, email, password, role} = req.body;
-  var { name, email, password, role } = req.body;
-  if (!name || !email || !password) {
+  var { name, email, phone_number, password, role } = req.body;
+  if (!name || !email || !password || !phone_number) {
     return res.status(422).json({ error: "Please add all the fields..." });
   }
 
@@ -26,6 +26,7 @@ router.post("/api/signup", (req, res) => {
       const user = new USER({
         name,
         email,
+        phone_number,
         password: hashedPassword,
         role: role,
       });
@@ -63,7 +64,7 @@ router.post("/api/signin", (req, res) => {
 
           res.json({ token, user: { _id, name, email, role } });
 
-          // console.log({ token, user: { _id, name, email, role} });
+          
         } else {
           return res.status(422).json({ error: "Invalid password" });
         }

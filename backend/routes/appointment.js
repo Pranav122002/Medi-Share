@@ -87,13 +87,25 @@ router.get("/api/patient-appointments/:id", async (req, res, next) => {
 
 router.put("/api/confirm-appointment/:id", async (req, res, next) => {
   try {
-    const appointment = await APPOINTMENT.findByIdAndUpdate(
-      req.params.id,
-      { reject_status: false, confirm_status: true },
-      { new: true }
-    );
+    const appointment = await APPOINTMENT.findById(req.params.id);
 
-    res.json(appointment);
+    const patient = await USER.findById(appointment.patient);
+
+    if (patient.credits >= 200) {
+      
+      patient.credits -= 200;
+      await patient.save();
+
+      appointment.confirm_status = true;
+      appointment.reject_status = false;
+      await appointment.save();
+
+      res.json(appointment);
+    } else {
+      return res.json(
+        "Patient has insufficient credits. Please reject the appointment..."
+      );
+    }
   } catch (error) {
     next(error);
   }
