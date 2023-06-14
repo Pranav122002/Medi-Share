@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  subscription_end_date: {
+    type: String,
+  },
  
 });
 

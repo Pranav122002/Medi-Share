@@ -12,10 +12,9 @@ import { API_BASE_URL } from "../config";
 export default function Home() {
 
   const { updateUser } = useContext(UserContext);
+
   useEffect(() => {
     const fetchUser = () => {
-      console.log("user is fetched !!!");
-      
       fetch(
         `${API_BASE_URL}/user/${
           JSON.parse(localStorage.getItem('user'))._id
@@ -28,12 +27,43 @@ export default function Home() {
       )
         .then((res) => res.json())
         .then((res) => {
-          updateUser(res);
+          const subscriptionEndDate = new Date(res.subscription_end_date);
+          const currentDate = new Date();
+  
+        
+  
+          if (res.subscription_end_date && subscriptionEndDate < currentDate) {
+
+            const updatedUser = { ...res, subscription: false, subscription_end_date: undefined };
+            updateUser(updatedUser);
+  
+            
+            
+            fetch(`${API_BASE_URL}/end-subscription/${res._id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+              },
+              
+            })
+              .then((res) => res.json())
+              .then((updatedRes) => {
+                console.log('User subscription ended...', updatedRes);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          } else {
+            
+            updateUser(res);
+          }
         });
     };
-
+  
     fetchUser();
   }, []);
+  
 
   useEffect(() => {
     AOS.init({ duration: 2000 });

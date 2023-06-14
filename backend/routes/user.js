@@ -46,35 +46,46 @@ router.get("/api/all-doctors", (req, res) => {
 
 router.put("/api/subscribe/:id", async (req, res) => {
   try {
-    const user = await USER.findById(req.params.id);
+    const { id } = req.params;
+    const user = await USER.findById(id);
 
-  
+    if (user.credits >= 1000) {
+      const subscriptionEndDate = new Date();
+      subscriptionEndDate.setDate(subscriptionEndDate.getDate() + 30);
 
-    const user_credits = user.credits;
+      const formattedEndDate = subscriptionEndDate.toISOString().split("T")[0];
 
-    if (user_credits >= 1000) {
       const updatedUser = await USER.findByIdAndUpdate(
-        req.params.id,
-        { $set: { subscription: true }, $inc: { credits: -1000 } },
+        id,
+        { $set: { subscription: true, subscription_end_date: formattedEndDate }, $inc: { credits: -1000 } },
         { new: true }
       );
 
-
       res.json("You have now subscribed to Medi-Share...");
     } else {
-
-
-      res.json(
-        "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
-      );
+      res.json("Insufficient credits. Please earn or add credits to subscribe to Medi-Share...");
     }
   } catch (err) {
     console.error(err);
-
-
     res.json("An error occurred...");
   }
 });
+
+
+router.put('/api/end-subscription/:id', (req, res) => {
+  USER.findByIdAndUpdate(
+    req.params.id,
+    { $unset: { subscription_end_date: "" }, subscription: false },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      res.json(updatedUser);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Failed to end user subscription' });
+    });
+});
+
 
 router.get("/api/all-personal-users/:id", async (req, res, next) => {
   try {
