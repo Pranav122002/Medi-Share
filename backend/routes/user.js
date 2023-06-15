@@ -15,6 +15,32 @@ router.get("/api/user/:id", (req, res) => {
     });
 });
 
+router.put("/api/update-doctor-details/:id", (req, res) => {
+  
+  USER.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: {
+        "doctor_details.fees": req.body.doctor_details.fees,
+        "doctor_details.qualification": req.body.doctor_details.qualification,
+        "doctor_details.specialization": req.body.doctor_details.specialization,
+        "doctor_details.experience": req.body.doctor_details.experience,
+        "doctor_details.availability": req.body.doctor_details.availability,
+        "doctor_details.hospital_name": req.body.doctor_details.hospital_name,
+      },
+    },
+    { new: true }
+  )
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.json("User not found...");
+    });
+});
+
+
 router.put("/api/becomevolunteer/:id", (req, res) => {
   
   
@@ -43,6 +69,18 @@ router.get("/api/all-doctors", (req, res) => {
       res.status(500).json({ error: "Error fetching doctors" });
     });
 });
+
+router.get("/api/all-volunteers-and-doctors", (req, res) => {
+  USER.find({ role: { $in: ["doctor", "volunteer"] } })
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Error fetching volunteers and doctors" });
+    });
+});
+
 
 router.put("/api/subscribe/:id", async (req, res) => {
   try {

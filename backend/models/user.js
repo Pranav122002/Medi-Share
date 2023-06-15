@@ -32,7 +32,31 @@ const userSchema = new mongoose.Schema({
   subscription_end_date: {
     type: String,
   },
- 
+
+  doctor_details: {
+   
+    qualification: {
+      type: String,
+    },
+    specialization: {
+      type: String,
+    },
+    experience: {
+      type: Number,
+    },
+    fees: {
+      type: Number,
+    },
+    hospital_name: {
+      type: String,
+    },
+    availability: {
+      type: String,
+    },
+    certificate: {
+      type: String,
+    },
+  },
 });
 
 module.exports = mongoose.model("USER", userSchema);

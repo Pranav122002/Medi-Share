@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
 router.post("/api/signup", (req, res) => {
-  // const { name, email, password, role} = req.body;
   var { name, email, phone_number, password, role } = req.body;
   if (!name || !email || !password || !phone_number) {
     return res.status(422).json({ error: "Please add all the fields..." });
@@ -17,12 +16,10 @@ router.post("/api/signup", (req, res) => {
     if (savedUser) {
       return res
         .status(422)
-        .json({ error: "User already exist with that email..." });
+        .json({ error: "User already exists with that email..." });
     }
+
     bcrypt.hash(password, 12).then((hashedPassword) => {
-      if (role === "") {
-        role = "user";
-      }
       const user = new USER({
         name,
         email,
@@ -31,10 +28,22 @@ router.post("/api/signup", (req, res) => {
         role: role,
       });
 
+      if (role === "doctor") {
+        user.doctor_details.qualification = ""; 
+        user.doctor_details.specialization = ""; 
+        user.doctor_details.experience = 1; 
+        user.doctor_details.fees = 300; 
+        user.doctor_details.hospital_name = ""; 
+        user.doctor_details.availability = "Mon - Fri"; 
+        user.doctor_details.certificate = ""; 
+      }
+
+      
+      
       user
         .save()
         .then((user) => {
-          res.json({ message: "Registered successfully..." });
+          res.json( user);
         })
         .catch((err) => {
           console.log(err);
@@ -42,6 +51,7 @@ router.post("/api/signup", (req, res) => {
     });
   });
 });
+
 
 router.post("/api/signin", (req, res) => {
   const { email, password, role } = req.body;

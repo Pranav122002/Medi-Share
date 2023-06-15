@@ -51,6 +51,7 @@ export default function Navbar() {
         </Link>) : ( <div></div> ) }
         
 
+        
         <Link className="borderrad" to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
           <img className="navimg" src="./donatemed.png" alt="" />
@@ -66,6 +67,10 @@ export default function Navbar() {
         <Link className="borderrad" to="/volunteer">
           <li style={{color: "black"}} className="navli">Volunteer</li>
           <img className="navimg" src="./verified.png " alt="" />
+        </Link>
+        <Link className="borderrad" to="/users">
+          <li style={{color: "black"}} className="navli">Search Users</li>
+          <img className="navimg" src="./search-medicine.png" alt="" />
         </Link>
          <Link className="borderrad" to="/tasks">
           <li style={{color: "black"}} className="navli">Tasks</li>
