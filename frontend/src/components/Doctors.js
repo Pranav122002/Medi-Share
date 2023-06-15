@@ -15,12 +15,14 @@ export default function Profile() {
   const [userid, setUserId] = useState("");
 
   const [doctor_id, setDoctorId] = useState("");
+  const [doctor_name, setDoctorName] = useState("");
   const [appointment_date, setAppointmentDate] = useState("");
   const [appointment_time, setAppointmentTime] = useState("");
 
   const [isDoctor, setIsDoctor] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [doctors, setDoctors] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState("");
 
   const [appointments, setAppointments] = useState([]);
   const [patient, setPatient] = useState("");
@@ -52,7 +54,6 @@ export default function Profile() {
         setAppointments(data);
         setIsLoading(false);
         console.log("appointments = ", data);
-        
       })
       .catch((error) => {
         console.log(error);
@@ -60,13 +61,18 @@ export default function Profile() {
   }
 
   const postBookData = () => {
+    if (!selectedDoctor) {
+      notifyA("Please select a doctor from the list.");
+      return;
+    }
+  
     fetch(`${API_BASE_URL}/book-appointment/${userid}`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        doctor: doctor_id,
+        doctor: selectedDoctor._id,
         patient: userid,
         appointment_date: appointment_date,
         appointment_time: appointment_time,
@@ -78,12 +84,12 @@ export default function Profile() {
           notifyA(data.error);
         } else {
           notifyB(data.msg);
-          navigate("/profile")
+          navigate("/profile");
         }
         console.log(data);
       });
   };
-
+  
   function confirmAppointment(appointmentId) {
     fetch(`${API_BASE_URL}/confirm-appointment/${appointmentId}`, {
       method: "put",
@@ -94,10 +100,14 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data == "Patient has insufficient credits. Please reject the appointment...") {
-          notifyA("Patient has insufficient credits. Please reject the appointment...");
+        if (
+          data ==
+          "Patient has insufficient credits. Please reject the appointment..."
+        ) {
+          notifyA(
+            "Patient has insufficient credits. Please reject the appointment..."
+          );
         } else {
-
           notifyB("Appointment confirmed successfully...");
           navigate("/profile");
         }
@@ -144,7 +154,7 @@ export default function Profile() {
           setIsDoctor(false);
           setPatient(res.name);
         }
-        
+
         setUserId(res._id);
         setIsLoading(false);
       });
@@ -158,6 +168,8 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log("Doctors list = ",res);
+        
         setDoctors(res);
       })
       .catch((error) => {
@@ -193,59 +205,55 @@ export default function Profile() {
                   <>
                     <h2>Your Appointments</h2>
                     <div className="appointments-container">
-
-
                       {/* {appointments.length > 0 ? ( */}
 
-                        <ul>
-                          {appointments.map((appointment) => (
-                            <li key={appointment._id}>
-                              <p>
-                                <img src="./doctor2.png" alt="" />
-                              </p>
-                              <p>Doctor: {appointment.doctor.name}</p>
-                              <p>Patient: {appointment.patient.name}</p>
-                              <p>Date: {appointment.appointment_date}</p>
-                              <p>Time: {appointment.appointment_time}</p>
+                      <ul>
+                        {appointments.map((appointment) => (
+                          <li key={appointment._id}>
+                            <p>
+                              <img src="./doctor2.png" alt="" />
+                            </p>
+                            <p>Doctor: {appointment.doctor.name}</p>
+                            <p>Patient: {appointment.patient.name}</p>
+                            <p>Date: {appointment.appointment_date}</p>
+                            <p>Time: {appointment.appointment_time}</p>
 
-
-                              {!appointment.confirm_status &&
-                        !appointment.reject_status ? (
-                          <><button
-                          className="button-53"
-                          type="submit"
-                          onClick={() => {
-                            confirmAppointment(appointment._id);
-                          }}
-                        >
-                          {" "}
-                          Confirm
-                        </button>
-                        <button
-                          className="button-53"
-                          type="submit"
-                          onClick={() => {
-                            rejectAppointment(appointment._id);
-                          }}
-                        >
-                          {" "}
-                          Reject
-                        </button></>
-                        ) : appointment.confirm_status ? (
-                          <p className="p2">Confirmed</p>
-                        ) : (
-                          <p className="p2">Rejected</p>
-                        )}
-
-                        
-                              
-                            </li>
-                          ))}
-                        </ul>
+                            {!appointment.confirm_status &&
+                            !appointment.reject_status ? (
+                              <>
+                                <button
+                                  className="button-53"
+                                  type="submit"
+                                  onClick={() => {
+                                    confirmAppointment(appointment._id);
+                                  }}
+                                >
+                                  {" "}
+                                  Confirm
+                                </button>
+                                <button
+                                  className="button-53"
+                                  type="submit"
+                                  onClick={() => {
+                                    rejectAppointment(appointment._id);
+                                  }}
+                                >
+                                  {" "}
+                                  Reject
+                                </button>
+                              </>
+                            ) : appointment.confirm_status ? (
+                              <p className="p2">Confirmed</p>
+                            ) : (
+                              <p className="p2">Rejected</p>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
 
                       {/* ) : ( */}
 
-                        {/* <h3 className="noaot">No appointments found.</h3> */}
+                      {/* <h3 className="noaot">No appointments found.</h3> */}
 
                       {/* ) */}
                       {/* } */}
@@ -263,18 +271,33 @@ export default function Profile() {
                             <div className="logo">
                               <h1>Book Appointment</h1>
                             </div>
+                            
                             <div>
                               <input
                                 type="text"
                                 name="doctor_id"
                                 id="doctor_id"
-                                value={doctor_id}
-                                placeholder="Doctor' Id"
+                                value={selectedDoctor._id}
+                                placeholder="Doctor's ID"
                                 onChange={(e) => {
                                   setDoctorId(e.target.value);
                                 }}
                               />
                             </div>
+
+                            <div>
+                              <input
+                                type="text"
+                                name="doctor_name"
+                                id="doctor_name"
+                                value={selectedDoctor.name}
+                                placeholder="Doctor's Name"
+                                onChange={(e) => {
+                                  setDoctorName(e.target.value);
+                                }}
+                              />
+                            </div>
+
                             <div>
                               <input
                                 type="date"
@@ -287,6 +310,7 @@ export default function Profile() {
                                 }}
                               />
                             </div>
+
                             <div>
                               <input
                                 type="time"
@@ -299,15 +323,17 @@ export default function Profile() {
                                 }}
                               />
                             </div>
+
                             <button
                               className="button-53"
-                              value="Book : 200 Credits"
+                              value="Book "
                               type="submit"
                               onClick={() => {
                                 postBookData(patient);
                               }}
                             >
-                              Book : 200 Credits
+                              {selectedDoctor ? (`Book : ${selectedDoctor.doctor_details.fees}`) : ("Book")}
+                              
                             </button>
                           </div>
                         </div>
@@ -316,7 +342,12 @@ export default function Profile() {
                         <ul>
                           <h2>Doctors list</h2>
                           {doctors.map((doctor) => (
-                            <li key={doctor._id}>{doctor.name}</li>
+                            <li
+                              key={doctor._id}
+                              onClick={() => setSelectedDoctor(doctor)}
+                            >
+                              {doctor.name}
+                            </li>
                           ))}
                         </ul>
                       </div>

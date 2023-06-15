@@ -60,7 +60,7 @@ router.put("/api/becomevolunteer/:id", (req, res) => {
 });
 
 router.get("/api/all-doctors", (req, res) => {
-  USER.find({ role: "doctor" })
+  USER.find({ role: "doctor" }).select("-password")
     .then((doctors) => {
       res.json(doctors);
     })
@@ -71,7 +71,7 @@ router.get("/api/all-doctors", (req, res) => {
 });
 
 router.get("/api/all-volunteers-and-doctors", (req, res) => {
-  USER.find({ role: { $in: ["doctor", "volunteer"] } })
+  USER.find({ role: { $in: ["doctor", "volunteer"] } }).select("-password")
     .then((users) => {
       res.json(users);
     })
