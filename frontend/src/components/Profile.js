@@ -259,6 +259,7 @@ export default function Profile() {
                   <h3 className="p2">Date</h3>
                   <h3 className="p2">Time</h3>
                   <h3 className="p2">Status</h3>
+                  <h3 className="p2">Link</h3>
                 </li>
                 {isLoading ? (
                   <h1 className="loada">Loading...</h1>
@@ -273,11 +274,12 @@ export default function Profile() {
                         {!doctorappointments.confirm_status &&
                         !doctorappointments.reject_status ? (
                           <p className="p2">Pending</p>
-                        ) : doctorappointments.confirm_status ? (
-                          <p className="p2">Confirmed</p>
-                        ) : (
-                          <p className="p2">Rejected</p>
-                        )}
+                          ) : doctorappointments.confirm_status ? (
+                            <p className="p2">Confirmed</p>
+                            ) : (
+                              <p className="p2">Rejected</p>
+                              )}
+                              <p className="p1"> {doctorappointments.appointment_link}</p>
                       </li>
                     ))}
                   </div>
@@ -296,6 +298,7 @@ export default function Profile() {
                   <h3 className="p2">Date</h3>
                   <h3 className="p2">Time</h3>
                   <h3 className="p2">Status</h3>
+                  <h3 className="p2">Link</h3>
                 </li>
                 {isLoading ? (
                   <h1 className="loada">Loading...</h1>
@@ -315,6 +318,8 @@ export default function Profile() {
                         ) : (
                           <p className="p2">Rejected</p>
                         )}
+                        <p className="p2"> {patientappointments.appointment_link}</p>
+
                       </li>
                     ))}
                   </div>

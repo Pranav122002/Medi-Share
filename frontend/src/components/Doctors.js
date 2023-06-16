@@ -24,6 +24,8 @@ export default function Profile() {
   const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState("");
 
+  const [linkText, setLinkText] = useState("");
+
   const [appointments, setAppointments] = useState([]);
   const [patient, setPatient] = useState("");
 
@@ -65,7 +67,7 @@ export default function Profile() {
       notifyA("Please select a doctor from the list.");
       return;
     }
-  
+
     fetch(`${API_BASE_URL}/book-appointment/${userid}`, {
       method: "post",
       headers: {
@@ -89,7 +91,7 @@ export default function Profile() {
         console.log(data);
       });
   };
-  
+
   function confirmAppointment(appointmentId) {
     fetch(`${API_BASE_URL}/confirm-appointment/${appointmentId}`, {
       method: "put",
@@ -168,8 +170,8 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("Doctors list = ",res);
-        
+        console.log("Doctors list = ", res);
+
         setDoctors(res);
       })
       .catch((error) => {
@@ -178,6 +180,31 @@ export default function Profile() {
       });
   }
 
+  function addLink(appointmentId) {
+    console.log("linktext = ", linkText);
+    console.log("id = ", appointmentId);
+    
+    fetch(`${API_BASE_URL}/add-appointment-link/${appointmentId}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        appointment_link: linkText,
+      })
+    }).then((res) => res.json())
+      .then((data) => {
+        notifyB("Link added successfully...");
+        navigate("/profile");
+      })
+      .catch((error) => {
+        console.log(error);
+        notifyA(error);
+      });
+  }
+
+  
   return (
     <div className="doctor">
       <Hnavbar />
@@ -243,10 +270,30 @@ export default function Profile() {
                                 </button>
                               </>
                             ) : appointment.confirm_status ? (
-                              <p className="p2">Confirmed</p>
+                              <p className="p2">Status: Confirmed</p>
                             ) : (
-                              <p className="p2">Rejected</p>
+                              <p className="p2">Status: Rejected</p>
                             )}
+                            <p>
+                              Link: {appointment.appointment_link ? (
+                                appointment.appointment_link
+                              ) : (
+                                <>
+                                  <input
+                                    type="text"
+                                    value={linkText}
+                                    onChange={(e) =>
+                                      setLinkText(e.target.value)
+                                    }
+                                  />
+                                  <button
+                                    onClick={() => addLink(appointment._id)}
+                                  >
+                                    Add Link
+                                  </button>
+                                </>
+                              )}
+                            </p>
                           </li>
                         ))}
                       </ul>
@@ -271,7 +318,7 @@ export default function Profile() {
                             <div className="logo">
                               <h1>Book Appointment</h1>
                             </div>
-                            
+
                             <div>
                               <input
                                 type="text"
@@ -332,8 +379,9 @@ export default function Profile() {
                                 postBookData(patient);
                               }}
                             >
-                              {selectedDoctor ? (`Book : ${selectedDoctor.doctor_details.fees}`) : ("Book")}
-                              
+                              {selectedDoctor
+                                ? `Book : ${selectedDoctor.doctor_details.fees}`
+                                : "Book"}
                             </button>
                           </div>
                         </div>

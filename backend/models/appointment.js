@@ -19,6 +19,9 @@ const appointmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  appointment_link: {
+    type: String,
+  },
   confirm_status: {
     type: Boolean,
     default: false,

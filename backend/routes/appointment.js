@@ -111,4 +111,20 @@ router.put("/api/reject-appointment/:id", async (req, res, next) => {
   }
 });
 
+router.put("/api/add-appointment-link/:id", async (req, res, next) => {
+  const { appointment_link } = req.body;
+
+  try {
+    const appointment = await APPOINTMENT.findByIdAndUpdate(
+      req.params.id,
+      { appointment_link: appointment_link },
+      { new: true }
+    );
+
+    res.json(appointment);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
