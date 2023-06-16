@@ -1,33 +1,39 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import { Hnavbar } from "./Hnavbar";
+import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 
 export default function UserProfile({ id }) {
-  const navigate = useNavigate();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(false);
-  // const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
-  //   fees: "",
-  //   qualification: "",
-  //   specialization: "",
-  //   experience: "",
-  //   availability: "",
-  //   hospital_name: "",
-  // });
-  
+  const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
+    fees: "",
+    qualification: "",
+    specialization: "",
+    experience: "",
+    availability: "",
+    hospital_name: "",
+  });
+  const [updatedVolunteerDetails, setUpdatedVolunteerDetails] = useState({
+    qualification: "",
+    available: "",
+    NGO_name: "",
+    location: { longitude: "", latitude: "" },
+  });
+
   useEffect(() => {
-    fetchUser();
+    if (!editing) {
+      fetchUser();
 
-    if (id ===  JSON.parse(localStorage.getItem('user'))._id ) {
-    setIsMine(true);
-  }
-
-  }, [id]);
+      if (id === JSON.parse(localStorage.getItem("user"))._id) {
+        setIsMine(true);
+      }
+    }
+   
+  }, [id, editing]);
 
   const fetchUser = () => {
+    setIsMine(false);
+
     fetch(`${API_BASE_URL}/user/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -37,165 +43,224 @@ export default function UserProfile({ id }) {
       .then((res) => {
         setUser(res);
 
-        // if (res.role === "doctor") {
-        //   setUpdatedDoctorDetails({
-        //     fees: res.doctor_details.fees,
-        //     qualification: res.doctor_details.qualification,
-        //     specialization: res.doctor_details.specialization,
-        //     experience: res.doctor_details.experience,
-        //     availability: res.doctor_details.availability,
-        //     hospital_name: res.doctor_details.hospital_name,
-        //   });
-        // }
-      
+        if (res.role === "doctor") {
+          setUpdatedDoctorDetails({
+            fees: res.doctor_details.fees,
+            qualification: res.doctor_details.qualification,
+            specialization: res.doctor_details.specialization,
+            experience: res.doctor_details.experience,
+            availability: res.doctor_details.availability,
+            hospital_name: res.doctor_details.hospital_name,
+          });
+        } else if (res.role === "volunteer") {
+          setUpdatedVolunteerDetails({
+            qualification: res.volunteer_details.qualification,
+            available: res.volunteer_details.available,
+            NGO_name: res.volunteer_details.NGO_name,
+            location: {
+              longitude: res.volunteer_details.location.longitude,
+              latitude: res.volunteer_details.location.latitude,
+            },
+          });
+        }
       });
   };
 
-  const editDoctorDetails = () => {
-    fetch(`${API_BASE_URL}/edit-doctor-details/${JSON.parse(localStorage.getItem('user'))._id}`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log("edit = ", res);
-        
-      });
+  const handleEdit = () => {
+    setEditing(true);
   };
 
-  // const handleEdit = () => {
-  //   setEditing(true);
-  // };
+  const handleInputChange = (e) => {
+    if (user.role === "doctor") {
+      setUpdatedDoctorDetails({
+        ...updatedDoctorDetails,
+        [e.target.name]: e.target.value,
+      });
+    } else if (user.role === "volunteer") {
+      if (e.target.name === "longitude" || e.target.name === "latitude") {
+        setUpdatedVolunteerDetails((prevDetails) => ({
+          ...prevDetails,
+          location: {
+            ...prevDetails.location,
+            [e.target.name]: Number(e.target.value),
+          },
+        }));
+      } else {
+        setUpdatedVolunteerDetails({
+          ...updatedVolunteerDetails,
+          [e.target.name]: e.target.value,
+        });
+      }
+    }
+  };
 
-  // const handleInputChange = (e) => {
-  //   setUpdatedDoctorDetails({
-  //     ...updatedDoctorDetails,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
+  const handleSubmit = () => {
+    const updatedUser = { ...user };
+    if (updatedUser.role === "doctor") {
+      updatedUser.doctor_details = { ...updatedDoctorDetails };
+      fetch(`${API_BASE_URL}/update-doctor-details/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify(updatedUser),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          setEditing(false);
+          setUser(res);
+        });
+    } else if (updatedUser.role === "volunteer") {
+      updatedUser.volunteer_details = { ...updatedVolunteerDetails };
+      fetch(`${API_BASE_URL}/update-volunteer-details/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify(updatedUser),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          setEditing(false);
+          setUser(res);
+        });
+    }
+  };
 
-  // const handleSubmit = () => {
-  //   const updatedUser = { ...user };
-  //   updatedUser.doctor_details = { ...updatedDoctorDetails };
-
-  //   fetch(`${API_BASE_URL}/update-doctor-details/${id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer " + localStorage.getItem("jwt"),
-  //     },
-  //     body: JSON.stringify(updatedUser),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-       
-        
-  //       setEditing(false);
-  //       setUser(res);
-
-  //     });
-  // };
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-
-      {user.role === "doctor" ? (
-
-        <>
-
-          {isMine ? (
-
-            <>
-              {editing ? (
-
-                <>
-                  <h3>Edit Doctor Details</h3>
-                  <label>Fees:</label>
-                  <input
-                    type="text"
-                    name="fees"
-                    value={updatedDoctorDetails.fees}
-                    onChange={handleInputChange}
-                  />
-                  <label>Qualification:</label>
-                  <input
-                    type="text"
-                    name="qualification"
-                    value={updatedDoctorDetails.qualification}
-                    onChange={handleInputChange}
-                  />
-                  <label>Specialization:</label>
-                  <input
-                    type="text"
-                    name="specialization"
-                    value={updatedDoctorDetails.specialization}
-                    onChange={handleInputChange}
-                  />
-                  <label>Experience:</label>
-                  <input
-                    type="text"
-                    name="experience"
-                    value={updatedDoctorDetails.experience}
-                    onChange={handleInputChange}
-                  />
-                  <label>Availability:</label>
-                  <input
-                    type="text"
-                    name="availability"
-                    value={updatedDoctorDetails.availability}
-                    onChange={handleInputChange}
-                  />
-                  <label>Hospital Name:</label>
-                  <input
-                    type="text"
-                    name="hospital_name"
-                    value={updatedDoctorDetails.hospital_name}
-                    onChange={handleInputChange}
-                  />
-                  <button onClick={handleSubmit}>Submit</button>
-                </>
-
-              ) : (
-
-                <>
-                  <button onClick={handleEdit}>Edit</button>
-                  <h3>Doctor Details</h3>
-                  <p>Name: {user.name}</p>
-                  <p>Fees: {user.doctor_details.fees}</p>
-                  <p>Qualification: {user.doctor_details.qualification}</p>
-                  <p>Specialization: {user.doctor_details.specialization}</p>
-                  <p>Experience: {user.doctor_details.experience}</p>
-                  <p>Availability: {user.doctor_details.availability}</p>
-                  <p>Hospital Name: {user.doctor_details.hospital_name}</p>
-                </>
-
-              )}
-            </>
-
-          ) : (
-
-            <>
-              <h3>Doctor Details</h3>
-              <p>Name: {user.name}</p>
-              <p>Fees: {user.doctor_details.fees}</p>
-              <p>Qualification: {user.doctor_details.qualification}</p>
-              <p>Specialization: {user.doctor_details.specialization}</p>
-              <p>Experience: {user.doctor_details.experience}</p>
-              <p>Availability: {user.doctor_details.availability}</p>
-              <p>Hospital Name: {user.doctor_details.hospital_name}</p>
-            </>
-
+      <h1>User Profile</h1>
+      <div>
+        <p>Name: {user.name}</p>
+        <p>Email: {user.email}</p>
+        {user.role === "doctor" && (
+          <div>
+            <p>Fees: {user.doctor_details.fees}</p>
+            <p>Qualification: {user.doctor_details.qualification}</p>
+            <p>Specialization: {user.doctor_details.specialization}</p>
+            <p>Experience: {user.doctor_details.experience}</p>
+            <p>Availability: {user.doctor_details.availability}</p>
+            <p>Hospital Name: {user.doctor_details.hospital_name}</p>
+          </div>
+        )}
+        {user.role === "volunteer" && (
+          <div>
+            <p>Qualification: {user.volunteer_details.qualification}</p>
+            <p>Available: {user.volunteer_details.available}</p>
+            <p>NGO Name: {user.volunteer_details.NGO_name}</p>
+            <p>
+              Location: {user.volunteer_details.location.longitude},{" "}
+              {user.volunteer_details.location.latitude}
+            </p>
+          </div>
+        )}
+      </div>
+      {isMine && !editing && <button onClick={handleEdit}>Edit Profile</button>}
+      {editing && (
+        <div>
+          <h2>Edit Profile</h2>
+          {user.role === "doctor" && (
+            <div>
+              <label>Fees:</label>
+              <input
+                type="text"
+                name="fees"
+                value={updatedDoctorDetails.fees}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Qualification:</label>
+              <input
+                type="text"
+                name="qualification"
+                value={updatedDoctorDetails.qualification}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Specialization:</label>
+              <input
+                type="text"
+                name="specialization"
+                value={updatedDoctorDetails.specialization}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Experience:</label>
+              <input
+                type="text"
+                name="experience"
+                value={updatedDoctorDetails.experience}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Availability:</label>
+              <input
+                type="text"
+                name="availability"
+                value={updatedDoctorDetails.availability}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Hospital Name:</label>
+              <input
+                type="text"
+                name="hospital_name"
+                value={updatedDoctorDetails.hospital_name}
+                onChange={handleInputChange}
+              />
+            </div>
           )}
-        </>
-
-      ) : (
-
-        <>
-          <h3>Volunteer Details</h3>
-          <p>Volunteer Name = {user.name}</p>
-        </>
-
+          {user.role === "volunteer" && (
+            <div>
+              <label>Qualification:</label>
+              <input
+                type="text"
+                name="qualification"
+                value={updatedVolunteerDetails.qualification}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Available:</label>
+              <input
+                type="text"
+                name="available"
+                value={updatedVolunteerDetails.available}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>NGO Name:</label>
+              <input
+                type="text"
+                name="NGO_name"
+                value={updatedVolunteerDetails.NGO_name}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Location (Longitude):</label>
+              <input
+                type="number"
+                name="longitude"
+                value={updatedVolunteerDetails.location.longitude || ""}
+                onChange={handleInputChange}
+              />
+              <br />
+              <label>Location (Latitude):</label>
+              <input
+                type="number"
+                name="latitude"
+                value={updatedVolunteerDetails.location.latitude || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+          )}
+          <button onClick={handleSubmit}>Save</button>
+        </div>
       )}
     </div>
   );

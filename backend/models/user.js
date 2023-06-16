@@ -50,87 +50,72 @@ const userSchema = new mongoose.Schema({
 });
 
 const doctorSchema = new mongoose.Schema({
-  verification: {
-    type: Boolean,
-    default: false,
-  },
-  qualification: {
-    type: String,
-  },
-  specialization: {
-    type: String,
-  },
-  experience: {
-    type: Number,
-  },
-  fees: {
-    type: Number,
-    default: 200,
-  },
-  hospital_name: {
-    type: String,
-  },
-  availability: {
-    type: String,
-  },
-  certificate: {
-    type: String,
+  doctor_details: {
+    verification: {
+      type: String,
+      default: "unverified",
+    },
+    qualification: {
+      type: String,
+    },
+    specialization: {
+      type: String,
+    },
+    experience: {
+      type: Number,
+    },
+    fees: {
+      type: Number,
+      default: 200,
+    },
+    hospital_name: {
+      type: String,
+    },
+    availability: {
+      type: String,
+    },
+    certificate: {
+      type: String,
+    },
   },
 });
 
 const volunteerSchema = new mongoose.Schema({
-  verification: {
-    type: Boolean,
-    default: false,
-  },
-  qualification: {
-    type: String,
-  },
-  available: {
-    type: Boolean,
-    default: true,
-  },
-  rejected_orders: [
-    {
-      order_id: {
-        type: mongoose.Schema.Types.ObjectId,
-      },
-      reason: {
-        type: String,
-      },
+  volunteer_details: {
+    verification: {
+      type: String,
+      default: "unverified",
     },
-  ],
-  accepted_orders: [
-    {
-      order_id: {
-        type: mongoose.Schema.Types.ObjectId,
-      },
+    qualification: {
+      type: String,
     },
-  ],
+    NGO_name: {
+      type: String,
+    },
+    available: {
+      type: Boolean,
+      default: true,
+    },
+  
+    location: {
+      longitude: {
+        type: Number,
+        default: 0
+      },
+      latitude: {
+        type: Number,
+        default: 0
 
-  verified_orders: [
-    {
-      order_id: {
-        type: mongoose.Schema.Types.ObjectId,
       },
     },
-  ],
-
-  location: {
-    longitude: {
-      type: Number,
+    certificate: {
+      type: String,
     },
-    latitude: {
-      type: Number,
-    },
-  },
-  certificate: {
-    type: String,
   },
 });
 
-const User = mongoose.model("USER", userSchema);
-const Doctor = User.discriminator("DOCTOR", doctorSchema);
-const Volunteer = User.discriminator("VOLUNTEER", volunteerSchema);
+const USER = mongoose.model("USER", userSchema);
+const DOCTOR = USER.discriminator("DOCTOR", doctorSchema);
+const VOLUNTEER = USER.discriminator("VOLUNTEER", volunteerSchema);
 
-module.exports = { User, Doctor, Volunteer };
+module.exports = { USER, DOCTOR, VOLUNTEER };

@@ -10,7 +10,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("user");
   const [password, setPassword] = useState("");
 
   // Toast functions
@@ -63,7 +63,7 @@ export default function SignUp() {
   }
 
 
-  const navigatee = useNavigate();
+  
   const goHome = () => {
     navigate('/')
   }

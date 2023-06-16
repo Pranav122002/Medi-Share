@@ -16,6 +16,7 @@ router.post("/api/signup", async (req, res) => {
       return res.status(422).json({ error: "Please add all the fields..." });
     }
 
+
     const savedUser = await USER.findOne({ email: email });
     if (savedUser) {
       return res

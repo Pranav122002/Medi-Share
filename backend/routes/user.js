@@ -3,6 +3,8 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
+const DOCTOR = mongoose.model("DOCTOR");
+const VOLUNTEER = mongoose.model("VOLUNTEER");
 
 router.get("/api/user/:id", (req, res) => {
   USER.findOne({ _id: req.params.id })
@@ -16,8 +18,9 @@ router.get("/api/user/:id", (req, res) => {
 });
 
 router.put("/api/update-doctor-details/:id", (req, res) => {
-  
-  USER.findByIdAndUpdate(
+
+
+  DOCTOR.findByIdAndUpdate(
     req.params.id,
     {
       $set: {
@@ -40,6 +43,31 @@ router.put("/api/update-doctor-details/:id", (req, res) => {
     });
 });
 
+router.put("/api/update-volunteer-details/:id", (req, res) => {
+
+
+  VOLUNTEER.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: {
+        "volunteer_details.qualification": req.body.volunteer_details.qualification,
+        "volunteer_details.available": req.body.volunteer_details.available,
+        "volunteer_details.NGO_name": req.body.volunteer_details.NGO_name,
+        "volunteer_details.location.longitude": req.body.volunteer_details.location.longitude,
+        "volunteer_details.location.latitude": req.body.volunteer_details.location.latitude,
+      
+      },
+    },
+    { new: true }
+  )
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.json("User not found...");
+    });
+});
 
 router.put("/api/becomevolunteer/:id", (req, res) => {
   
