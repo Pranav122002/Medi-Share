@@ -47,56 +47,53 @@ export default function Navbar() {
       <>
       {isAdmin ? (<Link className="borderrad" to="/analytics">
           <li style={{color: "black"}} className="navli">Analytics</li>
-          <img className="navimg" src="./analysis.png" alt="" />
+          <img className="navimg" src="./analytics.png" alt="" />
         </Link>) : ( <div></div> ) }
         
 
         
         <Link className="borderrad" to="/donate-medicines">
           <li style={{color: "black"}} className="navli">Donate</li>
-          <img className="navimg" src="./donatemed.png" alt="" />
+          <img className="navimg" src="./medicinedonate.png" alt="" />
         </Link>
         <Link className="borderrad" to="/request-medicines">
           <li style={{color: "black"}} className="navli">Request</li>
-          <img className="navimg" src="./requestmed.png" alt="" />
+          <img className="navimg" src="./medicinerequest.png" alt="" />
         </Link>
         <Link className="borderrad" to="/orders">
           <li style={{color: "black"}} className="navli">Orders</li>
-          <img className="navimg" src="./orders.png" alt="" />
+          <img className="navimg" src="./orderss.png" alt="" />
         </Link>
         <Link className="borderrad" to="/volunteer">
           <li style={{color: "black"}} className="navli">Volunteer</li>
-          <img className="navimg" src="./verified.png " alt="" />
+          <img className="navimg" src="./volunteerr.png " alt="" />
         </Link>
         <Link className="borderrad" to="/users">
           <li style={{color: "black"}} className="navli">Search Users</li>
-          <img className="navimg" src="./search-medicine.png" alt="" />
+          <img className="navimg" src="./medicinesearch.png" alt="" />
         </Link>
          <Link className="borderrad" to="/tasks">
           <li style={{color: "black"}} className="navli">Tasks</li>
-          <img className="navimg" src="./tasks.png" alt="" />
+          <img className="navimg" src="./task.png" alt="" />
         </Link>
         {/* <Link className="borderrad" to="/medicines">
           <li style={{color: "black"}} className="navli">Medicines</li>
         </Link> */}
         <Link className="borderrad" to="/search-medicines">
           <li style={{color: "black"}} className="navli">Search Medicines</li>
-          <img className="navimg" src="./search-medicine.png" alt="" />
+          <img className="navimg" src="./medicinesearch.png" alt="" />
         </Link>
         
         <Link className="borderrad" to="/annoucements">
           <li style={{color: "black"}} className="navli">Annoucements</li>
-          <img className="navimg" id="mega" src="./annoucement.png" alt="" />
+          <img className="navimg" id="mega" src="./loudspeaker.png" alt="" />
         </Link>
         <Link className="borderrad" to="/doctors">
           <li style={{color: "black"}} className="navli">Doctors</li>
-          <img className="navimg" id="mega" src="./appointment.png" alt="" />
+          <img className="navimg" id="mega" src="./doctoricon.png" alt="" />
         </Link>
        
-        <Link className="borderrad" to="/profile">
-          <li style={{color: "black"}} className="navli">Profile</li>
-          <img className="navimg" src="./profile-pic.png" alt="" />
-        </Link>
+  
 
 
 {isSubscribed ? ( <div>
@@ -104,11 +101,11 @@ export default function Navbar() {
 
   <Link className="borderrad" to="/chats">
           <li style={{color: "black"}} className="navli">Chats</li>
-          <img className="navimg" src="./chats.png" alt="" />
+          <img className="navimg" src="./chat2.png" alt="" />
         </Link>
         <Link className="borderrad" to="/disease-predictions">
           <li style={{color: "black"}} className="navli">Disease Predictions</li>
-          <img className="navimg" src="./diseases.png" alt="" />
+          <img className="navimg" src="./diseasep.png" alt="" />
         </Link>
 
 
@@ -119,11 +116,11 @@ export default function Navbar() {
 
 <Link className="borderrad" to="/subscribe">
           <li style={{color: "black"}} className="navli">Chats</li>
-          <img className="navimg" src="./chats.png" alt="" />
+          <img className="navimg" src="./chat2.png" alt="" />
         </Link>
         <Link className="borderrad" to="/subscribe">
           <li style={{color: "black"}} className="navli">Disease Predictions</li>
-          <img className="navimg" src="./diseases.png" alt="" />
+          <img className="navimg" src="./diseasep.png" alt="" />
         </Link>
 
 
@@ -147,7 +144,7 @@ export default function Navbar() {
 
         <Link className="borderrad" to="/nearby-hospitals">
           <li style={{color: "black"}} className="navli">Nearby Hospitals</li>
-          <img className="navimg" src="./hospitals.png" alt="" />
+          <img className="navimg" src="./hospitali.png" alt="" />
         </Link>
         <Link className="borderrad" to="/signin"
           onClick={() => {
@@ -156,7 +153,7 @@ export default function Navbar() {
           }}
         >
           <li style={{ color: "red" }} className="navli">Log-Out</li>
-          <img className="navimg" src="./log-out.png" alt="" />
+          <img className="navimg" src="./logout2.png" alt="" />
         </Link>
       </>,
     ];

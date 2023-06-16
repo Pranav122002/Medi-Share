@@ -7,6 +7,8 @@ import { API_BASE_URL } from "../config";
 
 export default function Annoucement() {
   const [annoucements, setAnnoucements] = useState([]);
+  const date4 = new Date();
+  date4.setDate(date4.getDate() + 1 );
   const [isDoctor, setIsDoctor] = useState("");
 
   const [title, setTitle] = useState("");
@@ -25,6 +27,29 @@ export default function Annoucement() {
   useEffect(() => {
     fetchUser();
   });
+
+  function isDate(dat) {
+    let date2 = new Date(dat)
+    console.log(date2)
+    var Difference_In_Time = date2.getTime() - date4.getTime();
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 2;
+    console.log(Difference_In_Days);
+    if (Difference_In_Days > 0) {
+      return true;
+    }
+  }
+  function isDatenow(dat) {
+    let date3 = new Date(dat)
+    console.log(date3)
+    var Difference_In_Time = date3.getTime() - date4.getTime();
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 2;
+    console.log(Difference_In_Days);
+    if (Difference_In_Days < 0) {
+      return true;
+    }
+  }
+
+
 
   function fetchAnnoucements() {
     fetch(`${API_BASE_URL}/all-annoucements`)
@@ -160,15 +185,15 @@ export default function Annoucement() {
           </div>
 
 
-        
-          <ul > 
+         
+          <ul >
             <li className="bord" >
               <h3 id="pp4" > Name</h3>
-              <h3 id="pp1" className="p1">Date</h3>
-              <h3 id="pp3"  className="p2">Venue</h3>
-              <h3 id="pp2"  className="p3">Description</h3>
+              <h3 id="pp1" className="p1">Date (MM/DD/YY)</h3>
+              <h3 id="pp3" className="p2">Venue</h3>
+              <h3 id="pp2" className="p3">Description</h3>
             </li>
-            {annoucements.map((annoucements) => (
+            {annoucements.map((annoucements) => (<>{isDate(annoucements.date) ? (<>
               <li className="bord" key={annoucements.title}>
                 <h3 >{annoucements.title}</h3>
                 <h3 className="p1">
@@ -178,9 +203,39 @@ export default function Annoucement() {
                   {annoucements.venue}
                 </h3>
                 <p className="p3">{annoucements.description} </p>
-
               </li>
-            ))}
+            </>
+            ) : (
+              <div id='noneee'></div>
+            )}
+
+            </>))}
+          </ul>
+        <h1>Past Announcements</h1>
+          <ul >
+            <li className="bord" >
+              <h3 id="pp4" > Name</h3>
+              <h3 id="pp1" className="p1">Date (MM/DD/YY)</h3>
+              <h3 id="pp3" className="p2">Venue</h3>
+              <h3 id="pp2" className="p3">Description</h3>
+            </li>
+            {annoucements.map((annoucements) => (<>{isDatenow(annoucements.date) ? (<>
+              <li className="bord" key={annoucements.title}>
+                <h3 >{annoucements.title}</h3>
+                <h3 className="p1">
+                  {annoucements.date}
+                </h3 >
+                <h3 className="p2">
+                  {annoucements.venue}
+                </h3>
+                <p className="p3">{annoucements.description} </p>
+              </li>
+            </>
+            ) : (
+              <div id='noneee'></div>
+            )}
+
+            </>))}
           </ul>
         </div>
       </div>

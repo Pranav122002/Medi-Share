@@ -214,10 +214,10 @@ ul {
 }
 
 ul img{
-  height: 2.3rem;
+  height: 2.6rem;
   margin-top: auto;
   margin-bottom: auto;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
   
 } 
 
@@ -261,6 +261,9 @@ ul a{
   width: 100%;
   justify-content: space-between;
   
+}
+ul a:nth-child(even){
+    background: rgb(254, 254, 254);
 }
 .navli{
   

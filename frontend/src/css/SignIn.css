@@ -61,7 +61,7 @@
   width: 0.2rem;
   height: 85%;
   background-color: rgba(0,168,255,1);
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-name:paAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
@@ -73,10 +73,6 @@
   width: 50rem;
   text-align: start;
   border-radius: 2rem;
-  animation-name: slide;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  overflow: hidden;
   
 }
 
@@ -85,7 +81,7 @@
   width:37rem;
   margin-left: 0;
   animation-name:pAnimation;
-  animation-duration: 2.5s;
+  animation-duration: 1.2s;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
@@ -100,7 +96,7 @@
   color: #ffffff;
   position: absolute;
   padding-top: 2rem;
-  animation-duration: 3s;
+  animation-duration: 0.5s;
   animation-name:pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
@@ -116,7 +112,7 @@
   height: 23rem;
   margin: auto;
   padding-top: 1rem;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-name:pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;

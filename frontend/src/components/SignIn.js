@@ -96,7 +96,7 @@ export default function SignIn() {
         <div className="middle"></div>
         <div className="loginForm">
           <div className="logo">
-            <h1>LOGIN</h1>
+            <h1>SIGN IN</h1>
           </div>
           <div>
             <input

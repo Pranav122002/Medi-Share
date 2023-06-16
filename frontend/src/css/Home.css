@@ -162,8 +162,54 @@
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
 }
 
+.footerr{
+  background: rgb(225, 242, 255);
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  color: white;
+  text-align: center;
+ height: 4rem;
+}
+.homeeee .fbac{
+  background-color: white;
+}
+.footerr a{
+  color: black;
+  text-decoration: none;
+  margin-left: 2rem;
+
+}
+.footerr a:hover{
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+.homeeee .fbac-slidetrack .bord{
+  box-shadow: 2px 2px 9px rgb(234, 234, 234);
+ background: rgb(255, 255, 255);;
+}
+
+.subsss .subs{
+  padding: 5rem;
+  margin-top: 10rem;
+}
+
+.subsss .subs img{
+    height: 15rem;
+}
+
+
 @media screen and (max-width: 1000px) {
- 
+
+  .subsss .subs img{
+    height: 10rem;
+}
+
+  .subsss .subs{
+    padding: 0;
+  }
   .images{
     
     padding-top:5%;

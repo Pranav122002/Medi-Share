@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.chatcont{
+    background: rgb(252, 252, 252);
+    margin: auto;
+    width: 80vw;
+    margin-top: 2rem;
+    display: flex;
+    height: 40rem;
+    
+}
+
+#profpicc{
+    float: left;
+    height: 2rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chatcont .cinfo{
+    width: 30%;
+    background: #e9f6ff82;
+}
+.chatcont .myinfo{
+    height: 4rem;
+    background: rgb(168, 205, 237);
+}
+
+.chatcont .cinfo .userss{
+    text-align: left;
+    
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 36rem;
+    
+}
+
+.chatcont .cinfo .userss p{
+    margin: 0;
+    padding-left: 2rem;
+    padding-top:2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding-bottom: 1rem;
+    
+}
+.chatcont .cinfo .userss p:hover{
+    background: rgb(238, 248, 255);
+}
+
+.chatcont .cinfo hr {
+   
+    margin: 0;
+    margin-left: 2rem;
+    
+    width: 85%;
+    border-top: 1px solid rgb(168, 205, 237);
+}
+#midhr{
+    margin: 0;
+    padding: 0;
+}
+.chatcont .selchat{
+    height: 40rem;
+    background:rgb(247, 250, 255); ;
+    width: 70%;
+    
+    position: relative;
+}
+
+.chatcont .seluser{
+    height: 4rem;
+    background: rgb(168, 205, 237);
+}
+.chatcont .seluser p{
+  margin: 0;
+  padding-top: 1rem;
+  text-align: left;
+  padding-left: 5rem;
+  font-size: 1.5rem;
+}
+
+#sendbutton{
+    background: none;
+    border: none;
+    right: 0;
+
+}
+#sendbutton img{
+    height: 2rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    float: right;
+   
+    
+}
+#sendbutton img:hover{
+    transform: rotate(5deg);
+}
+
+.submitmenu{
+    position: absolute;
+    height: 4rem;
+    bottom: 0;
+    width: 100%;
+    background: rgb(168, 205, 237);
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+.submitmenu input{
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    width: 85%;
+    height: 3rem;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .chatcont{
+        background: rgb(252, 252, 252);
+        margin: auto;
+        width: 95vw;
+        margin-top: 2rem;
+        display: block;
+        height: max-content;
+        
+    }
+    .chatcont .cinfo{
+        width: 100%;
+        background: #e9f6ff82;
+    }
+    .chatcont .selchat{
+        min-height: 40rem;
+        height: max-content;
+        background:rgb(247, 250, 255); ;
+        width: 100%; 
+        position: relative;
+    }
+}

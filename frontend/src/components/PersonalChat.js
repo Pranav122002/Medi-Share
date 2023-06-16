@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { BASE_URL, API_BASE_URL } from '../config.js';
+import "../css/PersonalChat.css"
 
 
 const socket = io(`${BASE_URL}`);
@@ -18,8 +19,7 @@ const PersonalChat = () => {
 
   useEffect(() => {
     fetch(
-      `${API_BASE_URL}/user/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -37,8 +37,7 @@ const PersonalChat = () => {
   useEffect(() => {
     if (selectedUser) {
       fetch(
-        `${API_BASE_URL}/all-personal-messages/${
-          JSON.parse(localStorage.getItem("user"))._id
+        `${API_BASE_URL}/all-personal-messages/${JSON.parse(localStorage.getItem("user"))._id
         }/${selectedUser._id}`
       )
         .then((response) => response.json())
@@ -69,8 +68,7 @@ const PersonalChat = () => {
 
   useEffect(() => {
     fetch(
-      `${API_BASE_URL}/all-personal-users/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/all-personal-users/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -135,36 +133,46 @@ const PersonalChat = () => {
         <div className="bodyy">
           <Navbar />
 
-          <div>
-            <div>
-              <h2>User List:</h2>
-              {users.map((user) => (
-                <p key={user._id} onClick={() => handleUserSelection(user)}>
-                  {user.name}
-                </p>
-              ))}
+          <div className="chatcont">
+            <div className="cinfo">
+              <div className="myinfo">
+                <img id="profpicc" src="./profile-pic.png" alt="" srcset="" />
+              </div>
+              <div className="userss">
+                {users.map((user) => (<>
+                  <p key={user._id} onClick={() => handleUserSelection(user)}>
+                    {user.name}
+                  </p>
+                  <hr />
+                </>))}
+              </div>
             </div>
-            <div>
-              <h2>Selected User:</h2>
-              {selectedUser && <p>{selectedUser.name}</p>}
+            <hr id="midhr" />
+            <div className="selchat">
+              <div className="seluser">
+
+                {selectedUser && <div> <img id="profpicc" src="./profile-pic.png" alt="" srcset="" /><p>{selectedUser.name}</p></div>}
+              </div>
+              <div>
+
+                {messages.map((message, index) => (
+                  <p key={index}>
+                    Message: {message.message} | Sender: {message.sender_name} |
+                    Receiver: {message.receiver_name} | timestamp : {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
+                  </p>
+                ))}
+              </div>
+              <div className="submitmenu">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                />
+                <button id="sendbutton" onClick={sendPersonalMessage} disabled={!selectedUser}>
+                  <img src="./direct.png" alt="send" />
+                </button>
+              </div>
             </div>
-            <div>
-              <h2>Personal Messages:</h2>
-              {messages.map((message, index) => (
-                <p key={index}>
-                  Message: {message.message} | Sender: {message.sender_name} |
-                  Receiver: {message.receiver_name} | timestamp : {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
-                </p>
-              ))}
-            </div>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-            />
-            <button onClick={sendPersonalMessage} disabled={!selectedUser}>
-              Send Personal Message
-            </button>
           </div>
         </div>
       </div>

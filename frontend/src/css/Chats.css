@@ -75,8 +75,11 @@
     margin-bottom: 2rem;
 }
 
-.chattcont{
-  
+.Cnavli .button-53{
+  border-radius: 1rem;
+}
+.Cnavli .button-53::after{
+  border-radius: 1rem;
 }
 
 .hEekYD .input-container button{

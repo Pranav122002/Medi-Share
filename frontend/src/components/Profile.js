@@ -73,8 +73,7 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `${API_BASE_URL}/mydonatedorders/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/mydonatedorders/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -86,8 +85,7 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `${API_BASE_URL}/myrequestedorders/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/myrequestedorders/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -99,8 +97,7 @@ export default function Profile() {
 
   function patientAppointments() {
     fetch(
-      `${API_BASE_URL}/patient-appointments/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/patient-appointments/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -112,13 +109,12 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `${API_BASE_URL}/doctor-appointments/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/doctor-appointments/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
       .then((data) => {
-        
+
 
         setDoctorAppointments(data);
         setIsLoading(false);
@@ -127,8 +123,7 @@ export default function Profile() {
 
   const subscribe = () => {
     fetch(
-      `${API_BASE_URL}/subscribe/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/subscribe/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -158,6 +153,35 @@ export default function Profile() {
       <Hnavbar />
       <div className="bodyy">
         <Navbar />
+
+        <div>
+          {
+            <div>
+              {isSubscribed ? (
+                <></>
+              ) : (
+                <>
+                  <div className="subs">
+                    <div className="subimg">
+                      <img src="./subscribe.jpg" alt="" />
+                    </div>
+                    <div className="headsub">
+                      <h2>Subscribe now to avail exclusive services on our site.</h2>
+                    </div>
+                    <button className="subbut"
+                      onClick={() => {
+                        subscribe();
+                      }}
+                    >
+                      Subscribe
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          }
+        </div>
+
         <h1>PROFILE</h1>
         <div className="contentt">
           <div className="userdet">
@@ -173,27 +197,30 @@ export default function Profile() {
               ) : (
                 <p>
                   {isSubscribed ? (
-                    <p>Subscription : ON</p>
+                    <>
+                      <div className="cjec">
+                        <p id="sss">Subscription : ACTIVE</p>
+                        <img id="subpix" src="./checked.png" alt="" srcset="" />
+                      </div>
+                    </>
                   ) : (
-                    <button
-                      onClick={() => {
-                        subscribe();
-                      }}
-                    >
-                      Subscribe
-                    </button>
+                    <>
+                    </>
                   )}
                 </p>
               )}
             </h1>
             <span id="credits">
-              Credits : {credits} <br />
+              <h4>
+                Credits : {credits} <br />
+              </h4>
+
               <img src="./rupee.png" alt="" />
             </span>
           </div>
           <div className="donatedorders">
             <h2>
-              My Donated Orders <img src="./donatemed.png" alt="" />
+              My Donated Orders <img className="titleimg" src="./donatemed.png" alt="" />
             </h2>
             <ul className="proul">
               <li className="profli">
@@ -221,7 +248,7 @@ export default function Profile() {
 
           <div className="requestorders">
             <h2>
-              My Requested Orders <img src="./requestmed.png" alt="" />
+              My Requested Orders <img className="titleimg" src="./requestmed.png" alt="" />
             </h2>
             <ul className="proul">
               <li className="profli">
@@ -250,7 +277,7 @@ export default function Profile() {
           {isdoctor ? (
             <div className="appointm">
               <h2>
-                My Appointments <img src="./appointment.png" alt="" />{" "}
+                My Appointments <img className="titleimg" src="./appointment.png" alt="" />{" "}
               </h2>
               <ul className="proul">
                 <li className="profli">
@@ -272,14 +299,14 @@ export default function Profile() {
                         <p className="p1"> {doctorappointments.appointment_date}</p>
                         <p className="p1"> {doctorappointments.appointment_time}</p>
                         {!doctorappointments.confirm_status &&
-                        !doctorappointments.reject_status ? (
+                          !doctorappointments.reject_status ? (
                           <p className="p2">Pending</p>
-                          ) : doctorappointments.confirm_status ? (
-                            <p className="p2">Confirmed</p>
-                            ) : (
-                              <p className="p2">Rejected</p>
-                              )}
-                              <p className="p1"> {doctorappointments.appointment_link}</p>
+                        ) : doctorappointments.confirm_status ? (
+                          <p className="p2">Confirmed</p>
+                        ) : (
+                          <p className="p2">Rejected</p>
+                        )}
+                        <p className="p1"> {doctorappointments.appointment_link}</p>
                       </li>
                     ))}
                   </div>
@@ -289,7 +316,7 @@ export default function Profile() {
           ) : (
             <div className="myappoint">
               <h2>
-                My Appointments <img src="./appointment.png" alt="" />
+                My Appointments <img className="titleimg" src="./appointment.png" alt="" />
               </h2>
               <ul className="proul">
                 <li className="profli">
@@ -311,7 +338,7 @@ export default function Profile() {
                         <p className="p2"> {patientappointments.appointment_date}</p>
                         <p className="p2"> {patientappointments.appointment_time}</p>
                         {!patientappointments.confirm_status &&
-                        !patientappointments.reject_status ? (
+                          !patientappointments.reject_status ? (
                           <p className="p2">Pending</p>
                         ) : patientappointments.confirm_status ? (
                           <p className="p2">Confirmed</p>

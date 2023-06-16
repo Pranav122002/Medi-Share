@@ -103,7 +103,7 @@ export default function SignUp() {
           <div className="middle"></div>
           <div className="form-container">
             <div className="form">
-              <h1>REGISTER</h1>
+              <h1>SIGN UP</h1>
               <div>
                 <input
                   type="text"
@@ -182,7 +182,7 @@ export default function SignUp() {
             <div className="form2">
               Already have a account ?
               <Link to="/signin">
-                <span style={{ color: "blue", cursor: "pointer" }}> Sign In</span>
+                <span style={{cursor: "pointer" }}> Sign In</span>
               </Link>
             </div>
           </div>

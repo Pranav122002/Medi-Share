@@ -19,8 +19,7 @@ export default function Subscribe() {
 
   const subscribe = () => {
     fetch(
-      `${API_BASE_URL}/subscribe/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/subscribe/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -33,20 +32,20 @@ export default function Subscribe() {
       .then((res) => {
         if (res === "You have now subscribed to Medi-Share...") {
           notifyB(res);
-      navigate("/home");
+          navigate("/home");
         } else if (
           res ===
           "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
         ) {
           notifyA(res);
-         
+
         } else {
           notifyA("Error");
         }
       });
   };
 
- 
+
 
   return (
     <>
@@ -55,29 +54,31 @@ export default function Subscribe() {
         <div className="bodyy">
           <Navbar />
 
-          
-            <div>
-             
-                <div>
-                  <h1>
-                    Please Subscribe to Medi-Share to access features like Chats
-                    and disease predictions
-                  </h1>
-                  <button
-                    onClick={() => {
-                      subscribe();
-                    }}
-                  >
-                    Subscribe
-                  </button>
-                </div>
-             
+
+          <div className="subsss">
+
+            <div className="subs">
+              <div className="subimg">
+                <img src="./subscribe.jpg" alt="" />
+              </div>
+              <div className="headsub">
+                <h2>Subscribe now to avail exclusive services on our site.</h2>
+              </div>
+              <button className="subbut"
+                onClick={() => {
+                  subscribe();
+                }}
+              >
+                Subscribe
+              </button>
             </div>
-          
+
+          </div>
+
         </div>
       </div>
     </>
   );
 
- 
+
 }

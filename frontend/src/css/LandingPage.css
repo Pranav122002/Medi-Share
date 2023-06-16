@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 * {
+  
   font-family: "Nunito", sans-serif;
 }
 .maina{
@@ -42,7 +43,7 @@
 }
 
 #Aboutt{ 
-
+   padding-top: 3rem;
     text-align: center;
     font-size: 1.4rem;  
     margin-right: 3rem;
@@ -282,7 +283,92 @@
  .icon{
    display: none;
 }
+.fbac .bord{
+   margin: 0;
+   padding: 0;
+   margin-left: 2rem;
+  
+   min-height: 0px;
+   height: max-content  ;
+}
+.fbac .bord h3{
+   width: 15rem;
+   
+}
+.fbac h1{
+   color: #64b6cb;
+    
+}
+#noneee{display: none;}
 
+.fbac{
+   background-color: rgb(233, 246, 255);
+   height: 30rem;
+   margin: auto;
+   position: relative;
+   width: 100vw;
+   display: grid;
+   place-items: center;
+   overflow: hidden;
+}
+
+.fbac-slidetrack{
+   height: 15rem;
+   display: flex;
+   width: calc(100%);
+   animation: scroll 20s linear infinite;
+   
+}
+.fbac-slidetrack:hover{
+  animation-play-state: paused;
+}
+.fbac-slidetrack .bord{
+ 
+   height: 200px;
+   display: flex;
+   align-items: center;
+   background: white;
+   perspective: 100px;
+   
+}
+.fbac-slidetrack .bord:hover{
+   
+   margin-top: 1rem;
+}
+.fbac::before,
+.fbac::after{
+   content: '';
+   height: 100%;
+   position: absolute;
+   width: 15%;
+   z-index: 2;
+
+}
+
+.fbac::before{
+   left:0;
+   top:0;
+
+}
+.fbac::after{
+   right: 0;
+   top:0;
+   transform: rotateZ(180deg);
+}
+
+@keyframes scroll{
+   0%{
+      transform: translateX(-100%);
+
+   }
+   100%{
+      transform: translateX(100%);
+   }
+}
+
+#anchead{
+   
+}
 
  @media screen and (max-width: 1000px){
 /*nav part*/
@@ -366,6 +452,7 @@
    opacity: 1;
 }
 .links.active .aboutu{
+   margin-bottom: 1rem;
    color: black;
    opacity: 1;
 }
@@ -607,3 +694,4 @@
  }
 
  }
+

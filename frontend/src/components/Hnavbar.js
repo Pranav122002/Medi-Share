@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import {useState } from "react";
+import { useState } from "react";
 import { Navigate } from 'react-router-dom';
 import "../css/Hnavbar.css"
 export const Hnavbar = () => {
@@ -16,9 +16,9 @@ export const Hnavbar = () => {
   const goHome = () => {
     navigate('/home')
   }
-  return ( 
+  return (
     <>
-   <div className='Lnav'>
+      <div className='Lnav'>
         <div className='Lnav_contents'>
           <div className="logo" onClick={() => { goHome() }}>
 
@@ -34,13 +34,20 @@ export const Hnavbar = () => {
             <Link className="aboutu" to="/AboutUs">
               <span id="Aboutt" style={{ cursor: "pointer" }}>About Us</span>
             </Link>
-            <Link className="joinus" to="/signin">
-              <span id="joinus" style={{ cursor: "pointer" }}>Join Us</span>
+            <Link className="aboutu" to="/profile">
+              <span id='nonev' style={{ cursor: "pointer" }}>Profile</span>
+              <img className="prof" src="./profile-pic.png" alt="" />
             </Link>
+
+
+
           </div>
 
+
         </div>
+
       </div>
-      </>
+
+    </>
   )
 }

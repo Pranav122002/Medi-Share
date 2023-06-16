@@ -7,6 +7,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 import { UserContext } from './UserContext';
+import { Latestanc } from "./Latestanc";
 import { API_BASE_URL } from "../config";
 
 export default function Home() {
@@ -72,7 +73,7 @@ export default function Home() {
 
   return (<>
     <Hnavbar />
-    <div>
+    <div className="homeeee"> 
 
 
       <div className="bodyy">
@@ -102,6 +103,7 @@ export default function Home() {
         </div>
        
       </div>
+      <Latestanc/>
     </div>
 
   </>);

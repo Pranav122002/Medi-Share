@@ -6,7 +6,7 @@ import "../css/LandingPage.css"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useState } from 'react'
-
+import { Latestanc } from './Latestanc';
 
 export const LandingPage = () => {
 
@@ -29,7 +29,29 @@ export const LandingPage = () => {
 
     return (
         <>
-            <Hnavbar/>
+             <div className='Lnav'>
+                <div className='Lnav_contents'>
+                    <div className="logo" onClick={() => { goHome() }}>
+
+                        <img id="Nlogo" src="./logo1.png" alt="logo" />
+                        <h2>Medi-Share</h2>
+                    </div>
+                    <div className='icon' onClick={handleShowNavbar}>
+                        <div className='line'></div>
+                        <div className='line'></div>
+                        <div className='line'></div>
+                    </div>
+                    <div className={`links ${showNavbar && 'active'}`}>
+                        <Link className="aboutu" to="/AboutUs">
+                            <span id="Aboutt" style={{ cursor: "pointer" }}>About Us</span>
+                        </Link>
+                        <Link className="joinus" to="/signIn">
+                            <span id="joinus" style={{ cursor: "pointer" }}>Join Us</span>
+                        </Link>
+                    </div>
+
+                </div>
+            </div>
             <div className='maina'>
                 
                 <div className='Lcontent'>
@@ -60,6 +82,7 @@ export const LandingPage = () => {
                     <h1>OUR GOAL</h1>
                     <p>Our ultimate goal is to reduce the wastage and increase the utilization of medicines as much as possible. Along with this we plan to encourage people for donation and volunteer work for the society and build a healthy community.</p>
                 </div>
+                <Latestanc />
                 <div className='segment' data-aos="zoom-in">
                     <img src="./capsule.png" alt="" />
                     <h1>WHAT WE DO ! ! </h1>

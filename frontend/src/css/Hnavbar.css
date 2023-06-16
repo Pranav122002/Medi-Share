@@ -1,4 +1,5 @@
 .Hnavbar{
+    
     height: 4rem;
     display: flex;
     justify-content:flex-start;
@@ -44,12 +45,15 @@ h2{
     margin-right: 5rem;
     right: 0;
     font-size: 1.5rem;
+    padding-top: 2rem;
 }
+
 
 .Lnav a{
     text-decoration: none;
     color: black;
     box-shadow: none;
+   
    
 }
 .Lnav a:hover{
@@ -58,4 +62,29 @@ h2{
 
 .links.active .navli{
     display: none;
+}
+
+
+.prof{
+    float: right;
+    padding: 0.2rem;
+    margin-top: 0.5rem;
+    height: 2.5rem;
+    margin-left: 2rem;
+    border-radius: 50%;
+    
+}
+.links.active .prof{
+    display: none;
+}
+
+.links.false #nonev{
+    display: none;
+}
+#nonev{
+    margin-top: 1rem;
+    font-size: 1.4rem;
+}
+.borde{
+   
 }
