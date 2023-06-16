@@ -9,14 +9,14 @@ export default function UserProfile({ id }) {
   const [user, setUser] = useState("");
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(false);
-  const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
-    fees: "",
-    qualification: "",
-    specialization: "",
-    experience: "",
-    availability: "",
-    hospital_name: "",
-  });
+  // const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
+  //   fees: "",
+  //   qualification: "",
+  //   specialization: "",
+  //   experience: "",
+  //   availability: "",
+  //   hospital_name: "",
+  // });
   
   useEffect(() => {
     fetchUser();
@@ -37,16 +37,16 @@ export default function UserProfile({ id }) {
       .then((res) => {
         setUser(res);
 
-        if (res.role === "doctor") {
-          setUpdatedDoctorDetails({
-            fees: res.doctor_details.fees,
-            qualification: res.doctor_details.qualification,
-            specialization: res.doctor_details.specialization,
-            experience: res.doctor_details.experience,
-            availability: res.doctor_details.availability,
-            hospital_name: res.doctor_details.hospital_name,
-          });
-        }
+        // if (res.role === "doctor") {
+        //   setUpdatedDoctorDetails({
+        //     fees: res.doctor_details.fees,
+        //     qualification: res.doctor_details.qualification,
+        //     specialization: res.doctor_details.specialization,
+        //     experience: res.doctor_details.experience,
+        //     availability: res.doctor_details.availability,
+        //     hospital_name: res.doctor_details.hospital_name,
+        //   });
+        // }
       
       });
   };
@@ -64,38 +64,38 @@ export default function UserProfile({ id }) {
       });
   };
 
-  const handleEdit = () => {
-    setEditing(true);
-  };
+  // const handleEdit = () => {
+  //   setEditing(true);
+  // };
 
-  const handleInputChange = (e) => {
-    setUpdatedDoctorDetails({
-      ...updatedDoctorDetails,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleInputChange = (e) => {
+  //   setUpdatedDoctorDetails({
+  //     ...updatedDoctorDetails,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
-  const handleSubmit = () => {
-    const updatedUser = { ...user };
-    updatedUser.doctor_details = { ...updatedDoctorDetails };
+  // const handleSubmit = () => {
+  //   const updatedUser = { ...user };
+  //   updatedUser.doctor_details = { ...updatedDoctorDetails };
 
-    fetch(`${API_BASE_URL}/update-doctor-details/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify(updatedUser),
-    })
-      .then((res) => res.json())
-      .then((res) => {
+  //   fetch(`${API_BASE_URL}/update-doctor-details/${id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + localStorage.getItem("jwt"),
+  //     },
+  //     body: JSON.stringify(updatedUser),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
        
         
-        setEditing(false);
-        setUser(res);
+  //       setEditing(false);
+  //       setUser(res);
 
-      });
-  };
+  //     });
+  // };
 
   return (
     <div>

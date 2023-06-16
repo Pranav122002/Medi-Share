@@ -2,54 +2,59 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const USER = mongoose.model("USER");
+const DOCTOR = mongoose.model("DOCTOR");
+const VOLUNTEER = mongoose.model("VOLUNTEER");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
-router.post("/api/signup", (req, res) => {
-  var { name, email, phone_number, password, role } = req.body;
-  if (!name || !email || !password || !phone_number) {
-    return res.status(422).json({ error: "Please add all the fields..." });
-  }
 
-  USER.findOne({ $or: [{ email: email }] }).then((savedUser) => {
+router.post("/api/signup", async (req, res) => {
+  try {
+    const { name, email, phone_number, password, role } = req.body;
+    if (!name || !email || !password || !phone_number) {
+      return res.status(422).json({ error: "Please add all the fields..." });
+    }
+
+    const savedUser = await USER.findOne({ email: email });
     if (savedUser) {
       return res
         .status(422)
         .json({ error: "User already exists with that email..." });
     }
 
-    bcrypt.hash(password, 12).then((hashedPassword) => {
-      const user = new USER({
-        name,
-        email,
-        phone_number,
-        password: hashedPassword,
-        role: role,
-      });
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-      if (role === "doctor") {
-        user.doctor_details.qualification = ""; 
-        user.doctor_details.specialization = ""; 
-        user.doctor_details.experience = 1; 
-        user.doctor_details.fees = 300; 
-        user.doctor_details.hospital_name = ""; 
-        user.doctor_details.availability = "Mon - Fri"; 
-        user.doctor_details.certificate = ""; 
-      }
-
-      
-      
-      user
-        .save()
-        .then((user) => {
-          res.json( user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const user = new USER({
+      name,
+      email,
+      phone_number,
+      password: hashedPassword,
+      role: role,
     });
-  });
+
+    let newUser;
+    if (role === "user") {
+      const userData = await user.save();
+      res.json(userData);
+    }
+    else if (role === "doctor") {
+      newUser = new DOCTOR(user);
+      const userData = await newUser.save();
+      res.json(userData);
+    } else if (role === "volunteer") {
+      newUser = new VOLUNTEER(user);
+      const userData = await newUser.save();
+      res.json(userData);
+    }
+
+   
+
+   
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "An error occurred while signing up..." });
+  }
 });
 
 

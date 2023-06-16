@@ -4,12 +4,12 @@ const appointmentSchema = new mongoose.Schema({
   doctor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "USER",
-    // required: true,
+    required: true,
   },
   patient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "USER",
-    // required: true,
+    required: true,
   },
   appointment_date: {
     type: String,
