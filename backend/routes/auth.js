@@ -102,4 +102,14 @@ router.get("/api/allusers/:id", async (req, res, next) => {
   }
 });
 
+router.get("/api/all-chat-users/:id", async (req, res, next) => {
+  try {
+    const users = await USER.find({ _id: { $ne: req.params.id }, role: { $ne: "admin" } }).select("-email -password");
+    return res.json(users);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+
 module.exports = router;

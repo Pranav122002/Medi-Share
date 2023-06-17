@@ -4,6 +4,12 @@
   font-family: "Nunito", sans-serif;
 }
 
+.left-msg {
+    color: aqua;
+}
+.right-msg {
+    color: yellow;
+}
 .chatcont{
     background: rgb(252, 252, 252);
     margin: auto;

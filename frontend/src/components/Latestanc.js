@@ -18,10 +18,10 @@ export const Latestanc = () => {
 
     function isDate(dat) {
         let date2 = new Date(dat)
-        console.log(date2)
+       
         var Difference_In_Time = date2.getTime() - date.getTime();
         var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 2;
-        console.log(Difference_In_Days);
+       
         if (Difference_In_Days < 15 && Difference_In_Days > 0) {
             return true;
         }

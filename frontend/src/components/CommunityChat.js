@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-import { BASE_URL, API_BASE_URL } from '../config.js';
+import { BASE_URL, API_BASE_URL } from "../config.js";
 
 const socket = io(`${BASE_URL}`);
 
 const Chat = () => {
+  const [userid, setUserId] = useState("");
   const [username, setUserName] = useState("");
   const [userrole, setUserRole] = useState("");
   const [messages, setMessages] = useState([]);
@@ -38,9 +39,7 @@ const Chat = () => {
 
   useEffect(() => {
     fetch(
-      `${API_BASE_URL}/user/${
-        JSON.parse(localStorage.getItem("user"))._id
-      }`,
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -49,6 +48,7 @@ const Chat = () => {
     )
       .then((res) => res.json())
       .then((result) => {
+        setUserId(result._id);
         setUserName(result.name);
         setUserRole(result.role);
       });
@@ -97,9 +97,40 @@ const Chat = () => {
           <div>
             <div>
               {messages.map((message, index) => (
-                <p key={index}>
-                  Message: {message.message} | Sender : {message.sender_name}  | Role : {message.sender_role}  | timestamp : {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
-                </p>
+                <>
+                  {message.sender_id === userid ? (
+                    <>
+                      <div className="right-msg">
+                        <p key={index}>
+                          Message: {message.message} | Sender :{" "}
+                          {message.sender_name} | Role : {message.sender_role} |
+                          timestamp :{" "}
+                          {new Date(message.createdAt).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: false,
+                          })}
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <div className="left-msg">
+                        <p key={index}>
+                          Message: {message.message} | Sender :{" "}
+                          {message.sender_name} | Role : {message.sender_role} |
+                          timestamp :{" "}
+                          {new Date(message.createdAt).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: false,
+                          })}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </>
               ))}
             </div>
             <input
