@@ -50,7 +50,7 @@ export default function Home() {
             })
               .then((res) => res.json())
               .then((updatedRes) => {
-                console.log('User subscription ended...', updatedRes);
+                console.log('User subscription ended.', updatedRes);
               })
               .catch((error) => {
                 console.error(error);

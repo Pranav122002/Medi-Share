@@ -74,7 +74,7 @@ router.get("/api/req-order/:order_id", (req, res) => {
     .populate("donar", "name -_id")
     .then((order) => {
       if (!order) {
-        return res.status(404).json({ error: "Order not found..." });
+        return res.status(404).json({ error: "Order not found." });
       }
 
       const isDonarFieldBlank = !order.donar;
@@ -90,7 +90,7 @@ router.get("/api/order/:id", (req, res) => {
       return res.json(order);
     })
     .catch((err) => {
-      return res.status(404).json({ error: "Order not found..." });
+      return res.status(404).json({ error: "Order not found." });
     });
 });
 
@@ -110,8 +110,8 @@ router.post("/api/donate-medicines", async (req, res, next) => {
     if (data) {
       await USER.updateOne({ _id: donar }, { $inc: { credits: 100 } });
 
-      return res.json({ msg: "Donate Order placed successfully..." });
-    } else return res.json({ msg: "Failed to place order..." });
+      return res.json({ msg: "Donate Order placed successfully." });
+    } else return res.json({ msg: "Failed to place order." });
   } catch (ex) {
     next(ex);
   }
@@ -131,8 +131,8 @@ router.post("/api/request-medicines", async (req, res, next) => {
       requester: requester,
     });
     if (data) {
-      return res.json({ msg: "Request Order placed successfully..." });
-    } else return res.json({ msg: "Failed to place order..." });
+      return res.json({ msg: "Request Order placed successfully." });
+    } else return res.json({ msg: "Failed to place order." });
   } catch (ex) {
     next(ex);
   }
@@ -159,26 +159,26 @@ router.put("/api/donate/:order_id", async (req, res) => {
 
         console.log(updatedOrder);
         return res.json(
-          "Order Donated successfully and Volunteer will verify now..."
+          "Order Donated successfully and Volunteer will verify now."
         );
       } else {
-        return res.json("Failed to donate order...");
+        return res.json("Failed to donate order.");
       }
     } else if (
       req.body.execute_status === true &&
       req.body.verify_status === true
     ) {
-      return res.json("Order is already executed...");
+      return res.json("Order is already executed.");
     } else if (
       req.body.execute_status === true &&
       req.body.verify_status === false
     ) {
-      return res.json("Order is already donated but is not verified yet...");
+      return res.json("Order is already donated but is not verified yet.");
     } else {
-      return res.json("Failed to donate order...");
+      return res.json("Failed to donate order.");
     }
   } catch (err) {
-    return res.status(404).json({ error: "Order not found..." });
+    return res.status(404).json({ error: "Order not found." });
   }
 });
 
@@ -206,25 +206,25 @@ router.put("/api/request/:order_id", (req, res) => {
             .then((doc) => {
               console.log(doc);
               res.json(
-                "Order Requested successfully and now will be delivered..."
+                "Order Requested successfully and now will be delivered."
               );
             })
             .catch((err) => {
               console.error(err);
             });
         } else if (req.body.execute_status === true) {
-          res.json("Order is already executed...");
+          res.json("Order is already executed.");
         } else if (req.body.verify_status === false) {
-          res.json("Order is not verfied by Volunteer yet...");
+          res.json("Order is not verfied by Volunteer yet.");
         } else {
-          res.json("Failed to request order...");
+          res.json("Failed to request order.");
         }
       } else if (curr_date > exp_date) {
-        res.json("Medicine is expired...");
+        res.json("Medicine is expired.");
       }
     })
     .catch((err) => {
-      return res.status(404).json({ error: "Order not found..." });
+      return res.status(404).json({ error: "Order not found." });
     });
 });
 
@@ -264,7 +264,7 @@ router.put("/api/verify-donate-order/:order_id", (req, res) => {
   )
     .then((doc) => {
       console.log(doc);
-      res.json("Order Verified successfully...");
+      res.json("Order Verified successfully.");
     })
     .catch((err) => {
       console.error(err);
@@ -279,7 +279,7 @@ router.put("/api/verify-request-order/:order_id", (req, res) => {
   )
     .then((doc) => {
       console.log(doc);
-      res.json("Order Verified successfully and now will be Donated...");
+      res.json("Order Verified successfully and now will be Donated.");
     })
     .catch((err) => {
       console.error(err);

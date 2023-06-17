@@ -15,8 +15,8 @@ router.post("/api/assign-task", async (req, res, next) => {
     });
 
     if (data) {
-      return res.json({ msg: "Task assigned to volunteer successfully..." });
-    } else return res.json({ msg: "Failed to assign task..." });
+      return res.json({ msg: "Task assigned to volunteer successfully." });
+    } else return res.json({ msg: "Failed to assign task." });
   } catch (ex) {
     next(ex);
   }

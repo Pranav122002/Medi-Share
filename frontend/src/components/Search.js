@@ -24,7 +24,7 @@ export default function Search() {
     })
       .then((res) => res.json())
       .then((results) => {
-        console.log("results ......", results);
+       
 
         setSearchResult(results.medicine);
       });

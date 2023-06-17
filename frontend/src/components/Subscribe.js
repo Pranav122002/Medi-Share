@@ -30,12 +30,12 @@ export default function Subscribe() {
     )
       .then((res) => res.json())
       .then((res) => {
-        if (res === "You have now subscribed to Medi-Share...") {
+        if (res === "You have now subscribed to Medi-Share.") {
           notifyB(res);
           navigate("/home");
         } else if (
           res ===
-          "Insufficient credits. Please earn or add credits to subscribe to Medi-Share..."
+          "Insufficient credits. Please earn or add credits to subscribe to Medi-Share."
         ) {
           notifyA(res);
 

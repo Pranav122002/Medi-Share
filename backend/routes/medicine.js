@@ -20,8 +20,8 @@ router.post("/api/addmedicine", async (req, res, next) => {
       disease: disease,
     });
 
-    if (data) return res.json({ msg: "Medicine added..." });
-    else return res.json({ msg: "Failed to add medicine..." });
+    if (data) return res.json({ msg: "Medicine added." });
+    else return res.json({ msg: "Failed to add medicine." });
   } catch (ex) {
     next(ex);
   }

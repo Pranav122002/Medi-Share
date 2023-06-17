@@ -71,9 +71,9 @@ export default function Orders() {
               .then((res) => res.json())
               .then((data) => {
                 if (data.error) {
-                  notifyA("Failed to donate order...");
+                  notifyA("Failed to donate order.");
                 } else {
-                  if (data === "Order Donated successfully and Volunteer will verify now...") {
+                  if (data === "Order Donated successfully and Volunteer will verify now.") {
                     navigate("/profile");
                     notifyB(data);
                   }
@@ -126,21 +126,21 @@ export default function Orders() {
               .then((res) => res.json())
               .then((data) => {
                 if (data.error) {
-                  notifyA("Failed to request order...");
+                  notifyA("Failed to request order.");
                 } else {
-                  if (data === "Order is already executed...") {
+                  if (data === "Order is already executed.") {
                     notifyA(data);
                   }
                   else if (
-                    data === "Medicine is expired..."
+                    data === "Medicine is expired."
                   ) {
                     notifyA(data);
                   }
                   else if (
-                    data === "Order is not verfied by Volunteer yet..."
+                    data === "Order is not verfied by Volunteer yet."
                   ) {
                     notifyA(data);
-                  } else if (data === "Order Requested successfully...") {
+                  } else if (data === "Order Requested successfully.") {
                     navigate("/profile");
                     notifyB(data);
                   }

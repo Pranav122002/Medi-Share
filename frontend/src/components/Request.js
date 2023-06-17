@@ -83,7 +83,7 @@ export default function Request() {
     })
       .then((res) => res.json())
       .then((results) => {
-        console.log("results ......", results);
+     
 
         setSearchResult(results.medicine);
       });

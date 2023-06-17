@@ -13,7 +13,7 @@ import CommunityChat from "./components/CommunityChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
 import Search from "./components/Search";
-import Doctors from "./components/Doctors";
+import Appointments from "./components/Appointments";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
 import Braintumor from "./components/brainTumor";
@@ -58,7 +58,7 @@ function App() {
 
           <Route path="/volunteer" element={<Volunteer />}></Route>
           <Route path="/chats" element={<Chats />}></Route>
-          <Route path="/doctors" element={<Doctors />}></Route>
+          <Route path="/appointments" element={<Appointments />}></Route>
           <Route path="/personal-chat" element={<PersonalChat />}></Route>
           <Route path="/community-chat" element={<CommunityChat />}></Route>
           <Route path="/aboutus" element={<AboutUs/>}></Route>

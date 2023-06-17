@@ -67,7 +67,7 @@ export default function Volunteer() {
       window.location.reload();
 
       // setTimeout(function() {
-      notifyB("Donate order verified successfully...");
+      notifyB("Donate order verified successfully.");
       // }, 2000);
 
     });
@@ -96,12 +96,12 @@ export default function Volunteer() {
           res.json();
           window.location.reload();
 
-          notifyB("Order verified successfully and now will be donated...");
+          notifyB("Order verified successfully and now will be donated.");
         });
 
       }
       else if (order_data.isDonarFieldBlank === true) {
-        notifyA("Order is not been donated by anyone...");
+        notifyA("Order is not been donated by anyone.");
 
       }
     } catch (error) {
@@ -128,7 +128,7 @@ export default function Volunteer() {
       .then((res) => res.json())
       .then((res) => {
         window.location.reload();
-        notifyB("You have became Volunteer now...");
+        notifyB("You have became Volunteer now.");
       });
   };
 

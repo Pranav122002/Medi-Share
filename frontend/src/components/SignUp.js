@@ -23,7 +23,7 @@ export default function SignUp() {
 
   const postData = () => {
     if (!emailRegex.test(email)) {
-      notifyA("Invalid email...");
+      notifyA("Invalid email.");
       return;
     } else if (!passRegex.test(password)) {
       notifyA(

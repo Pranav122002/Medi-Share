@@ -36,7 +36,7 @@ let isMongoDBConnected = false;
 
 mongoose.connection.on("connected", () => {
   if (!isMongoDBConnected) {
-    console.log("MongoDB connection successful...");
+    console.log("MongoDB connection successful");
     isMongoDBConnected = true;
   }
 });
@@ -46,7 +46,7 @@ mongoose.connection.on("error", () => {
 });
 
 const server = app.listen(port, () => {
-  console.log("Server is running on port" + " " + port + "...");
+  console.log("Server is running on port" + " " + port + "");
 });
 
 const io = socket(server, {

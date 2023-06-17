@@ -13,7 +13,7 @@ router.post("/api/signup", async (req, res) => {
   try {
     const { name, email, phone_number, password, role } = req.body;
     if (!name || !email || !password || !phone_number) {
-      return res.status(422).json({ error: "Please add all the fields..." });
+      return res.status(422).json({ error: "Please add all the fields." });
     }
 
 
@@ -21,7 +21,7 @@ router.post("/api/signup", async (req, res) => {
     if (savedUser) {
       return res
         .status(422)
-        .json({ error: "User already exists with that email..." });
+        .json({ error: "User already exists with that email." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -54,7 +54,7 @@ router.post("/api/signup", async (req, res) => {
    
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "An error occurred while signing up..." });
+    res.status(500).json({ error: "An error occurred while signing up." });
   }
 });
 
@@ -63,7 +63,7 @@ router.post("/api/signin", (req, res) => {
   const { email, password, role } = req.body;
 
   if (!email || !password) {
-    return res.status(422).json({ error: "Please add email and password..." });
+    return res.status(422).json({ error: "Please add email and password." });
   }
 
   USER.findOne({ email: email }).then((savedUser) => {
@@ -74,7 +74,7 @@ router.post("/api/signin", (req, res) => {
       .compare(password, savedUser.password)
       .then((match) => {
         if (match) {
-          // return res.status(200).json({ message: "Signed in Successfully..." })
+          
           const token = jwt.sign({ _id: savedUser.id }, JWT_SECRET);
           const { _id, name, email, role } = savedUser;
 

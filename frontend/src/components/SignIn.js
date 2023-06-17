@@ -39,7 +39,7 @@ export default function SignIn() {
         if (data.error) {
           notifyA(data.error);
         } else {
-          notifyB("Signed In successfully...");
+          notifyB("Signed In successfully.");
           console.log(data);
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));

@@ -20,10 +20,10 @@ router.post("/api/book-appointment/:id", async (req, res, next) => {
 
     if (data) {
       return res.json({
-        msg: "Appointment placed successfully. The doctor will confirm now...",
+        msg: "Appointment placed successfully. The doctor will confirm now.",
       });
     } else {
-      return res.json({ msg: "Failed to place the appointment..." });
+      return res.json({ msg: "Failed to place the appointment." });
     }
   } catch (ex) {
     next(ex);
@@ -89,7 +89,7 @@ router.put("/api/confirm-appointment/:id", async (req, res, next) => {
       res.json(appointment);
     } else {
       return res.json(
-        "Patient has insufficient credits. Please reject the appointment..."
+        "Patient has insufficient credits. Please reject the appointment."
       );
     }
   } catch (error) {

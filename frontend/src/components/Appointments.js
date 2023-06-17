@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import "../css/Doctors.css";
+import "../css/Appointments.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { API_BASE_URL } from "../config";
 
-export default function Profile() {
+export default function Appointments() {
   const navigate = useNavigate();
 
   const notifyA = (msg) => toast.error(msg);
@@ -104,13 +104,13 @@ export default function Profile() {
       .then((data) => {
         if (
           data ==
-          "Patient has insufficient credits. Please reject the appointment..."
+          "Patient has insufficient credits. Please reject the appointment."
         ) {
           notifyA(
-            "Patient has insufficient credits. Please reject the appointment..."
+            "Patient has insufficient credits. Please reject the appointment."
           );
         } else {
-          notifyB("Appointment confirmed successfully...");
+          notifyB("Appointment confirmed successfully.");
           navigate("/profile");
         }
       })
@@ -130,7 +130,7 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        notifyB("Appointment rejected successfully...");
+        notifyB("Appointment rejected successfully.");
         navigate("/profile");
       })
       .catch((error) => {
@@ -195,7 +195,7 @@ export default function Profile() {
       })
     }).then((res) => res.json())
       .then((data) => {
-        notifyB("Link added successfully...");
+        notifyB("Link added successfully.");
         navigate("/profile");
       })
       .catch((error) => {

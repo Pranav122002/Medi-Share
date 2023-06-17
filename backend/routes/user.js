@@ -13,7 +13,7 @@ router.get("/api/user/:id", (req, res) => {
       return res.json(user);
     })
     .catch((err) => {
-      return res.status(404).json({ error: "User not found..." });
+      return res.status(404).json({ error: "User not found." });
     });
 });
 
@@ -39,7 +39,7 @@ router.put("/api/update-doctor-details/:id", (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.json("User not found...");
+      res.json("User not found.");
     });
 });
 
@@ -65,7 +65,7 @@ router.put("/api/update-volunteer-details/:id", (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.json("User not found...");
+      res.json("User not found.");
     });
 });
 
@@ -79,11 +79,11 @@ router.put("/api/becomevolunteer/:id", (req, res) => {
   )
     .then((doc) => {
       console.log(doc);
-      res.json("You have became Volunteer now...");
+      res.json("You have became Volunteer now.");
     })
     .catch((err) => {
       console.error(err);
-      res.json("User not found...");
+      res.json("User not found.");
     });
 });
 
@@ -127,13 +127,13 @@ router.put("/api/subscribe/:id", async (req, res) => {
         { new: true }
       );
 
-      res.json("You have now subscribed to Medi-Share...");
+      res.json("You have now subscribed to Medi-Share.");
     } else {
-      res.json("Insufficient credits. Please earn or add credits to subscribe to Medi-Share...");
+      res.json("Insufficient credits. Please earn or add credits to subscribe to Medi-Share.");
     }
   } catch (err) {
     console.error(err);
-    res.json("An error occurred...");
+    res.json("An error occurred.");
   }
 });
 

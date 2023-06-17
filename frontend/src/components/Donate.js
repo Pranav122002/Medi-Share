@@ -82,7 +82,7 @@ export default function Donate() {
     })
       .then((res) => res.json())
       .then((results) => {
-        console.log("results ......", results);
+         
 
         setSearchResult(results.medicine);
       });
