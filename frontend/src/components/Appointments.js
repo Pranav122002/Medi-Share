@@ -183,7 +183,7 @@ export default function Appointments() {
   function addLink(appointmentId) {
     console.log("linktext = ", linkText);
     console.log("id = ", appointmentId);
-    
+
     fetch(`${API_BASE_URL}/add-appointment-link/${appointmentId}`, {
       method: "put",
       headers: {
@@ -192,8 +192,9 @@ export default function Appointments() {
       },
       body: JSON.stringify({
         appointment_link: linkText,
-      })
-    }).then((res) => res.json())
+      }),
+    })
+      .then((res) => res.json())
       .then((data) => {
         notifyB("Link added successfully.");
         navigate("/profile");
@@ -204,7 +205,6 @@ export default function Appointments() {
       });
   }
 
-  
   return (
     <div className="doctor">
       <Hnavbar />
@@ -274,26 +274,34 @@ export default function Appointments() {
                             ) : (
                               <p className="p2">Status: Rejected</p>
                             )}
-                            <p>
-                              Link: {appointment.appointment_link ? (
-                                appointment.appointment_link
-                              ) : (
-                                <>
-                                  <input
-                                    type="text"
-                                    value={linkText}
-                                    onChange={(e) =>
-                                      setLinkText(e.target.value)
-                                    }
-                                  />
-                                  <button
-                                    onClick={() => addLink(appointment._id)}
-                                  >
-                                    Add Link
-                                  </button>
-                                </>
-                              )}
-                            </p>
+
+                            {appointment.confirm_status ? (
+                              <>
+                                <p>
+                                  Link:{" "}
+                                  {appointment.appointment_link ? (
+                                    appointment.appointment_link
+                                  ) : (
+                                    <>
+                                      <input
+                                        type="text"
+                                        value={linkText}
+                                        onChange={(e) =>
+                                          setLinkText(e.target.value)
+                                        }
+                                      />
+                                      <button
+                                        onClick={() => addLink(appointment._id)}
+                                      >
+                                        Add Link
+                                      </button>
+                                    </>
+                                  )}
+                                </p>
+                              </>
+                            ) : (
+                              <> <p></p> </>
+                            )}
                           </li>
                         ))}
                       </ul>
