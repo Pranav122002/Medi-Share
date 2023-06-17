@@ -7,25 +7,16 @@
 .request {
   height: 40rem;
   margin: auto;
-  display: flex;
-  justify-content: space-evenly;
-  background: rgb(237, 255, 254);
-  background-image: url('../../public/request.png');
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: contain;
+  display: block;
+  justify-content: center;
+  background: #F5F7F7;
+  padding: 0.1px;
 }
 
-#rcurve{
-  transform: rotate(90deg);
-  position: absolute;
-  left: 0;
-  width: 30vw;
-  opacity: 0.7;
-  filter:brightness(24);
-  filter: hue-rotate(30deg);
-  opacity: 0.6;
-  z-index: 0;
+#reqim{
+  height: 15rem;
+  float: right;
+  border-radius: 1rem;
 }
 .requestForm {
   text-align: center;
@@ -34,11 +25,13 @@
   padding: 30px;
   border-radius: 0.5rem;
   width: 25vw;
-  height: 30rem;
+  height: 15rem;
   position: relative;
   margin-top: auto;
   margin-bottom: auto;
   min-width: 22rem;
+  margin: auto;
+  margin-top: 3rem;
 }
 
 .loginForm2 {
@@ -87,29 +80,31 @@ input:focus {
   outline: none;
 }
 
+.request .donateback{
+  margin-top: 0rem;
+  height: 20rem;
+}
+.request .donateback h1{
+  margin: auto;
+}
+
+.points h3{
+  font-weight: 500;
+}
+
 @media screen and (max-width: 1000px){
-  #rcurve{
-    transform: rotate(90deg);
-    position: absolute;
-    margin-top: 10rem;
-    left: 0;
-    width: 50vw;
-    opacity: 0.7;
-    filter:brightness(24);
-    filter: hue-rotate(336deg);
-    opacity: 0.6;
-    z-index: 0;
+
+  #reqim{
+    height: 15rem;
+    float: none;
+    border-radius: 1rem;
   }
   .request {
     height: 60rem;
     width: 100%;
     margin-top: 5rem;
     display: block;
-    background: rgb(237, 255, 254);
-    background-image: url('../../public/request.png');
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: contain;
+   
     padding-top: 0.5rem;
   }
   .requestForm {

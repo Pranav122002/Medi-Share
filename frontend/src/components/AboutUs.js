@@ -76,9 +76,7 @@ export const AboutUs = () => {
             </div>
             
         </div>
-        <Link to="/">
-            <button className="button-53" value="Donate" role="button">Back to Home</button>  
-        </Link>
+        
         
 
      </div>

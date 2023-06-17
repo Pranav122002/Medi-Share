@@ -40,6 +40,7 @@
 .links{
     margin: auto;  
     margin-right: 0;
+    padding-top: 1rem;
 }
 
 #Aboutt{ 
@@ -59,7 +60,8 @@
 
 .Lcontent{
     top: 0;
-    background-color: rgb(233, 246, 255);
+    /* background-color: hsl(147, 100%, 98%); */
+    background-color: rgb(245, 253, 255);
     height: 40rem;
 }
 
@@ -73,13 +75,15 @@
 }
 .Lcontent .banner1 h1{
     font-size: 3rem;
-    color: rgb(0, 123, 255);
+    /* color: rgb(0, 198, 152); */
+    color: rgb(50, 187, 255);
     margin-bottom: 3rem;
     
 }
 .Lcontent .banner1 h2{
     font-size: 2rem;
-    color: rgb(0, 128, 255);
+    /* color: rgb(0, 198, 152); */
+    color: rgb(50, 187, 255);
     text-align: center;
     padding: 0;
     margin: 0;
@@ -111,6 +115,7 @@
     transform: rotate(180deg);
     opacity: 0.1;
     margin-top: -5rem;
+    /* filter: invert(88%) sepia(17%) saturate(5923%) hue-rotate(170deg) brightness(124%) contrast(122%); */
 }
 .Lcontent .banner1 .curve2 img{
      position:absolute;
@@ -119,6 +124,7 @@
      margin-top: -2rem;
      left: 50%;
      opacity: 0.2;
+     /* filter: invert(88%) sepia(17%) saturate(5923%) hue-rotate(170deg) brightness(124%) contrast(122%); */
 }
 
 .Goal{
@@ -292,7 +298,7 @@
    height: max-content  ;
 }
 .fbac .bord h3{
-   width: 15rem;
+   width: 20rem;
    
 }
 .fbac h1{
@@ -324,16 +330,17 @@
 }
 .fbac-slidetrack .bord{
  
-   height: 200px;
+   height: 250px;
    display: flex;
    align-items: center;
    background: white;
    perspective: 100px;
    
+   
 }
 .fbac-slidetrack .bord:hover{
    
-   margin-top: 1rem;
+   margin-top: -1rem;
 }
 .fbac::before,
 .fbac::after{
@@ -368,6 +375,25 @@
 
 #anchead{
    
+   
+}
+.bord a:hover{
+   box-shadow: none;
+
+}
+
+.bord .button23{
+   background: none;
+}
+
+
+.button23{
+   border: none;
+   box-shadow: none;
+
+}
+.button23:hover{
+   background: rgb(246, 246, 246);
 }
 
  @media screen and (max-width: 1000px){

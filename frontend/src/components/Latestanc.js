@@ -3,6 +3,7 @@ import { API_BASE_URL } from "../config";
 import AOS from 'aos'
 import { useState } from 'react'
 import "../css/LandingPage.css"
+import { Link } from 'react-router-dom';
 
 export const Latestanc = () => {
 
@@ -18,10 +19,10 @@ export const Latestanc = () => {
 
     function isDate(dat) {
         let date2 = new Date(dat)
-       
+
         var Difference_In_Time = date2.getTime() - date.getTime();
         var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 2;
-       
+
         if (Difference_In_Days < 15 && Difference_In_Days > 0) {
             return true;
         }
@@ -46,10 +47,10 @@ export const Latestanc = () => {
                             <h3 className="p1">
                                 {annoucements.date}
                             </h3 >
-                            <h3 className="p2">
-                                {annoucements.venue}
-                            </h3>
                             <p className="p3">{annoucements.description} </p>
+                            <Link to="/signin">
+                                <button className="button23">More Info...</button>
+                            </Link>
                         </>
                         ) : (
                             <div id='noneee'></div>

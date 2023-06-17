@@ -137,7 +137,7 @@ export default function Volunteer() {
       <Hnavbar />
       <div className="bodyy">
         <Navbar />
-        <img id="vcurve" src="./curve2.png" alt="" />
+        
         <div className="vcontent">
           <h1>Pending Verifications...</h1>
           {isLoading ? (

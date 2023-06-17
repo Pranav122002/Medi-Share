@@ -3,17 +3,30 @@
 * {
   font-family: "Nunito", sans-serif;
 }
-
+.bodyy{
+  margin: 0;
+  border: 0;
+  width: 100vw;
+}
+.donate_instru img{
+  height: 10rem;
+  float: right;
+  border-radius: 1rem;
+}
 .donate_instru{
+  box-shadow: 2px 2px 9px rgb(236, 236, 236);
   width: 80vw;
   margin: auto;
   height: max-content;
   margin-bottom: 2rem;
- 
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
 }
 .donate_content{
-  display: flex;
-  justify-content: space-evenly;
+  
+    margin-left: 3rem;
 }
 
 .donate_content img{
@@ -26,13 +39,16 @@
   height: 40rem;
   margin: auto;
   display: flex;
-  justify-content: space-evenly;
-  background: rgb(237, 255, 254);
-  background-image: url('../../public/ui1.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+  justify-content: center;
+  
+  background: #F5F7F7;
   
 
+}
+
+
+.donateForm select{
+  width: 100%;
 }
 
 .donate ul{
@@ -53,25 +69,21 @@
   position: absolute;
   right: 0;
   width: 30vw;
-  opacity: 0.7;
-  filter:brightness(24);
-  filter: hue-rotate(336deg);
-  
-  opacity: 0.6;
-  z-index: 0;
+  opacity: 0.1;
+
 }
 .donateForm {
   text-align: center;
   background-color: #fbfbfb;
   box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   width: 25vw;
   height: 30rem;
   position: relative;
-  margin-top: auto;
-  margin-bottom: auto;
+ 
   min-width: 22rem;
+  margin-top: 2rem;
 }
 
 .loginForm2 {
@@ -119,8 +131,7 @@
   width: 60%;
   max-width: 460px;
   position: relative;
-  cursor: pointer;
-  
+  cursor: pointer; 
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -128,19 +139,17 @@
   margin: auto;
   margin-top: 2rem;
 }
+.button-53:hover{
+  width: 65%;
+
+}
 
 .button-53:focus {
   outline: 0;
 }
 
 .button-53:after {
-  content: '';
-  position: absolute;
-  border: 1px solid #000000;
-  bottom: 4px;
-  left: 4px;
-  width: calc(100% - 1px);
-  height: calc(100% - 1px);
+ 
 }
 
 .button-53:hover:after {
@@ -168,6 +177,20 @@
   animation-duration: 3s;
   animation-fill-mode: forwards;
   
+}
+
+.donateback{
+  border-radius: 1rem;
+  color: white;
+  margin-left: 1rem;
+  height: 34rem;
+  width: 15rem;
+  background: #48B0DF;
+  margin-top: 2rem;
+}
+
+.donateback h1{
+  margin-top: 10rem;
 }
 .suggestions.false ul h2{
   animation-name:pAnimation;
@@ -215,8 +238,9 @@ input{
   border-radius: 0.5rem;
   width:70% ;
   margin-top: 0.8rem;
-  background: rgb(255, 255, 255);
+  background: rgb(249, 253, 255);
   color: #000000;
+  text-align: center;
 }
 
 @keyframes pAnimation {
@@ -270,55 +294,51 @@ input{
 
 
 @media screen and (max-width: 1000px){
+
+  .donate_content{
+    
+    width: 90%;
+    margin: auto;
+}
+
   .button-53 {
     padding: .75rem 3rem;
     font-size: 1.25rem;
   }
+  .donate_instru img{
+    height: 10rem;
+    float: none;
+    border-radius: 1rem;
+  }
 
   .donate_instru{
-    font-size: 3vw;
-    width: 80vw;
+    box-shadow: 2px 2px 9px rgb(236, 236, 236);
+    width: 95%;
     margin: auto;
     height: max-content;
     margin-bottom: 2rem;
-   
+    border-radius: 1rem;
+    display: block;
+    margin-top: 2rem;
   }
   .donate_content{
     display: block;
     
   }
-  .donate_content img{
-    width:  30vw;
-    position: relative;
-    
-    right: 0;
-  }
+  
   .donate_content p{
     font-size: 4vw;
    position: relative;
    z-index: 2;
   }
-  #dcurve{
-    transform: rotate(270deg);
-    position: absolute;
-    margin-top: -10rem;
-    right: 0;
-    width: 50vw;
-    opacity: 0.7;
-    filter:brightness(24);
-    filter: hue-rotate(336deg);
-    opacity: 0.6;
-    z-index: 0;
-  }
+ 
   .donate {
     height: 60rem;
     margin-top: 5rem;
     width: 100%;
     display: block;
-    background: rgb(237, 255, 254);
-    background-image: url('../../public/ui1.png');
-    background-repeat: no-repeat;
-    background-size: contain;
+    background: #F5F7F7;
+    
     padding-top: 0.5rem;
     
   }
@@ -374,4 +394,13 @@ input{
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
+
+.donateback h1{
+  margin: 0;
+}
+.donateback {
+ width: 90%;
+ height: max-content;
+}
+
 }

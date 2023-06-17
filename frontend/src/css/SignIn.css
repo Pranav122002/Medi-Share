@@ -224,6 +224,9 @@
   height: 50%;
 }
 
+.signIn .form2 span{
+  color: rgb(121, 172, 213);
+}
 @media screen and (max-width: 1000px){
   /*nav part already in landing.css*/
 

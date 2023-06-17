@@ -24,7 +24,7 @@ export default function Donate() {
   useEffect(() => {
     AOS.init({ duration: 2000 });
 
-}, [])
+  }, [])
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -65,7 +65,7 @@ export default function Donate() {
           });
       });
   };
-  
+
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
@@ -95,23 +95,27 @@ export default function Donate() {
       <div className="bodyy">
         <Navbar />
         <div className="donate_instru">
-          <h1>Some Important Instructions for Donating</h1>
+
           <div className="donate_content">
-            <img data-aos="fade-down-right" src="./medicine.png" alt="" />
+            <h1>Some Important Instructions for Donating</h1>
+            {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
             <div className="points">
               <p>1.The medicine to be donated should be valid and not expired or fabricated.</p>
               <p>2.The medicine name , expiry date should be visible.</p>
 
             </div>
-            <img id="dcurve" src="./curve2.png" alt="" />
+
 
           </div>
+          <img src="./donmed.jpg" data-aos="fade-right" alt="" srcset="" />
         </div>
+
+
         <div className="donate">
 
 
 
-          <div data-aos="zoom-in" className="donateForm">
+          <div data-aos="fade-right" className="donateForm">
             <div className="logo">
               <h1>Donate Medicine</h1>
             </div>
@@ -168,7 +172,7 @@ export default function Donate() {
             <button className="button-53" onClick={() => { postOrderData(); }} value="Donate" type="submit" role="button">Donate</button>
 
           </div>
-          <div  className={`suggestions ${sug && 'active'}`}  >
+          {/* <div className={`suggestions ${sug && 'active'}`}  >
 
             <ul>
               <li style={{ color: "black" }}>
@@ -189,11 +193,13 @@ export default function Donate() {
                 );
               })}
             </ul>
+          </div> */}
+
+          <div data-aos="zoom-in" className="donateback">
+            <h1>“No one has ever become poor from giving.</h1>
+            <p>Anne Frank</p>
           </div>
-
-
         </div>
-
       </div>
     </div>
   );
