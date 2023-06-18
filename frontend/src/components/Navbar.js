@@ -23,6 +23,7 @@ export default function Navbar() {
 
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isVolunteer, setIsVolunteer] = useState(false);
 
   const { user } = useContext(UserContext);
 
@@ -32,6 +33,9 @@ export default function Navbar() {
     }
     if (user && user.role === "admin") {
       setIsAdmin(true);
+    }
+    if (user && user.role === "volunteer") {
+      setIsVolunteer(true);
     }
   }, [user]);
 
@@ -80,16 +84,22 @@ export default function Navbar() {
           </li>
           <img className="navimg" src="./check-list.png" alt="" />
         </Link>
-        <Link className="borderrad" to="/volunteer">
-          <li style={{ color: "black" }} className="navli">
-            Volunteer
-          </li>
-          <FontAwesomeIcon
-            className="navimg"
-            icon={faHandshakeAngle}
-            style={{ color: "#48B0DF", filter: "none" }}
-          />
-        </Link>
+
+        {isVolunteer ? (
+          <Link className="borderrad" to="/volunteer">
+            <li style={{ color: "black" }} className="navli">
+              Volunteer
+            </li>
+            <FontAwesomeIcon
+              className="navimg"
+              icon={faHandshakeAngle}
+              style={{ color: "#48B0DF", filter: "none" }}
+            />
+          </Link>
+        ) : (
+          <></>
+        )}
+
         <Link className="borderrad" to="/users">
           <li style={{ color: "black" }} className="navli">
             Search Users
