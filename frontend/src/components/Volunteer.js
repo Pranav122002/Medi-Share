@@ -11,11 +11,14 @@ export default function Volunteer() {
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
   const [isVolunteer, setIsVolunteer] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [search , setSearch] = useState('')
 
   const navigate = useNavigate();
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
+  console.log(search)
+
 
   useEffect(() => {
     fetchUnverifiedOrders();
@@ -111,72 +114,87 @@ export default function Volunteer() {
         <Navbar />
 
         <div className="vcontent">
-          <h1>Pending Verifications...</h1>
+
           {isLoading ? (
             <h1 className="load">Loading...</h1>
           ) : (
             <div className="out_cont">
-              <div className="volunteer_cunt">
-                <div className="vpending">
-                  <p className="p-head"> Order Type </p>
-                  <p className="p-head">Medicine Name </p>{" "}
-                  <p className="p-head">Expiry Date </p>{" "}
-                  <p className="p-head">Quantity </p>{" "}
-                  <p className="p-head">Location </p>
-                  <p className="p-head">Donor / Requester</p>
-                  <p className="p-head">Action</p>
-                  <img className="vbox" src="volunteer.jpg" alt="" />
-                  <h2 className="vbox">Detials</h2>
-                </div>
+              
+                <h1 id="pendtitle">Pending Verifications...</h1><br />
+                <input className="volitemsearch" onChange={(e)=> setSearch(e.target.value)} type="text" style={{ border: "none",}} placeholder="search" name="" id="" />
+                <div className="volunteer_cunt">
+                  <div className="vpending">
 
-                {unverifiedorders.map((unverifiedorders) => (
-                  <div
-                    className="vpending"
-                    key={unverifiedorders.medicine_name}
-                  >
-                    <p className="vpdetails">order_type : </p>
-                    <p className="h3">{unverifiedorders.order_type}</p>
-                    <p className="vpdetails">medicine_name : </p>{" "}
-                    <p className="h3">{unverifiedorders.medicine_name}</p>
-                    <p className="vpdetails">expiry_date : </p>{" "}
-                    <p className="h3">{unverifiedorders.expiry_date}</p>
-                    <p className="vpdetails">quantity : </p>{" "}
-                    <p className="h3">{unverifiedorders.quantity}</p>
-                    <p className="vpdetails">location : </p>
-                    <p className="h3">{unverifiedorders.location}</p>
-                    {unverifiedorders.order_type == "donate-order" ? (
-                      <>
-                        <p className="vpdetails">Donar : </p>
-                        <p className="h3">{unverifiedorders.donar.name}</p>
-                      </>
-                    ) : (
-                      <>
-                        <p className="vpdetails">Requester : </p>
+                    <p className="p-head"> Order Type   </p>
+
+                    <p className="p-head" >Medicine Name  </p>{" "}
+
+                    <p className="p-head" >Expiry Date  </p>{" "}
+
+                    <p className="p-head">Quantity  </p>{" "}
+
+                    <p className="p-head" >Location  </p>
+
+
+                    <p className="p-head">Donor / Requester</p>
+
+                    <p className="p-head">Action</p>
+                    
+                    <h2 className="vbox" >Detials</h2>
+                  </div>
+
+                  <hr className="volhr" />
+
+                  {unverifiedorders.filter((unverifiedorders)=>{
+                    return search.toLowerCase()=== '' ? unverifiedorders : unverifiedorders.medicine_name.toLowerCase().includes(search)
+                  }).map((unverifiedorders) => (<>
+
+
+                    <div className="vpending" key={unverifiedorders.medicine_name}>
+                      <p className="vpdetails">order_type : </p>
+                      <p className="h3">{unverifiedorders.order_type}</p>
+                      <p className="vpdetails" >medicine_name : </p>{" "}
+                      <p className="h3">{unverifiedorders.medicine_name}</p>
+                      <p className="vpdetails" >expiry_date : </p>{" "}
+                      <p className="h3">{unverifiedorders.expiry_date}</p>
+                      <p className="vpdetails" >quantity : </p>{" "}
+                      <p className="h3">{unverifiedorders.quantity}</p>
+                      <p className="vpdetails" >location : </p>
+                      <p className="h3">{unverifiedorders.location}</p>
+
+                      {unverifiedorders.order_type == "donate-order" ? (
+                        <>
+                          <p className="vpdetails" >Donar : </p>
+                          <p className="h3">{unverifiedorders.donar.name}</p>
+                        </>
+                      ) : (<>
+                        <p className="vpdetails" >Requester : </p>
                         <p className="h3">{unverifiedorders.requester.name}</p>
                       </>
-                    )}
-                    {unverifiedorders.order_type == "donate-order" ? (
-                      <button
+                      )}
+
+
+
+                      {unverifiedorders.order_type == "donate-order" ? (<button
                         className="button-53"
-                        onClick={() =>
-                          verify_donate_order(unverifiedorders._id)
-                        }
+                        onClick={() => verify_donate_order(unverifiedorders._id)}
                       >
                         Verify
-                      </button>
-                    ) : (
-                      <button
+                      </button>) : (<button
                         className="button-53"
-                        onClick={() =>
-                          verify_request_order(unverifiedorders._id)
-                        }
+                        onClick={() => verify_request_order(unverifiedorders._id)}
                       >
                         Verify
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
+                      </button>)}
+                         
+                    </div>
+                     <hr className="volitemlist" />
+
+                     </>))
+
+                  }
+                </div>
+             
             </div>
           )}
         </div>

@@ -20,10 +20,10 @@ export default function Navbar() {
   const notifyB = (msg) => toast.success(msg);
 
   const [showVNavbar, setShowVNavbar] = useState(!false);
-
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isVolunteer, setIsVolunteer] = useState(false);
+  
 
   const { user } = useContext(UserContext);
 
@@ -37,6 +37,7 @@ export default function Navbar() {
     if (user && user.role === "volunteer") {
       setIsVolunteer(true);
     }
+    
   }, [user]);
 
   const handleShowVNavbar = () => {
@@ -106,12 +107,11 @@ export default function Navbar() {
           </li>
           <img className="navimg" src="./peoples.png" alt="" />
         </Link>
-        <Link className="borderrad" to="/tasks">
-          <li style={{ color: "black" }} className="navli">
-            Tasks
-          </li>
+         {isVolunteer? (<Link className="borderrad" to="/tasks">
+          <li style={{ color: "black" }} className="navli">Tasks</li>
           <img className="navimg" src="./chlist2.png" alt="" />
-        </Link>
+        </Link>) : (<div></div>)}
+
         {/* <Link className="borderrad" to="/medicines">
           <li style={{color: "black"}} className="navli">Medicines</li>
         </Link> */}

@@ -134,6 +134,7 @@
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
+  color: #48B0DF;
 }
 
 .navbar.false #arrow{

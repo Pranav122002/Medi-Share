@@ -15,10 +15,7 @@
     min-height: 38vw;
     height: max-content;
     margin-top: 3rem;
-    background-repeat: no-repeat;
-    background-size: 35vw;
-    background-position: bottom right;
-    background-image: url(../../public/volunteer.jpg);
+
     padding: 1px;
 }
 
@@ -33,72 +30,130 @@
 
 .volunteer_btn{
   background: rgb(255, 255, 255);
-  box-shadow: 2px 2px 9px rgb(247, 247, 247);
+  box-shadow: 2px 2px 9px rgb(196, 196, 196);
   width: 50%;
   height: 45vh;
   margin: 10%;
+  background: #48B0DF;
+  color: white;
+  border-radius: 1rem;
+  padding: 0.1px;
+  
 }
 
 .volunteer_btn h1{
+    margin-top: 3rem;
     font-size: 2vw;
 }
 
 .volunteer_btn h3{
+  width: 80%;
   font-size: 1.2vw;
+  margin: auto;
   margin-top: 2rem;
+
 }
 
 .volunteer_btn .button-53{
+  
   margin-top: 5rem;
-  background-color: #b7fffe;
+  border-radius: 1rem;
+  background-color: #ffffff;
+}
+.volunteer_btn .button-53:hover{
+  width: 55%;
+  color: #48B0DF;
 }
 .out_cont{
   width: 95%;
-  margin: auto;
+  
 }
 .volunteer_cunt {
   width: 90vw;
   outline: none;
   border: none;
+
 }
 .volunteer_cunt .vpending:first-child{
-  background:#0eb2d7;
-  color: white;
+  background:#ffffff;
+  color: rgb(0, 0, 0);
   font-size: 1.2rem;
+  height: 1rem;
+}
+.volitemsearch{
+  margin-top: 0.5rem;
+  margin-right: 0rem;
+  float: left ;
+  width: 85%;
+  max-width: 85%;
+  height: 3rem;
+  border-radius: 0.3rem;
+  background: #e3f7ff;
+  padding-left: 2rem;
+  margin-bottom: 0.5rem;
+  margin-left: 3rem;
+}
+.volitemsearch:focus{
+  margin-left: 3rem;
+}
+.volhr{
+  float: left;
+  width: 81vw;
+  margin-left: 4.5rem;
+  height: 2.5px;
+  background: #48B0DF;
+  border: none;
+  
 }
 
+.volitemlist{
+  float: left;
+  width: 81vw;
+  margin-left: 4.5rem;
+  height: 0.15rem;
+  background: #d4d4d4;
+  border: none;
+}
 .volunteer_cunt .vpending{
   position: relative;
   z-index: 2;
-  
   height: max-content;
-  min-height: 7rem;
-  width: 92%;
+  min-height: 5rem;
+  width: 95%;
   border: none;
-  background: white;
-
-  box-shadow: 6px 2px  11px #e0e0e0;
+  background: rgb(255, 255, 255);
   display: flex;
   justify-content: flex-start;
-  border-radius: 10px;
+  margin-left: 1.5rem;
+
 
 }
 .volunteer_cunt .vpending:hover{
-  min-height: 7.5rem;
-  width: 93%;
-  box-shadow: 2px 2px 8px #9e9e9e;
+    background-origin:content-box;
+    background: rgb(244, 244, 244);
 }
 
 .volunteer_cunt .vpending p{
   margin-top: auto;
   margin-bottom: auto;
   width: 15vw;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   
 }
 .volunteer_cunt .vpending .button-53{
+  background: #48B0DF;
   width: 10vw;
   margin-right: 2rem;
+  margin-left: 2vw;
+  margin-top: 1rem;
+  border-radius: 0.2rem;
+  color: #ffffff;
+
+}
+.volunteer_cunt .vpending .button-53:hover{
+  color: #c1f1ff;
+    margin-top: 0.7rem;
 }
 
 .vpdetails{
@@ -106,9 +161,12 @@
 }
 .vpending:first-child{
   background: #f9fdff;
+  
 }
 
-
+.vpending:first-child:hover{
+  background: white;
+}
 .h3{
   font-size: large;
   font-weight: 600;
@@ -127,6 +185,21 @@
   display: none;
 }
 
+#pendtitle{
+    float: left;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    font-size: 1.5rem;
+    color: #41a4d2;
+}
+
+.volunteer_cunt .vpending .p-head{
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #6a6969;
+  font-size: 1.2rem;
+}
+
 @media screen and (max-width: 1000px){
   .bodyy{
     width: 98vw;
@@ -139,10 +212,7 @@
       height: max-content;
       min-height: 80vh;
       margin-top: 2rem;
-      background-repeat: no-repeat;
-      background-size: 15rem;
-      background-position: bottom ;
-      background-image: url(../../public/volunteer.jpg);
+     
       padding: 1px;
   }
   #vcurve{
@@ -155,11 +225,12 @@
   }
 
   .volunteer_btn{
-    background: rgb(255, 255, 255);
+    
     box-shadow: 2px 2px 9px rgb(247, 247, 247);
     width: 100%;
     height: 40vh;
-  
+    margin: 0%;
+    margin-top: 4rem;
   }
   
   .volunteer_btn h1{
@@ -172,7 +243,7 @@
 }
 .volunteer_btn .button-53{
   
-  background-color: #b7fffe;
+  background-color: #ffffff;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
   color: #000000;
@@ -196,8 +267,12 @@
   touch-action: manipulation;
   text-align: center;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 5rem;
 
+}
+.volunteer_btn .button-53:hover{
+  width: 55%;
+  color: #48B0DF;
 }
 
 .out_cont{
@@ -238,10 +313,10 @@
 }
 .volunteer_cunt .vpending .button-53{
   width: 50%;
-  background-color: #b7ffe7;
+  background: #48B0DF;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
-  color: #000000;
+  color: #ffffff;
   display: flex;
   font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: 1rem;
@@ -265,6 +340,7 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
 .vpdetails{
   display: block;
 }
@@ -280,5 +356,27 @@
  display: block;
   min-width: 9rem;
 }
+.volitemsearch{
+  margin-top: 0.5rem;
+  margin-right: 0rem;
+  float: left ;
+  width: 85%;
+  max-width: 85%;
+  height: 3rem;
+  border-radius: 0.3rem;
+  background: #e3f7ff;
+  padding-left: 2rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  
+}
+.volhr{
+  float: left;
+  width: 81vw;
+  margin-left: 1rem;
+  height: 2.5px;
+  background: #48B0DF;
+  border: none;
 
+}
 }
