@@ -28,7 +28,6 @@ export default function UserProfile({ id }) {
         setIsMine(true);
       }
     }
-   
   }, [id, editing]);
 
   const fetchUser = () => {
@@ -138,7 +137,7 @@ export default function UserProfile({ id }) {
       <h1>User Profile</h1>
       <div>
         <p>Name: {user.name}</p>
-        <p>Email: {user.email}</p>
+
         {user.role === "doctor" && (
           <div>
             <p>Fees: {user.doctor_details.fees}</p>
@@ -147,6 +146,10 @@ export default function UserProfile({ id }) {
             <p>Experience: {user.doctor_details.experience}</p>
             <p>Availability: {user.doctor_details.availability}</p>
             <p>Hospital Name: {user.doctor_details.hospital_name}</p>
+            <img
+              src={user.doctor_details.certificate}
+              alt="doctor certificate"
+            />
           </div>
         )}
         {user.role === "volunteer" && (
@@ -158,6 +161,10 @@ export default function UserProfile({ id }) {
               Location: {user.volunteer_details.location.longitude},{" "}
               {user.volunteer_details.location.latitude}
             </p>
+            <img
+              src={user.volunteer_details.certificate}
+              alt="volunteer certificate"
+            />
           </div>
         )}
       </div>

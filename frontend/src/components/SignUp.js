@@ -3,8 +3,8 @@ import "../css/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "../config";
-import { CLOUD_NAME } from "../config";
-import { UPLOAD_PRESET } from "../config";
+import { CLOUD_NAME } from "../keys";
+import { UPLOAD_PRESET } from "../keys";
 
 export default function SignUp() {
   const navigate = useNavigate();

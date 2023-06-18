@@ -106,15 +106,18 @@ export default function Navbar() {
           </li>
           <img className="navimg" src="./peoples.png" alt="" />
         </Link>
-        <Link className="borderrad" to="/tasks">
-          <li style={{ color: "black" }} className="navli">
-            Tasks
-          </li>
-          <img className="navimg" src="./chlist2.png" alt="" />
-        </Link>
-        {/* <Link className="borderrad" to="/medicines">
-          <li style={{color: "black"}} className="navli">Medicines</li>
-        </Link> */}
+
+        {isVolunteer ? (
+          <Link className="borderrad" to="/tasks">
+            <li style={{ color: "black" }} className="navli">
+              Tasks
+            </li>
+            <img className="navimg" src="./chlist2.png" alt="" />
+          </Link>
+        ) : (
+          <></>
+        )}
+
         <Link>
           <li style={{ color: "black" }} className="navli">
             Search Medicines

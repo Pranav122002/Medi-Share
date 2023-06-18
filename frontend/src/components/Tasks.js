@@ -51,9 +51,7 @@ export default function Tasks() {
 
   function fetchUser() {
     fetch(
-      `${API_BASE_URL}/user/${
-        JSON.parse(localStorage.getItem("user"))._id
-      }`,
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -73,25 +71,6 @@ export default function Tasks() {
         setIsLoading(false);
       });
   }
-
-  //   function fetchMyTasks() {
-  //     console.log("myname is = ", myname);
-
-  //     fetch(`${API_BASE_URL}/my-tasks`, {
-  //       headers: {
-  //         Authorization: "Bearer " + localStorage.getItem("jwt"),
-  //       },
-  //       body: JSON.stringify({
-  //         name: myname,
-
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setMyTasks(data);
-  //         console.log("my tasks = ", data);
-  //       });
-  //   }
 
   const fetchMyTasks = () => {
     const userName = JSON.parse(localStorage.getItem("user")).name;
@@ -124,9 +103,7 @@ export default function Tasks() {
 
   const postTaskData = () => {
     fetch(
-      `${API_BASE_URL}/user/${
-        JSON.parse(localStorage.getItem("user"))._id
-      }`,
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -284,30 +261,22 @@ export default function Tasks() {
           </div>
         ) : (
           <div>
-            {isVolunteer ? (
-              <div>
-                <h1>My Tasks</h1>
-                <div className="allCards">
-                  <div className="OCards">
-                    <div className="headd">
-                      <div className="heading">
-                        <p className="headp">Volunteer Name</p>
-                        <p className="headp">Task Info</p>
-                        <p className="headp">Deadline</p>
-                        <p className="headp">Volunteer Email</p>
-                      </div>
+            <div>
+              <h1>My Tasks</h1>
+              <div className="allCards">
+                <div className="OCards">
+                  <div className="headd">
+                    <div className="heading">
+                      <p className="headp">Volunteer Name</p>
+                      <p className="headp">Task Info</p>
+                      <p className="headp">Deadline</p>
+                      <p className="headp">Volunteer Email</p>
                     </div>
-                    {myTasks.map(renderCard)}
                   </div>
+                  {myTasks.map(renderCard)}
                 </div>
               </div>
-            ) : (
-              <div>
-                {" "}
-                <h1>Join our community and become a Volunteer</h1>{" "}
-                <button className="button-53" onClick={() => { navigate("/volunteer"); }} >Become Volunteer</button>
-              </div>
-            )}
+            </div>
           </div>
         )}
       </div>
