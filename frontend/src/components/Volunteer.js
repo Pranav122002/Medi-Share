@@ -12,6 +12,7 @@ export default function Volunteer() {
   const [isVolunteer, setIsVolunteer] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [search , setSearch] = useState('')
+  const [sortedData, setSortedData] = useState([...unverifiedorders]);
 
   const navigate = useNavigate();
   // Toast functions
@@ -19,6 +20,10 @@ export default function Volunteer() {
   const notifyB = (msg) => toast.success(msg);
   console.log(search)
 
+  useEffect(() => {
+    const sorted = [...unverifiedorders].sort((a, b) => new Date(a.expiry_date) - new Date(b.expiry_date));
+    setSortedData(sorted);
+  }, [unverifiedorders]);
 
   useEffect(() => {
     fetchUnverifiedOrders();
@@ -145,7 +150,7 @@ export default function Volunteer() {
 
                   <hr className="volhr" />
 
-                  {unverifiedorders.filter((unverifiedorders)=>{
+                  {sortedData.filter((unverifiedorders)=>{
                     return search.toLowerCase()=== '' ? unverifiedorders : unverifiedorders.medicine_name.toLowerCase().includes(search)
                   }).map((unverifiedorders) => (<>
 
