@@ -23,11 +23,16 @@ export default function Appointments() {
   const [isLoading, setIsLoading] = useState(true);
   const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [selectedAppointment, setSelectedAppointment] = useState([]);
 
   const [linkText, setLinkText] = useState("");
 
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setDoctorAppointments] = useState([]);
+  const [patientAppointments, setPatientAppointments] = useState([]);
   const [patient, setPatient] = useState("");
+
+  const [rating, setRating] = useState("");
+  const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
     fetchUser();
@@ -37,25 +42,48 @@ export default function Appointments() {
   useEffect(() => {
     if (isDoctor) {
       if (userid) {
-        fetchAppointments();
+        fetchMyDoctorAppointments();
+      }
+    } else {
+      if (userid) {
+        fetchMyPatientAppointments();
       }
     }
   }, [userid]);
 
-  function fetchAppointments() {
+  function fetchMyDoctorAppointments() {
     const doctorId = userid;
     console.log("doctorId = ", doctorId);
 
-    fetch(`${API_BASE_URL}/my-appointments/${doctorId}`, {
+    fetch(`${API_BASE_URL}/my-doctor-appointments/${doctorId}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setAppointments(data);
+        setDoctorAppointments(data);
         setIsLoading(false);
         console.log("appointments = ", data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function fetchMyPatientAppointments() {
+    const patientId = userid;
+
+    fetch(`${API_BASE_URL}/my-patient-appointments/${patientId}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPatientAppointments(data);
+        setIsLoading(false);
+        console.log("my app = ", data);
       })
       .catch((error) => {
         console.log(error);
@@ -204,7 +232,28 @@ export default function Appointments() {
         notifyA(error);
       });
   }
+  function addRatingFeedback(selectedAppointment) {
+    if (!selectedAppointment) {
+      notifyA("Please select appointment from list.");
+    }
 
+    fetch(`${API_BASE_URL}/add-rating-feedback/${selectedAppointment}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        rating: rating,
+        feedback: feedback,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        notifyB("Rating and Feedback added.");
+        navigate("/profile")
+      });
+  }
   return (
     <div className="doctor">
       <Hnavbar />
@@ -300,7 +349,10 @@ export default function Appointments() {
                                 </p>
                               </>
                             ) : (
-                              <> <p></p> </>
+                              <>
+                                {" "}
+                                <p></p>{" "}
+                              </>
                             )}
                           </li>
                         ))}
@@ -394,6 +446,7 @@ export default function Appointments() {
                           </div>
                         </div>
                       </div>
+
                       <div className="doctorslist">
                         <ul>
                           <h2>Doctors list</h2>
@@ -407,6 +460,68 @@ export default function Appointments() {
                           ))}
                         </ul>
                       </div>
+                    </div>
+
+                    <div className="doctorcont">
+                      <div className="appointmentslist">
+                        <ul>
+                          <h2>Appointments list</h2>
+                          {patientAppointments.map((appointment) => (
+                            <li
+                              key={appointment._id}
+                              onClick={() =>
+                                setSelectedAppointment(appointment)
+                              }
+                            >
+                              {appointment.doctor.name}
+                              {appointment.appointment_date}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="doctorcont">
+                      <div>
+                        <input
+                          type="text"
+                          value={selectedAppointment?.doctor?.name}
+                        />
+                        <input
+                          type="text"
+                          value={selectedAppointment?.appointment_date}
+                        />
+                      </div>
+
+                      <div>
+                        <select
+                          type="text"
+                          value={rating}
+                          onChange={(e) => setRating(e.target.value)}
+                        >
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <input
+                          type="text"
+                          value={feedback}
+                          onChange={(e) => setFeedback(e.target.value)}
+                        />
+                      </div>
+
+                      <button
+                        onClick={() =>
+                          addRatingFeedback(selectedAppointment._id)
+                        }
+                      >
+                        Add
+                      </button>
                     </div>
                   </>
                 )}

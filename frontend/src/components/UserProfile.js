@@ -36,7 +36,6 @@ export default function UserProfile({ id }) {
 
   const verifyUser = () => {
     console.log("", id);
-    
 
     fetch(`${API_BASE_URL}/verify-user/${id}`, {
       headers: {
@@ -45,10 +44,8 @@ export default function UserProfile({ id }) {
     })
       .then((res) => res.json())
       .then((res) => {
-     console.log("verified user = ", res);
-     notifyB("User verified successfully.")
-
-        
+        console.log("verified user = ", res);
+        notifyB("User verified successfully.");
       });
   };
 
@@ -150,8 +147,6 @@ export default function UserProfile({ id }) {
     }
   };
 
-
-
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -165,6 +160,7 @@ export default function UserProfile({ id }) {
 
         {user.role === "doctor" && (
           <div>
+            <p>Verification: {user.doctor_details.verification}</p>
             <p>Fees: {user.doctor_details.fees}</p>
             <p>Qualification: {user.doctor_details.qualification}</p>
             <p>Specialization: {user.doctor_details.specialization}</p>
@@ -179,6 +175,7 @@ export default function UserProfile({ id }) {
         )}
         {user.role === "volunteer" && (
           <div>
+            <p>Verification: {user.volunteer_details.verification}</p>
             <p>Qualification: {user.volunteer_details.qualification}</p>
             <p>Available: {user.volunteer_details.available}</p>
             <p>NGO Name: {user.volunteer_details.NGO_name}</p>

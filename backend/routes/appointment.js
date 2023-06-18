@@ -30,10 +30,23 @@ router.post("/api/book-appointment/:id", async (req, res, next) => {
   }
 });
 
-router.get("/api/my-appointments/:id", async (req, res, next) => {
+router.get("/api/my-doctor-appointments/:id", async (req, res, next) => {
   try {
     const appointments = await APPOINTMENT.find({
       doctor: req.params.id,
+    })
+      .populate("doctor", "-password")
+      .populate("patient", "-password");
+    res.json(appointments);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/api/my-patient-appointments/:id", async (req, res, next) => {
+  try {
+    const appointments = await APPOINTMENT.find({
+      patient: req.params.id,
     })
       .populate("doctor", "-password")
       .populate("patient", "-password");
@@ -118,6 +131,22 @@ router.put("/api/add-appointment-link/:id", async (req, res, next) => {
     const appointment = await APPOINTMENT.findByIdAndUpdate(
       req.params.id,
       { appointment_link: appointment_link },
+      { new: true }
+    );
+
+    res.json(appointment);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/api/add-rating-feedback/:id", async (req, res, next) => {
+  const { rating, feedback } = req.body;
+
+  try {
+    const appointment = await APPOINTMENT.findByIdAndUpdate(
+      req.params.id,
+      { rating: rating, feedback: feedback },
       { new: true }
     );
 

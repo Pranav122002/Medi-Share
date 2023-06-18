@@ -73,7 +73,8 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `${API_BASE_URL}/mydonatedorders/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/mydonatedorders/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -85,7 +86,8 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `${API_BASE_URL}/myrequestedorders/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/myrequestedorders/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -97,7 +99,8 @@ export default function Profile() {
 
   function patientAppointments() {
     fetch(
-      `${API_BASE_URL}/patient-appointments/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/patient-appointments/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -109,13 +112,12 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `${API_BASE_URL}/doctor-appointments/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/doctor-appointments/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
       .then((data) => {
-
-
         setDoctorAppointments(data);
         setIsLoading(false);
       });
@@ -123,7 +125,8 @@ export default function Profile() {
 
   const subscribe = () => {
     fetch(
-      `${API_BASE_URL}/subscribe/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/subscribe/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -166,9 +169,12 @@ export default function Profile() {
                       <img src="./subscribe.jpg" alt="" />
                     </div>
                     <div className="headsub">
-                      <h2>Subscribe now to avail exclusive services on our site.</h2>
+                      <h2>
+                        Subscribe now to avail exclusive services on our site.
+                      </h2>
                     </div>
-                    <button className="subbut"
+                    <button
+                      className="subbut"
                       onClick={() => {
                         subscribe();
                       }}
@@ -204,8 +210,7 @@ export default function Profile() {
                       </div>
                     </>
                   ) : (
-                    <>
-                    </>
+                    <></>
                   )}
                 </p>
               )}
@@ -220,7 +225,8 @@ export default function Profile() {
           </div>
           <div className="donatedorders">
             <h2>
-            <img className="titleimg" src="./donatemed.png" alt="" /> My Donated Orders
+              <img className="titleimg" src="./donatemed.png" alt="" /> My
+              Donated Orders
             </h2>
             <ul className="proul">
               <li className="profli">
@@ -248,7 +254,8 @@ export default function Profile() {
 
           <div className="requestorders">
             <h2>
-            <img className="titleimg" src="./requestmed.png" alt="" /> My Requested Orders 
+              <img className="titleimg" src="./requestmed.png" alt="" /> My
+              Requested Orders
             </h2>
             <ul className="proul">
               <li className="profli">
@@ -277,16 +284,18 @@ export default function Profile() {
           {isdoctor ? (
             <div className="appointm">
               <h2>
-              <img className="titleimg" src="./appointment.png" alt="" />{" "}   My Appointments
+                <img className="titleimg" src="./appointment.png" alt="" /> My
+                Appointments
               </h2>
               <ul className="proul">
                 <li className="profli">
-                  <h3 className="pm">Doctor Name</h3>
                   <h3 className="p1">Patient Name</h3>
                   <h3 className="p2">Date</h3>
                   <h3 className="p2">Time</h3>
                   <h3 className="p2">Status</h3>
                   <h3 className="p2">Link</h3>
+                  <h3 className="p2">Rating</h3>
+                  <h3 className="p2">Feedback</h3>
                 </li>
                 {isLoading ? (
                   <h1 className="loada">Loading...</h1>
@@ -294,19 +303,29 @@ export default function Profile() {
                   <div className="procont">
                     {doctorappointments.map((doctorappointments) => (
                       <li className="proco" key={doctorappointments._id}>
-                        <p className="pm"> {doctorappointments.doctor.name}</p>
                         <p className="p1"> {doctorappointments.patient.name}</p>
-                        <p className="p1"> {doctorappointments.appointment_date}</p>
-                        <p className="p1"> {doctorappointments.appointment_time}</p>
+                        <p className="p1">
+                          {" "}
+                          {doctorappointments.appointment_date}
+                        </p>
+                        <p className="p1">
+                          {" "}
+                          {doctorappointments.appointment_time}
+                        </p>
                         {!doctorappointments.confirm_status &&
-                          !doctorappointments.reject_status ? (
+                        !doctorappointments.reject_status ? (
                           <p className="p2">Pending</p>
                         ) : doctorappointments.confirm_status ? (
                           <p className="p2">Confirmed</p>
                         ) : (
                           <p className="p2">Rejected</p>
                         )}
-                        <p className="p1"> {doctorappointments.appointment_link}</p>
+                        <p className="p1">
+                          {" "}
+                          {doctorappointments.appointment_link}
+                        </p>
+                        <p className="p1"> {doctorappointments.rating}</p>
+                        <p className="p1"> {doctorappointments.feedback}</p>
                       </li>
                     ))}
                   </div>
@@ -316,16 +335,18 @@ export default function Profile() {
           ) : (
             <div className="myappoint">
               <h2>
-              <img className="titleimg" src="./appointment.png" alt="" />   My Appointments 
+                <img className="titleimg" src="./appointment.png" alt="" /> My
+                Appointments
               </h2>
               <ul className="proul">
                 <li className="profli">
-                  <h3 className="pm">Patient Name</h3>
                   <h3 className="p1">Doctor Name</h3>
                   <h3 className="p2">Date</h3>
                   <h3 className="p2">Time</h3>
                   <h3 className="p2">Status</h3>
                   <h3 className="p2">Link</h3>
+                  <h3 className="p2">Rating</h3>
+                  <h3 className="p2">Feedback</h3>
                 </li>
                 {isLoading ? (
                   <h1 className="loada">Loading...</h1>
@@ -333,20 +354,30 @@ export default function Profile() {
                   <div className="procont">
                     {patientappointments.map((patientappointments) => (
                       <li className="proco" key={patientappointments._id}>
-                        <p className="pm"> {patientappointments.patient.name}</p>
                         <p className="p1"> {patientappointments.doctor.name}</p>
-                        <p className="p2"> {patientappointments.appointment_date}</p>
-                        <p className="p2"> {patientappointments.appointment_time}</p>
+                        <p className="p2">
+                          {" "}
+                          {patientappointments.appointment_date}
+                        </p>
+                        <p className="p2">
+                          {" "}
+                          {patientappointments.appointment_time}
+                        </p>
                         {!patientappointments.confirm_status &&
-                          !patientappointments.reject_status ? (
+                        !patientappointments.reject_status ? (
                           <p className="p2">Pending</p>
                         ) : patientappointments.confirm_status ? (
                           <p className="p2">Confirmed</p>
                         ) : (
                           <p className="p2">Rejected</p>
                         )}
-                        <p className="p2"> {patientappointments.appointment_link}</p>
+                        <p className="p2">
+                          {patientappointments.appointment_link}
+                        </p>
 
+                        <p className="p2"> {patientappointments.rating}</p>
+
+                        <p className="p2"> {patientappointments.feedback} </p>
                       </li>
                     ))}
                   </div>

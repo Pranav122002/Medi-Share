@@ -30,6 +30,12 @@ const appointmentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  rating: {
+    type: String,
+  },
+  feedback: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("APPOINTMENT", appointmentSchema);
