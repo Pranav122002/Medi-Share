@@ -6,6 +6,8 @@ export default function UserProfile({ id }) {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
+  const [appointmentRatingsFeedbacks, setAppointmentRatingsFeedbacks] =
+    useState([]);
   const [user, setUser] = useState(null);
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(false);
@@ -70,6 +72,8 @@ export default function UserProfile({ id }) {
             availability: res.doctor_details.availability,
             hospital_name: res.doctor_details.hospital_name,
           });
+
+          fetchDoctorRatingsFeedbacks(id);
         } else if (res.role === "volunteer") {
           setUpdatedVolunteerDetails({
             qualification: res.volunteer_details.qualification,
@@ -81,6 +85,18 @@ export default function UserProfile({ id }) {
             },
           });
         }
+      });
+  };
+
+  const fetchDoctorRatingsFeedbacks = () => {
+    fetch(`${API_BASE_URL}/doctor-ratings-feedbacks/${id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setAppointmentRatingsFeedbacks(res);
       });
   };
 
@@ -171,6 +187,13 @@ export default function UserProfile({ id }) {
               src={user.doctor_details.certificate}
               alt="doctor certificate"
             />
+
+            {appointmentRatingsFeedbacks.map((appointment) => (
+              <li key={appointment._id}>
+                <p>Ratings: {appointment.rating}</p>
+                <p>Feedbacks: {appointment.feedback}</p>
+              </li>
+            ))}
           </div>
         )}
         {user.role === "volunteer" && (

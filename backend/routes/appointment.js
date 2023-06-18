@@ -156,4 +156,18 @@ router.put("/api/add-rating-feedback/:id", async (req, res, next) => {
   }
 });
 
+router.get("/api/doctor-ratings-feedbacks/:id", async (req, res, next) => {
+  try {
+    const appointments = await APPOINTMENT.find({
+      doctor: req.params.id,
+      $or: [{ rating: { $exists: true } }, { feedback: { $exists: true } }],
+    }).select("rating feedback");
+
+    res.json(appointments);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 module.exports = router;
