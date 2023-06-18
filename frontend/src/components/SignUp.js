@@ -3,15 +3,20 @@ import "../css/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "../config";
+import { CLOUD_NAME } from "../config";
+import { UPLOAD_PRESET } from "../config";
 
 export default function SignUp() {
-
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("user");
   const [password, setPassword] = useState("");
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  const [image, setImage] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -20,6 +25,12 @@ export default function SignUp() {
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const passRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+
+  useEffect(() => {
+    if (image !== "") {
+      uploadImg();
+    }
+  }, [image]);
 
   const postData = () => {
     if (!emailRegex.test(email)) {
@@ -31,6 +42,7 @@ export default function SignUp() {
       );
       return;
     }
+
     fetch(`${API_BASE_URL}/signup`, {
       method: "post",
       headers: {
@@ -42,6 +54,7 @@ export default function SignUp() {
         phone_number: phoneNumber,
         role: role,
         password: password,
+        certificate: imgUrl,
       }),
     })
       .then((res) => res.json())
@@ -55,43 +68,70 @@ export default function SignUp() {
         console.log(data);
       });
   };
-  const [showNavbar, setShowNavbar] = useState(false)
+
+  const loadfile = (event) => {
+    var output = document.getElementById("output");
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src);
+    };
+  };
 
   const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar)
-    console.log(showNavbar)
-  }
+    setShowNavbar(!showNavbar);
+  };
 
+  const uploadImg = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", UPLOAD_PRESET);
+    data.append("cloud_name", CLOUD_NAME);
 
-  
-  const goHome = () => {
-    navigate('/')
-  }
+    console.log("data = ", data);
+
+    fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setImgUrl(data.url);
+        console.log("data.url = ", data.url);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
       <div className="mainsignup">
-        <div className='Lnav'>
-          <div className='Lnav_contents'>
-            <div className="logo" onClick={() => { goHome() }}>
-
+        <div className="Lnav">
+          <div className="Lnav_contents">
+            <div
+              className="logo"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               <img id="Nlogo" src="./logo1.png" alt="logo" />
               <h2>Medi-Share</h2>
             </div>
-            <div className='icon' onClick={handleShowNavbar}>
-              <div className='line'></div>
-              <div className='line'></div>
-              <div className='line'></div>
+            <div className="icon" onClick={handleShowNavbar}>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
             </div>
-            <div className={`links ${showNavbar && 'active'}`}>
+            <div className={`links ${showNavbar && "active"}`}>
               <Link className="aboutu" to="/AboutUs">
-                <span id="Aboutt" style={{ cursor: "pointer" }}>About Us</span>
+                <span id="Aboutt" style={{ cursor: "pointer" }}>
+                  About Us
+                </span>
               </Link>
               <Link className="joinus" to="/signIn">
-                <span id="joinus" style={{ cursor: "pointer" }}>Join Us</span>
+                <span id="joinus" style={{ cursor: "pointer" }}>
+                  Join Us
+                </span>
               </Link>
             </div>
-
           </div>
         </div>
         <div className="signUp">
@@ -104,57 +144,7 @@ export default function SignUp() {
           <div className="form-container">
             <div className="form">
               <h1>SIGN UP</h1>
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={email}
-                  placeholder="Email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-  <input
-    type="text"
-    name="phone_number"
-    id="phone_number"
-    placeholder="Phone Number"
-    value={phoneNumber}
-    onChange={(e) => {
-      setPhoneNumber(e.target.value);
-    }}
-  />
-</div>
 
-
-              <div></div>
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </div>
               <div id="roles">
                 Choose your role
                 <select
@@ -170,6 +160,81 @@ export default function SignUp() {
                   <option value="doctor">doctor</option>
                 </select>
               </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="phone_number"
+                  id="phone_number"
+                  placeholder="Phone Number"
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+
+              {role === "doctor" || role === "volunteer" ? (
+                <div>
+                  <img
+                    id="output"
+                    src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+                    height="50"
+                    width="50"
+                  />
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(event) => {
+                      loadfile(event);
+                      setImage(event.target.files[0]);
+                    }}
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+
               <input
                 type="submit"
                 id="submit-btn"
@@ -182,7 +247,7 @@ export default function SignUp() {
             <div className="form2">
               Already have a account ?
               <Link to="/signin">
-                <span style={{cursor: "pointer" }}> Sign In</span>
+                <span style={{ cursor: "pointer" }}> Sign In</span>
               </Link>
             </div>
           </div>
