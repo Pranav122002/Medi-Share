@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
+import { toast } from "react-toastify";
 
 export default function UserProfile({ id }) {
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
+
   const [user, setUser] = useState(null);
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(false);
@@ -29,6 +33,24 @@ export default function UserProfile({ id }) {
       }
     }
   }, [id, editing]);
+
+  const verifyUser = () => {
+    console.log("", id);
+    
+
+    fetch(`${API_BASE_URL}/verify-user/${id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+     console.log("verified user = ", res);
+     notifyB("User verified successfully.")
+
+        
+      });
+  };
 
   const fetchUser = () => {
     setIsMine(false);
@@ -128,6 +150,8 @@ export default function UserProfile({ id }) {
     }
   };
 
+
+
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -135,6 +159,7 @@ export default function UserProfile({ id }) {
   return (
     <div>
       <h1>User Profile</h1>
+
       <div>
         <p>Name: {user.name}</p>
 
@@ -168,7 +193,9 @@ export default function UserProfile({ id }) {
           </div>
         )}
       </div>
+
       {isMine && !editing && <button onClick={handleEdit}>Edit Profile</button>}
+
       {editing && (
         <div>
           <h2>Edit Profile</h2>
@@ -267,6 +294,18 @@ export default function UserProfile({ id }) {
             </div>
           )}
           <button onClick={handleSubmit}>Save</button>
+        </div>
+      )}
+
+      {JSON.parse(localStorage.getItem("user")).role === "admin" && (
+        <div>
+          <button
+            onClick={() => {
+              verifyUser();
+            }}
+          >
+            Verify
+          </button>
         </div>
       )}
     </div>

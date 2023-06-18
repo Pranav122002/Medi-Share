@@ -149,4 +149,45 @@ router.get("/api/all-personal-users/:id", async (req, res, next) => {
   }
 });
 
+router.get("/api/verify-user/:id", async (req, res) => {
+  const { id } = req.params;
+  const user = await USER.findById(id);
+
+  if (user.role === "doctor") {
+    DOCTOR.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          "doctor_details.verification": "verified",
+        },
+      },
+      { new: true }
+    )
+      .then((doc) => {
+        res.json(doc);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.json("User not found.");
+      });
+  } else if (user.role === "volunteer") {
+    VOLUNTEER.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          "volunteer_details.verification": "verified",
+        },
+      },
+      { new: true }
+    )
+      .then((doc) => {
+        res.json(doc);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.json("User not found.");
+      });
+  }
+});
+
 module.exports = router;

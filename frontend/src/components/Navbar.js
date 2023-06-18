@@ -20,7 +20,6 @@ export default function Navbar() {
   const notifyB = (msg) => toast.success(msg);
 
   const [showVNavbar, setShowVNavbar] = useState(!false);
-
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isVolunteer, setIsVolunteer] = useState(false);
