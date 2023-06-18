@@ -32,10 +32,6 @@ const userSchema = new mongoose.Schema({
   subscription_end_date: {
     type: String,
   },
-  certificate: {
-    type: String,
-    // required: true,
-  },
   cart: [
     {
       medicine_name: {

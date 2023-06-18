@@ -30,7 +30,6 @@ router.post("/api/signup", async (req, res) => {
       phone_number,
       password: hashedPassword,
       role: role,
-      certificate: certificate,
     });
 
     let newUser;
@@ -39,10 +38,13 @@ router.post("/api/signup", async (req, res) => {
       res.json(userData);
     } else if (role === "doctor") {
       newUser = new DOCTOR(user);
+      newUser.doctor_details.certificate = certificate;
       const userData = await newUser.save();
       res.json(userData);
     } else if (role === "volunteer") {
       newUser = new VOLUNTEER(user);
+      newUser.volunteer_details.certificate = certificate;
+
       const userData = await newUser.save();
       res.json(userData);
     }
