@@ -103,7 +103,7 @@ export default function Home() {
         </div>
        
       </div>
-      <Latestanc/>
+   
     </div>
 
   </>);

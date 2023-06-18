@@ -98,24 +98,26 @@ export default function Request() {
       <div className="bodyy">
         <Navbar />
         <div className="donate_instru">
-          <h1>Some Important Instructions for Request</h1>
           <div className="donate_content">
-          <img id="rcurve" src="./curve2.png" alt="" />
+            
+          <h1>Not able to find your required medicine in our inventory ?</h1>
             <div className="points">
-              <p>1.The medicine request can me made in limited quantity.</p>
+              {/* <p>1.The medicine request can me made in limited quantity.</p>
               <p>2.Medicines which require doctors prescription cannot pe requested directly without it.</p>
               <p>3.There is no specific delivery time for the request medicine as soon as it is received by us it will be delivered.</p>
-              <p>4.All the medicines are checked by our volunteers, we only accept and provide medicines which have the important information visible on them.</p>
+              <p>4.All the medicines are checked by our volunteers, we only accept and provide medicines which have the important information visible on them.</p> */}
+              <h3>Enter the required medicine name as per your requirement <br />and we will try to add it to our inventory as soon as possible</h3>
             </div>
             
-            <img data-aos="fade-down-left" src="./pills.png" alt="" />
+         
 
           </div>
+          <img data-aos="fade-right" id="reqim" src="./reque.jpg" alt="" />
         </div>
 
         <div className="request">
           
-            <div data-aos="zoom-in" className="requestForm">
+            <div data-aos="fade-right" className="requestForm">
               <div className="logo">
                 <h1>Request Medicine</h1>
               </div>
@@ -133,46 +135,11 @@ export default function Request() {
                   }}
                 />
               </div>
-              <div>
-                <input
-                  type="date"
-                  name="expiry_date"
-                  id="expiry_date"
-                  placeholder="Expiry Date"
-                  value={expiry_date}
-                  onChange={(e) => {
-                    setExpiryDate(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="quantity"
-                  id="quantity"
-                  placeholder="Quantity"
-                  value={quantity}
-                  onChange={(e) => {
-                    setQuantity(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  placeholder="Location"
-                  value={location}
-                  onChange={(e) => {
-                    setLocation(e.target.value);
-                  }}
-                />
-              </div>
+
               <button className="button-53" onClick={() => {postOrderData();}} value="Request" type="submit" role="button">Request</button>
               
             </div>
-            <div className={`suggestions ${sug && 'active'}`}>
+            {/* <div className={`suggestions ${sug && 'active'}`}>
 
             <ul>
               <li style={{ color: "black" }}>
@@ -193,7 +160,8 @@ export default function Request() {
                 );
               })}
             </ul>
-          </div>
+          </div> */}
+          
           </div>
         </div>
         

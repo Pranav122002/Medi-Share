@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+    font-family: "Nunito", sans-serif;
+  }
+.comsssc{
+    background: rgb(247, 247, 247);
+    height: 60rem;
+    overflow: hidden;
+}
+
+.commchat{
+    position: relative;
+    border-radius: 1rem; 
+    margin: auto;
+    width: 80vw;
+    margin-top: 2rem;
+    background:rgb(247, 250, 255); ;
+    height: 49rem;
+    box-shadow: 2px 2px 9px rgb(220, 220, 220);
+}
+.commchat .submitmenu{
+    width: 100%;
+    bottom: 0rem;
+  
+}
+
+.commmess{
+    height: 45rem;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.commchat .datemess{
+    margin-left: 91%;
+   
+ }
+ .commchat .datemesss{
+    margin-left: 91%;
+ }
+
+ #senderrole{
+    margin-left: 1rem;
+    margin-top: -0.4rem;
+    background: rgb(81, 131, 174);
+    padding: 0.4rem;
+    border-radius: 1rem;
+ }
+ #recrole{
+    margin-left: 1rem;
+    margin-top: -0.4rem;
+    background: #1a242a;
+    padding: 0.4rem;
+    border-radius: 1rem;
+ }
+
+ .wowowow{
+    font-size: 1.1rem;
+    display: flex;
+ }
+
+ @media screen and (max-width: 1000px){
+    .commchat{
+        position: relative;
+        border-radius: 1rem; 
+        margin: auto;
+        width: 95vw;
+        margin-top: 2rem;
+        background:rgb(247, 250, 255); ;
+        height: 49rem;
+    }
+    .commchat .datemess{
+        margin-left: 70%;
+       
+     }
+     .commchat .datemesss{
+        margin-left: 70%;
+     }
+    
+ }

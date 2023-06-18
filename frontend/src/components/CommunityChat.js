@@ -3,7 +3,8 @@ import io from "socket.io-client";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { BASE_URL, API_BASE_URL } from "../config.js";
-
+import "../css/Communitychat.css"
+import "../css/PersonalChat.css"
 const socket = io(`${BASE_URL}`);
 
 const Chat = () => {
@@ -89,43 +90,47 @@ const Chat = () => {
   };
 
   return (
-    <div>
+    <div className="comsssc">
       <Hnavbar />
       <div>
         <div className="bodyy">
           <Navbar />
-          <div>
-            <div>
+          <div className="commchat">
+            <div className="commmess">
               {messages.map((message, index) => (
                 <>
                   {message.sender_id === userid ? (
                     <>
-                      <div className="right-msg">
+                      <div className="sender-mess">
                         <p key={index}>
-                          Message: {message.message} | Sender :{" "}
-                          {message.sender_name} | Role : {message.sender_role} |
-                          timestamp :{" "}
-                          {new Date(message.createdAt).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: false,
-                          })}
+                          <p className="wowowow">{message.sender_name} <div id="senderrole"> {message.sender_role} </div></p>
+                          {message.message}
+
+                          <div className="datemesss">
+                            {new Date(message.createdAt).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              hour12: true,
+                            })}
+                          </div>
                         </p>
                       </div>
                     </>
                   ) : (
                     <>
                       {" "}
-                      <div className="left-msg">
+                      <div className="received-msg">
                         <p key={index}>
-                          Message: {message.message} | Sender :{" "}
-                          {message.sender_name} | Role : {message.sender_role} |
-                          timestamp :{" "}
-                          {new Date(message.createdAt).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: false,
-                          })}
+                          <p className="wowowow">{message.sender_name} <div id="recrole"> {message.sender_role} </div></p>
+                          {message.message}
+
+                          <div className="datemess">
+                            {new Date(message.createdAt).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              hour12: true,
+                            })}
+                          </div>
                         </p>
                       </div>
                     </>
@@ -133,12 +138,21 @@ const Chat = () => {
                 </>
               ))}
             </div>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-            />
-            <button onClick={sendMessage}>Send</button>
+            <div className="submitmenu">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+              <button
+                id="sendbutton"
+                onClick={sendMessage}
+
+              >
+                <img src="./send.png" id="sendicon" alt="send" />
+              </button>
+
+            </div>
           </div>
         </div>
       </div>

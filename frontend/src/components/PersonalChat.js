@@ -34,8 +34,7 @@ const PersonalChat = () => {
   useEffect(() => {
     if (selectedUser) {
       fetch(
-        `${API_BASE_URL}/all-personal-messages/${
-          JSON.parse(localStorage.getItem("user"))._id
+        `${API_BASE_URL}/all-personal-messages/${JSON.parse(localStorage.getItem("user"))._id
         }/${selectedUser._id}`
       )
         .then((response) => response.json())
@@ -66,8 +65,7 @@ const PersonalChat = () => {
 
   useEffect(() => {
     fetch(
-      `${API_BASE_URL}/all-chat-users/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/all-chat-users/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -164,42 +162,43 @@ const PersonalChat = () => {
                   </div>
                 )}
               </div>
-              <div>
+              <div className="messages">
                 {messages.map((message, index) => (
                   <>
                     {message.sender_id === userid ? (
                       <>
-                        <div className="right-msg">
+                        <div className="sender-mess">
                           <p key={index}>
-                            Message: {message.message} | Sender:{" "}
-                            {message.sender_name} | Receiver:{" "}
-                            {message.receiver_name} | timestamp :{" "}
-                            {new Date(message.createdAt).toLocaleTimeString(
-                              [],
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                hour12: false,
-                              }
-                            )}
+                            <p>{message.message}</p>
+                            <div className="datemesss">
+                              {new Date(message.createdAt).toLocaleTimeString(
+                                [],
+                                {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                  hour12: true,
+                                }
+                              )}
+                            </div>
                           </p>
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className="left-msg">
+                        <div className="received-msg">
                           <p key={index}>
-                            Message: {message.message} | Sender:{" "}
-                            {message.sender_name} | Receiver:{" "}
-                            {message.receiver_name} | timestamp :{" "}
-                            {new Date(message.createdAt).toLocaleTimeString(
+                            <p>{message.message}</p>
+
+                            <div className="datemess">{new Date(message.createdAt).toLocaleTimeString(
                               [],
                               {
                                 hour: "2-digit",
                                 minute: "2-digit",
-                                hour12: false,
+                                hour12: true,
+
                               }
                             )}
+                            </div>
                           </p>
                         </div>
                       </>
@@ -208,6 +207,7 @@ const PersonalChat = () => {
                 ))}
               </div>
               <div className="submitmenu">
+
                 <input
                   type="text"
                   value={inputValue}
@@ -218,7 +218,7 @@ const PersonalChat = () => {
                   onClick={sendPersonalMessage}
                   disabled={!selectedUser}
                 >
-                  <img src="./direct.png" alt="send" />
+                  <img src="./send.png" id="sendicon" alt="send" />
                 </button>
               </div>
             </div>

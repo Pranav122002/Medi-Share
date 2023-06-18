@@ -1,22 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+*::-webkit-scrollbar {
+    width: 5px;
+ }
+ *::-webkit-scrollbar-track {
+    background: #f1f1f1;
+ }
+ * ::-webkit-scrollbar-thumb {
+    background: #bec4c4;
+ }
+ *::-webkit-scrollbar-thumb:hover {
+    background: #a5a5a5;
+}
 
 * {
   font-family: "Nunito", sans-serif;
 }
 
-.left-msg {
-    color: aqua;
-}
-.right-msg {
-    color: yellow;
-}
 .chatcont{
     background: rgb(252, 252, 252);
     margin: auto;
     width: 80vw;
     margin-top: 2rem;
     display: flex;
-    height: 40rem;
+    height: 45rem;
+    box-shadow: 2px 2px 9px rgb(220, 220, 220);
+   
+    
     
 }
 
@@ -44,7 +53,7 @@
     
     overflow: scroll;
     overflow-x: hidden;
-    height: 36rem;
+    height: 41rem;
     
 }
 
@@ -61,7 +70,10 @@
 .chatcont .cinfo .userss p:hover{
     background: rgb(238, 248, 255);
 }
-
+#sendicon{
+    
+filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(211deg) brightness(104%) contrast(101%);
+}
 .chatcont .cinfo hr {
    
     margin: 0;
@@ -75,7 +87,7 @@
     padding: 0;
 }
 .chatcont .selchat{
-    height: 40rem;
+    height: 45;
     background:rgb(247, 250, 255); ;
     width: 70%;
     
@@ -94,6 +106,55 @@
   font-size: 1.5rem;
 }
 
+.selchat .messages{
+    height:37rem;
+    overflow: scroll;
+    overflow-x:hidden ;
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .button {
+    background: transparent;
+    outline: none;
+    border: none;
+  }
+.received-msg {
+    
+    background: #202C33;
+    overflow-wrap: break-word;
+    width: 70%;
+    color: rgb(255, 255, 255);
+    margin-left: 1rem;
+    text-align: left;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+}
+
+.sender-mess {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background: rgb(108, 150, 187);
+    overflow-wrap: break-word;
+    width: 60%;
+    color: rgb(255, 255, 255);
+    margin-left:38%;
+    text-align: left;
+}
+
+.datemess{
+   margin-left: 86%;
+  
+}
+.datemesss{
+    margin-left: 86%; 
+}
+
 #sendbutton{
     background: none;
     border: none;
@@ -109,7 +170,7 @@
     
 }
 #sendbutton img:hover{
-    transform: rotate(5deg);
+    transform: translateX(1px);
 }
 
 .submitmenu{
