@@ -93,7 +93,7 @@ export default function Request() {
 
 
   return (
-    <div>
+    <div className="requestapp">
       <Hnavbar />
       <div className="bodyy">
         <Navbar />

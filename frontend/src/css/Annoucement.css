@@ -3,82 +3,162 @@
 * {
   font-family: "Nunito", sans-serif;
 }
+.announce{
+  max-width: 100vw;
+  
+}
 
 .announce .bodyy {
     margin: auto;
     width: 100vw;
     height: 100vh;
-    background: #f1fffd;
+ 
     padding: 1px;
 
 }
 
 .bord {
-  border-radius: 10px;
+  width: 100%;
 
 }
 .anc {
 
   border-radius: 1px;
   margin: auto;
-  width: 88vw;
-  background: white;
+  width: 100vw;
+  background: #d5f0ff;
   min-height: 38vw;
   height: max-content;
   margin-top: 0rem;
-  background-image: url(../../public/list.png);
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 35rem;
   padding: 1px;
-  margin-top: 2rem;
+  margin-top: 0rem;
 }
 
-.anc .ancinfo .ancflex {}
+.anc .ancinfo .ancflex {
+  
+}
 
 .anc .ancinfo {
   height: max-content;
+  background: white;
+  width: 88vw;
+  margin: auto;
+  margin-top: 2rem;
+  height: 10rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+.anc .ancinfo h1{
+    margin: 0;
+    float: left;  
+    font-size: 1.7rem;
+    color: #34a1d4;
+    margin-left: 2rem;
+    margin-top: 1rem;
+
+}
+.anc .ancinfoback{
+  background: #48B0DF;
+  margin: 0;
+  padding: 0.1px;
+  height: 14rem;
+ 
+}
+.anc .ancinfo img {
+  height: 9rem;
+  border-radius: 1rem;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+
 }
 
-.anc .ancinfo img {
-  width: 5rem;
+.anc .formancc{
+  background: rgb(249, 249, 249);
+  width: 100vw;
+  padding: 0.1px;
+  height: 36rem;
+  
 }
 
 .anc .ancinfo p {
-  font-size: 1.2vw;
+  font-size: 1rem;
   text-align: left;
-  margin-left: 3rem;
-  width: 60%;
+  margin-left: 2rem;
+  float: left;
+  width: 100%;
+  font-weight: 300;
 }
 
 .announce .anc li {
-  height: 2rem;
-  list-style: none;
-  margin-top: 0rem;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  display: flex;
-  align-items: flex-start;
-  padding-left: 2rem;
-  border: 1px;
-  text-align: center;
-  height: min-content;
-  width: 90%;
-  align-items: center;
-  box-shadow: 2px 2px 8px #cdcdcd;
-  background: white;
+height: 2rem;
+list-style: none;
+margin-top: 0rem;
+height: min-content;
+width: 96%;
+align-items: center;
+
+background: white;
 
 }
 .announce .anc li:first-child{
-  background: #00BFBA;
+  background: #48B0DF;
   color: white;
+  width: 90%;
 }
 
-.announce .anc li:hover {
-  width: 91%;
-  box-shadow: 2px 2px 11px #90c6b8;
+.anc .anclistitems{
+  background: white;
+  width: 92%;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
+.anc .anclistitemsbr{
+   height: 0.15rem;
+   width: 97%;
+    border: none;
+   background: rgb(230, 230, 230);
+   margin: auto;
+}
+
+.anclistss{
+  width: 90vw;
+  margin: auto;
+  margin-top: 1rem;
+}
+.anclistss h1{
+  font-size: 1.7rem;
+  color: #48B0DF;
+  float: left;
+  margin-left: 3rem;
+
+
+}
+.anc .bord h3{
+  font-weight: 500;
+  font-size: 1rem;
+}
+.anc .bord:first-child h3{
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.anc .bord:first-child{
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.anc .anclistitems li:first-child{
+  color: black;
+  background: white;
+  text-align: center;
+  width: 98%;
+  
+}
+.anc .anclistitems li:first-child h3{
+  font-weight: 400;
+  font-size: 1rem;
+}
 .anc li .p1 {
   margin-left: 4rem;
   width: 100%;
@@ -87,7 +167,7 @@
 
 .anc li .p2 {
   text-align: center;
-  margin-right: 2rem;
+  margin-right: 0rem;
   width: 100%;
 
 }
@@ -96,9 +176,12 @@
   text-align: center;
   margin-right: 2rem;
   width: 100%;
+  
 
 }
-
+.anc li .p6{
+  width: 100%;
+}
 
 /* .donate {
   background-repeat: no-repeat;
@@ -112,43 +195,49 @@
 } */
 
 .AForm {
-  margin-top: 2rem;
-  background-color: #f9f9f9;
+ 
+  background-color: hsl(0, 0%, 99%);
   padding: 30px;
   width: 30vw;
   height: max-content;
   box-shadow: 2px 2px 8px rgb(213, 213, 213);
-  margin-left: 10%;
+
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
 }
 
-.Formcont {
-
-  display: flex;
-  justify-content: flex-start;
-  
+.Formcont .button-53{
+    border-radius: 0.5rem;
+    background: #48B0DF;
+    color: white;
 }
 .AForm #title{
     width: 70%;
     padding: auto;
-    height: 2rem;
+    height: 1.5rem;
     text-align: center;
+    border-radius: 0.5rem;
+}
+.AForm #title:focus{
+  height: 3rem;
 }
 
 .AForm input{
+  border-radius: 0.5rem;  
   font-weight: 700;
   text-align: center;
   width: 70%;
-  min-height: 2rem;
+  height: 3rem;
   margin-top: 1rem;
+  background: #f8feff;
 }
 
-.AForm input:hover{
-  font-weight: 700;
-  text-align: center;
-  width: 75%;
-  box-shadow: 2px 2px 8px rgb(192, 255, 249);
-  min-height: 2rem;
-  margin-top: 1rem;
+
+.AForm input:focus{
+    border: 2px solid #48B0DF;
+    height: 3rem;
 }
 /* 
 .donate input {

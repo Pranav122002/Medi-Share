@@ -82,7 +82,7 @@ export default function Donate() {
     })
       .then((res) => res.json())
       .then((results) => {
-         
+
 
         setSearchResult(results.medicine);
       });
@@ -90,12 +90,12 @@ export default function Donate() {
 
 
   return (
-    <div>
+    <div className="donateeapp">
       <Hnavbar />
       <div className="bodyy">
         <Navbar />
         <div className="donate_instru">
-
+   
           <div className="donate_content">
             <h1>Some Important Instructions for Donating</h1>
             {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
@@ -108,8 +108,8 @@ export default function Donate() {
 
           </div>
           <img src="./donmed.jpg" data-aos="fade-right" alt="" srcset="" />
-        </div>
-
+    
+</div>
 
         <div className="donate">
 

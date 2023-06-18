@@ -7,14 +7,25 @@
   margin: 0;
   border: 0;
   width: 100vw;
+  
 }
+.donateeapp .bodyy{
+  background: #48B0DF;
+  padding: 0.1px;
+}
+
+.requestapp .bodyy{
+  background: #48B0DF;
+  padding: 0.1px;
+}
+
 .donate_instru img{
   height: 10rem;
   float: right;
   border-radius: 1rem;
 }
 .donate_instru{
-  box-shadow: 2px 2px 9px rgb(236, 236, 236);
+  box-shadow: 2px 2px 9px rgb(199, 199, 199);
   width: 80vw;
   margin: auto;
   height: max-content;
@@ -23,6 +34,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  background: white;
 }
 .donate_content{
   
