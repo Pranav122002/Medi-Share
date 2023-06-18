@@ -220,7 +220,7 @@ export default function Profile() {
           </div>
           <div className="donatedorders">
             <h2>
-              My Donated Orders <img className="titleimg" src="./donatemed.png" alt="" />
+            <img className="titleimg" src="./donatemed.png" alt="" /> My Donated Orders
             </h2>
             <ul className="proul">
               <li className="profli">
@@ -248,7 +248,7 @@ export default function Profile() {
 
           <div className="requestorders">
             <h2>
-              My Requested Orders <img className="titleimg" src="./requestmed.png" alt="" />
+            <img className="titleimg" src="./requestmed.png" alt="" /> My Requested Orders 
             </h2>
             <ul className="proul">
               <li className="profli">
@@ -277,7 +277,7 @@ export default function Profile() {
           {isdoctor ? (
             <div className="appointm">
               <h2>
-                My Appointments <img className="titleimg" src="./appointment.png" alt="" />{" "}
+              <img className="titleimg" src="./appointment.png" alt="" />{" "}   My Appointments
               </h2>
               <ul className="proul">
                 <li className="profli">
@@ -316,7 +316,7 @@ export default function Profile() {
           ) : (
             <div className="myappoint">
               <h2>
-                My Appointments <img className="titleimg" src="./appointment.png" alt="" />
+              <img className="titleimg" src="./appointment.png" alt="" />   My Appointments 
               </h2>
               <ul className="proul">
                 <li className="profli">
