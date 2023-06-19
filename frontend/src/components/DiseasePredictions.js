@@ -7,9 +7,9 @@ import { Hnavbar } from "./Hnavbar";
 import "../css/Dis.css";
 function DiseasePredictions() {
   return (
-    <div>
+    <div className="dispredd">
       <div className="chatfunc">
-        <div className="chatcont">
+        <div className="chatcontc">
           <h1>Disease Predictions</h1>
           <p>
             Do a disease predicition now. We use Machine learning technology to
@@ -17,26 +17,26 @@ function DiseasePredictions() {
             occurance.
           </p>
         </div>
-        <img src="diseases.png" alt="" />
+        <img src="disssp.jpg" alt="" />
       </div>
       <div className="dis">
         <h2>Available disease prediction </h2>
         <div className="dise">
-          <Link to="/diabetes">
+          <Link to="/diabetes" data-aos="fade-right">
             <li className="Cnavli">Diabetes</li>
-            <img src="./daibetes.png" alt="" />
+            <img src="./sugar-blood-level.png" alt="" />
           </Link>
-          <Link to="/Pneumonia">
+          <Link to="/Pneumonia" data-aos="fade-left" >
             <li className="Cnavli">Pnuemonia</li>
-            <img src="./lungs.png" alt="" />
+            <img src="./pneumonia.png" alt="" />
           </Link>
-          <Link to="/heartDisease">
+          <Link to="/heartDisease" >
             <li className="Cnavli">Heart Disease</li>
-            <img src="./heart.png" alt="" />
+            <img src="./heart-disease.png" alt="" />
           </Link>
-          <Link to="/brainTumor">
+          <Link to="/brainTumor"  >
             <li className="Cnavli">Brain Tumor</li>
-            <img src="./brain.png" alt="" />
+            <img src="./brain-tunor.png" alt="" />
           </Link>
         </div>
       </div>

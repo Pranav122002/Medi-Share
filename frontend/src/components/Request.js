@@ -86,6 +86,8 @@ export default function Request() {
   return (
     <div className="requestapp">
       <div className="bodyy">
+        
+        <div className="donatecont">
         <div className="donate_instru">
           <div className="donate_content">
             <h1>Not able to find your required medicine in our inventory ?</h1>
@@ -158,6 +160,7 @@ export default function Request() {
             </ul>
           </div> */}
         </div>
+      </div>
       </div>
     </div>
   );

@@ -8,6 +8,14 @@
   border: 0;
   width: 100vw;
 }
+
+.donatecont{
+  width: 81vw;
+  margin-left: auto;
+  margin-right: 2vw;
+ 
+}
+
 .donateeapp .bodyy {
   background: #48b0df;
   padding: 0.1px;
@@ -25,7 +33,7 @@
 }
 .donate_instru {
   box-shadow: 2px 2px 9px rgb(199, 199, 199);
-  width: 80vw;
+  width: 81vw;
   margin: auto;
   height: max-content;
   margin-bottom: 2rem;
@@ -50,8 +58,8 @@
   margin: auto;
   display: flex;
   justify-content: center;
-
-  background: #d5f0ff;
+  border-radius: 1rem;
+  background: #e9f3f8;
 }
 
 .donateForm select {
@@ -157,7 +165,7 @@
   left: 2px;
 }
 
-.suggestions {
+/* .suggestions {
   position: relative;
   z-index: 24;
   margin-top: 3rem;
@@ -166,7 +174,7 @@
   width: 22vw;
   min-width: 20rem;
   border-radius: 0.5rem;
-}
+} */
 
 .suggestions.active {
   display: none;

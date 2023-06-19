@@ -1,4 +1,13 @@
 
+.homeeee .Lcontent .banner1 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  
+}
 .images{
   padding-top:5%;
   width: 60%;

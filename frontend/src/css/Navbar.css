@@ -1,6 +1,7 @@
 
 .one {
-  width: 130%;
+  pointer-events: none;
+  width: 100%;
   height: 5rem;
   text-align: left;
   background: white;
@@ -9,12 +10,13 @@
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   align-items: center;
+  padding-left: 0.7rem;
 }
 
 
 
 .two {
-  width: 100%;
+
  
 }
 #servicesicon{
@@ -34,24 +36,24 @@
 }
 
 .navbar{
+  
   border-right: 1px solid rgb(219, 219, 219);
   border-radius: 0rem;
   margin-left: 0rem ;
-  margin-top: 0rem;
+  margin-top: 0rem; 
   padding: 0;
-  width: 17%;
-  box-shadow: 2px 2px 9px rgb(218, 218, 218);
+  width: 14vw;
+  box-shadow: 2px 2px 9px rgb(173, 173, 173);
   background-color: rgb(255, 255, 255);
   height: 100vh;
   display: flex;
   flex-direction: column;
-  min-width: 180px;
   position: fixed;
   z-index: 23;
    
  
 }
-.navbar.active {
+/* .navbar.active {
 
  width: 6rem;
  min-width: 0;
@@ -66,9 +68,9 @@
   top: 4rem;  
   
   
-} 
+}  */
 .navbar.false .two .navimg{
-  display: none;
+  filter: invert(64%) sepia(97%) saturate(1209%) hue-rotate(168deg) brightness(94%) contrast(85%);
 }
 
 .navbar.false{
@@ -83,7 +85,7 @@
   
 }
 
-@keyframes slideN {
+/* @keyframes slideN {
   0% {
     min-width:180px ;
     width: 17%;
@@ -93,9 +95,9 @@
     width: 6rem;
     min-width: 0;
   }
-}
+} */
 
-@keyframes slidea {
+/* @keyframes slidea {
   0% {
     
     width: 200%;
@@ -129,8 +131,8 @@
 @keyframes dis{
   100%{
     display: none;
-  }
-}
+  } */
+/* } */
 .navbar.false .navli{
 
   animation-duration: 0.5s;
@@ -138,7 +140,15 @@
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
+  padding-left: 0;
   color: #48B0DF;
+  margin-left: 0.5rem;
+  
+}
+
+.navimgspace{
+  padding-top: 1rem;
+  width: 2.5vw;
 }
 
 .navbar.false #arrow{
@@ -149,7 +159,7 @@
   
 }
 
-.navbar.active .two{
+/* .navbar.active .two{
  width: 2rem;
  animation-name: slideN;
  animation-duration: 2s;
@@ -161,7 +171,7 @@
 
 .navbar.active .two::-webkit-scrollbar{
   display: none;
-}
+} */
 
 .navbar.false .two::-webkit-scrollbar{
   display: none;
@@ -173,7 +183,7 @@
 #adcd{
   filter: invert(64%) sepia(97%) saturate(1209%) hue-rotate(168deg) brightness(94%) contrast(85%);
 }
-.navbar.active ul .navimg{
+/* .navbar.active ul .navimg{
   margin: auto;
   filter: invert(71%) sepia(12%) saturate(3941%) hue-rotate(169deg) brightness(91%) contrast(91%);
 }
@@ -184,7 +194,7 @@
  animation-fill-mode: forwards;
 
 
-}
+} */
 
 .navbar.false .nav-menu{
    
@@ -196,9 +206,9 @@
   padding-bottom: 7rem; 
 }
 
-
+/* 
 .navbar.active ul a{
-  /* pointer-events: none; */
+  
   height: 7vh;
   box-shadow: 2px 2px 9px rgb(233, 233, 233);
   display: flex;
@@ -216,7 +226,7 @@
 
 .navbar.active .one h1{
   display: none;
-}
+} */
 
 ul {
   text-align: center;
@@ -226,7 +236,7 @@ ul {
 }
 
 ul .navimg{
-  height: 2rem;
+  height: 1.5vw;
   margin-top: auto;
   margin-bottom: auto;
   padding-right: 0.5rem;
@@ -242,7 +252,7 @@ li {
   margin-top: 0rem;
   padding-top: 15px;
   padding-bottom: 10px;
-  
+  font-size: 1vw;
   display: flex;
   align-items: flex-start;
   padding-left: 2rem;
@@ -273,7 +283,10 @@ ul a{
   color: black;
   font-size: 18px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding-left: 1.5rem;
+  padding-left: 1.5rem; 
+
   
 }
 ul a:nth-child(even){
@@ -292,83 +305,8 @@ ul a:nth-child(even){
 
 @media screen and (max-width: 1000px){
 
-  .navbar.active .two::-webkit-scrollbar{
-    display: none;
-  }
-  
-  .navbar.false .two::-webkit-scrollbar{
-    display: none;
-  }
-
-  
-.navbar.false .one{
-  overflow: scroll;
-}
-
-  .navbar.false .two{
-    overflow: scroll;
-  }
-  
-  .links.active .navli{
-    display: none;
-    min-width: 0;
-    animation-name: slideN;
-     animation-duration: 0.5s;
-     animation-fill-mode: forwards;
-     position: fixed;
-     z-index: 23;
-     
-     
-   } 
-   @keyframes slideV {
-    0% {
-      
-      width: 4rem;
-      min-width: 0;
-      
-    }
-    100% {
-      min-width:300px ;
-      width: 35%;
-    }
-  }
-  .one h1{
-    margin-left: 1rem;
-    font-size: 1.5rem;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  .one{
-   
-
-  }
-  .one .navimg{
-    margin-left: 1rem;
-    height: 1.5rem;
-    
-  }
-  .navbar.active {
-    width: 6rem;
-    margin-left: -6rem;
-    min-width: 0;
-    animation-name: slideN;
-     animation-duration: 0.5s;
-     animation-fill-mode: forwards;
-     position: fixed;
-     z-index: 23;
-    overflow:visible;
-     
-   } 
-   .navbar.active .nav-menu{
-      margin-left: -50vw;
-   }
-
-   .navbar.false{
-      overflow: scroll;
-   }
-   .one {
-    
-    width: 150%;
+  .one {
+    width: 130%;
     height: 5rem;
     text-align: left;
     background: white;
@@ -376,13 +314,57 @@ ul a:nth-child(even){
     box-shadow: 2px 2px 9px rgb(233, 233, 233);
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    align-items: center;
+    padding-left: 0.7rem;
   }
-  .one #arrow{
-   margin-left: 4rem;
+  .one h1{
+    margin-left: 1rem;
+    font-size: 1.5rem;
   }
-  .navbar.false .two .navimg{
-    
+  .navbar{
+    border-right: 1px solid rgb(219, 219, 219);
+    border-radius: 0rem;
+    margin-left: 0rem ;
+    margin-top: -1rem; 
+    padding: 0;
+    width: 20rem;
+    box-shadow: 2px 2px 9px rgb(173, 173, 173);
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
     display: flex;
-    filter: invert(71%) sepia(12%) saturate(3941%) hue-rotate(169deg) brightness(91%) contrast(91%);
+    flex-direction: column;
+    min-width: 180px;
+    position: fixed;
+    z-index: 23;
+     
+   
   }
+  .navimgspace{
+    padding-top: 1rem;
+    width: 2.5rem;
+  }
+  li {
+
+    height: 2rem;
+    list-style: none;
+    width: max-content; 
+  
+    margin-top: 0rem;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 2rem;
+    
+   
+  }
+  ul .navimg{
+    height: 1.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 0.5rem;
+    
+  } 
+  
 }

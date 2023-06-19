@@ -3,7 +3,7 @@ import "../css/Donate.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
-import { Hnavbar } from "./Hnavbar";
+import Hnavbar from "./Hnavbar";
 import Medicines from "./Medicines";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -87,90 +87,93 @@ export default function Donate() {
 
   return (
     <div className="donateeapp">
+    
       <div className="bodyy">
-        <div className="donate_instru">
-          <div className="donate_content">
-            <h1>Some Important Instructions for Donating</h1>
-            {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
-            <div className="points">
-              <p>
-                1.The medicine to be donated should be valid and not expired or
-                fabricated.
-              </p>
-              <p>2.The medicine name , expiry date should be visible.</p>
+        
+        <div className="donatecont">
+          <div className="donate_instru">
+            <div className="donate_content">
+              <h1>Some Important Instructions for Donating</h1>
+              {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
+              <div className="points">
+                <p>
+                  1.The medicine to be donated should be valid and not expired or
+                  fabricated.
+                </p>
+                <p>2.The medicine name , expiry date should be visible.</p>
+              </div>
             </div>
+            <img src="./donmed.jpg" data-aos="fade-right" alt="" srcset="" />
           </div>
-          <img src="./donmed.jpg" data-aos="fade-right" alt="" srcset="" />
-        </div>
 
-        <div className="donate">
-          <div data-aos="fade-right" className="donateForm">
-            <div className="logo">
-              <h1>Donate Medicine</h1>
-            </div>
-            <div>
-              <input
-                onClick={handleShowsug}
-                type="text"
-                name="medicine_name"
-                id="medicine_name"
-                value={medicine_name}
-                placeholder="Medicine Name"
-                onChange={(e) => {
-                  setMedicineName(e.target.value);
-                  fetchMedicines(e.target.value);
+          <div className="donate">
+            <div data-aos="fade-right" className="donateForm">
+              <div className="logo">
+                <h1>Donate Medicine</h1>
+              </div>
+              <div>
+                <input
+                  onClick={handleShowsug}
+                  type="text"
+                  name="medicine_name"
+                  id="medicine_name"
+                  value={medicine_name}
+                  placeholder="Medicine Name"
+                  onChange={(e) => {
+                    setMedicineName(e.target.value);
+                    fetchMedicines(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  type="date"
+                  name="expiry_date"
+                  id="expiry_date"
+                  placeholder="Expiry Date"
+                  value={expiry_date}
+                  onChange={(e) => {
+                    setExpiryDate(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity"
+                  placeholder="Quantity"
+                  value={quantity}
+                  onChange={(e) => {
+                    setQuantity(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="location"
+                  id="location"
+                  placeholder="Location"
+                  value={location}
+                  onChange={(e) => {
+                    setLocation(e.target.value);
+                  }}
+                />
+              </div>
+              <button
+                className="button-53"
+                onClick={() => {
+                  postOrderData();
                 }}
-              />
+                value="Donate"
+                type="submit"
+                role="button"
+              >
+                Donate
+              </button>
             </div>
-            <div>
-              <input
-                type="date"
-                name="expiry_date"
-                id="expiry_date"
-                placeholder="Expiry Date"
-                value={expiry_date}
-                onChange={(e) => {
-                  setExpiryDate(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                name="quantity"
-                id="quantity"
-                placeholder="Quantity"
-                value={quantity}
-                onChange={(e) => {
-                  setQuantity(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                name="location"
-                id="location"
-                placeholder="Location"
-                value={location}
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-              />
-            </div>
-            <button
-              className="button-53"
-              onClick={() => {
-                postOrderData();
-              }}
-              value="Donate"
-              type="submit"
-              role="button"
-            >
-              Donate
-            </button>
-          </div>
-          {/* <div className={`suggestions ${sug && 'active'}`}  >
+            {/* <div className={`suggestions ${sug && 'active'}`}  >
 
             <ul>
               <li style={{ color: "black" }}>
@@ -193,12 +196,14 @@ export default function Donate() {
             </ul>
           </div> */}
 
-          <div data-aos="zoom-in" className="donateback">
-            <h1>“No one has ever become poor from giving.</h1>
-            <p>Anne Frank</p>
+            <div data-aos="zoom-in" className="donateback">
+              <h1>“No one has ever become poor from giving.</h1>
+              <p>Anne Frank</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    
+    </div >
   );
 }

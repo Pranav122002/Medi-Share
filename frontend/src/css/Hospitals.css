@@ -1,64 +1,102 @@
 .hospimain {
-    background: rgb(240, 255, 253);
-    background-image: url(../../public/hospital2.png);
-    background-repeat: no-repeat;
-    background-position: top right;
-    background-size: 30rem;
+    width: 100vw;
+    background: #48b0df;
+    padding: 0.1px;
+
+    
 
 }
+
+
 
 .hospi {
-    width: 80vw;
-    margin: auto;
-    height: 30rem;
-
-}
-
-.hospicontent {
-    margin-top: 6rem;
-    min-height: 15rem;
-    height: max-content;
+    width: 82vw; 
+    height: 10rem;
     background: white;
-    width: 40vw;
-    font-size: 1.2vw;
-    font-weight: 700;
-    padding-top: 1px;
-    display: flex;
-    justify-content: space-around;
-    box-shadow: 2px 2px 8px rgb(225, 221, 221);
-
-}
-
-.hospicontent p {
+    margin-right: 2vw;
+    margin-left: auto;
+    border-radius: 1rem;
     margin-top: 2rem;
+   
 }
 
-.hospicontent img {
-    height: 15rem;
+.hospicontent{
+    padding-left: 2rem;
+    display: flex;
+    
+    
+}
+.hospicontent img{
+    height: 10rem;
+    margin-right: 2vw;
+    margin-left: auto;
+    
+}
+.hospicontent h2{
+    text-align: left;
+    margin-left: 0;
+    font-size: 1.7rem;
+}
+.hospicontent p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
 }
 
 .hosp {
-    margin-top: auto;
-    margin-bottom: auto;
+
 }
 
 .mainmap {
-    width: 80vw;
+    width: 82vw;
+    margin-right: 2vw;
+    margin-left: auto;
+    background: white;
+    margin-top: 2rem;
+    border-radius: 1rem;
+}
+.mapco{
+    width: 95%;
     margin: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
-.mapsearch {
-    width: 70vw;
-    height: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-weight: 900;
-    font-size: 1rem;
+.mapco li {
+    height: 2rem;
+    list-style: none;
+    width: 50rem;
+    margin-top: 0rem;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1vw;
+    display: block;
+
+    padding-left: 0rem;
+   
 }
 
-.minimap {
-    margin-bottom: 2rem;
+.mapco ul a {
+    height: 4.5rem;
+    box-shadow: 2px 2px 9px rgb(224, 224, 224);
+    display: flex;
+    text-decoration: none;
+    background: white;
+    color: black;
+    font-size: 15px;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    margin: 0;
+    padding-top: 1rem;
+    
+}   
+
+.mapco .suggestions{
+    
+    padding: 0;
+    margin: 0;
 }
+
 
 @media screen and (max-width: 1000px) {
 

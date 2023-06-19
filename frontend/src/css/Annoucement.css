@@ -5,7 +5,13 @@
 }
 .announce{
   max-width: 100vw;
-  
+ 
+}
+
+.anccont{
+  margin-left: auto;
+  margin-right: 0;
+  width: 100vw;
 }
 
 .announce .bodyy {
@@ -17,7 +23,7 @@
 
 }
 
-.bord {
+.anc .bord {
   width: 100%;
 
 }
@@ -26,12 +32,13 @@
   border-radius: 1px;
   margin: auto;
   width: 100vw;
-  background: #d5f0ff;
+  background: #f3fbff;
   min-height: 38vw;
   height: max-content;
   margin-top: 0rem;
   padding: 1px;
   margin-top: 0rem;
+  
 }
 
 .anc .ancinfo .ancflex {
@@ -41,13 +48,15 @@
 .anc .ancinfo {
   height: max-content;
   background: white;
-  width: 88vw;
+  width: 80vw;
   margin: auto;
   margin-top: 2rem;
   height: 10rem;
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: 2rem;
 
 }
 .anc .ancinfo h1{
@@ -64,6 +73,8 @@
   margin: 0;
   padding: 0.1px;
   height: 14rem;
+  width: 100vw;
+
  
 }
 .anc .ancinfo img {
@@ -102,8 +113,12 @@ align-items: center;
 background: white;
 
 }
+
+.announce .anc #anclisti li:first-child{
+  background: #3657A7;
+}
 .announce .anc li:first-child{
-  background: #48B0DF;
+  background: #3657A7;
   color: white;
   width: 90%;
 }
@@ -124,13 +139,15 @@ background: white;
 }
 
 .anclistss{
-  width: 90vw;
+  width: 80vw;
   margin: auto;
   margin-top: 1rem;
+  margin-left: auto;
+  margin-right: 2rem;
 }
 .anclistss h1{
   font-size: 1.7rem;
-  color: #48B0DF;
+  color: #4d73ca;
   float: left;
   margin-left: 3rem;
 

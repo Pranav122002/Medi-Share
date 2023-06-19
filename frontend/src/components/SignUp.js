@@ -183,29 +183,30 @@ export default function SignUp() {
                   }}
                 />
               </div>
+              <div >
+                {role === "doctor" || role === "volunteer" ? (
+                  <div className="uploadimage">
+                    <img
+                      id="output"
+                      src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+                      height="50"
+                      width="50"
+                    />
 
-              {role === "doctor" || role === "volunteer" ? (
-                <div>
-                  <img
-                    id="output"
-                    src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
-                    height="50"
-                    width="50"
-                  />
-
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(event) => {
-                      loadfile(event);
-                      setImage(event.target.files[0]);
-                    }}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
-
+                    <input
+                      id="uploadf"
+                      type="file"
+                      accept="image/*"
+                      onChange={(event) => {
+                        loadfile(event);
+                        setImage(event.target.files[0]);
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
               <input
                 type="submit"
                 id="submit-btn"

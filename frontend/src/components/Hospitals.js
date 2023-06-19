@@ -9,17 +9,20 @@ export default function Hospitals() {
     <div className="hospimain">
       <div>
         <div className="hospi">
-          <h1>Hospitals</h1>
+
           <div className="hospicontent">
-            <img src="./hospitals.png" alt="" />
             <div className="hosp">
-              <p>Need quick nearby hospital locations ?</p>
-              <p>Seach for hospitals in your vicinity now.</p>
+              <h2>Nearby Hospitals</h2>
+              <p>Need quick nearby hospital locations ?  Seach for hospitals in your vicinity now.</p>
             </div>
+            <img src="./hospital5.png" alt="" />
           </div>
         </div>
+
         <div className="mainmap">
-          <MapContainer />
+          <div className="mapco">
+            <MapContainer />
+          </div>
         </div>
       </div>
     </div>

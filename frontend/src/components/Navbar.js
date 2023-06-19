@@ -23,7 +23,7 @@ export default function Navbar() {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
-  const [showVNavbar, setShowVNavbar] = useState(!false);
+  const [showVNavbar, setShowVNavbar] = useState(false);
   // const [user, setUser] = useState({});
 
   var { user } = useContext(UserContext);
@@ -58,14 +58,15 @@ export default function Navbar() {
 
   const handleShowVNavbar = () => {
     setShowVNavbar(!showVNavbar);
+    console.log(showVNavbar);
   };
 
   const loginStatus = () => {
 
     if (!user) {
-      
+
       const storedUser = JSON.parse(localStorage.getItem("user"));
-     
+
       user = storedUser;
     }
 
@@ -73,31 +74,35 @@ export default function Navbar() {
       return (
         <>
           <Link className="borderrad" to="/analytics">
+            <div className="navimgspace"><img className="navimg" src="./analytics.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Analytics
             </li>
-            <img className="navimg" src="./analytics.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/users">
+            <div className="navimgspace">  <img className="navimg" src="./peoples.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Search Users
             </li>
-            <img className="navimg" src="./peoples.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/orders">
+            <div className="navimgspace">   <img className="navimg" src="./check-list.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Orders
             </li>
-            <img className="navimg" src="./check-list.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/tasks">
+            <div className="navimgspace">    <img className="navimg" src="./chlist2.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Tasks
             </li>
-            <img className="navimg" src="./chlist2.png" alt="" />
+
           </Link>
 
           <Link
@@ -108,10 +113,11 @@ export default function Navbar() {
               notifyB("Logout successfull.");
             }}
           >
+            <div className="navimgspace">   <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
               Log-Out
             </li>
-            <img className="navimg" src="./logout3.png" alt="" />
+
           </Link>
         </>
       );
@@ -119,47 +125,52 @@ export default function Navbar() {
       return (
         <>
           <Link className="borderrad" to="/orders">
+            <div className="navimgspace">   <img className="navimg" src="./check-list.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Orders
             </li>
-            <img className="navimg" src="./check-list.png" alt="" />
+
           </Link>
           <Link className="borderrad" to="/volunteer">
-            <li style={{ color: "black" }} className="navli">
-              Volunteer
-            </li>
-            <FontAwesomeIcon
+            <div className="navimgspace">   <FontAwesomeIcon
               className="navimg"
               icon={faHandshakeAngle}
               style={{ color: "#48B0DF", filter: "none" }}
-            />
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Volunteer
+            </li>
+
           </Link>
 
           <Link className="borderrad" to="/users">
+            <div className="navimgspace">   <img className="navimg" src="./peoples.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Search Users
             </li>
-            <img className="navimg" src="./peoples.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/tasks">
+            <div className="navimgspace">  <img className="navimg" src="./chlist2.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Tasks
             </li>
-            <img className="navimg" src="./chlist2.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/chats">
-            <li style={{ color: "black" }} className="navli">
-              Chats
-            </li>
-            <img
+            <div className="navimgspace">   <img
               className="navimg"
               id="adce"
               src="./chat5.png"
               alt=""
               style={{ color: "none" }}
-            />
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Chats
+            </li>
+
           </Link>
 
           <Link
@@ -170,10 +181,11 @@ export default function Navbar() {
               notifyB("Logout successfull.");
             }}
           >
+            <div className="navimgspace">    <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
               Log-Out
             </li>
-            <img className="navimg" src="./logout3.png" alt="" />
+
           </Link>
         </>
       );
@@ -181,136 +193,152 @@ export default function Navbar() {
       return (
         <>
           <Link className="borderrad" to="/donate-medicines">
-            <li style={{ color: "black" }} className="navli">
-              Donate
-            </li>
-            <FontAwesomeIcon
+            <div className="navimgspace">   <FontAwesomeIcon
               className="navimg"
               icon={faHandHoldingMedical}
               style={{ color: "#48B0DF", filter: "none" }}
-            />
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Donate
+            </li>
+
           </Link>
 
           <Link className="borderrad" to="/request-medicines">
-            <li style={{ color: "black" }} className="navli">
-              Request
-            </li>
-            <FontAwesomeIcon
+            <div className="navimgspace">  <FontAwesomeIcon
               className="navimg"
               icon={faCapsules}
               style={{ color: "#48B0DF", filter: "none" }}
-            />
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Request
+            </li>
+
           </Link>
 
           <Link className="borderrad" to="/orders">
+            <div className="navimgspace">  <img className="navimg" src="./check-list.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Orders
             </li>
-            <img className="navimg" src="./check-list.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/users">
+            <div className="navimgspace">  <img className="navimg" src="./peoples.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Search Users
             </li>
-            <img className="navimg" src="./peoples.png" alt="" />
+
           </Link>
 
           <Link className="borderrad" to="/search-medicines">
+            <div className="navimgspace">   <img
+              className="navimg"
+              id="seperate"
+              src="./searchpill.png"
+              alt=""
+
+            /></div>
             <li style={{ color: "black" }} className="navli">
               Search Medicines
             </li>
-            <img
-              className="navimg"
-              src="./searchpill.png"
-              alt=""
-              style={{ height: "2.4rem" }}
-            />
+
           </Link>
 
           <Link className="borderrad" to="/annoucements">
-            <li style={{ color: "black" }} className="navli">
-              Annoucements
-            </li>
-            <img
+            <div className="navimgspace">  <img
               className="navimg"
               id="mega"
               src="./announcement2.png"
               alt=""
-              style={{ height: "2.4rem" }}
-            />
+
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Annoucements
+            </li>
+
           </Link>
 
           <Link className="borderrad" to="/appointments">
+            <div className="navimgspace">   <img className="navimg" id="mega" src="./doctor4.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Appointments
             </li>
-            <img className="navimg" id="mega" src="./doctor4.png" alt="" />
+
           </Link>
 
           {user?.subscription ? (
             <div>
               <Link className="borderrad" to="/chats">
+                <div className="navimgspace">
+                  <img
+                    className="navimg"
+                    id="adce"
+                    src="./chat5.png"
+                    alt=""
+                    style={{ color: "none" }}
+                  /></div>
                 <li style={{ color: "black" }} className="navli">
                   Chats
                 </li>
-                <img
-                  className="navimg"
-                  id="adce"
-                  src="./chat5.png"
-                  alt=""
-                  style={{ color: "none" }}
-                />
+
               </Link>
 
               <Link className="borderrad" to="/disease-predictions">
-                <li style={{ color: "black" }} className="navli">
-                  Disease Predictions
-                </li>
-                <img
+                <div className="navimgspace">   <img
                   className="navimg"
                   id="adcd"
                   src="./virus.png"
                   alt=""
                   style={{ color: "none" }}
-                />
+                /></div>
+                <li style={{ color: "black" }} className="navli">
+                  Disease Predictions
+                </li>
+
               </Link>
             </div>
           ) : (
             <div>
               <Link className="borderrad" to="/subscribe">
-                <li style={{ color: "black" }} className="navli">
-                  Chats
-                </li>
-                <img
+                <div className="navimgspace">   <img
                   className="navimg"
                   id="adce"
                   src="./chat5.png"
                   alt=""
                   style={{ color: "none" }}
                 />
+                </div>
+                <li style={{ color: "black" }} className="navli">
+                  Chats
+                </li>
+
               </Link>
 
               <Link className="borderrad" to="/subscribe">
-                <li style={{ color: "black" }} className="navli">
-                  Disease Predictions
-                </li>
-                <img
+                <div className="navimgspace">   <img
                   className="navimg"
                   id="adcd"
                   src="./virus.png"
                   alt=""
                   style={{ color: "none" }}
                 />
+                </div>
+                <li style={{ color: "black" }} className="navli">
+                  Disease Predictions
+                </li>
+
               </Link>
             </div>
           )}
 
           <Link className="borderrad" to="/nearby-hospitals">
+            <div className="navimgspace">   <img className="navimg" src="./hospital3.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Nearby Hospitals
             </li>
-            <img className="navimg" src="./hospital3.png" alt="" />
+
           </Link>
 
           <Link
@@ -321,10 +349,11 @@ export default function Navbar() {
               notifyB("Logout successfull.");
             }}
           >
+            <div className="navimgspace">   <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
               Log-Out
             </li>
-            <img className="navimg" src="./logout3.png" alt="" />
+
           </Link>
         </>
       );
@@ -332,13 +361,14 @@ export default function Navbar() {
   };
 
   return (
-    <>
+    <div>
       {!["/signup", "/signin", "/", "/about-us"].includes(useLocation().pathname) && (
+        <div className="mainnavss">
         <div
-          // onClick={handleShowVNavbar}
+          
           className={`navbar ${showVNavbar && "active"}`}
         >
-          <div className="one">
+          <div className="one" onClick={handleShowVNavbar}>
             <FontAwesomeIcon
               id="servicesicon"
               size="xl"
@@ -347,7 +377,7 @@ export default function Navbar() {
               beat
             />
             <h1>Services</h1>
-            <img id="arrow" src="./expand.png" alt="" />
+
 
             {/* <FontAwesomeIcon id="arrow"  size="xl" style={{ color: "black", filter: "none" }} icon={faAnglesRight}  /> */}
           </div>
@@ -355,7 +385,8 @@ export default function Navbar() {
             <ul className="nav-menu">{loginStatus()}</ul>
           </div>
         </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }

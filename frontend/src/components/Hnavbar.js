@@ -1,19 +1,24 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Navigate, useLocation  } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import "../css/Hnavbar.css";
 
 export default function Hnavbar() {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [showvNavbar , setShowvNavbar] = useState(false);
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
     console.log(showNavbar);
   };
+  const handleShowvNavbar = () => {
+    setShowvNavbar(!showvNavbar);
+    console.log(showvNavbar);
+  };
 
   const navigate = useNavigate();
-  
+
   return (
     <>
       {!["/signup", "/signin", "/", "/about-us"].includes(useLocation().pathname) ? (
@@ -21,14 +26,21 @@ export default function Hnavbar() {
           {" "}
           <div className="Lnav">
             <div className="Lnav_contents">
-              <div
-                className="logo"
-                onClick={() => {
-                  navigate("/home");
-                }}
-              >
-                <img id="Nlogo" src="./logo1.png" alt="logo" />
-                <h2>Medi-Share</h2>
+              <div className="onlyleft">
+                <div className="icon"  onClick={handleShowvNavbar}>
+                  <div className="line"></div>
+                  <div className="line"></div>
+                  <div className="line"></div>
+                </div>
+                <div
+                  className="logo"
+                  onClick={() => {
+                    navigate("/home");
+                  }}
+                >
+                  <img id="Nlogo" src="./logo1.png" alt="logo" />
+                  <h2>Medi-Share</h2>
+                </div>
               </div>
               <div className="icon" onClick={handleShowNavbar}>
                 <div className="line"></div>
@@ -53,7 +65,7 @@ export default function Hnavbar() {
         </>
       ) : (
         <>
-        <div className="Lnav">
+          <div className="Lnav">
             <div className="Lnav_contents">
               <div
                 className="logo"
@@ -80,7 +92,7 @@ export default function Hnavbar() {
                     Join Us
                   </span>
                 </Link>
-              
+
               </div>
             </div>
           </div>

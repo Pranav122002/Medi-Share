@@ -1,34 +1,55 @@
 
-.chatfunc{
+.chatmain{
   width: 100vw;
-  height: 25rem;
+  background: #48b0df;
+  padding: 0.1px;
+  height: 93vh;
+  
+}
+
+.chatfunc{
   background: white;
+  border-radius: 1rem;
+  text-align: left;
+  padding: 0.1px;
+  margin-top: 2rem;
+  padding-left: 2rem;
   display: flex;
-  justify-content: space-evenly;
+  height: 10rem;
+}
+
+.Chatnow{
+    width: 82vw;
+    margin-right: 1.5vw;
+    margin-left: auto;
 }
 .chatfunc img{
-  height: 20rem;
-  margin-top: auto;
-  margin-bottom: auto;
+  height: 10rem;
+  margin-right: 5vw;
+  margin-left: auto;
+}
+#chatsicons{
+  float: right;
 }
 .chatfunc h1{
-  margin-top: 3rem;
+  margin-top: 1rem;
+  font-size: 1.7rem;
 }
 .chatfunc p{
-  margin-top: 3rem;
-  font-size: 1.2vw;
+
+  margin-top: 1.5rem;
+  font-size: 1vw;
   width:40vw;
-  font-weight: 700;
+  font-weight: 500;
 
 }
 .linkcont{
-  height: 25rem;
-  background: rgb(244, 255, 254);
-  display: flex;
-  justify-content:space-evenly ;
+  height: max-content;
+  background: rgb(253, 250, 250);
   padding-top: 0.1px;
-  
-
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding-bottom: 2rem;
 }
 .linkcont a{
   width: 20vw;
@@ -60,12 +81,27 @@
     text-decoration: none;
     color: black;
     display: block;
-    text-align: center;
-    width: 20vw;
+    text-align: left;
+    width: 90%;
     height: max-content;
-    
+    background: rgb(255, 255, 255);
+    box-shadow: 2px 2px 9px rgb(232, 232, 232);
     padding: 0;
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 1rem;
+
 }
+.Cnavli img{
+  height: 15rem;
+  margin-right: 2;
+}
+.Cnavli  .Cnavliflex{
+  display: flex;
+  padding-left: 2rem;
+}
+
+
 .Cnavli h2{
 
     margin: 0;
@@ -74,9 +110,21 @@
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
+.Cnavlime{
+  margin-left: 2rem;
+  margin-top: 1rem;
+  width: 60%;
+}
+
 
 .Cnavli .button-53{
   border-radius: 1rem;
+
+  
+}
+.Cnavli .button-53:hover{
+  width: 50%;
+  color: white;
 }
 .Cnavli .button-53::after{
   border-radius: 1rem;
