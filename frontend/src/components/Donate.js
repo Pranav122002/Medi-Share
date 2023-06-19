@@ -4,13 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-import Medicines from "./Medicines"
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import Medicines from "./Medicines";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { API_BASE_URL } from "../config";
 
 export default function Donate() {
-
   const [medicine_name, setMedicineName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [expiry_date, setExpiryDate] = useState("");
@@ -18,13 +17,12 @@ export default function Donate() {
   const [sug, showsug] = useState(!false);
 
   const handleShowsug = () => {
-    showsug(false)
-    console.log(sug)
-  }
+    showsug(false);
+    console.log(sug);
+  };
   useEffect(() => {
-    AOS.init({ duration: 2000 });
-
-  }, [])
+    AOS.init({ duration: 800 });
+  }, []);
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -32,14 +30,14 @@ export default function Donate() {
 
   const postOrderData = () => {
     fetch(
-      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
-      }`,
+      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
       }
-    ).then((res) => res.json())
+    )
+      .then((res) => res.json())
       .then((result) => {
         const donar = result._id;
         fetch(`${API_BASE_URL}/donate-medicines`, {
@@ -54,7 +52,8 @@ export default function Donate() {
             location: location,
             donar: donar,
           }),
-        }).then((res) => res.json())
+        })
+          .then((res) => res.json())
           .then((data) => {
             if (data.error) {
               notifyA(data.error);
@@ -82,12 +81,9 @@ export default function Donate() {
     })
       .then((res) => res.json())
       .then((results) => {
-
-
         setSearchResult(results.medicine);
       });
   };
-
 
   return (
     <div className="donateeapp">
@@ -95,26 +91,21 @@ export default function Donate() {
       <div className="bodyy">
         <Navbar />
         <div className="donate_instru">
-   
           <div className="donate_content">
             <h1>Some Important Instructions for Donating</h1>
             {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
             <div className="points">
-              <p>1.The medicine to be donated should be valid and not expired or fabricated.</p>
+              <p>
+                1.The medicine to be donated should be valid and not expired or
+                fabricated.
+              </p>
               <p>2.The medicine name , expiry date should be visible.</p>
-
             </div>
-
-
           </div>
           <img src="./donmed.jpg" data-aos="fade-right" alt="" srcset="" />
-    
-</div>
+        </div>
 
         <div className="donate">
-
-
-
           <div data-aos="fade-right" className="donateForm">
             <div className="logo">
               <h1>Donate Medicine</h1>
@@ -169,8 +160,17 @@ export default function Donate() {
                 }}
               />
             </div>
-            <button className="button-53" onClick={() => { postOrderData(); }} value="Donate" type="submit" role="button">Donate</button>
-
+            <button
+              className="button-53"
+              onClick={() => {
+                postOrderData();
+              }}
+              value="Donate"
+              type="submit"
+              role="button"
+            >
+              Donate
+            </button>
           </div>
           {/* <div className={`suggestions ${sug && 'active'}`}  >
 

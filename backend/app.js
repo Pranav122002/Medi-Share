@@ -36,13 +36,13 @@ let isMongoDBConnected = false;
 
 mongoose.connection.on("connected", () => {
   if (!isMongoDBConnected) {
-    console.log("MongoDB connection successful");
+    console.log("MongoDB connection successfull");
     isMongoDBConnected = true;
   }
 });
 
 mongoose.connection.on("error", () => {
-  console.log("MongoDB connection error !!!");
+  console.log("MongoDB connection error !");
 });
 
 const server = app.listen(port, () => {

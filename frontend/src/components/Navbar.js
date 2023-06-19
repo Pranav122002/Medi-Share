@@ -117,7 +117,7 @@ export default function Navbar() {
           <></>
         )}
 
-        <Link>
+        <Link className="borderrad" to="/search-medicines">
           <li style={{ color: "black" }} className="navli">
             Search Medicines
           </li>

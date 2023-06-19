@@ -9,11 +9,11 @@
   margin: auto;
   display: block;
   justify-content: center;
-  background: #F5F7F7;
+  background: #d5f0ff;
   padding: 0.1px;
 }
 
-#reqim{
+#reqim {
   height: 15rem;
   float: right;
   border-radius: 1rem;
@@ -23,7 +23,7 @@
   background-color: #fbfbfb;
   box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   width: 25vw;
   height: 15rem;
   position: relative;
@@ -42,19 +42,18 @@
   border-radius: 0.1rem;
 }
 
-.request .requestForm  input {
+.request .requestForm input {
   height: 3.5rem;
-  border-radius: 0.5rem;
-  
-  width:70% ;
+  border-radius: 0.8rem;
+
+  width: 70%;
   margin-top: 0.8rem;
   outline: none;
   background: rgb(255, 255, 255);
-  color: #000000;
+  background-color: #eaf4fc;
 }
 
-.suggestions{
-  
+.suggestions {
   position: relative;
   z-index: 24;
   margin-top: 3rem;
@@ -65,7 +64,7 @@
   border-radius: 0.5rem;
 }
 
-input{
+input {
   border: none;
 }
 
@@ -80,21 +79,20 @@ input:focus {
   outline: none;
 }
 
-.request .donateback{
+.request .donateback {
   margin-top: 0rem;
   height: 20rem;
 }
-.request .donateback h1{
+.request .donateback h1 {
   margin: auto;
 }
 
-.points h3{
+.points h3 {
   font-weight: 500;
 }
 
-@media screen and (max-width: 1000px){
-
-  #reqim{
+@media screen and (max-width: 1000px) {
+  #reqim {
     height: 15rem;
     float: none;
     border-radius: 1rem;
@@ -104,7 +102,7 @@ input:focus {
     width: 100%;
     margin-top: 5rem;
     display: block;
-   
+
     padding-top: 0.5rem;
   }
   .requestForm {
@@ -118,6 +116,4 @@ input:focus {
     margin-top: 3rem;
     min-width: 60%;
   }
-  
-
 }
