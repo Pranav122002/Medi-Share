@@ -71,7 +71,20 @@ router.post("/api/signin", (req, res) => {
         if (match) {
           const token = jwt.sign({ _id: savedUser.id }, JWT_SECRET);
           const { _id, name, email, role, subscription } = savedUser;
-
+          if (savedUser.role === "doctor") {
+            if (savedUser.doctor_details.verification === "unverified") {
+              return res
+                .status(422)
+                .json({ error: "You have not been verified yet by Admin." });
+            }
+          }
+          if (savedUser.role === "volunteer") {
+            if (savedUser.volunteer_details.verification === "unverified") {
+              return res
+                .status(422)
+                .json({ error: "You have not been verified yet by Admin." });
+            }
+          }
           res.json({ token, user: { _id, name, email, role, subscription } });
         } else {
           return res.status(422).json({ error: "Invalid password" });
