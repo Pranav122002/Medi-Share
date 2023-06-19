@@ -26,7 +26,7 @@ export const AboutUs = () => {
 
   return (
     <div className="abou">
-      <div className="Lnav">
+      {/* <div className="Lnav">
         <div className="Lnav_contents">
           <div
             className="logo"
@@ -55,7 +55,7 @@ export const AboutUs = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="aboutus">
         <h1>About us</h1>

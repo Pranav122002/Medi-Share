@@ -6,59 +6,10 @@ import "../css/Home.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { UserContext } from "./UserContext";
 import { Latestanc } from "./Latestanc";
 import { API_BASE_URL } from "../config";
 
 export default function Home() {
-  const { updateUser } = useContext(UserContext);
-
-  useEffect(() => {
-    const fetchUser = () => {
-      fetch(
-        `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          const subscriptionEndDate = new Date(res.subscription_end_date);
-          const currentDate = new Date();
-
-          if (res.subscription_end_date && subscriptionEndDate < currentDate) {
-            const updatedUser = {
-              ...res,
-              subscription: false,
-              subscription_end_date: undefined,
-            };
-            updateUser(updatedUser);
-
-            fetch(`${API_BASE_URL}/end-subscription/${res._id}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-              },
-            })
-              .then((res) => res.json())
-              .then((updatedRes) => {
-                console.log("User subscription ended.", updatedRes);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          } else {
-            updateUser(res);
-          }
-        });
-    };
-
-    fetchUser();
-  }, []);
-
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);

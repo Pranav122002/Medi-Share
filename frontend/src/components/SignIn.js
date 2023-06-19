@@ -3,6 +3,7 @@ import "../css/SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "../config";
+import { UserContext } from "./UserContext";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ export default function SignIn() {
   const notifyB = (msg) => toast.success(msg);
 
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  const { updateUser } = useContext(UserContext);
 
   const postData = () => {
     //checking email
@@ -39,9 +42,49 @@ export default function SignIn() {
           notifyA(data.error);
         } else {
           notifyB("Signed In successfully.");
-          console.log(data);
+
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+
+          fetch(`${API_BASE_URL}/user/${data.user._id}`, {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("jwt"),
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              const subscriptionEndDate = new Date(res.subscription_end_date);
+              const currentDate = new Date();
+
+              if (
+                res.subscription_end_date &&
+                subscriptionEndDate < currentDate
+              ) {
+                const updatedUser = {
+                  ...res,
+                  subscription: false,
+                  subscription_end_date: undefined,
+                };
+                updateUser(updatedUser);
+
+                fetch(`${API_BASE_URL}/end-subscription/${res._id}`, {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                  },
+                })
+                  .then((res) => res.json())
+                  .then((updatedRes) => {
+                    console.log("User subscription ended.", updatedRes);
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              } else {
+                updateUser(res);
+              }
+            });
 
           navigate("/home");
         }
@@ -61,37 +104,9 @@ export default function SignIn() {
 
   return (
     <>
+    
       <div className="mainsignin">
-        <div className="Lnav">
-          <div className="Lnav_contents">
-            <div
-              className="logo"
-              onClick={() => {
-                goHome();
-              }}
-            >
-              <img id="Nlogo" src="./logo1.png" alt="logo" />
-              <h2>Medi-Share</h2>
-            </div>
-            <div className="icon" onClick={handleShowNavbar}>
-              <div className="line"></div>
-              <div className="line"></div>
-              <div className="line"></div>
-            </div>
-            <div className={`links ${showNavbar && "active"}`}>
-              <Link className="aboutu" to="/AboutUs">
-                <span id="Aboutt" style={{ cursor: "pointer" }}>
-                  About Us
-                </span>
-              </Link>
-              <Link className="joinus" to="/signIn">
-                <span id="joinus" style={{ cursor: "pointer" }}>
-                  Join Us
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
+      
 
         <div className="signIn">
           <div className="left">

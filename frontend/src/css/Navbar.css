@@ -11,6 +11,8 @@
   align-items: center;
 }
 
+
+
 .two {
   width: 100%;
  
@@ -259,6 +261,7 @@ a:hover .navimg{
   
   height: 2.2rem;
   transform: rotate(2deg);
+
 }
 
 ul a{
@@ -342,6 +345,7 @@ ul a:nth-child(even){
   .one .navimg{
     margin-left: 1rem;
     height: 1.5rem;
+    
   }
   .navbar.active {
     width: 6rem;
@@ -377,6 +381,7 @@ ul a:nth-child(even){
    margin-left: 4rem;
   }
   .navbar.false .two .navimg{
+    
     display: flex;
     filter: invert(71%) sepia(12%) saturate(3941%) hue-rotate(169deg) brightness(91%) contrast(91%);
   }

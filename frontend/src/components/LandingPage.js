@@ -27,7 +27,7 @@ export const LandingPage = () => {
 
   return (
     <>
-      <div className="Lnav">
+      {/* <div className="Lnav">
         <div className="Lnav_contents">
           <div
             className="logo"
@@ -49,14 +49,15 @@ export const LandingPage = () => {
                 About Us
               </span>
             </Link>
-            <Link className="joinus" to="/signIn">
+            <Link className="joinus" to="/signin">
               <span id="joinus" style={{ cursor: "pointer" }}>
                 Join Us
               </span>
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
+
       <div className="maina">
         <div className="Lcontent">
           <div className="banner1">

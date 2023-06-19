@@ -70,9 +70,9 @@ router.post("/api/signin", (req, res) => {
       .then((match) => {
         if (match) {
           const token = jwt.sign({ _id: savedUser.id }, JWT_SECRET);
-          const { _id, name, email, role } = savedUser;
+          const { _id, name, email, role, subscription } = savedUser;
 
-          res.json({ token, user: { _id, name, email, role } });
+          res.json({ token, user: { _id, name, email, role, subscription } });
         } else {
           return res.status(422).json({ error: "Invalid password" });
         }
