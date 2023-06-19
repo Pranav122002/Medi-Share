@@ -251,16 +251,12 @@ export default function Appointments() {
       .then((response) => response.json())
       .then((data) => {
         notifyB("Rating and Feedback added.");
-        navigate("/profile")
+        navigate("/profile");
       });
   }
   return (
     <div className="doctor">
-      <Hnavbar />
-
       <div className="bodyy">
-        <Navbar />
-
         <div className="doctordetail">
           <img id="doctorui1" src="./doctor3.png" alt="" />
           <h1>Doctor Appointment </h1>

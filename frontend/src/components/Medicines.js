@@ -19,9 +19,7 @@ export default function Request() {
 
   return (
     <div>
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
         <div className="list">
           <ul>
             <li style={{ backgroundColor: "white", color: "black" }}>

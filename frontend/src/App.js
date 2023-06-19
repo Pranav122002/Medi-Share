@@ -18,6 +18,8 @@ import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
 import Braintumor from "./components/brainTumor";
 import HeartDisease from "./components/heartDisease";
+import Navbar from "./components/Navbar";
+import Hnavbar from "./components/Hnavbar";
 import Pneumonia from "./components/Pneumonia";
 import {LandingPage} from "./components/LandingPage";
 import Tasks from "./components/Tasks";
@@ -38,6 +40,8 @@ function App() {
 
     <BrowserRouter>
       <div className="App">
+      <Navbar />
+      <Hnavbar />
         <Routes>
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/signin" element={<SignIn />}></Route>

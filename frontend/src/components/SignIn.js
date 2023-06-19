@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { API_BASE_URL } from "../config";
 
 export default function SignIn() {
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,100 +47,104 @@ export default function SignIn() {
         }
       });
   };
-  const [showNavbar, setShowNavbar] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false);
 
   const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar)
-    console.log(showNavbar)
-  }
-
+    setShowNavbar(!showNavbar);
+    console.log(showNavbar);
+  };
 
   const navigatee = useNavigate();
   const goHome = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
 
   return (
-    <><div className="mainsignin">
-      <div className='Lnav'>
-        <div className='Lnav_contents'>
-          <div className="logo" onClick={() => { goHome() }}>
+    <>
+      <div className="mainsignin">
+        <div className="Lnav">
+          <div className="Lnav_contents">
+            <div
+              className="logo"
+              onClick={() => {
+                goHome();
+              }}
+            >
+              <img id="Nlogo" src="./logo1.png" alt="logo" />
+              <h2>Medi-Share</h2>
+            </div>
+            <div className="icon" onClick={handleShowNavbar}>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
+            <div className={`links ${showNavbar && "active"}`}>
+              <Link className="aboutu" to="/AboutUs">
+                <span id="Aboutt" style={{ cursor: "pointer" }}>
+                  About Us
+                </span>
+              </Link>
+              <Link className="joinus" to="/signIn">
+                <span id="joinus" style={{ cursor: "pointer" }}>
+                  Join Us
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
 
-            <img id="Nlogo" src="./logo1.png" alt="logo" />
-            <h2>Medi-Share</h2>
+        <div className="signIn">
+          <div className="left">
+            <h1>Welcome to "Medi-Share"</h1>
+            <img src="./ui1.png" alt="" />
           </div>
-          <div className='icon' onClick={handleShowNavbar}>
-            <div className='line'></div>
-            <div className='line'></div>
-            <div className='line'></div>
-          </div>
-          <div className={`links ${showNavbar && 'active'}`}>
-            <Link className="aboutu" to="/AboutUs">
-              <span id="Aboutt" style={{ cursor: "pointer" }}>About Us</span>
-            </Link>
-            <Link className="joinus" to="/signIn">
-              <span id="joinus" style={{ cursor: "pointer" }}>Join Us</span>
-            </Link>
-          </div>
+          <div className="middle"></div>
+          <div className="loginForm">
+            <div className="logo">
+              <h1>SIGN IN</h1>
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                placeholder="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
 
+            <input
+              type="submit"
+              id="login-btn"
+              onClick={() => {
+                postData();
+              }}
+              value="Sign In"
+            />
+            <div className="form2">
+              Don't have an account ?
+              <Link to="/signup">
+                <span style={{ cursor: "pointer" }}> Sign Up</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="signIn">
-
-        <div className="left">
-          <h1>Welcome to "Medi-Share"</h1>
-          <img src="./ui1.png" alt="" />
-        </div>
-        <div className="middle"></div>
-        <div className="loginForm">
-          <div className="logo">
-            <h1>SIGN IN</h1>
-          </div>
-          <div>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-
-          <input
-            type="submit"
-            id="login-btn"
-            onClick={() => {
-              postData();
-            }}
-            value="Sign In"
-          />
-          <div className="form2">
-            Don't have an account ?
-            <Link to="/signup">
-              <span style={{  cursor: "pointer" }}> Sign Up</span>
-            </Link>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
     </>
   );
 }

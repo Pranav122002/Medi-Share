@@ -108,10 +108,7 @@ export default function Annoucement() {
 
   return (
     <div className="announce">
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
-
         <div className="anc">
           <div className="ancinfoback">
             <div className="ancinfo">

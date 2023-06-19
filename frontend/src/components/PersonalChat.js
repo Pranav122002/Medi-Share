@@ -34,7 +34,8 @@ const PersonalChat = () => {
   useEffect(() => {
     if (selectedUser) {
       fetch(
-        `${API_BASE_URL}/all-personal-messages/${JSON.parse(localStorage.getItem("user"))._id
+        `${API_BASE_URL}/all-personal-messages/${
+          JSON.parse(localStorage.getItem("user"))._id
         }/${selectedUser._id}`
       )
         .then((response) => response.json())
@@ -65,7 +66,8 @@ const PersonalChat = () => {
 
   useEffect(() => {
     fetch(
-      `${API_BASE_URL}/all-chat-users/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/all-chat-users/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -125,11 +127,8 @@ const PersonalChat = () => {
 
   return (
     <div>
-      <Hnavbar />
       <div>
         <div className="bodyy">
-          <Navbar />
-
           <div className="chatcont">
             <div className="cinfo">
               <div className="myinfo">
@@ -189,15 +188,15 @@ const PersonalChat = () => {
                           <p key={index}>
                             <p>{message.message}</p>
 
-                            <div className="datemess">{new Date(message.createdAt).toLocaleTimeString(
-                              [],
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                hour12: true,
-
-                              }
-                            )}
+                            <div className="datemess">
+                              {new Date(message.createdAt).toLocaleTimeString(
+                                [],
+                                {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                  hour12: true,
+                                }
+                              )}
                             </div>
                           </p>
                         </div>
@@ -207,7 +206,6 @@ const PersonalChat = () => {
                 ))}
               </div>
               <div className="submitmenu">
-
                 <input
                   type="text"
                   value={inputValue}

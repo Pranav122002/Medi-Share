@@ -168,11 +168,7 @@ export default function Tasks() {
 
   return (
     <div className="task">
-      <Hnavbar />
-
       <div className="bodyy">
-        <Navbar />
-
         {isAdmin ? (
           <div>
             <div className="donate">

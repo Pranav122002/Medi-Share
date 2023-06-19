@@ -87,9 +87,7 @@ export default function Donate() {
 
   return (
     <div className="donateeapp">
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
         <div className="donate_instru">
           <div className="donate_content">
             <h1>Some Important Instructions for Donating</h1>

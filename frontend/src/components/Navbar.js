@@ -10,6 +10,8 @@ import {
   faHandshakeAngle,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCapsules } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
@@ -230,13 +232,21 @@ export default function Navbar() {
   return [
     <>
       <div
-        onClick={handleShowVNavbar}
+        // onClick={handleShowVNavbar}
         className={`navbar ${showVNavbar && "active"}`}
       >
         <div className="one">
-          <img src="./pills.png" alt="" />
-          <h1>SERVICES</h1>
+          <FontAwesomeIcon
+            id="servicesicon"
+            size="xl"
+            style={{ color: "#48B0DF", filter: "none" }}
+            icon={faBriefcaseMedical}
+            beat
+          />
+          <h1>Services</h1>
           <img id="arrow" src="./expand.png" alt="" />
+
+          {/* <FontAwesomeIcon id="arrow"  size="xl" style={{ color: "black", filter: "none" }} icon={faAnglesRight}  /> */}
         </div>
         <div className="two">
           <ul className="nav-menu">{loginStatus()}</ul>

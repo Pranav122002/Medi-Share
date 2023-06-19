@@ -15,11 +15,10 @@ export default function Subscribe() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-
-
   const subscribe = () => {
     fetch(
-      `${API_BASE_URL}/subscribe/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/subscribe/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -38,25 +37,17 @@ export default function Subscribe() {
           "Insufficient credits. Please earn or add credits to subscribe to Medi-Share."
         ) {
           notifyA(res);
-
         } else {
           notifyA("Error");
         }
       });
   };
 
-
-
   return (
     <>
-      <Hnavbar />
       <div>
         <div className="bodyy">
-          <Navbar />
-
-
           <div className="subsss">
-
             <div className="subs">
               <div className="subimg">
                 <img src="./subscribe.jpg" alt="" />
@@ -64,7 +55,8 @@ export default function Subscribe() {
               <div className="headsub">
                 <h2>Subscribe now to avail exclusive services on our site.</h2>
               </div>
-              <button className="subbut"
+              <button
+                className="subbut"
                 onClick={() => {
                   subscribe();
                 }}
@@ -72,13 +64,9 @@ export default function Subscribe() {
                 Subscribe
               </button>
             </div>
-
           </div>
-
         </div>
       </div>
     </>
   );
-
-
 }

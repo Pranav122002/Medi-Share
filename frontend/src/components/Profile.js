@@ -153,10 +153,7 @@ export default function Profile() {
 
   return (
     <div className="profilediv">
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
-
         <div>
           {
             <div>

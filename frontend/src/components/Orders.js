@@ -4,11 +4,10 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
-import "../css/Orders.css"
+import "../css/Orders.css";
 import { API_BASE_URL } from "../config";
 
 export default function Orders() {
-
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
@@ -22,15 +21,13 @@ export default function Orders() {
     fetchOrders();
   }, []);
 
-
   function fetchOrders() {
     fetch(`${API_BASE_URL}/all-remaining-orders`)
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);
         setIsLoading(false);
-      }
-      );
+      });
   }
 
   const putDonateData = (order_id) => {
@@ -45,7 +42,8 @@ export default function Orders() {
         const verify_status = result.verify_status;
 
         fetch(
-          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${
+            JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -73,12 +71,13 @@ export default function Orders() {
                 if (data.error) {
                   notifyA("Failed to donate order.");
                 } else {
-                  if (data === "Order Donated successfully and Volunteer will verify now.") {
+                  if (
+                    data ===
+                    "Order Donated successfully and Volunteer will verify now."
+                  ) {
                     navigate("/profile");
                     notifyB(data);
-                  }
-
-                  else {
+                  } else {
                     notifyA(data);
                   }
                 }
@@ -100,7 +99,8 @@ export default function Orders() {
         const verify_status = result.verify_status;
 
         fetch(
-          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${
+            JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -130,13 +130,9 @@ export default function Orders() {
                 } else {
                   if (data === "Order is already executed.") {
                     notifyA(data);
-                  }
-                  else if (
-                    data === "Medicine is expired."
-                  ) {
+                  } else if (data === "Medicine is expired.") {
                     notifyA(data);
-                  }
-                  else if (
+                  } else if (
                     data === "Order is not verfied by Volunteer yet."
                   ) {
                     notifyA(data);
@@ -152,90 +148,126 @@ export default function Orders() {
   };
 
   const renderCard = (card, index) => {
-
-
     return (
       <>
-
         {card.order_type == "donate-order" ? (
-
           <>
-
-
             <Card className="Card" key={index}>
               <Card.Body>
-                <Card.Title id="title"><img src="pills.png" alt="" />{card.medicine_name}</Card.Title>
+                <Card.Title id="title">
+                  <img src="pills.png" alt="" />
+                  {card.medicine_name}
+                </Card.Title>
                 <Card.Text id="details">
-                  <p><div className="content-details">Expiry:-</div>{card.expiry_date}<br /></p>
-                  <p><div className="content-details">Quntity:-</div>{card.quantity}<br /></p>
-                  <p><div className="content-details">Location:-</div>{card.location}<br /></p>
-                  <p><div className="content-details">Donor:-</div>{card.donar.name}<br /></p>
-                  <Button className="button-53" onClick={() => putRequestData(card._id)}>Request</Button>
-                  
+                  <p>
+                    <div className="content-details">Expiry:-</div>
+                    {card.expiry_date}
+                    <br />
+                  </p>
+                  <p>
+                    <div className="content-details">Quntity:-</div>
+                    {card.quantity}
+                    <br />
+                  </p>
+                  <p>
+                    <div className="content-details">Location:-</div>
+                    {card.location}
+                    <br />
+                  </p>
+                  <p>
+                    <div className="content-details">Donor:-</div>
+                    {card.donar.name}
+                    <br />
+                  </p>
+                  <Button
+                    className="button-53"
+                    onClick={() => putRequestData(card._id)}
+                  >
+                    Request
+                  </Button>
                 </Card.Text>
-
               </Card.Body>
-
             </Card>
           </>
         ) : (
           <div id="OCard">
-
             <Card key={index}>
               <Card.Body className="Card_body">
-                <Card.Title id="title"><img src="pills.png" alt="" />{card.medicine_name}</Card.Title>
+                <Card.Title id="title">
+                  <img src="pills.png" alt="" />
+                  {card.medicine_name}
+                </Card.Title>
                 <Card.Text id="details">
-                  <p><div className="content-details">Expiry:-</div>{card.expiry_date}<br /></p>
-                  <p><div className="content-details">Quntity:-</div>{card.quantity}<br /></p>
-                  <p><div className="content-details">Location:-</div>{card.location}<br /></p>
-                  <p><div className="content-details">Request By:-</div>{card.requester.name}<br /></p>
-                  <Button  className="button-53" onClick={() => putDonateData(card._id)}>Donate</Button>
-
+                  <p>
+                    <div className="content-details">Expiry:-</div>
+                    {card.expiry_date}
+                    <br />
+                  </p>
+                  <p>
+                    <div className="content-details">Quntity:-</div>
+                    {card.quantity}
+                    <br />
+                  </p>
+                  <p>
+                    <div className="content-details">Location:-</div>
+                    {card.location}
+                    <br />
+                  </p>
+                  <p>
+                    <div className="content-details">Request By:-</div>
+                    {card.requester.name}
+                    <br />
+                  </p>
+                  <Button
+                    className="button-53"
+                    onClick={() => putDonateData(card._id)}
+                  >
+                    Donate
+                  </Button>
                 </Card.Text>
-
               </Card.Body>
-
             </Card>
-          </div>)}
-      </>
-
-    )
-  }
-  return (<>
-    <Hnavbar />
-    <div>
-
-      <div className="bodyy">
-        <Navbar />
-        {isLoading ? (
-          <div className="loadingcont">
-
-            <h1 className="loada">Loading...</h1>
           </div>
-        ) : (<>
-          <h1>Pending Orders</h1>
-          <div className="allCards">
-
-
-            <div className="OCards">
-              <div className="headd">
-              <div className="heading">
-                <img id="mobpill" src="medicine.png" alt="" />
-                <p className="headp"> <img src="medicine.png" alt=""  /> Medicine Name</p>
-                <p className="headp">Expiry Date</p>
-                <p className="headp">Quantity</p>
-                <p className="headp">Location</p>
-                <p className="headp">Donor</p>
-                <p className="headp" id="action">Action</p>
+        )}
+      </>
+    );
+  };
+  return (
+    <>
+      <div>
+        <div className="bodyy">
+          {isLoading ? (
+            <div className="loadingcont">
+              <h1 className="loada">Loading...</h1>
+            </div>
+          ) : (
+            <>
+              <h1>Pending Orders</h1>
+              <div className="allCards">
+                <div className="OCards">
+                  <div className="headd">
+                    <div className="heading">
+                      <img id="mobpill" src="medicine.png" alt="" />
+                      <p className="headp">
+                        {" "}
+                        <img src="medicine.png" alt="" /> Medicine Name
+                      </p>
+                      <p className="headp">Expiry Date</p>
+                      <p className="headp">Quantity</p>
+                      <p className="headp">Location</p>
+                      <p className="headp">Donor</p>
+                      <p className="headp" id="action">
+                        Action
+                      </p>
+                    </div>
+                  </div>
+                  {orders.map(renderCard)}
                 </div>
               </div>
-              {orders.map(renderCard)}
-            </div>
-          </div>
-        </>
-        )}
+            </>
+          )}
 
-        {/* <ul>
+          {/* <ul>
         {orders.map((orders) => (
           <li key={orders.medicine_name}>
             <p>medicine_name : </p> {orders.medicine_name}
@@ -248,8 +280,8 @@ export default function Orders() {
           </li>
         ))}
       </ul> */}
+        </div>
       </div>
-    </div>
-
-  </>);
+    </>
+  );
 }

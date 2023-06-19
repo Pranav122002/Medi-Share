@@ -24,18 +24,13 @@ export default function Search() {
     })
       .then((res) => res.json())
       .then((results) => {
-       
-
         setSearchResult(results.medicine);
       });
   };
 
   return (
     <div>
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
-
         <div className="searchcolumn">
           <div className="searchbox">
             <input
@@ -54,21 +49,17 @@ export default function Search() {
               </li>
               {searchResult.map((item) => {
                 return (
-
                   <li className="link">
-                    <h3 style={{ color: "black" }}>
-
-                      {item.medicine_name}
-                    </h3>
+                    <h3 style={{ color: "black" }}>{item.medicine_name}</h3>
                     <p className="p1">{item.description}</p>
-                    <p className="p2" style={{ color: "black" }}>{item.disease}</p>
-
+                    <p className="p2" style={{ color: "black" }}>
+                      {item.disease}
+                    </p>
                   </li>
                 );
               })}
             </ul>
           </div>
-
         </div>
       </div>
     </div>

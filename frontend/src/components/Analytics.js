@@ -14,7 +14,7 @@ export default function Home() {
     donarName: "",
     requesterName: "",
   });
-  
+
   useEffect(() => {
     fetchAllOrders();
   }, []);
@@ -24,12 +24,13 @@ export default function Home() {
     const url = `${API_BASE_URL}/all-orders${query ? `?${query}` : ""}`;
 
     console.log("filteroptions = ", filterOptions);
-    
+
     fetch(url)
       .then((response) => response.json())
-      .then((data) => { console.log("order data = ", data);
-      setAllOrders(data);
-       } );
+      .then((data) => {
+        console.log("order data = ", data);
+        setAllOrders(data);
+      });
   }
 
   function handleFilterChange(event) {
@@ -42,10 +43,8 @@ export default function Home() {
 
   return (
     <>
-      <Hnavbar />
       <div>
         <div className="bodyy">
-          <Navbar />
           <h1>Analysis</h1>
           <div className="filter-options">
             <h2>Filter Options</h2>
@@ -59,23 +58,23 @@ export default function Home() {
               />
             </label>
             <label>
-  Donar Name:
-  <input
-    type="text"
-    name="donarName"
-    value={filterOptions.donarName}
-    onChange={handleFilterChange}
-  />
-</label>
-<label>
-  Requester Name:
-  <input
-    type="text"
-    name="requesterName"
-    value={filterOptions.requesterName}
-    onChange={handleFilterChange}
-  />
-</label>
+              Donar Name:
+              <input
+                type="text"
+                name="donarName"
+                value={filterOptions.donarName}
+                onChange={handleFilterChange}
+              />
+            </label>
+            <label>
+              Requester Name:
+              <input
+                type="text"
+                name="requesterName"
+                value={filterOptions.requesterName}
+                onChange={handleFilterChange}
+              />
+            </label>
 
             <label>
               Medicine Name:
@@ -109,7 +108,6 @@ export default function Home() {
           {allOrders.map((order) => (
             <div key={order._id}>
               <p>Order ID: {order._id}</p>
-          
             </div>
           ))}
         </div>

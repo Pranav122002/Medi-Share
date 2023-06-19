@@ -30,23 +30,26 @@ export default function Users() {
       setSelectedUserId(userId);
     }
   }
-  
 
   return (
     <div>
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
         <h1>All Available Volunteers and Doctors</h1>
         <ul>
           {users.map((user) => (
             <li key={user._id}>
               <h3 onClick={() => handleClick(user._id)}>{user.name}</h3>
-              <p >{user.role}</p>
+              <p>{user.role}</p>
             </li>
           ))}
         </ul>
-        {selectedUserId ? (<><UserProfile id={selectedUserId} /></>) : (<></>) }
+        {selectedUserId ? (
+          <>
+            <UserProfile id={selectedUserId} />
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

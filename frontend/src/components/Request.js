@@ -85,9 +85,7 @@ export default function Request() {
 
   return (
     <div className="requestapp">
-      <Hnavbar />
       <div className="bodyy">
-        <Navbar />
         <div className="donate_instru">
           <div className="donate_content">
             <h1>Not able to find your required medicine in our inventory ?</h1>
