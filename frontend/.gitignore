@@ -19,7 +19,7 @@
 .env.test.local
 .env.production.local
 .env
-frontend\src\firebase.js
+frontend/src/firebase.js
 firebase.js
 
 npm-debug.log*
