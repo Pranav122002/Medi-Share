@@ -3,7 +3,7 @@
   width: 100vw;
   background: #48b0df;
   padding: 0.1px;
-  height: 93vh;
+  height: 100%;
   
 }
 
@@ -45,10 +45,11 @@
 }
 .linkcont{
   height: max-content;
-  background: rgb(253, 250, 250);
+  /* height: 10%; */
+  background:#C6E6FB;
   padding-top: 0.1px;
   margin-top: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   padding-bottom: 2rem;
 }
 .linkcont a{
@@ -99,6 +100,7 @@
 .Cnavli  .Cnavliflex{
   display: flex;
   padding-left: 2rem;
+  border-radius: 0.9rem;
 }
 
 
@@ -118,16 +120,16 @@
 
 
 .Cnavli .button-53{
-  border-radius: 1rem;
-
+  border-radius: 0.9rem;
+padding-left: 0px;
+padding-right: 0px;
   
 }
 .Cnavli .button-53:hover{
   width: 50%;
-  color: white;
 }
 .Cnavli .button-53::after{
-  border-radius: 1rem;
+  border-radius: 0.9rem;
 }
 
 .hEekYD .input-container button{

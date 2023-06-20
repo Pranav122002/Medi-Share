@@ -32,7 +32,7 @@
   border-radius: 1px;
   margin: auto;
   width: 100vw;
-  background: #f3fbff;
+  background: #C6E6FB;
   min-height: 38vw;
   height: max-content;
   margin-top: 0rem;
@@ -63,7 +63,7 @@
     margin: 0;
     float: left;  
     font-size: 1.7rem;
-    color: #34a1d4;
+    color: black;
     margin-left: 2rem;
     margin-top: 1rem;
 
@@ -86,7 +86,7 @@
 }
 
 .anc .formancc{
-  background: rgb(249, 249, 249);
+  background:  #73c2fbc5;
   width: 100vw;
   padding: 0.1px;
   height: 36rem;
@@ -147,7 +147,7 @@ background: white;
 }
 .anclistss h1{
   font-size: 1.7rem;
-  color: #4d73ca;
+  color: #00008B;
   float: left;
   margin-left: 3rem;
 

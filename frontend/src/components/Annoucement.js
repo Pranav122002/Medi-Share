@@ -115,7 +115,7 @@ export default function Annoucement() {
             <div className="ancinfoback">
               <div className="ancinfo">
                 <div className="ancflex">
-                  <h1>Announcements</h1>
+                  <h1 >Announcements</h1>
                   <br />
                   <p>
                     All the camps are carried out by volunteer and certified
@@ -243,7 +243,7 @@ export default function Annoucement() {
               </ul>
             </div>
             <div className="anclistss" >
-              <h1>Latest Announcements</h1>
+              <h1>Past Announcements</h1>
               <ul >
                 <li className="bord" >
                   <h3 id="pp4" className="p6" > Name</h3>

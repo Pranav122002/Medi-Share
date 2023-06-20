@@ -9,9 +9,9 @@
   margin: auto;
   display: block;
   justify-content: center;
-  background: #e9f3f8;
+  background: #C6E6FB;
   padding: 0.1px;
-  border-radius: 1rem; 
+  border-radius: 0.9rem; 
 }
 
 #reqim {
@@ -24,7 +24,7 @@
   background-color: #fbfbfb;
   box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
   width: 25vw;
   height: 15rem;
   position: relative;
@@ -45,7 +45,7 @@
 
 .request .requestForm input {
   height: 3.5rem;
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
 
   width: 70%;
   margin-top: 0.8rem;

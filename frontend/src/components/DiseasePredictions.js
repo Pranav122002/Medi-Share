@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, useLocation } from "react-router-dom";
-
+import AOS from "aos";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Dis.css";
 function DiseasePredictions() {
+
+  useEffect(() => {
+    AOS.init({ duration: 600 });
+  }, []);
+
   return (
     <div className="dispredd">
       <div className="chatfunc">
@@ -30,11 +35,11 @@ function DiseasePredictions() {
             <li className="Cnavli">Pnuemonia</li>
             <img src="./pneumonia.png" alt="" />
           </Link>
-          <Link to="/heartDisease" >
+          <Link to="/heartDisease" data-aos="fade-right" >
             <li className="Cnavli">Heart Disease</li>
             <img src="./heart-disease.png" alt="" />
           </Link>
-          <Link to="/brainTumor"  >
+          <Link to="/brainTumor" data-aos="fade-left" >
             <li className="Cnavli">Brain Tumor</li>
             <img src="./brain-tunor.png" alt="" />
           </Link>

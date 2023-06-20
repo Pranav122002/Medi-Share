@@ -54,12 +54,12 @@
   right: 0;
 }
 .donate {
-  height: 40rem;
+  height: 38rem;
   margin: auto;
   display: flex;
   justify-content: center;
-  border-radius: 1rem;
-  background: #e9f3f8;
+  border-radius: 0.9rem;
+  background: #C6E6FB;
 }
 
 .donateForm select {
@@ -89,13 +89,14 @@
   background-color: #fbfbfb;
   box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-  border-radius: 0rem;
+ 
   width: 25vw;
   height: 30rem;
   position: relative;
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   min-width: 22rem;
   margin-top: 2rem;
+ 
 }
 
 .loginForm2 {
@@ -109,7 +110,7 @@
 #donate-btn {
   font-size: 1rem;
   margin-top: 3rem;
-  border-radius: 1.2rem;
+
   border: none;
   background-color: #1773ea;
   border: none;
@@ -121,7 +122,7 @@
 
 .button-53 {
   background-color: #b7ffe7;
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   border: 0 solid #e5e7eb;
   box-sizing: border-box;
   color: #000000;
@@ -186,7 +187,7 @@
 }
 
 .donateback {
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   color: white;
   margin-left: 1rem;
   height: 34rem;
@@ -234,7 +235,7 @@ input {
 }
 .donate .donateForm input {
   height: 3.5rem;
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
   width: 70%;
   margin-top: 0.8rem;
   background: rgb(249, 253, 255);

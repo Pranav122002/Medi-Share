@@ -4,14 +4,20 @@ import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import AOS from "aos";
 
 export default function Chats() {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   return (
+    <>
     <div className="chatmain">
       <div className="Chatnow">
         <div className="chatfunc">
           <div className="cha">
-            <h1 style={{color:"green"}}>Interact with the community!</h1>
+            <h1 style={{color:"black"}}>Interact with the community!</h1>
             <p>
               Take active part in community meetings and gatherings. Interact with
               other people in personal and community chats. Get latest news about
@@ -27,7 +33,7 @@ export default function Chats() {
               <div className="Cnavliflex">
                 <img src="./persochat.jpg" alt="" />
                 <div className="Cnavlime">
-                  <h2 style={{color:"green"}}>Personal Chats</h2>
+                  <h2 style={{color:"#00008B"}}>Personal Chats</h2>
                   <p>Chat 1 to 1 with other website users .Interact privately with other website users  </p>
 
 
@@ -43,7 +49,7 @@ export default function Chats() {
               <div className="Cnavliflex">
                 <img src="./commchat.jpg" alt="" />
                 <div className="Cnavlime">
-                  <h2 style={{color:"green"}} >Community Chats</h2>
+                  <h2 style={{color:"#00008B"}} >Community Chats</h2>
                   <p>Chat with other website users in group chat. Get latest news about community services</p>
                   <button className="button-53" value="Donate" role="button">
                     Click to start chatting
@@ -56,5 +62,7 @@ export default function Chats() {
         </div>
       </div>
     </div>
+    </>
+
   );
 }

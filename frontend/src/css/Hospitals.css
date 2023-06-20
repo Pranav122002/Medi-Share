@@ -15,7 +15,7 @@
     background: white;
     margin-right: 2vw;
     margin-left: auto;
-    border-radius: 1rem;
+    border-radius: 0.9rem;
     margin-top: 2rem;
    
 }
@@ -52,7 +52,7 @@
     margin-left: auto;
     background: white;
     margin-top: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.9rem;
 }
 .mapco{
     width: 95%;
