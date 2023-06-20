@@ -192,7 +192,7 @@ export default function Appointments() {
 
   function fetchDoctors() {
     fetch(`${API_BASE_URL}/all-doctors`, {
-    headers: {
+      headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
@@ -258,14 +258,13 @@ export default function Appointments() {
     <div className="doctor">
       <div className="bodyy">
         <div className="doctordetail">
-          <img id="doctorui1" src="./doctor3.png" alt="" />
-          <h1>Doctor Appointment </h1>
-          <div className="doctorp">
-            <p>Book an appointment with our affiliated doctors today.</p>
-            <p>
-              Appointments can be booked with the credits earned on our website.
-            </p>
+          <div>
+            <h1>Doctor Appointments </h1>
+            <div className="doctorp">
+              <p>Book an appointment with our affiliated doctors today. Appointments can be booked with the credits earned on our website.</p>
+            </div>
           </div>
+          <img src="./doctor5.png" alt="" />
         </div>
         <div className="Doctorui">
           <div className="">
@@ -291,7 +290,7 @@ export default function Appointments() {
                             <p>Time: {appointment.appointment_time}</p>
 
                             {!appointment.confirm_status &&
-                            !appointment.reject_status ? (
+                              !appointment.reject_status ? (
                               <>
                                 <button
                                   className="button-53"
@@ -364,97 +363,106 @@ export default function Appointments() {
                   </>
                 ) : (
                   <>
-                    <h1>Book an appointment</h1>
+                    <h1>Available doctors</h1>
                     <div className="doctorcont">
-                      <img src="./doctor2.png" alt="" />
 
-                      <div>
-                        <div className="book">
-                          <div className="bookForm">
-                            <div className="logo">
-                              <h1>Book Appointment</h1>
-                            </div>
 
-                            <div>
-                              <input
-                                type="text"
-                                name="doctor_id"
-                                id="doctor_id"
-                                value={selectedDoctor._id}
-                                placeholder="Doctor's ID"
-                                onChange={(e) => {
-                                  setDoctorId(e.target.value);
-                                }}
-                              />
-                            </div>
-
-                            <div>
-                              <input
-                                type="text"
-                                name="doctor_name"
-                                id="doctor_name"
-                                value={selectedDoctor.name}
-                                placeholder="Doctor's Name"
-                                onChange={(e) => {
-                                  setDoctorName(e.target.value);
-                                }}
-                              />
-                            </div>
-
-                            <div>
-                              <input
-                                type="date"
-                                name="appointment_date"
-                                id="appointment_date"
-                                placeholder="Appointment Date"
-                                value={appointment_date}
-                                onChange={(e) => {
-                                  setAppointmentDate(e.target.value);
-                                }}
-                              />
-                            </div>
-
-                            <div>
-                              <input
-                                type="time"
-                                name="appointment_time"
-                                id="appointment_time"
-                                placeholder="Appointment Time (24hr format)"
-                                value={appointment_time}
-                                onChange={(e) => {
-                                  setAppointmentTime(e.target.value);
-                                }}
-                              />
-                            </div>
-
-                            <button
-                              className="button-53"
-                              value="Book "
-                              type="submit"
-                              onClick={() => {
-                                postBookData(patient);
-                              }}
-                            >
-                              {selectedDoctor
-                                ? `Book : ${selectedDoctor.doctor_details.fees}`
-                                : "Book"}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
 
                       <div className="doctorslist">
-                        <ul>
-                          <h2>Doctors list</h2>
-                          {doctors.map((doctor) => (
+                        <ul >
+
+                          {doctors.map((doctor) => (<>
                             <li
                               key={doctor._id}
-                              onClick={() => setSelectedDoctor(doctor)}
+
                             >
-                              {doctor.name}
+                      
+                                <p>{doctor.name}</p>
+                                <p>{doctor.doctor_details.qualification}</p>
+                                <p>{doctor.doctor_details.specialization}</p>
+                                <p>{doctor.doctor_details.experience}</p>
+                                <p>{doctor.doctor_details.availability}</p>
+                              
+                              <button onClick={() => setSelectedDoctor(doctor)} className="button">Select</button>
                             </li>
+
+                          </>
                           ))}
                         </ul>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="book">
+                        <div className="bookForm">
+                          <div className="logo">
+                            <h1>Book Appointment</h1>
+                          </div>
+
+                          <div>
+                            <input
+                              type="text"
+                              name="doctor_id"
+                              id="doctor_id"
+                              value={selectedDoctor._id}
+                              placeholder="Doctor's ID"
+                              onChange={(e) => {
+                                setDoctorId(e.target.value);
+                              }}
+                            />
+                          </div>
+
+                          <div>
+                            <input
+                              type="text"
+                              name="doctor_name"
+                              id="doctor_name"
+                              value={selectedDoctor.name}
+                              placeholder="Doctor's Name"
+                              onChange={(e) => {
+                                setDoctorName(e.target.value);
+                              }}
+                            />
+                          </div>
+
+                          <div>
+                            <input
+                              type="date"
+                              name="appointment_date"
+                              id="appointment_date"
+                              placeholder="Appointment Date"
+                              value={appointment_date}
+                              onChange={(e) => {
+                                setAppointmentDate(e.target.value);
+                              }}
+                            />
+                          </div>
+
+                          <div>
+                            <input
+                              type="time"
+                              name="appointment_time"
+                              id="appointment_time"
+                              placeholder="Appointment Time (24hr format)"
+                              value={appointment_time}
+                              onChange={(e) => {
+                                setAppointmentTime(e.target.value);
+                              }}
+                            />
+                          </div>
+
+                          <button
+                            className="button-53"
+                            value="Book "
+                            type="submit"
+                            onClick={() => {
+                              postBookData(patient);
+                            }}
+                          >
+                            {selectedDoctor
+                              ? `Book : ${selectedDoctor.doctor_details.fees}`
+                              : "Book"}
+                          </button>
+                        </div>
                       </div>
                     </div>
 
