@@ -61,7 +61,7 @@ h2 {
 }
 
 .links.active .navli {
-    display: none;
+   
 }
 
 
@@ -106,4 +106,10 @@ h2 {
     .Lnav .icon{
         margin-right: 2rem;
     }
+
+    .iconsaf {
+        display: none;
+    }
+
+    
 }

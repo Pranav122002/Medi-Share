@@ -34,6 +34,9 @@
 .dis h2{
   margin-top: 1rem;
   color: #00008B;
+  text-align: left;
+  margin-left: 2rem;
+  font-size: 1.7rem
 }
 
 .dise {
@@ -137,7 +140,10 @@
 }
 
 @media screen and (max-width: 1000px) {
-
+  .dispredd{
+    position: relative;
+    z-index: -6;
+  }
   .dise {
     display: block;
     width: 90%;

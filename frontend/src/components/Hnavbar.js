@@ -4,18 +4,16 @@ import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import "../css/Hnavbar.css";
 
-export default function Hnavbar() {
+export default function Hnavbar(props) {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [showvNavbar , setShowvNavbar] = useState(false);
+  
+  
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
     console.log(showNavbar);
   };
-  const handleShowvNavbar = () => {
-    setShowvNavbar(!showvNavbar);
-    console.log(showvNavbar);
-  };
+  
 
   const navigate = useNavigate();
 
@@ -27,7 +25,7 @@ export default function Hnavbar() {
           <div className="Lnav">
             <div className="Lnav_contents">
               <div className="onlyleft">
-                <div className="icon"  onClick={handleShowvNavbar}>
+                <div className="icon" onClick={props.handleShowvNavbar}>
                   <div className="line"></div>
                   <div className="line"></div>
                   <div className="line"></div>
@@ -42,18 +40,14 @@ export default function Hnavbar() {
                   <h2>Medi-Share</h2>
                 </div>
               </div>
-              <div className="icon" onClick={handleShowNavbar}>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
-              </div>
-              <div className={`links ${showNavbar && "active"}`}>
-                <Link className="aboutu" to="/AboutUs">
+              
+              <div className={`linkscur ${showNavbar && "active"}`}>
+                <Link className="aboutucur " to="/about-us">
                   <span id="Aboutt" style={{ cursor: "pointer" }}>
                     About Us
                   </span>
                 </Link>
-                <Link className="aboutu" to="/profile">
+                <Link className="aboutucurs " to="/profile">
                   <span id="nonev" style={{ cursor: "pointer" }}>
                     Profile
                   </span>
@@ -94,6 +88,7 @@ export default function Hnavbar() {
                 </Link>
 
               </div>
+             
             </div>
           </div>
         </>

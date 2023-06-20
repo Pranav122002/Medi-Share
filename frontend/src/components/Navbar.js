@@ -15,7 +15,7 @@ import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 import { API_BASE_URL } from "../config";
 import { UserContext } from "./UserContext";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -363,7 +363,7 @@ export default function Navbar() {
   return (
     <div>
       {!["/signup", "/signin", "/", "/about-us"].includes(useLocation().pathname) && (
-        <div className="mainnavss">
+        <div className={`mainnavss ${props.showvNavbar && "active"} `}>
         <div
           
           className={`navbar ${showVNavbar && "active"}`}
@@ -381,7 +381,7 @@ export default function Navbar() {
 
             {/* <FontAwesomeIcon id="arrow"  size="xl" style={{ color: "black", filter: "none" }} icon={faAnglesRight}  /> */}
           </div>
-          <div className="two">
+          <div className="two" onClick={props.handleShowvNavbar}>
             <ul className="nav-menu">{loginStatus()}</ul>
           </div>
         </div>

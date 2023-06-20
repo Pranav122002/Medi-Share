@@ -106,6 +106,8 @@
         background-repeat: no-repeat;
         background-position: top right;
         background-size: 20rem;
+        position: relative;
+        z-index: -4;
 
     }
 

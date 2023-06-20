@@ -35,12 +35,19 @@ import { AboutUs } from "./components/AboutUs";
 import { UserProvider } from "./components/UserContext";
 
 function App() {
+  
+  const [showvNavbar , setShowvNavbar] = useState(false);
+  const handleShowvNavbar = () => {
+    setShowvNavbar(!showvNavbar);
+    console.log(showvNavbar);
+  };
+
   return (
     <BrowserRouter>
       <UserProvider>
         <div className="App">
-          <Navbar />
-          <Hnavbar />
+          <Navbar handleShowvNavbar={handleShowvNavbar} showvNavbar = {showvNavbar} />
+          <Hnavbar handleShowvNavbar={handleShowvNavbar} />
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
             <Route path="/analytics" element={<Analytics />}></Route>

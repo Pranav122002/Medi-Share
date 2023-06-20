@@ -8,8 +8,8 @@
   margin: auto;
   width: 100vw;
   height: max-content;
-  min-height: 120vh;
-  background: #ffffff;
+  min-height: 92vh;
+  background: #fbfbfb;
   padding-top: 1px;
 }
 /* .donate {
@@ -25,21 +25,27 @@
 } */
 .profilediv .contentt{
  
-  margin: auto;
+
   margin-top: 2rem;
-  width: 85vw;
+  width: 82vw;
   box-shadow: 2px 2px 9px rgb(225, 225, 225);
   background: rgb(246, 254, 255);
+  margin-left: auto;
+  margin-right: 2vw;
+  border-radius: 1rem;
 }
 
 .contentt .userdet{
   position: relative;
   z-index: 2;
   box-shadow: 2px 2px 9px rgb(216, 216, 216);
-  background: rgb(255, 255, 255);
+  background: rgb(89, 197, 234);
   height: 13rem;
   display: flex;
+  color: white;
   justify-content: space-evenly;
+  border-radius: 1rem;
+
 }
 .contentt .userdet img{
   
@@ -48,7 +54,8 @@
   margin-left: 5rem;
   padding: 1rem;
   border-radius: 50%;
-  box-shadow: 2px 2px 8px rgb(233, 233, 233);
+  box-shadow: 2px 2px 8px rgb(78, 176, 209);
+  background: white;
 }
 
 .userdet h1{
@@ -66,6 +73,7 @@
   align-items: center;
   text-align: right;
   margin-left: 5rem;
+ 
 }
 
 #credits img{
@@ -77,6 +85,7 @@
   box-shadow:none;
   margin: 0;
   margin-left: 2rem;
+  border-radius: 50%;
 }
 
 .contentt .donatedorders{

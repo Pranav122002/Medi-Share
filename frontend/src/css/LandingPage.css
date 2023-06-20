@@ -73,6 +73,28 @@
    width: 90rem;
   
 }
+
+.linkscur.false .aboutucur{
+   display: none;
+}
+.linkscur.false .aboutucurs span{
+   display: none;
+}
+.linkscur.false .aboutucurs img{
+   padding-right: 0.5rem;
+   padding-top: 0.5rem;
+}
+.linkscur.active .aboutucur{
+   display: none;
+}
+.linkscur.active .aboutucurs span{
+   display: none;
+}
+.linkscur.active .aboutucurs img{
+   padding-right: 0.5rem;
+   padding-top: 0.5rem;
+}
+
 .Lcontent .banner1 h1{
     font-size: 3rem;
     /* color: rgb(0, 198, 152); */
@@ -482,6 +504,28 @@
    color: black;
    opacity: 1;
 }
+
+.linkscur.false .aboutucur{
+   display: none;
+}
+.linkscur.false .aboutucurs span{
+   display: none;
+}
+.linkscur.false .aboutucurs img{
+   padding-right: 0.5rem;
+   padding-top: 0.5rem;
+}
+.linkscur.active .aboutucur{
+   display: none;
+}
+.linkscur.active .aboutucurs span{
+   display: none;
+}
+.linkscur.active .aboutucurs img{
+   padding-right: 0.5rem;
+   padding-top: 0.5rem;
+}
+
   .icon{
    display: block;
    cursor: pointer;

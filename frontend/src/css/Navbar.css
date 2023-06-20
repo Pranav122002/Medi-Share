@@ -305,6 +305,24 @@ ul a:nth-child(even){
 
 @media screen and (max-width: 1000px){
 
+  .mainnavss.active{
+      display: none ;
+  }
+  .mainnavss.false{
+    
+    animation-name: slidetnav;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes slidetnav {
+    0% {
+        transform: translate(-20rem);
+      
+    }
+    100% {
+      transform: translate();
+    }
+  } 
   .one {
     width: 130%;
     height: 5rem;
