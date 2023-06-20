@@ -201,6 +201,7 @@ export default function Donate() {
   return (
     <div className="donateeapp">
       <div className="bodyy">
+        <div className="donatecont">
         <div className="donate_instru">
           <div className="donate_content">
             <h1>Some Important Instructions for Donating</h1>
@@ -334,6 +335,7 @@ export default function Donate() {
             <p>-Anne Frank</p>
           </div>
         </div>
+        /</div>
       </div>
     </div>
   );

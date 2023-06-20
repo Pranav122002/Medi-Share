@@ -1,11 +1,17 @@
-
-.doctor .bodyy{
+.doctor{
   margin: auto;
   width: 100vw;
   height: max-content;
   min-height: 120vh;
+  background: #f1fbff;
+  padding: 0.1px;
+}
 
-  background: #f1fffd;
+.doctor .bodyy{
+  width: 82vw;
+  height: max-content;
+  margin-left: auto;
+  margin-right: 2vw;
  
 }
 
@@ -17,45 +23,102 @@
 }
 
 .doctor .doctordetail{
-  width: 100vw;
-  background: white;
-  height: 28rem;
+  border-radius: 1rem;
+  text-align: left;
+  background:white;
+  margin-top: 2rem;
+  padding: 0.1px;
+  height: 10rem;
+  display: flex;
+}
+.doctor .doctordetail img{
+  height: 9rem;
+  padding-top: 0.5rem;
+  margin-right: 2vw;
+  margin-left: auto;
 }
 
 .doctor .doctordetail h1{
-  position: relative;
-  z-index: 2;
-  margin-bottom: 5rem;
+    margin: 0;
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    font-size: 1.7rem;
 }
 
-.doctor .doctorp{
-  position: relative;
-  z-index: 2;
-  background: white;
-  box-shadow: 2px 2px 8px rgb(192, 225, 226);
-  width: 40%;
-  margin-left: 15rem;
-  height: max-content;
-  padding: 1rem;
-}
 
 .doctor .doctordetail p{
   
-  text-align: left;
-    font-size: 1.2vw;
+    text-align: left;
+    font-size: 1.2rem ;
+    margin-left: 1.5rem;
+}
+
+.Doctorui{
+   width: 82vw;
+   background: #48b0df;
+   height: max-content;
+   border-radius: 1rem;
+   padding: 0.1px;
+  margin-top: 2rem;
+}
+
+.Doctorui h1{
+    font-size: 1.7rem;
+    text-align: left;
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+    color: white;
 }
 
 .doctorcont{
-  position: relative;
+ 
+}
+.doctorslist{
+  margin: 0;
+}
+
+.doctorslist ul{
+  padding-left: 0 ;
+  width: 78vw;
+}
+.doctorslist ul li{
+  background: rgb(255, 255, 255);
+  width: 78vw;
   display: flex;
+  min-height: 4rem;
+  border-radius: 0.5rem;
+  margin: auto;
+  margin-top: 1.5rem;
   justify-content: space-evenly;
+  margin-left: 2rem;
+  padding-left: 0rem;
+  align-items:start;
   
+}
+.doctorslist ul li p{
+  
+}
+.doctorslist ul li .button{
+    background: #B7FFE7;
+    width: 7vw;
+    margin: 0;
+    margin-top: 0.4rem;
+    height: 3rem;
+    color: #000000;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    margin-right: -7vw;
+  
+}
+.doctorslist ul li .button:hover{
+    margin-top: 0.1rem;
 }
 
 .doctorcont img{
   position: absolute;
   left: 0;
-  opacity: 0.9;
+  opacity: 0.3;
 
 }
 
@@ -94,19 +157,7 @@
   margin-top: 1rem;
 }
 
-.doctorslist{
-  background: white;
-  min-height: 15rem;
-  margin-top: 3rem;
-  position: relative;
-  z-index: 23;
-  text-align: center;
-  
-  padding: 30px; 
-  width: 24vw;
-  height: max-content;
-  box-shadow: 2px 2px 9px rgb(220, 220, 220);
-}
+
 .doctorslist  li{
   font-weight: 700;
 }

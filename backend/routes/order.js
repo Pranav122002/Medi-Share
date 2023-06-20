@@ -114,9 +114,9 @@ router.get("/api/allorders", async (req, res) => {
 
     //for
     if (filterOption === "Assigned") {
-      filter.assigned_vol = { $ne: null }
+      filter.assigned_vol = null 
     } else if (filterOption === "Unassigned") {
-      filter.assigned_vol = null
+      filter.assigned_vol = { $ne: null }
     } else if (filterOption === "Executed") {
       filter.execute_status = true
     } else if (filterOption === "Verified") {
