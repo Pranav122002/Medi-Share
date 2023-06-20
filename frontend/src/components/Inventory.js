@@ -246,16 +246,21 @@ export default function Inventory() {
                   <div className="box" key={item.id}>
                     <h3 style={{ color: "black" }}>{item.medicine_name}</h3>
                     <p className="p1">{item.description}</p>
-                    <p className="p1">
-                      {item.count === 0 ? <p>Not available</p> : item.count}
-                    </p>
                     <p className="p2" style={{ color: "black" }}>{item.disease}</p>
-                    {
-                      cart.some((cartItem) => cartItem.medicine_name === item.medicine_name) ? (
-                        <button disabled>already in Cart</button>
-                      ) :
-                        (<button onClick={() => addToCart(item)}>Add to Cart</button>)
-                    }
+                    <p className="p1">
+                      {item.count === 0 ? <p>Not available</p> :
+                        <>
+                          <p>{item.count}</p>
+                          {
+                            cart.some((cartItem) => cartItem.medicine_name === item.medicine_name) ? (
+                              <button disabled>already in Cart</button>
+                            ) :
+                              (<button onClick={() => addToCart(item)}>Add to Cart</button>)
+                          }
+                        </>
+                      }
+                    </p>
+
                   </div>
                 );
               })}
