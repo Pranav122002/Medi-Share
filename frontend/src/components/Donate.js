@@ -3,7 +3,7 @@ import "../css/Donate.css";
 import { Link, json, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
-import Hnavbar  from "./Hnavbar";
+import Hnavbar from "./Hnavbar";
 import Medicines from "./Medicines"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -22,37 +22,7 @@ export default function Donate() {
   const [formMover, setFormMover] = useState(count) // Keeps track of currect form.
   const [sug, showsug] = useState(!false);
   const [coordinates, setCoordinates] = useState(null)
-  
-  //Taking photo from camera
-  // const [imagePreviewModal, setImagePreviewModal] = useState(false)
-  // const [selectedImage, setSelectedImage] = useState()
-  // const handleFileUpload = (event) => {
-  //   const file = event.target.files[0];
-  //   setSelectedImage(URL.createObjectURL(file))
-  // }
-
-  // const handleTakePhoto = async() => {
-  //   try {
-  //     const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
-  //     const videoElement = document.createElement('video');
-  //     videoElement.srcObject = mediaStream;
-
-  //     videoElement.addEventListener('loadedmetadata', () => {
-  //       const canvas = document.createElement('canvas');
-  //       canvas.width = videoElement.videoWidth;
-  //       canvas.height = videoElement.videoHeight;
-  //       const context = canvas.getContext('2d');
-  //       context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-
-  //       const imageUrl = canvas.toDataURL('image/jpeg');
-  //       setSelectedImage(imageUrl);
-
-  //       videoElement.srcObject.getTracks().forEach((track) => track.stop());
-  //     });
-  //   } catch (error) {
-  //     console.error('Error accessing camera:', error);
-  //   }
-  // }
+  const [medicineList, setMedicineList] = useState([])
 
   const handleAddForm = () => {
     if (medicine_name !== "" && expiry_date !== "" && quantity !== "" && location !== "") {
@@ -117,8 +87,19 @@ export default function Donate() {
     showsug(false);
     console.log(sug);
   };
+  const getMedicine = () => {
+    fetch(`${API_BASE_URL}/allmedicines`)
+      .then(res => res.json())
+      .then(doc => {
+        setMedicineList(doc.map((item) => item.medicine_name))
+        console.log(medicineList)
+      })
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     AOS.init({ duration: 800 });
+    getMedicine()
   }, []);
 
   // Toast functions
@@ -181,22 +162,24 @@ export default function Donate() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
-  const fetchMedicines = (query) => {
-    setSearch(query);
-    fetch(`${API_BASE_URL}/search-medicines`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query,
-      }),
-    })
-      .then((res) => res.json())
-      .then((results) => {
-        setSearchResult(results.medicine);
-      });
-  };
+  // const fetchMedicines = (query) => {
+  //   setSearch(query);
+  //   fetch(`${API_BASE_URL}/search-medicines`, {
+  //     method: "post",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       query,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((results) => {
+  //       setSearchResult(results.medicine);
+  //     });
+  // };
+
+
 
   return (
     <div className="donateeapp">
@@ -223,18 +206,24 @@ export default function Donate() {
             </div>
             <div>
               {/* <h4>{(formMover%count)+1}</h4> */}
-              <input
-                onClick={handleShowsug}
-                type="text"
-                name="medicine_name"
-                id="medicine_name"
-                value={medicine_name}
-                placeholder="Medicine Name"
-                onChange={(e) => {
-                  setMedicineName(e.target.value);
-                  fetchMedicines(e.target.value);
-                }}
+              {/* list name and datalist id must be same */}
+              <input 
+              list="medicine"
+              id="medicine_name"
+              name="medicine_name"
+              value={medicine_name}
+              placeholder="Medicine Name"
+              onChange={(e) => {
+                setMedicineName(e.target.value);
+              }}
               />
+              <datalist
+              id="medicine"
+              >
+              {medicineList.map((item=>
+              <option>{item}</option>
+                ))}
+              </datalist>
             </div>
             <div>
               <input
