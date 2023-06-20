@@ -197,6 +197,19 @@ export default function Navbar(props) {
 
           </Link>
 
+          <Link className="borderrad" to="/search-medicines">
+            <div className="navimgspace">   <img
+              className="navimg"
+              id="seperate"
+              src="./searchpill.png"
+              alt=""
+
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Inventory
+            </li>
+
+          </Link>
           <Link className="borderrad" to="/request-medicines">
             <div className="navimgspace">  <FontAwesomeIcon
               className="navimg"
@@ -217,19 +230,6 @@ export default function Navbar(props) {
 
           </Link>
 
-          <Link className="borderrad" to="/search-medicines">
-            <div className="navimgspace">   <img
-              className="navimg"
-              id="seperate"
-              src="./searchpill.png"
-              alt=""
-
-            /></div>
-            <li style={{ color: "black" }} className="navli">
-              Search Medicines
-            </li>
-
-          </Link>
 
           <Link className="borderrad" to="/annoucements">
             <div className="navimgspace">  <img

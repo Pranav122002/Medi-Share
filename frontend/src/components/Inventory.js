@@ -85,6 +85,16 @@ export default function Inventory() {
       });
   };
 
+  const getMedicine = () => {
+    fetch(`${API_BASE_URL}/allmedicines`)
+      .then(res => res.json())
+      .then(doc => {
+        setSearchResult(doc)
+        console.log(searchResult)
+      })
+      .catch(err => console.log(err))
+  }
+
   const fetchUser = () => {
     fetch(
       `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
@@ -126,10 +136,10 @@ export default function Inventory() {
     console.log("cart :  " + JSON.stringify(cart))
     console.log("location: ", location)
     geocode(location)
-    .then(coordinates_=>{
-      setCoordinates(coordinates_)
-      console.log(coordinates)
-    })
+      .then(coordinates_ => {
+        setCoordinates(coordinates_)
+        console.log(coordinates)
+      })
     fetch(`${API_BASE_URL}/medicine-availablity`,
       {
         method: "post",
@@ -151,8 +161,11 @@ export default function Inventory() {
         }
       })
   }
+
+  // const fetchMedicines
   useEffect(() => {
     fetchUser();
+    getMedicine()
   }, []);
 
   useEffect(() => {
@@ -233,7 +246,9 @@ export default function Inventory() {
                   <div className="box" key={item.id}>
                     <h3 style={{ color: "black" }}>{item.medicine_name}</h3>
                     <p className="p1">{item.description}</p>
-                    <p className="p1">{item.count}</p>
+                    <p className="p1">
+                      {item.count === 0 ? <p>Not available</p> : item.count}
+                    </p>
                     <p className="p2" style={{ color: "black" }}>{item.disease}</p>
                     {
                       cart.some((cartItem) => cartItem.medicine_name === item.medicine_name) ? (
