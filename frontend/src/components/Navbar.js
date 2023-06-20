@@ -124,13 +124,6 @@ export default function Navbar(props) {
     } else if (user?.role === "volunteer") {
       return (
         <>
-          <Link className="borderrad" to="/orders">
-            <div className="navimgspace">   <img className="navimg" src="./check-list.png" alt="" /></div>
-            <li style={{ color: "black" }} className="navli">
-              Orders
-            </li>
-
-          </Link>
           <Link className="borderrad" to="/volunteer">
             <div className="navimgspace">   <FontAwesomeIcon
               className="navimg"
@@ -212,14 +205,6 @@ export default function Navbar(props) {
             /></div>
             <li style={{ color: "black" }} className="navli">
               Request
-            </li>
-
-          </Link>
-
-          <Link className="borderrad" to="/orders">
-            <div className="navimgspace">  <img className="navimg" src="./check-list.png" alt="" /></div>
-            <li style={{ color: "black" }} className="navli">
-              Orders
             </li>
 
           </Link>

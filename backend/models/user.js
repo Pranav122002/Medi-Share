@@ -9,10 +9,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  phone_number: {
-    type: Number,
-    required: true,
-  },
   password: {
     type: String,
     required: true,
@@ -21,6 +17,24 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  phone_no: {
+    type: String,
+  },
+  cart: [
+    {
+      medicine_name: {
+        type: String
+      },
+      quantity: {
+        type: Number
+      },
+      med_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "MEDICINE"
+      },
+    },
+
+  ],
   credits: {
     type: Number,
     default: 1000,
@@ -28,6 +42,9 @@ const userSchema = new mongoose.Schema({
   subscription: {
     type: Boolean,
     default: false,
+  },
+  location: {
+    type: String,
   },
   subscription_end_date: {
     type: String,
@@ -95,13 +112,34 @@ const volunteerSchema = new mongoose.Schema({
       type: Boolean,
       default: true,
     },
-  
+    rejected_orders: [
+      {
+        order_id: {
+          type: mongoose.Schema.Types.ObjectId
+        },
+      },
+    ],
+    accepted_orders: [
+      {
+        order_id: {
+          type: mongoose.Schema.Types.ObjectId
+        },
+      },
+    ],
+
+    verified_orders: [
+      {
+        order_id: {
+          type: mongoose.Schema.Types.ObjectId
+        },
+      }
+    ],
     location: {
-      longitude: {
+      lng: {
         type: Number,
         default: 0
       },
-      latitude: {
+      lat: {
         type: Number,
         default: 0
 
@@ -110,6 +148,15 @@ const volunteerSchema = new mongoose.Schema({
     certificate: {
       type: String,
     },
+
+    feedback_count: {
+      type: Number,
+      default: 0
+    },
+    avg_stars: {
+      type: Number,
+      default: 0
+    }
   },
 });
 

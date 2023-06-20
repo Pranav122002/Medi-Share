@@ -3,15 +3,15 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const USER = mongoose.model("USER");
 const DOCTOR = mongoose.model("DOCTOR");
-const VOLUNTEER = mongoose.model("VOLUNTEER");
+const VOLUNTEER = mongoose.model("VOLUNTEER")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
 router.post("/api/signup", async (req, res) => {
   try {
-    const { name, email, phone_number, password, role, certificate } = req.body;
-    if (!name || !email || !password || !phone_number) {
+    const { name, email, phone_no, password, role, certificate } = req.body;
+    if (!name || !email || !password || !phone_no) {
       return res.status(422).json({ error: "Please add all the fields." });
     }
 
@@ -27,7 +27,7 @@ router.post("/api/signup", async (req, res) => {
     const user = new USER({
       name,
       email,
-      phone_number,
+      phone_no,
       password: hashedPassword,
       role: role,
     });

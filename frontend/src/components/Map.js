@@ -39,7 +39,7 @@ const searchHospitals = async (lng, lat, radius, limit) => {
       lng: feature.center[0],
       lat: feature.center[1],
     }));
-
+    console.log(hospitals)
     return hospitals
   } catch (error) {
     console.error('Error searching for hospitals:', error);
@@ -88,7 +88,17 @@ const Map = () => {
       map.current.addControl(geocoder, 'top-left');
       map.current.addControl(nav, 'top-left')
       geocoder.on('result', function (e) {
-        const marker = new mapboxgl.Marker().getLngLat(e.result.geometry.coordinates[0],e.result.geometry.coordinates[1]).addTo(map.current)
+        
+        // const marker = new mapboxgl.Marker().getLngLat(e.result.geometry.coordinates[0],e.result.geometry.coordinates[1]).addTo(map.current)
+        searchHospitals(e.result.geometry.coordinates[0],e.result.geometry.coordinates[1], 1,10) // longitude, latitue, radius, limit()
+      .then((result) =>{
+        result.forEach(location => {
+          const marker = new mapboxgl.Marker()
+          .setLngLat([location.lng, location.lat])
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3>`))
+          .addTo(map.current);
+        })
+      })
         // console.log(e.result.geometry.coordinates[0]);
       });
       // -------------------Controls-------------------

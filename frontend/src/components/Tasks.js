@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { API_BASE_URL } from "../config";
 
+
 export default function Tasks() {
   const navigate = useNavigate();
 
@@ -58,8 +59,9 @@ export default function Tasks() {
         },
       }
     )
-      .then((res) => res.json())
+      .then((res) => res.json())  
       .then((res) => {
+        console.log(res.role)
         if (res.role === "admin") {
           setIsAdmin(true);
           setIsVolunteer(false);

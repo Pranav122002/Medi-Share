@@ -11,7 +11,7 @@ import { API_BASE_URL } from "../config";
 export default function Request() {
   const [medicine_name, setMedicineName] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [expiry_date, setExpiryDate] = useState("");
+  const [expiry_date, setExpiryDate] = useState(new Date);
   const [location, setLocation] = useState("");
   const [sug, showsug] = useState(!false);
 
@@ -46,7 +46,9 @@ export default function Request() {
           },
           body: JSON.stringify({
             medicine_name: medicine_name,
-            expiry_date: expiry_date,
+            expiry_date: {
+              date: expiry_date
+            },
             quantity: quantity,
             location: location,
             requester: requester,

@@ -281,20 +281,11 @@ input {
 }
 
 @media screen and (max-width: 1000px) {
-
-  .bodyy{
-    position: relative;
-    z-index: -50;
-  }
   .donate_content {
-    
     width: 90%;
     margin: auto;
   }
-  .donatecont{
-    position: relative;
-    z-index: -50;
-  }
+
   .button-53 {
     padding: 0.75rem 3rem;
     font-size: 1.25rem;

@@ -7,6 +7,9 @@ import { Hnavbar } from "./Hnavbar";
 import "../css/Profile.css";
 import { UserContext } from "./UserContext";
 import { API_BASE_URL } from "../config";
+import Modal from 'react-modal';
+import ReactStars from "react-rating-stars-component";
+
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -151,6 +154,61 @@ export default function Profile() {
       });
   };
 
+  const [feedback, setFeedback] = useState(null)
+  const [starRating, setStarRating] = useState(0)
+  const [feedbackText, setFeedbackText] = useState("")
+  const [feedbackIsOpen, setFeedbackIsOpen] = useState(false)
+  const handleFeedback = () => {
+    setFeedbackIsOpen(true)
+  }
+
+  const handleStarRating = (newRating) => {
+    setStarRating(newRating)
+  }
+  const handleFeedbackText = (e) => {
+    setFeedbackText(e.target.value)
+  }
+
+  const sendFeedback = (order_id) => {
+    console.log(starRating, feedbackText)
+    fetch(`${API_BASE_URL}/feedback/${order_id}`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        stars: starRating,
+        feedback: feedbackText
+      })
+    }
+    ).then(res => res.json())
+      .then(doc => {
+        setFeedbackIsOpen(false)
+        notifyB(doc.success)
+        // setDonateOrders((preOrder) => {
+        //   return (preOrder.map((item) => item._id === order_id ? {
+        //     ...item,
+        //     feedback: {
+        //       stars: starRating,
+        //       feedback: feedbackText
+        //     }
+        //   } : item))
+        // })
+        // setRequestOrders((preOrder) => {
+        //   return (preOrder.map((item) => item._id === order_id ? {
+        //     ...item,
+        //     feedback: {
+        //       stars: starRating,
+        //       feedback: feedbackText
+        //     }
+        //   } : item))
+        // })
+      })
+      .catch(res => {
+        console.error(res)
+        notifyA(res.error)
+      })
+  }
   return (
     <div className="profilediv">
       <div className="bodyy">
@@ -227,23 +285,66 @@ export default function Profile() {
             </h2>
             <ul className="proul">
               <li className="profli">
-                <h3 className="pm">Name</h3>
-                <h3 className="p1">Expiry Date</h3>
+                <h3 className="pm">Order ID</h3>
+                {/* <h3 className="p1">Order Type</h3> */}
                 <h3 className="p2">Quantity</h3>
                 <h3 className="p3">Location</h3>
+                <h3 className="p3">Status</h3>
               </li>
               {isLoading ? (
                 <h1 className="loada">Loading...</h1>
               ) : (
                 <div className="procont">
-                  {donateorders.map((donateorders) => (
-                    <li className="proco" key={donateorders.medicine_name}>
-                      <p className="pm">{donateorders.medicine_name}</p>
-                      <p className="p1">{donateorders.expiry_date} </p>
-                      <p className="p2">{donateorders.quantity}</p>
-                      <p className="p3"> {donateorders.location}</p>
-                    </li>
-                  ))}
+                  {donateorders.map((donateorders) => {
+                    console.log(donateorders)
+                    return (
+                      <li className="proco" key={donateorders.medicine_name}>
+                        <p className="pm">{donateorders._id.toString().slice(-4)}</p>
+                        {/* <p className="p1">{donateorders.expiry_date} </p> */}
+                        <p className="p2">{donateorders.no_of_medicines}</p>
+                        <p className="p3"> {donateorders.location.location}</p>
+                        {
+                          donateorders.acceptance_status === "accepted" && donateorders.verify_status === false ? (
+                            <p>Volunter is assigned</p>
+                          ) : donateorders.acceptance_status === "pending" ? (
+                            <p>Pending</p>
+                          ) : (
+                            <div>
+                              {console.log(donateorders.feedback)}
+                              <p>Medicines collected</p>
+                              {
+                                !donateorders.feedback.feedback&& (
+                                  <>
+                                    <button onClick={() => handleFeedback()}>Feedback</button>
+                                    <Modal
+                                      className="Modal__container"
+                                      onRequestClose={() => setFeedbackIsOpen(false)}
+                                      isOpen={feedbackIsOpen}
+                                      style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
+                                    >
+                                      <ReactStars
+                                        count={5}
+                                        onChange={handleStarRating}
+                                        size={24}
+                                        activeColor="#ffd700"
+                                      />
+                                      <textarea
+                                        placeholder="Feedback"
+                                        onChange={handleFeedbackText}
+                                      />
+                                      <button onClick={() => sendFeedback(donateorders._id)}>submit</button>
+                                      <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
+                                    </Modal>
+                                  </>
+                                )
+                              }
+
+                            </div>
+                          )
+                        }
+                      </li>
+                    )
+                  })}
                 </div>
               )}
             </ul>
@@ -256,21 +357,61 @@ export default function Profile() {
             </h2>
             <ul className="proul">
               <li className="profli">
-                <h3 className="pm">Name</h3>
-                <h3 className="p1">Expiry Date</h3>
+                <h3 className="pm">Order ID</h3>
+                {/* <h3 className="p1"></h3> */}
                 <h3 className="p2">Quantity</h3>
                 <h3 className="p3">Location</h3>
+                <h3 className="p4">Status</h3>
               </li>
               {isLoading ? (
                 <h1 className="loada">Loading...</h1>
               ) : (
                 <div className="procont">
                   {requestorders.map((requestorders) => (
-                    <li className="proco" key={requestorders.medicine_name}>
-                      <p className="pm"> {requestorders.medicine_name}</p>
-                      <p className="p1"> {requestorders.expiry_date}</p>
-                      <p className="p2"> {requestorders.quantity}</p>
-                      <p className="p3">{requestorders.location}</p>
+                    <li className="proco" key={requestorders._id}>
+                      <p className="pm"> {requestorders._id.toString().slice(-4)}</p>
+                      {/* <p className="p1"> {requestorders.expiry_date}</p> */}
+                      <p className="p2"> {requestorders.no_of_medicines}</p>
+                      <p className="p3">{requestorders.location.location}</p>
+                      {
+                        requestorders.acceptance_status === "accepted" && requestorders.verify_status === false ? (
+                          <p>Volunter is assigned</p>
+                        ) : requestorders.acceptance_status === "pending" ? (
+                          <p>Pending</p>
+                        ) : (
+                          <div>
+                            {console.log(requestorders.feedback)}
+                            <p>Medicines collected</p>
+                            {
+                              requestorders.feedback.feedback === null && (
+                                <>
+                                  <button onClick={() => handleFeedback()}>Feedback</button>
+                                  <Modal
+                                    className="Modal__container"
+                                    onRequestClose={() => setFeedbackIsOpen(false)}
+                                    isOpen={feedbackIsOpen}
+                                    style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
+                                  >
+                                    <ReactStars
+                                      count={5}
+                                      onChange={handleStarRating}
+                                      size={24}
+                                      activeColor="#ffd700"
+                                    />
+                                    <textarea
+                                      placeholder="Feedback"
+                                      onChange={handleFeedbackText}
+                                    />
+                                    <button onClick={() => sendFeedback(requestorders._id)}>submit</button>
+                                    <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
+                                  </Modal>
+                                </>
+                              )
+                            }
+
+                          </div>
+                        )
+                      }
                     </li>
                   ))}
                 </div>

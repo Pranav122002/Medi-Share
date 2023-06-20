@@ -12,7 +12,7 @@ import PersonalChat from "./components/PersonalChat";
 import CommunityChat from "./components/CommunityChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
-import Search from "./components/Search";
+import Inventory from "./components/Inventory";
 import Appointments from "./components/Appointments";
 import Annoucement from "./components/Annoucement";
 import DiseasePredictions from "./components/DiseasePredictions";
@@ -56,9 +56,9 @@ function App() {
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/donate-medicines" element={<Donate />}></Route>
             <Route path="/request-medicines" element={<Request />}></Route>
+              <Route path="/medicines" element={<Medicines />}></Route>
             <Route path="/orders" element={<Orders />}></Route>
-            <Route path="/medicines" element={<Medicines />}></Route>
-            <Route path="/tasks" element={<Tasks />}></Route>
+          <Route path="/tasks" element={<Tasks />}></Route>
             <Route
               path="/disease-predictions"
               element={<DiseasePredictions />}
@@ -73,7 +73,7 @@ function App() {
             <Route path="/personal-chat" element={<PersonalChat />}></Route>
             <Route path="/community-chat" element={<CommunityChat />}></Route>
             <Route path="/about-us" element={<AboutUs />}></Route>
-            <Route path="/search-medicines" element={<Search />}></Route>
+            <Route path="/search-medicines" element={<Inventory />}></Route>
             <Route path="/annoucements" element={<Annoucement />}></Route>
             <Route path="/nearby-hospitals" element={<Hospitals />}></Route>
             <Route path="/brainTumor" element={<Braintumor />}></Route>

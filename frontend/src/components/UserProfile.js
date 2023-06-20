@@ -23,7 +23,7 @@ export default function UserProfile({ id }) {
     qualification: "",
     available: "",
     NGO_name: "",
-    location: { longitude: "", latitude: "" },
+    location: { lng: "", lat: "" },
   });
 
   useEffect(() => {
@@ -80,8 +80,8 @@ export default function UserProfile({ id }) {
             available: res.volunteer_details.available,
             NGO_name: res.volunteer_details.NGO_name,
             location: {
-              longitude: res.volunteer_details.location.longitude,
-              latitude: res.volunteer_details.location.latitude,
+              lng: res.volunteer_details.location.lng,
+              lat: res.volunteer_details.location.lat,
             },
           });
         }
@@ -111,7 +111,7 @@ export default function UserProfile({ id }) {
         [e.target.name]: e.target.value,
       });
     } else if (user.role === "volunteer") {
-      if (e.target.name === "longitude" || e.target.name === "latitude") {
+      if (e.target.name === "lng" || e.target.name === "lat") {
         setUpdatedVolunteerDetails((prevDetails) => ({
           ...prevDetails,
           location: {
@@ -203,8 +203,8 @@ export default function UserProfile({ id }) {
             <p>Available: {user.volunteer_details.available}</p>
             <p>NGO Name: {user.volunteer_details.NGO_name}</p>
             <p>
-              Location: {user.volunteer_details.location.longitude},{" "}
-              {user.volunteer_details.location.latitude}
+              Location: {user.volunteer_details.location.lng},{" "}
+              {user.volunteer_details.location.lat}
             </p>
             <img
               src={user.volunteer_details.certificate}
@@ -296,19 +296,19 @@ export default function UserProfile({ id }) {
                 onChange={handleInputChange}
               />
               <br />
-              <label>Location (Longitude):</label>
+              <label>Location (lng):</label>
               <input
                 type="number"
-                name="longitude"
-                value={updatedVolunteerDetails.location.longitude || ""}
+                name="lng"
+                value={updatedVolunteerDetails.location.long || ""}
                 onChange={handleInputChange}
               />
               <br />
-              <label>Location (Latitude):</label>
+              <label>Location (lat):</label>
               <input
                 type="number"
-                name="latitude"
-                value={updatedVolunteerDetails.location.latitude || ""}
+                name="lat"
+                value={updatedVolunteerDetails.location.lat || ""}
                 onChange={handleInputChange}
               />
             </div>

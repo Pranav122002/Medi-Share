@@ -1,21 +1,118 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../css/Donate.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
-import Hnavbar from "./Hnavbar";
-import Medicines from "./Medicines";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Hnavbar  from "./Hnavbar";
+import Medicines from "./Medicines"
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { API_BASE_URL } from "../config";
+import { REACT_APP_MAP_API_KEY } from '../keys'
+import geocode from './geocodeFun'
+import Modal from 'react-modal'
 
 export default function Donate() {
+  const [medicineForms, setMedicineForms] = useState([])
   const [medicine_name, setMedicineName] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [expiry_date, setExpiryDate] = useState("");
+  const [expiry_date, setExpiryDate] = useState(new Date);
   const [location, setLocation] = useState("");
+  const [count, setCount] = useState(1);
+  const [formMover, setFormMover] = useState(count) // Keeps track of currect form.
   const [sug, showsug] = useState(!false);
+  const [coordinates, setCoordinates] = useState(null)
+  
+  //Taking photo from camera
+  // const [imagePreviewModal, setImagePreviewModal] = useState(false)
+  // const [selectedImage, setSelectedImage] = useState()
+  // const handleFileUpload = (event) => {
+  //   const file = event.target.files[0];
+  //   setSelectedImage(URL.createObjectURL(file))
+  // }
 
+  // const handleTakePhoto = async() => {
+  //   try {
+  //     const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+  //     const videoElement = document.createElement('video');
+  //     videoElement.srcObject = mediaStream;
+
+  //     videoElement.addEventListener('loadedmetadata', () => {
+  //       const canvas = document.createElement('canvas');
+  //       canvas.width = videoElement.videoWidth;
+  //       canvas.height = videoElement.videoHeight;
+  //       const context = canvas.getContext('2d');
+  //       context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+  //       const imageUrl = canvas.toDataURL('image/jpeg');
+  //       setSelectedImage(imageUrl);
+
+  //       videoElement.srcObject.getTracks().forEach((track) => track.stop());
+  //     });
+  //   } catch (error) {
+  //     console.error('Error accessing camera:', error);
+  //   }
+  // }
+
+  const handleAddForm = () => {
+    if (medicine_name !== "" && expiry_date !== "" && quantity !== "" && location !== "") {
+      setMedicineForms((previousForms) => [
+        ...previousForms,
+        {
+          id: count,
+          medicine_name: medicine_name,
+          quantity: quantity,
+          expiry_date: expiry_date,
+          location: location,
+        },
+      ])
+      setCount((previousCount) => previousCount + 1)
+      setMedicineName("")
+      setExpiryDate("")
+      setQuantity("")
+      console.log(medicineForms)
+      console.log("formMover " + formMover)
+      console.log("count " + count)
+    }
+  }
+
+  const handLeftForm = () => {
+    console.log("left")
+    console.log("formMover " + formMover)
+    console.log("count " + count)
+    setFormMover((currentCount) => currentCount === 1 ? count : currentCount - 1)
+    const leftForm = medicineForms.filter((form) => form.id === formMover);
+
+    if (leftForm.length > 0 && formMover != count) {
+      const selectedForm = leftForm[0];
+      setMedicineName(selectedForm.medicine_name);
+      setExpiryDate(selectedForm.expiry_date);
+      setQuantity(selectedForm.quantity);
+    } else {
+      setMedicineName("")
+      setExpiryDate("")
+      setQuantity("")
+    }
+
+    console.log(medicineForms)
+  }
+  const handleRightForm = () => {
+    setFormMover((currentCount) => currentCount === count ? 1 : currentCount + 1)
+    const rightForm = medicineForms.filter((form) => form.id === formMover);
+
+    if (rightForm.length > 0 && formMover != count) {
+      const selectedForm = rightForm[0];
+      setMedicineName(selectedForm.medicine_name);
+      setExpiryDate(selectedForm.expiry_date);
+      setQuantity(selectedForm.quantity);
+    } else {
+      setMedicineName("")
+      setExpiryDate("")
+      setQuantity("")
+    }
+    console.log("formMover " + formMover)
+    console.log("count " + count)
+  }
   const handleShowsug = () => {
     showsug(false);
     console.log(sug);
@@ -29,6 +126,13 @@ export default function Donate() {
   const notifyB = (msg) => toast.success(msg);
 
   const postOrderData = () => {
+
+    geocode(location)
+      .then(coordinates => {
+        setCoordinates(coordinates)
+        console.log(coordinates)
+      })
+
     fetch(
       `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
       {
@@ -40,20 +144,29 @@ export default function Donate() {
       .then((res) => res.json())
       .then((result) => {
         const donar = result._id;
+        const formsToSubmit = medicineForms
+
+        const formData = {
+          medicines: formsToSubmit.map((form) => ({
+            medicine_name: form.medicine_name,
+            expiry_date: {
+              date: form.expiry_date
+            },
+            quantity: form.quantity
+          })),
+          no_of_medicines: formsToSubmit.length,
+          location: location,
+          coordinates: coordinates,
+          donar: donar
+        }
+        console.log(formData)
         fetch(`${API_BASE_URL}/donate-medicines`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            medicine_name: medicine_name,
-            expiry_date: expiry_date,
-            quantity: quantity,
-            location: location,
-            donar: donar,
-          }),
-        })
-          .then((res) => res.json())
+          body: JSON.stringify(formData),
+        }).then((res) => res.json())
           .then((data) => {
             if (data.error) {
               notifyA(data.error);
@@ -87,93 +200,113 @@ export default function Donate() {
 
   return (
     <div className="donateeapp">
-    
       <div className="bodyy">
-        
-        <div className="donatecont">
-          <div className="donate_instru">
-            <div className="donate_content">
-              <h1>Some Important Instructions for Donating</h1>
-              {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
-              <div className="points">
-                <p>
-                  1.The medicine to be donated should be valid and not expired or
-                  fabricated.
-                </p>
-                <p>2.The medicine name , expiry date should be visible.</p>
-              </div>
+        <div className="donate_instru">
+          <div className="donate_content">
+            <h1>Some Important Instructions for Donating</h1>
+            {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
+            <div className="points">
+              <p>
+                1.The medicine to be donated should be valid and not expired or
+                fabricated.
+              </p>
+              <p>2.The medicine name , expiry date should be visible.</p>
             </div>
-            <img src="./donmed.jpg" data-aos="fade-right" alt="" srcset="" />
           </div>
+          <img src="./donmed.jpg" data-aos="fade-right" alt="" srcSet="" />
+        </div>
 
-          <div className="donate">
-            <div data-aos="fade-right" className="donateForm">
-              <div className="logo">
-                <h1>Donate Medicine</h1>
-              </div>
-              <div>
-                <input
-                  onClick={handleShowsug}
-                  type="text"
-                  name="medicine_name"
-                  id="medicine_name"
-                  value={medicine_name}
-                  placeholder="Medicine Name"
-                  onChange={(e) => {
-                    setMedicineName(e.target.value);
-                    fetchMedicines(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  type="date"
-                  name="expiry_date"
-                  id="expiry_date"
-                  placeholder="Expiry Date"
-                  value={expiry_date}
-                  onChange={(e) => {
-                    setExpiryDate(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="quantity"
-                  id="quantity"
-                  placeholder="Quantity"
-                  value={quantity}
-                  onChange={(e) => {
-                    setQuantity(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  placeholder="Location"
-                  value={location}
-                  onChange={(e) => {
-                    setLocation(e.target.value);
-                  }}
-                />
-              </div>
-              <button
-                className="button-53"
-                onClick={() => {
-                  postOrderData();
-                }}
-                value="Donate"
-                type="submit"
-                role="button"
-              >
-                Donate
-              </button>
+        <div className="donate">
+          <div data-aos="fade-right" className="donateForm">
+            <div className="logo">
+              <h1>Donate Medicine</h1>
             </div>
-            {/* <div className={`suggestions ${sug && 'active'}`}  >
+            <div>
+              {/* <h4>{(formMover%count)+1}</h4> */}
+              <input
+                onClick={handleShowsug}
+                type="text"
+                name="medicine_name"
+                id="medicine_name"
+                value={medicine_name}
+                placeholder="Medicine Name"
+                onChange={(e) => {
+                  setMedicineName(e.target.value);
+                  fetchMedicines(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <input
+                type="date"
+                name="expiry_date"
+                id="expiry_date"
+                placeholder="Expiry Date"
+                value={expiry_date}
+                onChange={(e) => {
+                  setExpiryDate(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="quantity"
+                id="quantity"
+                placeholder="Quantity"
+                value={quantity}
+                onChange={(e) => {
+                  setQuantity(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                placeholder="Location"
+                value={location}
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                }}
+              />
+              {/* <div>
+                {selectedImage ? (
+                  <Modal
+                    className="Model__Container"
+                    isOpen={imagePreviewModal}
+                    onRequestClose={onclose}>
+                    <img src={selectedImage} alt="Selected" />
+                    <button>Close</button>
+                  </Modal>
+                ) : (
+                  <p>No image selected</p>
+                )}
+                <div>
+                  <input type="file" accept="image/*" onChange={handleFileUpload} />
+                  <button onClick={handleTakePhoto}>Take Photo</button>
+                </div>
+              </div> */}
+            </div>
+            <div>
+              <button onClick={() => { handLeftForm() }}>Left</button>
+              <button onClick={() => { handleAddForm() }}>Add</button>
+              <button onClick={() => { handleRightForm() }}>Right</button>
+            </div>
+            <button
+              className="button-53"
+              onClick={() => {
+                postOrderData();
+              }}
+              value="Donate"
+              type="submit"
+              role="button"
+            >
+              Donate
+            </button>
+          </div>
+          <div className={`suggestions ${sug && 'active'}`}  >
 
             <ul>
               <li style={{ color: "black" }}>
@@ -194,16 +327,14 @@ export default function Donate() {
                 );
               })}
             </ul>
-          </div> */}
+          </div>
 
-            <div data-aos="zoom-in" className="donateback">
-              <h1>“No one has ever become poor from giving.</h1>
-              <p>Anne Frank</p>
-            </div>
+          <div data-aos="zoom-in" className="donateback">
+            <h1>"No one has ever become poor from giving"</h1>
+            <p>-Anne Frank</p>
           </div>
         </div>
       </div>
-    
-    </div >
+    </div>
   );
 }

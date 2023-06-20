@@ -21,6 +21,7 @@ require("./models/order");
 require("./models/task");
 require("./models/user");
 
+
 app.use(require("./routes/annoucement"));
 app.use(require("./routes/appointment"));
 app.use(require("./routes/auth"));
@@ -29,6 +30,7 @@ app.use(require("./routes/message"));
 app.use(require("./routes/order"));
 app.use(require("./routes/task"));
 app.use(require("./routes/user"));
+app.use(require("./routes/volunteer"))
 
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
@@ -44,6 +46,10 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", () => {
   console.log("MongoDB connection error !");
 });
+
+//This is a scheduler that discards expired medicines everyday.
+//Do not move this require cron.js before the mongoose connection and app.use code snipped.
+require('./Functions/cron');
 
 const server = app.listen(port, () => {
   console.log("Server is running on port" + " " + port + "");

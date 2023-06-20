@@ -7,9 +7,86 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Latestanc } from "./Latestanc";
+import { UserContext } from "./UserContext";
 import { API_BASE_URL } from "../config";
+import volLocation from './volLocation'
 
 export default function Home() {
+
+  const { updateUser } = useContext(UserContext);
+  const [user, setUser] = useState(null)
+  const [currentLocation, setCurrentLocation] = useState('')
+
+  useEffect(() => {
+    const fetchUser = () => {
+      fetch(
+        `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem('user'))._id
+        }`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          const subscriptionEndDate = new Date(res.subscription_end_date);
+          const currentDate = new Date();
+
+          if (res.subscription_end_date && subscriptionEndDate < currentDate) {
+
+            const updatedUser = { ...res, subscription: false, subscription_end_date: undefined };
+            updateUser(updatedUser);
+
+            fetch(`${API_BASE_URL}/end-subscription/${res._id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+              },
+
+            })
+              .then((res) => res.json())
+              .then((updatedRes) => {
+                console.log('User subscription ended.', updatedRes);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          } else {
+
+            updateUser(res);
+          }
+
+          if(res.role === 'volunteer')
+        {
+          volLocation()
+          .then(coordinates=>{
+            console.log(coordinates)
+            fetch(`${API_BASE_URL}/volunteer-location/${res._id}`,
+            {
+              method:'put',
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(
+                {
+                  lng: coordinates[0],
+                  lat: coordinates[1] 
+                }
+              )
+            }
+            ).then(res=>res.json())
+            .then(res=>console.log(res))
+            .catch(err=>console.error(err))
+          })
+        }
+        });
+    };
+
+    fetchUser();
+  }, []);
+
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
@@ -58,6 +135,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );
