@@ -294,7 +294,7 @@ export default function Volunteer() {
                 onChange={(e) => setSearch(e.target.value)}
                 type="text"
                 style={{ border: "none" }}
-                placeholder="search"
+                placeholder="search by order id"
                 name=""
                 id=""
               />
