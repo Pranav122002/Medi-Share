@@ -10,7 +10,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { API_BASE_URL } from "../config";
 
-
 export default function Tasks() {
   const navigate = useNavigate();
 
@@ -22,20 +21,22 @@ export default function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [task_info, setTaskInfo] = useState("");
-  const [volunteer_email, setVolunteerEmail] = useState("");
-  const [volunteer_name, setVolunteerName] = useState("");
+
   const [deadline, setDeadline] = useState("");
   const [myname, setMyName] = useState("");
   const [myTasks, setMyTasks] = useState([]);
+  const [user, setUser] = useState("");
+  const [volunteersList, setVolunteersList] = useState([]);
+  const [selectedVolunteer, setSelectedVolunteer] = useState("");
 
   const [sug, showsug] = useState(!false);
 
   const handleShowsug = () => {
     showsug(false);
-    console.log(sug);
   };
+
   useEffect(() => {
-    AOS.init({ duration: 2000 });
+    AOS.init({ duration: 800 });
   }, []);
 
   useEffect(() => {
@@ -50,6 +51,10 @@ export default function Tasks() {
     fetchTasks();
   }, []);
 
+  useEffect(() => {
+    fetchVolunteers();
+  }, []);
+
   function fetchUser() {
     fetch(
       `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
@@ -59,9 +64,9 @@ export default function Tasks() {
         },
       }
     )
-      .then((res) => res.json())  
+      .then((res) => res.json())
       .then((res) => {
-        console.log(res.role)
+        setUser(res);
         if (res.role === "admin") {
           setIsAdmin(true);
           setIsVolunteer(false);
@@ -75,12 +80,16 @@ export default function Tasks() {
   }
 
   const fetchMyTasks = () => {
-    const userName = JSON.parse(localStorage.getItem("user")).name;
-    fetch(`${API_BASE_URL}/my-tasks/${userName}`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-    })
+    fetch(
+      `${API_BASE_URL}/my-tasks/${
+        JSON.parse(localStorage.getItem("user"))._id
+      }`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyTasks(data);
@@ -89,6 +98,19 @@ export default function Tasks() {
         console.log(error);
       });
   };
+
+  function fetchVolunteers() {
+    fetch(`${API_BASE_URL}/all-volunteers`, {
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setVolunteersList(data);
+      });
+  }
 
   function fetchTasks() {
     fetch(`${API_BASE_URL}/all-tasks`, {
@@ -99,43 +121,36 @@ export default function Tasks() {
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);
-        console.log("all tasks = ", data);
       });
   }
 
   const postTaskData = () => {
-    fetch(
-      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        fetch(`${API_BASE_URL}/assign-task`, {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            task_info: task_info,
-            deadline: deadline,
-            volunteer_email: volunteer_email,
-            volunteer_name: volunteer_name,
-          }),
-        })
-          .then((res) => res.json())
+    if (!selectedVolunteer) {
+      notifyA("Please select Volunteer from list.");
+      return;
+    }
 
-          .then((data) => {
-            if (data.error) {
-              notifyA(data.error);
-            } else {
-              notifyB(data.msg);
-            }
-            console.log(data);
-          });
+    fetch(`${API_BASE_URL}/assign-task`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        task_info: task_info,
+        deadline: deadline,
+        volunteer_id: selectedVolunteer._id,
+        volunteer_name: selectedVolunteer.name,
+      }),
+    })
+      .then((res) => res.json())
+
+      .then((data) => {
+        notifyB("Task assigned successfully.");
+        if (data.error) {
+          notifyA(data.error);
+        } else {
+          notifyB(data.msg);
+        }
       });
   };
 
@@ -147,18 +162,13 @@ export default function Tasks() {
             <Card.Title id="title">{card.volunteer_name}</Card.Title>
             <Card.Text id="details">
               <p>
-                <div className="content-details">Task Info:-</div>
+                <div className="content-details">Task Info:</div>
                 {card.task_info}
                 <br />
               </p>
               <p>
-                <div className="content-details">Deadline:-</div>
+                <div className="content-details">Deadline:</div>
                 {card.deadline}
-                <br />
-              </p>
-              <p>
-                <div className="content-details">Volunteer Email:-</div>
-                {card.volunteer_email}
                 <br />
               </p>
             </Card.Text>
@@ -177,6 +187,24 @@ export default function Tasks() {
               <div data-aos="zoom-in" className="donateForm">
                 <div className="logo">
                   <h1>Assign Task</h1>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="volunteer_id"
+                    id="volunteer_id"
+                    placeholder="Volunteer id"
+                    value={selectedVolunteer._id}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="volunteer_name"
+                    id="volunteer_name"
+                    placeholder="Volunteer Name"
+                    value={selectedVolunteer.name}
+                  />
                 </div>
                 <div>
                   <input
@@ -203,30 +231,6 @@ export default function Tasks() {
                     }}
                   />
                 </div>
-                <div>
-                  <input
-                    type="text"
-                    name="volunteer_name"
-                    id="volunteer_name"
-                    placeholder="Volunteer Name"
-                    value={volunteer_name}
-                    onChange={(e) => {
-                      setVolunteerName(e.target.value);
-                    }}
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    name="volunteer_email"
-                    id="volunteer_email"
-                    placeholder="Volunteer Email"
-                    value={volunteer_email}
-                    onChange={(e) => {
-                      setVolunteerEmail(e.target.value);
-                    }}
-                  />
-                </div>
 
                 <button
                   className="button-53"
@@ -240,6 +244,27 @@ export default function Tasks() {
                   Assign
                 </button>
               </div>
+
+              <div data-aos="zoom-in" className="donateForm">
+                <div className="logo">
+                  <h1>Volunteer List</h1>
+                </div>
+
+                <div>
+                  {volunteersList.map((volunteer) => (
+                    <li key={volunteer._id}>
+                      <p
+                        onClick={() => {
+                          setSelectedVolunteer(volunteer);
+                        }}
+                      >
+                        {" "}
+                        {volunteer.name}
+                      </p>
+                    </li>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <h1>All Tasks</h1>
@@ -250,7 +275,6 @@ export default function Tasks() {
                     <p className="headp">Volunteer Name</p>
                     <p className="headp">Task Info</p>
                     <p className="headp">Deadline</p>
-                    <p className="headp">Volunteer Email</p>
                   </div>
                 </div>
                 {tasks.map(renderCard)}
@@ -268,7 +292,6 @@ export default function Tasks() {
                       <p className="headp">Volunteer Name</p>
                       <p className="headp">Task Info</p>
                       <p className="headp">Deadline</p>
-                      <p className="headp">Volunteer Email</p>
                     </div>
                   </div>
                   {myTasks.map(renderCard)}

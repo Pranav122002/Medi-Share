@@ -11,15 +11,15 @@ const taskSchema = new mongoose.Schema({
     required: true,
   },
 
-  volunteer_email: {
-    type: String,
+  volunteer_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "USER",
     required: true,
   },
   volunteer_name: {
     type: String,
     required: true,
   },
-
 });
 
 module.exports = mongoose.model("TASK", taskSchema);

@@ -5,7 +5,7 @@ const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
 const DOCTOR = mongoose.model("DOCTOR");
 const VOLUNTEER = mongoose.model("VOLUNTEER");
-const MEDICINE = mongoose.model("MEDICINE")
+const MEDICINE = mongoose.model("MEDICINE");
 
 router.get("/api/user/:id", (req, res) => {
   USER.findOne({ _id: req.params.id })
@@ -68,7 +68,6 @@ router.put("/api/update-doctor-details/:id", (req, res) => {
     });
 });
 
-
 router.get("/api/all-volunteers-and-doctors", (req, res) => {
   USER.find({ role: { $in: ["doctor", "volunteer"] } })
     .select("-password")
@@ -81,24 +80,23 @@ router.get("/api/all-volunteers-and-doctors", (req, res) => {
     });
 });
 
-
-router.get("/api/all-volunteers",(req,res)=>{
-  console.log("Volunteers")
-  USER.find({role: "volunteer"}).then((volunteers)=> {
-    console.log(volunteers)
-    res.json(volunteers)
-  }).catch((error)=>{
-    console.log(error)
-    res.status(500).json({error: "Error fetching volunteers"})
-  })
-})
+router.get("/api/all-volunteers", (req, res) => {
+  USER.find({ role: "volunteer" }).select("-password")
+    .then((volunteers) => {
+      res.json(volunteers);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Error fetching volunteers." });
+    });
+});
 
 router.post("/api/user-cart/:id", (req, res) => {
   const cart = req.body;
   USER.findByIdAndUpdate(
     { _id: req.params.id },
     {
-      $push: { cart: { $each: cart } }
+      $push: { cart: { $each: cart } },
     },
     { new: true }
   )
@@ -111,42 +109,40 @@ router.post("/api/user-cart/:id", (req, res) => {
     });
 });
 
-router.get("/api/user-cart/:id",(req,res)=>{
-  USER.find(
-    {_id: req.params.id}
-  ).then((user) => {
-    if (!user) {
-      // User not found
-      return res.status(404).json({ error: "User not found" });
-    }
-    // Return the cart
-    res.status(200).json(user.cart);
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json({ error: "Failed to get user cart" });
-  });
-})
+router.get("/api/user-cart/:id", (req, res) => {
+  USER.find({ _id: req.params.id })
+    .then((user) => {
+      if (!user) {
+        // User not found
+        return res.status(404).json({ error: "User not found" });
+      }
+      // Return the cart
+      res.status(200).json(user.cart);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Failed to get user cart" });
+    });
+});
 
 router.delete("/api/delete-cart-item/:id", (req, res) => {
   const userId = req.params.id;
   const medId = req.body.medId;
-  console.log(medId)
+  console.log(medId);
   USER.findByIdAndUpdate(
     userId,
     { $pull: { cart: { _id: medId } } },
     { new: true }
   )
     .then((updatedUser) => {
-      console.log(updatedUser)
-      res.status(200).json({success: "Item Removed"});
+      console.log(updatedUser);
+      res.status(200).json({ success: "Item Removed" });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json({ error: "Failed to remove item from cart" });
     });
 });
-
 
 router.get("/api/all-doctors", (req, res) => {
   USER.find({ role: "doctor" })

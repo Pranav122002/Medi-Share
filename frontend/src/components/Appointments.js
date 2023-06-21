@@ -455,8 +455,8 @@ export default function Appointments() {
                             <p>Name</p>
                             <p>Qualification</p>
                             <p>Specialization</p>
-                            <p>experience</p>
-                            <p>availability</p>
+                            <p>Experience</p>
+                            <p>Availability</p>
                             <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
                           </li>
                           <hr />
