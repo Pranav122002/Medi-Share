@@ -457,7 +457,7 @@ export default function Appointments() {
                             <p>Specialization</p>
                             <p>experience</p>
                             <p>availability</p>
-                            <button style={{ background: "none", color: "#258cbb" }} className="button">Select</button>
+                            <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
                           </li>
                           <hr />
                           {doctors.map((doctor) => (<>
@@ -474,7 +474,7 @@ export default function Appointments() {
                               <p>{doctor.doctor_details.availability}</p>
 
                               <button onClick={() => { setSelectedDoctor(doctor); setDoctorForm("active") }}
-                                className="button">Select</button>
+                                className="button" >Select</button>
                             </li>
                             <hr />
                           </>
@@ -500,7 +500,7 @@ export default function Appointments() {
                             <p><img src="./doctor5.png" alt="" /></p>
                             <p>Name</p>
                             <p>Appointment date</p>
-                            <button style={{ background: "none", color: "#258cbb" }} className="button">Select</button>
+                            <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
 
                           </li>
                           <hr />

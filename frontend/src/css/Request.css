@@ -5,13 +5,14 @@
 }
 
 .request {
-  height: 40rem;
+  height: 25rem;
   margin: auto;
   display: block;
   justify-content: center;
   background: #C6E6FB;
   padding: 0.1px;
   border-radius: 0.9rem; 
+  margin-bottom: 1rem;
 }
 
 #reqim {

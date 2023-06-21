@@ -3,7 +3,7 @@
   width: 100vw;
   height: max-content;
   min-height: 120vh;
-  background: #f1fbff;
+  background: #48b0df;;
   padding: 0.1px;
 }
 
@@ -59,9 +59,9 @@
 
 .Doctorui{
    width: 82vw;
-   background: #48b0df;
+   background: #C6E6FB;
    height: max-content;
-   border-radius: 1rem;
+   border-radius: 0.9rem;
    padding: 0.1px;
   margin-top: 2rem;
   min-height: 30rem;
@@ -73,7 +73,7 @@
     text-align: left;
     margin-left: 1.5rem;
     margin-top: 1.5rem;
-    color: white;
+    color: rgb(0, 0, 139);
 }
 
 .doctorslist{
@@ -87,7 +87,7 @@
   width: 75vw;
   margin-left: 2rem;
   padding-left: 1rem; 
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   padding-bottom: 2rem;
   padding-right: 2rem;
 }
@@ -114,7 +114,7 @@
   pointer-events: none;
     padding-bottom:0 ;
     min-height: 3rem;
-    color:#258cbb;
+    color:rgb(0, 0, 139);
 }
 .doctorslist ul hr{
   width: 95%;
@@ -129,7 +129,7 @@
     height: 3rem;
     color: #000000;
     font-size: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.9rem;
     font-weight: 700;
     
     float: right;
@@ -165,6 +165,7 @@
 }
 
 .bookForm {
+  top: 0rem;
   min-height: 15rem;
   margin-top: 0rem;
   position: fixed;
@@ -214,13 +215,13 @@
 
 .appoint{
   width: 82vw;
-  background: #48b0df;  
+  background: #C6E6FB;  
   margin: auto;
   margin-left: 0rem;
   height: max-content;
   padding: 0.1px;
   margin-top: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   padding-bottom: 2rem;
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
@@ -229,7 +230,7 @@ font-size: 1.7rem;
   text-align: left;
   margin-left: 1.5rem;
   margin-top: 1.5rem;
-  color: white;
+  color: rgb(0, 0, 139);
   
 
 }
@@ -240,7 +241,7 @@ font-size: 1.7rem;
   width: 50vw;
   margin-left: 2rem;
   padding-left: 1rem; 
-  border-radius: 1rem;
+  border-radius: 0.9rem;
  
   padding-right: 2rem;
   margin: auto; 
@@ -275,7 +276,7 @@ font-size: 1.7rem;
   pointer-events: none;
     padding-bottom:0 ;
     min-height: 3rem;
-    color:#258cbb;
+    color:rgb(0, 0, 139);
 }
 .appoint ul hr{
   width: 95%;
@@ -290,7 +291,7 @@ font-size: 1.7rem;
   height: 3rem;
   color: #000000;
   font-size: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.9rem;
   font-weight: 700;
   
   float: right;
@@ -312,7 +313,7 @@ font-size: 1.7rem;
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
   background: white;
   height: 11rem;
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   text-align: left;
   display: flex;
   justify-content: space-between;

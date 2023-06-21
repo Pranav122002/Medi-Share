@@ -324,7 +324,7 @@ export default function Donate() {
             <p>-Anne Frank</p>
           </div>
         </div>
-        /</div>
+        </div>
       </div>
     </div>
   );
