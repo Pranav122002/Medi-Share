@@ -33,7 +33,10 @@ export default function Appointments() {
 
   const [rating, setRating] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [DoctorForm, setDoctorForm] = useState(false);
+  const [FeedForm, setFeedForm] = useState(false);
 
+  console.log(DoctorForm)
   useEffect(() => {
     fetchUser();
     fetchDoctors();
@@ -256,7 +259,7 @@ export default function Appointments() {
   }
   return (
     <div className="doctor">
-      <div className="bodyy">
+      <div className={`bodyy ${DoctorForm && "active"}`}>
         <div className="doctordetail">
           <div>
             <h1>Doctor Appointments </h1>
@@ -266,7 +269,7 @@ export default function Appointments() {
           </div>
           <img src="./doctor5.png" alt="" />
         </div>
-        <div className="Doctorui">
+        <div className="">
           <div className="">
             {isLoading ? (
               <h1>Loading...</h1>
@@ -297,6 +300,7 @@ export default function Appointments() {
                                   type="submit"
                                   onClick={() => {
                                     confirmAppointment(appointment._id);
+
                                   }}
                                 >
                                   {" "}
@@ -362,172 +366,217 @@ export default function Appointments() {
                     </div>
                   </>
                 ) : (
-                  <>
-                    <h1>Available doctors</h1>
-                    <div className="doctorcont">
+                  <div className="">
 
+                    <div className="Doctorui">
+                      <h1>Available doctors</h1>
+                      <div>
+                        <div className={`book ${DoctorForm && "active"}`}>
+                          <div className="bookForm">
+                            <img src="./close.png" onClick={() => setDoctorForm(false)} alt="" srcset="" />
+                            <div className="logo">
+                              <h1>Book Appointment</h1>
+                            </div>
 
+                            <div>
+                              <input
+                                className="pointnone"
+                                type="text"
+                                name="doctor_id"
+                                id="doctor_id"
+                                value={selectedDoctor._id}
+                                placeholder="Doctor's ID"
+                                onChange={(e) => {
+                                  setDoctorId(e.target.value);
+                                }}
+                              />
+                            </div>
+
+                            <div>
+                              <input
+                                className="pointnone"
+                                type="text"
+                                name="doctor_name"
+                                id="doctor_name"
+                                value={selectedDoctor.name}
+                                placeholder="Doctor's Name"
+                                onChange={(e) => {
+                                  setDoctorName(e.target.value);
+                                }}
+                              />
+                            </div>
+
+                            <div>
+                              <input
+                                type="date"
+                                name="appointment_date"
+                                id="appointment_date"
+                                placeholder="Appointment Date"
+                                value={appointment_date}
+                                onChange={(e) => {
+                                  setAppointmentDate(e.target.value);
+                                }}
+                              />
+                            </div>
+
+                            <div>
+                              <input
+                                type="time"
+                                name="appointment_time"
+                                id="appointment_time"
+                                placeholder="Appointment Time (24hr format)"
+                                value={appointment_time}
+                                onChange={(e) => {
+                                  setAppointmentTime(e.target.value);
+                                }}
+                              />
+                            </div>
+
+                            <button
+                              className="button-53"
+                              value="Book "
+                              type="submit"
+                              onClick={() => {
+                                postBookData(patient);
+                                setDoctorForm(false);
+                              }}
+                            >
+                              {selectedDoctor
+                                ? `Book : ${selectedDoctor.doctor_details.fees}`
+                                : "Book"}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
 
                       <div className="doctorslist">
                         <ul >
-
+                          <li>
+                            <p>Name</p>
+                            <p>Qualification</p>
+                            <p>Specialization</p>
+                            <p>experience</p>
+                            <p>availability</p>
+                            <button style={{ background: "none", color: "#258cbb" }} className="button">Select</button>
+                          </li>
+                          <hr />
                           {doctors.map((doctor) => (<>
+
                             <li
                               key={doctor._id}
 
                             >
-                      
-                                <p>{doctor.name}</p>
-                                <p>{doctor.doctor_details.qualification}</p>
-                                <p>{doctor.doctor_details.specialization}</p>
-                                <p>{doctor.doctor_details.experience}</p>
-                                <p>{doctor.doctor_details.availability}</p>
-                              
-                              <button onClick={() => setSelectedDoctor(doctor)} className="button">Select</button>
-                            </li>
 
+                              <p>{doctor.name}</p>
+                              <p>{doctor.doctor_details.qualification}</p>
+                              <p>{doctor.doctor_details.specialization}</p>
+                              <p>{doctor.doctor_details.experience}</p>
+                              <p>{doctor.doctor_details.availability}</p>
+
+                              <button onClick={() => { setSelectedDoctor(doctor); setDoctorForm("active") }}
+                                className="button">Select</button>
+                            </li>
+                            <hr />
                           </>
                           ))}
                         </ul>
                       </div>
                     </div>
-                    <div>
-                      <div className="book">
-                        <div className="bookForm">
-                          <div className="logo">
-                            <h1>Book Appointment</h1>
-                          </div>
-
-                          <div>
-                            <input
-                              type="text"
-                              name="doctor_id"
-                              id="doctor_id"
-                              value={selectedDoctor._id}
-                              placeholder="Doctor's ID"
-                              onChange={(e) => {
-                                setDoctorId(e.target.value);
-                              }}
-                            />
-                          </div>
-
-                          <div>
-                            <input
-                              type="text"
-                              name="doctor_name"
-                              id="doctor_name"
-                              value={selectedDoctor.name}
-                              placeholder="Doctor's Name"
-                              onChange={(e) => {
-                                setDoctorName(e.target.value);
-                              }}
-                            />
-                          </div>
-
-                          <div>
-                            <input
-                              type="date"
-                              name="appointment_date"
-                              id="appointment_date"
-                              placeholder="Appointment Date"
-                              value={appointment_date}
-                              onChange={(e) => {
-                                setAppointmentDate(e.target.value);
-                              }}
-                            />
-                          </div>
-
-                          <div>
-                            <input
-                              type="time"
-                              name="appointment_time"
-                              id="appointment_time"
-                              placeholder="Appointment Time (24hr format)"
-                              value={appointment_time}
-                              onChange={(e) => {
-                                setAppointmentTime(e.target.value);
-                              }}
-                            />
-                          </div>
-
-                          <button
-                            className="button-53"
-                            value="Book "
-                            type="submit"
-                            onClick={() => {
-                              postBookData(patient);
-                            }}
-                          >
-                            {selectedDoctor
-                              ? `Book : ${selectedDoctor.doctor_details.fees}`
-                              : "Book"}
-                          </button>
-                        </div>
+                    <div className="feedbackss">
+                      <div>
+                        <h2>Give feedback</h2>
+                        <p>Your feedback is important for us to improve.  </p>
+                        <p>select the appointment from your
+                          appintment list for which you want to give feedback
+                        </p>
                       </div>
+                      <img src="./feedback.png" alt="" srcset="" />
                     </div>
-
-                    <div className="doctorcont">
+                    <div className="appoint">
+                      <h2>Doctor appointments</h2>
                       <div className="appointmentslist">
                         <ul>
-                          <h2>Appointments list</h2>
-                          {patientAppointments.map((appointment) => (
+                          <li>
+                            <p><img src="./doctor5.png" alt="" /></p>
+                            <p>Name</p>
+                            <p>Appointment date</p>
+                            <button style={{ background: "none", color: "#258cbb" }} className="button">Select</button>
+
+                          </li>
+                          <hr />
+                          {patientAppointments.map((appointment) => (<>
+
                             <li
                               key={appointment._id}
-                              onClick={() =>
-                                setSelectedAppointment(appointment)
-                              }
+
                             >
-                              {appointment.doctor.name}
-                              {appointment.appointment_date}
+                              <p><img src="./doctor5.png" alt="" /></p>
+                              <p>{appointment.doctor.name}</p>
+                              <p>{appointment.appointment_date}</p>
+                              <button onClick={() => { setSelectedAppointment(appointment); setFeedForm("active") }}
+                                className="button">Select</button>
                             </li>
+                            <hr />
+                          </>
                           ))}
                         </ul>
                       </div>
                     </div>
 
-                    <div className="doctorcont">
-                      <div>
-                        <input
-                          type="text"
-                          value={selectedAppointment?.doctor?.name}
-                        />
-                        <input
-                          type="text"
-                          value={selectedAppointment?.appointment_date}
-                        />
-                      </div>
+                    <div className={`feedca ${FeedForm && "active"}`}>
+                      <div className="feedbackvalue">
+                        <img src="./close.png" onClick={() => setFeedForm(false)} alt="" srcset="" />
+                        <h2>Give Feedback</h2>
+                        <div className="inputs" style={{ pointerEvents: "none" }}>
+                          <input
+                            type="text"
+                            value={selectedAppointment?.doctor?.name}
+                          />
+                        </div>
+                        <div className="inputs" style={{ pointerEvents: "none" }}>
+                          <input
+                            type="text"
+                            value={selectedAppointment?.appointment_date}
+                          />
+                        </div>
 
-                      <div>
-                        <select
-                          type="text"
-                          value={rating}
-                          onChange={(e) => setRating(e.target.value)}
+                        <div className="inputs">
+                          <select
+                            
+                            type="text"
+                            value={rating}
+                            onChange={(e) => setRating(e.target.value)}
+                          >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+
+                        <div className="inputs">
+                          <input
+                            id="biginput"
+                            placeholder="feedback details"
+                            type="text"
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
+                          />
+                        </div>
+
+                        <button className="button"
+                          onClick={() => {
+                            addRatingFeedback(selectedAppointment._id);
+                            setFeedForm(false);
+                          }
+                          }
                         >
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
+                          Give feedback
+                        </button>
                       </div>
-
-                      <div>
-                        <input
-                          type="text"
-                          value={feedback}
-                          onChange={(e) => setFeedback(e.target.value)}
-                        />
-                      </div>
-
-                      <button
-                        onClick={() =>
-                          addRatingFeedback(selectedAppointment._id)
-                        }
-                      >
-                        Add
-                      </button>
                     </div>
-                  </>
+                  </div>
                 )}
               </>
             )}

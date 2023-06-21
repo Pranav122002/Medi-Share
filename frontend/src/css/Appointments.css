@@ -12,9 +12,12 @@
   height: max-content;
   margin-left: auto;
   margin-right: 2vw;
+  
  
 }
-
+.doctor .bodyy.active{
+  --webkit-backdrop-filter: blur(5em);
+}
 #doctorui1{
   margin-top: -2rem;
   height: 30rem;
@@ -30,6 +33,7 @@
   padding: 0.1px;
   height: 10rem;
   display: flex;
+  box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
 .doctor .doctordetail img{
   height: 9rem;
@@ -60,6 +64,8 @@
    border-radius: 1rem;
    padding: 0.1px;
   margin-top: 2rem;
+  min-height: 30rem;
+  box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
 
 .Doctorui h1{
@@ -70,9 +76,6 @@
     color: white;
 }
 
-.doctorcont{
- 
-}
 .doctorslist{
   margin: 0;
 }
@@ -80,35 +83,56 @@
 .doctorslist ul{
   padding-left: 0 ;
   width: 78vw;
+  background: rgb(255, 255, 255);
+  width: 75vw;
+  margin-left: 2rem;
+  padding-left: 1rem; 
+  border-radius: 1rem;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
 }
 .doctorslist ul li{
   background: rgb(255, 255, 255);
-  width: 78vw;
+  width: 75vw;
   display: flex;
   min-height: 4rem;
   border-radius: 0.5rem;
   margin: auto;
-  margin-top: 1.5rem;
-  justify-content: space-evenly;
-  margin-left: 2rem;
-  padding-left: 0rem;
+  padding-left: 2rem; 
+  justify-content: flex-start;
   align-items:start;
-  
+  text-align: start;
+}
+.doctorslist ul li:hover{
+  background: #f3f3f3;
 }
 .doctorslist ul li p{
-  
+    width: 13vw;
+    
+}
+.doctorslist ul li:first-child{
+  pointer-events: none;
+    padding-bottom:0 ;
+    min-height: 3rem;
+    color:#258cbb;
+}
+.doctorslist ul hr{
+  width: 95%;
+  margin-left: 0;
+  margin-left: 2rem; 
 }
 .doctorslist ul li .button{
     background: #B7FFE7;
     width: 7vw;
-    margin: 0;
+
     margin-top: 0.4rem;
     height: 3rem;
     color: #000000;
     font-size: 1rem;
     border-radius: 0.5rem;
     font-weight: 700;
-    margin-right: -7vw;
+    
+    float: right;
   
 }
 .doctorslist ul li .button:hover{
@@ -118,14 +142,32 @@
 .doctorcont img{
   position: absolute;
   left: 0;
-  opacity: 0.3;
+  
 
+}
+
+.book.false{
+  display: none;
+
+}
+.book.active{
+  display: block;
+  width: 82vw;
+  background: rgba(248, 248, 248, 0.809);
+}
+
+.book{
+  position:fixed;
+  width: 100%;
+  height: 100vh;
+  margin-top: -20%;
+  padding: 2vw;
 }
 
 .bookForm {
   min-height: 15rem;
-  margin-top: 3rem;
-  position: relative;
+  margin-top: 0rem;
+  position: fixed;
   z-index: 23;
   text-align: center;
   background-color: #fbfbfb;
@@ -133,12 +175,25 @@
   width: 24vw;
   height: max-content;
   box-shadow: 2px 2px 9px rgb(220, 220, 220);
+  border-radius: 1rem;
+  margin-left: 25vw;
+  margin-top: 12rem;
 
 }
-  
-.book{
+.pointnone{
+  pointer-events: none;
+}
+
+.bookForm img{
+  height: 2rem;
+  float: right;
   
 }
+  
+.bookForm h1{
+  color: #000000;
+}
+
 
 .bookForm input{
   font-weight: 700;
@@ -157,6 +212,200 @@
   margin-top: 1rem;
 }
 
+.appoint{
+  width: 82vw;
+  background: #48b0df;  
+  margin: auto;
+  margin-left: 0rem;
+  height: max-content;
+  padding: 0.1px;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding-bottom: 2rem;
+  box-shadow: 2px 2px 9px rgb(210, 210, 210);
+}
+.appoint h2{
+font-size: 1.7rem;
+  text-align: left;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  color: white;
+  
+
+}
+.appoint ul{
+  padding-left: 0 ;
+
+  background: rgb(255, 255, 255);
+  width: 50vw;
+  margin-left: 2rem;
+  padding-left: 1rem; 
+  border-radius: 1rem;
+ 
+  padding-right: 2rem;
+  margin: auto; 
+  padding-bottom: 2rem;
+ 
+}
+.appoint ul li img{
+  height:2rem;
+}
+.appoint ul li{
+  background: rgb(255, 255, 255);
+  width: 49vw;
+  display: flex;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+  margin: auto;
+  padding-left: 2rem; 
+  justify-content: flex-start;
+  align-items:start;
+  text-align: start;
+  padding-top: 1rem;
+  font-weight: 700;
+}
+.appoint li:hover{
+  background: #f3f3f3;
+}
+.appoint ul li p{
+    width: 13vw;
+    
+}
+.appoint ul li:first-child{
+  pointer-events: none;
+    padding-bottom:0 ;
+    min-height: 3rem;
+    color:#258cbb;
+}
+.appoint ul hr{
+  width: 95%;
+  margin-left: 0;
+  margin-left: 2rem; 
+}
+.appoint ul li .button{
+  background: #B7FFE7;
+  width: 7vw;
+  
+  margin-top: 0.4rem;
+  height: 3rem;
+  color: #000000;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  
+  float: right;
+
+}
+.appoint ul li .button:hover{
+  margin-top: 0.1rem;
+}
+
+.feedbackvalue img{
+  height: 2rem;
+  float: right;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+
+.feedbackss{
+  box-shadow: 2px 2px 9px rgb(210, 210, 210);
+  background: white;
+  height: 11rem;
+  border-radius: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  
+  
+}
+.feedbackss h2{
+  font-size: 1.7rem;
+  margin-left: 1.5rem;
+
+  
+}
+
+
+
+.feedbackss p{
+  text-align: left;
+  font-size: 1.2rem ;
+  margin-left: 1.5rem;
+}
+.feedbackss img{
+    height: 9rem;
+    margin-top: 1rem;
+    float: right;
+    margin-right: 2rem;
+}
+
+.feedbackvalue{
+  background: white;
+  width: 30rem;
+  height: max-content;
+  min-height: 30rem;
+  border-radius: 1rem;
+  padding: 0.1px;
+  position: relative;
+  z-index: 2;
+  margin-left: 30vw;
+  margin-top: 10rem;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
+}
+.feedbackvalue .inputs{
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+.feedbackvalue input{
+  background: #e8f7fb;
+  width: 70%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  text-align: center;  
+  color: #000000;
+}
+.feedbackvalue h2{
+  margin-left: 0;
+}
+#biginput{
+  height: 6rem;
+}
+
+.feedbackvalue .button{
+  background: #B7FFE7;
+  width: 10vw;
+  margin-top: 2rem;
+  height: 3rem;
+  color: #000000;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+
+}
+.feedbackvalue .button:hover{
+  margin-top: 0.1rem;
+}
+.feedca{
+  position: fixed;
+  padding: 2vw;
+
+}
+
+.feedca.false{
+  display: none;
+
+}
+.feedca.active{
+  width: 90vw;
+  left: 10%;
+  top: 0%;
+  height: 100rem;
+  display: block;
+  background: rgba(248, 248, 248, 0.809);
+}
 
 .doctorslist  li{
   font-weight: 700;
@@ -320,7 +569,9 @@
       margin: auto;
       box-shadow: 2px 2px 9px rgb(220, 220, 220);
     
+    
     }
+
       
     
     .bookForm input{
