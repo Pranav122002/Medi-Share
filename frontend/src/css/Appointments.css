@@ -31,13 +31,14 @@
   background:white;
   margin-top: 2rem;
   padding: 0.1px;
-  height: 10rem;
+  height: 11rem;
   display: flex;
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
 .doctor .doctordetail img{
-  height: 9rem;
-  padding-top: 0.5rem;
+  height: 11rem;
+  padding-top: 0rem;
+  margin-top: 0rem;
   margin-right: 2vw;
   margin-left: auto;
 }
@@ -73,7 +74,7 @@
     text-align: left;
     margin-left: 1.5rem;
     margin-top: 1.5rem;
-    color: rgb(0, 0, 139);
+    color: rgb(0, 58, 139);
 }
 
 .doctorslist{
@@ -158,10 +159,11 @@
 
 .book{
   position:fixed;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  margin-top: -20%;
-  padding: 2vw;
+  margin-top: -20rem;
+  padding: 5vw;
+  margin-left: -4vw;
 }
 
 .bookForm {
@@ -269,7 +271,7 @@ font-size: 1.7rem;
   background: #f3f3f3;
 }
 .appoint ul li p{
-    width: 13vw;
+    width: 20vw;
     
 }
 .appoint ul li:first-child{

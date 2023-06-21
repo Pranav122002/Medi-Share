@@ -1,0 +1,34 @@
+Samuel:
+
+pages completed:
+1) Donate
+2) Request
+3) Nearby hospitals
+4) Chats
+
+pages remaining
+
+Minor changes: 
+1) Disease Prediciton page - make disease containers small, use appropriate images of diseases instead of icons
+2) annoucenement page - make outer continers just like donate, request page
+3) Home page - UI improvement
+4) appointments page
+user side - remove icons from table . change intro image instead of icon
+hide doctor id field from book form,
+Add field names besides input fields such as doctor name, rating etc in both modal forms 
+5)  appointments page - docotr side, UI changes remaining
+6) Navbar changes
+7) Hnavbar changes
+8) personal and community chats - make outer main container smaller , we need not to scroll the page . conatiner must be entrirely fully visible in the page.
+make message containers smaller, timestamp should be smaller than message text. messgae container width should be according to message content size
+8) new disease prediction pages - genral diessae, diabetes, kidney, chatbot
+
+Major changes :
+1) Search users
+2) Analyticis
+3) Inventory - make UI based on theme
+4) Orders page
+5) tasks page
+6) volunteer page
+
+* analytics and task page needs to be updated . You work on them later

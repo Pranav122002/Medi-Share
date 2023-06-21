@@ -267,7 +267,7 @@ export default function Appointments() {
               <p>Book an appointment with our affiliated doctors today. Appointments can be booked with the credits earned on our website.</p>
             </div>
           </div>
-          <img src="./doctor5.png" alt="" />
+          <img src="./doctor6.jpg" alt="" />
         </div>
         <div className="">
           <div className="">
@@ -497,7 +497,7 @@ export default function Appointments() {
                       <div className="appointmentslist">
                         <ul>
                           <li>
-                            <p><img src="./doctor5.png" alt="" /></p>
+                         
                             <p>Name</p>
                             <p>Appointment date</p>
                             <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
@@ -510,7 +510,7 @@ export default function Appointments() {
                               key={appointment._id}
 
                             >
-                              <p><img src="./doctor5.png" alt="" /></p>
+                              
                               <p>{appointment.doctor.name}</p>
                               <p>{appointment.appointment_date}</p>
                               <button onClick={() => { setSelectedAppointment(appointment); setFeedForm("active") }}
