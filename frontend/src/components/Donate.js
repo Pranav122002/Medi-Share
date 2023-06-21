@@ -29,38 +29,40 @@ export default function Donate() {
   const handleAddForm = async () => {
     try {
       const validation = await validationSchema.validate(
-        { medicine_name: medicine_name,
+        {
+          medicine_name: medicine_name,
           expiry_date: expiry_date,
-          quantity: quantity
-         },
+          quantity: quantity,
+          location: location
+        },
         { abortEarly: false }
       );
       console.log("validation", validation);
 
-    if (medicine_name !== "" && expiry_date !== "" && quantity !== "" && location !== "") {
-      setMedicineForms((previousForms) => [
-        ...previousForms,
-        {
-          id: count,
-          medicine_name: medicine_name,
-          quantity: quantity,
-          expiry_date: expiry_date,
-          location: location,
-        },
-      ])
-      setCount((previousCount) => previousCount + 1)
-      setMedicineName("")
-      setExpiryDate("")
-      setQuantity("")
-      console.log(medicineForms)
-      console.log("formMover " + formMover)
-      console.log("count " + count)
+      if (medicine_name !== "" && expiry_date !== "" && quantity !== "" && location !== "") {
+        setMedicineForms((previousForms) => [
+          ...previousForms,
+          {
+            id: count,
+            medicine_name: medicine_name,
+            quantity: quantity,
+            expiry_date: expiry_date,
+            location: location,
+          },
+        ])
+        setCount((previousCount) => previousCount + 1)
+        setMedicineName("")
+        setExpiryDate("")
+        setQuantity("")
+        console.log(medicineForms)
+        console.log("formMover " + formMover)
+        console.log("count " + count)
+      }
+    } catch (error) {
+      error.inner.forEach((validationError) => {
+        notifyA(validationError.message)
+      });
     }
-  } catch (error) {
-    error.inner.forEach((validationError) => {
-      notifyA(validationError.message)
-    });
-  }
   }
 
   const handLeftForm = () => {
@@ -123,67 +125,67 @@ export default function Donate() {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
-  const postOrderData = async() => {
+  const postOrderData = async () => {
     try {
-      const validation = await validationSchema.validate(
-        { medicine_name: medicine_name,
-          expiry_date: expiry_date,
-          quantity: quantity
-         },
-        { abortEarly: false }
-      );
-      console.log("validation", validation);
-
-    geocode(location)
-      .then(coordinates => {
-        setCoordinates(coordinates)
-        console.log(coordinates)
-      })
-
-    fetch(
-      `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
+      const validation = await AddBtnValidation.validate(
+        {
+          count: count
         },
-      }
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        const donar = result._id;
-        const formsToSubmit = medicineForms
+        { abortEarly: false }
+      )
+      geocode(location)
+        .then(coordinates => {
+          setCoordinates(coordinates)
+          console.log(coordinates)
+        })
 
-        const formData = {
-          medicines: formsToSubmit.map((form) => ({
-            medicine_name: form.medicine_name,
-            expiry_date: {
-              date: form.expiry_date
-            },
-            quantity: form.quantity
-          })),
-          no_of_medicines: formsToSubmit.length,
-          location: location,
-          coordinates: coordinates,
-          donar: donar
-        }
-        console.log(formData)
-        fetch(`${API_BASE_URL}/donate-medicines`, {
-          method: "post",
+      fetch(
+        `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
+        {
           headers: {
-            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
           },
-          body: JSON.stringify(formData),
-        }).then((res) => res.json())
-          .then((data) => {
-            if (data.error) {
-              notifyA(data.error);
-            } else {
-              notifyB(data.msg);
-            }
-            console.log(data);
-          });
-      });
-    } catch (error) {
+        }
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          const donar = result._id;
+          const formsToSubmit = medicineForms
+
+          const formData = {
+            medicines: formsToSubmit.map((form) => ({
+              medicine_name: form.medicine_name,
+              expiry_date: {
+                date: form.expiry_date
+              },
+              quantity: form.quantity
+            })),
+            no_of_medicines: formsToSubmit.length,
+            location: location,
+            coordinates: coordinates,
+            donar: donar
+          }
+          console.log(formData)
+          fetch(`${API_BASE_URL}/donate-medicines`, {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }).then((res) => res.json())
+            .then((data) => {
+              if (data.error) {
+                notifyA(data.error);
+              } else {
+                notifyB(data.msg);
+              }
+              console.log(data);
+            });
+        });
+    }
+
+    catch (error) {
+      console.log("hello")
       error.inner.forEach((validationError) => {
         notifyA(validationError.message)
       });
@@ -192,7 +194,7 @@ export default function Donate() {
 
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-//Validate form
+  //Validate form
   const validationSchema = Yup.object().shape({
     medicine_name: Yup.string()
       .oneOf(medicineList, 'Invalid medicine')
@@ -201,10 +203,18 @@ export default function Donate() {
       .min(new Date(), 'Expiry date must be in the future')
       .required('Expiry date is required'),
     quantity: Yup.number()
-      .min(1,'Quantity can not be less than one')
-      .required('Quantity is required')
+      .min(1, 'Quantity can not be less than one')
+      .required('Quantity is required'),
+    location: Yup.string()
+      .required('Location is required'),
+   
   });
 
+  //validate if add button is clicked before donating
+  const AddBtnValidation = Yup.object().shape({
+    count: Yup.number()
+    .min(2, "Click Add before Donate")
+  })
   return (
     <div className="donateeapp">
       <div className="bodyy">
