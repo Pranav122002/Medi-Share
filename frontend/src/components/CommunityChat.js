@@ -90,8 +90,8 @@ const Chat = () => {
   };
 
   return (
-    <div className="comsssc">
-      <div>
+    <div className="comsca">
+      <div className="comsssc">
         <div className="bodyy">
           <div className="commchat">
             <div className="commmess">
@@ -100,23 +100,26 @@ const Chat = () => {
                   {message.sender_id === userid ? (
                     <>
                       <div className="sender-mess">
-                        <p key={index}>
+                        <p className="comssend" key={index}>
                           <p className="wowowow">
-                            {message.sender_name}{" "}
+                            <p>{message.sender_name}{" "}</p>
                             <div id="senderrole"> {message.sender_role} </div>
                           </p>
-                          {message.message}
+                          <p className="flexdisp">
+                            <p> {message.message} </p>
 
-                          <div className="datemesss">
-                            {new Date(message.createdAt).toLocaleTimeString(
-                              [],
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                hour12: true,
-                              }
-                            )}
-                          </div>
+                            <div className="datemesss">
+                              {new Date(message.createdAt).toLocaleTimeString(
+                                [],
+                                {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                  hour12: true,
+                                }
+                              )}
+
+                            </div>
+                          </p>
                         </p>
                       </div>
                     </>
@@ -124,23 +127,25 @@ const Chat = () => {
                     <>
                       {" "}
                       <div className="received-msg">
-                        <p key={index}>
+                        <p className="comssend" key={index}>
                           <p className="wowowow">
-                            {message.sender_name}{" "}
+                            <p> {message.sender_name}{" "}</p>
                             <div id="recrole"> {message.sender_role} </div>
                           </p>
-                          {message.message}
+                          <p className="flexdisp">
+                            <p> {message.message}</p>
 
-                          <div className="datemess">
-                            {new Date(message.createdAt).toLocaleTimeString(
-                              [],
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                hour12: true,
-                              }
-                            )}
-                          </div>
+                            <div className="datemess">
+                              {new Date(message.createdAt).toLocaleTimeString(
+                                [],
+                                {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                  hour12: true,
+                                }
+                              )}
+                            </div>
+                          </p>
                         </p>
                       </div>
                     </>
@@ -154,9 +159,14 @@ const Chat = () => {
                 value={inputValue}
                 onChange={handleInputChange}
               />
-              <button id="sendbutton" onClick={sendMessage}>
-                <img src="./send.png" id="sendicon" alt="send" />
-              </button>
+              {inputValue === "" ?(<>
+                 
+              </>):(
+                 <button id="sendbutton">
+                 <img  onClick={sendMessage} src="./send.png" id="sendicon" alt="send" />
+               </button>
+              ) }
+             
             </div>
           </div>
         </div>

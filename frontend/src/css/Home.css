@@ -200,11 +200,28 @@
  background: rgb(255, 255, 255);;
 }
 
-.subsss .subs{
-  padding: 5rem;
-  margin-top: 10rem;
+.subscri{
+  background: rgb(227, 248, 255);
+  width: 100vw;
+  height: 100vh;;
+  padding: 0.1px;
+  
 }
 
+.subsss .subs{
+  width: 74vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  padding: 5rem;
+  margin-top: 5rem;
+  
+}
+
+#orangec{
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+  color: rgb(255, 102, 0);
+}
 .subsss .subs img{
     height: 15rem;
 }

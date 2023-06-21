@@ -126,13 +126,14 @@ const PersonalChat = () => {
   };
 
   return (
-    <div>
+    <div className="perschat">
       <div>
         <div className="bodyy">
           <div className="chatcont">
             <div className="cinfo">
               <div className="myinfo">
                 <img id="profpicc" src="./profile-pic.png" alt="" srcset="" />
+                <h2>{username}</h2>
               </div>
               <div className="userss">
                 {users.map((user) => (
@@ -167,7 +168,7 @@ const PersonalChat = () => {
                     {message.sender_id === userid ? (
                       <>
                         <div className="sender-mess">
-                          <p key={index}>
+                          <p className="flexdisp" key={index}>
                             <p>{message.message}</p>
                             <div className="datemesss">
                               {new Date(message.createdAt).toLocaleTimeString(
@@ -185,7 +186,7 @@ const PersonalChat = () => {
                     ) : (
                       <>
                         <div className="received-msg">
-                          <p key={index}>
+                            <p className="flexdisp" key={index}>
                             <p>{message.message}</p>
 
                             <div className="datemess">
@@ -211,13 +212,17 @@ const PersonalChat = () => {
                   value={inputValue}
                   onChange={handleInputChange}
                 />
+               {inputValue === "" ?(<>
+               </>):(
                 <button
                   id="sendbutton"
-                  onClick={sendPersonalMessage}
-                  disabled={!selectedUser}
+                 
                 >
-                  <img src="./send.png" id="sendicon" alt="send" />
+                  <img  onClick={sendPersonalMessage}
+                  disabled={!selectedUser} src="./send.png" id="sendicon" alt="send" />
                 </button>
+               )}
+                
               </div>
             </div>
           </div>

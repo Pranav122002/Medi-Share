@@ -46,7 +46,17 @@
   width: 90%;
   margin: auto;
   justify-content: space-evenly;
-
+ 
+}
+.diseaa{
+  width: 20vw;
+  background: #ffffff;
+  box-shadow: 2px 2px 8px rgb(236, 236, 236);
+  margin-top: 2rem;
+  height: max-content;
+  min-height: 18rem;
+  padding-bottom: 2rem;
+  border-radius: 0.9rem;
 }
 .dise img{
   margin-top:3rem;
@@ -55,18 +65,13 @@
 
 .dise a {
 
-  background: #ffffff;
-  margin-top: 2rem;
+  box-shadow: none;
   text-align: center;
   font-style: none;
   text-decoration: none;
-  height: max-content;
-  min-height: 18rem;
-  box-shadow: 2px 2px 8px rgb(236, 236, 236);
-  flex: 40%;
-  margin: 2rem;
-  border-radius: 1rem;
-  padding-bottom: 2rem;
+ 
+
+ 
 }
 
 .dise li{
@@ -75,8 +80,8 @@
   box-shadow: none;
 }
 
-.dise a:hover {
-  width: 16vw;
+.diseaa:hover {
+  width: 20vw;  
   background: #f8f8f8;
   margin-top: 2rem;
   text-align: center;
@@ -154,18 +159,7 @@
   .dise img{
     width: 10rem;
   }
-  .dise a{
-    width: 90%;
-    background: white;
-    margin-top: 2rem;
-    text-align: center;
-    font-style: none;
-    text-decoration: none;
-    height: max-content;
-    box-shadow: 2px 2px 8px rgb(236, 236, 236);
-    margin-bottom: 2rem;
-    min-height: 10rem;
-  }
+  
   .dise .Cnavli{
     margin: auto;
     font-style: none;

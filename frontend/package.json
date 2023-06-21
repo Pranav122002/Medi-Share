@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@google-cloud/storage": "^6.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@google-cloud/storage": "^6.11.0",
     "@here/maps-api-for-javascript": "^1.41.1",
     "@mapbox/mapbox-sdk": "^0.15.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -16,8 +16,8 @@
     "aos": "^2.3.4",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
-    "firebase": "^9.22.2",
     "emoji-mart": "^5.5.2",
+    "firebase": "^9.22.2",
     "framer-motion": "^10.12.12",
     "google-map-react": "^2.2.0",
     "mapbox-gl": "^2.15.0",
@@ -37,7 +37,8 @@
     "socket.io-client": "^4.6.1",
     "stream-http": "^3.2.0",
     "styled-components": "^5.3.8",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
