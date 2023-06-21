@@ -27,22 +27,30 @@ function DiseasePredictions() {
       <div className="dis">
         <h2>Available disease prediction </h2>
         <div className="dise">
-          <Link to="/diabetes" data-aos="fade-right">
-            <li className="Cnavli">Diabetes</li>
-            <img src="./sugar-blood-level.png" alt="" />
-          </Link>
-          <Link to="/Pneumonia" data-aos="fade-left" >
-            <li className="Cnavli">Pnuemonia</li>
-            <img src="./pneumonia.png" alt="" />
-          </Link>
-          <Link to="/heartDisease" data-aos="fade-right" >
-            <li className="Cnavli">Heart Disease</li>
-            <img src="./heart-disease.png" alt="" />
-          </Link>
-          <Link to="/brainTumor" data-aos="fade-left" >
-            <li className="Cnavli">Brain Tumor</li>
-            <img src="./brain-tunor.png" alt="" />
-          </Link>
+          <div className="diseaa">
+            <Link to="/diabetes">
+              <li className="Cnavli">Diabetes</li>
+              <img src="./sugar-blood-level.png" alt="" />
+            </Link>
+          </div>
+          <div  className="diseaa">
+            <Link to="/Pneumonia" >
+              <li className="Cnavli">Pnuemonia</li>
+              <img src="./pneumonia.png" alt="" />
+            </Link>
+          </div>
+          <div  className="diseaa">
+            <Link to="/heartDisease"  >
+              <li className="Cnavli">Heart Disease</li>
+              <img src="./heart-disease.png" alt="" />
+            </Link>
+          </div>
+          <div  className="diseaa">
+            <Link to="/brainTumor"  >
+              <li className="Cnavli">Brain Tumor</li>
+              <img src="./brain-tunor.png" alt="" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
