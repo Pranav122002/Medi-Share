@@ -277,35 +277,45 @@ export default function Appointments() {
               <>
                 {isDoctor ? (
                   <>
-                    <h2>Your Appointments</h2>
+
                     <div className="appointments-container">
+                      <h2>Your Appointments</h2>
                       {/* {appointments.length > 0 ? ( */}
 
                       <ul>
-                        {appointments.map((appointment) => (
+                        <li id="docaphead">
+                          <p>Patient Name</p>
+                          <p>Date</p>
+                          <p>Time</p>
+                          <p>Action / Status</p>
+                          
+                        </li>
+                        <hr />
+                        {appointments.map((appointment) => (<>
                           <li key={appointment._id}>
-                            <p>
-                              <img src="./doctor2.png" alt="" />
-                            </p>
-                            <p>Doctor: {appointment.doctor.name}</p>
-                            <p>Patient: {appointment.patient.name}</p>
-                            <p>Date: {appointment.appointment_date}</p>
-                            <p>Time: {appointment.appointment_time}</p>
+
+                            <p>{appointment.patient.name}</p>
+                            <p>{appointment.appointment_date}</p>
+                            <p>{appointment.appointment_time}</p>
 
                             {!appointment.confirm_status &&
                               !appointment.reject_status ? (
                               <>
-                                <button
-                                  className="button-53"
-                                  type="submit"
-                                  onClick={() => {
-                                    confirmAppointment(appointment._id);
 
-                                  }}
-                                >
-                                  {" "}
-                                  Confirm
-                                </button>
+                                <p className="accrejbut">
+                                  <button
+                                    className="button-53"
+                                    type="submit"
+                                    onClick={() => {
+                                      confirmAppointment(appointment._id);
+
+                                    }}
+                                  >
+
+                                    {" "}
+                                    Confirm
+                                  </button>
+                               
                                 <button
                                   className="button-53"
                                   type="submit"
@@ -316,11 +326,12 @@ export default function Appointments() {
                                   {" "}
                                   Reject
                                 </button>
+                                </p>
                               </>
                             ) : appointment.confirm_status ? (
-                              <p className="p2">Status: Confirmed</p>
+                              <p className="p2">Confirmed</p>
                             ) : (
-                              <p className="p2">Status: Rejected</p>
+                              <p className="p2">Rejected</p>
                             )}
 
                             {appointment.confirm_status ? (
@@ -349,11 +360,13 @@ export default function Appointments() {
                               </>
                             ) : (
                               <>
+                                {""}
                                 {" "}
-                                <p></p>{" "}
                               </>
                             )}
                           </li>
+                          <hr />
+                          </>
                         ))}
                       </ul>
 
@@ -392,7 +405,8 @@ export default function Appointments() {
                               />
                             </div>
 
-                            <div>
+                            <div className="dispflexbook">
+                              <p>Name :</p>
                               <input
                                 className="pointnone"
                                 type="text"
@@ -405,8 +419,9 @@ export default function Appointments() {
                                 }}
                               />
                             </div>
-
-                            <div>
+                            
+                            <div className="dispflexbook">
+                             <p>Date :</p> 
                               <input
                                 type="date"
                                 name="appointment_date"
@@ -419,7 +434,8 @@ export default function Appointments() {
                               />
                             </div>
 
-                            <div>
+                            <div className="dispflexbook">
+                              <p>Time :</p>
                               <input
                                 type="time"
                                 name="appointment_time"
@@ -497,7 +513,7 @@ export default function Appointments() {
                       <div className="appointmentslist">
                         <ul>
                           <li>
-                         
+
                             <p>Name</p>
                             <p>Appointment date</p>
                             <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
@@ -510,7 +526,7 @@ export default function Appointments() {
                               key={appointment._id}
 
                             >
-                              
+
                               <p>{appointment.doctor.name}</p>
                               <p>{appointment.appointment_date}</p>
                               <button onClick={() => { setSelectedAppointment(appointment); setFeedForm("active") }}
@@ -528,12 +544,14 @@ export default function Appointments() {
                         <img src="./close.png" onClick={() => setFeedForm(false)} alt="" srcset="" />
                         <h2>Give Feedback</h2>
                         <div className="inputs" style={{ pointerEvents: "none" }}>
+                          <p>Name :</p>
                           <input
                             type="text"
                             value={selectedAppointment?.doctor?.name}
                           />
                         </div>
                         <div className="inputs" style={{ pointerEvents: "none" }}>
+                        <p>Date :</p>
                           <input
                             type="text"
                             value={selectedAppointment?.appointment_date}
@@ -541,8 +559,9 @@ export default function Appointments() {
                         </div>
 
                         <div className="inputs">
+                          <p>Rate :</p>
                           <select
-                            
+
                             type="text"
                             value={rating}
                             onChange={(e) => setRating(e.target.value)}
@@ -556,9 +575,10 @@ export default function Appointments() {
                         </div>
 
                         <div className="inputs">
-                          <input
+                          <p></p>
+                          <input 
                             id="biginput"
-                            placeholder="feedback details"
+                            placeholder="feedback description"
                             type="text"
                             value={feedback}
                             onChange={(e) => setFeedback(e.target.value)}

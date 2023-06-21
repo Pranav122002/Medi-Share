@@ -30,19 +30,19 @@ function DiseasePredictions() {
           <div className="diseaa">
             <Link to="/diabetes">
               <li className="Cnavli">Diabetes</li>
-              <img src="./sugar-blood-level.png" alt="" />
+              <img src="./diabetes2.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
             <Link to="/Pneumonia" >
               <li className="Cnavli">Pnuemonia</li>
-              <img src="./pneumonia.png" alt="" />
+              <img src="./pneumonia1.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
             <Link to="/heartDisease"  >
               <li className="Cnavli">Heart Disease</li>
-              <img src="./heart-disease.png" alt="" />
+              <img src="./heart-disease1.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
