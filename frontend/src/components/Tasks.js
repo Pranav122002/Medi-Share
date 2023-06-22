@@ -135,8 +135,7 @@ export default function Tasks() {
 
   const fetchMyTasks = () => {
     fetch(
-      `${API_BASE_URL}/my-tasks/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/my-tasks/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -211,10 +210,11 @@ export default function Tasks() {
   const renderCard = (card, index) => {
     return (
       <>
-        <Card className="Card" key={index}>
-          <Card.Body>
-            <Card.Title id="title">{card.volunteer_name}</Card.Title>
-            
+        <div className="admincard">
+          <Card className="Card" key={index}>
+            <Card.Body>
+              <p><Card.Title id="title">{card.volunteer_name}</Card.Title></p>
+
               <p>
                 <div className="content-details">Task Info:</div>
                 {card.task_info}
@@ -225,11 +225,11 @@ export default function Tasks() {
                 {card.deadline}
                 <br />
               </p>
-         
-          </Card.Body>
-          <hr />
-        </Card>
-      </>
+
+            </Card.Body>
+            <hr />
+          </Card>
+        </div>  </>
     );
   };
 
@@ -305,34 +305,39 @@ export default function Tasks() {
                   <h1>Volunteer List</h1>
                 </div>
 
-                <div>
+                <div className="agasadsa">
                   {volunteersList.map((volunteer) => (
                     <li key={volunteer._id}>
                       <p
-                        onClick={() => {
-                          setSelectedVolunteer(volunteer);
-                        }}
+                       
                       >
-                        {" "}
+
+                      
                         {volunteer.name}
                       </p>
+                      <button  onClick={() => {
+                          setSelectedVolunteer(volunteer);
+                        }}>Select</button>
+
                     </li>
                   ))}
                 </div>
               </div>
             </div>
 
-            <h1>All Tasks</h1>
-            <div className="allCards">
+
+            <div className="allCardss">
+
               <div className="OCards">
+                <h2>Tasks Assigned</h2>
                 <div className="headd">
-                  <div className="heading">
+                  <div className="headingad">
                     <p className="headp">Volunteer Name</p>
                     <p className="headp">Task Info</p>
                     <p className="headp">Deadline</p>
                   </div>
                 </div>
-                
+                <hr id="mainsec" />
                 {tasks.map(renderCard)}
               </div>
             </div>
@@ -353,11 +358,11 @@ export default function Tasks() {
                       <p className="headp">Completion</p>
                     </div>
                   </div>
-                  <hr id="mainsec"/>
+                  <hr id="mainsec" />
 
                   {myTasks.map((task) => (<>
-                    <li  key={task._id}>
-                      
+                    <li key={task._id}>
+
                       <p > {task.volunteer_name}</p>
                       <p > {task.task_info}</p>
                       <p >{task.deadline}</p>
@@ -401,8 +406,8 @@ export default function Tasks() {
                         <p > Completed</p>
                       )}
                     </li>
-                    <hr id="midsec"/>
-                    </> ))}
+                    <hr id="midsec" />
+                  </>))}
                 </div>
               </div>
             </div>

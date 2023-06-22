@@ -1,8 +1,8 @@
-.task .allCards{
-}
-.task{
+.task .allCards {}
+
+.task {
     background: #48b0df;
-    height:max-content;
+    height: max-content;
     width: 100vw;
     padding: 0.1px;
     min-height: 95vh;
@@ -10,21 +10,59 @@
     padding-bottom: 2rem;
 }
 
-.task .bodyy{
+
+.task .bodyy {
     width: 82vw;
     margin-right: 2vw;
     margin-left: auto;
-    background: white;
+    background: #C6E6FB;
     margin-top: 2rem;
     border-radius: 0.9rem;
     padding: 0.1px;
 }
 
-.task #title{
+.task #title {
     width: 20vw;
-} 
+}
 
-.task .bodyy .allCards{
+.task .bodyy .allCards {
+    width: 95%;
+    margin: auto;
+    height: max-content;
+    background: none;
+    background-image: none;
+    position: relative;
+    padding: 1px;
+}
+.task .bodyy .allCardss{
+    background: #C6E6FB;
+    padding: 0.1px;
+}
+.task .bodyy .allCardss .OCards{
+    background: white;
+    border-radius: 1rem;
+    padding: 0.1px;
+}
+.task .bodyy .allCardss .OCards h2{
+    margin-top: 2rem;
+    text-align: left;
+    margin-left: 5rem;
+}
+.task .bodyy .allCardss{
+    background: #C6E6FB;
+    border-radius: 1rem;
+    padding-bottom: 2rem;
+}
+.task .bodyy .allCardss h2{
+    margin-top: 0px;
+}
+.task .donate{
+    margin-bottom: 0;
+    border-radius: 0;
+    border-radius: 1rem;
+
+}
+.task .bodyy .allCards {
     width: 95%;
     margin: auto;
     height: max-content;
@@ -34,18 +72,7 @@
     padding: 1px;
 }
 
-
-.task .bodyy .allCards{
-    width: 95%;
-    margin: auto;
-    height: max-content;
-    background: none;
-    background-image: none;
-    position: relative;
-    padding: 1px;
-}
-
-.task .bodyy .allCards{
+.task .bodyy .allCards {
     font-size: 1rem;
     position: relative;
     width: 100%;
@@ -56,13 +83,14 @@
 
 .task .OCards .card {
     margin: 0;
-    max-width: 100%; 
+    max-width: 100%;
     width: 100%;
     border: none;
-    background:none;
+    background: none;
     box-shadow: none;
-   
+
 }
+
 .task .OCards {
     font-size: 1rem;
     position: relative;
@@ -86,17 +114,20 @@
     border-radius: 0rem;
     color: rgb(0, 0, 0);
 }
-.task .heading .headp{
+
+.task .heading .headp {
     padding-bottom: 0;
 }
+
 .task .OCards p {
-    padding-top: 1rem;
-    width: 11vw;
-    word-break: break-all;
-    white-space: normal;
-    line-height: 2rem;
+        padding-top: 1rem;
+        width: 11vw;
+        word-break: break-all;
+        white-space: normal;
+        line-height: 2rem;
 }
-.task .OCards li{
+
+.task .OCards li {
     height: max-content;
     list-style: none;
     width: 100%;
@@ -107,8 +138,9 @@
     display: flex;
     align-items: flex-start;
     padding-left: 0rem;
- 
+
 }
+
 .task .OCards .card-body {
     width: 100%;
     outline: none;
@@ -117,10 +149,12 @@
     justify-content: flex-start;
     border-radius: 10px;
 }
+
 .task .OCards .card-body:hover {
     box-shadow: none;
     background: rgb(246, 246, 246);
 }
+
 .task #title {
     font-size: 1.1rem;
     font-weight: 500;
@@ -131,24 +165,27 @@
     margin-top: 1rem;
     width: 24vw;
 }
-.task hr{
+
+.task hr {
     width: 80%;
-   
+
 }
 
-#midsec{
+#midsec {
     width: 90%;
 }
-#mainsec{
+
+#mainsec {
     width: 95%;
-    border: 1.5px solid #3392be; ;
+    border: 1.5px solid #3392be;
+    ;
 }
 
-.task .OCards p  button{
+.task .OCards p button {
     width: 40%;
     margin-right: 0.5rem;
     border: none;
-    background:#B7FFE7 ;
+    background: #B7FFE7;
     height: 3.2rem;
     border-radius: 0.3rem;
     font-weight: 700;
@@ -156,15 +193,18 @@
     padding: 0.1px;
     cursor: pointer;
 }
-.task .OCards p  button:hover {
-  background:#29edd3 ;
-  margin-top: -0.5rem;
+
+.task .OCards p button:hover {
+    background: #29edd3;
+    margin-top: -0.5rem;
 }
-#markbut{
+
+
+#markbut {
     width: 80%;
     margin-right: 0rem;
     border: none;
-    background:#B7FFE7 ;
+    background: #B7FFE7;
     height: 3.2rem;
     border-radius: 0.3rem;
     font-weight: 700;
@@ -172,24 +212,88 @@
     padding: 0.1px;
     cursor: pointer;
 }
-#markbut:hover{
-    background:#29edd3 ;
+
+#markbut:hover {
+    background: #29edd3;
     margin-top: -1rem;
 }
 
-@media screen and (max-width: 1000px){
-    
-.task #title{
-    width: 90%;
+.task .OCards .headingad {
+    box-shadow: none;
+    height: max-content;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: flex-start;
+    background: none;
+    border-radius: 0rem;
+    color: rgb(0, 0, 0);
+    margin-top: 3rem;
 }
 
-.task .OCards p{
-    width: 90%;
-    margin-top: 1rem;
-    
+.task .OCards .headingad p {
+    padding-top: 1rem;
+    width: 24vw;
+    word-break: break-all;
+    white-space: normal;
+    line-height: 2rem;
 }
-.task .content-details{
-    font-weight: 700;
+.admincard .Card p {
+    padding-top: 1rem;
+    width: 24vw;
+    word-break: break-all;
+    white-space: normal;
+    line-height: 2rem;
+}
+
+.task .donateForm{
+    margin-left: 2rem;
+}
+
+.task .donateForm .agasadsa  p{
+    margin: 0%;
+    width: 12vw;
     margin-left: 0;
+    text-align: left;
+
 }
+.task .donateForm .agasadsa button{
+   
+    border: none;
+    background: #B7FFE7;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 7vw;
+ 
+}
+.task #volunteer_id{
+    display: none;
+}
+.task .donateForm .agasadsa  li{
+    height: 2.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .task #title {
+        width: 90%;
+    }
+
+    .task .OCards p {
+        width: 90%;
+        margin-top: 1rem;
+
+    }
+
+    .task .content-details {
+        font-weight: 700;
+        margin-left: 0;
+    }
 }
