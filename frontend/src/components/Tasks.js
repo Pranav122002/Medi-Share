@@ -348,12 +348,14 @@ export default function Tasks() {
                       <p className="headp">Volunteer Name</p>
                       <p className="headp">Task Info</p>
                       <p className="headp">Deadline</p>
+                      <p className="headp">Action</p>
                       <p className="headp">Status</p>
                       <p className="headp">Completion</p>
                     </div>
                   </div>
+                  <hr id="mainsec"/>
 
-                  {myTasks.map((task) => (
+                  {myTasks.map((task) => (<>
                     <li  key={task._id}>
                       
                       <p > {task.volunteer_name}</p>
@@ -386,19 +388,21 @@ export default function Tasks() {
                       {task.completion === false ? (
                         <>
                           <p > Not Completed</p>{" "}
-                          <button
+                          <p><button id="markbut"
                             onClick={() => {
                               completeTask(task._id);
                             }}
                           >
                             Mark as Completed
                           </button>{" "}
+                          </p>
                         </>
                       ) : (
                         <p > Completed</p>
                       )}
                     </li>
-                  ))}
+                    <hr id="midsec"/>
+                    </> ))}
                 </div>
               </div>
             </div>

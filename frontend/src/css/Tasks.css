@@ -5,7 +5,9 @@
     height:max-content;
     width: 100vw;
     padding: 0.1px;
-    height: 95vh;
+    min-height: 95vh;
+    height: max-content;
+    padding-bottom: 2rem;
 }
 
 .task .bodyy{
@@ -64,7 +66,7 @@
 .task .OCards {
     font-size: 1rem;
     position: relative;
-    width: 90%;
+    width: 95%;
     margin: auto;
     height: max-content;
     margin-top: 1rem;
@@ -84,12 +86,29 @@
     border-radius: 0rem;
     color: rgb(0, 0, 0);
 }
-
+.task .heading .headp{
+    padding-bottom: 0;
+}
 .task .OCards p {
     padding-top: 1rem;
-    width: 24vw;
+    width: 11vw;
+    word-break: break-all;
+    white-space: normal;
+    line-height: 2rem;
 }
-
+.task .OCards li{
+    height: max-content;
+    list-style: none;
+    width: 100%;
+    margin-top: 0rem;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    font-size: 0.8vw;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 0rem;
+ 
+}
 .task .OCards .card-body {
     width: 100%;
     outline: none;
@@ -116,6 +135,48 @@
     width: 80%;
    
 }
+
+#midsec{
+    width: 90%;
+}
+#mainsec{
+    width: 95%;
+    border: 1.5px solid #3392be; ;
+}
+
+.task .OCards p  button{
+    width: 40%;
+    margin-right: 0.5rem;
+    border: none;
+    background:#B7FFE7 ;
+    height: 3.2rem;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    margin-top: 0rem;
+    padding: 0.1px;
+    cursor: pointer;
+}
+.task .OCards p  button:hover {
+  background:#29edd3 ;
+  margin-top: -0.5rem;
+}
+#markbut{
+    width: 80%;
+    margin-right: 0rem;
+    border: none;
+    background:#B7FFE7 ;
+    height: 3.2rem;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    margin-top: 0rem;
+    padding: 0.1px;
+    cursor: pointer;
+}
+#markbut:hover{
+    background:#29edd3 ;
+    margin-top: -1rem;
+}
+
 @media screen and (max-width: 1000px){
     
 .task #title{
