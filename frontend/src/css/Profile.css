@@ -39,7 +39,7 @@
   position: relative;
   z-index: 2;
   box-shadow: 2px 2px 9px rgb(216, 216, 216);
-  background: rgb(89, 197, 234);
+  background: #48b0df;
   height: 13rem;
   display: flex;
   color: white;
@@ -281,6 +281,115 @@ margin: auto;
   
   justify-content: space-around;
 }
+.editpromain{
+  position:fixed;
+  width: 45vw;  
+  height: max-content;
+  background: rgb(251, 251, 251);
+  left: 30vw;
+  box-shadow: 2px 2px 9px rgb(188, 188, 188);
+  top:5rem;
+  z-index: 999;
+  border-radius: 1rem;
+ 
+  text-align: left;
+  padding-bottom: 1rem;
+}
+.editparent p{
+  width: 80%;
+  padding-left: 10vw;
+  
+}
+#clossss{
+  position: absolute;
+  right: 0;
+  height: 2rem;
+  margin-right: 1rem;
+  margin-top: 1rem ;
+ 
+}
+.editparent #remli{
+    text-align: left;
+    width: 100%;
+} 
+.editparent #remli p{
+    padding-left: 0;
+    font-size: 1rem;
+}
+.editparent .editsprofs h2{
+  margin: auto;
+  margin-left:  19vw ;
+}
+.editparent .editsprofs {
+    position: absolute;
+    background: rgb(251, 251, 251);
+    width: 45vw;  
+    border-radius: 1rem;
+}
+.editparent .editsprofs .editprofdocs{
+
+    padding-left: 10vw;
+}
+.editparent .editsprofs .editprofdocs input{
+    width: 15vw;
+    margin-left: 1rem;
+    height: 2.5rem;
+    margin-top: -0.5rem;
+    
+    
+}
+.editparent  .editsapa{
+  padding-top: 1rem;
+  width: 70%;
+  height: 2rem;
+  justify-content: space-between;
+  display: flex;
+
+}
+#asagws{
+  margin-left: 18vw;
+  background: rgb(69, 240, 217);
+  border: none;
+  border-radius: 0.5rem;
+  width: 8vw;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 0.8vw;
+}
+.editparent{
+    
+    width: 100vw;
+    background: rgba(198, 198, 198, 0.793)00, 200, 200);
+    position: fixed;
+    z-index: 256;
+    height: 100vh;
+}
+.editparent .imgprof.active{
+  left: 0;
+  width: 45vw;  
+  top:0;
+} 
+.editparent .imgprof.active  .gagasda img{
+    left: 0;
+    right: auto;
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+#biewprod{
+    background: white;
+    border: none;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+    padding-top: 1rem;
+
+}
+#biewprod:hover{
+  background: rgb(241, 241, 241);
+  
+}
+
 @media screen and (max-width: 1000px) {
   .userdet #credits{
     text-align: center;

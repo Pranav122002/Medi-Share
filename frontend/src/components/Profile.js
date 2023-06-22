@@ -27,7 +27,9 @@ export default function Profile() {
   const [user, setUser] = useState(null);
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(true);
-  const [editprofile , seteditprofile] = useState(false);
+  const [editprofile, seteditprofile] = useState(false);
+  const [viewprofile, setViewProfile] = useState(false);
+  const [viewImage, setViewImage] = useState(false);
   const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
     fees: "",
     qualification: "",
@@ -45,9 +47,10 @@ export default function Profile() {
   const { updateUser } = useContext(UserContext);
   const [appointmentRatingsFeedbacks, setAppointmentRatingsFeedbacks] =
     useState([]);
+  console.log(appointmentRatingsFeedbacks);
   useEffect(() => {
     fetchUser();
-  
+
 
   }, []);
   const fetchUser = () => {
@@ -64,35 +67,35 @@ export default function Profile() {
         console.log("res = ", res);
 
         updateUser(res);
-       
+
         setUserName(res.name);
         setCredits(res.credits);
         setSubscription(res.subscription);
 
         setUser(res);
 
-      if (res.role === "doctor") {
-        setUpdatedDoctorDetails({
-          fees: res.doctor_details.fees,
-          qualification: res.doctor_details.qualification,
-          specialization: res.doctor_details.specialization,
-          experience: res.doctor_details.experience,
-          availability: res.doctor_details.availability,
-          hospital_name: res.doctor_details.hospital_name,
-        });
+        if (res.role === "doctor") {
+          setUpdatedDoctorDetails({
+            fees: res.doctor_details.fees,
+            qualification: res.doctor_details.qualification,
+            specialization: res.doctor_details.specialization,
+            experience: res.doctor_details.experience,
+            availability: res.doctor_details.availability,
+            hospital_name: res.doctor_details.hospital_name,
+          });
 
           fetchDoctorRatingsFeedbacks(user._id);
-      } else if (res.role === "volunteer") {
-        setUpdatedVolunteerDetails({
-          qualification: res.volunteer_details.qualification,
-          available: res.volunteer_details.available,
-          NGO_name: res.volunteer_details.NGO_name,
-          location: {
-            lng: res.volunteer_details.location.lng,
-            lat: res.volunteer_details.location.lat,
-          },
-        });
-      }
+        } else if (res.role === "volunteer") {
+          setUpdatedVolunteerDetails({
+            qualification: res.volunteer_details.qualification,
+            available: res.volunteer_details.available,
+            NGO_name: res.volunteer_details.NGO_name,
+            location: {
+              lng: res.volunteer_details.location.lng,
+              lat: res.volunteer_details.location.lat,
+            },
+          });
+        }
         if (res.role === "doctor") {
           setIsDoctor(true);
         }
@@ -114,10 +117,10 @@ export default function Profile() {
   const handleEdit = () => {
     setEditing(true);
   };
-  
+
   useEffect(() => {
     fetchDonateOrders();
-    
+
   }, []);
 
   useEffect(() => {
@@ -134,8 +137,7 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `${API_BASE_URL}/mydonatedorders/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/mydonatedorders/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -147,8 +149,7 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `${API_BASE_URL}/myrequestedorders/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/myrequestedorders/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -160,8 +161,7 @@ export default function Profile() {
 
   function patientAppointments() {
     fetch(
-      `${API_BASE_URL}/patient-appointments/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/patient-appointments/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -173,8 +173,7 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `${API_BASE_URL}/doctor-appointments/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/doctor-appointments/${JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -244,8 +243,7 @@ export default function Profile() {
 
   const subscribe = () => {
     fetch(
-      `${API_BASE_URL}/subscribe/${
-        JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/subscribe/${JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -328,158 +326,207 @@ export default function Profile() {
   return (
     <div className="profilediv">
       <div className="bodyy">
-      <button onClick={()=>{
-        seteditprofile(!editprofile)
-      }} ></button>
-     
-       { editprofile ? (<>
-        <div>
-        <p>Name: {user.name}</p>
-    
-        {user.role === "doctor" && (
-          <div>
-            <p>Verification: {user.doctor_details.verification}</p>
-            <p>Fees: {user.doctor_details.fees}</p>
-            <p>Qualification: {user.doctor_details.qualification}</p>
-            <p>Specialization: {user.doctor_details.specialization}</p>
-            <p>Experience: {user.doctor_details.experience}</p>
-            <p>Availability: {user.doctor_details.availability}</p>
-            <p>Hospital Name: {user.doctor_details.hospital_name}</p>
-            <img
-              src={user.doctor_details.certificate}
-              alt="doctor certificate"
-            />
 
-            {appointmentRatingsFeedbacks.map((appointment) => (
-              <li key={appointment._id}>
-                <p>Ratings: {appointment.rating}</p>
-                <p>Feedbacks: {appointment.feedback}</p>
-              </li>
-            ))}
-          </div>
-        )}
-        {user.role === "volunteer" && (
-          <div>
-            <p>Verification: {user.volunteer_details.verification}</p>
-            <p>Qualification: {user.volunteer_details.qualification}</p>
-            <p>Available: {user.volunteer_details.available}</p>
-            <p>NGO Name: {user.volunteer_details.NGO_name}</p>
-            <p>
-              Location: {user.volunteer_details.location.lng},{" "}
-              {user.volunteer_details.location.lat}
-            </p>
-            <img
-              src={user.volunteer_details.certificate}
-              alt="volunteer certificate"
-            />
-          </div>
-        )}
-      </div>
 
-      {isMine && !editing && <button onClick={handleEdit}>Edit Profile</button>}
+        {editprofile ? (<>
+          <div className="editparent" >
+            <div className="editpromain">
+              <img onClick={() => { seteditprofile(false) }} id="clossss" src="./close.png" alt="" />
 
-      {editing && (
-        <div>
-          <h2>Edit Profile</h2>
-          {user.role === "doctor" && (
-            <div>
-              <label>Fees:</label>
-              <input
-                type="text"
-                name="fees"
-                value={updatedDoctorDetails.fees}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Qualification:</label>
-              <input
-                type="text"
-                name="qualification"
-                value={updatedDoctorDetails.qualification}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Specialization:</label>
-              <input
-                type="text"
-                name="specialization"
-                value={updatedDoctorDetails.specialization}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Experience:</label>
-              <input
-                type="text"
-                name="experience"
-                value={updatedDoctorDetails.experience}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Availability:</label>
-              <input
-                type="text"
-                name="availability"
-                value={updatedDoctorDetails.availability}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Hospital Name:</label>
-              <input
-                type="text"
-                name="hospital_name"
-                value={updatedDoctorDetails.hospital_name}
-                onChange={handleInputChange}
-              />
+              <p>Name: {user.name}</p>
+
+              {user.role === "doctor" && (<>
+                <div>
+                  <p className="pdflex">
+                    <div>Verification: {user.doctor_details.verification}</div>
+
+                  </p>
+                  <p>Fees: {user.doctor_details.fees}</p>
+                  <p>Qualification: {user.doctor_details.qualification}</p>
+                  <p>Specialization: {user.doctor_details.specialization}</p>
+                  <p>Experience: {user.doctor_details.experience}</p>
+                  <p>Availability: {user.doctor_details.availability}</p>
+                  <p>Hospital Name: {user.doctor_details.hospital_name}</p>
+                  <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
+                    <div className={`imgprof ${viewImage && "active"}`}>
+                      <img
+                        src={user.doctor_details.certificate}
+                        alt="doctor certificate"
+                      />
+                      <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
+
+                    </div>
+
+                  </div>
+                  </p>
+                  {appointmentRatingsFeedbacks.map((appointment) => (<>
+                    <p><li id="remli" key={appointment._id}>
+                      <p>Ratings: {appointment.rating}</p>
+                      <p>Feedbacks: {appointment.feedback}</p>
+                    </li></p>
+
+                  </>))}
+                </div>
+              </>)}
+              {user.role === "volunteer" && (
+                <div>
+                  <p className="pdflex">
+                    <div>Verification: {user.volunteer_details.verification}</div>
+                  </p>
+                  <p>Qualification: {user.volunteer_details.qualification}</p>
+                  <p>Available: {user.volunteer_details.available}</p>
+                  <p>NGO Name: {user.volunteer_details.NGO_name}</p>
+                  <p>
+                    Location: {user.volunteer_details.location.lng},{" "}
+                    {user.volunteer_details.location.lat}
+                  </p>
+                  <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
+                    <div className={`imgprof ${viewImage && "active"}`}>
+                      <img
+                        src={user.volunteer_details.certificate}
+                        alt="volunteer certificate "
+                      />
+                      <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
+
+                    </div>
+
+                  </div>
+                  </p>
+
+                </div>
+              )}
+
+              {isMine && !editing && <button id="asagws" onClick={handleEdit}>Edit Profile</button>}
+
+
+              {editing && (
+                <div className="editsprofs">
+                  <h2>Edit Profile</h2>
+                  {user.role === "doctor" && (
+                    <div className="editprofdocs">
+                      <div className="editsapa">
+                        <label>Fees:</label>
+                        <input
+                          type="text"
+                          name="fees"
+                          value={updatedDoctorDetails.fees}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                      
+                      <div className="editsapa">
+                        <label>Qualification:</label>
+                        <input
+                          type="text"
+                          name="qualification"
+                          value={updatedDoctorDetails.qualification}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                  
+                      <div className="editsapa">
+                        <label>Specialization:</label>
+                        <input
+                          type="text"
+                          name="specialization"
+                          value={updatedDoctorDetails.specialization}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                   
+                      <div className="editsapa">
+                        <label>Experience:</label>
+                        <input
+                          type="text"
+                          name="experience"
+                          value={updatedDoctorDetails.experience}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    
+                      <div className="editsapa">
+                        <label>Availability:</label>
+                        <input
+                          type="text"
+                          name="availability"
+                          value={updatedDoctorDetails.availability}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                 
+                      <div className="editsapa">
+                        <label>Hospital Name:</label>
+                        <input
+                          type="text"
+                          name="hospital_name"
+                          value={updatedDoctorDetails.hospital_name}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {user.role === "volunteer" && (
+                    <div>
+                      <div className="editsapa">
+                        <label>Qualification:</label>
+                        <input
+                          type="text"
+                          name="qualification"
+                          value={updatedVolunteerDetails.qualification}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                   
+                      <div className="editsapa">
+                        <label>Available:</label>
+                        <input
+                          type="text"
+                          name="available"
+                          value={updatedVolunteerDetails.available}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                   
+                      <div className="editsapa">
+                        <label>NGO Name:</label>
+                        <input
+                          type="text"
+                          name="NGO_name"
+                          value={updatedVolunteerDetails.NGO_name}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                   
+                      <div className="editsapa">
+                        <label>Location (lng):</label>
+                        <input
+                          type="number"
+                          name="lng"
+                          value={updatedVolunteerDetails.location.long || ""}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    
+                      <div className="editsapa">
+                        <label>Location (lat):</label>
+                        <input
+                          type="number"
+                          name="lat"
+                          value={updatedVolunteerDetails.location.lat || ""}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <button id="asagws"  onClick={handleSubmit}>Save</button>
+                </div>
+
+              )}
             </div>
-          )}
-          {user.role === "volunteer" && (
-            <div>
-              <label>Qualification:</label>
-              <input
-                type="text"
-                name="qualification"
-                value={updatedVolunteerDetails.qualification}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Available:</label>
-              <input
-                type="text"
-                name="available"
-                value={updatedVolunteerDetails.available}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>NGO Name:</label>
-              <input
-                type="text"
-                name="NGO_name"
-                value={updatedVolunteerDetails.NGO_name}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Location (lng):</label>
-              <input
-                type="number"
-                name="lng"
-                value={updatedVolunteerDetails.location.long || ""}
-                onChange={handleInputChange}
-              />
-              <br />
-              <label>Location (lat):</label>
-              <input
-                type="number"
-                name="lat"
-                value={updatedVolunteerDetails.location.lat || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-          )}
-          <button onClick={handleSubmit}>Save</button>
-        </div>
-      )}
-       </>) : (<></>)}
-       
+          </div>
+
+        </>) : (<></>)}
+
 
         <div>
           {
@@ -519,7 +566,10 @@ export default function Profile() {
 
             <h1>
               {" "}
-              {user_name} <br></br>
+              {user_name} 
+              <button id="biewprod" onClick={() => {
+                seteditprofile("active")
+              }} >Profile Details</button>
             </h1>
             <h1>
               {isLoading ? (
@@ -530,7 +580,7 @@ export default function Profile() {
                     <>
                       <div className="cjec">
                         <p id="sss">Subscription : ACTIVE</p>
-                        <img id="subpix" src="./checked.png" alt="" srcset="" />
+
                       </div>
                     </>
                   ) : (
@@ -582,7 +632,7 @@ export default function Profile() {
                               {console.log(donateorders.feedback)}
                               Medicines collected
                               {
-                                !donateorders.feedback.feedback&& (
+                                !donateorders.feedback.feedback && (
                                   <>
                                     <button onClick={() => handleFeedback()}>Feedback</button>
                                     <Modal
@@ -609,8 +659,8 @@ export default function Profile() {
                               }
 
                             </div>
-                            </p>
-                            </> )
+                          </p>
+                          </>)
                         }
                       </li>
                     )
@@ -650,41 +700,41 @@ export default function Profile() {
                           <p>Pending</p>
                         ) : (
                           <>
-                          <p>
-                       
-                          <div className="">
-                            {console.log(requestorders.feedback)}
-                            Medicines collected
-                            {
-                              requestorders.feedback.feedback === null && (
-                                <>
-                                  <button onClick={() => handleFeedback()}>Feedback</button>
-                                  <Modal
-                                    className="Modal__container"
-                                    onRequestClose={() => setFeedbackIsOpen(false)}
-                                    isOpen={feedbackIsOpen}
-                                    style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
-                                  >
-                                    <ReactStars
-                                      count={5}
-                                      onChange={handleStarRating}
-                                      size={24}
-                                      activeColor="#ffd700"
-                                    />
-                                    <textarea
-                                      placeholder="Feedback"
-                                      onChange={handleFeedbackText}
-                                    />
-                                    <button onClick={() => sendFeedback(requestorders._id)}>submit</button>
-                                    <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
-                                  </Modal>
-                                </>
-                              )
-                            }
+                            <p>
 
-                          </div>
-                          </p>
-                       </>)
+                              <div className="">
+                                {console.log(requestorders.feedback)}
+                                Medicines collected
+                                {
+                                  requestorders.feedback.feedback === null && (
+                                    <>
+                                      <button onClick={() => handleFeedback()}>Feedback</button>
+                                      <Modal
+                                        className="Modal__container"
+                                        onRequestClose={() => setFeedbackIsOpen(false)}
+                                        isOpen={feedbackIsOpen}
+                                        style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
+                                      >
+                                        <ReactStars
+                                          count={5}
+                                          onChange={handleStarRating}
+                                          size={24}
+                                          activeColor="#ffd700"
+                                        />
+                                        <textarea
+                                          placeholder="Feedback"
+                                          onChange={handleFeedbackText}
+                                        />
+                                        <button onClick={() => sendFeedback(requestorders._id)}>submit</button>
+                                        <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
+                                      </Modal>
+                                    </>
+                                  )
+                                }
+
+                              </div>
+                            </p>
+                          </>)
                       }
                     </li>
                   ))}
@@ -725,7 +775,7 @@ export default function Profile() {
                           {doctorappointments.appointment_time}
                         </p>
                         {!doctorappointments.confirm_status &&
-                        !doctorappointments.reject_status ? (
+                          !doctorappointments.reject_status ? (
                           <p className="p2">Pending</p>
                         ) : doctorappointments.confirm_status ? (
                           <p className="p2">Confirmed</p>
@@ -776,7 +826,7 @@ export default function Profile() {
                           {patientappointments.appointment_time}
                         </p>
                         {!patientappointments.confirm_status &&
-                        !patientappointments.reject_status ? (
+                          !patientappointments.reject_status ? (
                           <p className="p2">Pending</p>
                         ) : patientappointments.confirm_status ? (
                           <p className="p2">Confirmed</p>

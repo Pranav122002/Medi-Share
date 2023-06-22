@@ -243,18 +243,18 @@ export default function UserProfile({ id }) {
               {user.volunteer_details.location.lat}
             </p>
             <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
-            <div className={`imgprof ${viewImage && "active"}`}>
-              <img
-                src={user.volunteer_details.certificate}
-                alt="volunteer certificate "
-              />
-              <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
+              <div className={`imgprof ${viewImage && "active"}`}>
+                <img
+                  src={user.volunteer_details.certificate}
+                  alt="volunteer certificate "
+                />
+                <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
+
+              </div>
 
             </div>
+            </p>
 
-          </div>
-          </p>
-            
           </div>
         )}
       </div>
