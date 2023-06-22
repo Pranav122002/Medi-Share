@@ -1,3 +1,29 @@
+
+.inventorymain{
+    width: 100vw;
+    min-height: 94vh;
+    height: max-content;
+    background: #48b0df;
+    padding: 0.1px;
+}
+.inventorymain h1{
+  color: white;
+  width: 82vw;
+  margin-left: auto;
+  margin-right: 2vw;
+
+ 
+}
+.inventorymain .bodyy{
+
+  width: 82vw;
+  background: rgb(248, 248, 248);
+  height: max-content;
+  margin-left: auto;
+  margin-right: 2vw;
+  padding: 0.1px;
+  border-radius: 1rem;
+}
 .searchbox {
   width: 100%;
   
@@ -35,22 +61,37 @@
   text-align: end;
 }
 
-.searchinput {
+.inventorymain .searchinput {
   border-radius: 10px;
   border: none;
-  height: 40px;
-  width: 90%;
+  height: 3rem;
+  width: 80%;
   font-weight: 100;
   background-color: rgba(60, 172, 161, 0.1);
   margin-left: 0;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
+  
+  padding: 0;
+  margin: 0;
+  padding-left: 1rem;
+}
+.inventorymain .searchinput:focus{
+    padding: none;
+    margin: none;
+    height: 3rem;
+}
+.topsearch{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
 }
 .searchcolumn {
   margin: auto;
-  margin-top: 6rem;
+  margin-top: 2rem;
 
-  width: 80vw;
+  width:95%;
 
 }
 
@@ -84,7 +125,7 @@ margin-left: 10px;
   
 }
 
-@media screen and (max-width: 1000px){
+
   .link{
     color: black;
     list-style: none;
@@ -127,7 +168,7 @@ margin-left: 10px;
     margin-left: 0rem;
     width: 90%;
   }
-}
+
 
 .searchcolumn {
   display: flex;
@@ -204,6 +245,8 @@ margin-left: 10px;
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
+  width: 10%;
+  height: 3.5rem;
 }
 
 .cart-button:hover {
@@ -224,8 +267,9 @@ margin-left: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 9999;
-  width: 90%;
-  max-width: 400px;
+  min-width: 30%;
+  width: max-content;
+  
 }
 
 .Modal__container ul {
@@ -238,6 +282,7 @@ margin-left: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   margin-bottom: 10px;
 }
 
@@ -260,11 +305,21 @@ margin-left: 10px;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
+  width: 30%;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  margin-right: 2vw;
 }
-
+#dasdaf{
+  width: 95%;
+}
+#dasdaf:focus{
+  width: 95%;
+}
+#gasgfa{
+  margin-left: 20%;
+}
 .Modal__container button:hover {
   background-color: #45a049;
 }

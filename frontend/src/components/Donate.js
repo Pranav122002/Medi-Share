@@ -315,10 +315,10 @@ export default function Donate() {
                 </div>
               </div> */}
               </div>
-              <div>
-                <button onClick={() => { handLeftForm() }}>Left</button>
-                <button onClick={() => { handleAddForm() }}>Add</button>
-                <button onClick={() => { handleRightForm() }}>Right</button>
+              <div className="leftrightfunc">
+                <button  onClick={() => { handLeftForm() }}>Prev Med</button>
+                <button onClick={() => { handleAddForm() }}>Add to Cart</button>
+                <button onClick={() => { handleRightForm() }}>Next Med</button>
               </div>
               <button
                 className="button-53"

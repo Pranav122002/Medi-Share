@@ -188,9 +188,9 @@ export default function Inventory() {
       })
       .catch((error) => {
         console.log(error)
-            notifyA(error.message);
-          });
-      
+        notifyA(error.message);
+      });
+
   }
   //cart quantity validation
   const quantityValidation = Yup.object().shape({
@@ -214,19 +214,22 @@ export default function Inventory() {
 
 
   return (
-    <div>
+    <div className="inventorymain">
+      <h1>Inventory</h1>
       <div className="bodyy">
-        <h1>Inventory</h1>
+
         <div className="searchcolumn">
           <div className="searchbox">
-            <input
-              className="searchinput"
-              type="text"
-              placeholder="Search medicines"
-              value={search}
-              onChange={(e) => fetchMedicines(e.target.value)}
-            />
-            <button className="cart-button" onClick={OpenCartModal}>Cart</button>
+            <div className="topsearch">
+              <input
+                className="searchinput"
+                type="text"
+                placeholder="Search medicines"
+                value={search}
+                onChange={(e) => fetchMedicines(e.target.value)}
+              />
+              <button className="cart-button" onClick={OpenCartModal}>Cart</button>
+            </div>
             <Modal className="Modal__container" isOpen={cartModal} onRequestClose={CloseCartModal}>
               {console.log(cart)}
               {
@@ -234,13 +237,10 @@ export default function Inventory() {
                 (
                   <ul key={med.med_id}>
                     <li className="item_container">
-                      {med.medicine_name}
-                      <button onClick={() => removeMed(med)}>Remove</button>
-                    </li>
-                    <li>
-                      <input
+                      <div>
+                    <input
                         type="number"
-                        value={med.quantity}
+                        value={med.quantity }
                         onChange={(e) => {
                           const newQuantity = Number(e.target.value);
                           setCart((prevCart) =>
@@ -250,7 +250,12 @@ export default function Inventory() {
                           );
                         }}
                       />
+                      {"x      " }
+                      {"  " +med.medicine_name}
+                      </div>
+                      <button onClick={() => removeMed(med)}>Remove</button>
                     </li>
+                    
                   </ul>
                 ))
               }
@@ -262,12 +267,13 @@ export default function Inventory() {
                       type="text"
                       placeholder="Delivery Location"
                       onChange={(e) => setLocation(e.target.value)}
+                      id="dasdaf"
                     />
                     <br />
-                    <button onClick={checkout}>Checkout</button>
+                    <button id="gasgfa" onClick={checkout}>Checkout</button>
                   </>
                 ) : (
-                  <p>Nothing in cart</p>
+                  <p >Nothing in cart</p>
                 )
               }
 
