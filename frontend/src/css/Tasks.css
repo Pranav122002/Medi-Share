@@ -1,17 +1,123 @@
+<<<<<<< HEAD
 /* .task .allCards{
+=======
+>>>>>>> f210568db6caa3eea9076a40093cbf6621b268df
 
-    height: 100vh;
-    
+.task{
+    background: #48b0df;
+    height:max-content;
+    width: 100vw;
+    padding: 0.1px;
+    height: 95vh;
 }
 
-.task .OCards p{
-    width: 60vw;
+.task .bodyy{
+    width: 82vw;
+    margin-right: 2vw;
+    margin-left: auto;
+    background: white;
+    margin-top: 2rem;
+    border-radius: 0.9rem;
+    padding: 0.1px;
 }
 
+<<<<<<< HEAD
 .task #title{
     width: 20vw;
 } */
+=======
+.task .bodyy h1{
+    text-align: left;
+    margin-left: 2rem;
+    font-size: 1.7rem;
+    margin-top: 1rem;
 
+}
+>>>>>>> f210568db6caa3eea9076a40093cbf6621b268df
+
+.task .bodyy .allCards{
+    width: 95%;
+    margin: auto;
+    height: max-content;
+    background: none;
+    background-image: none;
+    position: relative;
+    padding: 1px;
+}
+
+.task .bodyy .allCards{
+    font-size: 1rem;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    height: max-content;
+    margin-top: 0rem;
+}
+
+.task .OCards .card {
+    margin: 0;
+    max-width: 100%; 
+    width: 100%;
+    border: none;
+    background:none;
+    box-shadow: none;
+   
+}
+.task .OCards {
+    font-size: 1rem;
+    position: relative;
+    width: 90%;
+    margin: auto;
+    height: max-content;
+    margin-top: 1rem;
+}
+
+.task .heading {
+    box-shadow: none;
+    height: max-content;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: flex-start;
+    background: none;
+    border-radius: 0rem;
+    color: rgb(0, 0, 0);
+}
+
+.task .OCards p {
+    padding-top: 1rem;
+    width: 24vw;
+}
+
+.task .OCards .card-body {
+    width: 100%;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 10px;
+}
+.task .OCards .card-body:hover {
+    box-shadow: none;
+    background: rgb(246, 246, 246);
+}
+.task #title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0rem;
+    border-radius: 1rem;
+    height: 2.5rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    width: 24vw;
+}
+.task hr{
+    width: 80%;
+   
+}
 @media screen and (max-width: 1000px){
     
 .task #title{

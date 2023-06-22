@@ -214,7 +214,7 @@ export default function Tasks() {
         <Card className="Card" key={index}>
           <Card.Body>
             <Card.Title id="title">{card.volunteer_name}</Card.Title>
-            <Card.Text id="details">
+            
               <p>
                 <div className="content-details">Task Info:</div>
                 {card.task_info}
@@ -225,8 +225,9 @@ export default function Tasks() {
                 {card.deadline}
                 <br />
               </p>
-            </Card.Text>
+         
           </Card.Body>
+          <hr />
         </Card>
       </>
     );
@@ -331,6 +332,7 @@ export default function Tasks() {
                     <p className="headp">Deadline</p>
                   </div>
                 </div>
+                
                 {tasks.map(renderCard)}
               </div>
             </div>
