@@ -50,7 +50,7 @@ const ViewMedModal = ({ viewMedModalIsOpen, selectOrder, closeViewMedModal }) =>
                     </Card.Text>
                   </Card.Body>
                 </Card>
-                <li key={index}>{med.medicine_name}</li>
+               
               </React.Fragment>
             );
           })

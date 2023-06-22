@@ -18,6 +18,7 @@ export default function Orders() {
   const navigate = useNavigate();
   const [order_id, setOrderId] = useState("");
   const [orders, setOrders] = useState([]);
+  console.log(orders)
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false)
   const [volunteers, setVolunteers] = useState([])
@@ -123,8 +124,7 @@ export default function Orders() {
         const verify_status = result.verify_status;
 
         fetch(
-          `${API_BASE_URL}/user/${
-            JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -182,8 +182,7 @@ export default function Orders() {
         const verify_status = result.verify_status;
 
         fetch(
-          `${API_BASE_URL}/user/${
-            JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -270,8 +269,8 @@ export default function Orders() {
               ? { ...item, assigned_vol: { ...item.assigned_vol, name: data.data.assigned_vol.name }, pickup_deadline: pickupDeadline }
               : item
           );
-        });        
-        
+        });
+
       }
     })
   }
@@ -284,22 +283,22 @@ export default function Orders() {
           <>
             <Card className="Card" key={index}>
               <Card.Body className="Card_body">
-                <Card.Title id="title"><img src="pills.png" alt="" />{card._id.toString().slice(-4)}</Card.Title>
-                <Card.Text id="details">
+                <p><Card.Title id="title">{card._id.toString().slice(-4)}</Card.Title> </p>
+                
                   <p><div className="content-details">No of Meds:-</div>{card.order_type}<br /></p>
                   <p><div className="content-details">No of Meds:-</div>{card.no_of_medicines}<br /></p>
                   <p><div className="content-details">Location:-</div>{card.location.location}<br /></p>
                   <p><div className="content-details">Donor:-</div>{card.donar.name}<br /></p>
 
-                  
-                  {card.assigned_vol ? card.assigned_vol.name :
+
+                  <p className="notp">{card.assigned_vol ? card.assigned_vol.name :
                     <Button className="button-53" onClick={() => onClickAssign(card._id)}>Assign</Button>
-                  }
+                  }</p> 
                   {card.verify_status === true ?
                     (<p>Verified</p>) :
                     (<p>Pending</p>)
                   }
-                  <Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button>
+                  <p className="notp"><Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button></p> 
 
                   <ViewMedModal
                     viewMedModalIsOpen={viewMedModalIsOpen}
@@ -312,7 +311,7 @@ export default function Orders() {
                     <ul>
                       {volunteers.map((volunteer) => {
 
-                        return <li key={volunteer._id} onClick={() => { handleVolunteer({ volunteer }) }}>{volunteer.name}</li>
+                        return <li key={volunteer._id} onClick={() => { handleVolunteer({ volunteer }) }}> {volunteer.name} </li>
                       })}
                     </ul>
                     <button onClick={closeModal}>Close Modal</button>
@@ -325,26 +324,28 @@ export default function Orders() {
                     <button onClick={AssignVol}>Assign</button>
                   </Modal>
 
-                </Card.Text>
+               
               </Card.Body>
             </Card>
+            <hr />
           </>
         ) : (
           <div id="OCard">
 
             <Card className="Card" key={index}>
               <Card.Body className="Card_body">
-                <Card.Title id="title"><img src="pills.png" alt="" />{card._id.toString().slice(-4)}</Card.Title>
-                <Card.Text id="details">
+               <p> <Card.Title id="title">{card._id.toString().slice(-4)}</Card.Title></p>
+              
                   <p><div className="content-details">No of Meds:-</div>{card.order_type}<br /></p>
                   <p><div className="content-details">No of Meds:-</div>{card.no_of_medicines}<br /></p>
                   <p><div className="content-details">Location:-</div>{card.location.location}<br /></p>
                   <p><div className="content-details">Request By:-</div>{card.requester.name}<br /></p>
 
-                  
-                  {card.assigned_vol ? card.assigned_vol.name :
+
+                  <p>{card.assigned_vol ? card.assigned_vol.name :
                     <Button className="button-53" onClick={() => onClickAssign(card._id)}>Assign</Button>
                   }
+                  </p> 
                   {card.execute_status === true ?
                     (<p>Collected</p>) :
                     (<p>Pending</p>)
@@ -352,7 +353,7 @@ export default function Orders() {
 
                   {/* <Button className="button-53" onClick={() => putRequestData(card._id)}>Request</Button> */}
 
-                  <Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button>
+                 <p><Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button></p> 
 
                   <ViewMedModal
                     viewMedModalIsOpen={viewMedModalIsOpen}
@@ -377,29 +378,31 @@ export default function Orders() {
                     <button onClick={closeModal}>Close</button>
                     <button onClick={AssignVol}>Assign</button>
                   </Modal>
-                </Card.Text>
-
-
+          
               </Card.Body>
+
             </Card>
+            <hr />
           </div>
         )}
       </>
 
     )
   }
-  return (<>
-    <div>
-      <div className="bodyy">
+  return (<div className="orderbody">
+
+
+    <div className="bodyy">
+      <div className="orderspage">
         {isLoading ? (
           <div className="loadingcont">
 
             <h1 className="loada">Loading...</h1>
           </div>
         ) : (<>
-
+          <h1>Pending Orders</h1>
           <div className="filterOptions">
-            <h1>Pending Orders</h1>
+
             <input
               className="search-filter"
               type="text"
@@ -412,33 +415,34 @@ export default function Orders() {
               onChange={handleFilterChange}
               options={filterOptions}
             />
-            <p>Orders {totalOrderCount} Filtered Orders {filteredOrderCount}</p>
-
           </div>
+          <div className="sada"><p>Total Orders : {totalOrderCount}</p><p>Filtered Orders : {filteredOrderCount}</p></div>
+
           <div className="allCards">
 
 
             <div className="OCards">
               <div className="headd">
                 <div className="heading">
-                  <img id="mobpill" src="medicine.png" alt="" />
-                  <p className="headp"> <img src="medicine.png" alt="" /> Order ID</p>
+
+                  <p className="headp">Order ID</p>
                   <p className="headp">Order Type</p>
                   <p className="headp">No of Meds</p>
                   <p className="headp">Location</p>
                   <p className="headp">User</p>
                   <p className="headp">Volunteer</p>
                   <p className="headp">Status</p>
-                  <p className="headp" id="action">Action</p>
+                  <p className="headp" id="action">INFO</p>
                 </div>
               </div>
+              <hr id="mainhe"/>
               {orders.map(renderCard)}
             </div>
           </div>
         </>
         )}
 
-          {/* <ul>
+        {/* <ul>
         {orders.map((orders) => (
           <li key={orders.medicine_name}>
             <p>medicine_name : </p> {orders.medicine_name}
@@ -451,8 +455,8 @@ export default function Orders() {
           </li>
         ))}
       </ul> */}
-        </div>
       </div>
-    </>
+    </div>
+  </div>
   );
 }

@@ -12,6 +12,7 @@ router.get("/api/user/:id", (req, res) => {
     .select("-password")
     .then((user) => {
       return res.json(user);
+     
     })
     .catch((err) => {
       return res.status(404).json({ error: "User not found." });
@@ -67,6 +68,8 @@ router.put("/api/update-doctor-details/:id", (req, res) => {
       res.json("User not found.");
     });
 });
+
+
 
 router.get("/api/all-volunteers-and-doctors", (req, res) => {
   USER.find({ role: { $in: ["doctor", "volunteer"] } })

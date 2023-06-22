@@ -226,12 +226,14 @@
    background: rgb(254, 254, 254);
    box-shadow: 2px 2px 9px rgb(238, 238, 238);
    width: 70vw;
-   margin: auto;
+ 
    margin-top: 1rem;
    margin-bottom: 1rem;
    height: max-content;
    min-height: 10rem;
    border-radius: 1rem;
+   margin-left: auto;
+   margin-right: 8vw;
   
   
 }
