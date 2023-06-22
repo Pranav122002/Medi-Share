@@ -1,0 +1,14 @@
+.mainuserprofile{
+    width: 100vw;
+    min-height: 100vh;
+    background: #48b0df;
+    padding: 0.1px;
+    }
+
+.mainuserprofile .bodyy{
+    width: 82vw;
+    margin-left: auto;
+    margin-right: 2vw;
+    background: white;
+    
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import { toast } from "react-toastify";
+import "../css/UserProfile.css";
 
 export default function UserProfile({ id }) {
   const notifyA = (msg) => toast.error(msg);
@@ -168,7 +169,7 @@ export default function UserProfile({ id }) {
   }
 
   return (
-    <div>
+    <div className="">
       <h1>User Profile</h1>
 
       <div>

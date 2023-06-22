@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-/* .task .allCards{
-=======
->>>>>>> f210568db6caa3eea9076a40093cbf6621b268df
-
+.task .allCards{
+}
 .task{
     background: #48b0df;
     height:max-content;
@@ -21,19 +18,20 @@
     padding: 0.1px;
 }
 
-<<<<<<< HEAD
 .task #title{
     width: 20vw;
-} */
-=======
-.task .bodyy h1{
-    text-align: left;
-    margin-left: 2rem;
-    font-size: 1.7rem;
-    margin-top: 1rem;
+} 
 
+.task .bodyy .allCards{
+    width: 95%;
+    margin: auto;
+    height: max-content;
+    background: none;
+    background-image: none;
+    position: relative;
+    padding: 1px;
 }
->>>>>>> f210568db6caa3eea9076a40093cbf6621b268df
+
 
 .task .bodyy .allCards{
     width: 95%;

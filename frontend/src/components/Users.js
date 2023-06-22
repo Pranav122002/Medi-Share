@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import UserProfile from "./UserProfile";
 import { Hnavbar } from "./Hnavbar";
 import { API_BASE_URL } from "../config";
+import "../css/UserProfile.css";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -32,7 +33,7 @@ export default function Users() {
   }
 
   return (
-    <div>
+    <div className="mainuserprofile">
       <div className="bodyy">
         <h1>All Available Volunteers and Doctors</h1>
         <ul>

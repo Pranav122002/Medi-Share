@@ -7,7 +7,9 @@
   margin: 0;
   border: 0;
   width: 100vw;
-  height: 95vh;
+  min-height: 95vh;
+  height: max-content;
+  padding-bottom: 2rem;
 }
 
 .donatecont{

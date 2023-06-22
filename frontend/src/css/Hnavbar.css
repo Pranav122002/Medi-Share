@@ -88,7 +88,9 @@ h2 {
     font-size: 1.4rem;
 }
 
-.borde {}
+#abcder{
+    font-size: 1.4rem;
+}
 
 @media screen and (max-width: 1000px) {
 

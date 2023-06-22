@@ -441,7 +441,7 @@ export default function Volunteer() {
                         className="button-53"
                         onClick={() => viewMedicine(unverifiedorders)}
                       >
-                        Detials
+                        Details
                       </Button>
                       <ViewMedModal
                         viewMedModalIsOpen={viewMedModalIsOpen}

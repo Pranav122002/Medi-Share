@@ -144,19 +144,44 @@
   box-shadow: none;
 }
 #roles{
-  width: 20vw;
-  margin: auto;
-  margin-top: 2rem;
-}
-#role{
-  margin: auto;
+
   border: none;
-  margin-left: 1rem;
-  background-color: rgb(243, 251, 255);
-  width: 6rem;
-  height: 2rem;
-  font-size: 1rem;
+  margin-top: 2rem;
+  
 }
+
+.selopt{
+
+}
+
+select:invalid { color: gray; }
+#role{
+ 
+  height: 3.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  background: rgb(243, 251, 255);
+  padding-left: 2rem;
+  margin-top: 0.8rem;
+  width: 20vw;
+  max-width: 16.5vw;
+
+}
+#roles:focus{
+  border: none;
+
+}
+#role *{
+  background: rgb(255, 255, 255);
+}
+#role *{
+  background: rgb(255, 255, 255);
+  height: 2rem;
+}
+.selopt{
+  border: none;
+}
+
 .uploadimage{
   display: flex;
   justify-content: space-between;

@@ -117,18 +117,21 @@ export default function SignUp() {
               <h1>SIGN UP</h1>
 
               <div id="roles">
-                Choose your role
-                <select
+               
+                <select required
+                  placeholder="Choose your role"
                   name="role"
                   id="role"
+                  
                   value={role}
                   onChange={(e) => {
                     setRole(e.target.value);
                   }}
                 >
-                  <option value="user">user</option>
-                  <option value="volunteer">volunteer</option>
-                  <option value="doctor">doctor</option>
+                  <option className="selopt" value="" disabled selected>Chooose your role </option>
+                  <option className="selopt" value="user">user</option>
+                  <option  className="selopt" value="volunteer">volunteer</option>
+                  <option  className="selopt" value="doctor">doctor</option>
                 </select>
               </div>
 

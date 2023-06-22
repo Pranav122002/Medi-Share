@@ -82,7 +82,7 @@ export default function Hnavbar(props) {
                   </span>
                 </Link>
                 <Link className="aboutu" to="/signin">
-                  <span style={{ cursor: "pointer" }}>
+                  <span id="abcder" style={{ cursor: "pointer" }}>
                     Join Us
                   </span>
                 </Link>
