@@ -12,6 +12,7 @@ export default function UserProfile({ id }) {
   const [user, setUser] = useState(null);
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(false);
+  const [viewImage, setViewImage] = useState(false);
   const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
     fees: "",
     qualification: "",
@@ -169,37 +170,71 @@ export default function UserProfile({ id }) {
   }
 
   return (
-    <div className="">
-      <h1>User Profile</h1>
+    <div className="singleuser">
+      <h1>Profile</h1>
 
-      <div>
+      <div className="singleback">
         <p>Name: {user.name}</p>
 
-        {user.role === "doctor" && (
-          <div>
-            <p>Verification: {user.doctor_details.verification}</p>
-            <p>Fees: {user.doctor_details.fees}</p>
-            <p>Qualification: {user.doctor_details.qualification}</p>
-            <p>Specialization: {user.doctor_details.specialization}</p>
-            <p>Experience: {user.doctor_details.experience}</p>
-            <p>Availability: {user.doctor_details.availability}</p>
-            <p>Hospital Name: {user.doctor_details.hospital_name}</p>
-            <img
-              src={user.doctor_details.certificate}
-              alt="doctor certificate"
-            />
+        {user.role === "doctor" && (<>
 
-            {appointmentRatingsFeedbacks.map((appointment) => (
-              <li key={appointment._id}>
-                <p>Ratings: {appointment.rating}</p>
-                <p>Feedbacks: {appointment.feedback}</p>
-              </li>
-            ))}
+          <p className="pdflex">
+            <div>Verification: {user.doctor_details.verification}</div>
+            <div>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
+              <div className="verifybut">
+                <button 
+                  onClick={() => {
+                    verifyUser();
+                  }}
+                >
+                  Verify
+                </button>
+              </div>
+            )}</div>
+          </p>
+          <p>Fees: {user.doctor_details.fees}</p>
+          <p>Qualification: {user.doctor_details.qualification}</p>
+          <p>Specialization: {user.doctor_details.specialization}</p>
+          <p>Experience: {user.doctor_details.experience}</p>
+          <p>Availability: {user.doctor_details.availability}</p>
+          <p>Hospital Name: {user.doctor_details.hospital_name}</p>
+          <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
+            <div className={`imgprof ${viewImage && "active"}`}>
+              <img
+                src={user.doctor_details.certificate}
+                alt="doctor certificate"
+              />
+              <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
+
+            </div>
+
           </div>
-        )}
+          </p>
+          {appointmentRatingsFeedbacks.map((appointment) => (<>
+            <p><li id="remli" key={appointment._id}>
+              <p>Ratings: {appointment.rating}</p>
+              <p>Feedbacks: {appointment.feedback}</p>
+            </li></p>
+
+          </>))}
+
+        </>)}
         {user.role === "volunteer" && (
           <div>
-            <p>Verification: {user.volunteer_details.verification}</p>
+            <p className="pdflex">
+              <div>Verification: {user.volunteer_details.verification}</div>
+              <div>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
+                <div className="verifybut">
+                  <button
+                    onClick={() => {
+                      verifyUser();
+                    }}
+                  >
+                    Verify
+                  </button>
+                </div>
+              )}</div>
+            </p>
             <p>Qualification: {user.volunteer_details.qualification}</p>
             <p>Available: {user.volunteer_details.available}</p>
             <p>NGO Name: {user.volunteer_details.NGO_name}</p>
@@ -207,10 +242,19 @@ export default function UserProfile({ id }) {
               Location: {user.volunteer_details.location.lng},{" "}
               {user.volunteer_details.location.lat}
             </p>
-            <img
-              src={user.volunteer_details.certificate}
-              alt="volunteer certificate"
-            />
+            <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
+            <div className={`imgprof ${viewImage && "active"}`}>
+              <img
+                src={user.volunteer_details.certificate}
+                alt="volunteer certificate "
+              />
+              <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
+
+            </div>
+
+          </div>
+          </p>
+            
           </div>
         )}
       </div>
@@ -318,17 +362,7 @@ export default function UserProfile({ id }) {
         </div>
       )}
 
-      {JSON.parse(localStorage.getItem("user")).role === "admin" && (
-        <div>
-          <button
-            onClick={() => {
-              verifyUser();
-            }}
-          >
-            Verify
-          </button>
-        </div>
-      )}
+
     </div>
   );
 }

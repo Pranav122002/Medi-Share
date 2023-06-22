@@ -36,21 +36,37 @@ export default function Users() {
     <div className="mainuserprofile">
       <div className="bodyy">
         <h1>All Available Volunteers and Doctors</h1>
-        <ul>
-          {users.map((user) => (
-            <li key={user._id}>
-              <h3 onClick={() => handleClick(user._id)}>{user.name}</h3>
-              <p>{user.role}</p>
+        <div className="userproflex">
+          <ul className="userprofback">
+            <h2>User list</h2>
+
+            <li className="userprof">
+              <div className="proflidis">Name</div>
+              <div className="proflidis">Role</div>
+              <div className="proflidis">View</div>
             </li>
-          ))}
-        </ul>
-        {selectedUserId ? (
-          <>
-            <UserProfile id={selectedUserId} />
-          </>
-        ) : (
-          <></>
-        )}
+            <hr id="mas" />
+            <div className="scrolll">
+              {users.map((user) => (<>
+                <li className="userprof" key={user._id}>
+                  <div className="proflidiv">{user.name}</div>
+                  <div className="proflidiv">{user.role}</div>
+                  <div className="proflidiv"><button onClick={() => handleClick(user._id)}>View</button></div>
+                </li>
+                <hr id="masa" />
+              </>
+              ))}
+            </div>
+          </ul>
+          <hr id="userprofmid"/>
+          {selectedUserId ? (
+            <>
+              <UserProfile id={selectedUserId} />
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );
