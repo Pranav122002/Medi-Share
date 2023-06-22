@@ -55,6 +55,60 @@ export default function Tasks() {
     fetchVolunteers();
   }, []);
 
+  function acceptTask(task_id) {
+    fetch(`${API_BASE_URL}/accept-task/${task_id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        notifyB("Task accepted successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        notifyA(error);
+      });
+  }
+
+  function rejectTask(task_id) {
+    fetch(`${API_BASE_URL}/reject-task/${task_id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        notifyB("Task rejected successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        notifyA(error);
+      });
+  }
+
+  function completeTask(task_id) {
+    fetch(`${API_BASE_URL}/complete-task/${task_id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        notifyB("Task marked as completed successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        notifyA(error);
+      });
+  }
+
   function fetchUser() {
     fetch(
       `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
@@ -292,9 +346,57 @@ export default function Tasks() {
                       <p className="headp">Volunteer Name</p>
                       <p className="headp">Task Info</p>
                       <p className="headp">Deadline</p>
+                      <p className="headp">Status</p>
+                      <p className="headp">Completion</p>
                     </div>
                   </div>
-                  {myTasks.map(renderCard)}
+
+                  {myTasks.map((task) => (
+                    <li  key={task._id}>
+                      
+                      <p > {task.volunteer_name}</p>
+                      <p > {task.task_info}</p>
+                      <p >{task.deadline}</p>
+                      {task.status === "pending" ? (
+                        <>
+                          <p >
+                            <button
+                              onClick={() => {
+                                acceptTask(task._id);
+                              }}
+                            >
+                              Accept
+                            </button>
+                            <button
+                              onClick={() => {
+                                rejectTask(task._id);
+                              }}
+                            >
+                              Reject
+                            </button>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p >{task.status}</p>
+                        </>
+                      )}
+                      {task.completion === false ? (
+                        <>
+                          <p > Not Completed</p>{" "}
+                          <button
+                            onClick={() => {
+                              completeTask(task._id);
+                            }}
+                          >
+                            Mark as Completed
+                          </button>{" "}
+                        </>
+                      ) : (
+                        <p > Completed</p>
+                      )}
+                    </li>
+                  ))}
                 </div>
               </div>
             </div>
