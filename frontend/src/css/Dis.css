@@ -13,6 +13,7 @@
   margin-right: 2vw;
   margin-left: auto;
   height: 10rem;
+
 }
 
 
@@ -24,7 +25,7 @@
   height: max-content;
   
   border-radius: 1rem;
-  background: rgb(255, 255, 255);
+  background: rgb(237, 249, 255);
   margin-top: 2rem;
   padding: 0.1px;
   padding-bottom: 2rem;
@@ -41,7 +42,7 @@
 
 .dise {
   display: flex;
-
+ 
   flex-wrap: wrap;
   width: 90%;
   margin: auto;

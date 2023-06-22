@@ -1,0 +1,211 @@
+.mainuserprofile{
+    width: 100vw;
+    min-height: 100vh;
+    background: #48b0df;
+    padding: 0.1px;
+    }
+
+.mainuserprofile .bodyy{
+    width: 82vw;
+    margin-left: auto;
+    margin-right: 2vw;
+    background: rgb(238, 250, 255);
+    margin-top: 2rem;
+    border-radius: 0.9rem;
+    padding: 0.1px;
+}
+.mainuserprofile .bodyy h1{
+    text-align: left;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 1.7rem;
+    color: #0e76a6;
+
+}
+.mainuserprofile .userprofback{
+    width: 35%;
+    min-height: 40rem;
+    height: max-content;
+    background: rgb(255, 255, 255);
+}
+
+.mainuserprofile .userprofback .scrolll{
+    height:27rem;    
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.mainuserprofile .userprofback h2{
+    text-align: left;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+
+}
+.mainuserprofile .userprofback  hr{
+    width: 75%;
+    margin-left: 3vw;
+}
+.mainuserprofile .userproflex{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+    height: max-content;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 0.9rem;
+    box-shadow: 2px 2px 9px rgb(213, 213, 213);
+}
+.mainuserprofile .userprof{
+ 
+    width: 100%;
+    
+    display: flex;
+}
+.mainuserprofile .userprof li{
+    margin: auto;
+    height: max-content;
+    min-height: 3rem;
+    
+}
+.mainuserprofile .userprof .proflidiv{
+   width: 7vw;
+   font-size: 0.9vw;
+  
+}
+
+.mainuserprofile .proflidiv button{
+    width: 80%;
+    margin-top: -1rem;
+    height: 3rem;
+    border: none;
+    background: #48b0df;
+    border-radius: 0.9rem;
+    color: white;
+    font-size: 0.7vw;
+}
+.mainuserprofile .proflidiv button:hover{
+    width: 90%;
+}
+.mainuserprofile .userprof .proflidis{
+    width: 7vw;
+    font-size: 1vw;
+    font-weight: 700;
+    
+    color: #0e76a6;
+ }
+ #mas{
+    border: 1.5px solid #48b0df; ;
+ }
+ #masa{
+    border: 1px solid #d1d1d1; ;
+ }
+
+ .singleuser{
+    width: 65%;
+    min-height: 40rem;
+  
+    height: max-content;
+    background: #ffffff;
+    border-radius: 0.9rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+ }
+ .singleback{
+    
+    width: 90%;
+    margin: auto;
+    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-top: 0rem;
+ }
+ .singleback p{
+    text-align: left;
+    font-size: 1vw;
+    
+ }
+ .singleback p img{
+   
+ }
+ #userprofmid{
+    
+    height: 35rem;
+    border: 1.5px solid #3ca1d0; 
+    margin: 0;
+    margin-top: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+ }
+
+ .pdflex{
+    display: flex;
+ }
+ .imgprof.active{
+
+    position: absolute;
+    left: 19vw;
+    top:13rem;
+    background: rgb(255, 255, 255);
+    box-shadow: 2px 2px 9px rgb(219, 219, 219);
+    height: 35rem;
+    width: 76vw;
+    border-radius: 1rem;
+    padding-top:1rem;
+ }
+ .imgprof.active img{
+    height: 33rem;
+    margin: auto;
+    margin-left: 5rem;
+ }
+ .imgprof.false{
+    display: none;
+ }
+
+ .imgprof.active .gagasda img{
+    height: 2rem;
+  
+    color: rgb(59, 59, 59);
+    position: absolute;
+    top:0;
+    right: 0;
+    margin-top: 1rem;
+    margin-right: 1rem;
+ }
+
+ .certfed button{
+    width: 10vw;
+    border: none;
+    height: 2rem;
+    color: white;
+    background:#48b0df;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    box-shadow: 2px 2px 9px rgb(219, 219, 219);
+ }
+ .certfed button:hover{
+    margin-left: 2.5rem; 
+ }
+ #remli{
+    height: 0rem;
+    list-style: none;
+    width: max-content;
+    margin-top: 0rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 1vw;
+    display: block;
+  
+    padding-left: 0rem;
+ }
+
+ .verifybut button{
+    width: 10vw;
+    border: none;
+    height: 2rem;
+    color: white;
+    background:#48dfc8;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    box-shadow: 2px 2px 9px rgb(219, 219, 219);
+ }
+ .verifybut button:hover{
+    margin-left: 2.5rem; 
+ }

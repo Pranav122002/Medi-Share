@@ -39,4 +39,49 @@ router.get("/api/my-tasks/:id", (req, res) => {
     });
 });
 
+router.put("/api/accept-task/:task_id", async (req, res) => {
+  try {
+    const task = await TASK.findById(req.params.task_id);
+
+    task.status = "accepted";
+    await task.save();
+
+    res.json(task);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the task" });
+  }
+});
+
+router.put("/api/reject-task/:task_id", async (req, res) => {
+  try {
+    const task = await TASK.findById(req.params.task_id);
+
+    task.status = "rejected";
+    await task.save();
+
+    res.json(task);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the task" });
+  }
+});
+
+router.put("/api/complete-task/:task_id", async (req, res) => {
+  try {
+    const task = await TASK.findById(req.params.task_id);
+
+    task.completion = true;
+    await task.save();
+
+    res.json(task);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the task" });
+  }
+});
+
 module.exports = router;

@@ -5,7 +5,7 @@
 }
 .announce{
   max-width: 100vw;
- 
+  background: #48B0DF;
 }
 
 .anccont{
@@ -32,7 +32,7 @@
   border-radius: 1px;
   margin: auto;
   width: 100vw;
-  background: #C6E6FB;
+  background: #48B0DF;
   min-height: 38vw;
   height: max-content;
   margin-top: 0rem;
@@ -57,6 +57,16 @@
   justify-content: space-between;
   margin-left: auto;
   margin-right: 2rem;
+
+}
+.andlistparent{
+  width: 80vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  background: rgb(241, 249, 255);
+  border-radius: 0.9rem;
+  padding-bottom: 2rem;
+  
 
 }
 .anc .ancinfo h1{
@@ -86,7 +96,7 @@
 }
 
 .anc .formancc{
-  background:  #73c2fbc5;
+  background: #48B0DF;
   width: 100vw;
   padding: 0.1px;
   height: 36rem;
@@ -218,11 +228,15 @@ background: white;
   width: 30vw;
   height: max-content;
   box-shadow: 2px 2px 8px rgb(213, 213, 213);
-
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
+}
+.Formcont{
+  width: 82vw;
+  margin-left: auto;
+  margin-right: 2vw;
 }
 
 .Formcont .button-53{

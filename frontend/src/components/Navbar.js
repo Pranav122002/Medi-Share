@@ -136,13 +136,13 @@ export default function Navbar(props) {
 
           </Link>
 
-          <Link className="borderrad" to="/users">
+          {/* <Link className="borderrad" to="/users">
             <div className="navimgspace">   <img className="navimg" src="./peoples.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Search Users
             </li>
 
-          </Link>
+          </Link> */}
 
           <Link className="borderrad" to="/tasks">
             <div className="navimgspace">  <img className="navimg" src="./chlist2.png" alt="" /></div>
@@ -182,7 +182,7 @@ export default function Navbar(props) {
           </Link>
         </>
       );
-    } else if (user?.role === "doctor" || user?.role === "user") {
+    } else if (user?.role === "user") {
       return (
         <>
           <Link className="borderrad" to="/donate-medicines">
@@ -222,13 +222,13 @@ export default function Navbar(props) {
 
           </Link>
 
-          <Link className="borderrad" to="/users">
+          {/* <Link className="borderrad" to="/users">
             <div className="navimgspace">  <img className="navimg" src="./peoples.png" alt="" /></div>
             <li style={{ color: "black" }} className="navli">
               Search Users
             </li>
 
-          </Link>
+          </Link> */}
 
 
           <Link className="borderrad" to="/annoucements">
@@ -343,33 +343,194 @@ export default function Navbar(props) {
         </>
       );
     }
+    else if (user?.role === "doctor") {
+      return (
+        <>
+          <Link className="borderrad" to="/donate-medicines">
+            <div className="navimgspace">   <FontAwesomeIcon
+              className="navimg"
+              icon={faHandHoldingMedical}
+              style={{ color: "#48B0DF", filter: "none" }}
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Donate
+            </li>
+
+          </Link>
+
+          {/* <Link className="borderrad" to="/search-medicines">
+            <div className="navimgspace">   <img
+              className="navimg"
+              id="seperate"
+              src="./searchpill.png"
+              alt=""
+
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Inventory
+            </li>
+
+          </Link> */}
+          {/* <Link className="borderrad" to="/request-medicines">
+            <div className="navimgspace">  <FontAwesomeIcon
+              className="navimg"
+              icon={faCapsules}
+              style={{ color: "#48B0DF", filter: "none" }}
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Request
+            </li>
+
+          </Link> */}
+
+          {/* <Link className="borderrad" to="/users">
+            <div className="navimgspace">  <img className="navimg" src="./peoples.png" alt="" /></div>
+            <li style={{ color: "black" }} className="navli">
+              Search Users
+            </li>
+
+          </Link> */}
+
+
+          <Link className="borderrad" to="/annoucements">
+            <div className="navimgspace">  <img
+              className="navimg"
+              id="mega"
+              src="./announcement2.png"
+              alt=""
+
+            /></div>
+            <li style={{ color: "black" }} className="navli">
+              Annoucements
+            </li>
+
+          </Link>
+
+          <Link className="borderrad" to="/appointments">
+            <div className="navimgspace">   <img className="navimg" id="mega" src="./doctor4.png" alt="" /></div>
+            <li style={{ color: "black" }} className="navli">
+              Appointments
+            </li>
+
+          </Link>
+
+          {user?.subscription ? (
+            <div>
+              <Link className="borderrad" to="/chats">
+                <div className="navimgspace">
+                  <img
+                    className="navimg"
+                    id="adce"
+                    src="./chat5.png"
+                    alt=""
+                    style={{ color: "none" }}
+                  /></div>
+                <li style={{ color: "black" }} className="navli">
+                  Chats
+                </li>
+
+              </Link>
+
+              <Link className="borderrad" to="/disease-predictions">
+                <div className="navimgspace">   <img
+                  className="navimg"
+                  id="adcd"
+                  src="./virus.png"
+                  alt=""
+                  style={{ color: "none" }}
+                /></div>
+                <li style={{ color: "black" }} className="navli">
+                  Disease Predictions
+                </li>
+
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link className="borderrad" to="/subscribe">
+                <div className="navimgspace">   <img
+                  className="navimg"
+                  id="adce"
+                  src="./chat5.png"
+                  alt=""
+                  style={{ color: "none" }}
+                />
+                </div>
+                <li style={{ color: "black" }} className="navli">
+                  Chats
+                </li>
+
+              </Link>
+
+              <Link className="borderrad" to="/subscribe">
+                <div className="navimgspace">   <img
+                  className="navimg"
+                  id="adcd"
+                  src="./virus.png"
+                  alt=""
+                  style={{ color: "none" }}
+                />
+                </div>
+                <li style={{ color: "black" }} className="navli">
+                  Disease Predictions
+                </li>
+
+              </Link>
+            </div>
+          )}
+
+          <Link className="borderrad" to="/nearby-hospitals">
+            <div className="navimgspace">   <img className="navimg" src="./hospital3.png" alt="" /></div>
+            <li style={{ color: "black" }} className="navli">
+              Nearby Hospitals
+            </li>
+
+          </Link>
+
+          <Link
+            className="borderrad"
+            to="/signin"
+            onClick={() => {
+              localStorage.clear();
+              notifyB("Logout successfull.");
+            }}
+          >
+            <div className="navimgspace">   <img className="navimg" src="./logout3.png" alt="" /></div>
+            <li style={{ color: "red" }} className="navli">
+              Log-Out
+            </li>
+
+          </Link>
+        </>
+      )
+    }
   };
 
   return (
     <div>
       {!["/signup", "/signin", "/", "/about-us"].includes(useLocation().pathname) && (
         <div className={`mainnavss ${props.showvNavbar && "active"} `}>
-        <div
-          
-          className={`navbar ${showVNavbar && "active"}`}
-        >
-          <div className="one" onClick={handleShowVNavbar}>
-            <FontAwesomeIcon
-              id="servicesicon"
-              size="xl"
-              style={{ color: "#48B0DF", filter: "none" }}
-              icon={faBriefcaseMedical}
-              beat
-            />
-            <h1>Services</h1>
+          <div
+
+            className={`navbar ${showVNavbar && "active"}`}
+          >
+            <div className="one" onClick={handleShowVNavbar}>
+              <FontAwesomeIcon
+                id="servicesicon"
+                size="xl"
+                style={{ color: "#48B0DF", filter: "none" }}
+                icon={faBriefcaseMedical}
+                beat
+              />
+              <h1>Services</h1>
 
 
-            {/* <FontAwesomeIcon id="arrow"  size="xl" style={{ color: "black", filter: "none" }} icon={faAnglesRight}  /> */}
+              {/* <FontAwesomeIcon id="arrow"  size="xl" style={{ color: "black", filter: "none" }} icon={faAnglesRight}  /> */}
+            </div>
+            <div className="two" onClick={props.handleShowvNavbar}>
+              <ul className="nav-menu">{loginStatus()}</ul>
+            </div>
           </div>
-          <div className="two" onClick={props.handleShowvNavbar}>
-            <ul className="nav-menu">{loginStatus()}</ul>
-          </div>
-        </div>
         </div>
       )}
     </div>

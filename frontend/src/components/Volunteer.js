@@ -295,7 +295,7 @@ export default function Volunteer() {
                 onChange={(e) => setSearch(e.target.value)}
                 type="text"
                 style={{ border: "none" }}
-                placeholder="search"
+                placeholder="search by order id"
                 name=""
                 id=""
               />
@@ -306,9 +306,9 @@ export default function Volunteer() {
                   <p className="p-head">No Of Meds </p>{" "}
                   <p className="p-head">Location </p>
                   <p className="p-head">Donor / Requester</p>
-                  <p className="p-head">Action</p>
-                  <img className="vbox" src="volunteer.jpg" alt="" />
-                  <h2 className="vbox">Detials</h2>
+                  <p className="p-head">Action / Status</p>
+
+                  <p className="p-head">Detials</p>
                 </div>
 
                 <hr className="volhr" />
@@ -317,162 +317,141 @@ export default function Volunteer() {
                     return search.toLowerCase()=== '' ? unverifiedorders : unverifiedorders.medicine_name.toLowerCase().includes(search)
                   }).map((unverifiedorders) => (<> */}
 
-                {sortedData
-                  .filter((unverifiedorders) => {
-                    return search.toLowerCase() === ""
-                      ? unverifiedorders
-                      : unverifiedorders.medicine_name
-                          .toLowerCase()
-                          .includes(search);
-                  })
-                  .map((unverifiedorders) => (
-                    <>
-                      <div
-                        className="vpending"
-                        key={unverifiedorders._id.toString().slice(-4)}
-                      >
-                        <p className="vpdetails">order_type : </p>
-                        <p className="h3">{unverifiedorders.order_type}</p>
-                        <p className="vpdetails">Order ID : </p>{" "}
+                   
+                {sortedData.filter((unverifiedorders) => {
+                  return search === '' ? unverifiedorders : unverifiedorders._id.includes(search);
+                }).map((unverifiedorders) => (
+                  <>
+                    <div className="vpending" key={unverifiedorders._id.toString().slice(-4)}>
+                      <p className="vpdetails">order_type : </p>
+                      <p className="h3">{unverifiedorders.order_type}</p>
+                      <p className="vpdetails" >Order ID : </p>{" "}
+                      <p className="h3">{unverifiedorders._id.toString().slice(-4)}</p>
+                      <p className="vpdetails" >No of Meds : </p>{" "}
+                      <p className="h3">{unverifiedorders.no_of_medicines}</p>
+                      <p className="vpdetails" >location : </p>
+                      <p className="h3">{unverifiedorders.location.location}</p>
+
+                      {unverifiedorders.order_type == "donate-order" ? (
+                        <>
+                          <p className="vpdetails" >Donar : </p>
+                          <p className="h3">{unverifiedorders.donar.name}</p>
+                        </>
+                      ) : (<>
+                        <p className="vpdetails" >Requester : </p>
+                        <p className="h3">{unverifiedorders.requester.name}</p>
+                      </>
+                      )}
+
+                      {unverifiedorders.acceptance_status === "pending" ? (
                         <p className="h3">
-                          {unverifiedorders._id.toString().slice(-4)}
+                          <button
+                            onClick={() => handleAccept({ unverifiedorders })}>
+                            Accept
+                          </button>
+                          <button
+                            onClick={() => handleReject({ unverifiedorders })}>
+                            Reject
+                          </button>
                         </p>
-                        <p className="vpdetails">No of Meds : </p>{" "}
-                        <p className="h3">{unverifiedorders.no_of_medicines}</p>
-                        <p className="vpdetails">location : </p>
-                        <p className="h3">
-                          {unverifiedorders.location.location}
-                        </p>
-                        {unverifiedorders.order_type == "donate-order" ? (
-                          <>
-                            <p className="vpdetails">Donar : </p>
-                            <p className="h3">{unverifiedorders.donar.name}</p>
-                          </>
-                        ) : (
-                          <>
-                            <p className="vpdetails">Requester : </p>
-                            <p className="h3">
-                              {unverifiedorders.requester.name}
-                            </p>
-                          </>
-                        )}
-                        {unverifiedorders.acceptance_status === "pending" ? (
-                          <>
-                            <button
-                              onClick={() => handleAccept({ unverifiedorders })}
-                            >
-                              Accept
-                            </button>
-                            <button
-                              onClick={() => handleReject({ unverifiedorders })}
-                            >
-                              Reject
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            {unverifiedorders.is_order_rejected === true ? (
-                              <p>Cancelled</p>
-                            ) : unverifiedorders.order_type ==
-                              "donate-order" ? (
+                      ) : (
+                        <>
+                          {unverifiedorders.is_order_rejected === true ?
+                            (<p>Cancelled</p>)
+                            : unverifiedorders.order_type == "donate-order" ?
                               unverifiedorders.verify_status === true ? (
                                 <p>Verified</p>
                               ) : (
-                                <>
+                                <><p className="h3">
                                   <button
                                     // className="button-53"
-                                    onClick={() =>
-                                      verify_donate_order(unverifiedorders._id)
-                                    }
+                                    onClick={() => verify_donate_order(unverifiedorders._id)}
                                   >
                                     Verify
                                   </button>
                                   <button
                                     // className="button-53"
-                                    onClick={() =>
-                                      reject_donate_order(unverifiedorders._id)
-                                    }
+                                    onClick={() => reject_donate_order(unverifiedorders._id)}
                                   >
                                     Reject
                                   </button>
+                                </p>
                                 </>
-                              )
-                            ) : unverifiedorders.execute_status === true ? (
-                              <p>delivered</p>
-                            ) : (
-                              <>
-                                <button
-                                  className="button-53"
-                                  onClick={() => setDeliverModal(true)}
-                                >
-                                  Deliver
-                                </button>
+                              ) : unverifiedorders.execute_status === true ? (
+                                <p>delivered</p>
+                              ) : (
+                                <>
+                                  <button
+                                    className="button-53"
+                                    onClick={() => setDeliverModal(true)}>
+                                    Deliver
+                                  </button>
 
-                                <Modal
-                                  className="Modal__container"
-                                  isOpen={deliverModalIsOpen}
-                                  onRequestClose={() => setDeliverModal(false)}
-                                  style={{
-                                    overlay: { zIndex: 9999 },
-                                    content: { zIndex: 9999 },
-                                  }}
-                                >
-                                  <p>OTP</p>
-                                  <div id="otp-div"></div>
-                                  <div>
-                                    <button
-                                      onClick={() =>
-                                        generateOTP(
-                                          unverifiedorders.requester.phone_no
-                                        )
-                                      }
-                                    >
-                                      Generate OTP
-                                    </button>
-                                  </div>
-
-                                  {OTPstatus && (
-                                    <>
-                                      <input
-                                        type="text"
-                                        onChange={(e) => {
-                                          setOTP(e.target.value);
-                                        }}
-                                        placeholder="Enter OTP"
-                                      />
+                                  <Modal
+                                    className="Modal__container"
+                                    isOpen={deliverModalIsOpen}
+                                    onRequestClose={() => setDeliverModal(false)}
+                                    style={{
+                                      overlay: { zIndex: 9999 },
+                                      content: { zIndex: 9999 },
+                                    }}
+                                  >
+                                    <p>OTP</p>
+                                    <div id="otp-div"></div>
+                                    <div>
                                       <button
                                         onClick={() =>
-                                          onOTPVerify(unverifiedorders._id)
+                                          generateOTP(
+                                            unverifiedorders.requester.phone_no
+                                          )
                                         }
                                       >
-                                        Submit
+                                        Generate OTP
                                       </button>
-                                    </>
-                                  )}
-                                  <button
-                                    onClick={() => setDeliverModal(false)}
-                                  >
-                                    Close
-                                  </button>
-                                </Modal>
-                              </>
-                            )}
-                          </>
-                        )}
-                        <Button
-                          className="button-53"
-                          onClick={() => viewMedicine(unverifiedorders)}
-                        >
-                          Detials
-                        </Button>
-                        <ViewMedModal
-                          viewMedModalIsOpen={viewMedModalIsOpen}
-                          selectOrder={selectOrder}
-                          closeViewMedModal={closeViewMedModal}
-                        />
-                      </div>
-                    </>
-                  ))}
+                                    </div>
+
+                                    {OTPstatus && (
+                                      <>
+                                        <input
+                                          type="text"
+                                          onChange={(e) => {
+                                            setOTP(e.target.value);
+                                          }}
+                                          placeholder="Enter OTP"
+                                        />
+                                        <button
+                                          onClick={() =>
+                                            onOTPVerify(unverifiedorders._id)
+                                          }
+                                        >
+                                          Submit
+                                        </button>
+                                      </>
+                                    )}
+                                    <button
+                                      onClick={() => setDeliverModal(false)}
+                                    >
+                                      Close
+                                    </button>
+                                  </Modal>
+                                </>
+                              )}
+                        </>
+                      )}
+                      <Button
+                        className="button-53"
+                        onClick={() => viewMedicine(unverifiedorders)}
+                      >
+                        Details
+                      </Button>
+                      <ViewMedModal
+                        viewMedModalIsOpen={viewMedModalIsOpen}
+                        selectOrder={selectOrder}
+                        closeViewMedModal={closeViewMedModal}
+                      />
+                    </div>
+                  </>
+                ))}
               </div>
             </div>
           )}

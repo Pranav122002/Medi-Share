@@ -26,7 +26,7 @@
     width: 75vw;
     margin-top: 3rem;
     background:rgb(247, 250, 255); ;
-    height: 42rem;
+    height: 38rem;
     box-shadow: 2px 2px 9px rgb(220, 220, 220);
 }
 .commchat .submitmenu{
@@ -37,7 +37,7 @@
 }
 
 .commmess{
-    height: 38rem;
+    height: 34rem;
     overflow: scroll;
     overflow-x: hidden;
     border-top-right-radius:0.9rem;

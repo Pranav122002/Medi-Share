@@ -20,6 +20,14 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type:String,
+    default: "pending"
+  },
+  completion: {
+    type:Boolean,
+    default: false
+  }
 });
 
 module.exports = mongoose.model("TASK", taskSchema);

@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
-const VOLUNTEER = mongoose.model("VOLUNTEER")
-
+const VOLUNTEER = mongoose.model("VOLUNTEER");
 
 router.put("/api/volunteer-location/:id", (req, res) => {
     const _id = req.params.id
