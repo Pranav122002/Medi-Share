@@ -9,6 +9,7 @@ import '../css/Modal.css'
 import { API_BASE_URL } from "../config";
 import "../css/Modal.css"
 import geocode from "./geocodeFun";
+import * as Yup from 'yup';
 
 export default function Inventory() {
 
@@ -30,6 +31,7 @@ export default function Inventory() {
   // Future update: 
   //
   const addToCart = (item) => {
+    console.log(item)
     fetch(`${API_BASE_URL}/user-cart/${userID}`,
       {
         method: "post",
@@ -42,19 +44,20 @@ export default function Inventory() {
           quantity: 1
         }])
       }).then(res => res.json)
-      .then((doc) => console.log(doc))
+      .then((doc) => {
+        console.log("doc: ", doc)
+        setCart((already_in_the_cart) => [
+          ...already_in_the_cart, {
+            medicine_name: item.medicine_name,
+            quantity: 1,
+            med_id: item._id,
+          }
+        ])
+      })
       .catch(err => console.log(err))
 
-    setCart((already_in_the_cart) => [
-      ...already_in_the_cart, {
-        id: medCount,
-        medicine_name: item.medicine_name,
-        quantity: 1,
-        med_id: item._id,
-      }
-    ])
 
-    setMedCount(preCount => preCount + 1)
+
   }
   const OpenCartModal = () => {
     setCartModal(true)
@@ -133,35 +136,72 @@ export default function Inventory() {
 
 
   const checkout = () => {
-    console.log("cart :  " + JSON.stringify(cart))
-    console.log("location: ", location)
-    geocode(location)
-      .then(coordinates_ => {
-        setCoordinates(coordinates_)
-        console.log(coordinates)
+    console.log("cart: " + JSON.stringify(cart));
+    console.log("location: ", location);
+    Promise.all(
+      cart.map((med) => {
+        return quantityValidation
+          .validate({ quantity: med.quantity }, { abortEarly: false })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            notifyA(`${med.medicine_name} ${err.message}`);
+            throw err;
+          });
       })
-    fetch(`${API_BASE_URL}/medicine-availablity`,
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ cart, medCount, userID, location, coordinates })
+    )
+      .then(() => {
+        return geocode(location);
       })
-      .then((res) => (res.json()))
-      .then(result => {
-        console.log(result)
+      .then((coordinates_) => {
+        setCoordinates(coordinates_);
+        console.log(coordinates);
+        return locationValidation.validate({ location }, { abortEarly: false });
+      })
+      .then((location_val) => {
+        return fetch(`${API_BASE_URL}/medicine-availablity`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cart,
+            userID,
+            location,
+            coordinates,
+            location_val,
+          }),
+        });
+      })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
         if (result.success) {
-          notifyB(result.success)
-          setCart([])
+          notifyB(result.success);
+          setCart([]);
         } else if (result.error) {
-          notifyA(result.error)
+          notifyA(result.error);
         } else {
-          notifyA(JSON.stringify(result) + " quantity not available")
+          notifyA(`${result.join(" ")} not available in sufficient quantity`);
         }
       })
+      .catch((error) => {
+        console.log(error)
+            notifyA(error.message);
+          });
+      
   }
+  //cart quantity validation
+  const quantityValidation = Yup.object().shape({
+    quantity: Yup.number()
+      .min(1, "Quantity can not be less than one")
+  })
 
+  const locationValidation = Yup.object().shape({
+    location: Yup.string()
+      .required("Location is required")
+  })
   // const fetchMedicines
   useEffect(() => {
     fetchUser();
@@ -192,7 +232,7 @@ export default function Inventory() {
               {
                 cart.map((med) =>
                 (
-                  <ul key={med.id}>
+                  <ul key={med.med_id}>
                     <li className="item_container">
                       {med.medicine_name}
                       <button onClick={() => removeMed(med)}>Remove</button>
@@ -234,16 +274,10 @@ export default function Inventory() {
               <button onClick={CloseCartModal}>Close</button>
             </Modal>
             <div className="box-container">
-              {/* <li>
-                <h3>Medicine</h3>
-                <h3 className="p1">Description</h3>
-                <h3>Availability</h3>
-                <h3 className="p2">Disease</h3>
-                <h3 className="p2">Action</h3>
-              </li> */}
+
               {searchResult.map((item) => {
                 return (
-                  <div className="box" key={item.id}>
+                  <div className="box" key={item._id}>
                     <h3 style={{ color: "black" }}>{item.medicine_name}</h3>
                     <p className="p1">{item.description}</p>
                     <p className="p2" style={{ color: "black" }}>{item.disease}</p>

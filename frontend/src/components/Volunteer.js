@@ -183,12 +183,13 @@ export default function Volunteer() {
       });
   };
   const handleReject = (order) => {
+    console.log(VolunteerId)
     fetch(`${API_BASE_URL}/volunteer-reject/${order.unverifiedorders._id}`, {
       method: "put",
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(VolunteerId),
+      body: JSON.stringify({VolunteerId: VolunteerId}),
     })
       .then((res) => res.json)
       .then((data) => {
@@ -204,7 +205,6 @@ export default function Volunteer() {
       });
   };
 
-  const [recaptchaVerifier, setRecaptchaVerifier] = useState(null);
 
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
@@ -219,6 +219,7 @@ export default function Volunteer() {
         },
         auth
       );
+
     }
   }
 
@@ -227,7 +228,7 @@ export default function Volunteer() {
     console.log("generate OTP");
     const appVerifier = window.recaptchaVerifier;
 
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    signInWithPhoneNumber(auth, phoneNumber,appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         // setShowOTP(true);

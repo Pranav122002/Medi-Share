@@ -9,7 +9,7 @@ const assignVolunteer = require('../Functions/assignVolunteer')
 
 router.get("/api/allmedicines", (req, res) => {
   MEDICINE.find()
-    .select("-_id -__v")
+    .select("-__v")
     .sort("-createdAt")
     .then((medicines) => res.json(medicines))
     .catch((err) => console.log(err));
@@ -52,7 +52,7 @@ router.post("/api/add-medicines", async (req, res, next) => {
 router.post('/api/search-medicines', (req, res) => {
   let userPattern = new RegExp(req.body.query, "i"); // add "^" at start for exact search 
   MEDICINE.find({ medicine_name: { $regex: userPattern } })
-    .select("_id medicine_name description disease count")
+    .select("-__v")
     .then(medicine => {
       res.json({ medicine })
     }).catch(err => {
@@ -61,10 +61,13 @@ router.post('/api/search-medicines', (req, res) => {
 })
 router.post('/api/medicine-availablity', async (req, res, next) => {
   const cart = req.body.cart
+  console.log(cart)
   const Availability = await Promise.all(cart.map(async (med) => {
     try {
       const result = await MEDICINE.findById(med.med_id)
         .select('medicine_name count');
+      console.log('Medince: ', result)
+      console.log("count quantity",result.count,med.quantity)
       if (result.count < med.quantity) {
         return result.medicine_name;
       } else {
@@ -75,13 +78,15 @@ router.post('/api/medicine-availablity', async (req, res, next) => {
     }
   }));
   const filteredAvailability = Availability.filter(item => item !== null);
+  console.log("Availablity: ", Availability)
+  console.log("filteredAvailability: ",filteredAvailability)
   if (filteredAvailability.length > 0) {
     res.json(filteredAvailability);
   } else {
     const istDate = moment().tz('Asia/Kolkata').format('DD-MM-YYYY');
     const istTime = moment().tz('Asia/Kolkata').format('HH:mm:ss');
     try {
-      const { cart, medCount, userID, location, coordinates } =
+      const { cart, userID, location, coordinates } =
         req.body;
 
       const data = await ORDER.create({
@@ -92,7 +97,7 @@ router.post('/api/medicine-availablity', async (req, res, next) => {
           ? { lng: coordinates[0], lat: coordinates[1] }
           : {})},
         requester: userID,
-        no_of_medicines: medCount,
+        no_of_medicines: cart.length,
         order_creation_date: {
           date: istDate,
           time: istTime
@@ -108,9 +113,8 @@ router.post('/api/medicine-availablity', async (req, res, next) => {
             if (user) {
                res.json({ success: "Request Order placed successfully" });
                //volunteer assignment
-               if (coordinates !== null) {
-                assignVolunteer(data._id, data.location)
-              }
+                assignVolunteer(data._id, coordinates)
+              
             } else {
                res.json({ error: "Failed to update user cart" });
             }

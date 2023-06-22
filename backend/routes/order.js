@@ -147,7 +147,7 @@ router.post("/api/donate-medicines", async (req, res, next) => {
     const { medicines, no_of_medicines, location, donar, requester, coordinates } =
       req.body;
     // var coordinates = null
-    console.log(coordinates)
+    console.log("coordinates: ",coordinates)
     const data = await ORDER.create({
       order_type: "donate-order",
       medicines: medicines,
@@ -173,9 +173,7 @@ router.post("/api/donate-medicines", async (req, res, next) => {
       );
       res.json({ msg: "Donate Order placed successfully..." });
       //assignin volunteers to a order
-      if (coordinates !== null) {
-        assignVolunteer(data._id, data.location)
-      }
+      assignVolunteer(data._id, coordinates)
 
 
     } else res.json({ msg: "Failed to place order..." });
@@ -517,6 +515,8 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
 
 router.put("/api/volunteer-reject/:id", (req, res) => {
   const vol_id = req.body.VolunteerId
+  console.log(req.body)
+  console.log("Volid",vol_id)
   ORDER.findByIdAndUpdate(
     req.params.id,
     {
@@ -525,8 +525,9 @@ router.put("/api/volunteer-reject/:id", (req, res) => {
     },
     { new: true }
   ).then((doc) => {
-    console.log(doc)
+    // console.log(doc._id, doc)
     const order_location = [doc.location.lng, doc.location.lat]
+    console.log("Order has been rejected")
     res.json("Order has been rejected")
 
     //Add the rejected order in the volunteer's rejected list.
@@ -534,11 +535,13 @@ router.put("/api/volunteer-reject/:id", (req, res) => {
 
     VOLUNTEER.findByIdAndUpdate(vol_id,
       {
-        $push: { "volunteer_details.rejected_orders": { order_id: req.params.id } }
+        $push: { "volunteer_details.rejected_orders": { order_id: req.params.id } },
+        $pull: { "volunteer_details.assigned_orders": { order_id: req.params.id } }
       },
       { new: true }
-    ).then(updatedVolunteerList => {
-      if (updatedVolunteerList) {
+    ).then(result => {
+      console.log(result)
+      if (result) {
         assignVolunteer(req.params.id, order_location)
       }
     })
@@ -568,7 +571,6 @@ router.post("/api/feedback/:order_id", (req, res) => {
         //increment the avg_stars and feedback count
         doc.assigned_vol,
         {
-          $inc: { "volunteer_details.feedback_count": 1 },
           $inc: { "volunteer_details.feedback_count": 1, "volunteer_details.avg_stars": stars }
         },
         { new: true }

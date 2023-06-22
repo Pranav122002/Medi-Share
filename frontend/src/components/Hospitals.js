@@ -1,5 +1,5 @@
 import React from "react";
-import MapContainer from "./Map";
+import MapContainer from "./GoogleMaps";
 import { Hnavbar } from "./Hnavbar";
 import Navbar from "./Navbar";
 import "../css/Hospitals.css";

@@ -49,20 +49,6 @@ const userSchema = new mongoose.Schema({
   subscription_end_date: {
     type: String,
   },
-  cart: [
-    {
-      medicine_name: {
-        type: String,
-      },
-      quantity: {
-        type: Number,
-      },
-      medicine_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "MEDICINE",
-      },
-    },
-  ],
 });
 
 const doctorSchema = new mongoose.Schema({
@@ -112,17 +98,27 @@ const volunteerSchema = new mongoose.Schema({
       type: Boolean,
       default: true,
     },
+    assigned_orders: [
+      {
+        order_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "ORDER"
+        },
+      },
+    ],
     rejected_orders: [
       {
         order_id: {
-          type: mongoose.Schema.Types.ObjectId
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "ORDER"
         },
       },
     ],
     accepted_orders: [
       {
         order_id: {
-          type: mongoose.Schema.Types.ObjectId
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "ORDER"
         },
       },
     ],
@@ -130,7 +126,8 @@ const volunteerSchema = new mongoose.Schema({
     verified_orders: [
       {
         order_id: {
-          type: mongoose.Schema.Types.ObjectId
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "ORDER"
         },
       }
     ],

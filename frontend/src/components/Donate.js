@@ -8,7 +8,7 @@ import Medicines from "./Medicines"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { API_BASE_URL } from "../config";
-import geocode from './geocodeFun'
+import geocode from './googleGeocode'
 import * as Yup from 'yup';
 import Modal from 'react-modal'
 
@@ -57,6 +57,7 @@ export default function Donate() {
         console.log(medicineForms)
         console.log("formMover " + formMover)
         console.log("count " + count)
+        notifyB("Medicine added")
       }
     } catch (error) {
       error.inner.forEach((validationError) => {
@@ -134,8 +135,8 @@ export default function Donate() {
         { abortEarly: false }
       )
       geocode(location)
-        .then(coordinates => {
-          setCoordinates(coordinates)
+        .then(coordinatesRes => {
+          setCoordinates(coordinatesRes)
           console.log(coordinates)
         })
 

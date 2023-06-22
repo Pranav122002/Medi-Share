@@ -63,6 +63,7 @@ export default function Home() {
           volLocation()
           .then(coordinates=>{
             console.log(coordinates)
+            console.log(res.name, res._id)
             fetch(`${API_BASE_URL}/volunteer-location/${res._id}`,
             {
               method:'put',

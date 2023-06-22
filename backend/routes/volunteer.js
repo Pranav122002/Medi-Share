@@ -5,10 +5,9 @@ const VOLUNTEER = mongoose.model("VOLUNTEER")
 
 
 router.put("/api/volunteer-location/:id", (req, res) => {
-    console.log(req.body)
     const _id = req.params.id
     const { lng, lat } = req.body
-    VOLUNTEER.findOneAndUpdate(
+    VOLUNTEER.findByIdAndUpdate(
         _id ,
         {
             $set: {
