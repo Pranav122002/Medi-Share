@@ -9,7 +9,7 @@
 }   
 .Lnav{
     box-shadow: 1px 1px 9px rgb(189, 189, 189); 
-    z-index: 100;
+    z-index: 99999999;
     position: sticky;
     top: 0;
     background-color: white;
@@ -427,7 +427,7 @@
    
    .Lnav{
    box-shadow: 1px 1px 9px rgb(189, 189, 189); 
-   z-index: 100;
+   z-index: 99999999;
    position: sticky;
    top: 0;
    background-color: white;
@@ -546,7 +546,7 @@
    
    background-color: rgb(233, 246, 255);
    height:max-content;
-   width: 100%;
+   width: 100vw;
    margin-top:-2rem; 
    
 }

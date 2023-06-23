@@ -290,9 +290,23 @@ input {
 }
 
 @media screen and (max-width: 1000px) {
+  
+.donateeapp .bodyy {
+  background: #48b0df;
+  padding: 0.1px;
+  width: 100vw;
+}
+
+  .donatecont{
+    width: 100%;
+    margin-left: auto;
+    margin-right: 0vw;
+   
+  }
   .donate_content {
     width: 90%;
     margin: auto;
+    padding-top: 1rem;
   }
 
   .button-53 {
@@ -326,9 +340,10 @@ input {
   }
 
   .donate {
-    height: 60rem;
-    margin-top: 5rem;
-    width: 100%;
+    min-height: 55rem;
+    height: max-content;
+    margin-top: 2rem;
+    width:95%;
     display: block;
     background: #f5f7f7;
 
@@ -339,11 +354,14 @@ input {
     background-color: #fbfbfb;
     box-shadow: 2px 2px 8px rgb(234, 234, 234);
     border-radius: 0.5rem;
-    width: 75%;
-    height: 30rem;
+    width: 95%;
+    min-height: 30rem;
+    height: max-content;
     margin: auto;
     margin-top: 3rem;
     min-width: 60%;
+    padding: 0;
+    padding-bottom: 2rem;
   }
 
   .suggestions.false ul h2 {

@@ -49,7 +49,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 23;
+  z-index: 999999;
    
  
 }
@@ -79,8 +79,9 @@
   animation-fill-mode: forwards;
   overflow: hidden;
   position: fixed;
-  z-index: 23 ;
+  z-index: 999999 ;
   height: 100vh;
+  background: white;
   top: 4rem;
   
 }
@@ -141,6 +142,7 @@
   visibility: hidden;
   opacity: 0;
   padding-left: 0;
+  background: white;
   color: #48B0DF;
   margin-left: 0.5rem;
   
@@ -313,6 +315,9 @@ ul a:nth-child(even){
     animation-name: slidetnav;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    background: white;
+    position: fixed;
+    z-index: 999999;
   }
   @keyframes slidetnav {
     0% {
@@ -353,7 +358,8 @@ ul a:nth-child(even){
     flex-direction: column;
     min-width: 180px;
     position: fixed;
-    z-index: 23;
+    z-index: 9999999;
+
      
    
   }

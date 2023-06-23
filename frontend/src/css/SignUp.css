@@ -157,7 +157,7 @@
 select:invalid { color: gray; }
 #role{
  
-  height: 3.5rem;
+  height: 3.5rem; 
   border-radius: 1.2rem;
   border: none;
   background: rgb(243, 251, 255);
@@ -251,6 +251,9 @@ select:invalid { color: gray; }
 
 @media screen and (max-width: 1000px){
   /*nav part already in landing.css*/
+  #role *{
+   text-align: left;
+  }
   .signUp {
     display: block;
     box-shadow: none;
@@ -335,13 +338,18 @@ select:invalid { color: gray; }
     margin-top: 2rem;
   }
   #role{
-    margin: auto;
-    border: none;
-    background-color: rgb(243, 251, 255);
-    width: 6rem;
-    margin-left: 1rem;
-    height: 2rem;
-    font-size: 1rem;
+
+ 
+      height: 3.5rem; 
+      border-radius: 1.2rem;
+      border: none;
+      background: rgb(243, 251, 255);
+      padding-left: 2rem;
+      margin-top: 0.8rem;
+      width: 76vw;
+      max-width: none;
+    
+    
   }
   .form2 {
     padding-left: 4rem;
@@ -355,4 +363,21 @@ select:invalid { color: gray; }
   .signUp .left .cover{
     display: none;
   }
+  .uploadimage{
+    display: block;
+  
+    
+  }
+  #output {
+    margin: auto;
+    height: 4rem;
+    
+}
+#uploadf{
+  margin-right: 0;
+}
+#uploadf:focus{
+  width: 70vw;
+}
+
 }
