@@ -122,6 +122,26 @@ export default function Donate() {
     getMedicine()
   }, []);
 
+  const locationInput = document.getElementById("location");
+  const searchBox = new window.google.maps.places.SearchBox(locationInput);
+
+
+  const handleLocationChange = (e)=>{
+    setLocation(e.target.value)
+  }
+  useEffect(() => {
+    searchBox.addListener('places_changed', () => {
+      const places = searchBox.getPlaces();
+  
+      if (places && places.length > 0) {
+        // Set the location place to the first result
+        console.log(places[0])
+        const selected = places[0].formatted_address;
+        setLocation(selected);
+      }
+    });
+    console.log(location)
+  }, [location]);
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
@@ -216,6 +236,7 @@ export default function Donate() {
     count: Yup.number()
     .min(2, "Click Add before Donate")
   })
+  
   return (
     <div className="donateeapp">
       <div className="bodyy">
@@ -293,9 +314,7 @@ export default function Donate() {
                   id="location"
                   placeholder="Location"
                   value={location}
-                  onChange={(e) => {
-                    setLocation(e.target.value);
-                  }}
+                  onChange={(e) => handleLocationChange(e)}
                 />
                 {/* <div>
                 {selectedImage ? (

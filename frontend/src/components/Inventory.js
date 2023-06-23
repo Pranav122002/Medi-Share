@@ -212,6 +212,22 @@ export default function Inventory() {
     console.log(cart)
   }, [cart]);
 
+  const locationInput = document.getElementById("dasdaf");
+  const searchBox = new window.google.maps.places.SearchBox(locationInput);
+
+
+  useEffect(() => {
+    searchBox.addListener('places_changed', () => {
+      const places = searchBox.getPlaces();
+  
+      if (places && places.length > 0) {
+        // Set the location place to the first result
+        console.log(places[0])
+        const selected = places[0].formatted_address;
+        setLocation(selected);
+      }
+    });
+  }, []);
 
   return (
     <div className="inventorymain">
