@@ -3,6 +3,7 @@
    min-height: 100vh;
    background: #48b0df;
    padding: 0.1px;
+   height: max-content;
 }
 
 .mainuserprofile .bodyy {
@@ -36,7 +37,9 @@
    overflow: scroll;
    overflow-x: hidden;
 }
-
+.sdacsasca{
+   display: none;
+}
 .mainuserprofile .userprofback h2 {
    text-align: left;
    margin-left: 2rem;
@@ -58,6 +61,34 @@
    background: rgb(255, 255, 255);
    border-radius: 0.9rem;
    box-shadow: 2px 2px 9px rgb(213, 213, 213);
+}
+.dgafsasfsac{
+   background: white;
+   width: 90%;
+   height: max-content;
+   border-radius: 1rem;
+   padding-left: 1rem;
+  }
+  .dgafsasfsac p{
+      width: 100%;
+      word-break: break-all;
+      white-space: normal;
+  }
+  .singleback li {
+   height: max-content;
+   list-style: none;
+   width: max-content;
+   margin-top: 0rem;
+   padding-top: 15px;
+   padding-bottom: 10px;
+   font-size: 1vw;
+   display: flex;
+   align-items: flex-start;
+   padding-left: 2rem;
+   width:90%;
+   box-shadow: 2px 2px 9px rgb(224, 224, 224);
+   border-radius: 1rem;
+   margin-top: 1rem;
 }
 
 .mainuserprofile .userprof {
@@ -246,4 +277,199 @@
       box-shadow: 2px 2px 9px rgb(219, 219, 219);
    }
 
+   .mainuserprofile .bodyy {
+      width: 95%;
+      margin-left: auto;
+      margin-right: 0vw;
+      background: rgb(238, 250, 255);
+      margin: auto;
+      margin-top: 2rem;
+      border-radius: 0.9rem;
+      padding: 0.1px;
+      height: max-content;
+   }
+
+   .mainuserprofile .bodyy h1 {
+      text-align: left;
+      margin-top: 1rem;
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      color: #0e76a6;
+
+   }
+
+   .mainuserprofile .userproflex {
+      width: 95%;
+      display: block;
+      height: max-content;
+      margin: auto;
+      background: rgb(255, 255, 255);
+      border-radius: 0.9rem;
+      box-shadow: 2px 2px 9px rgb(213, 213, 213);
+      border-radius: 1rem;
+   }
+
+   .mainuserprofile .userprofback {
+      width: 100%;
+      min-height: 50rem;
+      height: max-content;
+      background: rgb(255, 255, 255);
+      border-radius: 1rem;
+      padding-left: 0;
+      padding: 0.1px;
+   }
+   .mainuserprofile .userprofback .scrolll {
+      height: 43rem;
+      overflow: scroll;
+      overflow-x: hidden;
+  }
+
+   .mainuserprofile .userprofback h2 {
+      text-align: left;
+      margin-left: 2rem;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+   }
+
+   .mainuserprofile .userprof {
+      width: 90%;
+      display: block;
+      box-shadow: 2px 2px 9px rgb(220, 220, 220);
+      margin: auto;
+      border-radius: 1rem;
+      margin-top: 1rem;
+     
+
+   }
+
+   .mainuserprofile li {
+      height: max-content;
+      list-style: none;
+      width: max-content;
+      margin-top: 0rem;
+      padding-top: 15px;
+      padding-bottom: 10px;
+      font-size: 1.4rem;
+      padding-left: 0rem;
+      box-shadow: none;
+   }
+
+   .mainuserprofile .userprof .proflidiv {
+      width: 100%;
+      font-size: 1.5rem;
+      text-align: left;
+      margin-left: 2rem;
+      padding: 1rem;
+   }
+
+   .sdacsasca {
+      display: inline-block;
+      width: 40%;
+      font-weight: 700;
+   }
+
+   .mainuserprofile .proflidiv button {
+      width: 30%;
+      margin-top: -1rem;
+      height: 3rem;
+      border: none;
+      background: #48b0df;
+      border-radius: 0.9rem;
+      color: white;
+      font-size: 1.5rem;
+   }
+
+   
+   .mainuserprofile .proflidiv button:focus{
+      width: 30%;
+      margin-top: -1rem;
+      height: 3rem;
+      border: none;
+      background: #48b0df;
+      border-radius: 0.9rem;
+      color: white;
+      font-size: 1.5rem;
+   }
+   .mainuserprofile .proflidiv button:hover{
+      width: 30%;
+      margin-top: -1rem;
+      height: 3rem;
+      border: none;
+      background: #48b0df;
+      border-radius: 0.9rem;
+      color: white;
+      font-size: 1.5rem;
+   }
+   .singleback p {
+      text-align: left;
+      font-size: 1.5rem;
+      height: max-content;
+  }
+  .singleback{
+      height: max-content;
+      width: 100%;
+  }
+   .singleuser {
+      width: 100%;
+      min-height: 40rem;
+      height: max-content;
+      background: #ebf8ff;
+      border-radius: 0.9rem;
+      padding-top: 0rem;
+      padding-bottom: 1rem;
+      padding: 0.1px;
+  }
+  .mainuserprofile .singleuser h1{
+   margin-top: 1rem;
+   margin-left: 3rem;
+   font-size: 2rem;
+   
+  }
+
+   #userprofmid {
+      display: none;
+
+   }
+   #afscsrc{
+      margin-left: 1rem;
+   }
+   #mas {
+      display: none;
+   }
+
+   #masa {
+      display: none;
+   }
+
+   #asdaacasa {
+      display: none;
+   }
+
+   .mainuserprofile .userprof .proflidiv {
+      width: 100%;
+      font-size: 1.5rem;
+   }
+   .imgprof.active {
+      position: absolute;
+      left: 5vw;
+      top: 60rem;
+      background: rgb(255, 255, 255);
+      box-shadow: 2px 2px 9px rgb(219, 219, 219);
+      height: 35rem;
+      width: 90vw;
+      border-radius: 1rem;
+      padding-top: 1rem;
+  }
+  .dgafsasfsac{
+   background: white;
+   width: 80vw;
+   height: max-content;
+   border-radius: 1rem;
+   padding-left: 1rem;
+  }
+  .dgafsasfsac p{
+      width: 78vw;
+      word-break: break-all;
+      white-space: normal;
+  }
 }

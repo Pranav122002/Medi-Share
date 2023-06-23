@@ -40,7 +40,7 @@ export default function Users() {
           <ul className="userprofback">
             <h2>User list</h2>
 
-            <li className="userprof">
+            <li className="userprof" id="asdaacasa">
               <div className="proflidis">Name</div>
               <div className="proflidis">Role</div>
               <div className="proflidis">View</div>
@@ -49,9 +49,9 @@ export default function Users() {
             <div className="scrolll">
               {users.map((user) => (<>
                 <li className="userprof" key={user._id}>
-                  <div className="proflidiv">{user.name}</div>
-                  <div className="proflidiv">{user.role}</div>
-                  <div className="proflidiv"><button onClick={() => handleClick(user._id)}>View</button></div>
+                  <div className="proflidiv"><span className="sdacsasca">Name :</span>{user.name}</div>
+                  <div className="proflidiv"><span className="sdacsasca">Role :</span>{user.role}</div>
+                  <div className="proflidiv"><span className="sdacsasca">View :</span><button onClick={() => handleClick(user._id)}>View</button></div>
                 </li>
                 <hr id="masa" />
               </>
@@ -61,7 +61,7 @@ export default function Users() {
           <hr id="userprofmid"/>
           {selectedUserId ? (
             <>
-              <UserProfile id={selectedUserId} />
+              <UserProfile  id={selectedUserId} />
             </>
           ) : (
             <></>
