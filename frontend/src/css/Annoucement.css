@@ -166,6 +166,10 @@ background: white;
 .anc .bord h3{
   font-weight: 500;
   font-size: 1rem;
+  word-break: break-all;
+  white-space: normal;
+  line-height: 2rem;
+  width: 20vw;
 }
 .anc .bord:first-child h3{
   font-weight: 700;
@@ -188,26 +192,30 @@ background: white;
 }
 .anc li .p1 {
   margin-left: 4rem;
-  width: 100%;
+  width: 20vw;
   text-align: center;
 }
 
 .anc li .p2 {
   text-align: center;
   margin-right: 0rem;
-  width: 100%;
+  width: 20vw;
 
 }
 
 .anc li .p3 {
   text-align: center;
   margin-right: 2rem;
-  width: 100%;
-  
+  width: 20vw;
+  word-break: break-all;
+  white-space: normal;
+  line-height: 2rem;
+  font-size:1rem;
 
 }
 .anc li .p6{
-  width: 100%;
+  
+  
 }
 
 /* .donate {
@@ -296,10 +304,15 @@ background: white;
 
 @media screen and (max-width: 1000px) {
 
+  .announce {
+    max-width: 100vw;
+    background: #48B0DF;
+}
   .announce .bodyy {
     margin: auto;
-    width: 98vw;
-    height: 100vh;
+    width: 100vw;
+    height: max-content;
+    min-height: 100vh;
     background: #f1fffd;
     padding: 1px;
   
@@ -309,22 +322,24 @@ background: white;
   }
 
   .anc .ancinfo img {
-    width: 2rem;
+      height: 30vw;
   }
 
   .anc .ancinfo p {
     font-size: 1.2rem;
+    
+    margin-left: 2rem;
     text-align: left;
-    margin-left: 3rem;
-    width: 60%;
+  width: 90%;
     font-weight: 700;
+
   }
 
   .anc {
 
     border-radius: 1px;
     margin: auto;
-    width: 95%;
+    width: 100%;
     background: white;
     min-height: 38vw;
     height: max-content;
@@ -334,19 +349,107 @@ background: white;
     background-position: top right;
     background-size: 15rem;
     padding: 1px;
-    margin-top: 2rem;
+    margin-top: 0rem;
     padding-right: 0px;
   }
+  .anc .ancinfo {
+    
+    background: white;
+    width: 90vw;
+    margin: auto;
+    margin-top: 2rem;
+    min-height: 10rem;
+    border-radius: 1rem;
+    display: block;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: 2rem;
+    height: max-content;
+}
+.anc .ancinfoback {
+  background: #48B0DF;
+  margin: 0;
+  padding: 0.1px;
+  height: max-content;
+  padding-bottom: 2rem;
+  width: 100vw;
+}
+.andlistparent {
+  width: 100vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  background: rgb(241, 249, 255);
+  border-radius: 0.9rem;
+  padding-bottom: 2rem;
+  background: #48B0DF;
+  margin-top: -2rem;
+}
+.anclistss {
+  width: 90vw;
+  border-radius: 1rem;
+  background: rgb(233, 245, 255);
+  margin-left: auto;
+  margin-right: 0rem;
+  margin: auto;
+  margin-top: 1rem;
+}
+.anclistss h1 {
+  font-size: 1.7rem;
+  color: #00008B;
+  float: left;
+  margin-left: 3rem;
+}
+.anc .ancinfo h1 {
+  margin: 0;
+  float: left;
+  font-size: 1.7rem;
+  color: black;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
+}
 
   .announce .anc ul{
     margin: 0;
     margin-left: 0;
     padding: 0;
-    width: 95%;
+    width: 100%;
+    padding-top: 5rem;
   }
+  .announce .anc li:first-child {
+    color: white;
+    width: 90%;
+}
+  #nonedispa{
+  display: none;
+}
+  .anc .anclistitems {
+    background: none;
+    width: 90%;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    margin: auto;
+}
+
+.anc .anclistitems li:first-child {
+  color: black;
+  background: white;
+  text-align: center;
+  width: 99.5%;
+}
+.anc .anclistitems li:first-child h3 {
+  font-weight: 400;
+  font-size: 3.5vw;
+}
+.anc .bord:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
 
   .announce .anc li {
-  height: 2rem;
+ 
+  min-height: 2rem;
   margin: auto;
   list-style: none;
   margin-top: 0rem;
@@ -361,26 +464,38 @@ background: white;
   align-items: center;
   box-shadow: 2px 2px 8px #cdcdcd;
   background: white;
+  height: max-content;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+ 
 
 }
+
 .anc li .p1 {
   margin-left: 0rem;
-  width: 100%;
+  width:90%;
   text-align: center;
+  margin: auto;
 }
 
 .anc li .p2 {
   text-align: center;
   margin-right: 0rem;
-  width: 100%;
-
+  width: 90%;
+  margin: auto;
 }
 
 .anc li .p3 {
   text-align: center;
   margin-right: 0rem;
-  width: 100%;
+  width: 90%;
+  margin: auto;
+}
 
+.anc li .p6{
+  width: 90%;
+  margin: auto;
+  font-size: 3.5vw;
 }
 
 

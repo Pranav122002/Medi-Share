@@ -1,41 +1,45 @@
-.doctor{
+.doctor {
   margin: auto;
   width: 100vw;
   height: max-content;
   min-height: 120vh;
-  background: #48b0df;;
+  background: #48b0df;
+  ;
   padding: 0.1px;
 }
 
-.doctor .bodyy{
+.doctor .bodyy {
   width: 82vw;
   height: max-content;
   margin-left: auto;
   margin-right: 2vw;
-  
- 
+
+
 }
-.doctor .bodyy.active{
+
+.doctor .bodyy.active {
   --webkit-backdrop-filter: blur(5em);
 }
-#doctorui1{
+
+#doctorui1 {
   margin-top: -2rem;
   height: 30rem;
   position: absolute;
   right: 0;
 }
 
-.doctor .doctordetail{
+.doctor .doctordetail {
   border-radius: 1rem;
   text-align: left;
-  background:white;
+  background: white;
   margin-top: 2rem;
   padding: 0.1px;
   height: 11rem;
   display: flex;
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
-.doctor .doctordetail img{
+
+.doctor .doctordetail img {
   height: 11rem;
   padding-top: 0rem;
   margin-top: 0rem;
@@ -43,122 +47,130 @@
   margin-left: auto;
 }
 
-.doctor .doctordetail h1{
-    margin: 0;
-    margin-top: 1.5rem;
-    margin-left: 1.5rem;
-    font-size: 1.7rem;
+.doctor .doctordetail h1 {
+  margin: 0;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  font-size: 1.7rem;
 }
 
 
-.doctor .doctordetail p{
-  
-    text-align: left;
-    font-size: 1.2rem ;
-    margin-left: 1.5rem;
+.doctor .doctordetail p {
+
+  text-align: left;
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
 }
 
-.Doctorui{
-   width: 82vw;
-   background: #C6E6FB;
-   height: max-content;
-   border-radius: 0.9rem;
-   padding: 0.1px;
+.Doctorui {
+  width: 82vw;
+  background: #C6E6FB;
+  height: max-content;
+  border-radius: 0.9rem;
+  padding: 0.1px;
   margin-top: 2rem;
   min-height: 30rem;
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
 
-.Doctorui h1{
-    font-size: 1.7rem;
-    text-align: left;
-    margin-left: 1.5rem;
-    margin-top: 1.5rem;
-    color: rgb(0, 58, 139);
+.Doctorui h1 {
+  font-size: 1.7rem;
+  text-align: left;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  color: rgb(0, 58, 139);
 }
 
-.doctorslist{
+.doctorslist {
   margin: 0;
 }
 
-.doctorslist ul{
-  padding-left: 0 ;
+.doctorslist ul {
+  padding-left: 0;
   width: 78vw;
   background: rgb(255, 255, 255);
   width: 75vw;
   margin-left: 2rem;
-  padding-left: 1rem; 
+  padding-left: 1rem;
   border-radius: 0.9rem;
   padding-bottom: 2rem;
   padding-right: 2rem;
 }
-.doctorslist ul li{
+
+.doctorslist ul li {
   background: rgb(255, 255, 255);
   width: 75vw;
   display: flex;
   min-height: 4rem;
   border-radius: 0.5rem;
   margin: auto;
-  padding-left: 2rem; 
+  padding-left: 2rem;
   justify-content: flex-start;
-  align-items:start;
+  align-items: start;
   text-align: start;
 }
-.doctorslist ul li:hover{
+
+.doctorslist ul li:hover {
   background: #f3f3f3;
 }
-.doctorslist ul li p{
-    width: 13vw;
-    
+
+.doctorslist ul li p {
+  width: 13vw;
+
 }
-.doctorslist ul li:first-child{
+
+.doctorslist ul li:first-child {
   pointer-events: none;
-    padding-bottom:0 ;
-    min-height: 3rem;
-    color:rgb(0, 0, 139);
+  padding-bottom: 0;
+  min-height: 3rem;
+  color: rgb(0, 0, 139);
 }
-.doctorslist ul hr{
+
+.doctorslist ul hr {
   width: 95%;
   margin-left: 0;
-  margin-left: 2rem; 
-}
-.doctorslist ul li .button{
-    background: #B7FFE7;
-    width: 7vw;
-
-    margin-top: 0.4rem;
-    height: 3rem;
-    color: #000000;
-    font-size: 1rem;
-    border-radius: 0.9rem;
-    font-weight: 700;
-    
-    float: right;
-  
-}
-.doctorslist ul li .button:hover{
-    margin-top: 0.1rem;
+  margin-left: 2rem;
 }
 
-.doctorcont img{
+.doctorslist ul li .button {
+  background: #B7FFE7;
+  width: 7vw;
+
+  margin-top: 0.4rem;
+  height: 3rem;
+  color: #000000;
+  font-size: 1rem;
+  border-radius: 0.9rem;
+  font-weight: 700;
+
+  float: right;
+
+}
+
+.doctorslist ul li .button:hover {
+  margin-top: 0.1rem;
+}
+
+.doctorcont img {
   position: absolute;
   left: 0;
-  
+
 
 }
 
-.book.false{
+.book.false {
   display: none;
 
 }
-.book.active{
+
+.book.active {
   display: block;
   width: 82vw;
   background: rgba(248, 248, 248, 0.809);
 }
 
-.book{
-  position:fixed;
+.book {
+  position: fixed;
   width: 100vw;
   height: 100vh;
   margin-top: -20rem;
@@ -174,7 +186,7 @@
   z-index: 23;
   text-align: center;
   background-color: #fbfbfb;
-  padding: 30px; 
+  padding: 30px;
   width: 24vw;
   height: max-content;
   box-shadow: 2px 2px 9px rgb(220, 220, 220);
@@ -183,22 +195,23 @@
   margin-top: 12rem;
 
 }
-.pointnone{
+
+.pointnone {
   pointer-events: none;
 }
 
-.bookForm img{
+.bookForm img {
   height: 2rem;
   float: right;
-  
+
 }
-  
-.bookForm h1{
+
+.bookForm h1 {
   color: #000000;
 }
 
 
-.bookForm input{
+.bookForm input {
   font-weight: 700;
   text-align: center;
   width: 70%;
@@ -207,7 +220,7 @@
   border-radius: 0.9rem;
 }
 
-.bookForm input:hover{
+.bookForm input:hover {
   font-weight: 700;
   text-align: center;
   width: 75%;
@@ -216,9 +229,9 @@
   margin-top: 1rem;
 }
 
-.appoint{
+.appoint {
   width: 82vw;
-  background: #C6E6FB;  
+  background: #C6E6FB;
   margin: auto;
   margin-left: 0rem;
   height: max-content;
@@ -228,83 +241,95 @@
   padding-bottom: 2rem;
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
 }
-.appoint h2{
-font-size: 1.7rem;
+
+.appoint h2 {
+  font-size: 1.7rem;
   text-align: left;
   margin-left: 1.5rem;
   margin-top: 1.5rem;
   color: rgb(0, 0, 139);
-  
+
 
 }
-.appoint ul{
-  padding-left: 0 ;
+
+.appoint ul {
+  padding-left: 0;
 
   background: rgb(255, 255, 255);
   width: 50vw;
   margin-left: 2rem;
-  padding-left: 1rem; 
+  padding-left: 1rem;
   border-radius: 0.9rem;
- 
+
   padding-right: 2rem;
-  margin: auto; 
+  margin: auto;
   padding-bottom: 2rem;
- 
+
 }
-.appoint ul li img{
-  height:2rem;
+
+.appoint ul li img {
+  height: 2rem;
 }
-.appoint ul li{
+.uidocinfonone{
+  display: none;
+}
+.appoint ul li {
   background: rgb(255, 255, 255);
   width: 49vw;
   display: flex;
   min-height: 3rem;
   border-radius: 0.5rem;
   margin: auto;
-  padding-left: 2rem; 
+  padding-left: 2rem;
   justify-content: flex-start;
-  align-items:start;
+  align-items: start;
   text-align: start;
   padding-top: 1rem;
   font-weight: 700;
 }
-.appoint li:hover{
+
+.appoint li:hover {
   background: #f3f3f3;
 }
-.appoint ul li p{
-    width: 20vw;
-    
+
+.appoint ul li p {
+  width: 20vw;
+
 }
-.appoint ul li:first-child{
+
+.appoint ul li:first-child {
   pointer-events: none;
-    padding-bottom:0 ;
-    min-height: 3rem;
-    color:rgb(0, 0, 139);
+  padding-bottom: 0;
+  min-height: 3rem;
+  color: rgb(0, 0, 139);
 }
-.appoint ul hr{
+
+.appoint ul hr {
   width: 95%;
   margin-left: 0;
-  margin-left: 2rem; 
+  margin-left: 2rem;
 }
-.appoint ul li .button{
+
+.appoint ul li .button {
   background: #B7FFE7;
   width: 7vw;
-  
+
   margin-top: 0.4rem;
   height: 3rem;
   color: #000000;
   font-size: 1rem;
   border-radius: 0.9rem;
   font-weight: 700;
-  
+
   float: right;
 
 }
-.appoint ul li .button:hover{
+
+.appoint ul li .button:hover {
   margin-top: 0.1rem;
 }
 
-.feedbackvalue img{
+.feedbackvalue img {
   height: 2rem;
   float: right;
   margin-right: 1rem;
@@ -312,7 +337,7 @@ font-size: 1.7rem;
 }
 
 
-.feedbackss{
+.feedbackss {
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
   background: white;
   height: 11rem;
@@ -321,31 +346,33 @@ font-size: 1.7rem;
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-  
-  
+
+
 }
-.feedbackss h2{
+
+.feedbackss h2 {
   font-size: 1.7rem;
   margin-left: 1.5rem;
 
-  
+
 }
 
 
 
-.feedbackss p{
+.feedbackss p {
   text-align: left;
-  font-size: 1.2rem ;
+  font-size: 1.2rem;
   margin-left: 1.5rem;
 }
-.feedbackss img{
-    height: 9rem;
-    margin-top: 1rem;
-    float: right;
-    margin-right: 2rem;
+
+.feedbackss img {
+  height: 9rem;
+  margin-top: 1rem;
+  float: right;
+  margin-right: 2rem;
 }
 
-.feedbackvalue{
+.feedbackvalue {
   background: white;
   width: 30rem;
   height: max-content;
@@ -358,17 +385,20 @@ font-size: 1.7rem;
   margin-top: 10rem;
   box-shadow: 2px 2px 9px rgb(220, 220, 220);
 }
-.feedbackvalue .inputs{
+
+.feedbackvalue .inputs {
   display: flex;
   justify-content: start;
   width: 90%;
   margin: auto;
   margin-top: 1rem;
 }
-.feedbackvalue .inputs p{
+
+.feedbackvalue .inputs p {
   width: 20%;
 }
-.feedbackvalue .inputs select{
+
+.feedbackvalue .inputs select {
   border: none;
   border: 2px solid rgb(0, 149, 255);
   border-radius: 0.9rem;
@@ -376,22 +406,24 @@ font-size: 1.7rem;
   text-align: center;
 }
 
-.feedbackvalue input{
+.feedbackvalue input {
   background: #e8f7fb;
   width: 70%;
   height: 3rem;
   border-radius: 0.5rem;
-  text-align: center;  
+  text-align: center;
   color: #000000;
 }
-.feedbackvalue h2{
+
+.feedbackvalue h2 {
   margin-left: 0;
 }
-#biginput{
+
+#biginput {
   height: 6rem;
 }
 
-.feedbackvalue .button{
+.feedbackvalue .button {
   background: #B7FFE7;
   width: 10vw;
   margin-top: 2rem;
@@ -402,20 +434,23 @@ font-size: 1.7rem;
   font-weight: 700;
 
 }
-.feedbackvalue .button:hover{
+
+.feedbackvalue .button:hover {
   margin-top: 0.1rem;
 }
-.feedca{
+
+.feedca {
   position: fixed;
   padding: 2vw;
 
 }
 
-.feedca.false{
+.feedca.false {
   display: none;
 
 }
-.feedca.active{
+
+.feedca.active {
   width: 90vw;
   left: 10%;
   top: 0%;
@@ -424,276 +459,387 @@ font-size: 1.7rem;
   background: rgba(248, 248, 248, 0.809);
 }
 
-.doctorslist  li{
+.doctorslist li {
   font-weight: 700;
 }
-.doctorslist h2{
+
+.doctorslist h2 {
   margin-left: 0;
   text-align: left;
 }
-  .load{
-    position: absolute;
-    left: 50%;
-    top: 50%;
+
+.load {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+#book-btn {
+  font-size: 1rem;
+  margin-top: 3rem;
+  border-radius: 1.2rem;
+  border: none;
+  background-color: #1773ea;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+
+}
+
+
+.noaot {
+  position: relative;
+  margin: auto;
+}
+
+.appointments-container h2 {
+  text-align: left;
+  font-size: 1.7rem;
+  margin-left: 1.5rem;
+  color: #0b76a7;
+}
+
+.appointments-container {
+  width: 82vw;
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 0.9rem;
+  background: rgb(225, 243, 255);
+  min-height: 10rem;
+  height: max-content;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+
+}
+
+.dispflexbook {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.dispflexbook p {
+  font-weight: 700;
+  padding-top: 1rem;
+}
+
+#doctor_id {
+  display: none;
+}
+
+#docaphead {
+  color: #0083c5;
+  font-weight: 700;
+  height: 1rem;
+}
+
+#docaphead p {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.appointments-container ul {
+  background: white;
+  width: 92%;
+  margin: auto;
+  border-radius: 0.9rem;
+  padding-left: 0;
+  padding-bottom: 2rem;
+}
+
+.appointments-container ul hr {
+  width: 85%;
+}
+
+.appointments-container ul li {
+  border-radius: 2px;
+  min-height: 4rem;
+  background: white;
+
+  height: max-content;
+  width: 85%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+
+}
+
+.accrejbut {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+
+}
+
+.appointments-container ul li:hover {}
+
+.appointments-container ul li .button-53 {
+  background-color: #b7ffec;
+  border: 0 solid #E5E7EB;
+  color: #000000;
+  display: block;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: .75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 50%;
+  max-width: 50%;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-align: center;
+
+  margin-top: 0rem;
+  margin: auto;
+  margin-left: 1rem;
+}
+
+.appointments-container ul li p {
+  width: 20vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .doctor .doctordetail h1 {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2rem;
+    text-align: left;
   }
 
-  #book-btn {
-    font-size: 1rem;
-    margin-top: 3rem;
-    border-radius: 1.2rem;
-    border: none;
-    background-color: #1773ea;
-    border: none;
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    cursor: pointer;
-  
-  }
+  .doctor .doctorp {
 
-
-  .noaot{
-   position: relative;
-   margin: auto;
-  }
-  .appointments-container  h2{
-      text-align: left;
-      font-size: 1.7rem;
-      margin-left: 1.5rem;
-      color: #0b76a7;
-  }
-
-  .appointments-container{
-      width: 82vw;
-      margin: auto;
-      margin-top: 2rem;
-      border-radius: 0.9rem;
-      background: rgb(225, 243, 255);
-      min-height: 10rem;
-      height: max-content;
-      padding-top: 1rem;
-      padding-bottom: 2rem;
-      
-  }
-  .dispflexbook{
-    display: flex;
-    justify-content: space-evenly;
-
-  }
-  .dispflexbook p {
-    font-weight: 700;
-    padding-top: 1rem;
-  }
-  #doctor_id{
-    display: none;
-  }
-  #docaphead{
-    color: #0083c5;
-    font-weight: 700;
-    height: 1rem;
-  }
-  #docaphead p{
-      margin-top: auto;
-      margin-bottom: 0;
-  }
-  .appointments-container ul{
-      background: white;
-      width: 92%;
-      margin: auto;
-      border-radius: 0.9rem;
-      padding-left: 0;
-      padding-bottom: 2rem;
-  }
-  .appointments-container ul hr{
-    width: 85%;
-  }
-  .appointments-container ul li{
-    border-radius: 2px;
-    min-height: 4rem;
-    background: white;
- 
+    position: relative;
+    z-index: 2;
+    background: none;
+    box-shadow: none;
+    width: 95%;
+    margin-left: 0rem;
     height: max-content;
-    width: 85%;
-    display: flex;
-    justify-content: space-evenly;
     margin: auto;
-    
+    padding: 0rem;
   }
-  .accrejbut{
-      margin-top: 0;
-      margin-bottom: 0;
-      display: flex;
 
-  }
-  .appointments-container ul li:hover{
-    
-  }
-  .appointments-container ul li .button-53{
-    background-color: #b7ffec;
-    border: 0 solid #E5E7EB;
-    color: #000000;
-    display: block;
-    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 1rem;
-    font-weight: 700;
-    justify-content: center;
-    line-height: 1.75rem;
-    padding: .75rem 1.65rem;
-    position: relative;
-    text-align: center;
-    text-decoration: none #000000 solid;
-    text-decoration-thickness: auto;
-    width: 50%;
-    max-width:50%;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    text-align: center;
-    
-    margin-top: 0rem;
-    margin: auto;
+  .doctor .doctordetail p {
+
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 500;
     margin-left: 1rem;
   }
-  .appointments-container ul li p{
-    width: 20vw;
+
+  .doctor .doctordetail img {
+    height: 35vw;
+    padding-top: 0rem;
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: 0vw;
+
+    margin: auto;
+    float: center;
+    align-self: center;
+
   }
-  @media screen and (max-width: 1000px) {
-    .doctor .doctordetail h1{
-      position: relative;
-      z-index: 2;
-      margin-bottom: 2rem;
-    }
-    .doctor .doctorp{
-     
-      position: relative;
-      z-index: 2;
-      background: white;
-      box-shadow: 2px 2px 8px rgb(192, 225, 226);
-      width: 80%;
-      margin-left: 0rem;
-      height: max-content;
-      margin: auto;
-      padding: 1rem;
-    }
-    .doctor .doctordetail p{
-  
-      text-align: left;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
 
-    #doctorui1{
-      margin-top: -2rem;
-      height: 25rem;
-      position: absolute;
-      right: 0;
-    }
-    
-    .doctor .doctordetail{
-      width: 100vw;
-      background: white;
-      height: 23rem;
-    }
+  #doctorui1 {
+    margin-top: -2rem;
+    height: 25rem;
+    position: absolute;
+    right: 0;
+  }
 
-    .doctorcont{
-      position: relative;
-      display: block;
-      
-      
-    }
-    
-    .doctorcont img{
-      position: relative;
-      left: 0;
-      opacity: 0.9;
-      width: 80vw;
-    
-    }
-
-    .bookForm {
-      min-height: 15rem;
-      margin-top: 3rem;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      background-color: #fbfbfb;
-      padding: 30px; 
-      width: 80vw;
-      height: max-content;
-      margin: auto;
-      box-shadow: 2px 2px 9px rgb(220, 220, 220);
-    
-    
-    }
-
-      
-    
-    .bookForm input{
-      font-weight: 700;
-      text-align: center;
-      width: 80%;
-      min-height: 3rem;
-      
-      margin-top: 1rem;
-    }
-    
-    .bookForm input:hover{
-      font-weight: 700;
-      text-align: center;
-      width:85%;
-      box-shadow: 2px 2px 8px rgb(192, 255, 249);
-      min-height: 3rem;
-      margin-top: 1rem;
-    }
-    .bookForm .button-53{
-      width: 90%;
-    }
-    .doctorslist{
-      background: white;
-      min-height: 15rem;
-    
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 30px; 
-      width: 80vw;
-      height: max-content;
-      margin: auto;
-      margin-top: 3rem;
-      box-shadow: 2px 2px 9px rgb(220, 220, 220);
-    }
-    .doctorslist  li{
-      font-weight: 700;
-      text-align: center;
-    }
-    .doctorslist h2{
-      margin-left: 0;
-      text-align: left;
-    }
-    
-    .Doctorui h2{
-      margin: 0;
-      margin-top: 2rem;
-    }
-
-  .appointments-container{
+  .doctor .doctordetail {
+    border-radius: 1rem;
+    text-align: left;
+    background: white;
+    margin-top: 2rem;
+    padding: 0.1px;
+    min-height: 11rem;
+    display: block;
+    box-shadow: 2px 2px 9px rgb(210, 210, 210);
+    height: max-content;
     text-align: center;
-      width: 92vw;
-      margin: auto;
-      background: rgb(253, 253, 253);
-      min-height: 10rem;
-      height: max-content;
-      padding-top: 1rem;
-      padding-bottom: 2rem;
-      
   }
-  .appointments-container ul{
-    padding: 0;
+
+  .doctor .doctordetail {
+    width: 100%;
+    background: white;
+
+  }
+
+  .doctorcont {
+    position: relative;
+    display: block;
+
+
+  }
+
+  .doctorcont img {
+    position: relative;
+    left: 0;
+    opacity: 0.9;
+    width: 80vw;
+
+  }
+
+  .bookForm {
+    min-height: 15rem;
     
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background-color: #fbfbfb;
+    padding: 30px;
+    width: 80vw;
+    height: max-content;
+    margin: auto;
+    box-shadow: 2px 2px 9px rgb(220, 220, 220);
+    margin-top: 10rem;  
+
+
   }
-  .appointments-container ul li{
+
+
+
+  .bookForm input {
+    font-weight: 700;
+    text-align: center;
+    width: 80%;
+    min-height: 3rem;
+
+    margin-top: 1rem;
+  }
+
+  .bookForm input:hover {
+    font-weight: 700;
+    text-align: center;
+    width: 85%;
+    box-shadow: 2px 2px 8px rgb(192, 255, 249);
+    min-height: 3rem;
+    margin-top: 1rem;
+  }
+
+  .bookForm .button-53 {
+    width: 90%;
+  }
+
+  .doctorslist {
+    background: white;
+    min-height: 15rem;
+
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 30px;
+    width: 90vw;
+    height: max-content;
+    margin: auto;
+    margin-top: 2rem;
+    box-shadow: 2px 2px 9px rgb(220, 220, 220);
+    border-radius: 1rem;
+    padding: 0;
+  }
+  .doctorslist ul {
+    padding-left: 0;
+    background: rgb(255, 255, 255);
+    width: 100%;  
+    margin-left: 0rem;
+    padding-left: 0rem;
+    border-radius: 0.9rem;
+    padding-bottom: 2rem;
+    padding-right: 0rem;
+}
+
+  .doctorslist li {
+    font-weight: 700;
+    text-align: center;
+  }
+  .doctorslist ul li:first-child {
+    pointer-events: none;
+    padding-bottom: 0;
+    min-height: 3rem;
+    color: rgb(0, 0, 139);
+}
+.doctorslist ul li {
+    background: rgb(255, 255, 255);
+    width: 90%;
+    display: block;
+    min-height: 4rem;
+    border-radius: 0.5rem;
+    margin: auto;
+    padding-left: 1rem;
+    justify-content: flex-start;
+    align-items: start;
+    text-align: center;
+    height: max-content;
+}
+.doctorslist ul hr {
+  width: 95%;
+  margin-left: 0;
+  margin-left: 1rem;
+}
+.uidocinfonone{
+  display:inline-block;
+  width: 50%;
+  word-break: break-all;
+  white-space: normal;
+}
+#uidispnnoe{
+  display: none;
+}
+.doctorslist ul li .button {
+  background: #B7FFE7;
+  width: 30vw;
+  margin-top: 0.4rem;
+  height: 3rem;
+  color: #000000;
+  font-size: 1rem;
+  border-radius: 0.9rem;
+  font-weight: 700;
+  float:none;
+  margin: auto;
+}
+.doctorslist ul li p {
+  width: 100%;
+  text-align: left;
+}
+  .doctorslist h2 {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .Doctorui h2 {
+    margin: 0;
+    margin-top: 2rem;
+  }
+
+  .appointments-container {
+    text-align: center;
+    width: 92vw;
+    margin: auto;
+    background: rgb(253, 253, 253);
+    min-height: 10rem;
+    height: max-content;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+  }
+
+  .appointments-container ul {
+    padding: 0;
+
+  }
+
+  .appointments-container ul li {
     border-radius: 2px;
     min-height: 4rem;
     background: white;
@@ -701,11 +847,12 @@ font-size: 1.7rem;
     height: max-content;
     width: 85%;
     display: block;
-    
+
     margin: auto;
-    
+
   }
-  .appointments-container ul li:hover{
+
+  .appointments-container ul li:hover {
     border-radius: 2px;
     min-height: 4rem;
     background: white;
@@ -716,12 +863,13 @@ font-size: 1.7rem;
     justify-content: space-evenly;
     margin: auto;
   }
-  .appointments-container ul li .button-53{
+
+  .appointments-container ul li .button-53 {
     background-color: #b7ffec;
     border: 0 solid #E5E7EB;
     color: #000000;
     display: block;
-    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
     font-weight: 700;
     justify-content: center;
@@ -742,9 +890,183 @@ font-size: 1.7rem;
     margin: auto;
     margin-top: 2rem;
   }
-  .appointments-container ul li p{
+
+  .appointments-container ul li p {
     width: 70%;
     margin: auto;
     margin-top: 1rem;
   }
+
+  .doctor .bodyy {
+    width: 95%;
+    height: max-content;
+    margin-left: auto;
+    margin-right: 0vw;
+    margin: auto;
   }
+  .Doctorui {
+    width: 100%;
+    background: #C6E6FB;
+    height: max-content;
+    border-radius: 0.9rem;
+    padding: 0.1px;
+    margin-top: 2rem;
+    min-height: 30rem;
+    box-shadow: 2px 2px 9px rgb(210, 210, 210);
+    text-align: center;
+}
+.feedbackss {
+  box-shadow: 2px 2px 9px rgb(210, 210, 210);
+  background: white;
+  min-height: 11rem;
+  border-radius: 0.9rem;
+  text-align: left;
+  display: block;
+  margin-top: 2rem;
+  height: max-content;
+  padding: 0.1px;
+  width: 100%;
+  text-align: center;
+}
+.feedbackss h2 {
+  font-size: 1.7rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+.feedbackss p {
+  text-align: left;
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+}
+.feedbackss img {
+  height: 30vw;
+  margin-top: 1rem;
+  float: none;
+  margin-right: 0rem;
+}
+.appoint {
+  width: 100%;
+  background: #C6E6FB;
+  margin: auto;
+  margin-left: 0rem;
+  height: max-content;
+  padding: 0.1px;
+  margin-top: 2rem;
+  border-radius: 0.9rem;
+  padding-bottom: 2rem;
+  box-shadow: 2px 2px 9px rgb(210, 210, 210);
+  text-align: center;
+}
+.appoint ul {
+  padding-left: 0;
+  background: rgb(255, 255, 255);
+  width: 95%;
+  margin-left: 0rem;
+  padding-left: 0rem;
+  border-radius: 0.9rem;
+  padding-right: 0rem;
+  margin: auto;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+.appoint ul li {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  display: block;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+  margin: auto;
+  padding-left: 0rem;
+  justify-content: flex-start;
+  align-items: start;
+  text-align: start;
+  padding-top: 1rem;
+  font-weight: 700;
+  height: max-content;
+  text-align: center;
+
+}
+.appoint ul li p {
+  width: 100%;
+  text-align: left;
+}
+.appoint ul li p .uidocinfonone{
+  padding-left: 2rem;
+  width: 50%;
+}
+.appoint ul li .button {
+  background: #B7FFE7;
+  width: 30vw;
+  margin-top: 0.4rem;
+  height: 3rem;
+  color: #000000;
+  font-size: 1rem;
+  border-radius: 0.9rem;
+  font-weight: 700;
+  float:none;
+  margin: auto;
+}
+.appoint ul hr {
+  width: 95%;
+  margin-left: 0;
+  margin-left: 1rem;
+}
+.book.active {
+  display: block;
+  width: 82vw;
+  background: rgba(248, 248, 248, 0.809);
+}
+
+.book {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -40rem;
+  padding: 20vw;
+  padding-left: 8vw;
+  margin-left: -5vw;
+  z-index: 555;
+}
+.feedca.active {
+  width: 100vw;
+  left: 0%;
+  top: 0%;
+  height: 100rem;
+  display: block;
+  background: rgba(248, 248, 248, 0.809);
+}
+.feedca {
+  position: fixed;
+  padding: 15vw;
+  z-index: 555;
+}
+.feedbackvalue {
+  background: white;
+  min-width: 30rem;
+  width: 80vw;
+  height: max-content;
+  min-height: 30rem;
+  border-radius: 1rem;
+  padding: 0.1px;
+  position: relative;
+  z-index: 2;
+  margin-left: -5vw;
+  margin-top: 10rem;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
+}
+.feedbackvalue .button{
+  background: #B7FFE7;
+  width: 30vw;
+  margin-top: 0.4rem;
+  height: 3rem;
+  color: #000000;
+  font-size: 1rem;
+  border-radius: 0.9rem;
+  font-weight: 700;
+  float:none;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+}

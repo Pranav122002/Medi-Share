@@ -467,7 +467,7 @@ export default function Appointments() {
 
                       <div className="doctorslist">
                         <ul >
-                          <li>
+                          <li id="uidispnnoe">
                             <p>Name</p>
                             <p>Qualification</p>
                             <p>Specialization</p>
@@ -475,7 +475,7 @@ export default function Appointments() {
                             <p>Availability</p>
                             <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
                           </li>
-                          <hr />
+                          <hr id="uidispnnoe"/>
                           {doctors.map((doctor) => (<>
 
                             <li
@@ -483,11 +483,11 @@ export default function Appointments() {
 
                             >
 
-                              <p>{doctor.name}</p>
-                              <p>{doctor.doctor_details.qualification}</p>
-                              <p>{doctor.doctor_details.specialization}</p>
-                              <p>{doctor.doctor_details.experience}</p>
-                              <p>{doctor.doctor_details.availability}</p>
+                              <p><span className="uidocinfonone">Name :</span>{doctor.name}</p>
+                              <p><span className="uidocinfonone">Qualification :</span>{doctor.doctor_details.qualification}</p>
+                              <p><span className="uidocinfonone">Specialization :</span>{doctor.doctor_details.specialization}</p>
+                              <p><span className="uidocinfonone">Experience :</span>{doctor.doctor_details.experience}</p>
+                              <p><span className="uidocinfonone">Availability :</span>{doctor.doctor_details.availability}</p>
 
                               <button onClick={() => { setSelectedDoctor(doctor); setDoctorForm("active") }}
                                 className="button" >Select</button>
@@ -512,14 +512,14 @@ export default function Appointments() {
                       <h2>Doctor appointments</h2>
                       <div className="appointmentslist">
                         <ul>
-                          <li>
+                          <li id="uidispnnoe">
 
                             <p>Name</p>
                             <p>Appointment date</p>
                             <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
 
                           </li>
-                          <hr />
+                          <hr  id="uidispnnoe"/>
                           {patientAppointments.map((appointment) => (<>
 
                             <li
@@ -527,8 +527,8 @@ export default function Appointments() {
 
                             >
 
-                              <p>{appointment.doctor.name}</p>
-                              <p>{appointment.appointment_date}</p>
+                              <p><span className="uidocinfonone">Doctor Name</span>{appointment.doctor.name}</p>
+                              <p><span className="uidocinfonone">Appointment date</span>{appointment.appointment_date}</p>
                               <button onClick={() => { setSelectedAppointment(appointment); setFeedForm("active") }}
                                 className="button">Select</button>
                             </li>

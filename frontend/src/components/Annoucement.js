@@ -203,7 +203,7 @@ export default function Annoucement() {
               <div className="anclistss" id="anclisti">
                 <h1>Latest Announcements</h1>
                 <ul>
-                  <li className="bord">
+                  <li className="bord" id="nonedispa">
                     <h3 id="pp4" className="p6">
                       {" "}
                       Name
@@ -245,7 +245,7 @@ export default function Annoucement() {
               <div className="anclistss" >
                 <h1>Past Announcements</h1>
                 <ul >
-                  <li className="bord" >
+                  <li className="bord" id="nonedispa">
                     <h3 id="pp4" className="p6" > Name</h3>
                     <h3 id="pp1" className="p1">Date (YY/MM/DD)</h3>
                     <h3 id="pp3" className="p2">Venue</h3>

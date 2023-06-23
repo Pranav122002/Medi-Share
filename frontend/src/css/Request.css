@@ -94,28 +94,44 @@ input:focus {
 }
 
 @media screen and (max-width: 1000px) {
+  .requestapp .bodyy {
+    background: #48b0df;
+    padding: 0.1px;
+    width: 100vw;
+}
   #reqim {
-    height: 15rem;
+    height: 50vw;
     float: none;
     border-radius: 1rem;
   }
   .request {
-    height: 60rem;
-    width: 100%;
-    margin-top: 5rem;
-    display: block;
+    height: max-content;
 
+    width: 95%;
+    margin-top: 2rem;
+    display: block;
     padding-top: 0.5rem;
+    padding-bottom: 2rem;
   }
   .requestForm {
     text-align: center;
     background-color: #fbfbfb;
     box-shadow: 2px 2px 8px rgb(234, 234, 234);
     border-radius: 0.5rem;
-    width: 75%;
-    height: 30rem;
+    width: 80%;
+    height: max-content;
     margin: auto;
     margin-top: 3rem;
     min-width: 60%;
   }
+  .request .requestForm input {
+    height: 3.5rem;
+    border-radius: 0.9rem;
+    width: 90%;
+    padding-left: 2rem;
+    margin-top: 0.8rem;
+    outline: none;
+    background: rgb(255, 255, 255);
+    background-color: #eaf4fc;
+}
 }
