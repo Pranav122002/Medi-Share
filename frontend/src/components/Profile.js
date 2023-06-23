@@ -777,8 +777,8 @@ export default function Profile() {
                           <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
                         )}
                         <p className="p1">
-                        
-                          <span className="profdonspan">Link :</span><span className="profdonspa">{doctorappointments.appointment_link}</span>
+                          
+                          <span className="profdonspan">Link :</span><span className="profdonspa">{doctorappointments.appointment_link?(<>{doctorappointments.appointment_link}</>):(<>-</>)}</span>
                         </p>
                         <p className="p1"><span className="profdonspan">Rating :</span> {doctorappointments.rating}</p>
                         <p className="p1"><span className="profdonspan">Feedback :</span><span className="profdonspa">{doctorappointments.feedback}</span> </p>
@@ -828,12 +828,12 @@ export default function Profile() {
                           <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
                         )}
                         <p className="p2">
-                        <span className="profdonspan">Link :</span><span className="profdonspa">{patientappointments.appointment_link}</span>
+                        <span className="profdonspan">Link :</span><span className="profdonspa">{patientappointments.appointment_link ?(<>{patientappointments.appointment_link}</>):(<>-</>)}</span>
                         </p>
 
-                        <p className="p2"><span className="profdonspan">Rating :</span> {patientappointments.rating}</p>
+                        <p className="p2"><span className="profdonspan">Rating :</span> {patientappointments.rating ?(<>{patientappointments.rating}</>):(<>-</>)}</p>
 
-                        <p className="p2"><span className="profdonspan">Feedback :</span ><span className="profdonspa">{patientappointments.feedback}</span> </p>
+                        <p className="p2"><span className="profdonspan">Feedback :</span ><span className="profdonspa">{patientappointments.feedback ?(<>{patientappointments.feedback}</>):(<>-</>)}</span> </p>
                       </li>
                     ))}
                   </div>

@@ -504,7 +504,7 @@ background: white;
   
   background-color: #f9f9f9;
   padding: 30px;
-  width: 80%;
+  width: 100%;
   height: max-content;
   box-shadow: 2px 2px 8px rgb(213, 213, 213);
   margin-left: 0%;
@@ -544,6 +544,12 @@ background: white;
 }
 .AForm .button-53{
   width: 90%;
+}
+
+.Formcont {
+  width: 95vw;
+  margin-left: auto;
+  margin-right: 2vw;
 }
 
 #pp1{
