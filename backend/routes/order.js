@@ -1,17 +1,17 @@
-require('dotenv').config();
-const moment = require('moment-timezone');
+require("dotenv").config();
+const moment = require("moment-timezone");
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const ORDER = mongoose.model("ORDER");
 const USER = mongoose.model("USER");
-const VOLUNTEER = mongoose.model("VOLUNTEER")
-const MEDICINE = mongoose.model("MEDICINE")
-const assignVolunteer = require('../Functions/assignVolunteer')
-const path = require('path');
-const medicine = require('../models/medicine');
-const smsNotification = require('../Functions/SMSnotification')
-const discardExpiredMeds = require('../Functions/discardExpiredMeds')
+const VOLUNTEER = mongoose.model("VOLUNTEER");
+const MEDICINE = mongoose.model("MEDICINE");
+const assignVolunteer = require("../Functions/assignVolunteer");
+const path = require("path");
+const medicine = require("../models/medicine");
+const smsNotification = require("../Functions/SMSnotification");
+const discardExpiredMeds = require("../Functions/discardExpiredMeds");
 
 router.get("/api/all-remaining-orders", (req, res) => {
   ORDER.find({ execute_status: false })
@@ -24,43 +24,15 @@ router.get("/api/all-remaining-orders", (req, res) => {
 });
 
 router.get("/api/all-orders", async (req, res) => {
-  const {
-    orderType,
-    medicineName,
-    executeStatus,
-    verifyStatus,
-    donarName,
-    requesterName,
-  } = req.query;
-
-  const filter = {};
-  if (orderType) filter.order_type = orderType;
-  if (medicineName) filter.medicine_name = medicineName;
-  if (executeStatus) filter.execute_status = executeStatus;
-  if (verifyStatus) filter.verify_status = verifyStatus;
-
-  if (donarName) {
-    try {
-      const donarUser = await USER.findOne({ name: donarName });
-      filter.donar = donarUser._id.toString();
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  if (requesterName) {
-    try {
-      const requesterUser = await USER.findOne({ name: requesterName });
-      filter.requester = requesterUser._id.toString();
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-
-  ORDER.find(filter)
-    .populate("requester", "-password")
+  ORDER.find()
+    .populate("medicines")
+    .populate("location")
+    .populate("feedback")
+    .populate("order_creation_date")
+    .populate("order_assign_date")
     .populate("donar", "-password")
+    .populate("requester", "-password")
+    .populate("assigned_vol", "-password")
     .sort("-createdAt")
     .then((orders) => res.json(orders))
     .catch((err) => {
@@ -105,8 +77,8 @@ router.get("/api/order/:id", (req, res) => {
 
 router.get("/api/allorders", async (req, res) => {
   const pageNumber = parseInt(req.query.page) || 1; // Get the page number from the request query parameter
-  const filterOption = req.query.filterOption
-  console.log()
+  const filterOption = req.query.filterOption;
+  console.log();
   const pageSize = 100; // Number of orders per page
 
   try {
@@ -114,16 +86,16 @@ router.get("/api/allorders", async (req, res) => {
 
     //for
     if (filterOption === "Assigned") {
-      filter.assigned_vol = null 
+      filter.assigned_vol = null;
     } else if (filterOption === "Unassigned") {
-      filter.assigned_vol = { $ne: null }
+      filter.assigned_vol = { $ne: null };
     } else if (filterOption === "Executed") {
-      filter.execute_status = true
+      filter.execute_status = true;
     } else if (filterOption === "Verified") {
-      filter.verify_status = true
+      filter.verify_status = true;
     }
-    const totalFilteredOrders = await ORDER.countDocuments(filter)
-    const totalOrders = await ORDER.countDocuments()
+    const totalFilteredOrders = await ORDER.countDocuments(filter);
+    const totalOrders = await ORDER.countDocuments();
     const orders = await ORDER.find(filter)
       .select(" -__v -execute_status -password")
       .populate("requester", "name -_id")
@@ -131,51 +103,48 @@ router.get("/api/allorders", async (req, res) => {
       .populate("assigned_vol", "name")
       .sort({ order_creation_date: -1 })
       .limit(pageSize)
-      .skip((pageNumber - 1) * pageSize)
+      .skip((pageNumber - 1) * pageSize);
     // console.log(order.location.location)
-    res.json({ orders, totalOrders, totalFilteredOrders })
+    res.json({ orders, totalOrders, totalFilteredOrders });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch orders' });
+    res.status(500).json({ error: "Failed to fetch orders" });
   }
 });
 
-
 router.post("/api/donate-medicines", async (req, res, next) => {
-  const istDate = moment().tz('Asia/Kolkata').format('DD-MM-YYYY');
-  const istTime = moment().tz('Asia/Kolkata').format('HH:mm:ss');
+  const istDate = moment().tz("Asia/Kolkata").format("DD-MM-YYYY");
+  const istTime = moment().tz("Asia/Kolkata").format("HH:mm:ss");
   try {
-    const { medicines, no_of_medicines, location, donar, requester, coordinates } =
-      req.body;
+    const {
+      medicines,
+      no_of_medicines,
+      location,
+      donar,
+      requester,
+      coordinates,
+    } = req.body;
     // var coordinates = null
-    console.log("coordinates: ",coordinates)
+    console.log("coordinates: ", coordinates);
     const data = await ORDER.create({
       order_type: "donate-order",
       medicines: medicines,
       location: {
         location,
-        ...(coordinates
-          ? { lng: coordinates[0], lat: coordinates[1] }
-          : {}),
+        ...(coordinates ? { lng: coordinates[0], lat: coordinates[1] } : {}),
       },
       donar: donar,
       requester: requester,
       no_of_medicines: no_of_medicines,
       order_creation_date: {
         date: istDate,
-        time: istTime
-      }
+        time: istTime,
+      },
     });
     if (data) {
-
-      await USER.updateOne(
-        { _id: donar },
-        { $inc: { credits: 100 } }
-      );
+      await USER.updateOne({ _id: donar }, { $inc: { credits: 100 } });
       res.json({ msg: "Donate Order placed successfully..." });
       //assignin volunteers to a order
-      assignVolunteer(data._id, coordinates)
-
-
+      assignVolunteer(data._id, coordinates);
     } else res.json({ msg: "Failed to place order..." });
   } catch (ex) {
     next(ex);
@@ -184,21 +153,20 @@ router.post("/api/donate-medicines", async (req, res, next) => {
 
 router.post("/api/request-medicines", async (req, res, next) => {
   try {
-    const { cart, medCount, userID, location } =
-      req.body;
+    const { cart, medCount, userID, location } = req.body;
     const data = await ORDER.create({
       order_type: "request-order",
       medicines: cart,
       location: location,
       requester: userID,
-      no_of_medicines: medCount
+      no_of_medicines: medCount,
     });
     if (data) {
       return res.json({ msg: "Request Order placed successfully." });
     } else {
-      console.log("Unable to Request")
-      return res.json({ msg: "Failed to place order..." })
-    };
+      console.log("Unable to Request");
+      return res.json({ msg: "Failed to place order..." });
+    }
   } catch (ex) {
     next(ex);
   }
@@ -218,7 +186,6 @@ router.put("/api/donate/:order_id", async (req, res) => {
       );
 
       if (updatedOrder) {
-
         await USER.updateOne(
           { _id: req.body.donar_id },
           { $inc: { credits: 100 } }
@@ -249,27 +216,28 @@ router.put("/api/donate/:order_id", async (req, res) => {
 });
 
 router.put("/api/delivery-executed/:order_id", (req, res) => {
-  console.log("order id : ", req.params.order_id)
-  ORDER.findByIdAndUpdate(req.params.order_id,
+  console.log("order id : ", req.params.order_id);
+  ORDER.findByIdAndUpdate(
+    req.params.order_id,
     { $set: { execute_status: true } },
     { new: true }
   )
     .populate("requester", "name phone_no -_id")
     .populate("assigned_vol", "name -_id")
-    .then(res => {
-      console.log(res)
-      const order_id = req.params.order_id.toString().slice(-4)
+    .then((res) => {
+      console.log(res);
+      const order_id = req.params.order_id.toString().slice(-4);
       const userName = res.requester.name;
       const user_phone_no = res.requester.phone_no;
-      const vol_name = res.assigned_vol.name
-      var msg = `Hey, ${userName}. Your ORDER ${order_id} has been DELIVERED by volunteer ${vol_name}. Please spare some time to fill the FEEDBACK form in the profile section of the Medi-Share website`
-      smsNotification(msg, user_phone_no)
+      const vol_name = res.assigned_vol.name;
+      var msg = `Hey, ${userName}. Your ORDER ${order_id} has been DELIVERED by volunteer ${vol_name}. Please spare some time to fill the FEEDBACK form in the profile section of the Medi-Share website`;
+      smsNotification(msg, user_phone_no);
       // console.log(msg)
     })
-    .catch(err => {
-      res.status(500).json({ error: "order can't be updated" })
-    })
-})
+    .catch((err) => {
+      res.status(500).json({ error: "order can't be updated" });
+    });
+});
 
 router.put("/api/request/:order_id", (req, res) => {
   ORDER.findOne({ _id: req.params.order_id })
@@ -314,8 +282,8 @@ router.put("/api/request/:order_id", (req, res) => {
 });
 
 router.put("/api/assign-order/:id", (req, res) => {
-  const istDate = moment().tz('Asia/Kolkata').format('DD-MM-YYYY');
-  const istTime = moment().tz('Asia/Kolkata').format('HH:mm:ss');
+  const istDate = moment().tz("Asia/Kolkata").format("DD-MM-YYYY");
+  const istTime = moment().tz("Asia/Kolkata").format("HH:mm:ss");
   ORDER.findByIdAndUpdate(
     req.params.id,
     {
@@ -323,35 +291,33 @@ router.put("/api/assign-order/:id", (req, res) => {
       pickup_deadline: req.body.pickup_deadline,
       order_assign_date: {
         date: istDate,
-        time: istTime
-      }
+        time: istTime,
+      },
     },
     { new: true }
   )
     .populate("assigned_vol", "name phone_no -_id")
-    .then(updatedOrder => {
+    .then((updatedOrder) => {
       if (updatedOrder) {
-        console.log(updatedOrder)
+        console.log(updatedOrder);
         res.json({ msg: "Order assigned successfully", data: updatedOrder });
         //Send SMS notification to the volunteer about the order
 
-        const vol_name = updatedOrder.assigned_vol.name
-        const order_type = updatedOrder.order_type
-        const order_id = updatedOrder._id.toString().slice(-4)
-        const vol_phone_no = updatedOrder.assigned_vol.phone_no
-        const msg = `Hey,${vol_name}. You've been assigned a/an ${order_type} ${order_id}. Login to the Medi-Share website to accept it.`
-        smsNotification(msg, vol_phone_no)
-
+        const vol_name = updatedOrder.assigned_vol.name;
+        const order_type = updatedOrder.order_type;
+        const order_id = updatedOrder._id.toString().slice(-4);
+        const vol_phone_no = updatedOrder.assigned_vol.phone_no;
+        const msg = `Hey,${vol_name}. You've been assigned a/an ${order_type} ${order_id}. Login to the Medi-Share website to accept it.`;
+        smsNotification(msg, vol_phone_no);
       } else {
         res.json({ error: "Order not found" });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.json({ error: "Order assignment unsuccessful" });
     });
 });
-
 
 router.get("/api/mydonatedorders/:id", (req, res) => {
   ORDER.find({ donar: req.params.id })
@@ -386,47 +352,52 @@ router.put("/api/verify-donate-order/:order_id", (req, res) => {
     req.params.order_id,
     { $set: { verify_status: true } },
     { new: true }
-  ).populate("donar", "name phone_no -_id")
+  )
+    .populate("donar", "name phone_no -_id")
     .populate("assigned_vol", "name")
     .then((doc) => {
       res.json("Order Verified successfully...");
 
-      const medicines = doc.medicines
+      const medicines = doc.medicines;
       // Prepare the bulk operations array
       const bulkOps = medicines.map((medicine) => ({
         updateOne: {
           filter: { medicine_name: medicine.medicine_name },
-          update: { $inc: { count: medicine.quantity } }
-        }
+          update: { $inc: { count: medicine.quantity } },
+        },
       }));
 
       MEDICINE.bulkWrite(bulkOps)
-        .then(result => {
-
+        .then((result) => {
           //update the volunteer's verified_order_list
-          const vol_id = doc.assigned_vol._id
-          console.log("doc.assigned_vol: ", doc.assigned_vol._id)
-          VOLUNTEER.findByIdAndUpdate(
-             vol_id,
-            {
-              $push: { "volunteer_details.verified_orders": { order_id: req.params.order_id } },
-              $pull: { "volunteer_details.accepted_orders": { order_id: req.params.order_id } }
-            }
-          )
-            .then(result => console.log(result))
-            .catch(err => console.log(err))
+          const vol_id = doc.assigned_vol._id;
+          console.log("doc.assigned_vol: ", doc.assigned_vol._id);
+          VOLUNTEER.findByIdAndUpdate(vol_id, {
+            $push: {
+              "volunteer_details.verified_orders": {
+                order_id: req.params.order_id,
+              },
+            },
+            $pull: {
+              "volunteer_details.accepted_orders": {
+                order_id: req.params.order_id,
+              },
+            },
+          })
+            .then((result) => console.log(result))
+            .catch((err) => console.log(err));
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
 
       //send SMS to the donars that the medicines have been collected
-      console.log(doc)
-      const order_id = req.params.order_id.toString().slice(-4)
+      console.log(doc);
+      const order_id = req.params.order_id.toString().slice(-4);
       const userName = doc.donar.name;
       const user_phone_no = doc.donar.phone_no;
-      const vol_name = doc.assigned_vol.name
-      var msg = `Hey, ${userName}. Your MEDICINES (ORDER ID ${order_id}) has been COLLECTED by volunteer ${vol_name}. Please spare some time to fill the FEEDBACK form in the profile section of the Medi-Share website`
+      const vol_name = doc.assigned_vol.name;
+      var msg = `Hey, ${userName}. Your MEDICINES (ORDER ID ${order_id}) has been COLLECTED by volunteer ${vol_name}. Please spare some time to fill the FEEDBACK form in the profile section of the Medi-Share website`;
       // smsNotification(msg, user_phone_no)
-      console.log(msg,user_phone_no)
+      console.log(msg, user_phone_no);
     });
 });
 
@@ -449,11 +420,11 @@ router.put("/api/verify-request-order/:order_id", (req, res) => {
 });
 
 router.put("/api/volunteer-accept/:id", (req, res) => {
-  const vol_id = req.body.VolunteerId
+  const vol_id = req.body.VolunteerId;
   ORDER.findByIdAndUpdate(
     req.params.id,
     {
-      $set: { acceptance_status: "accepted" }
+      $set: { acceptance_status: "accepted" },
     },
     { new: true }
   )
@@ -461,138 +432,156 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
     .populate("donar", "name phone_no -_id")
     .populate("assigned_vol", "name -_id")
     .then((doc) => {
-      console.log(doc)
-      res.json("Order has been accepted")
+      console.log(doc);
+      res.json("Order has been accepted");
 
       //Add this order to accepted_list of the volunteer
-      VOLUNTEER.findByIdAndUpdate(vol_id,
+      VOLUNTEER.findByIdAndUpdate(
+        vol_id,
         {
-          $push: { "volunteer_details.accepted_orders": { order_id: req.params.id } }
+          $push: {
+            "volunteer_details.accepted_orders": { order_id: req.params.id },
+          },
         },
         { new: true }
       )
-        .then(result => console.log("accepted_list : ", result))
-        .catch(err => {
-          console.error(err)
-        })
-
-
+        .then((result) => console.log("accepted_list : ", result))
+        .catch((err) => {
+          console.error(err);
+        });
 
       if (doc.order_type === "requset-order") {
-        const medicines = doc.medicines
+        const medicines = doc.medicines;
         const bulkOps = medicines.map((medicine) => ({
           updateOne: {
             filter: { medicine_name: medicine.medicine_name },
-            update: { $inc: { count: -medicine.quantity } }
-          }
+            update: { $inc: { count: -medicine.quantity } },
+          },
         }));
         // Prepare the bulk operations array
 
-      MEDICINE.bulkWrite(bulkOps)
-      .then(result => {
-        console.log("Medince count updaed")
-      })
+        MEDICINE.bulkWrite(bulkOps).then((result) => {
+          console.log("Medince count updaed");
+        });
       }
-      
 
-      const order_id = req.params.id.toString().slice(-4)
+      const order_id = req.params.id.toString().slice(-4);
       const userName = doc.donar ? doc.donar.name : doc.requester.name;
-      const user_phone_no = doc.donar ? doc.donar.phone_no : doc.requester.phone_no;
-      const vol_name = doc.assigned_vol.name
-      var msg = `Hey, ${userName}. Your order ${order_id} has been assigned to ${vol_name}.`
-      if (doc.order_type === 'donate-order') {
-        msg += ' The medicines will be collected soon.';
-      } else if (doc.order_type === 'request-order') {
-        msg += ' The order will be delivered soon.';
+      const user_phone_no = doc.donar
+        ? doc.donar.phone_no
+        : doc.requester.phone_no;
+      const vol_name = doc.assigned_vol.name;
+      var msg = `Hey, ${userName}. Your order ${order_id} has been assigned to ${vol_name}.`;
+      if (doc.order_type === "donate-order") {
+        msg += " The medicines will be collected soon.";
+      } else if (doc.order_type === "request-order") {
+        msg += " The order will be delivered soon.";
       }
-      console.log(msg)
+      console.log(msg);
       // smsNotification(msg, user_phone_no)
-    }).catch(err => {
-      console.error(err)
     })
-})
-
+    .catch((err) => {
+      console.error(err);
+    });
+});
 
 router.put("/api/volunteer-reject/:id", (req, res) => {
-  const vol_id = req.body.VolunteerId
-  console.log(req.body)
-  console.log("Volid",vol_id)
+  const vol_id = req.body.VolunteerId;
+  console.log(req.body);
+  console.log("Volid", vol_id);
   ORDER.findByIdAndUpdate(
     req.params.id,
     {
       $set: { acceptance_status: "pending" },
-      $unset: { assigned_vol: 1, pickup_deadline: 1, order_assign_date: 1 }
+      $unset: { assigned_vol: 1, pickup_deadline: 1, order_assign_date: 1 },
     },
     { new: true }
-  ).then((doc) => {
-    // console.log(doc._id, doc)
-    const order_location = [doc.location.lng, doc.location.lat]
-    console.log("Order has been rejected")
-    res.json("Order has been rejected")
+  )
+    .then((doc) => {
+      // console.log(doc._id, doc)
+      const order_location = [doc.location.lng, doc.location.lat];
+      console.log("Order has been rejected");
+      res.json("Order has been rejected");
 
-    //Add the rejected order in the volunteer's rejected list.
-    //This is done so that the order isn't assigned to this volunteer again.
+      //Add the rejected order in the volunteer's rejected list.
+      //This is done so that the order isn't assigned to this volunteer again.
 
-    VOLUNTEER.findByIdAndUpdate(vol_id,
-      {
-        $push: { "volunteer_details.rejected_orders": { order_id: req.params.id } },
-        $pull: { "volunteer_details.assigned_orders": { order_id: req.params.id } }
-      },
-      { new: true }
-    ).then(result => {
-      console.log(result)
-      if (result) {
-        assignVolunteer(req.params.id, order_location)
-      }
+      VOLUNTEER.findByIdAndUpdate(
+        vol_id,
+        {
+          $push: {
+            "volunteer_details.rejected_orders": { order_id: req.params.id },
+          },
+          $pull: {
+            "volunteer_details.assigned_orders": { order_id: req.params.id },
+          },
+        },
+        { new: true }
+      ).then((result) => {
+        console.log(result);
+        if (result) {
+          assignVolunteer(req.params.id, order_location);
+        }
+      });
     })
-  }).catch(err => {
-    console.error(err)
-  })
-})
+    .catch((err) => {
+      console.error(err);
+    });
+});
 
 router.post("/api/feedback/:order_id", (req, res) => {
-  console.log(req.body)
-  const stars = req.body.stars
-  const feedback = req.body.feedback
-  ORDER.findByIdAndUpdate(req.params.order_id, {
-    $set: {
-      feedback: {
-        stars: stars,
-        feedback: feedback
+  console.log(req.body);
+  const stars = req.body.stars;
+  const feedback = req.body.feedback;
+  ORDER.findByIdAndUpdate(
+    req.params.order_id,
+    {
+      $set: {
+        feedback: {
+          stars: stars,
+          feedback: feedback,
+        },
       },
-    }
-  },
+    },
     { new: true }
   )
-    .then(doc => {
-      console.log(doc)
-      res.status(200).json({ success: "Thanks for your feedback" })
+    .then((doc) => {
+      console.log(doc);
+      res.status(200).json({ success: "Thanks for your feedback" });
       VOLUNTEER.findByIdAndUpdate(
         //increment the avg_stars and feedback count
         doc.assigned_vol,
         {
-          $inc: { "volunteer_details.feedback_count": 1, "volunteer_details.avg_stars": stars }
+          $inc: {
+            "volunteer_details.feedback_count": 1,
+            "volunteer_details.avg_stars": stars,
+          },
         },
         { new: true }
       )
         .exec()
         .then((updatedVol) => {
-          console.log(updatedVol)
+          console.log(updatedVol);
           //use aggregate function to find the volunteer and perform division operation to get the avg.
           VOLUNTEER.aggregate([
             { $match: { _id: doc.assigned_vol } },
             {
               $project: {
-                avg_stars: { $divide: ['$volunteer_details.avg_stars', '$volunteer_details.feedback_count'] },
+                avg_stars: {
+                  $divide: [
+                    "$volunteer_details.avg_stars",
+                    "$volunteer_details.feedback_count",
+                  ],
+                },
               },
             },
             { $limit: 1 },
           ])
             .exec()
-            .then(results => {
+            .then((results) => {
               //update the volunteer with the obtained results
               // console.log(results)
-              console.log("avg stars updated")
+              console.log("avg stars updated");
               if (results.length > 0) {
                 const avgStars = results[0].avg_stars;
 
@@ -602,34 +591,35 @@ router.post("/api/feedback/:order_id", (req, res) => {
                   { new: true }
                 )
                   .exec()
-                  .then(updatedVolunteer => {
+                  .then((updatedVolunteer) => {
                     console.log(updatedVolunteer);
                   })
-                  .catch(error => {
+                  .catch((error) => {
                     console.log(error);
                   });
               }
-            })
+            });
         })
-        .then(res => {
-        })
-        .catch(err => console.log(err))
+        .then((res) => {})
+        .catch((err) => console.log(err));
     })
 
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({ error: "Feedback Error" })
-    })
-})
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Feedback Error" });
+    });
+});
 
 router.post("/api/order-rejected/:id", (req, res) => {
-  console.log("rejecting the order")
-  ORDER.findByIdAndUpdate(req.params.id,
+  console.log("rejecting the order");
+  ORDER.findByIdAndUpdate(
+    req.params.id,
     { is_order_rejected: true },
-    { new: true })
-    .then(doc =>
+    { new: true }
+  )
+    .then((doc) =>
       res.status(200).json({ msg: "Order has been rejected", data: doc })
     )
-    .catch(err => console.log(err))
-})
-module.exports = router
+    .catch((err) => console.log(err));
+});
+module.exports = router;

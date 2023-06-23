@@ -12,7 +12,6 @@ router.get("/api/user/:id", (req, res) => {
     .select("-password")
     .then((user) => {
       return res.json(user);
-     
     })
     .catch((err) => {
       return res.status(404).json({ error: "User not found." });
@@ -69,8 +68,6 @@ router.put("/api/update-doctor-details/:id", (req, res) => {
     });
 });
 
-
-
 router.get("/api/all-volunteers-and-doctors", (req, res) => {
   USER.find({ role: { $in: ["doctor", "volunteer"] } })
     .select("-password")
@@ -84,7 +81,8 @@ router.get("/api/all-volunteers-and-doctors", (req, res) => {
 });
 
 router.get("/api/all-volunteers", (req, res) => {
-  USER.find({ role: "volunteer" }).select("-password")
+  USER.find({ role: "volunteer" })
+    .select("-password")
     .then((volunteers) => {
       res.json(volunteers);
     })
@@ -210,7 +208,7 @@ router.get("/api/all-personal-users/:id", async (req, res, next) => {
     const personal_users = await USER.find({
       _id: { $ne: req.params.id },
       role: { $in: ["volunteer", "doctor"] },
-    }).select(["email", "name", "_id"]);
+    }).select(["email", "name", "_id", "-password"]);
     return res.json(personal_users);
   } catch (ex) {
     next(ex);

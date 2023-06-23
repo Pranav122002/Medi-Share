@@ -135,7 +135,8 @@ export default function Tasks() {
 
   const fetchMyTasks = () => {
     fetch(
-      `${API_BASE_URL}/my-tasks/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/my-tasks/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -213,7 +214,9 @@ export default function Tasks() {
         <div className="admincard">
           <Card className="Card" key={index}>
             <Card.Body>
-              <p><Card.Title id="title">{card.volunteer_name}</Card.Title></p>
+              <p>
+                <Card.Title id="title">{card.volunteer_name}</Card.Title>
+              </p>
 
               <p>
                 <div className="content-details">Task Info:</div>
@@ -225,11 +228,11 @@ export default function Tasks() {
                 {card.deadline}
                 <br />
               </p>
-
             </Card.Body>
             <hr />
           </Card>
-        </div>  </>
+        </div>{" "}
+      </>
     );
   };
 
@@ -308,26 +311,21 @@ export default function Tasks() {
                 <div className="agasadsa">
                   {volunteersList.map((volunteer) => (
                     <li key={volunteer._id}>
-                      <p
-                       
-                      >
-
-                      
-                        {volunteer.name}
-                      </p>
-                      <button  onClick={() => {
+                      <p>{volunteer.name}</p>
+                      <button
+                        onClick={() => {
                           setSelectedVolunteer(volunteer);
-                        }}>Select</button>
-
+                        }}
+                      >
+                        Select
+                      </button>
                     </li>
                   ))}
                 </div>
               </div>
             </div>
 
-
             <div className="allCardss">
-
               <div className="OCards">
                 <h2>Tasks Assigned</h2>
                 <div className="headd">
@@ -360,55 +358,82 @@ export default function Tasks() {
                   </div>
                   <hr id="mainsec" />
 
-                  {myTasks.map((task) => (<>
-                    <li key={task._id}>
-
-                      <p ><span className="tasksapnli">Volunteer Name :</span> {task.volunteer_name}</p>
-                      <p ><span className="tasksapnli">Task Info :</span><span id="adfasda">{task.task_info}</span> </p>
-                      <p ><span className="tasksapnli">Deadline :</span>{task.deadline}</p>
-                      {task.status === "pending" ? (
-                        <>
-                          <p >
-                          <span className="tasksapnli">Action :</span>
-                            <button
-                              onClick={() => {
-                                acceptTask(task._id);
-                              }}
-                            >
-                              Accept
-                            </button>
-                            <button
-                              onClick={() => {
-                                rejectTask(task._id);
-                              }}
-                            >
-                              Reject
-                            </button>
+                  {myTasks.map((task) => (
+                    <>
+                      <li key={task._id}>
+                        <p>
+                          <span className="tasksapnli">Volunteer Name :</span>{" "}
+                          {task.volunteer_name}
+                        </p>
+                        <p>
+                          <span className="tasksapnli">Task Info :</span>
+                          <span id="adfasda">{task.task_info}</span>{" "}
+                        </p>
+                        <p>
+                          <span className="tasksapnli">Deadline :</span>
+                          {task.deadline}
+                        </p>
+                        {task.status === "pending" ? (
+                          <>
+                            <p>
+                              <span className="tasksapnli">Action :</span>
+                              <button
+                                onClick={() => {
+                                  acceptTask(task._id);
+                                }}
+                              >
+                                Accept
+                              </button>
+                              <button
+                                onClick={() => {
+                                  rejectTask(task._id);
+                                }}
+                              >
+                                Reject
+                              </button>
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p>
+                              <span className="tasksapnli">Status :</span>
+                              {task.status}
+                            </p>
+                          </>
+                        )}
+                        {task.completion === false ? (
+                          <>
+                            <p>
+                              {" "}
+                              <span className="tasksapnli">Task Status :</span>
+                              Not Completed
+                            </p>{" "}
+                            <p>
+                              <span className="tasksapnli">Task :</span>
+                              {task.status === "accepted" ? (
+                                <button
+                                  id="markbut"
+                                  onClick={() => {
+                                    completeTask(task._id);
+                                  }}
+                                >
+                                  Mark as Completed
+                                </button>
+                              ) : (
+                                <></>
+                              )}
+                            </p>
+                          </>
+                        ) : (
+                          <p>
+                            <span className="tasksapnli">Task status :</span>
+                            Completed
                           </p>
-                        </>
-                      ) : (
-                        <>
-                          <p ><span className="tasksapnli">Status :</span>{task.status}</p>
-                        </>
-                      )}
-                      {task.completion === false ? (
-                        <>
-                          <p > <span className="tasksapnli">Task Status :</span>Not Completed</p>{" "}
-                          <p><span className="tasksapnli">Task :</span><button id="markbut"
-                            onClick={() => {
-                              completeTask(task._id);
-                            }}
-                          >
-                            Mark as Completed
-                          </button>{" "}
-                          </p>
-                        </>
-                      ) : (
-                        <p ><span className="tasksapnli">Task status :</span>Completed</p>
-                      )}
-                    </li>
-                    <hr id="midsec" />
-                  </>))}
+                        )}
+                      </li>
+                      <hr id="midsec" />
+                    </>
+                  ))}
                 </div>
               </div>
             </div>

@@ -1,8 +1,8 @@
-import {REACT_APP_MAP_API_KEY} from '../keys'
+import {REACT_APP_GOOGLE_MAP_API_KEY} from '../keys'
  
 export default async function geocode(address) {
     const encodedAddress = encodeURIComponent(address);
-    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedAddress}.json?access_token=${REACT_APP_MAP_API_KEY}`;
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedAddress}.json?access_token=${REACT_APP_GOOGLE_MAP_API_KEY}`;
   
     return fetch(url)
     .then(result=>{
