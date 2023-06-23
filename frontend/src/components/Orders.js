@@ -285,22 +285,22 @@ export default function Orders() {
           <>
             <Card className="Card" key={index}>
               <Card.Body className="Card_body">
-                <p><Card.Title id="title">{card._id.toString().slice(-4)}</Card.Title> </p>
+                <p><span className="medsidspan">Order Id :</span>{card._id.toString().slice(-4)}</p>
                 
-                  <p><div className="content-details">No of Meds:-</div>{card.order_type}<br /></p>
-                  <p><div className="content-details">No of Meds:-</div>{card.no_of_medicines}<br /></p>
-                  <p><div className="content-details">Location:-</div>{card.location.location}<br /></p>
-                  <p><div className="content-details">Donor:-</div>{card.donar.name}<br /></p>
+                  <p><span className="medsidspan">Order Type :</span>{card.order_type}<br /></p>
+                  <p><span className="medsidspan">No of Meds :</span>{card.no_of_medicines}<br /></p>
+                  <p><span className="medsidspan" id="locatasacas">Location :</span><span  className="medishaelong">{card.location.location}</span><br /></p>
+                  <p><span className="medsidspan">Donor name :</span>{card.donar.name}<br /></p>
 
 
-                  <p className="notp">{card.assigned_vol ? card.assigned_vol.name :
+                  <p className="notp"><span className="medsidspan">Assigned to :</span>{card.assigned_vol ? card.assigned_vol.name :
                     <Button className="button-53" onClick={() => onClickAssign(card._id)}>Assign</Button>
                   }</p> 
                   {card.verify_status === true ?
-                    (<p>Verified</p>) :
-                    (<p>Pending</p>)
+                    (<p><span className="medsidspan">Order Status :</span>Verified</p>) :
+                    (<p><span className="medsidspan">Order Status :</span>Pending</p>)
                   }
-                  <p className="notp"><Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button></p> 
+                  <p className="notp"><span className="medsidspan">Details :</span><Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button></p> 
 
                   <ViewMedModal
                     viewMedModalIsOpen={viewMedModalIsOpen}
@@ -329,33 +329,33 @@ export default function Orders() {
                
               </Card.Body>
             </Card>
-            <hr />
+            <hr id="sacjgnasd"/>
           </>
         ) : (
           <div id="OCard">
 
             <Card className="Card" key={index}>
               <Card.Body className="Card_body">
-               <p> <Card.Title id="title">{card._id.toString().slice(-4)}</Card.Title></p>
+               <p><span className="medsidspan">Order Id :</span>{card._id.toString().slice(-4)}</p>
               
-                  <p><div className="content-details">No of Meds:-</div>{card.order_type}<br /></p>
-                  <p><div className="content-details">No of Meds:-</div>{card.no_of_medicines}<br /></p>
-                  <p><div className="content-details">Location:-</div>{card.location.location}<br /></p>
-                  <p><div className="content-details">Request By:-</div>{card.requester.name}<br /></p>
+                  <p><span className="medsidspan">Order Type :</span>{card.order_type}<br /></p>
+                  <p><span className="medsidspan">No of Meds :</span>{card.no_of_medicines}<br /></p>
+                  <p><span className="medsidspan"  id="locatasacas">Location :</span><span  className="medishaelong">{card.location.location}</span><br /></p>
+                  <p><span className="medsidspan">Requester :</span>{card.requester.name}<br /></p>
 
 
-                  <p>{card.assigned_vol ? card.assigned_vol.name :
+                  <p><span className="medsidspan">Assigned to :</span>{card.assigned_vol ? card.assigned_vol.name :
                     <Button className="button-53" onClick={() => onClickAssign(card._id)}>Assign</Button>
                   }
                   </p> 
                   {card.execute_status === true ?
-                    (<p>Collected</p>) :
-                    (<p>Pending</p>)
+                    (<p><span className="medsidspan">Order Status :</span>Collected</p>) :
+                    (<p><span className="medsidspan">Order Status :</span>Pending</p>)
                   }
 
                   {/* <Button className="button-53" onClick={() => putRequestData(card._id)}>Request</Button> */}
 
-                 <p><Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button></p> 
+                 <p><span className="medsidspan">Details :</span><Button className="button-53" onClick={() => viewMedicine(card)}>Details</Button></p> 
 
                   <ViewMedModal
                     viewMedModalIsOpen={viewMedModalIsOpen}
@@ -384,7 +384,7 @@ export default function Orders() {
               </Card.Body>
 
             </Card>
-            <hr />
+            <hr id="sacjgnasd"/>
           </div>
         )}
       </>

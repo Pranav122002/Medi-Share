@@ -32,19 +32,19 @@ const ViewMedModal = ({ viewMedModalIsOpen, selectOrder, closeViewMedModal }) =>
                 <Card className="Card">
                   <Card.Body>
                     <Card.Title id="title">
-                      <img src="pills.png" alt="" />
+                     
                       {med.medicine_name}
                     </Card.Title>
                     <Card.Text id="details">
                       { selectOrder.order_type === "donate-order" &&
                         (<p>
-                        <div className="content-details">Expiry Date:-</div>
-                        {med.expiry_date.date.toString().slice(0, 10)}
-                        <br />
+                        <div className="content-details">Expiry Date: {med.expiry_date.date.toString().slice(0, 10)}  </div>
+                        
+                    
                       </p>)}
                       <p>
-                        <div className="content-details">Quantity:-</div>
-                        {med.quantity}
+                        <div className="content-details">Quantity:        {med.quantity}</div>
+
                         <br />
                       </p>
                     </Card.Text>
