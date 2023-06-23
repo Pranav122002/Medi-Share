@@ -353,7 +353,7 @@ export default function Tasks() {
                 <div className="OCards">
                   <div className="headd">
                     <div className="heading">
-                      <p className="headp">Volunteer Name</p>
+                      <p className="headp">Name</p>
                       <p className="headp">Task Info</p>
                       <p className="headp">Deadline</p>
                       <p className="headp">Action</p>
@@ -367,11 +367,11 @@ export default function Tasks() {
                     <>
                       <li key={task._id}>
                         <p>
-                          <span className="tasksapnli">Volunteer Name :</span>{" "}
+                          <span className="tasksapnli">Name :</span>{" "}
                           {task.volunteer_name}
                         </p>
                         <p>
-                          <span className="tasksapnli">Task Info :</span>
+                          <span id="fbuybcsa" className="tasksapnli">Task Info :</span>
                           <span id="adfasda">{task.task_info}</span>{" "}
                         </p>
                         <p>
@@ -425,7 +425,7 @@ export default function Tasks() {
                                   Mark as Completed
                                 </button>
                               ) : (
-                                <></>
+                                <>-</>
                               )}
                             </p>
                           </>

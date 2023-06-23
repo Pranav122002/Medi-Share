@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { API_BASE_URL } from "../config";
+import "../css/Analytics.css"
 
 export default function Analytics() {
   const [allOrders, setAllOrders] = useState([]);
@@ -149,148 +150,165 @@ export default function Analytics() {
 
   return (
     <>
-      <div>
+      <div className="analytic">
         <div className="bodyy">
-          <h1>Analysis</h1>
-          <div>
-            <label htmlFor="filterOrderType">Filter by Order Type:</label>
-            <select
-              id="filterOrderType"
-              value={filterOrderType}
-              onChange={(e) => setFilterOrderType(e.target.value)}
-            >
-              <option value="">All</option>
-              <option value="donate-order">donate-order</option>
-              <option value="request-order">request-order</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="filterStatus">Filter by Acceptance Status:</label>
-            <select
-              id="filterStatus"
-              value={filterStatus}
-              onChange={(e) => setFilterStatus(e.target.value)}
-            >
-              <option value="">All</option>
-              <option value="pending">Pending</option>
-              <option value="accepted">Accepted</option>
-              <option value="rejected">Rejected</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="filterMedicine">Filter by Medicine Name:</label>
-            <input
-              type="text"
-              id="filterMedicine"
-              value={filterMedicine}
-              onChange={(e) => setFilterMedicine(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="filterVerifyStatus">Filter by Verify Status:</label>
-            <select
-              id="filterVerifyStatus"
-              value={filterVerifyStatus}
-              onChange={(e) => setFilterVerifyStatus(e.target.value)}
-            >
-              <option value="">All</option>
-              <option value="true">Verified</option>
-              <option value="false">Not Verified</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="filterStars">Filter by Stars:</label>
-            <select
-              id="filterStars"
-              value={filterStars}
-              onChange={(e) => setFilterStars(e.target.value)}
-            >
-              <option value="">All</option>
-              <option value="1">1 Star</option>
-              <option value="2">2 Stars</option>
-              <option value="3">3 Stars</option>
-              <option value="4">4 Stars</option>
-              <option value="5">5 Stars</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="filterDonorName">Filter by Donor Name:</label>
-            <input
-              type="text"
-              id="filterDonorName"
-              value={filterDonorName}
-              onChange={(e) => setFilterDonorName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="filterRequesterName">
-              Filter by Requester Name:
-            </label>
-            <input
-              type="text"
-              id="filterRequesterName"
-              value={filterRequesterName}
-              onChange={(e) => setFilterRequesterName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="filterVolunteerName">
-              Filter by Volunteer Name:
-            </label>
-            <input
-              type="text"
-              id="filterVolunteerName"
-              value={filterVolunteerName}
-              onChange={(e) => setFilterVolunteerName(e.target.value)}
-            />
-          </div>
+          <h1>Data Analysis</h1>
+          <h2>Filter by</h2>
+          <div className="inputfilters">
 
-          <div>
-            <label htmlFor="sortBy">Sort by:</label>
-            <select id="sortBy" value={sortBy} onChange={handleSortChange}>
-              <option value="">None</option>
-              <option value="no_of_medicines">No of Medicines</option>
+            <div className="inputfiltersflex">
 
-              <option value="feedback_stars">Feedback Stars</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="sortDirection">Sort direction:</label>
-            <select
-              id="sortDirection"
-              value={sortDirection}
-              onChange={handleSortDirectionChange}
-            >
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
-          </div>
-
-          {filteredOrders.map((order) => (
-            <div key={order._id}>
-              <h3>Order ID: {order._id}</h3>
-              <p>Type: {order.order_type}</p>
-              <p>Medicines:</p>
-              <ul>
-                {order.medicines.map((medicine, index) => (
-                  <li key={index}>
-                    <p>Name: {medicine.medicine_name}</p>
-                    <p>Quantity: {medicine.quantity}</p>
-                  </li>
-                ))}
-              </ul>
-              <p>No of Medicines: {order.no_of_medicines}</p>
-              <p>Location: {order.location.location}</p>
-              <p>Execute Status: {`${order.execute_status}`}</p>
-              <p>Verify Status: {`${order.verify_status}`}</p>
-              <p>Acceptance Status: {`${order.acceptance_status}`}</p>
-              <p>Donar: {order.donar?.name}</p>
-              <p>Requester: {order.requester?.name}</p>
-              <p>Assigned Volunteer: {order.assigned_vol?.name}</p>
-              <p>Order Date: {order.order_creation_date.date}</p>
-              <p>Feedback Stars: {order.feedback.stars}</p>
+              <label className="inputfilterlabel" htmlFor="filterMedicine">Medicine Name:</label>
+              <input className="inputfiltersearch"
+                type="text"
+                id="filterMedicine"
+                value={filterMedicine}
+                onChange={(e) => setFilterMedicine(e.target.value)}
+              />
             </div>
-          ))}
+            <div className="inputfiltersflex">
+              <label className="inputfilterlabel" htmlFor="filterDonorName">Donor Name:</label>
+              <input className="inputfiltersearch"
+                type="text"
+                id="filterDonorName"
+                value={filterDonorName}
+                onChange={(e) => setFilterDonorName(e.target.value)}
+              />
+            </div>
+            <div className="inputfiltersflex">
+              <label className="inputfilterlabel" htmlFor="filterRequesterName">
+                Requester Name:
+              </label>
+              <input className="inputfiltersearch"
+                type="text"
+                id="filterRequesterName"
+                value={filterRequesterName}
+                onChange={(e) => setFilterRequesterName(e.target.value)}
+              />
+            </div>
+            <div className="inputfiltersflex">
+              <label className="inputfilterlabel" htmlFor="filterVolunteerName">
+                Volunteer Name:
+              </label>
+              <input className="inputfiltersearch"
+                type="text"
+                id="filterVolunteerName"
+                value={filterVolunteerName}
+                onChange={(e) => setFilterVolunteerName(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="optionsearch">
+            <div className="optionsearchflex">
+              <label htmlFor="filterOrderType">Order Type</label>
+              <br />
+              <select
+                id="filterOrderType"
+                value={filterOrderType}
+                onChange={(e) => setFilterOrderType(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="donate-order">donate-order</option>
+                <option value="request-order">request-order</option>
+              </select>
+            </div>
+            <div className="optionsearchflex">
+              <label htmlFor="filterStatus">Acceptance Status</label>    <br />
+              <select
+                id="filterStatus"
+                value={filterStatus}
+                onChange={(e) => setFilterStatus(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="pending">Pending</option>
+                <option value="accepted">Accepted</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+
+            <div className="optionsearchflex">
+              <label htmlFor="filterVerifyStatus">Verify Status:</label>    <br />
+              <select
+                id="filterVerifyStatus"
+                value={filterVerifyStatus}
+                onChange={(e) => setFilterVerifyStatus(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="true">Verified</option>
+                <option value="false">Not Verified</option>
+              </select>
+            </div>
+            <div className="optionsearchflex">
+              <label htmlFor="filterStars">Stars</label>    <br />
+              <select
+                id="filterStars"
+                value={filterStars}
+                onChange={(e) => setFilterStars(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+              </select>
+            </div>
+
+
+            <div className="optionsearchflex">
+              <label htmlFor="sortBy">Sort by</label>    <br />
+              <select id="sortBy" value={sortBy} onChange={handleSortChange}>
+                <option value="">None</option>
+                <option value="no_of_medicines">No of Medicines</option>
+
+                <option value="feedback_stars">Feedback Stars</option>
+              </select>
+            </div>
+            <div className="optionsearchflex">
+              <label htmlFor="sortDirection">Sort direction</label>    <br />
+              <select
+                id="sortDirection"
+                value={sortDirection}
+                onChange={handleSortDirectionChange}
+              >
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
+            </div>
+          </div>
+          <div className="analyticorder">
+            {filteredOrders.map((order) => (
+
+              <div className="analticssingleflex" key={order._id}>
+                <div className="analticssingle">
+                  <p className="highlight"><span className="analyticspan">Order ID :</span></p><p className="highlight">{order._id}</p>
+                  <p><span className="analyticspan">Order Type :</span></p><p>{order.order_type}</p>
+
+
+
+                  {order.medicines.map((medicine) => (<>
+                 
+                      <p><span className="analyticspan">Medicine Name :</span></p><p>{medicine.medicine_name}</p>
+                      <p><span className="analyticspan">Quantity :</span></p><p>{medicine.quantity}</p>
+                 
+                      </> ))}
+
+
+                  <p><span className="analyticspan">No of Meds :</span></p><p>{order.no_of_medicines}</p>
+                  <p><span className="analyticspan">Location :</span></p><p>{order.location.location}</p>
+                  <p><span className="analyticspan">Execute Status :</span></p><p>{`${order.execute_status}`}</p>
+                  <p><span className="analyticspan">Verify Status :</span></p><p>{`${order.verify_status}`}</p>
+                  <p><span className="analyticspan">Acceptance Status :</span></p><p>{`${order.acceptance_status}`}</p> 
+                  <p><span className="analyticspan">Donor Name :</span></p> <p>{order.donar?.name}</p>
+                  <p><span className="analyticspan">Requester Name:</span></p><p>{order.requester?.name}</p>
+                  <p><span className="analyticspan">Volunteer Name :</span></p><p>{order.assigned_vol?.name}</p>
+                  <p><span className="analyticspan">Order Creation :</span></p><p>{order.order_creation_date.date}</p>
+                  <p><span className="analyticspan">Feedback Stars :</span></p><p>{order.feedback.stars}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

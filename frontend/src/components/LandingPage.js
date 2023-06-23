@@ -88,13 +88,16 @@ export const LandingPage = () => {
               <div className="curve2">
                 <img src="./curve2.png" alt="" />
               </div>
+              <div id="wacdase">
               <img
+                
                 src="./chain.png"
                 data-aos="fade-down"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
                 alt=""
               />
+              </div>
             </div>
           </div>
         </div>
