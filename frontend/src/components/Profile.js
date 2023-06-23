@@ -7,6 +7,8 @@ import { UserContext } from "./UserContext";
 import { API_BASE_URL } from "../config";
 import Modal from 'react-modal';
 import ReactStars from "react-rating-stars-component";
+import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import ViewMedModal from "./ViewMedModal";
 
 
 export default function Profile() {
@@ -47,6 +49,21 @@ export default function Profile() {
   const { updateUser } = useContext(UserContext);
   const [appointmentRatingsFeedbacks, setAppointmentRatingsFeedbacks] =
     useState([]);
+
+  //More info about the order
+  const [viewMedModalIsOpen, setViewMedModalIsOpen] = useState(false);
+  const [selectOrder, setSelectOrder] = useState(null);
+
+  const viewMedicine = (currentCard) => {
+    setSelectOrder(currentCard);
+    setViewMedModalIsOpen((preState) => !preState);
+  };
+
+  const closeViewMedModal = () => {
+    setSelectOrder(null);
+    setViewMedModalIsOpen((preState) => !preState);
+  };
+  
   console.log(appointmentRatingsFeedbacks);
   useEffect(() => {
     fetchUser();
@@ -299,24 +316,24 @@ export default function Profile() {
       .then(doc => {
         setFeedbackIsOpen(false)
         notifyB(doc.success)
-        // setDonateOrders((preOrder) => {
-        //   return (preOrder.map((item) => item._id === order_id ? {
-        //     ...item,
-        //     feedback: {
-        //       stars: starRating,
-        //       feedback: feedbackText
-        //     }
-        //   } : item))
-        // })
-        // setRequestOrders((preOrder) => {
-        //   return (preOrder.map((item) => item._id === order_id ? {
-        //     ...item,
-        //     feedback: {
-        //       stars: starRating,
-        //       feedback: feedbackText
-        //     }
-        //   } : item))
-        // })
+        setDonateOrders((preOrder) => {
+          return (preOrder.map((item) => item._id === order_id ? {
+            ...item,
+            feedback: {
+              stars: starRating,
+              feedback: feedbackText
+            }
+          } : item))
+        })
+        setRequestOrders((preOrder) => {
+          return (preOrder.map((item) => item._id === order_id ? {
+            ...item,
+            feedback: {
+              stars: starRating,
+              feedback: feedbackText
+            }
+          } : item))
+        })
       })
       .catch(res => {
         console.error(res)
@@ -413,7 +430,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                      
+
                       <div className="editsapa">
                         <label>Qualification:</label>
                         <input
@@ -423,7 +440,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                  
+
                       <div className="editsapa">
                         <label>Specialization:</label>
                         <input
@@ -433,7 +450,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                   
+
                       <div className="editsapa">
                         <label>Experience:</label>
                         <input
@@ -443,7 +460,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                    
+
                       <div className="editsapa">
                         <label>Availability:</label>
                         <input
@@ -453,7 +470,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                 
+
                       <div className="editsapa">
                         <label>Hospital Name:</label>
                         <input
@@ -476,7 +493,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                   
+
                       <div className="editsapa">
                         <label>Available:</label>
                         <input
@@ -486,7 +503,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                   
+
                       <div className="editsapa">
                         <label>NGO Name:</label>
                         <input
@@ -496,7 +513,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                   
+
                       <div className="editsapa">
                         <label>Location (lng):</label>
                         <input
@@ -506,7 +523,7 @@ export default function Profile() {
                           onChange={handleInputChange}
                         />
                       </div>
-                    
+
                       <div className="editsapa">
                         <label>Location (lat):</label>
                         <input
@@ -518,7 +535,7 @@ export default function Profile() {
                       </div>
                     </div>
                   )}
-                  <button id="asagws"  onClick={handleSubmit}>Save</button>
+                  <button id="asagws" onClick={handleSubmit}>Save</button>
                 </div>
 
               )}
@@ -566,7 +583,7 @@ export default function Profile() {
 
             <h1>
               {" "}
-              {user_name} 
+              {user_name}
               <button id="biewprod" onClick={() => {
                 seteditprofile("active")
               }} >Profile Details</button>
@@ -606,9 +623,10 @@ export default function Profile() {
               <li className="profli">
                 <h3 className="pm">Order ID</h3>
                 {/* <h3 className="p1">Order Type</h3> */}
-                <h3 className="p2">Quantity</h3>
+                <h3 className="p2">No Of Medicines</h3>
                 <h3 className="p3">Location</h3>
                 <h3 className="p3">Status</h3>
+                <h3 className="p3">Action</h3>
               </li>
               {isLoading ? (
                 <h1 className="loada">Loading...</h1>
@@ -621,47 +639,59 @@ export default function Profile() {
                         <p className="pm">{donateorders._id.toString().slice(-4)}</p>
                         {/* <p className="p1">{donateorders.expiry_date} </p> */}
                         <p className="p2">{donateorders.no_of_medicines}</p>
-                        <p className="p3"> {donateorders.location.location}</p>
+                        <p className="p3"> {donateorders?.location?.location}</p>
                         {
                           donateorders.acceptance_status === "accepted" && donateorders.verify_status === false ? (
                             <p>Volunter is assigned</p>
                           ) : donateorders.acceptance_status === "pending" ? (
                             <p>Pending</p>
-                          ) : (<><p>
-                            <div className="">
-                              {console.log(donateorders.feedback)}
-                              Medicines collected
-                              {
-                                !donateorders.feedback.feedback && (
-                                  <>
-                                    <button onClick={() => handleFeedback()}>Feedback</button>
-                                    <Modal
-                                      className="Modal__container"
-                                      onRequestClose={() => setFeedbackIsOpen(false)}
-                                      isOpen={feedbackIsOpen}
-                                      style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
-                                    >
-                                      <ReactStars
-                                        count={5}
-                                        onChange={handleStarRating}
-                                        size={24}
-                                        activeColor="#ffd700"
-                                      />
-                                      <textarea
-                                        placeholder="Feedback"
-                                        onChange={handleFeedbackText}
-                                      />
-                                      <button onClick={() => sendFeedback(donateorders._id)}>submit</button>
-                                      <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
-                                    </Modal>
-                                  </>
-                                )
-                              }
+                          ) : (
+                            <>
+                              <p>
+                                <div className="">
+                                  {console.log(donateorders.feedback)}
+                                  Medicines collected
+                                  {
+                                    !donateorders.feedback.feedback && (
+                                      <>
+                                        <button onClick={() => handleFeedback()}>Feedback</button>
+                                        <Modal
+                                          className="Modal__container"
+                                          onRequestClose={() => setFeedbackIsOpen(false)}
+                                          isOpen={feedbackIsOpen}
+                                          style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
+                                        >
+                                          <ReactStars
+                                            count={5}
+                                            onChange={handleStarRating}
+                                            size={24}
+                                            activeColor="#ffd700"
+                                          />
+                                          <textarea
+                                            placeholder="Feedback"
+                                            onChange={handleFeedbackText}
+                                          />
+                                          <button onClick={() => sendFeedback(donateorders._id)}>submit</button>
+                                          <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
+                                        </Modal>
+                                      </>
+                                    )
+                                  }
 
-                            </div>
-                          </p>
-                          </>)
+                                </div>
+                              </p>
+                            </>)
                         }
+                        <Button
+                          onClick={() => viewMedicine(donateorders)}
+                        >
+                          Details
+                        </Button>
+                        <ViewMedModal
+                          viewMedModalIsOpen={viewMedModalIsOpen}
+                          selectOrder={selectOrder}
+                          closeViewMedModal={closeViewMedModal}
+                        />
                       </li>
                     )
                   })}
@@ -679,9 +709,10 @@ export default function Profile() {
               <li className="profli">
                 <h3 className="pm">Order ID</h3>
                 {/* <h3 className="p1"></h3> */}
-                <h3 className="p2">Quantity</h3>
+                <h3 className="p2">No Of Medicines</h3>
                 <h3 className="p3">Location</h3>
                 <h3 className="p4">Status</h3>
+                <h3 className="p3">Action</h3>
               </li>
               {isLoading ? (
                 <h1 className="loada">Loading...</h1>
@@ -704,10 +735,11 @@ export default function Profile() {
 
                               <div className="">
                                 {console.log(requestorders.feedback)}
-                                Medicines collected
+                                Medicines Delivered
                                 {
                                   requestorders.feedback.feedback === null && (
                                     <>
+                                      <br />
                                       <button onClick={() => handleFeedback()}>Feedback</button>
                                       <Modal
                                         className="Modal__container"
@@ -736,6 +768,16 @@ export default function Profile() {
                             </p>
                           </>)
                       }
+                      <Button
+                          onClick={() => viewMedicine(requestorders)}
+                        >
+                          Details
+                        </Button>
+                        <ViewMedModal
+                          viewMedModalIsOpen={viewMedModalIsOpen}
+                          selectOrder={selectOrder}
+                          closeViewMedModal={closeViewMedModal}
+                        />
                     </li>
                   ))}
                 </div>

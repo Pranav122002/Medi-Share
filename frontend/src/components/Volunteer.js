@@ -11,6 +11,7 @@ import Modal from "react-modal";
 import "../css/Modal.css";
 import { auth } from "../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import OtpInput from 'react-otp-input';
 
 export default function Volunteer() {
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
@@ -87,8 +88,10 @@ export default function Volunteer() {
       },
     })
       .then((response) => response.json())
-      .then((data) => { console.log("unverifiedorders = ", data);
-       setUnverifiedOrders(data);});
+      .then((data) => {
+        console.log("unverifiedorders = ", data);
+        setUnverifiedOrders(data);
+      });
   }
 
   const delivery_order = (order_id) => {
@@ -189,7 +192,7 @@ export default function Volunteer() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({VolunteerId: VolunteerId}),
+      body: JSON.stringify({ VolunteerId: VolunteerId }),
     })
       .then((res) => res.json)
       .then((data) => {
@@ -209,13 +212,13 @@ export default function Volunteer() {
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
-        "otp-div",
+        "recaptcha-container",
         {
           size: "invisible",
           callback: (response) => {
             generateOTP();
           },
-          "expired-callback": () => {},
+          "expired-callback": () => { },
         },
         auth
       );
@@ -224,11 +227,12 @@ export default function Volunteer() {
   }
 
   function generateOTP(phoneNumber) {
+    console.log(phoneNumber)
     onCaptchVerify();
     console.log("generate OTP");
     const appVerifier = window.recaptchaVerifier;
 
-    signInWithPhoneNumber(auth, phoneNumber,appVerifier)
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         // setShowOTP(true);
@@ -307,8 +311,7 @@ export default function Volunteer() {
                   <p className="p-head">Location </p>
                   <p className="p-head">Donor / Requester</p>
                   <p className="p-head">Action / Status</p>
-
-                  <p className="p-head">Detials</p>
+                  <p className="p-head">Details</p>
                 </div>
 
                 <hr className="volhr" />
@@ -317,7 +320,7 @@ export default function Volunteer() {
                     return search.toLowerCase()=== '' ? unverifiedorders : unverifiedorders.medicine_name.toLowerCase().includes(search)
                   }).map((unverifiedorders) => (<> */}
 
-                   
+
                 {sortedData.filter((unverifiedorders) => {
                   return search === '' ? unverifiedorders : unverifiedorders._id.includes(search);
                 }).map((unverifiedorders) => (
@@ -330,7 +333,7 @@ export default function Volunteer() {
                       <p className="vpdetails" >No of Meds : </p>{" "}
                       <p className="h3">{unverifiedorders.no_of_medicines}</p>
                       <p className="vpdetails" >location : </p>
-                      <p className="h3">{unverifiedorders.location.location}</p>
+                      <p className="h3">{unverifiedorders?.location?.location}</p>
 
                       {unverifiedorders.order_type == "donate-order" ? (
                         <>
@@ -351,7 +354,7 @@ export default function Volunteer() {
                           </button>
                           <button
                             onClick={() => handleReject({ unverifiedorders })}>
-                            Reject
+                            Deny
                           </button>
                         </p>
                       ) : (
@@ -397,7 +400,7 @@ export default function Volunteer() {
                                     }}
                                   >
                                     <p>OTP</p>
-                                    <div id="otp-div"></div>
+                                    <div id="recaptcha-container"> </div>
                                     <div>
                                       <button
                                         onClick={() =>
@@ -409,15 +412,14 @@ export default function Volunteer() {
                                         Generate OTP
                                       </button>
                                     </div>
-
                                     {OTPstatus && (
                                       <>
-                                        <input
-                                          type="text"
-                                          onChange={(e) => {
-                                            setOTP(e.target.value);
-                                          }}
-                                          placeholder="Enter OTP"
+                                        <OtpInput
+                                          value={OTP}
+                                          onChange={setOTP}
+                                          numInputs={6}
+                                          renderSeparator={<span> - </span>}
+                                          renderInput={(props) => <input {...props} />}
                                         />
                                         <button
                                           onClick={() =>

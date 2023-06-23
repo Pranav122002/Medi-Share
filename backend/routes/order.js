@@ -357,16 +357,16 @@ router.get("/api/mydonatedorders/:id", (req, res) => {
   ORDER.find({ donar: req.params.id })
     .select(" -__v -execute_status -requester ")
     .populate("donar", "name -_id")
-    .sort("-createdAt")
+    .sort({ order_creation_date: -1 })
     .then((orders) => res.json(orders))
     .catch((err) => console.log(err));
 });
 
 router.get("/api/myrequestedorders/:id", (req, res) => {
   ORDER.find({ requester: req.params.id })
-    .select(" -__v -execute_status -verify_status -donar")
+    .select(" -__v -verify_status -donar")
     .populate("requester", "name -_id")
-    .sort("-createdAt")
+    .sort({ order_creation_date: -1 })
     .then((orders) => res.json(orders))
     .catch((err) => console.log(err));
 });
