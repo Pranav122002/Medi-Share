@@ -8,6 +8,11 @@
   margin-right: 2vw;
   
 }
+.homeeee .Lcontent .banner1 .img{
+  width: 100vw;
+  height: max-content;
+  margin-top: 4rem;
+}
 .images{
   padding-top:5%;
   width: 60%;
@@ -400,4 +405,12 @@
     font-size: 50px;
     font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
   }
+  .homeeee .Lcontent .banner1 {
+    display: block;
+    justify-content: space-around;
+    margin: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: 0vw;
+}
 }

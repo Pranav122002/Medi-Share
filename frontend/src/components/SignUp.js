@@ -104,7 +104,7 @@ export default function SignUp() {
   return (
     <>
       <div className="mainsignup">
-       
+
         <div className="signUp">
           <div className="left">
             <div className="cover"></div>
@@ -117,12 +117,12 @@ export default function SignUp() {
               <h1>SIGN UP</h1>
 
               <div id="roles">
-               
+
                 <select required
                   placeholder="Choose your role"
                   name="role"
                   id="role"
-                  
+
                   value={role}
                   onChange={(e) => {
                     setRole(e.target.value);
@@ -130,8 +130,8 @@ export default function SignUp() {
                 >
                   <option className="selopt" value="" disabled selected>Chooose your role </option>
                   <option className="selopt" value="user">user</option>
-                  <option  className="selopt" value="volunteer">volunteer</option>
-                  <option  className="selopt" value="doctor">doctor</option>
+                  <option className="selopt" value="volunteer">volunteer</option>
+                  <option className="selopt" value="doctor">doctor</option>
                 </select>
               </div>
 
@@ -189,13 +189,14 @@ export default function SignUp() {
               <div >
                 {role === "doctor" || role === "volunteer" ? (
                   <div className="uploadimage">
-                    <img
-                      id="output"
-                      src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
-                      height="50"
-                      width="50"
-                    />
-
+                    <div>
+                      <img
+                        id="output"
+                        src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+                        height="50"
+                        width="50"
+                      />
+                    </div>
                     <input
                       id="uploadf"
                       type="file"

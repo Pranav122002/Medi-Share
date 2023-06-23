@@ -1,20 +1,21 @@
-
-.inventorymain{
-    width: 100vw;
-    min-height: 94vh;
-    height: max-content;
-    background: #48b0df;
-    padding: 0.1px;
+.inventorymain {
+  width: 100vw;
+  min-height: 94vh;
+  height: max-content;
+  background: #48b0df;
+  padding: 0.1px;
 }
-.inventorymain h1{
+
+.inventorymain h1 {
   color: white;
   width: 82vw;
   margin-left: auto;
   margin-right: 2vw;
 
- 
+
 }
-.inventorymain .bodyy{
+
+.inventorymain .bodyy {
 
   width: 82vw;
   background: rgb(248, 248, 248);
@@ -24,38 +25,41 @@
   padding: 0.1px;
   border-radius: 1rem;
 }
+
 .searchbox {
   width: 100%;
-  
+
 }
 
-.searchbox ul li{
+.searchbox ul li {
   text-align: center;
   height: min-content;
   width: 100%;
   align-items: center;
   color: rgb(0, 0, 0);
-  padding: 0  ;
+  padding: 0;
   box-shadow: 2px 2px 9px rgb(221, 221, 221);
   margin: auto;
   background: white;
   padding-left: 2rem;
   min-height: 7rem;
 }
-.searchbox ul{
+
+.searchbox ul {
   padding: 0;
 }
 
-.searchbox ul li:first-child{
+.searchbox ul li:first-child {
   background: rgb(157, 220, 209);
 }
-.searchbox ul li .p1{
+
+.searchbox ul li .p1 {
   margin-left: 4rem;
   width: 300%;
   text-align: start;
 }
 
-.searchbox ul li .p2{
+.searchbox ul li .p2 {
   margin-right: 4rem;
   width: 100%;
   text-align: end;
@@ -71,103 +75,110 @@
   margin-left: 0;
   font-weight: 700;
   text-align: left;
-  
+
   padding: 0;
   margin: 0;
   padding-left: 1rem;
 }
-.inventorymain .searchinput:focus{
-    padding: none;
-    margin: none;
-    height: 3rem;
+
+.inventorymain .searchinput:focus {
+  padding: none;
+  margin: none;
+  height: 3rem;
 }
-.topsearch{
+
+.topsearch {
   width: 100%;
   display: flex;
   justify-content: space-between;
   height: 5rem;
 }
+
 .searchcolumn {
   margin: auto;
   margin-top: 2rem;
 
-  width:95%;
+  width: 95%;
 
 }
 
-.p{
-    margin-left: 5%;
-    font-size:x-large;
-    font-weight: 600;
-    display: flex;
-    justify-content: left;
-  
+.p {
+  margin-left: 5%;
+  font-size: x-large;
+  font-weight: 600;
+  display: flex;
+  justify-content: left;
+
 }
 
-.disease{
+.disease {
   color: white;
   margin-left: 2rem;
 }
-.link{
+
+.link {
   color: black;
   list-style: none;
   width: 90%;
   padding-left: 20px;
- 
+
   padding-top: 10px;
   padding-bottom: 10px;
 
-margin-left: 10px;
+  margin-left: 10px;
 
   display: flex;
-  align-items:flex-start;
- border-radius: none;
-  
+  align-items: flex-start;
+  border-radius: none;
+
 }
 
 
-  .link{
-    color: black;
-    list-style: none;
-    width: 90%;
-    padding-left: 20px;
-   
-    padding-top: 10px;
-    padding-bottom: 10px;
-  
-  margin-left: 10px;
-  
-    display: block;
-    align-items:flex-start;
-   border-radius: none;
-    
-  }
-  .searchbox ul li{
-    text-align: center;
-    height: min-content;
-    width: 100%;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    padding: 0  ;
-    box-shadow: 2px 2px 9px rgb(221, 221, 221);
-    margin: auto;
-    background: white;
-    padding-left: 2rem;
-    min-height: 7rem;
-    display: block;
-  }
+.link {
+  color: black;
+  list-style: none;
+  width: 90%;
+  padding-left: 20px;
 
-  .searchbox ul li .p2{
-    text-align: start;
-  }
-  .searchbox ul h3{
-    text-align: start;
-  }
-  .searchbox ul li .p1{
-    text-align: start;
-    margin-left: 0rem;
-    width: 90%;
-  }
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  margin-left: 10px;
+
+  display: block;
+  align-items: flex-start;
+  border-radius: none;
+
+}
+
+.searchbox ul li {
+  text-align: center;
+  height: min-content;
+  width: 100%;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  padding: 0;
+  box-shadow: 2px 2px 9px rgb(221, 221, 221);
+  margin: auto;
+  background: white;
+  padding-left: 2rem;
+  min-height: 7rem;
+  display: block;
+}
+
+.searchbox ul li .p2 {
+  text-align: start;
+}
+
+.searchbox ul h3 {
+  text-align: start;
+}
+
+.searchbox ul li .p1 {
+  text-align: start;
+  margin-left: 0rem;
+  width: 90%;
+}
 
 
 .searchcolumn {
@@ -257,6 +268,7 @@ margin-left: 10px;
   background-color: #3e8e41;
   transform: translateY(1px);
 }
+
 .Modal__container {
   position: fixed;
   top: 50%;
@@ -269,7 +281,7 @@ margin-left: 10px;
   z-index: 9999;
   min-width: 30%;
   width: max-content;
-  
+
 }
 
 .Modal__container ul {
@@ -311,15 +323,19 @@ margin-left: 10px;
   margin-top: 10px;
   margin-right: 2vw;
 }
-#dasdaf{
+
+#dasdaf {
   width: 95%;
 }
-#dasdaf:focus{
+
+#dasdaf:focus {
   width: 95%;
 }
-#gasgfa{
+
+#gasgfa {
   margin-left: 20%;
 }
+
 .Modal__container button:hover {
   background-color: #45a049;
 }
@@ -331,4 +347,93 @@ margin-left: 10px;
 
 .Modal__container p {
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .inventorymain h1 {
+    color: white;
+    width:95%;
+    margin-left: auto;
+    margin-right: 0vw;
+  }
+  .inventorymain .bodyy {
+    width:95%;
+    background: rgb(248, 248, 248);
+    height: max-content;
+    margin-left: auto;
+    margin-right: 0vw;
+    padding: 0.1px;
+    border-radius: 1rem;
+    margin: auto;
+}
+.searchcolumn {
+  display: flex;
+  justify-content: center;
+}
+
+.searchcolumn {
+  margin: auto;
+  margin-top: 2rem;
+  width: 95%;
+}
+.topsearch {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  margin: auto;
+}
+.inventorymain .searchinput {
+  border-radius: 10px;
+  border: none;
+  height: 3rem;
+  width: 75%;
+  font-weight: 100;
+  background-color: rgba(60, 172, 161, 0.1);
+  margin-left: 0;
+  font-weight: 700;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  padding-left: 1rem;
+}
+.cart-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 20%;
+  height: 3.2rem;
+}
+.box {
+  background-color: #f2f2f2;
+  padding: 5%;
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.Modal__container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  min-width: 30%;
+  width: 80%;
+}
+.Modal__container ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin-bottom: 10px;
+}
 }
