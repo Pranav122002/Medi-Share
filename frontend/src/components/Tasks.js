@@ -363,12 +363,13 @@ export default function Tasks() {
                   {myTasks.map((task) => (<>
                     <li key={task._id}>
 
-                      <p > {task.volunteer_name}</p>
-                      <p > {task.task_info}</p>
-                      <p >{task.deadline}</p>
+                      <p ><span className="tasksapnli">Volunteer Name :</span> {task.volunteer_name}</p>
+                      <p ><span className="tasksapnli">Task Info :</span><span id="adfasda">{task.task_info}</span> </p>
+                      <p ><span className="tasksapnli">Deadline :</span>{task.deadline}</p>
                       {task.status === "pending" ? (
                         <>
                           <p >
+                          <span className="tasksapnli">Action :</span>
                             <button
                               onClick={() => {
                                 acceptTask(task._id);
@@ -387,13 +388,13 @@ export default function Tasks() {
                         </>
                       ) : (
                         <>
-                          <p >{task.status}</p>
+                          <p ><span className="tasksapnli">Status :</span>{task.status}</p>
                         </>
                       )}
                       {task.completion === false ? (
                         <>
-                          <p > Not Completed</p>{" "}
-                          <p><button id="markbut"
+                          <p > <span className="tasksapnli">Task Status :</span>Not Completed</p>{" "}
+                          <p><span className="tasksapnli">Task :</span><button id="markbut"
                             onClick={() => {
                               completeTask(task._id);
                             }}
@@ -403,7 +404,7 @@ export default function Tasks() {
                           </p>
                         </>
                       ) : (
-                        <p > Completed</p>
+                        <p ><span className="tasksapnli">Task status :</span>Completed</p>
                       )}
                     </li>
                     <hr id="midsec" />
