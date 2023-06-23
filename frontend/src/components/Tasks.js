@@ -28,7 +28,7 @@ export default function Tasks() {
   const [user, setUser] = useState("");
   const [volunteersList, setVolunteersList] = useState([]);
   const [selectedVolunteer, setSelectedVolunteer] = useState("");
-
+  const [chats , viewChats] = useState(false);
   const [sug, showsug] = useState(!false);
 
   const handleShowsug = () => {
@@ -215,21 +215,21 @@ export default function Tasks() {
           <Card className="Card" key={index}>
             <Card.Body>
               <p>
-                <Card.Title id="title">{card.volunteer_name}</Card.Title>
+                <span className="content-detai">Volunteer :</span>{card.volunteer_name}
               </p>
 
               <p>
-                <div className="content-details">Task Info:</div>
-                {card.task_info}
+                <span id="fjcnuend" className="content-detai">Task Info :</span>
+                <span id="ndanisda">{card.task_info}</span>
                 <br />
               </p>
               <p>
-                <div className="content-details">Deadline:</div>
+                <span className="content-detai">Deadline :</span>
                 {card.deadline}
                 <br />
               </p>
             </Card.Body>
-            <hr />
+            <hr id="nmsadaca" />
           </Card>
         </div>{" "}
       </>
@@ -242,10 +242,13 @@ export default function Tasks() {
         {isAdmin ? (
           <div>
             <div className="donate">
-              <div data-aos="zoom-in" className="donateForm">
+           
+              <div className={`donateForm ${chats && "active"}`}>
+              <img onClick={()=> { viewChats(false)}} id="dadcae" src="./back.png" alt="" />
                 <div className="logo">
                   <h1>Assign Task</h1>
                 </div>
+                
                 <div>
                   <input
                     type="text"
@@ -303,9 +306,9 @@ export default function Tasks() {
                 </button>
               </div>
 
-              <div data-aos="zoom-in" className="donateForm">
+              <div className="donateForr">
                 <div className="logo">
-                  <h1>Volunteer List</h1>
+                  <h1>Select Volunteer</h1>
                 </div>
 
                 <div className="agasadsa">
@@ -314,7 +317,9 @@ export default function Tasks() {
                       <p>{volunteer.name}</p>
                       <button
                         onClick={() => {
+                          
                           setSelectedVolunteer(volunteer);
+                          viewChats("active");
                         }}
                       >
                         Select

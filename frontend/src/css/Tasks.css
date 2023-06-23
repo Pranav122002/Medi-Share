@@ -49,7 +49,7 @@
 .task .bodyy .allCardss .OCards h2{
     margin-top: 2rem;
     text-align: left;
-    margin-left: 5rem;
+    margin-left: 2rem;
 }
 .task .bodyy .allCardss{
     background: #C6E6FB;
@@ -181,7 +181,12 @@
 #mainsec {
     width: 95%;
     border: 1.5px solid #3392be;
-    ;
+    
+}
+.task .donateForr .agasadsa{
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 25rem;
 }
 
 .task .OCards p button {
@@ -201,7 +206,9 @@
     background: #29edd3;
     margin-top: -0.5rem;
 }
-
+.content-detai{
+    display: none;
+}
 
 #markbut {
     width: 80%;
@@ -251,11 +258,36 @@
     white-space: normal;
     line-height: 2rem;
 }
-
-.task .donateForm{
+.donateForr{
     margin-left: 2rem;
+    background-color: #fbfbfb;
+    box-shadow: 2px 2px 8px rgb(234, 234, 234);
+    padding: 30px;
+    width: 25vw;
+    height: 30rem;
+    position: relative;
+    border-radius: 0.9rem;
+    min-width: 22rem;
+    margin-top: 2rem;
 }
+.task .donateForr .agasadsa  p{
+    margin: 0%;
+    width: 12vw;
+    margin-left: 0;
+    text-align: left;
 
+}
+.task .donateForm.active{
+    margin-left: 2rem;
+    position: absolute;
+    z-index: 24;
+}
+.donateForm.active{
+    display: block;
+}
+.donateForm.false{
+    display: none;
+}
 .task .donateForm .agasadsa  p{
     margin: 0%;
     width: 12vw;
@@ -274,6 +306,17 @@
     width: 7vw;
  
 }
+.task .donateForr .agasadsa button{
+   
+    border: none;
+    background: #B7FFE7;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 7vw;
+ 
+}
 .task #volunteer_id{
     display: none;
 }
@@ -282,9 +325,26 @@
     display: flex;
     justify-content: flex-start;
 }
+.task .donateForr .agasadsa  li{
+    height: 2.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+#dadcae{
+    position: absolute;
+    height: 3rem;
+    left: 0;
+    top:0;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
 
 @media screen and (max-width: 1000px) {
- 
+    .task .donate{
+        height: max-content;
+        min-height: 0;
+    }
+   
     .task {
         background: #48b0df;
         height: max-content;
@@ -305,10 +365,14 @@
         margin: auto;
         margin-top: 2rem;
     }
+    .task .bodyy .logo{
+        display: block;
+    }
     .task .bodyy h1 {
        font-size: 1.7rem;
        text-align: left;
-       margin-left: 2rem;
+        margin-left: 7rem;
+       
     }
     #mainsec {
         display: none;
@@ -356,6 +420,34 @@
         display: inline-block;
         width: 50%;
     }
+    #nmsadaca{
+        display: none;
+    }
+    .task #title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0rem;
+        border-radius: 1rem;
+        height: 2.5rem;
+        padding-top: 1rem;
+        margin-top: 1rem;
+        width: 24vw;
+    }
+    .content-detai{
+        display: inline-block;
+        font-weight: 700;
+        width: 35%;
+    }
+    #ndanisda{
+        display: inline-block;
+        margin-left: 35%;
+        width: 60%;
+    }
+    #fjcnuend{
+        display: inline-block;
+        position: absolute;
+        
+    }
     .task .OCards p button {
         width: 20vw;
         margin-right: 0.5rem;
@@ -379,5 +471,69 @@
         margin-top: 0rem;
         padding: 0.1px;
         cursor: pointer;
+    }
+    .donateForr {
+        margin-left: 0rem;
+        background-color: #fbfbfb;
+        box-shadow: 2px 2px 8px rgb(234, 234, 234);
+        padding: 30px;
+        width: 90%;
+        min-height: 30rem;
+        height: max-content;
+        position: relative;
+        border-radius: 0.9rem;
+        min-width: 22rem;
+        margin-top: 0rem;
+    }
+    .task .donateForr .agasadsa{
+        overflow: scroll;
+        overflow-x: hidden;
+        height: 25rem;
+    }
+    .task .donateForr .agasadsa li {
+        height: 2.5rem;
+        display: flex;
+        justify-content: space-evenly;
+        width: 80%;
+    }
+    .task .donateForr .agasadsa button {
+        border: none;
+        background: #B7FFE7;
+        height: 2.5rem;
+        border-radius: 0.3rem;
+        font-weight: 700;
+        cursor: pointer;
+        width: 30%;
+    }
+    .task .donateForm.active {
+        margin-left: 0rem;
+        position: absolute;
+        z-index: 24;
+        width: 90%;
+        margin-top: 0rem;
+        min-height: 32rem;
+    }
+    .task .OCards .headingad {
+        display: none;
+    }
+    .task .OCards .card {
+        margin: 0;
+        max-width: 100%;
+        width: 95%;
+        border: none;
+        background: none;
+        margin: auto;
+        box-shadow: 2px 2px 9px rgb(208, 208, 208);
+        margin-top: 2rem;
+        padding-top: 2rem;
+        height: max-content;
+    }
+    .task .OCards .card-body {
+        width: 100%;
+        outline: none;
+        border: none;
+        display: block;
+        
+        border-radius: 10px;
     }
 }
