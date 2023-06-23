@@ -303,8 +303,8 @@ export default function Volunteer() {
                 name=""
                 id=""
               />
-              <div className="volunteer_cunt">
-                <div className="vpending">
+              <div className="volunteer_cunt" >
+                <div className="vpending" id="sgaaafas">
                   <p className="p-head"> Order Type </p>
                   <p className="p-head">Order ID </p>{" "}
                   <p className="p-head">No Of Meds </p>{" "}
@@ -314,7 +314,7 @@ export default function Volunteer() {
                   <p className="p-head">Details</p>
                 </div>
 
-                <hr className="volhr" />
+                <hr className="volhr" id="sgaaafas" />
 
                 {/* {sortedData.filter((unverifiedorders)=>{
                     return search.toLowerCase()=== '' ? unverifiedorders : unverifiedorders.medicine_name.toLowerCase().includes(search)
@@ -346,7 +346,8 @@ export default function Volunteer() {
                       </>
                       )}
 
-                      {unverifiedorders.acceptance_status === "pending" ? (
+                      {unverifiedorders.acceptance_status === "pending" ? (<>
+                        <p className="vpdetails" >Action / Status : </p>
                         <p className="h3">
                           <button
                             onClick={() => handleAccept({ unverifiedorders })}>
@@ -357,13 +358,13 @@ export default function Volunteer() {
                             Deny
                           </button>
                         </p>
-                      ) : (
+                        </>  ) : (
                         <>
                           {unverifiedorders.is_order_rejected === true ?
-                            (<p>Cancelled</p>)
+                            ( <><p className="vpdetails" >Status : </p><p>Cancelled</p> </>)
                             : unverifiedorders.order_type == "donate-order" ?
                               unverifiedorders.verify_status === true ? (
-                                <p>Verified</p>
+                                <><p className="vpdetails" >Status : </p><p>Verified</p> </>
                               ) : (
                                 <><p className="h3">
                                   <button
@@ -380,16 +381,18 @@ export default function Volunteer() {
                                   </button>
                                 </p>
                                 </>
-                              ) : unverifiedorders.execute_status === true ? (
-                                <p>delivered</p>
-                              ) : (
+                              ) : unverifiedorders.execute_status === true ? (<>
+                                <p className="vpdetails" >Action / Status : </p>
+                                <p>Delivered</p>
+                             </> ) : (
                                 <>
-                                  <button
+                                  <p className="vpdetails" >Action : </p>
+                                  <p className="h3"><button
                                     className="button-53"
                                     onClick={() => setDeliverModal(true)}>
                                     Deliver
                                   </button>
-
+                                  </p>
                                   <Modal
                                     className="Modal__container"
                                     isOpen={deliverModalIsOpen}
@@ -402,6 +405,7 @@ export default function Volunteer() {
                                     <p>OTP</p>
                                     <div id="recaptcha-container"> </div>
                                     <div>
+                                      
                                       <button
                                         onClick={() =>
                                           generateOTP(
@@ -440,12 +444,15 @@ export default function Volunteer() {
                               )}
                         </>
                       )}
+                      <p className="vpdetails" >Details : </p>
+                      <p className="h3">
                       <Button
                         className="button-53"
                         onClick={() => viewMedicine(unverifiedorders)}
                       >
                         Details
                       </Button>
+                      </p>
                       <ViewMedModal
                         viewMedModalIsOpen={viewMedModalIsOpen}
                         selectOrder={selectOrder}

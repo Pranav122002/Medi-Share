@@ -78,7 +78,7 @@
 
 .left img{
   
-  width:37rem;
+  max-width:37rem;
   margin-left: 0;
   animation-name:pAnimation;
   animation-duration: 1.2s;
@@ -88,6 +88,7 @@
   border-radius: 2rem;
   position: relative;
   z-index: 2;
+  width: 100%;
   
 }
 .left h1{

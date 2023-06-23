@@ -27,10 +27,16 @@ function DiseasePredictions() {
       <div className="dis">
         <h2>Available disease prediction </h2>
         <div className="dise">
-          <div className="diseaa">
-            <Link to="/diabetes">
-              <li className="Cnavli">Diabetes</li>
-              <img src="./diabetes2.png" alt="" />
+          <div  className="diseaa">
+            <Link to="/generalpredict"  >
+              <li className="Cnavli">Medi Doc</li>
+              <img src="./brain-tunor.png" alt="" />
+            </Link>
+          </div>
+          <div  className="diseaa">
+            <Link to="/kidneystone"  >
+              <li className="Cnavli">Kidney Stone</li>
+              <img src="./brain-tunor.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
@@ -46,8 +52,8 @@ function DiseasePredictions() {
             </Link>
           </div>
           <div  className="diseaa">
-            <Link to="/brainTumor"  >
-              <li className="Cnavli">Brain Tumor</li>
+            <Link to="/chatbot"  >
+              <li className="Cnavli">Medi Bot</li>
               <img src="./brain-tunor.png" alt="" />
             </Link>
           </div>

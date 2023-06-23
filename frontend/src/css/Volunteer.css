@@ -141,7 +141,8 @@
   width: 15vw;
   font-size: 1rem;
   font-weight: 500;
-  
+  word-break: break-all;
+  white-space: normal;
 }
 
 .h3 button{
@@ -163,13 +164,13 @@
 
 .volunteer_cunt .vpending .button-53{
   background: #48B0DF;
-  width: 10vw;
+  width: 7vw;
   margin-right: 2rem;
   margin-left: 2vw;
   margin-top: 1rem;
   border-radius: 0.2rem;
   color: #ffffff;
-
+  padding-top: 0.6rem;
 }
 .volunteer_cunt .vpending .button-53:hover{
   color: #c1f1ff;
@@ -227,12 +228,12 @@
   .vcontent{
       border-radius: 1px;
       margin: auto;
-      width: 95vw;
+      width: 97vw;
       background: white;
       height: max-content;
       min-height: 80vh;
       margin-top: 2rem;
-     
+      border-radius: 1rem;
       padding: 1px;
   }
   #vcurve{
@@ -296,7 +297,7 @@
 }
 
 .out_cont{
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 .volunteer_cunt {
@@ -319,6 +320,7 @@
   display: flex;
 
   flex-wrap: wrap;
+  padding-bottom: 2rem;
   
   
 }
@@ -327,12 +329,13 @@
   margin-bottom: auto;
   margin-top: 1rem;
   flex: 40%;
-  font-weight: 700;
-  
+
+  text-align: left;
+  margin-left: 1rem;
   
 }
 .volunteer_cunt .vpending .button-53{
-  width: 50%;
+  width: 30vw;
   background: #48B0DF;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
@@ -357,12 +360,14 @@
   touch-action: manipulation;
   text-align: center;
   margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: 0;
 }
 
-.vpdetails{
+.volunteer_cunt .vpending  .vpdetails{
   display: block;
+  font-weight: 700;
 }
 .vpending:first-child{
   background: #ffffff;
@@ -379,8 +384,8 @@
 .volitemsearch{
   margin-top: 0.5rem;
   margin-right: 0rem;
-  float: left ;
-  width: 85%;
+ 
+  width: 100%;
   max-width: 85%;
   height: 3rem;
   border-radius: 0.3rem;
@@ -388,6 +393,7 @@
   padding-left: 2rem;
   margin-bottom: 0.5rem;
   margin-left: 1rem;
+  
   
 }
 .volhr{
@@ -398,5 +404,20 @@
   background: #48B0DF;
   border: none;
 
+}
+#sgaaafas{
+  display: none;
+}
+.h3 button {
+  width: 40%;
+  margin-right: 0.5rem;
+  border: none;
+  background: #B7FFE7;
+  height: 3.2rem;
+  border-radius: 0.3rem;
+  font-weight: 700;
+  margin-top: -1rem;
+  padding: 0.1px;
+  cursor: pointer;
 }
 }

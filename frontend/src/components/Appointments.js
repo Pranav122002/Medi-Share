@@ -287,22 +287,24 @@ export default function Appointments() {
                           <p>Patient Name</p>
                           <p>Date</p>
                           <p>Time</p>
-                          <p>Action / Status</p>
+                          <p>Action/Status</p>
+                          <p>Link</p>
                           
                         </li>
-                        <hr />
+                        <hr   id="docaphead"/>
                         {appointments.map((appointment) => (<>
                           <li key={appointment._id}>
 
-                            <p>{appointment.patient.name}</p>
-                            <p>{appointment.appointment_date}</p>
-                            <p>{appointment.appointment_time}</p>
+                            <p><span className="docotrsidespan">Patient Name :</span>{appointment.patient.name}</p>
+                            <p><span className="docotrsidespan">Date :</span>{appointment.appointment_date}</p>
+                            <p><span className="docotrsidespan">Time :</span>{appointment.appointment_time}</p>
 
                             {!appointment.confirm_status &&
                               !appointment.reject_status ? (
                               <>
 
-                                <p className="accrejbut">
+                                <p id="asfasdfasd" ><span className="docotrsidespan">Action/Status :</span>
+                          
                                   <button
                                     className="button-53"
                                     type="submit"
@@ -318,7 +320,7 @@ export default function Appointments() {
                                
                                 <button
                                   className="button-53"
-                                  type="submit"
+                                  type="submit" id="agfagacas"
                                   onClick={() => {
                                     rejectAppointment(appointment._id);
                                   }}
@@ -326,18 +328,20 @@ export default function Appointments() {
                                   {" "}
                                   Reject
                                 </button>
+                             
                                 </p>
                               </>
                             ) : appointment.confirm_status ? (
-                              <p className="p2">Confirmed</p>
+                              <p className="p2"><span className="docotrsidespan">Action/Status: </span>Confirmed</p>
                             ) : (
-                              <p className="p2">Rejected</p>
+                              <p className="p2"><span className="docotrsidespan">Action/Status: </span>Rejected</p>
                             )}
 
                             {appointment.confirm_status ? (
                               <>
                                 <p>
-                                  Link:{" "}
+                                <span className="docotrsidespan">Link :</span>
+                                 
                                   {appointment.appointment_link ? (
                                     appointment.appointment_link
                                   ) : (
@@ -360,12 +364,11 @@ export default function Appointments() {
                               </>
                             ) : (
                               <>
-                                {""}
-                                {" "}
+                              <p>-</p>
                               </>
                             )}
                           </li>
-                          <hr />
+                          <hr  id="docaphead"/>
                           </>
                         ))}
                       </ul>

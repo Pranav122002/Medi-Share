@@ -13,6 +13,7 @@ export default function UserProfile({ id }) {
   const [editing, setEditing] = useState(false);
   const [isMine, setIsMine] = useState(false);
   const [viewImage, setViewImage] = useState(false);
+  const [chats, viewChats] = useState(false);
   const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
     fees: "",
     qualification: "",
@@ -170,6 +171,7 @@ export default function UserProfile({ id }) {
   }
 
   return (
+
     <div className="singleuser">
       <h1>Profile</h1>
 
@@ -182,7 +184,7 @@ export default function UserProfile({ id }) {
             <div>Verification: {user.doctor_details.verification}</div>
             <div>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
               <div className="verifybut">
-                <button 
+                <button
                   onClick={() => {
                     verifyUser();
                   }}
@@ -210,14 +212,19 @@ export default function UserProfile({ id }) {
 
           </div>
           </p>
+          <p>
+          <h1 id="afscsrc">Feedbacks</h1>
           {appointmentRatingsFeedbacks.map((appointment) => (<>
-            <p><li id="remli" key={appointment._id}>
-              <p>Ratings: {appointment.rating}</p>
-              <p>Feedbacks: {appointment.feedback}</p>
-            </li></p>
-
+           
+              <li key={appointment._id}>
+              <div className="dgafsasfsac">
+                <p>Rating: {appointment.rating}</p>
+                <p>Feedback: {appointment.feedback}</p>
+                </div>
+              </li>
+           
           </>))}
-
+          </p>
         </>)}
         {user.role === "volunteer" && (
           <div>

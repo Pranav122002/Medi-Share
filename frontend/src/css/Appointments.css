@@ -7,6 +7,9 @@
   ;
   padding: 0.1px;
 }
+#asfasdfasd{
+  display: flex;
+}
 
 .doctor .bodyy {
   width: 82vw;
@@ -52,6 +55,9 @@
   margin-top: 1.5rem;
   margin-left: 1.5rem;
   font-size: 1.7rem;
+}
+.docotrsidespan{
+  display: none;
 }
 
 
@@ -532,7 +538,7 @@
 #docaphead {
   color: #0083c5;
   font-weight: 700;
-  height: 1rem;
+  
 }
 
 #docaphead p {
@@ -824,13 +830,14 @@
 
   .appointments-container {
     text-align: center;
-    width: 92vw;
+    width: 94vw;
     margin: auto;
     background: rgb(253, 253, 253);
     min-height: 10rem;
     height: max-content;
     padding-top: 1rem;
     padding-bottom: 2rem;
+    margin-top: 2rem;
 
   }
 
@@ -849,19 +856,14 @@
     display: block;
 
     margin: auto;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    text-align: left;
 
   }
 
   .appointments-container ul li:hover {
-    border-radius: 2px;
-    min-height: 4rem;
-    background: white;
-    box-shadow: 2px 2px 9px rgb(181, 224, 220);
-    height: max-content;
-    width: 86%;
-    display: flex;
-    justify-content: space-evenly;
-    margin: auto;
+   
   }
 
   .appointments-container ul li .button-53 {
@@ -879,7 +881,7 @@
     text-align: center;
     text-decoration: none #000000 solid;
     text-decoration-thickness: auto;
-    width: 70%;
+    width: 25%;
     max-width: 70%;
     position: relative;
     cursor: pointer;
@@ -889,14 +891,19 @@
     text-align: center;
     margin: auto;
     margin-top: 2rem;
+    margin: 0;
+    margin-right: 1rem
   }
 
   .appointments-container ul li p {
-    width: 70%;
+    width: 100%;
     margin: auto;
     margin-top: 1rem;
+    margin-left: 0cm;
   }
-
+#agfagacas{
+  margin-left: 0rem;
+}
   .doctor .bodyy {
     width: 95%;
     height: max-content;
@@ -1068,5 +1075,24 @@
   margin: auto;
   margin-top: 2rem;
 }
+#docaphead{
+    display: none;
+}
+.docotrsidespan{
+  display:inline-block;
+  width: 50%;
+  word-break: break-all;
+  white-space: normal;
+  font-weight: 700;
+}
+.accrejbut .button-53{
+  width: 20vw;
+}
+#dqwdasfad{
+ 
 
+}
+#asfasdfasd{
+  display: flex;
+}
 }

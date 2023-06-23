@@ -4,7 +4,7 @@
   font-family: "Nunito", sans-serif;
 }
 
-.profilediv .bodyy{
+.profilediv .bodyy {
   margin: auto;
   width: 100vw;
   height: max-content;
@@ -12,6 +12,7 @@
   background: #fbfbfb;
   padding-top: 1px;
 }
+
 /* .donate {
   background-repeat: no-repeat;
   margin-left:0%;
@@ -23,8 +24,8 @@
   justify-content: center;
   align-items: center;
 } */
-.profilediv .contentt{
- 
+.profilediv .contentt {
+
 
   margin-top: 2rem;
   width: 82vw;
@@ -35,7 +36,7 @@
   border-radius: 1rem;
 }
 
-.contentt .userdet{
+.contentt .userdet {
   position: relative;
   z-index: 2;
   box-shadow: 2px 2px 9px rgb(216, 216, 216);
@@ -47,8 +48,9 @@
   border-radius: 1rem;
 
 }
-.contentt .userdet img{
-  
+
+.contentt .userdet img {
+
   height: 6rem;
   margin: auto;
   margin-left: 5rem;
@@ -58,12 +60,13 @@
   background: white;
 }
 
-.userdet h1{
+.userdet h1 {
   width: 30vw;
   margin-top: auto;
   margin-bottom: auto;
 }
-.userdet #credits{
+
+.userdet #credits {
   width: 30vw;
   font-size: 2rem;
   font-weight: 700;
@@ -73,87 +76,101 @@
   align-items: center;
   text-align: right;
   margin-left: 5rem;
- 
+
 }
 
-#credits img{
+#credits img {
   float: right;
   height: 3rem;
   margin: auto;
   padding: 0rem;
   border-radius: 0%;
-  box-shadow:none;
+  box-shadow: none;
   margin: 0;
   margin-left: 2rem;
   border-radius: 50%;
 }
 
-.contentt .donatedorders{
+.contentt .donatedorders {
   position: relative;
   z-index: 1;
   background: rgb(246, 254, 255);
   padding-top: 0.1px;
   height: max-content;
   padding-bottom: 2rem;
- 
+
 }
 
-.contentt h2{
+.contentt h2 {
   text-align: left;
   margin: 0rem;
   margin-top: 1rem;
   margin-left: 5vw;
 }
 
-.titleimg{
+.titleimg {
   float: left;
   margin-right: 1vw;
 }
 
-.contentt ul{
+.contentt ul {
   box-shadow: 2px 2px 8px rgb(247, 247, 247);
   width: 90%;
   background: white;
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
- 
+
   padding-top: 0.1px;
 }
-.contentt .proul{
+
+.contentt .proul {
   padding-left: 0;
 }
-.contentt .donatedorders img{
+
+.contentt .donatedorders img {
   width: 2rem;
   margin-left: 1rem;
 }
-.contentt .proul .profli{
-    width: 98%;
-    color: white;
-    background: rgb(115, 213, 240);
-    display: flex;
-    justify-content: flex-start;
-    box-shadow: 2px 2px 9px rgb(238, 238, 238);
+
+.contentt .proul .profli {
+  width: 98%;
+  color: white;
+  background: rgb(115, 213, 240);
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: 2px 2px 9px rgb(238, 238, 238);
 }
-.contentt .proul .profli  h3{
+
+.contentt .proul .profli h3 {
   margin-top: auto;
   margin-bottom: auto;
   width: 22vw;
 }
+
 .procont {
   padding-left: 0;
 }
-.procont .proco{
+
+.profdonspan {
+  display: none;
+}
+
+.procont .proco {
   box-shadow: 2px 2px 6px rgb(251, 251, 251);
   width: 98%;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-    height: max-content;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  height: max-content;
 }
-.procont .proco p{
+
+.procont .proco p {
   width: 22vw;
+  word-break: break-all;
+  white-space: normal;
 }
+
 .loginForm2 {
   background-color: #ffffff;
   padding: 20px;
@@ -185,18 +202,18 @@
   cursor: pointer;
 }
 
-.contentt .requestorders{
+.contentt .requestorders {
   padding-bottom: 3rem;
   background: rgb(246, 254, 255);
 }
 
-.contentt .requestorders img{
+.contentt .requestorders img {
   width: 2rem;
   margin-left: 1rem;
- 
+
 }
 
-.contentt  .myappoint{
+.contentt .myappoint {
   position: relative;
   z-index: 1;
   /* background: hsl(191, 100%, 98%); */
@@ -205,52 +222,53 @@
   padding-bottom: 2rem;
 }
 
-.contentt .myappoint img{
+.contentt .myappoint img {
   width: 2rem;
   margin-left: 1rem;
 
 }
 
-.contentt .appointm{
+.contentt .appointm {
   padding-bottom: 3rem;
 }
 
-.contentt .appointm img{
+.contentt .appointm img {
   width: 2rem;
   margin-left: 1rem;
- 
+
 }
 
-.subs{
-  
-   background: rgb(254, 254, 254);
-   box-shadow: 2px 2px 9px rgb(238, 238, 238);
-   width: 70vw;
- 
-   margin-top: 1rem;
-   margin-bottom: 1rem;
-   height: max-content;
-   min-height: 10rem;
-   border-radius: 1rem;
-   margin-left: auto;
-   margin-right: 8vw;
-  
-  
+.subs {
+
+  background: rgb(254, 254, 254);
+  box-shadow: 2px 2px 9px rgb(238, 238, 238);
+  width: 70vw;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: max-content;
+  min-height: 10rem;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: 8vw;
+
+
 }
 
-.subimg img{
+.subimg img {
   margin-right: 2rem;
   border-radius: 1rem;
   float: right;
   height: 10rem;
 }
-.headsub h2{
-padding-top: 2rem;
-width: 90%;
-margin: auto;
+
+.headsub h2 {
+  padding-top: 2rem;
+  width: 90%;
+  margin: auto;
 }
 
-.subbut{
+.subbut {
   background: rgb(255, 102, 0);
   border: none;
   height: 3rem;
@@ -261,84 +279,94 @@ margin: auto;
   width: 10rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  
+
 }
 
-#sss{
+#sss {
   margin: 0;
 }
 
-#subpix{
-    height:2rem;
-    box-shadow: none;
-    margin: 0;
-    padding: 0;
-    margin-right: 3rem;
+#subpix {
+  height: 2rem;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 3rem;
 }
 
-.cjec{
+.cjec {
   display: flex;
-  
+
   justify-content: space-around;
 }
-.editpromain{
-  position:fixed;
-  width: 45vw;  
+
+.editpromain {
+  position: fixed;
+  width: 45vw;
   height: max-content;
   background: rgb(251, 251, 251);
   left: 30vw;
   box-shadow: 2px 2px 9px rgb(188, 188, 188);
-  top:5rem;
+  top: 5rem;
   z-index: 999;
   border-radius: 1rem;
- 
+
   text-align: left;
   padding-bottom: 1rem;
 }
-.editparent p{
+
+.editparent p {
   width: 80%;
   padding-left: 10vw;
-  
+
 }
-#clossss{
+
+#clossss {
   position: absolute;
   right: 0;
   height: 2rem;
   margin-right: 1rem;
-  margin-top: 1rem ;
- 
-}
-.editparent #remli{
-    text-align: left;
-    width: 100%;
-} 
-.editparent #remli p{
-    padding-left: 0;
-    font-size: 1rem;
-}
-.editparent .editsprofs h2{
-  margin: auto;
-  margin-left:  19vw ;
-}
-.editparent .editsprofs {
-    position: absolute;
-    background: rgb(251, 251, 251);
-    width: 45vw;  
-    border-radius: 1rem;
-}
-.editparent .editsprofs .editprofdocs{
+  margin-top: 1rem;
 
-    padding-left: 10vw;
 }
-.editparent .editsprofs .editprofdocs input{
-    width: 15vw;
-    margin-left: 1rem;
-    height: 2.5rem;
-    margin-top: -0.5rem;
-    
-    
+
+.editparent #remli {
+  text-align: left;
+  width: 100%;
 }
-.editparent  .editsapa{
+
+.editparent #remli p {
+  padding-left: 0;
+  font-size: 1rem;
+}
+
+.editparent .editsprofs h2 {
+  margin: auto;
+  margin-left: 19vw;
+}
+
+.editparent .editsprofs {
+  position: absolute;
+  background: rgb(251, 251, 251);
+  width: 45vw;
+  border-radius: 1rem;
+}
+
+.editparent .editsprofs .editprofdocs {
+
+  padding-left: 10vw;
+}
+
+.editparent .editsprofs .editprofdocs input {
+  width: 15vw;
+  margin-left: 1rem;
+  height: 2.5rem;
+  margin-top: -0.5rem;
+
+
+}
+
+.editparent .editsapa {
   padding-top: 1rem;
   width: 70%;
   height: 2rem;
@@ -346,7 +374,8 @@ margin: auto;
   display: flex;
 
 }
-#asagws{
+
+#asagws {
   margin-left: 18vw;
   background: rgb(69, 240, 217);
   border: none;
@@ -356,74 +385,124 @@ margin: auto;
   font-weight: 700;
   font-size: 0.8vw;
 }
-.editparent{
-    
-    width: 100vw;
-    background: rgba(198, 198, 198, 0.793)00, 200, 200);
-    position: fixed;
-    z-index: 256;
-    height: 100vh;
+
+.editparent {
+
+  width: 100vw;
+  background: (rgba(198, 198, 198, 0.793)00, 200, 200);
+  position: fixed;
+  z-index: 256;
+  height: 100vh;
 }
-.editparent .imgprof.active{
+
+.editparent .imgprof.active {
   left: 0;
-  width: 45vw;  
-  top:0;
-} 
-.editparent .imgprof.active  .gagasda img{
-    left: 0;
-    right: auto;
-    margin-right: 0;
-    margin-left: 1rem;
+  width: 45vw;
+  top: 0;
 }
 
-#biewprod{
-    background: white;
-    border: none;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    margin-left: 1rem;
-    padding-top: 1rem;
+.editparent .imgprof.active .gagasda img {
+  left: 0;
+  right: auto;
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+#biewprod {
+  background: white;
+  border: none;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  padding-top: 1rem;
 
 }
-#biewprod:hover{
+
+#biewprod:hover {
   background: rgb(241, 241, 241);
-  
+
 }
 
 @media screen and (max-width: 1000px) {
-  .userdet #credits{
-    text-align: center;
-    align-items: center;
-    
-    width: 90vw;
-    font-size: 1.5rem;
-    font-weight: 700;
+  .profilediv .bodyy {
+    margin: auto;
+    width: 100vw;
+    height: max-content;
+    min-height: 92vh;
+    background: #fbfbfb;
+    padding-top: 1px;
+  }
+
+  .subs {
+    background: rgb(254, 254, 254);
+    box-shadow: 2px 2px 9px rgb(229, 229, 229);
+    width: 95%;
+    margin-bottom: 1rem;
+    height: max-content;
+    min-height: 10rem;
+    border-radius: 1rem;
+    margin-left: auto;
+    margin-right: 0vw;
+    margin: auto;
     margin-top: 1rem;
   }
 
-  .subimg img{
+  .userdet #credits {
+    text-align: center;
+    align-items: center;
+
+    width: 40vw;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin: auto;
+
+  }
+
+  #credits h4 {
+    margin-left: 6vw;
+  }
+
+  #credits img {
+    float: none;
+    height: 3rem;
+    margin: auto;
+    padding: 0rem;
+    border-radius: 0%;
+    box-shadow: none;
+    margin: 0;
+    margin-left: 2rem;
+    border-radius: 50%;
+    margin-left: 5vw;
+
+  }
+
+  .subimg img {
     margin-right: 0rem;
     border-radius: 1rem;
-    float: center;
+    float: none;
     height: 10rem;
   }
-  .profilediv .contentt{
+
+  .profilediv .contentt {
     margin: auto;
     margin-top: 2rem;
     width: 95vw;
     box-shadow: 2px 2px 9px rgb(225, 225, 225);
   }
-  .contentt .userdet{
+
+  .contentt .userdet {
     position: relative;
     z-index: 2;
     box-shadow: 2px 2px 9px rgb(216, 216, 216);
-    background: rgb(255, 255, 255);
+    background: #48b0df;
     height: max-content;
     display: block;
     margin: auto;
     text-align: center;
   }
-  .contentt .userdet img{
+
+  .contentt .userdet img {
     height: 8rem;
     margin: auto;
     margin-left: 0rem;
@@ -432,15 +511,16 @@ margin: auto;
     border-radius: 50%;
     box-shadow: 2px 2px 8px rgb(233, 233, 233);
   }
-  .userdet h1{
+
+  .userdet h1 {
     width: 90%;
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  
 
-  .contentt .donatedorders{
+
+  .contentt .donatedorders {
     position: relative;
     z-index: 1;
     background: hsl(191, 100%, 98%);
@@ -448,45 +528,149 @@ margin: auto;
     height: max-content;
     padding-bottom: 2rem;
   }
-  
-  .contentt h2{
+
+  .contentt h2 {
     margin: 0rem;
     margin-top: 1rem;
   }
-  
-  .contentt ul{
+
+  .contentt ul {
     box-shadow: 2px 2px 8px rgb(247, 247, 247);
     width: 95%;
-    background: white;
+    background: none;
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-top: 0.1px;
   }
-  .contentt .proul{
+
+  .contentt .proul {
     padding-left: 0;
   }
-  .contentt .proul .profli{
+
+  .contentt .proul .profli {
     display: none;
+  }
+
+  .contentt .proul .profli h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 22vw;
+  }
+
+  .procont {
+    padding-left: 0;
+  }
+
+  .procont .proco {
+    box-shadow: 2px 2px 6px rgb(251, 251, 251);
+    background: white;
+    width: 98%;
+    margin: auto;
+    display: block;
+    padding-left: 0;
+    margin-top: 2rem;
+    height: max-content;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 9px rgb(210, 210, 210);
+
+  }
+
+  .procont .proco p {
+    margin-top: 1rem;
+    width: 90%;
+    text-align: left;
+    word-break: break-all;
+    white-space: normal;
+
+
+  }
+
+  .asfasfa {
+    word-break: break-all;
+    white-space: normal;
+
+  }
+
+  .profdonspan {
+    display: inline-block;
+    margin-left: 2rem;
+    width: 35%;
+    font-weight: 700;
+    margin-bottom: auto;
+
+
+  }
+
+  .profdonspa {
+    display: inline-block;
+    width: 35%;
+  }
+
+  .procont .proco p .burst {
+    background: rgb(255, 255, 255);
+    margin-top: 2rem;
+    margin-left: 30vw;
+    border: none;
+    height: 3rem;
+    width: 25vw;
+    background: rgb(108, 255, 209);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+
+  }
+
+  #agasgasaf {}
+
+  .editpromain {
+    position: fixed;
+    width: 94vw;
+    height: max-content;
+    background: rgb(251, 251, 251);
+    left: 3vw;
+    box-shadow: 2px 2px 9px rgb(188, 188, 188);
+    top: 5rem;
+    z-index: 999;
+    border-radius: 1rem;
+
+    text-align: left;
+    padding-bottom: 1rem;
+  }
+
+  .editparent .editsprofs {
+    position: absolute;
+    background: rgb(251, 251, 251);
+    width: 94vw;
+    border-radius: 1rem;
+  }
+
+  .editparent .imgprof.active {
+    left: 0;
+    width: 94vw;
+    z-index: 242;
+    top: 0;
+  }
+
+  #asgaadcag {
+    width: 90vw;
+    margin-left: 1rem;
+  }
+  .editparent .editsprofs .editprofdocs input {
+    width: 30vw;
+    margin-left: 1rem;
+    height: 2.5rem;
+    margin-top: -0.5rem;
 }
-.contentt .proul .profli  h3{
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 22vw;
+#asagws {
+  margin-left: 18vw;
+  background: rgb(69, 240, 217);
+  border: none;
+  border-radius: 0.5rem;
+  width: 20vw;
+  height: 3rem;
+  font-weight: 700;
+  font-size: 0.8rem;
 }
-.procont {
-  padding-left: 0;
-}
-.procont .proco{
-  box-shadow: 2px 2px 6px rgb(251, 251, 251);
-  width: 98%;
-  margin:auto;
-  display: block;
-  height: max-content;
-  
-}
-.procont .proco p{
-  margin-top: 1rem;
-  width: 90%;
-}
+
 }

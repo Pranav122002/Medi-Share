@@ -101,20 +101,22 @@
 @media screen and (max-width: 1000px) {
 
     .hospimain {
-        background: rgb(240, 255, 253);
-        background-image: url(../../public/hospital2.png);
-        background-repeat: no-repeat;
-        background-position: top right;
-        background-size: 20rem;
+        
         position: relative;
-        z-index: -4;
-
+        
+        min-height: 95vh;
+        height: max-content;
+        width: 100vw;
+        padding: 0.1px;
     }
 
     .hospi {
         width: 95vw;
         margin: auto;
-        height: 30rem;
+        min-height: 10rem;
+        height: max-content;
+        margin-top: 2rem;
+        padding: 0.1px;
 
     }
     .hospicontent {
@@ -122,24 +124,27 @@
         min-height: 15rem;
         height: max-content;
         background: white;
-        width: 95%;
+        width: 90%;
         font-size: 1rem;
         font-weight: 700;
         padding-top: 1px;
         display: block;
-       
-        box-shadow: 2px 2px 8px rgb(225, 221, 221);
+        box-shadow:none;
         margin: auto;
-        margin-top: 10rem;
-    
+        margin-top: 0rem;
+        border-radius: 1rem;
+        padding-left: 0;
     }
     .hospicontent p {
         margin-top: 2rem;
         margin: auto;
+        margin-left: 0;
+        text-align: left;
+        width: 90%;
     }
     
     .hospicontent img {
-        height: 10rem;
+        height: 30vw;
     }
     .mapsearch {
         width: 80vw;
@@ -148,15 +153,20 @@
         text-align: center;
         font-weight: 900;
         font-size: 1rem;
+        margin-top: 2rem;
     }
     
     .minimap {
+        padding: 0.1px;     
         margin-bottom: 2rem;
         width: 95%;
     }
     .mainmap {
+       
+        padding: 0.1px;
         width: 95vw;
         margin: auto;
+        margin-top: 2rem;
     }
     
     

@@ -366,7 +366,7 @@ export default function Profile() {
                   <p>Hospital Name: {user.doctor_details.hospital_name}</p>
                   <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
                     <div className={`imgprof ${viewImage && "active"}`}>
-                      <img
+                      <img id="asgaadcag"
                         src={user.doctor_details.certificate}
                         alt="doctor certificate"
                       />
@@ -376,13 +376,7 @@ export default function Profile() {
 
                   </div>
                   </p>
-                  {appointmentRatingsFeedbacks.map((appointment) => (<>
-                    <p><li id="remli" key={appointment._id}>
-                      <p>Ratings: {appointment.rating}</p>
-                      <p>Feedbacks: {appointment.feedback}</p>
-                    </li></p>
-
-                  </>))}
+                  
                 </div>
               </>)}
               {user.role === "volunteer" && (
@@ -636,25 +630,25 @@ export default function Profile() {
                     console.log(donateorders)
                     return (
                       <li className="proco" key={donateorders.medicine_name}>
-                        <p className="pm">{donateorders._id.toString().slice(-4)}</p>
+                        <p className="pm"><span className="profdonspan">Order ID :</span>{donateorders._id.toString().slice(-4)}</p>
                         {/* <p className="p1">{donateorders.expiry_date} </p> */}
-                        <p className="p2">{donateorders.no_of_medicines}</p>
-                        <p className="p3"> {donateorders?.location?.location}</p>
+                        <p className="p2"><span className="profdonspan">Quantity :</span>{donateorders.no_of_medicines}</p>
+                        <p className="p3"> <span className="profdonspan">Location :</span>{donateorders?.location?.location}</p>
                         {
                           donateorders.acceptance_status === "accepted" && donateorders.verify_status === false ? (
-                            <p>Volunter is assigned</p>
+                            <p><span className="profdonspan">Status :</span>Volunter is assigned</p>
                           ) : donateorders.acceptance_status === "pending" ? (
-                            <p>Pending</p>
+                            <p><span className="profdonspan">Status :</span>Pending</p>
                           ) : (
                             <>
                               <p>
-                                <div className="">
+                                <div className="asfasfa">
                                   {console.log(donateorders.feedback)}
-                                  Medicines collected
+                                  <span className="profdonspan" >Status :</span>Medicines collected
                                   {
                                     !donateorders.feedback.feedback && (
                                       <>
-                                        <button onClick={() => handleFeedback()}>Feedback</button>
+                                        <button className="burst" onClick={() => handleFeedback()}>Feedback</button>
                                         <Modal
                                           className="Modal__container"
                                           onRequestClose={() => setFeedbackIsOpen(false)}
@@ -720,27 +714,27 @@ export default function Profile() {
                 <div className="procont">
                   {requestorders.map((requestorders) => (
                     <li className="proco" key={requestorders._id}>
-                      <p className="pm"> {requestorders._id.toString().slice(-4)}</p>
+                      <p className="pm"><span className="profdonspan">Order ID :</span> {requestorders._id.toString().slice(-4)}</p>
                       {/* <p className="p1"> {requestorders.expiry_date}</p> */}
-                      <p className="p2"> {requestorders.no_of_medicines}</p>
-                      <p className="p3">{requestorders.location.location}</p>
+                      <p className="p2"><span className="profdonspan">Quantity :</span> {requestorders.no_of_medicines}</p>
+                      <p className="p3"><span className="profdonspan">Location :</span>{requestorders.location.location}</p>
                       {
                         requestorders.acceptance_status === "accepted" && requestorders.verify_status === false ? (
-                          <p>Volunter is assigned</p>
+                          <p><span className="profdonspan">Status :</span>Volunter is assigned</p>
                         ) : requestorders.acceptance_status === "pending" ? (
-                          <p>Pending</p>
+                          <p><span className="profdonspan">Status :</span>Pending</p>
                         ) : (
                           <>
                             <p>
 
                               <div className="">
                                 {console.log(requestorders.feedback)}
-                                Medicines Delivered
+                                <span className="profdonspan">Status :</span>Medicines Delivered
                                 {
                                   requestorders.feedback.feedback === null && (
                                     <>
                                       <br />
-                                      <button onClick={() => handleFeedback()}>Feedback</button>
+                                      <button className="burst"  onClick={() => handleFeedback()}>Feedback</button>
                                       <Modal
                                         className="Modal__container"
                                         onRequestClose={() => setFeedbackIsOpen(false)}
@@ -807,29 +801,29 @@ export default function Profile() {
                   <div className="procont">
                     {doctorappointments.map((doctorappointments) => (
                       <li className="proco" key={doctorappointments._id}>
-                        <p className="p1"> {doctorappointments.patient.name}</p>
+                        <p className="p1"><span className="profdonspan">Patient Name :</span>{doctorappointments.patient.name}</p>
                         <p className="p1">
-                          {" "}
-                          {doctorappointments.appointment_date}
+                          
+                        <span className="profdonspan">Date :</span>{doctorappointments.appointment_date}
                         </p>
                         <p className="p1">
-                          {" "}
-                          {doctorappointments.appointment_time}
+                         
+                        <span className="profdonspan">Time :</span> {doctorappointments.appointment_time}
                         </p>
                         {!doctorappointments.confirm_status &&
                           !doctorappointments.reject_status ? (
-                          <p className="p2">Pending</p>
+                          <p className="p2"><span className="profdonspan">Status :</span>Pending</p>
                         ) : doctorappointments.confirm_status ? (
-                          <p className="p2">Confirmed</p>
+                          <p className="p2"><span className="profdonspan">Status :</span>Confirmed</p>
                         ) : (
-                          <p className="p2">Rejected</p>
+                          <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
                         )}
                         <p className="p1">
-                          {" "}
-                          {doctorappointments.appointment_link}
+                          
+                          <span className="profdonspan">Link :</span><span className="profdonspa">{doctorappointments.appointment_link?(<>{doctorappointments.appointment_link}</>):(<>-</>)}</span>
                         </p>
-                        <p className="p1"> {doctorappointments.rating}</p>
-                        <p className="p1"> {doctorappointments.feedback}</p>
+                        <p className="p1"><span className="profdonspan">Rating :</span> {doctorappointments.rating}</p>
+                        <p className="p1"><span className="profdonspan">Feedback :</span><span className="profdonspa">{doctorappointments.feedback}</span> </p>
                       </li>
                     ))}
                   </div>
@@ -858,30 +852,30 @@ export default function Profile() {
                   <div className="procont">
                     {patientappointments.map((patientappointments) => (
                       <li className="proco" key={patientappointments._id}>
-                        <p className="p1"> {patientappointments.doctor.name}</p>
+                        <p className="p1"><span className="profdonspan">Doctor Name :</span> {patientappointments.doctor.name}</p>
                         <p className="p2">
-                          {" "}
-                          {patientappointments.appointment_date}
+                         
+                          <span className="profdonspan">Date :</span>  {patientappointments.appointment_date}
                         </p>
                         <p className="p2">
-                          {" "}
-                          {patientappointments.appointment_time}
+                       
+                          <span className="profdonspan">Time :</span> {patientappointments.appointment_time}
                         </p>
                         {!patientappointments.confirm_status &&
                           !patientappointments.reject_status ? (
-                          <p className="p2">Pending</p>
+                          <p className="p2"><span className="profdonspan">Status :</span>Pending</p>
                         ) : patientappointments.confirm_status ? (
-                          <p className="p2">Confirmed</p>
+                          <p className="p2"><span className="profdonspan">Status :</span>Confirmed</p>
                         ) : (
-                          <p className="p2">Rejected</p>
+                          <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
                         )}
                         <p className="p2">
-                          {patientappointments.appointment_link}
+                        <span className="profdonspan">Link :</span><span className="profdonspa">{patientappointments.appointment_link ?(<>{patientappointments.appointment_link}</>):(<>-</>)}</span>
                         </p>
 
-                        <p className="p2"> {patientappointments.rating}</p>
+                        <p className="p2"><span className="profdonspan">Rating :</span> {patientappointments.rating ?(<>{patientappointments.rating}</>):(<>-</>)}</p>
 
-                        <p className="p2"> {patientappointments.feedback} </p>
+                        <p className="p2"><span className="profdonspan">Feedback :</span ><span className="profdonspa">{patientappointments.feedback ?(<>{patientappointments.feedback}</>):(<>-</>)}</span> </p>
                       </li>
                     ))}
                   </div>

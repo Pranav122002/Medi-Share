@@ -20,6 +20,9 @@
     border-radius: 0.9rem;
     padding: 0.1px;
 }
+.tasksapnli{
+    display: none;
+}
 
 .task #title {
     width: 20vw;
@@ -281,19 +284,100 @@
 }
 
 @media screen and (max-width: 1000px) {
-
-    .task #title {
-        width: 90%;
+ 
+    .task {
+        background: #48b0df;
+        height: max-content;
+        width: 100vw;
+        padding: 0.1px;
+        min-height: 95vh;
+        height: max-content;
+        padding-bottom: 2rem;
     }
-
-    .task .OCards p {
-        width: 90%;
+    .task .bodyy {
+        width: 95%;
+        margin-right: 0vw;
+        margin-left: auto;
+        background: rgb(233, 247, 255);
+     
+        border-radius: 0.9rem;
+        padding: 0.1px;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .task .bodyy h1 {
+       font-size: 1.7rem;
+       text-align: left;
+       margin-left: 2rem;
+    }
+    #mainsec {
+        display: none;
+    }
+    #midsec {
+        display: none;
+    }
+    .task .OCards li {
+        height: max-content;
+        list-style: none;
+        width: 100%;
+        margin-top: 0rem;
+        padding-top: 9px;
+        padding-bottom: 10px;
+        font-size: 1rem;
+        display:block;
+        padding-left: 0rem;
+        background: white;
+        border-radius: 1rem;
         margin-top: 1rem;
-
     }
-
-    .task .content-details {
+    
+    .task .OCards p {
+        padding-top: 1rem;
+        width:90%;
+        word-break: break-all;
+        white-space: normal;
+        line-height: 2rem;
+        display:inline-block;
+        text-align: left;
+        padding: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .tasksapnli{
+        display:inline-block;
         font-weight: 700;
-        margin-left: 0;
+        width: 30vw;
+        text-align: left;
+    }
+    .task .heading {
+        display: none;
+    }
+    #adfasda{
+        display: inline-block;
+        width: 50%;
+    }
+    .task .OCards p button {
+        width: 20vw;
+        margin-right: 0.5rem;
+        border: none;
+        background: #B7FFE7;
+        height: 3.2rem;
+        border-radius: 0.3rem;
+        font-weight: 700;
+        margin-top: 0rem;
+        padding: 0.1px;
+        cursor: pointer;
+    }
+    #markbut {
+        width: 20vw;
+        margin-right: 0rem;
+        border: none;
+        background: #B7FFE7;
+        height: 3.2rem;
+        border-radius: 0.3rem;
+        font-weight: 700;
+        margin-top: 0rem;
+        padding: 0.1px;
+        cursor: pointer;
     }
 }
