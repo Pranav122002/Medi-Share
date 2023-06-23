@@ -3,7 +3,9 @@
   width: 100vw;
   background: #48b0df;
   padding: 0.1px;
-  height:110vh;
+  min-height:110vh;
+  height: max-content;
+  
   
 } 
 
@@ -138,15 +140,24 @@ padding-right: 0px;
 @media screen and (max-width: 1000px) {
   .chatmain{
     position: relative;
-    z-index: -6;
+    z-index: 23;
   }
+
+  .Chatnow {
+    width: 95vw;
+    margin-right: 0vw;
+    margin-left: auto;
+    margin: auto;
+}
   .chatfunc{
-    width: 100vw;
+    width: 100%;
     height: max-content;
     background: white;
     display: block;
+    padding: 0;
     padding-bottom: 2rem;
-    
+    text-align: center;
+    padding: 0.1px;
     
   }
   .chatfunc img{
@@ -155,36 +166,54 @@ padding-right: 0px;
     margin-bottom: auto;
   }
   .chatfunc h1{
-    margin-top: 2rem;
+    margin-top: 1rem;
+    text-align: left;
+    margin-left: 2rem;
   }
   .chatfunc p{
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-size: 1.2rem;
-    width:90%;
+    width:95%;
+    text-align: left;
+    margin-left: 2rem;
   
   }
+  #chatsicons {
+    float: none;
+}
+.chatfunc img {
+  height: 10rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
+.chatfunc img {
+  height: 30vw;
+  margin-right: 0vw;
+  margin-left: auto;
+}
 
   .linkcont{
     height:max-content;
-    width: 100vw;
+    width: 100%;
     background: rgb(244, 255, 254);
     display: block;
     padding-top: 0.1px;
     padding-bottom: 1rem;
-    
+    margin-top: 2rem;
   
   }
   .linkcont a{
     width: 90%;
     background: white;
-    margin-top: 2rem;
+    margin-top: 5rem;
     text-align: center;
     font-style: none;
     text-decoration: none;
     height: max-content;
     box-shadow: 2px 2px 8px rgb(236, 236, 236);
     margin-bottom: 2rem;
+
   }
   .linkcont a:hover{
     width: 90%;
@@ -210,8 +239,27 @@ padding-right: 0px;
       background: white;
       height: max-content;
       padding: 0;
+      margin-top: 2rem;
+      height: max-content;
+     padding-bottom: 1rem;
 
   }
+  .Cnavli .Cnavliflex {
+    display: block;
+    padding-left: 0rem;
+    border-radius: 0.9rem;
+    height: max-content;
+  
+}
+.linkcont .Cnavli .button-53 {
+ 
+}
+.Cnavlime {
+  margin-left: 0rem;
+  margin-top: 1rem;
+  margin: auto;
+  width: 80%;
+}
   .Cnavli h2{
   
       margin: 0;

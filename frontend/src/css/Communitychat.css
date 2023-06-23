@@ -118,12 +118,12 @@
         background:rgb(247, 250, 255); ;
         height: 49rem;
     }
-    .commchat .datemess{
-        margin-left: 70%;
-       
-     }
-     .commchat .datemesss{
-        margin-left: 70%;
-     }
+   
+     .commmess {
+      height: 45rem;
+      overflow: scroll;
+      overflow-x: hidden;
+      border-top-right-radius: 0.9rem;
+  }
     
  }

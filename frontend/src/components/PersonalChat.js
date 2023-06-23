@@ -14,6 +14,7 @@ const PersonalChat = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [chats , viewChats] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -138,7 +139,8 @@ const PersonalChat = () => {
               <div className="userss">
                 {users.map((user) => (
                   <>
-                    <p key={user._id} onClick={() => handleUserSelection(user)}>
+                 
+                    <p key={user._id} onClick={() => {handleUserSelection(user) ;viewChats("active")}}>
                       {user.name}
                     </p>
                     <hr />
@@ -147,11 +149,13 @@ const PersonalChat = () => {
               </div>
             </div>
             <hr id="midhr" />
-            <div className="selchat">
+           
+            <div  className={`selchat ${chats && "active"}`} >
               <div className="seluser">
                 {selectedUser && (
-                  <div>
+                  <div  className="userssasd">
                     {" "}
+                    <img onClick={()=> { viewChats(false)}} id="sdbackpn" src="./back.png" alt="" />
                     <img
                       id="profpicc"
                       src="./profile-pic.png"
@@ -159,7 +163,7 @@ const PersonalChat = () => {
                       srcset=""
                     />
                     <p>{selectedUser.name}</p>
-                  </div>
+                  </div> 
                 )}
               </div>
               <div className="messages">
