@@ -109,6 +109,9 @@
     font-size: 1rem;
  }
 
+ .chatbot-container{
+    display: none;
+ }
  @media screen and (max-width: 1000px){
     .commchat{
         position: relative;
