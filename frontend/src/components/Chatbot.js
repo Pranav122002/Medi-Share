@@ -42,7 +42,8 @@ const Chatbot = () => {
       }
       else if (response.data.message === "1") {
         // Take symptoms as input
-        const diseases = dis;
+        const diseases = prompt("Enter the disease to get symptoms");
+        setDis(diseases);
         // Send symptoms to FastAPI
         const diseaseResponse = await axios.post('http://localhost:8000/symptoms', {
           diseases,
@@ -204,7 +205,7 @@ const Chatbot = () => {
           <div className="commchat">
             <div className="commmess">
               {" "}
-              <div className="received-msg">
+              <div id='daicina' className="received-msg">
                 <p className="comssend"   >
                   <p className="wowowow">
                     <p>Bot</p>
@@ -233,7 +234,7 @@ const Chatbot = () => {
 
                           </p>
                           <p className="flexdisp">
-                            <p>{message.content}</p>
+                            <p>{message.content === "Hello" ? (<>Hello Medi-Bot here plz enter <br />0 : Find disease by symptoms <br />1 : Find symptoms by disease <br />2 : Get precautions <br />3 : Get medicines <br />4 : More information about disease <br />5 : Medicine market discription <br />6 : Get the substute of medicine <br />7 : Get side-effects of medicine</>):(<>{message.content}</>) }</p>
 
                             <div className="datemess">
                               {currTime}
