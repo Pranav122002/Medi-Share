@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import { uploadImg, fetchUser, handleSaveReport, fetchReport } from "../Functions/reportFunctions"
 import ReportModal from "../Functions/ReportModal";
+import "../css/Generalpred.css"
 
 function Braintumor() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -80,43 +81,50 @@ function Braintumor() {
 
   useEffect(() => {
     // console.log(reports)
-  } )
+  })
   return (
     <>
-      <div>
-        <h1>Brain-Tumor Prediction</h1>
-        <Dropzone onDrop={handleDrop} accept="image/jpeg, image/png">
-          {({ getRootProps, getInputProps }) => (
-            <div {...getRootProps({ className: "dropzone" })}>
-              <input {...getInputProps()} />
-              <p>Drag and drop an image here or click to select an image.</p>
-            </div>
-          )}
-        </Dropzone>
-        {selectedFile && (
+      <div className='generalmain'>
+        <div className='kidneymain'>
+          <h2>Brain-Tumor Prediction</h2>
           <div>
-            <img
-              src={URL.createObjectURL(selectedFile)}
-              alt="Selected Brain-Tumor"
+            <button id='traarports' onClick={handleShowReport}>Previous Reports </button>
+            <ReportModal
+              reportModal={reportModal}
+              handleCLoseModal={handleCLoseModal}
+              reports={reports}
+              setImageModal={setImageModal}
+              handleCloseImageModal={handleCloseImageModal}
+              imageModal={imageModal}
+              setReportModal={setReportModal}
             />
-            <button onClick={handleSubmit}>Predict</button>
           </div>
-        )}
-        {prediction && <>
-          <p>Prediction: {prediction}</p>
-          <button onClick={handleSave}>Save report</button>
-        </>
-        }
-        <button onClick={handleShowReport}>Show Reports</button>
-        <ReportModal
-          reportModal={reportModal}
-          handleCLoseModal={handleCLoseModal}
-          reports={reports}
-          setImageModal={setImageModal}
-          handleCloseImageModal={handleCloseImageModal}
-          imageModal={imageModal}
-          setReportModal={setReportModal}
-        />
+          <Dropzone onDrop={handleDrop} accept="image/jpeg, image/png">
+            {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps({ className: "dropzone" })}>
+                <input {...getInputProps()} />
+                <p id='fhysdnb'>Drag and drop an image here or click to select an image.</p>
+              </div>
+            )}
+          </Dropzone>
+          {selectedFile && (<>
+            <div className='kidneyimg'>
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="Selected Brain-Tumor"
+              />
+            </div>
+            <div className='kidimgpreddac'>
+              <button onClick={handleSubmit}>Predict</button>
+              {prediction && <button id='kidimgpred' onClick={handleSave}>Save report</button>}
+
+            </div>  </>)}
+          {prediction ? (<div className='kidneyresult'>
+            <h2>{prediction && <p>Prediction Result: {prediction}</p>}</h2>
+          </div>) : (<></>)}
+
+
+        </div>
       </div>
     </>
   );

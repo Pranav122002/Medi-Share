@@ -169,7 +169,7 @@
 }
 .kidneyresult{
     width: 55vw;
-    box-shadow: 2px 2px 9px rgb(198, 198, 198);
+
     margin: auto;
     min-height:9rem;
     border-radius: 1rem;
@@ -185,6 +185,10 @@
 .kidneyresult p{
    text-align: center;
 }
+.Modal__container img{
+    margin-left: 8vw;
+}
+
 @media screen and (max-width: 1000px) {
     .kidneymain{
         background: white;
@@ -285,6 +289,6 @@
         padding: 0.1px;
         padding-bottom: 2rem;
     }
-   
+    
     
 }
