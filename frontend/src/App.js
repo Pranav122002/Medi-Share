@@ -12,6 +12,7 @@ import PersonalChat from "./components/PersonalChat";
 import CommunityChat from "./components/CommunityChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
+import SearchOrders from "./components/SearchOrders";
 import Inventory from "./components/Inventory";
 import Appointments from "./components/Appointments";
 import Annoucement from "./components/Annoucement";
@@ -34,11 +35,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { AboutUs } from "./components/AboutUs";
 import { UserProvider } from "./components/UserContext";
 import Kidneystone from "./components/Kidneystone";
-import GeneralPredict from "./components/GeneralPredict"
-import Chatbot from "./components/Chatbot"
+import GeneralPredict from "./components/GeneralPredict";
+import Chatbot from "./components/Chatbot";
+
 function App() {
   
-  const [showvNavbar , setShowvNavbar] = useState(false);
+  const [showvNavbar, setShowvNavbar] = useState(false);
   const handleShowvNavbar = () => {
     setShowvNavbar(!showvNavbar);
     console.log(showvNavbar);
@@ -48,19 +50,23 @@ function App() {
     <BrowserRouter>
       <UserProvider>
         <div className="App">
-          <Navbar handleShowvNavbar={handleShowvNavbar} showvNavbar = {showvNavbar} />
+          <Navbar
+            handleShowvNavbar={handleShowvNavbar}
+            showvNavbar={showvNavbar}
+          />
           <Hnavbar handleShowvNavbar={handleShowvNavbar} />
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
-            <Route path="/analytics" element={<Analytics />}></Route>
+            <Route path="/search-orders" element={<SearchOrders />}></Route>
             <Route path="/home" element={<Home />}></Route>
+            <Route path="/analytics" element={<Analytics />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/donate-medicines" element={<Donate />}></Route>
             <Route path="/request-medicines" element={<Request />}></Route>
-              <Route path="/medicines" element={<Medicines />}></Route>
+            <Route path="/medicines" element={<Medicines />}></Route>
             <Route path="/orders" element={<Orders />}></Route>
-          <Route path="/tasks" element={<Tasks />}></Route>
+            <Route path="/tasks" element={<Tasks />}></Route>
             <Route
               path="/disease-predictions"
               element={<DiseasePredictions />}

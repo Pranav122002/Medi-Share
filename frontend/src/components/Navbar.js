@@ -80,6 +80,13 @@ export default function Navbar(props) {
             </li>
 
           </Link>
+          <Link className="borderrad" to="/search-orders">
+            <div className="navimgspace"><img className="navimg" src="./analytics.png" alt="" /></div>
+            <li style={{ color: "black" }} className="navli">
+              Search Orders
+            </li>
+
+          </Link>
 
           <Link className="borderrad" to="/users">
             <div className="navimgspace">  <img className="navimg" src="./peoples.png" alt="" /></div>

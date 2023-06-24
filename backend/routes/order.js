@@ -40,6 +40,37 @@ router.get("/api/all-orders", async (req, res) => {
     });
 });
 
+router.get("/api/all-orders-medicines", async (req, res) => {
+  try {
+    const orders = await ORDER.find().select("medicines");
+    const medicineSet = new Map();
+
+    orders.forEach((order) => {
+      order.medicines.forEach((medicine) => {
+        const { medicine_name, quantity } = medicine;
+        if (medicineSet.has(medicine_name)) {
+          const existingQuantity = medicineSet.get(medicine_name);
+          medicineSet.set(medicine_name, existingQuantity + quantity);
+        } else {
+          medicineSet.set(medicine_name, quantity);
+        }
+      });
+    });
+
+    const medicineCounts = [];
+    for (const [medicine_name, count] of medicineSet.entries()) {
+      medicineCounts.push({ medicine_name, count });
+    }
+
+    res.json(medicineCounts);
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ error: "Failed to fetch medicine names and counts" });
+  }
+});
+
 router.get("/api/all-donate-orders", (req, res) => {
   ORDER.find({ order_type: "donate-order" })
     .populate("requester", "name -_id")
