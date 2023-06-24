@@ -109,6 +109,27 @@
     font-size: 1rem;
  }
 
+ .chatbot-container{
+    display: none;
+ }
+ #daicina{
+    opacity: 0;
+    animation: helloanim;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+
+ }
+
+ @keyframes helloanim {
+    0% {
+        opacity: 1;
+      
+    }
+    100% {
+        opacity: 1;
+    }    
+ }
  @media screen and (max-width: 1000px){
     .commchat{
         position: relative;

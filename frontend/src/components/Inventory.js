@@ -219,7 +219,7 @@ export default function Inventory() {
   useEffect(() => {
     searchBox.addListener('places_changed', () => {
       const places = searchBox.getPlaces();
-  
+
       if (places && places.length > 0) {
         // Set the location place to the first result
         console.log(places[0])
@@ -254,24 +254,24 @@ export default function Inventory() {
                   <ul key={med.med_id}>
                     <li className="item_container">
                       <div>
-                    <input
-                        type="number"
-                        value={med.quantity }
-                        onChange={(e) => {
-                          const newQuantity = Number(e.target.value);
-                          setCart((prevCart) =>
-                            prevCart.map((item) =>
-                              item.medicine_name === med.medicine_name ? { ...item, quantity: newQuantity } : item
-                            )
-                          );
-                        }}
-                      />
-                      {"x      " }
-                      {"  " +med.medicine_name}
+                        <input
+                          type="number"
+                          value={med.quantity}
+                          onChange={(e) => {
+                            const newQuantity = Number(e.target.value);
+                            setCart((prevCart) =>
+                              prevCart.map((item) =>
+                                item.medicine_name === med.medicine_name ? { ...item, quantity: newQuantity } : item
+                              )
+                            );
+                          }}
+                        />
+                        {"x      "}
+                        {"  " + med.medicine_name}
                       </div>
                       <button onClick={() => removeMed(med)}>Remove</button>
                     </li>
-                    
+
                   </ul>
                 ))
               }
@@ -300,19 +300,33 @@ export default function Inventory() {
               {searchResult.map((item) => {
                 return (
                   <div className="box" key={item._id}>
-                    <h3 style={{ color: "black" }}>{item.medicine_name}</h3>
+                    <h3 style={{ color: "black" }}> {item.medicine_name}</h3>
                     <p className="p1">{item.description}</p>
                     <p className="p2" style={{ color: "black" }}>{item.disease}</p>
-                    <p className="p1">
-                      {item.count === 0 ? <p>Not available</p> :
-                        <>
-                          <p>{item.count}</p>
+                    <p id="d2sdvyuaca" className="p1">
+                      {item.count <= 0 ? <p>Out of Stock</p> :
+
+                        <>{item.count <= 10 ? <> 
+                          <p>only {item.count} left</p>
                           {
                             cart.some((cartItem) => cartItem.medicine_name === item.medicine_name) ? (
                               <button disabled>already in Cart</button>
                             ) :
                               (<button onClick={() => addToCart(item)}>Add to Cart</button>)
                           }
+                       
+                        </> :
+                         
+                            <> 
+                            <p>In Stock</p>
+                            {
+                              cart.some((cartItem) => cartItem.medicine_name === item.medicine_name) ? (
+                                <button disabled>already in Cart</button>
+                              ) :
+                                (<button onClick={() => addToCart(item)}>Add to Cart</button>)
+                            }
+                         
+                          </>}
                         </>
                       }
                     </p>
