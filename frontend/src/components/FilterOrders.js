@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../config";
-import "../css/SearchOrders.css";
+import "../css/FilterOrders.css";
 
-export default function SearchOrders() {
+export default function FilterOrders() {
   const [allOrders, setAllOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [filterOrderType, setFilterOrderType] = useState("");

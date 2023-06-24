@@ -100,6 +100,7 @@ router.get("/api/allusers/:id", async (req, res, next) => {
       "email",
       "name",
       "_id",
+      "role",
     ]);
     return res.json(users);
   } catch (ex) {

@@ -12,7 +12,7 @@ import PersonalChat from "./components/PersonalChat";
 import CommunityChat from "./components/CommunityChat";
 import Profile from "./components/Profile";
 import Hospitals from "./components/Hospitals";
-import SearchOrders from "./components/SearchOrders";
+import FilterOrders from "./components/FilterOrders";
 import Inventory from "./components/Inventory";
 import Appointments from "./components/Appointments";
 import Annoucement from "./components/Annoucement";
@@ -57,7 +57,7 @@ function App() {
           <Hnavbar handleShowvNavbar={handleShowvNavbar} />
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
-            <Route path="/search-orders" element={<SearchOrders />}></Route>
+            <Route path="/filter-orders" element={<FilterOrders />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/analytics" element={<Analytics />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
