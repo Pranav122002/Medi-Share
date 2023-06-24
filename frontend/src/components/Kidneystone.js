@@ -8,6 +8,7 @@ import { API_BASE_URL } from '../config';
 import { json } from 'react-router-dom';
 import Modal from 'react-modal'
 import '../css/Modal.css'
+import "../css/Generalpred.css"
 
 function Kidneystone() {
 
@@ -138,8 +139,8 @@ function Kidneystone() {
 
   useEffect(() => {
     fetchUser()
-    
-  },[])
+
+  }, [])
 
   useEffect(() => {
     if (selectedFile !== "") {
@@ -149,84 +150,92 @@ function Kidneystone() {
 
   useEffect(() => {
     fetchReport()
-  },[userID])
+  }, [userID])
 
   useEffect(() => {
-    console.log("userID",userID)
-    console.log("reports ",reports)
+    console.log("userID", userID)
+    console.log("reports ", reports)
     // console.log
   }, [reports])
-  return (
-    <div>
-      <h1>Chest X-ray Prediction</h1>
-      <Dropzone onDrop={handleDrop} accept="image/jpeg, image/png">
-        {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps({ className: 'dropzone' })}>
-            <input {...getInputProps()} />
-            <p>Drag and drop an image here or click to select an image.</p>
-          </div>
-        )}
-      </Dropzone>
-      {selectedFile && (
+  return (<>
+    <div className='generalmain'>
+      <div className='kidneymain'>
+        <h2>Kidney stone prediction</h2>
         <div>
-          <img src={URL.createObjectURL(selectedFile)} alt="Selected X-ray" />
-          <button onClick={handleSubmit}>Predict</button>
-          {prediction && 
-          <button onClick={handleSaveReport}>Save report</button>
-          }
+          <button id='traarports' onClick={handleShowReport}>Previous Reports </button>
+          <Modal
+            className="Modal__container"
+            isOpen={reportModal}
+            onRequestClose={handleCLoseModal}
+            style={{
+              overlay: {
+                zIndex: 9999
+              },
+              content: {
+                zIndex: 9999
+              }
+            }}
+          >
+            {reports.map((report, index) => {
+              return (
+                <div key={index}>
+                  <p>Report: {report._id.toString().slice(-4)}</p>
+                  <p>Result: {report.result}</p>
+                  <p>Date: {report.report_creation_date}</p>
+                  <button onClick={() => setImageModal(true)}>Image</button>
+                  <Modal
+                    className="Modal__container"
+                    isOpen={imageModal}
+                    onRequestClose={handleCloseImageModal}
+                    style={{
+                      overlay: {
+                        zIndex: 9999
+                      },
+                      content: {
+                        zIndex: 9999
+                      }
+                    }}
+                  >
+                    <img
+                      src={report.image_url}
+                      alt='Kidney X-ray'
+                    />
+                    <button onClick={() => setImageModal(false)}>Close</button>
+                  </Modal>
+                </div>
+              );
+            })}
+            <button onClick={() => setReportModal(false)}>Close</button>
+          </Modal>
         </div>
-      )}
-      {prediction && <p>Prediction: {prediction}</p>}
-      <div>
-        <button onClick={handleShowReport}>Show Reports</button>
-        <Modal
-          className="Modal__container"
-          isOpen={reportModal}
-          onRequestClose={handleCLoseModal}
-          style={{
-            overlay: {
-              zIndex: 9999
-            },
-            content: {
-              zIndex: 9999
+        <Dropzone onDrop={handleDrop} accept="image/jpeg, image/png">
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps({ className: 'dropzone' })}>
+              <input {...getInputProps()} />
+              <p id='fhysdnb'>Drag and drop an image here or click to select an image.</p>
+            </div>
+          )}
+        </Dropzone>
+        {selectedFile && (<>
+          <div className='kidneyimg'>
+            <img src={URL.createObjectURL(selectedFile)} alt="Selected X-ray" />
+
+          </div>
+          <div className='kidimgpreddac'>
+            <button onClick={handleSubmit}>Predict</button>
+            {prediction &&
+              <button id='kidimgpred' onClick={handleSaveReport}>Save report</button>
+
             }
-          }}
-        >
-          {reports.map((report, index) => {
-            return (
-              <div key={index}>
-                <p>Report: {report._id.toString().slice(-4)}</p>
-                <p>Result: {report.result}</p>
-                <p>Date: {report.report_creation_date}</p>
-                <button onClick={()=>setImageModal(true)}>Image</button>
-                <Modal
-                 className="Modal__container"
-                 isOpen={imageModal}
-                 onRequestClose={handleCloseImageModal}
-                 style={{
-                   overlay: {
-                     zIndex: 9999
-                   },
-                   content: {
-                     zIndex: 9999
-                   }
-                 }}
-                > 
-                <img
-                src={report.image_url}
-                alt='Kidney X-ray'
-                />
-                  <button onClick={()=>setImageModal(false)}>Close</button>
-                </Modal>
-              </div>
-            );
-          })}
-          <button onClick={()=>setReportModal(false)}>Close</button>
-        </Modal>
+          </div>
+        </>)}
+        {prediction ? (<div className='kidneyresult'>
+          <h2>{prediction && <p>Prediction Result: {prediction}</p>}</h2>
+        </div>):(<></>)}
+
       </div>
     </div>
-
-  );
+  </>);
 }
 
 

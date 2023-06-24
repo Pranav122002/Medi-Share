@@ -93,7 +93,151 @@
     width: 90%;
 }
 
+.kidneymain{
+    background: white;
+    width: 82vw;
+    margin-left: auto;
+    margin-right: 2vw;
+    height: max-content;
+    min-height: 40rem;
+    border-radius: 1rem;
+    padding: 0.1px;
+    padding-bottom: 5rem;
+    margin-top: 2rem;
+}
+.kidneyimg img{
+    width: max-content;
+    max-width: 90%;
+    margin: auto ;
+}
+.kidneymain h2{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    font-size: 1.7rem;
+    text-align: left;
+
+}
+#traarports{
+    float: left;
+    margin-left: 2rem;
+    border: none;
+    height: 3rem;
+    width: 10vw;
+    font-size: 1rem;
+    background:#48B0DF;
+    border-radius: 0.5rem;
+    color: white;
+
+
+}
+#traarports:hover{
+    margin-top: -0.2rem;
+}
+
+#fhysdnb{
+   width:100%;
+   margin-top: 5rem;
+}
+.kidneyimg{
+    width: 100%;
+    height: max-content;
+}
+.kidimgpreddac{
+    width: 100%;
+    height: max-content;
+}
+.kidimgpreddac button{
+    margin-left: 2rem;
+    border: none;
+    height: 3rem;
+    width: 10vw;
+    font-size: 1rem;
+    background:#48B0DF;
+    border-radius: 0.5rem;
+    color: white;
+    margin-top: 2rem;
+
+
+}
+.kidimgpreddac button:hover{
+
+   background:#21a1dc;
+
+}
+#kidimgpred{
+    
+}
+.kidneyresult{
+    width: 55vw;
+    box-shadow: 2px 2px 9px rgb(198, 198, 198);
+    margin: auto;
+    min-height:9rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    padding: 0.1px;
+    text-align: center;
+}
+.kidneyresult h2{
+    font-size: 1.4rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+.kidneyresult p{
+   text-align: center;
+}
 @media screen and (max-width: 1000px) {
+    .kidneymain{
+        background: white;
+        width: 95vw;
+        margin-left: auto;
+        margin-right: 0vw;
+        margin: auto;
+        height: max-content;
+        min-height: 40rem;
+        border-radius: 1rem;
+        padding: 0.1px;
+        padding-bottom: 5rem;
+        margin-top: 2rem;
+    }
+    .kidneyresult{
+        width: 85vw;
+        box-shadow: 2px 2px 9px rgb(198, 198, 198);
+        margin: auto;
+        min-height:9rem;
+        border-radius: 1rem;
+        margin-top: 2rem;
+        padding: 0.1px;
+        text-align: center;
+    }
+
+    #traarports{
+        float: left;
+        margin-left: 2rem;
+        border: none;
+        height: 3rem;
+        width: 30vw;
+        font-size: 1rem;
+        background:#48B0DF;
+        border-radius: 0.5rem;
+        color: white;
+      
+    }
+    #traarports:hover{
+        margin-top: -0.2rem;
+    }
+    .kidimgpreddac button{
+        margin-left: 1rem;
+        border: none;
+        height: 3rem;
+        width: 30vw;
+        font-size: 1rem;
+        background:#48B0DF;
+        border-radius: 0.5rem;
+        color: white;
+        margin-top: 2rem;
+    
+    
+    }
     .general{
       
         border-radius: 1rem;
@@ -141,5 +285,6 @@
         padding: 0.1px;
         padding-bottom: 2rem;
     }
+   
     
 }
