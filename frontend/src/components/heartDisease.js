@@ -102,13 +102,18 @@ function HeartDisease() {
             />
           </div>
           <div className="flexxx">
-            <label>Sex (1 = male; 0 = female):</label>
-            <input
+            <label>Sex :</label>
+            <select type="number" onChange={handleInputChange}  value={formData.sex} name="sex" id="">
+
+              <option value="1">male</option>
+              <option value="0">female</option>
+            </select>
+            {/* <input
               type="number"
               name="sex"
               value={formData.sex}
               onChange={handleInputChange}
-            />
+            /> */}
           </div>
           <div className="flexxx">
             <label>

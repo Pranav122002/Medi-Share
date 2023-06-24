@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../css/Generalpred.css"
 
 function GeneralPredict() {
     const [formData, setFormData] = useState({
@@ -34,32 +35,51 @@ function GeneralPredict() {
     };
 
     return (
-        <div>
-            <h1>Patient Condition Classification</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Symptoms:</label>
-                <textarea
-                    name="symptoms"
-                    value={formData.symptoms}
-                    onChange={handleInputChange}
-                ></textarea>
-                <button type="submit">Predict</button>
-            </form>
-            {condition && (
-                <div>
-                    <h2>Patient Condition: {condition}</h2>
-                    <h3>Recommended Drugs:</h3>
-                    <ul>
-                        {recommendation.map((drug) =>{
-                            console.log(drug)
-                            return(
-                            <li key={drug}>{drug}</li>
-                        )})}
-                    </ul>
+        <>
+            <div className="generalmain">
+                <div className="general">
+                    <div>
+                        <h2>Medi-Doc</h2>
+                        <p>AI based disease prediction which predicts medical condition of the user and recommends drugs based on symptoms</p>
+                    </div>
+                    <img src="./medical-robot.png" alt="" />
                 </div>
-            )}
-        </div>
-    );
+                <div className="inputgeneral">
+                    <div className="oneflex">
+                        <form onSubmit={handleSubmit}>
+                            <h2>Enter your symptoms:</h2>
+                            <textarea
+                            className="textgeneralp"
+                                name="symptoms"
+                                value={formData.symptoms}
+                                onChange={handleInputChange}
+                            ></textarea>
+                            <button type="submit">Predict</button>
+                        </form>
+                    </div>
+                    {condition ? ( condition && (<>
+                        <div className="oneflex">
+                            <h2>Predicted Medical Condition:</h2>
+                            <div id="consasda">{condition}</div>
+                        </div>
+                        <div className="oneflex">
+                            <h2>Recommended Drugs:</h2>
+                            <ul>
+                                {recommendation.map((drug) => {
+                                    console.log(drug)
+                                    return (
+                                        <li key={drug}>{drug}</li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    </>)
+                    ):(<></>)}
+                </div>
+            </div>
+
+        </>);
+
 }
 
 export default GeneralPredict;

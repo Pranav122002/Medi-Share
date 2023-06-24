@@ -30,19 +30,19 @@ function DiseasePredictions() {
           <div  className="diseaa">
             <Link to="/generalpredict"  >
               <li className="Cnavli">Medi Doc</li>
-              <img src="./brain-tunor.png" alt="" />
+              <img src="./medical-robot.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
             <Link to="/kidneystone"  >
               <li className="Cnavli">Kidney Stone</li>
-              <img src="./brain-tunor.png" alt="" />
+              <img src="./kidney-stone.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
             <Link to="/brainTumor"  >
               <li className="Cnavli">Brain Tumor</li>
-              <img src="./brain-tunor.png" alt="" />
+              <img src="./tumor.png" alt="" />
             </Link>
           </div>
           <div  className="diseaa">
@@ -60,7 +60,7 @@ function DiseasePredictions() {
           <div  className="diseaa">
             <Link to="/chatbot"  >
               <li className="Cnavli">Medi Bot</li>
-              <img src="./brain-tunor.png" alt="" />
+              <img src="./chatbot.png" alt="" />
             </Link>
           </div>
         </div>

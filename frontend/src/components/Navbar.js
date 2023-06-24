@@ -122,7 +122,7 @@ export default function Navbar(props) {
           >
             <div className="navimgspace">   <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
-              Log-Out
+              Sign out
             </li>
 
           </Link>
@@ -183,7 +183,7 @@ export default function Navbar(props) {
           >
             <div className="navimgspace">    <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
-              Log-Out
+            Sign out
             </li>
 
           </Link>
@@ -343,7 +343,7 @@ export default function Navbar(props) {
           >
             <div className="navimgspace">   <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
-              Log-Out
+            Sign out
             </li>
 
           </Link>
@@ -504,7 +504,7 @@ export default function Navbar(props) {
           >
             <div className="navimgspace">   <img className="navimg" src="./logout3.png" alt="" /></div>
             <li style={{ color: "red" }} className="navli">
-              Log-Out
+            Sign out
             </li>
 
           </Link>
