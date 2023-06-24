@@ -17,7 +17,7 @@ function Pneumonia() {
 
   const [reports, setReports] = useState([])
 
-  const [imageModal, setImageModal] = useState(false)
+  const [imageModal, setImageModal] = useState(null)
   const [reportModal, setReportModal] = useState(false)
 
   const handleDrop = (acceptedFiles) => {
@@ -52,6 +52,8 @@ function Pneumonia() {
       result: prediction
     }
     handleSaveReport(report_data, userID, setReports, report_type)
+    setSelectedFile(null)
+    setPrediction('')
   }
 
   const handleShowReport = () => {
@@ -63,7 +65,7 @@ function Pneumonia() {
     setReportModal(false)
   }
   const handleCloseImageModal = () => {
-    setImageModal(false)
+    setImageModal(null)
   }
 
 

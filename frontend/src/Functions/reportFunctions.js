@@ -60,6 +60,10 @@ const uploadImg = (selectedFile, setImgUrl) => {
         fetchReport(userID, setReports, report_type)
         console.log(res)
       })
+      .catch(err => {
+        notifyA("Unable to save report")
+        console.log(err)
+      })
   }
 
   const fetchReport = (userID, setReports, report_type) => {

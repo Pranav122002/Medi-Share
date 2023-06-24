@@ -44,7 +44,7 @@ router.post('/api/reports', async (req, res) => {
 
 //get reports based on report_type
 router.post('/api/allreports/:user_id', async (req, res) => {
-    console.log("All reports")
+    // console.log("All reports")
 
     const report_type = req.body.report_type
     try {
@@ -53,7 +53,7 @@ router.post('/api/allreports/:user_id', async (req, res) => {
             report_type: {$eq: report_type}
         })
         .sort({report_creation_date: -1})
-        console.log("reports", reports)
+        // console.log("reports", reports)
         res.json(reports);
     } catch (error) {
         res.status(500).json({ error: error.message });

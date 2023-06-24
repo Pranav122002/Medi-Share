@@ -15,7 +15,7 @@ function Braintumor() {
   const [imgUrl, setImgUrl] = useState("");
   const [userID, setUserID] = useState("");
   const [reports, setReports] = useState([])
-  const [imageModal, setImageModal] = useState(false)
+  const [imageModal, setImageModal] = useState(null)
   const [reportModal, setReportModal] = useState(false)
 
   const handleDrop = (acceptedFiles) => {
@@ -50,6 +50,8 @@ function Braintumor() {
       result: prediction
     }
     handleSaveReport(report_data, userID, setReports, report_type)
+    setSelectedFile(null)
+    setPrediction('')
   }
 
   const handleShowReport = () => {
@@ -61,7 +63,7 @@ function Braintumor() {
     setReportModal(false)
   }
   const handleCloseImageModal = () => {
-    setImageModal(false)
+    setImageModal(null)
   }
 
 

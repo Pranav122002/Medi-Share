@@ -21,7 +21,7 @@ function Kidneystone() {
   const [userID, setUserID] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [reports, setReports] = useState([])
-  const [imageModal, setImageModal] = useState(false)
+  const [imageModal, setImageModal] = useState(null)
   const [reportModal, setReportModal] = useState(false)
   const [closeReportModal, setCloseReportModal] = useState(false)
   const handleDrop = (acceptedFiles) => {
@@ -88,6 +88,8 @@ function Kidneystone() {
       .then(res => {
         notifyB("Report Saved")
         fetchReport()
+        setSelectedFile(null)
+        setPrediction('')
         console.log(res)
       })
   }
@@ -134,7 +136,7 @@ function Kidneystone() {
     setReportModal(false)
   }
   const handleCloseImageModal = () => {
-    setImageModal(false)
+    setImageModal(null)
   }
 
   useEffect(() => {
@@ -182,10 +184,10 @@ function Kidneystone() {
                   <p>Report: {report._id.toString().slice(-4)}</p>
                   <p>Result: {report.result}</p>
                   <p>Date: {report.report_creation_date}</p>
-                  <button onClick={() => setImageModal(true)}>Image</button>
+                  <button onClick={() => setImageModal(index)}>Image</button>
                   <Modal
                     className="Modal__container"
-                    isOpen={imageModal}
+                    isOpen={imageModal === index}
                     onRequestClose={handleCloseImageModal}
                     style={{
                       overlay: {
@@ -200,7 +202,7 @@ function Kidneystone() {
                       src={report.image_url}
                       alt='Kidney X-ray'
                     />
-                    <button onClick={() => setImageModal(false)}>Close</button>
+                    <button onClick={() => setImageModal(null)}>Close</button>
                   </Modal>
                 </div>
               );

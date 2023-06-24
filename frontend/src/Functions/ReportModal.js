@@ -27,13 +27,13 @@ const ReportModal = ({
       {reports.map((report, index) => {
         return (
           <div key={index}>
-            <p>Report: {report._id.toString().slice(-4)}</p>
+            <p><b>Report: {report._id.toString().slice(-4)}</b></p>
             <p>Result: {report.result}</p>
-            <p>Date: {report.report_creation_date}</p>
-            <button onClick={() => setImageModal(true)}>Image</button>
+            <p>Date: {report.report_creation_date.toString().slice(0,10)}</p>
+            <button onClick={() => setImageModal(index)}>Image</button>
             <Modal
               className="Modal__container"
-              isOpen={imageModal}
+              isOpen={imageModal === index}
               onRequestClose={handleCloseImageModal}
               style={{
                 overlay: {

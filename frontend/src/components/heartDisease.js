@@ -7,26 +7,29 @@ import { fetchUser, handleSaveReport, fetchReport } from "../Functions/reportFun
 import ReportModal from "../Functions/ReportModal";
 import Modal from 'react-modal'
 import "../css/Heartdis.css"
-
+import * as Yup from 'yup';
+import { toast } from "react-toastify";
 
 function HeartDisease() {
 
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
   const [userID, setUserID] = useState("");
   const [reports, setReports] = useState([])
   const [reportModal, setReportModal] = useState(false)
-  const [moreInfoModal, setMoreInfoModal] = useState(false)
+  const [moreInfoModal, setMoreInfoModal] = useState(null)
   const report_type = 'heartDisease'
   const [formData, setFormData] = useState({
-    age: 0,
-    sex: 0,
-    cp: 0,
-    trestbps: 0,
-    chol: 0,
-    fbs: 0,
-    restecg: 0,
-    thalach: 0,
-    exang: 0,
-    oldpeak: 0,
+    age: '0',
+    sex: '0',
+    cp: '0',
+    trestbps: '0',
+    chol: '0',
+    fbs: '0',
+    restecg: '0',
+    thalach: '0',
+    exang: '0',
+    oldpeak: '0',
   });
 
   const [prediction, setPrediction] = useState(null);
@@ -36,37 +39,69 @@ function HeartDisease() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    console.log("formData: ", formData)
-    event.preventDefault();
-    axios
-      .post("http://localhost:8000/predict2", formData)
-      .then((response) => {
-        setPrediction(response.data.prediction);
-
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const validation = await formValidation.validate({
+        age: parseInt(formData.age),
+        trestbps: parseInt(formData.trestbps),
+        chol: parseInt(formData.chol),
+        restecg: parseInt(formData.restecg),
+        thalach: parseInt(formData.thalach),
+        exang: parseInt(formData.exang),
+        oldpeak: parseInt(formData.oldpeak),
+      },
+        { abortEarly: false }
+      )
+      console.log("formData: ", formData)
+      axios
+        .post("http://localhost:8000/predict2", formData)
+        .then((response) => {
+          setPrediction(response.data.prediction);
+          notifyB("Prediction done")
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      error.inner.forEach((validationError) => {
+        notifyA(validationError.message)
       });
+    }
   };
 
   const handleSet = (report) => {
-    // setFormData({
-    //   age: report.age,
-    //   sex: report.sex,
-    //   cp: report.cp,
-    //   trestbps: report.trestbps,
-    //   chol: report.chol,
-    //   fbs: report.fbs,
-    //   restecg: report.restecg,
-    //   thalach: report.thalach,
-    //   exang: report.exang,
-    //   oldpeak: report.oldpeak,
-    // }) 
+    setFormData({
+      age: report.age,
+      sex: report.sex,
+      cp: report.cp,
+      trestbps: report.trestbps,
+      chol: report.chol,
+      fbs: report.fbs,
+      restecg: report.restecg,
+      thalach: report.thalach,
+      exang: report.exang,
+      oldpeak: report.oldpeak,
+    })
+    setReportModal(false)
   }
   const handleSave = () => {
-    setFormData({ ...formData, result: prediction, report_type: report_type, })
-    handleSaveReport(formData, userID, setReports, report_type)
+    // setFormData()
+    console.log("formdata with result : ", formData)
+    handleSaveReport({ ...formData, result: prediction, report_type: report_type, user_id: userID }, userID, setReports, report_type)
+    setFormData({
+      age: '0',
+      sex: '0',
+      cp: '0',
+      trestbps: '0',
+      chol: '0',
+      fbs: '0',
+      restecg: '0',
+      thalach: '0',
+      exang: '0',
+      oldpeak: '0',
+    })
+    setPrediction(null)
   }
 
   const handleShowReport = () => {
@@ -77,6 +112,34 @@ function HeartDisease() {
     setReportModal(false)
   }
 
+  const formValidation = Yup.object().shape({
+    age: Yup.number()
+      .min(18, 'Age must be greater than or equal to 18')
+      .required('Age is required'),
+
+    trestbps: Yup.number()
+      .min(1, 'Invalid Resting Blood Pressure ')
+      .required('Resting Blood Pressure is required'),
+
+    chol: Yup.number()
+      .min(1, 'Invalid Serum Cholesterol')
+      .required('Serum Cholesterol is required'),
+
+    restecg: Yup.number()
+      .min(1, 'Invalid Resting Electrocardiographic')
+      .required('Resting Electrocardiographic Results is required'),
+    thalach: Yup.number()
+      .min(1, 'Invalid Heart Rate')
+      .max(300, 'Invalid Heart Rate')
+      .required('Maximum Heart Rate Achieved is required'),
+
+    oldpeak: Yup.number()
+      .min(0, 'Invalid ST Depression')
+      .max(6.2, 'Invalid ST Depression')
+      .required('ST Depression Induced by Exercise Relative to Rest is required'),
+  });
+
+
   useEffect(() => {
     fetchUser(setUserID)
 
@@ -85,7 +148,8 @@ function HeartDisease() {
   useEffect(() => {
     fetchReport(userID, setReports, report_type)
     console.log(userID)
-  }, [userID])
+    console.log("formdata with result : ", formData)
+  }, [formData, userID])
 
   return (
     <>
@@ -107,17 +171,19 @@ function HeartDisease() {
                 }
               }}
             >
-              {reports.map((report, index) =>
+              {reports.map((report, index) => (
                 <div key={index}>
-                  <p>Report: {report._id.toString().slice(-4)}</p>
-                  <p>Result: {report.result}</p>
+                  <p><b>Report: {report._id.toString().slice(-4)}</b></p>
+                  <p>Result: {report.result === "1" ?
+                    "Heart Disease detected" :
+                    "Heart Disease not detected"}</p>
                   <p>Date: {report.report_creation_date}</p>
-                  <button onClick={() => setMoreInfoModal(true)}>Info</button>
+                  <button onClick={() => setMoreInfoModal(index)}>Info</button>
                   <button onClick={() => handleSet(report)}>Set</button>
                   <Modal
                     className="Modal__container"
-                    isOpen={moreInfoModal}
-                    onRequestClose={() => { setMoreInfoModal(false) }}
+                    isOpen={moreInfoModal === index}
+                    onRequestClose={() => { setMoreInfoModal(null) }}
                     style={{
                       overlay: {
                         zIndex: 9999
@@ -138,13 +204,13 @@ function HeartDisease() {
                     <p>Maximum Heart Rate Achieved: {report.thalach}</p>
                     <p>Exercise Induced Angina: {report.exang}</p>
                     <p>ST Depression Induced by Exercise Relative to Rest: {report.oldpeak}</p>
-                    <button onClick={() => { setMoreInfoModal(false) }}>Close</button>
+                    <button onClick={() => { setMoreInfoModal(null) }}>Close</button>
                   </Modal>
                 </div>
-              )}
+              ))}
               <button onClick={() => { setReportModal(false) }}>Close</button>
-
             </Modal>
+
           </div>
           <form onSubmit={handleSubmit}>
             {/* Add input fields for each feature */}
@@ -283,8 +349,8 @@ function HeartDisease() {
             </p>
 
           )}
-            {prediction &&  <button  id='kidimgp' onClick={handleSave}>Save report</button> }
-         
+          {prediction !== null && <button id='kidimgp' onClick={handleSave}>Save report</button>}
+
 
         </div>
       </div>
