@@ -330,8 +330,8 @@
   
 }
 #sdcaseca{
-   word-break: break-all;
-   white-space: normal;
+   overflow: hidden;
+   text-overflow: ellipsis;
    line-height: 1.2rem;
    width: 20rem;
    padding: 1rem;

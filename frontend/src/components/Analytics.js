@@ -77,7 +77,7 @@ export default function Analytics() {
       counts[role] = (counts[role] || 0) + 1;
       return counts;
     }, {});
-  
+
     const chartData = {
       labels: Object.keys(roleCounts),
       datasets: [
@@ -92,13 +92,13 @@ export default function Analytics() {
         },
       ],
     };
-  
+
     Chart.register(CategoryScale, LinearScale, BarController, BarElement);
-  
+
     if (barChartUserRef.current) {
       barChartUserRef.current.destroy();
     }
-  
+
     const ctx = document.getElementById("userRoleChart").getContext("2d");
     barChartUserRef.current = new Chart(ctx, {
       type: "bar",
@@ -126,7 +126,7 @@ export default function Analytics() {
       },
     });
   }
-  
+
 
   function createBarChart() {
     const orderTypes = allOrders.map((order) => order.order_type);
@@ -249,48 +249,60 @@ export default function Analytics() {
     setChartData(chartData); // Update chartData state
   }
 
-  return (
-    <div className="charts">
-      <div className="barchart">
-        <canvas id="userRoleChart"></canvas>
-      </div>
+  return (<>
+    <div className="chartsmain">
+      <div className="chartsbody">
+        <div className="charts">
+          <div className="pies">
+            <div className="piechart">
+              <canvas id="medicinePieChart"></canvas>
+            </div>
+            <div className="tablemain">
+              {chartData && (
+                <div className="table" id="hbasihofsd">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Medicine</th>
+                        <th>Color</th>
+                        <th>Count</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {allOrderMedicines.map((medicine, index) => (
+                        <tr key={index}>
+                          <td>{medicine.medicine_name}</td>
+                          <td>
+                            <span
+                              className="color-box"
+                              style={{
+                                backgroundColor:
+                                  chartData.datasets[0].backgroundColor[index],
+                              }}
+                            ></span>
+                          </td>
+                          <td>{medicine.count}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
 
-      <div className="barchart">
-        <canvas id="orderTypeChart"></canvas>
-      </div>
-      <div className="piechart">
-        <canvas id="medicinePieChart"></canvas>
-      </div>
-      {chartData && (
-        <div className="table">
-          <table>
-            <thead>
-              <tr>
-                <th>Medicine</th>
-                <th>Color</th>
-                <th>Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allOrderMedicines.map((medicine, index) => (
-                <tr key={index}>
-                  <td>{medicine.medicine_name}</td>
-                  <td>
-                    <span
-                      className="color-box"
-                      style={{
-                        backgroundColor:
-                          chartData.datasets[0].backgroundColor[index],
-                      }}
-                    ></span>
-                  </td>
-                  <td>{medicine.count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              )}
+            </div>
+          </div>
+          <div className="bars">
+            <div className="barchart">
+              <canvas id="userRoleChart"></canvas>
+            </div>
+
+            <div className="barchart">
+              <canvas id="orderTypeChart"></canvas>
+            </div>
+          </div>
+
         </div>
-      )}
+      </div>
     </div>
-  );
+  </>);
 }
