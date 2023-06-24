@@ -182,7 +182,7 @@ export default function UserProfile({ id }) {
 
           <p className="pdflex">
             <div>Verification: {user.doctor_details.verification}</div>
-            <div>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
+            {user.doctor_details.verification.toString() === "unverified" && (<>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
               <div className="verifybut">
                 <button
                   onClick={() => {
@@ -192,7 +192,10 @@ export default function UserProfile({ id }) {
                   Verify
                 </button>
               </div>
-            )}</div>
+            )}
+
+            </>)}
+
           </p>
           <p>Fees: {user.doctor_details.fees}</p>
           <p>Qualification: {user.doctor_details.qualification}</p>
@@ -213,34 +216,36 @@ export default function UserProfile({ id }) {
           </div>
           </p>
           <p>
-          <h1 id="afscsrc">Feedbacks</h1>
-          {appointmentRatingsFeedbacks.map((appointment) => (<>
-           
+            <h1 id="afscsrc">Feedbacks</h1>
+            {appointmentRatingsFeedbacks.map((appointment) => (<>
+
               <li key={appointment._id}>
-              <div className="dgafsasfsac">
-                <p>Rating: {appointment.rating}</p>
-                <p>Feedback: {appointment.feedback}</p>
+                <div className="dgafsasfsac">
+                  <p>Rating: {appointment.rating}</p>
+                  <p>Feedback: {appointment.feedback}</p>
                 </div>
               </li>
-           
-          </>))}
+
+            </>))}
           </p>
         </>)}
         {user.role === "volunteer" && (
           <div>
             <p className="pdflex">
               <div>Verification: {user.volunteer_details.verification}</div>
-              <div>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
-                <div className="verifybut">
-                  <button
-                    onClick={() => {
-                      verifyUser();
-                    }}
-                  >
-                    Verify
-                  </button>
-                </div>
-              )}</div>
+              {user.volunteer_details.verification.toString() === "unverified" && (<>{JSON.parse(localStorage.getItem("user")).role === "admin" && (
+              <div className="verifybut">
+                <button
+                  onClick={() => {
+                    verifyUser();
+                  }}
+                >
+                  Verify
+                </button>
+              </div>
+            )}
+
+            </>)}
             </p>
             <p>Qualification: {user.volunteer_details.qualification}</p>
             <p>Available: {user.volunteer_details.available}</p>

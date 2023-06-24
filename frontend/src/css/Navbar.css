@@ -238,7 +238,7 @@ ul {
 }
 
 ul .navimg{
-  height: 1.5vw;
+  height: 1.6vw;
   margin-top: auto;
   margin-bottom: auto;
   padding-right: 0.5rem;
@@ -271,8 +271,8 @@ a:hover{
 
 a:hover .navimg{
   
-  height: 2.2rem;
-  transform: rotate(2deg);
+ 
+  transform: rotate(1deg);
 
 }
 
