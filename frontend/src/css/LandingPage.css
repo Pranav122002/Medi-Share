@@ -315,13 +315,27 @@
    margin: 0;
    padding: 0;
    margin-left: 2rem;
-  
+   
    min-height: 0px;
    height: max-content  ;
+   
 }
 .fbac .bord h3{
    width: 20rem;
-   
+   word-break: break-all;
+  white-space: normal;
+  line-height: 1.2rem;
+  padding: 1rem;
+  background: white;
+  
+}
+#sdcaseca{
+   word-break: break-all;
+   white-space: normal;
+   line-height: 1.2rem;
+   width: 20rem;
+   padding: 1rem;
+   background: white;   
 }
 .fbac h1{
    color: #64b6cb;
@@ -331,7 +345,9 @@
 
 .fbac{
    background-color: rgb(233, 246, 255);
-   height: 30rem;
+   min-height: 30rem;
+   height: max-content;
+   padding-bottom: 5rem;
    margin: auto;
    position: relative;
    width: 100vw;

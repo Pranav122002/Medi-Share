@@ -11,3 +11,23 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
+
+  h2 {
+    margin-left: 2rem;
+    font-size: 2rem;
+}
+.card {
+  max-width: 500px;
+  height: max-content;
+  margin: 25px auto;
+  border:none;
+  border-radius: 5px;
+}
+#title{
+  font-size: 1.7rem;
+  text-align: left;
+}
+.content-details{
+  font-size: 1.7rem;
+  text-align: left;
+}

@@ -7,3 +7,8 @@ backend\.env
 *.csv
 *.h5
 *.
+
+
+xray-chest.h5
+BrainTumor.h5
+heartmodel_updated.pkl

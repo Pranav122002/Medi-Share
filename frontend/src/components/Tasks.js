@@ -28,7 +28,7 @@ export default function Tasks() {
   const [user, setUser] = useState("");
   const [volunteersList, setVolunteersList] = useState([]);
   const [selectedVolunteer, setSelectedVolunteer] = useState("");
-
+  const [chats , viewChats] = useState(false);
   const [sug, showsug] = useState(!false);
 
   const handleShowsug = () => {
@@ -135,7 +135,8 @@ export default function Tasks() {
 
   const fetchMyTasks = () => {
     fetch(
-      `${API_BASE_URL}/my-tasks/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/my-tasks/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         headers: {
@@ -213,23 +214,25 @@ export default function Tasks() {
         <div className="admincard">
           <Card className="Card" key={index}>
             <Card.Body>
-              <p><Card.Title id="title">{card.volunteer_name}</Card.Title></p>
+              <p>
+                <span className="content-detai">Volunteer :</span>{card.volunteer_name}
+              </p>
 
               <p>
-                <div className="content-details">Task Info:</div>
-                {card.task_info}
+                <span id="fjcnuend" className="content-detai">Task Info :</span>
+                <span id="ndanisda">{card.task_info}</span>
                 <br />
               </p>
               <p>
-                <div className="content-details">Deadline:</div>
+                <span className="content-detai">Deadline :</span>
                 {card.deadline}
                 <br />
               </p>
-
             </Card.Body>
-            <hr />
+            <hr id="nmsadaca" />
           </Card>
-        </div>  </>
+        </div>{" "}
+      </>
     );
   };
 
@@ -239,10 +242,13 @@ export default function Tasks() {
         {isAdmin ? (
           <div>
             <div className="donate">
-              <div data-aos="zoom-in" className="donateForm">
+           
+              <div className={`donateForm ${chats && "active"}`}>
+              <img onClick={()=> { viewChats(false)}} id="dadcae" src="./back.png" alt="" />
                 <div className="logo">
                   <h1>Assign Task</h1>
                 </div>
+                
                 <div>
                   <input
                     type="text"
@@ -300,34 +306,31 @@ export default function Tasks() {
                 </button>
               </div>
 
-              <div data-aos="zoom-in" className="donateForm">
+              <div className="donateForr">
                 <div className="logo">
-                  <h1>Volunteer List</h1>
+                  <h1>Select Volunteer</h1>
                 </div>
 
                 <div className="agasadsa">
                   {volunteersList.map((volunteer) => (
                     <li key={volunteer._id}>
-                      <p
-                       
-                      >
-
-                      
-                        {volunteer.name}
-                      </p>
-                      <button  onClick={() => {
+                      <p>{volunteer.name}</p>
+                      <button
+                        onClick={() => {
+                          
                           setSelectedVolunteer(volunteer);
-                        }}>Select</button>
-
+                          viewChats("active");
+                        }}
+                      >
+                        Select
+                      </button>
                     </li>
                   ))}
                 </div>
               </div>
             </div>
 
-
             <div className="allCardss">
-
               <div className="OCards">
                 <h2>Tasks Assigned</h2>
                 <div className="headd">
@@ -350,7 +353,7 @@ export default function Tasks() {
                 <div className="OCards">
                   <div className="headd">
                     <div className="heading">
-                      <p className="headp">Volunteer Name</p>
+                      <p className="headp">Name</p>
                       <p className="headp">Task Info</p>
                       <p className="headp">Deadline</p>
                       <p className="headp">Action</p>
@@ -360,55 +363,82 @@ export default function Tasks() {
                   </div>
                   <hr id="mainsec" />
 
-                  {myTasks.map((task) => (<>
-                    <li key={task._id}>
-
-                      <p ><span className="tasksapnli">Volunteer Name :</span> {task.volunteer_name}</p>
-                      <p ><span className="tasksapnli">Task Info :</span><span id="adfasda">{task.task_info}</span> </p>
-                      <p ><span className="tasksapnli">Deadline :</span>{task.deadline}</p>
-                      {task.status === "pending" ? (
-                        <>
-                          <p >
-                          <span className="tasksapnli">Action :</span>
-                            <button
-                              onClick={() => {
-                                acceptTask(task._id);
-                              }}
-                            >
-                              Accept
-                            </button>
-                            <button
-                              onClick={() => {
-                                rejectTask(task._id);
-                              }}
-                            >
-                              Reject
-                            </button>
+                  {myTasks.map((task) => (
+                    <>
+                      <li key={task._id}>
+                        <p>
+                          <span className="tasksapnli">Name :</span>{" "}
+                          {task.volunteer_name}
+                        </p>
+                        <p>
+                          <span id="fbuybcsa" className="tasksapnli">Task Info :</span>
+                          <span id="adfasda">{task.task_info}</span>{" "}
+                        </p>
+                        <p>
+                          <span className="tasksapnli">Deadline :</span>
+                          {task.deadline}
+                        </p>
+                        {task.status === "pending" ? (
+                          <>
+                            <p>
+                              <span className="tasksapnli">Action :</span>
+                              <button
+                                onClick={() => {
+                                  acceptTask(task._id);
+                                }}
+                              >
+                                Accept
+                              </button>
+                              <button
+                                onClick={() => {
+                                  rejectTask(task._id);
+                                }}
+                              >
+                                Reject
+                              </button>
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p>
+                              <span className="tasksapnli">Status :</span>
+                              {task.status}
+                            </p>
+                          </>
+                        )}
+                        {task.completion === false ? (
+                          <>
+                            <p>
+                              {" "}
+                              <span className="tasksapnli">Task Status :</span>
+                              Not Completed
+                            </p>{" "}
+                            <p>
+                              <span className="tasksapnli">Task :</span>
+                              {task.status === "accepted" ? (
+                                <button
+                                  id="markbut"
+                                  onClick={() => {
+                                    completeTask(task._id);
+                                  }}
+                                >
+                                  Mark as Completed
+                                </button>
+                              ) : (
+                                <>-</>
+                              )}
+                            </p>
+                          </>
+                        ) : (
+                          <p>
+                            <span className="tasksapnli">Task status :</span>
+                            Completed
                           </p>
-                        </>
-                      ) : (
-                        <>
-                          <p ><span className="tasksapnli">Status :</span>{task.status}</p>
-                        </>
-                      )}
-                      {task.completion === false ? (
-                        <>
-                          <p > <span className="tasksapnli">Task Status :</span>Not Completed</p>{" "}
-                          <p><span className="tasksapnli">Task :</span><button id="markbut"
-                            onClick={() => {
-                              completeTask(task._id);
-                            }}
-                          >
-                            Mark as Completed
-                          </button>{" "}
-                          </p>
-                        </>
-                      ) : (
-                        <p ><span className="tasksapnli">Task status :</span>Completed</p>
-                      )}
-                    </li>
-                    <hr id="midsec" />
-                  </>))}
+                        )}
+                      </li>
+                      <hr id="midsec" />
+                    </>
+                  ))}
                 </div>
               </div>
             </div>

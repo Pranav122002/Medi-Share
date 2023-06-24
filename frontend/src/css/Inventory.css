@@ -283,7 +283,11 @@
   width: max-content;
 
 }
-
+#feedtextd{
+    width: 100%;
+    min-height: 5rem;
+    height: max-content;
+}
 .Modal__container ul {
   list-style: none;
   padding: 0;
@@ -436,4 +440,6 @@
   width: 95%;
   margin-bottom: 10px;
 }
+
+
 }

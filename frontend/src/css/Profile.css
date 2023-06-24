@@ -267,7 +267,22 @@
   width: 90%;
   margin: auto;
 }
+.procont .proco p .burst {
+  background: rgb(86, 255, 210);
+  border: none;
+  height: 3rem;
+  width:7vw;
+  margin-top: 0.5rem;
+  font-size: 0.8vw;
+  box-shadow: 2px 2px 9px rgb(211, 211, 211);
+  font-weight: 700;
+  border-radius: 0.5rem;
 
+
+}
+.procont .proco p .burst:hover{
+  width:8vw;
+}
 .subbut {
   background: rgb(255, 102, 0);
   border: none;
@@ -319,6 +334,17 @@
   width: 80%;
   padding-left: 10vw;
 
+}
+#burstes {
+  background: rgb(86, 255, 210);
+  border: none;
+  height: 3rem;
+  width: 7vw;
+  margin-top: 0.5rem;
+  font-size: 0.8vw;
+  box-shadow: 2px 2px 9px rgb(211, 211, 211);
+  font-weight: 700;
+  border-radius: 0.5rem;
 }
 
 #clossss {
@@ -582,6 +608,7 @@
     text-align: left;
     word-break: break-all;
     white-space: normal;
+    display: inline-block;
 
 
   }
@@ -591,7 +618,17 @@
     white-space: normal;
 
   }
+  #dasdacaw{
+    word-break: break-all;
+    white-space: normal;
+    display: inline-block;
+    width: 50%;
+    margin-left: 40%;
+  }
 
+  #casedc{
+    position: absolute;
+  }
   .profdonspan {
     display: inline-block;
     margin-left: 2rem;
@@ -605,6 +642,7 @@
   .profdonspa {
     display: inline-block;
     width: 35%;
+    margin-left: 40%;
   }
 
   .procont .proco p .burst {
@@ -672,5 +710,16 @@
   font-weight: 700;
   font-size: 0.8rem;
 }
-
+#burstes {
+  background: rgb(86, 255, 210);
+  border: none;
+  height: 3rem;
+  width: 25vw;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  box-shadow: 2px 2px 9px rgb(211, 211, 211);
+  font-weight: 700;
+  border-radius: 0.5rem;
 }
+} 
+

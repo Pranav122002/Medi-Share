@@ -633,54 +633,58 @@ export default function Profile() {
                         <p className="pm"><span className="profdonspan">Order ID :</span>{donateorders._id.toString().slice(-4)}</p>
                         {/* <p className="p1">{donateorders.expiry_date} </p> */}
                         <p className="p2"><span className="profdonspan">Quantity :</span>{donateorders.no_of_medicines}</p>
-                        <p className="p3"> <span className="profdonspan">Location :</span>{donateorders?.location?.location}</p>
+                        <p className="p3"><span id="casedc" className="profdonspan">Location :</span><span id="dasdacaw">{donateorders?.location?.location}</span></p>
                         {
                           donateorders.acceptance_status === "accepted" && donateorders.verify_status === false ? (
                             <p><span className="profdonspan">Status :</span>Volunter is assigned</p>
                           ) : donateorders.acceptance_status === "pending" ? (
                             <p><span className="profdonspan">Status :</span>Pending</p>
-                          ) : (
-                            <>
-                              <p>
-                                <div className="asfasfa">
-                                  {console.log(donateorders.feedback)}
-                                  <span className="profdonspan" >Status :</span>Medicines collected
-                                  {
-                                    !donateorders.feedback.feedback && (
-                                      <>
-                                        <button className="burst" onClick={() => handleFeedback()}>Feedback</button>
-                                        <Modal
-                                          className="Modal__container"
-                                          onRequestClose={() => setFeedbackIsOpen(false)}
-                                          isOpen={feedbackIsOpen}
-                                          style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
-                                        >
-                                          <ReactStars
-                                            count={5}
-                                            onChange={handleStarRating}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                          />
-                                          <textarea
-                                            placeholder="Feedback"
-                                            onChange={handleFeedbackText}
-                                          />
-                                          <button onClick={() => sendFeedback(donateorders._id)}>submit</button>
-                                          <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
-                                        </Modal>
-                                      </>
-                                    )
-                                  }
+                          ) : (<><p>
+                            <div className="asfasfa">
+                              {console.log(donateorders.feedback)}
+                              <span className="profdonspan" >Status :</span>Medicines collected
+                              {
+                                !donateorders.feedback.feedback && (
+                                  <>
+                                    <button className="burst" onClick={() => handleFeedback()}>Give Feedback</button>
+                                    <Modal
+                                      className="Modal__container"
+                                      onRequestClose={() => setFeedbackIsOpen(false)}
+                                      isOpen={feedbackIsOpen}
+                                      style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
+                                    >
+                                      <ReactStars
+                                        className="Modal__containe"
+                                        count={5}
+                                        onChange={handleStarRating}
+                                        size={24}
+                                        activeColor="#ffd700"
+                                      />
+                                      <textarea
+                                        id="feedtextd"
+                                        placeholder="Feedback"
+                                        onChange={handleFeedbackText}
+                                      />
+                                      <button onClick={() => sendFeedback(donateorders._id)}>submit</button>
+                                      <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
+                                    </Modal>
+                                  </>
+                                )
+                              }
 
                                 </div>
                               </p>
                             </>)
                         }
-                        <Button
+                        <p >
+                        <span className="profdonspan">Details :</span>
+                        <button
+                         id="burstes"
                           onClick={() => viewMedicine(donateorders)}
                         >
                           Details
-                        </Button>
+                        </button>
+                        </p>
                         <ViewMedModal
                           viewMedModalIsOpen={viewMedModalIsOpen}
                           selectOrder={selectOrder}
@@ -717,7 +721,7 @@ export default function Profile() {
                       <p className="pm"><span className="profdonspan">Order ID :</span> {requestorders._id.toString().slice(-4)}</p>
                       {/* <p className="p1"> {requestorders.expiry_date}</p> */}
                       <p className="p2"><span className="profdonspan">Quantity :</span> {requestorders.no_of_medicines}</p>
-                      <p className="p3"><span className="profdonspan">Location :</span>{requestorders.location.location}</p>
+                   <p className="p3"><span id="casedc" className="profdonspan">Location :</span><span id="dasdacaw">{requestorders.location?.location}</span></p>
                       {
                         requestorders.acceptance_status === "accepted" && requestorders.verify_status === false ? (
                           <p><span className="profdonspan">Status :</span>Volunter is assigned</p>
@@ -729,12 +733,11 @@ export default function Profile() {
 
                               <div className="">
                                 {console.log(requestorders.feedback)}
-                                <span className="profdonspan">Status :</span>Medicines Delivered
+                                <span className="profdonspan">Status :</span>Medicines collected
                                 {
                                   requestorders.feedback.feedback === null && (
                                     <>
-                                      <br />
-                                      <button className="burst"  onClick={() => handleFeedback()}>Feedback</button>
+                                      <button className="burst" onClick={() => handleFeedback()}>Give Feedback</button>
                                       <Modal
                                         className="Modal__container"
                                         onRequestClose={() => setFeedbackIsOpen(false)}
@@ -762,16 +765,20 @@ export default function Profile() {
                             </p>
                           </>)
                       }
-                      <Button
+                      <p>
+                      <span className="profdonspan">Details :</span>
+                        <button id="burstes"
                           onClick={() => viewMedicine(requestorders)}
                         >
                           Details
-                        </Button>
+                        </button>
+                        </p>
                         <ViewMedModal
                           viewMedModalIsOpen={viewMedModalIsOpen}
                           selectOrder={selectOrder}
                           closeViewMedModal={closeViewMedModal}
                         />
+                       
                     </li>
                   ))}
                 </div>
@@ -820,10 +827,10 @@ export default function Profile() {
                         )}
                         <p className="p1">
                           
-                          <span className="profdonspan">Link :</span><span className="profdonspa">{doctorappointments.appointment_link?(<>{doctorappointments.appointment_link}</>):(<>-</>)}</span>
+                          <span  id="casedc"  className="profdonspan">Link :</span><span className="profdonspa">{doctorappointments.appointment_link?(<>{doctorappointments.appointment_link}</>):(<>-</>)}</span>
                         </p>
                         <p className="p1"><span className="profdonspan">Rating :</span> {doctorappointments.rating}</p>
-                        <p className="p1"><span className="profdonspan">Feedback :</span><span className="profdonspa">{doctorappointments.feedback}</span> </p>
+                        <p className="p1"><span id="casedc"  className="profdonspan">Feedback :</span><span className="profdonspa">{doctorappointments.feedback}</span> </p>
                       </li>
                     ))}
                   </div>
@@ -870,12 +877,12 @@ export default function Profile() {
                           <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
                         )}
                         <p className="p2">
-                        <span className="profdonspan">Link :</span><span className="profdonspa">{patientappointments.appointment_link ?(<>{patientappointments.appointment_link}</>):(<>-</>)}</span>
+                        <span  id="casedc"  className="profdonspan">Link :</span><span className="profdonspa">{patientappointments.appointment_link ?(<>{patientappointments.appointment_link}</>):(<>-</>)}</span>
                         </p>
 
                         <p className="p2"><span className="profdonspan">Rating :</span> {patientappointments.rating ?(<>{patientappointments.rating}</>):(<>-</>)}</p>
 
-                        <p className="p2"><span className="profdonspan">Feedback :</span ><span className="profdonspa">{patientappointments.feedback ?(<>{patientappointments.feedback}</>):(<>-</>)}</span> </p>
+                        <p className="p2"><span id="casedc" className="profdonspan">Feedback :</span ><span className="profdonspa">{patientappointments.feedback ?(<>{patientappointments.feedback}</>):(<>-</>)}</span> </p>
                       </li>
                     ))}
                   </div>

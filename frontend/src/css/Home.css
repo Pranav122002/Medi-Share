@@ -155,7 +155,16 @@
   display: flex;
   flex-direction: column;
 }
-
+.homeeee .Lcontent .banner1 .img #wacdase img{
+  margin-top: 1rem;
+  width: 42rem;
+  transform: rotate(90deg);
+  position: relative;
+  z-index: 2;
+}
+.homeeee .Lcontent .banner1 .img .curve2 img{
+    margin-top: -6rem;
+}
 .comment-section {
   flex-grow: 4;
   text-align: left;
