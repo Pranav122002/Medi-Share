@@ -303,7 +303,7 @@ export default function Inventory() {
                     <h3 style={{ color: "black" }}> {item.medicine_name}</h3>
                     <p className="p1">{item.description}</p>
                     <p className="p2" style={{ color: "black" }}>{item.disease}</p>
-                    <p className="p1">
+                    <p id="d2sdvyuaca" className="p1">
                       {item.count <= 0 ? <p>Out of Stock</p> :
 
                         <>{item.count <= 10 ? <> 
