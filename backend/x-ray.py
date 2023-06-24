@@ -84,29 +84,22 @@ async def predict(file: UploadFile = File(...)):
     contents = await file.read()
     image = Image.open(io.BytesIO(contents))
     
+    # Convert image to RGB format
+    image = image.convert("RGB")
+    
     image = image.resize((240, 240))
     image_array = np.array(image)
     image_array = crop_brain_contour(image_array, plot=False)
-    image_array = cv2.resize(image_array,(240, 240))
-    image_array = image_array/255
-    image_array = np.expand_dims(image_array , axis=0)
+    image_array = cv2.resize(image_array, (240, 240))
+    image_array = image_array / 255
+    image_array = np.expand_dims(image_array, axis=0)
     
-    
-         # add an extra dimension for the channels
     prediction = (model2.predict(image_array)[0][0] > 0.5).astype("int32")
-    prediction = model2.predict(image_array)[0]
-    print(prediction)
-    predicted_class = 0
-    if prediction>0.5:
-        predicted_class = 1
-    else:
-        predicted_class = 0
+    predicted_class = 0 if prediction > 0.5 else 1
     
-
     classes = ['Normal', 'Tumor']
 
     return {'prediction': classes[predicted_class]}
-
 
 class HeartDiseaseData(BaseModel):
     age: int
@@ -157,7 +150,7 @@ async def predict(file: UploadFile = File(...)):
         predicted_class = 0
     
 
-    classes = ['Normal', 'Stone']
+    classes = ['No kidney stone detected.', 'You have a kidney stone.']
 
     return {'prediction': classes[predicted_class]}
 

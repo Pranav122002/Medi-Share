@@ -33,7 +33,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AboutUs } from "./components/AboutUs";
 import { UserProvider } from "./components/UserContext";
-
+import Kidneystone from "./components/Kidneystone";
+import GeneralPredict from "./components/GeneralPredict"
+import Chatbot from "./components/Chatbot"
 function App() {
   
   const [showvNavbar , setShowvNavbar] = useState(false);
@@ -80,6 +82,9 @@ function App() {
             <Route path="/Pneumonia" element={<Pneumonia />}></Route>
             <Route path="/heartDisease" element={<HeartDisease />}></Route>
             <Route path="/subscribe" element={<Subscribe />}></Route>
+            <Route path="/kidneystone" element={<Kidneystone />}></Route>
+            <Route path="/chatbot" element={<Chatbot />}></Route>
+            <Route path="/generalpredict" element={<GeneralPredict />}></Route>
           </Routes>
           <ToastContainer theme="light" />
         </div>

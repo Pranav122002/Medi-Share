@@ -40,6 +40,12 @@ function DiseasePredictions() {
             </Link>
           </div>
           <div  className="diseaa">
+            <Link to="/brainTumor"  >
+              <li className="Cnavli">Brain Tumor</li>
+              <img src="./brain-tunor.png" alt="" />
+            </Link>
+          </div>
+          <div  className="diseaa">
             <Link to="/Pneumonia" >
               <li className="Cnavli">Pnuemonia</li>
               <img src="./pneumonia1.png" alt="" />

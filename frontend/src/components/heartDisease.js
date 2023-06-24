@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/Dis.css";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
+import { fetchUser, handleSaveReport, fetchReport } from "../Functions/reportFunctions"
+import ReportModal from "../Functions/ReportModal";
+import Modal from 'react-modal'
 
 function HeartDisease() {
+
+  const [userID, setUserID] = useState("");
+  const [reports, setReports] = useState([])
+  const [reportModal, setReportModal] = useState(false)
+  const [moreInfoModal, setMoreInfoModal] = useState(false)
+  const report_type = 'heartDisease'
   const [formData, setFormData] = useState({
     age: 0,
     sex: 0,
@@ -26,16 +35,55 @@ function HeartDisease() {
   };
 
   const handleSubmit = (event) => {
+    console.log("formData: ", formData)
     event.preventDefault();
     axios
       .post("http://localhost:8000/predict2", formData)
       .then((response) => {
         setPrediction(response.data.prediction);
+
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const handleSet = (report) => {
+    // setFormData({
+    //   age: report.age,
+    //   sex: report.sex,
+    //   cp: report.cp,
+    //   trestbps: report.trestbps,
+    //   chol: report.chol,
+    //   fbs: report.fbs,
+    //   restecg: report.restecg,
+    //   thalach: report.thalach,
+    //   exang: report.exang,
+    //   oldpeak: report.oldpeak,
+    // }) 
+  }
+  const handleSave = () => {
+    setFormData({ ...formData, result: prediction, report_type: report_type, })
+    handleSaveReport(formData, userID, setReports, report_type)
+  }
+
+  const handleShowReport = () => {
+    setReportModal(true)
+  }
+
+  const handleCLoseModal = () => {
+    setReportModal(false)
+  }
+
+  useEffect(() => {
+    fetchUser(setUserID)
+
+  }, [])
+
+  useEffect(() => {
+    fetchReport(userID, setReports, report_type)
+    console.log(userID)
+  }, [userID])
 
   return (
     <>
@@ -152,8 +200,61 @@ function HeartDisease() {
           <p>
             Prediction:{" "}
             {prediction === 1 ? "Heart Disease" : "No Heart Disease"}
+            <button onClick={handleSave}>Save report</button>
           </p>
         )}
+        <button onClick={handleShowReport}>Show Reports</button>
+        <Modal
+          className="Modal__container"
+          isOpen={reportModal}
+          onRequestClose={() => { setReportModal(false) }}
+          style={{
+            overlay: {
+              zIndex: 9999
+            },
+            content: {
+              zIndex: 9999
+            }
+          }}
+        >
+          {reports.map((report, index) =>
+            <div key={index}>
+              <p>Report: {report._id.toString().slice(-4)}</p>
+              <p>Result: {report.result}</p>
+              <p>Date: {report.report_creation_date}</p>
+              <button onClick={() => setMoreInfoModal(true)}>Info</button>
+              <button onClick={() => handleSet(report)}>Set</button>
+              <Modal
+                className="Modal__container"
+                isOpen={moreInfoModal}
+                onRequestClose={() => { setMoreInfoModal(false) }}
+                style={{
+                  overlay: {
+                    zIndex: 9999
+                  },
+                  content: {
+                    zIndex: 9999
+                  }
+                }}
+              >
+                <h2>Heart Disease Report</h2>
+                <p>Age: {report.age}</p>
+                <p>Sex: {report.sex}</p>
+                <p>Chest Pain Type: {report.cp}</p>
+                <p>Resting Blood Pressure: {report.trestbps}</p>
+                <p>Serum Cholesterol: {report.chol}</p>
+                <p>Fasting Blood Sugar: {report.fbs}</p>
+                <p>Resting Electrocardiographic Results: {report.restecg}</p>
+                <p>Maximum Heart Rate Achieved: {report.thalach}</p>
+                <p>Exercise Induced Angina: {report.exang}</p>
+                <p>ST Depression Induced by Exercise Relative to Rest: {report.oldpeak}</p>
+                <button onClick={() => { setMoreInfoModal(false) }}>Close</button>
+              </Modal>
+            </div>
+          )}
+          <button onClick={() => { setReportModal(false) }}>Close</button>
+
+        </Modal>
       </div>
     </>
   );

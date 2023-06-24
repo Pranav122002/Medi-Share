@@ -3,3 +3,7 @@ dev.js
 gce.json
 .env
 backend\.env
+*.pkl
+*.csv
+*.h5
+*.

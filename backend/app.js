@@ -20,7 +20,7 @@ require("./models/medicine");
 require("./models/order");
 require("./models/task");
 require("./models/user");
-
+require("./models/report")
 
 app.use(require("./routes/annoucement"));
 app.use(require("./routes/appointment"));
@@ -31,6 +31,7 @@ app.use(require("./routes/order"));
 app.use(require("./routes/task"));
 app.use(require("./routes/user"));
 app.use(require("./routes/volunteer"))
+app.use(require("./routes/report"))
 
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
