@@ -434,8 +434,7 @@ router.put("/api/verify-request-order/:order_id", (req, res) => {
     { new: true }
   )
     .then((doc) => {
-      res.json("Order Verified successfully and now will be Donated.");
-      res.json("Order Verified successfully and now will be Donated...");
+      res.json("Order Verified successfully.");
     })
     .catch((err) => {
       console.error(err);

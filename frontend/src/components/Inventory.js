@@ -10,8 +10,10 @@ import { API_BASE_URL } from "../config";
 import "../css/Modal.css";
 import geocode from "./geocodeFun";
 import * as Yup from "yup";
+import googleGeocode from "./googleGeocode"
 
 export default function Inventory() {
+
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
@@ -20,12 +22,12 @@ export default function Inventory() {
   const [searchResult, setSearchResult] = useState([]);
   const [cart, setCart] = useState([]);
   const [selectMedicine, setSelectMedicine] = useState(null);
-  const [medCount, setMedCount] = useState(1);
+  const [totalMedCount, setTotalMedCount] = useState(0);
   const [cartModal, setCartModal] = useState(false);
   const [userID, setUserID] = useState("");
   const [location, setLocation] = useState("");
   const [coordinates, setCoordinates] = useState(null);
-
+  const [reset_date, set_reset_date] = useState('')
   // Future update:
   //
   const addToCart = (item) => {
@@ -104,6 +106,8 @@ export default function Inventory() {
       .then((res) => res.json())
       .then((result) => {
         setUserID(result._id);
+        set_reset_date(result.reset_date)
+        setTotalMedCount(result?.medicine_request_limit)
         setCart(result.cart);
       });
   };
@@ -124,27 +128,50 @@ export default function Inventory() {
   };
 
   const checkout = () => {
+
     Promise.all(
       cart.map((med) => {
-        return quantityValidation
+        return (quantityValidation
           .validate({ quantity: med.quantity }, { abortEarly: false })
-          .then((res) => {})
+          .then((res) => { })
           .catch((err) => {
-            notifyA(`${med.medicine_name} ${err.message}`);
+            notifyA(`${med.medicine_name}:  ${err.message}`);
             throw err;
-          });
+          }))
       })
     )
-      .then(() => {
-        return geocode(location);
-      })
-      .then((coordinates_) => {
-        setCoordinates(coordinates_);
+      .then(async () => {
+        await locationValidation.validate(
+          { location: location },
+          { abortEarly: false })
+          .catch(err => {
+            notifyA(err.message)
+            throw err
+          })
+        console.log("totalcoutn")
 
-        return locationValidation.validate({ location }, { abortEarly: false });
+        console.log("for Each : ", totalMedCount)
+        return googleGeocode(location);
       })
-      .then((location_val) => {
-        return fetch(`${API_BASE_URL}/medicine-availablity`, {
+      .then(async (coordinates_) => {
+        setCoordinates(coordinates_)
+
+      })
+      .then(async () => {
+        // var total = 0
+
+      })
+      .then(async (location_val) => {
+        var total = 0
+        cart.forEach((med) => total = total + med.quantity)
+        console.log("total: ", total)
+        await totalMedCountVali
+          .validate({ totalMedCount: totalMedCount - total }, { abortEarly: false })
+          .catch((err) => {
+            notifyA(err.message);
+            throw err;
+          })
+        return await fetch(`${API_BASE_URL}/medicine-availablity`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -155,14 +182,23 @@ export default function Inventory() {
             location,
             coordinates,
             location_val,
+            medicine_request_limit: totalMedCount - total,
+            totalmeds: total
           }),
         });
       })
       .then((res) => res.json())
       .then((result) => {
+        console.log(result)
         if (result.success) {
           notifyB(result.success);
+          var total = 0
+          cart.forEach((med) => total = total + med.quantity)
+          setTotalMedCount((preCount) => preCount - total)
           setCart([]);
+          setLocation("")
+          setCoordinates(null)
+
         } else if (result.error) {
           notifyA(result.error);
         } else {
@@ -170,18 +206,26 @@ export default function Inventory() {
         }
       })
       .catch((error) => {
-        console.log(error);
-        notifyA(error.message);
+        // console.log(error);
+        // notifyA(error.message); 
       });
   };
-  //cart quantity validation
+  //Validation section
   const quantityValidation = Yup.object().shape({
-    quantity: Yup.number().min(1, "Quantity can not be less than one"),
+    quantity: Yup.number()
+      .min(1, "Quantity can not be less than one")
+      .max(10, " Maximum limit for requesting each medicine is 10.")
   });
 
   const locationValidation = Yup.object().shape({
     location: Yup.string().required("Location is required"),
   });
+
+  const totalMedCountVali = Yup.object().shape({
+    totalMedCount: Yup.number()
+      .min(0, "Limit exceeded")
+      .required("Total Med Count required")
+  })
   // const fetchMedicines
   useEffect(() => {
     fetchUser();
@@ -190,6 +234,12 @@ export default function Inventory() {
 
   const locationInput = document.getElementById("dasdaf");
   const searchBox = new window.google.maps.places.SearchBox(locationInput);
+
+  //limit renewal time
+  const currentDate = new Date();
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+  const daysLeft = Math.round((new Date(reset_date) - currentDate) / millisecondsPerDay);
+
 
   useEffect(() => {
     searchBox.addListener("places_changed", () => {
@@ -202,7 +252,7 @@ export default function Inventory() {
         setLocation(selected);
       }
     });
-  }, []);
+  }, [location]);
 
   return (
     <div className="inventorymain">
@@ -211,6 +261,8 @@ export default function Inventory() {
         <div className="searchcolumn">
           <div className="searchbox">
             <div className="topsearch">
+                <h3>Limit: {totalMedCount}</h3>
+                {!totalMedCount?(<p>{daysLeft}   Days left</p>):<></>}
               <input
                 className="searchinput"
                 type="text"
@@ -218,9 +270,13 @@ export default function Inventory() {
                 value={search}
                 onChange={(e) => fetchMedicines(e.target.value)}
               />
-              <button className="cart-button" onClick={OpenCartModal}>
+              {totalMedCount === 0 ? <button disabled={true} className="cart-button" onClick={OpenCartModal}>
                 Cart
-              </button>
+              </button> :
+                <button className="cart-button" onClick={OpenCartModal}>
+                  Cart
+                </button>}
+
             </div>
             <Modal
               className="Modal__container"
@@ -236,6 +292,7 @@ export default function Inventory() {
                         value={med.quantity}
                         onChange={(e) => {
                           const newQuantity = Number(e.target.value);
+
                           setCart((prevCart) =>
                             prevCart.map((item) =>
                               item.medicine_name === med.medicine_name
@@ -282,7 +339,7 @@ export default function Inventory() {
                       {item.disease}
                     </p>
                     <p id="d2sdvyuaca" className="p1">
-                      {item.count <= 0 ? (
+                      {totalMedCount === 0 ? "Request Limit Exceeded" : item.count <= 0 ? (
                         <p>Out of Stock</p>
                       ) : (
                         <>

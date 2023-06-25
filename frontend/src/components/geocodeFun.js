@@ -7,20 +7,22 @@ export default async function geocode(address) {
   return fetch(url)
     .then((result) => {
       if (!result.ok) {
-        throw new Error("Geocoding request failed");
+        console.log(result)
+        // return null
       }
-      return result.json();
+      // return result.json();
     })
     .then((data) => {
       if (data.features.length > 0) {
-        const coordinates = data.features[0].center;
+        const coordinates = data?.features[0]?.center;
         return coordinates;
       } else {
         return null;
       }
     })
     .catch((error) => {
-      console.error("Geocoding error:", error.message);
-      throw error;
+      // console.error("Geocoding error:", error.message);
+      // throw error;
+      return null
     });
 }

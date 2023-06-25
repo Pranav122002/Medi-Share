@@ -86,7 +86,7 @@ router.post("/api/medicine-availablity", async (req, res, next) => {
     const istDate = moment().tz("Asia/Kolkata").format("DD-MM-YYYY");
     const istTime = moment().tz("Asia/Kolkata").format("HH:mm:ss");
     try {
-      const { cart, userID, location, coordinates } = req.body;
+      const { cart, userID, location, coordinates, totalmeds, medicine_request_limit } = req.body;
 
       const data = await ORDER.create({
         order_type: "request-order",
@@ -101,14 +101,27 @@ router.post("/api/medicine-availablity", async (req, res, next) => {
           date: istDate,
           time: istTime,
         },
+        no_of_medicines: totalmeds
       });
       if (data) {
+
+        const updateData = {
+          cart: [],
+          medicine_request_limit: medicine_request_limit
+        };
+        const nextMonth = new Date();
+        nextMonth.setMonth(nextMonth.getMonth() + 1);
+        if (medicine_request_limit === 0) {
+          updateData.reset_date = nextMonth;
+        }
+        
         USER.findByIdAndUpdate(
           req.body.userID,
-          { cart: [] },
+          updateData,
           { new: true }
         ).then((user) => {
           if (user) {
+            console.log(user)
             res.json({ success: "Request Order placed successfully" });
             //volunteer assignment
             assignVolunteer(data._id, coordinates);

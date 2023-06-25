@@ -1,8 +1,16 @@
 const cron = require("node-cron");
 const discardExpiredMedicines = require("./discardExpiredMeds");
+const resetMedicineRequestLimit = require("./resetMedicineRequestLimit")
 
-cron.schedule("0 0 * * *", () => {
-  // Run the script every day at midnight (0:00)
+// Cron schedule to reset medicine_request_limit
+// Runs every month
+cron.schedule('0 0 * * *', resetMedicineRequestLimit);
 
-  discardExpiredMedicines();
-});
+// Cron schedule to discard expired medicines
+// Runs every midnight
+cron.schedule('0 0 * * *', discardExpiredMedicines);
+
+
+// cron.schedule('* * * * *', () => {
+//   console.log('running a task every minute');
+// });

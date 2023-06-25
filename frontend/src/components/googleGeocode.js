@@ -8,9 +8,11 @@ export default async function geocode(address) {
   return fetch(url)
     .then((result) => {
       if (!result.ok) {
-        throw new Error("Geocoding request failed");
+        console.log(result)
+        // throw new Error("Geocoding request failed");
       }
-      return result.json();
+      console.log(result)
+      // return result.json();
     })
     .then((data) => {
       if (data.results.length > 0) {
@@ -23,7 +25,8 @@ export default async function geocode(address) {
       }
     })
     .catch((error) => {
-      console.error("Geocoding error:", error.message);
-      throw error;
+      // console.error("Geocoding error:", error.message);
+      // throw error;
+      return null
     });
 }

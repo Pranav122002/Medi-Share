@@ -48,6 +48,13 @@ const userSchema = new mongoose.Schema({
   subscription_end_date: {
     type: String,
   },
+  medicine_request_limit:{
+    type: Number,
+    default: 50
+  },
+  reset_date:{
+    type: Date,
+  }
 });
 
 const doctorSchema = new mongoose.Schema({
