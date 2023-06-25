@@ -1,5 +1,5 @@
 from fastapi import FastAPI, UploadFile, File,Request
-from fastapi.templating import Jinja2Templates
+
 
 from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf
@@ -43,7 +43,7 @@ async def predict(file: UploadFile = File(...)):
         predicted_class = 0
     
 
-    classes = ['Normal', 'Pneumonia']
+    classes = ['No Pneumonia detected ', 'You may have Pneumonia']
 
     return {'prediction': classes[predicted_class]}
 
@@ -97,7 +97,7 @@ async def predict(file: UploadFile = File(...)):
     prediction = (model2.predict(image_array)[0][0] > 0.5).astype("int32")
     predicted_class = 0 if prediction > 0.5 else 1
     
-    classes = ['Normal', 'Tumor']
+    classes = ['No Brain tumor detected', 'Brain Tumor Detected']
 
     return {'prediction': classes[predicted_class]}
 
@@ -150,7 +150,7 @@ async def predict(file: UploadFile = File(...)):
         predicted_class = 0
     
 
-    classes = ['No kidney stone detected.', 'You have a kidney stone.']
+    classes = ['No kidney stone detected.', 'You May have a kidney stone.']
 
     return {'prediction': classes[predicted_class]}
 
@@ -187,7 +187,7 @@ def predict_condition(symptom_data: SymptomData):
 
 
 
-templates = Jinja2Templates(directory="Medi-Share-main\frontend\src\components\generalpredict.js")
+
 MODEL_PATH = 'passmodel.pkl'
 TOKENIZER_PATH ='tfidfvectorizer.pkl'
 DATA_PATH ='output.csv'
@@ -272,7 +272,7 @@ def chatbot_response(request: Request, user_input: UserInput):
 
     # Define bot responses based on user input
     if user_message == "hello":
-        response = "Hello ,Here is chatbot plz enter, 0 - for knowning the disease, 1 - for knowning the symptoms, 2 - for knowing the precaution, 3 - for knowing the medicine, 4 - for knowning about disease, 5 - for medicine market discription,  6 - for knowning the substute of medicine, 7 - for knowning the side-effects of medicine"
+        response = "Hello"
         
     elif user_message == "0":
         response = "0"

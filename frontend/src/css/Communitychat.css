@@ -40,7 +40,7 @@
 }
 
 .commchat .datemess {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: rgb(216, 216, 216);
   margin-bottom: 0;
   margin-top: auto;
@@ -48,7 +48,7 @@
   margin-left: 0.5rem;
 }
 .commchat .datemesss {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: rgb(216, 216, 216);
   margin-bottom: 0;
   margin-top: auto;
@@ -70,6 +70,7 @@
 }
 
 #senderrole {
+  font-size: 0.7rem;
   margin-left: auto;
   margin-right: 0;
   margin-top: -0.4rem;
@@ -78,6 +79,7 @@
   border-radius: 0.7rem;
 }
 #recrole {
+  font-size: 0.7rem;
   margin-left: auto;
   margin-right: 0;
   margin-top: -0.4rem;

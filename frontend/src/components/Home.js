@@ -13,9 +13,9 @@ import volLocation from "./volLocation";
 
 export default function Home() {
   const { updateUser } = useContext(UserContext);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [currentLocation, setCurrentLocation] = useState("");
-
+  
   useEffect(() => {
     const fetchUser = () => {
       fetch(
@@ -30,7 +30,7 @@ export default function Home() {
         .then((res) => {
           const subscriptionEndDate = new Date(res.subscription_end_date);
           const currentDate = new Date();
-
+          setUser(res)
           if (res.subscription_end_date && subscriptionEndDate < currentDate) {
             const updatedUser = {
               ...res,
@@ -77,7 +77,7 @@ export default function Home() {
 
     fetchUser();
   }, []);
-
+  console.log(user)
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
