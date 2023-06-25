@@ -109,7 +109,7 @@ router.get("/api/order/:id", (req, res) => {
 router.get("/api/allorders", async (req, res) => {
   const pageNumber = parseInt(req.query.page) || 1; // Get the page number from the request query parameter
   const filterOption = req.query.filterOption;
-  console.log();
+
   const pageSize = 100; // Number of orders per page
 
   try {
@@ -135,7 +135,7 @@ router.get("/api/allorders", async (req, res) => {
       .sort({ order_creation_date: -1 })
       .limit(pageSize)
       .skip((pageNumber - 1) * pageSize);
-    // console.log(order.location.location)
+
     res.json({ orders, totalOrders, totalFilteredOrders });
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch orders" });
@@ -155,7 +155,7 @@ router.post("/api/donate-medicines", async (req, res, next) => {
       coordinates,
     } = req.body;
     // var coordinates = null
-    console.log("coordinates: ", coordinates);
+
     const data = await ORDER.create({
       order_type: "donate-order",
       medicines: medicines,
@@ -195,7 +195,6 @@ router.post("/api/request-medicines", async (req, res, next) => {
     if (data) {
       return res.json({ msg: "Request Order placed successfully." });
     } else {
-      console.log("Unable to Request");
       return res.json({ msg: "Failed to place order..." });
     }
   } catch (ex) {
@@ -247,7 +246,6 @@ router.put("/api/donate/:order_id", async (req, res) => {
 });
 
 router.put("/api/delivery-executed/:order_id", (req, res) => {
-  console.log("order id : ", req.params.order_id);
   ORDER.findByIdAndUpdate(
     req.params.order_id,
     { $set: { execute_status: true } },
@@ -256,14 +254,12 @@ router.put("/api/delivery-executed/:order_id", (req, res) => {
     .populate("requester", "name phone_no -_id")
     .populate("assigned_vol", "name -_id")
     .then((res) => {
-      console.log(res);
       const order_id = req.params.order_id.toString().slice(-4);
       const userName = res.requester.name;
       const user_phone_no = res.requester.phone_no;
       const vol_name = res.assigned_vol.name;
       var msg = `Hey, ${userName}. Your ORDER ${order_id} has been DELIVERED by volunteer ${vol_name}. Please spare some time to fill the FEEDBACK form in the profile section of the Medi-Share website`;
       smsNotification(msg, user_phone_no);
-      // console.log(msg)
     })
     .catch((err) => {
       res.status(500).json({ error: "order can't be updated" });
@@ -330,7 +326,6 @@ router.put("/api/assign-order/:id", (req, res) => {
     .populate("assigned_vol", "name phone_no -_id")
     .then((updatedOrder) => {
       if (updatedOrder) {
-        console.log(updatedOrder);
         res.json({ msg: "Order assigned successfully", data: updatedOrder });
         //Send SMS notification to the volunteer about the order
 
@@ -402,7 +397,7 @@ router.put("/api/verify-donate-order/:order_id", (req, res) => {
         .then((result) => {
           //update the volunteer's verified_order_list
           const vol_id = doc.assigned_vol._id;
-          console.log("doc.assigned_vol: ", doc.assigned_vol._id);
+
           VOLUNTEER.findByIdAndUpdate(vol_id, {
             $push: {
               "volunteer_details.verified_orders": {
@@ -415,20 +410,18 @@ router.put("/api/verify-donate-order/:order_id", (req, res) => {
               },
             },
           })
-            .then((result) => console.log(result))
-            .catch((err) => console.log(err));
+          .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err));
 
       //send SMS to the donars that the medicines have been collected
-      console.log(doc);
+
       const order_id = req.params.order_id.toString().slice(-4);
       const userName = doc.donar.name;
       const user_phone_no = doc.donar.phone_no;
       const vol_name = doc.assigned_vol.name;
       var msg = `Hey, ${userName}. Your MEDICINES (ORDER ID ${order_id}) has been COLLECTED by volunteer ${vol_name}. Please spare some time to fill the FEEDBACK form in the profile section of the Medi-Share website`;
       // smsNotification(msg, user_phone_no)
-      console.log(msg, user_phone_no);
     });
 });
 
@@ -441,7 +434,6 @@ router.put("/api/verify-request-order/:order_id", (req, res) => {
     { new: true }
   )
     .then((doc) => {
-      console.log(doc);
       res.json("Order Verified successfully and now will be Donated.");
       res.json("Order Verified successfully and now will be Donated...");
     })
@@ -463,7 +455,6 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
     .populate("donar", "name phone_no -_id")
     .populate("assigned_vol", "name -_id")
     .then((doc) => {
-      console.log(doc);
       res.json("Order has been accepted");
 
       //Add this order to accepted_list of the volunteer
@@ -476,10 +467,9 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
         },
         { new: true }
       )
-        .then((result) => console.log("accepted_list : ", result))
-        .catch((err) => {
-          console.error(err);
-        });
+      .catch((err) => {
+        console.error(err);
+      });
 
       if (doc.order_type === "requset-order") {
         const medicines = doc.medicines;
@@ -491,9 +481,7 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
         }));
         // Prepare the bulk operations array
 
-        MEDICINE.bulkWrite(bulkOps).then((result) => {
-          console.log("Medince count updaed");
-        });
+        MEDICINE.bulkWrite(bulkOps).then((result) => {});
       }
 
       const order_id = req.params.id.toString().slice(-4);
@@ -508,7 +496,7 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
       } else if (doc.order_type === "request-order") {
         msg += " The order will be delivered soon.";
       }
-      console.log(msg);
+
       // smsNotification(msg, user_phone_no)
     })
     .catch((err) => {
@@ -518,8 +506,7 @@ router.put("/api/volunteer-accept/:id", (req, res) => {
 
 router.put("/api/volunteer-reject/:id", (req, res) => {
   const vol_id = req.body.VolunteerId;
-  console.log(req.body);
-  console.log("Volid", vol_id);
+
   ORDER.findByIdAndUpdate(
     req.params.id,
     {
@@ -529,9 +516,8 @@ router.put("/api/volunteer-reject/:id", (req, res) => {
     { new: true }
   )
     .then((doc) => {
-      // console.log(doc._id, doc)
       const order_location = [doc.location.lng, doc.location.lat];
-      console.log("Order has been rejected");
+
       res.json("Order has been rejected");
 
       //Add the rejected order in the volunteer's rejected list.
@@ -549,7 +535,6 @@ router.put("/api/volunteer-reject/:id", (req, res) => {
         },
         { new: true }
       ).then((result) => {
-        console.log(result);
         if (result) {
           assignVolunteer(req.params.id, order_location);
         }
@@ -561,7 +546,6 @@ router.put("/api/volunteer-reject/:id", (req, res) => {
 });
 
 router.post("/api/feedback/:order_id", (req, res) => {
-  console.log(req.body);
   const stars = req.body.stars;
   const feedback = req.body.feedback;
   ORDER.findByIdAndUpdate(
@@ -577,7 +561,6 @@ router.post("/api/feedback/:order_id", (req, res) => {
     { new: true }
   )
     .then((doc) => {
-      console.log(doc);
       res.status(200).json({ success: "Thanks for your feedback" });
       VOLUNTEER.findByIdAndUpdate(
         //increment the avg_stars and feedback count
@@ -592,7 +575,6 @@ router.post("/api/feedback/:order_id", (req, res) => {
       )
         .exec()
         .then((updatedVol) => {
-          console.log(updatedVol);
           //use aggregate function to find the volunteer and perform division operation to get the avg.
           VOLUNTEER.aggregate([
             { $match: { _id: doc.assigned_vol } },
@@ -611,8 +593,7 @@ router.post("/api/feedback/:order_id", (req, res) => {
             .exec()
             .then((results) => {
               //update the volunteer with the obtained results
-              // console.log(results)
-              console.log("avg stars updated");
+
               if (results.length > 0) {
                 const avgStars = results[0].avg_stars;
 
@@ -622,9 +603,7 @@ router.post("/api/feedback/:order_id", (req, res) => {
                   { new: true }
                 )
                   .exec()
-                  .then((updatedVolunteer) => {
-                    console.log(updatedVolunteer);
-                  })
+                  .then((updatedVolunteer) => {})
                   .catch((error) => {
                     console.log(error);
                   });
@@ -642,7 +621,6 @@ router.post("/api/feedback/:order_id", (req, res) => {
 });
 
 router.post("/api/order-rejected/:id", (req, res) => {
-  console.log("rejecting the order");
   ORDER.findByIdAndUpdate(
     req.params.id,
     { is_order_rejected: true },

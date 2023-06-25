@@ -15,8 +15,8 @@ const medicineSchema = new mongoose.Schema({
   },
   count: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 });
 
 module.exports = mongoose.model("MEDICINE", medicineSchema);

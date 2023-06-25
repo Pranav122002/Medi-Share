@@ -15,7 +15,6 @@ export default function Request() {
     fetch(`${API_BASE_URL}/allmedicines`)
       .then((response) => response.json())
       .then((data) => setMedicines(data));
-      console.log()
   }
 
   return (
@@ -29,7 +28,7 @@ export default function Request() {
               <h3 className="p2">Disease</h3>
               <h3 className="p2">Action</h3>
             </li>
-            {console.log("Medince")}
+
             {medicines.map((medicines) => (
               <li key={medicines.medicine_name}>
                 <h3>{medicines.medicine_name}:</h3>

@@ -169,5 +169,4 @@ router.get("/api/doctor-ratings-feedbacks/:id", async (req, res, next) => {
   }
 });
 
-
 module.exports = router;

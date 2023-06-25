@@ -54,8 +54,10 @@ export default function Subscribe() {
               </div>
               <div className="headsub">
                 <h2>Subscribe now to avail exclusive services on our site.</h2>
-                <h2>Services like chat and disease prediction require subscription worth <br /> <div id="orangec">1000 Medi-Share Credits </div> </h2>
-                
+                <h2>
+                  Services like chat and disease prediction require subscription
+                  worth <br /> <div id="orangec">1000 Medi-Share Credits </div>{" "}
+                </h2>
               </div>
               <button
                 className="subbut"

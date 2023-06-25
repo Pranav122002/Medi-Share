@@ -9,11 +9,13 @@ export default function Hospitals() {
     <div className="hospimain">
       <div>
         <div className="hospi">
-
           <div className="hospicontent">
             <div className="hosp">
               <h2>Nearby Hospitals</h2>
-              <p>Need quick nearby hospital locations ?  Seach for hospitals in your vicinity now.</p>
+              <p>
+                Need quick nearby hospital locations ? Seach for hospitals in
+                your vicinity now.
+              </p>
             </div>
             <img src="./hospital5.png" alt="" />
           </div>

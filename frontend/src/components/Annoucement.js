@@ -20,7 +20,6 @@ export default function Annoucement() {
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
-  console.log(sortedData);
   useEffect(() => {
     fetchAnnoucements();
   }, []);
@@ -102,20 +101,18 @@ export default function Annoucement() {
           window.location.reload();
           notifyB(data.msg);
         }
-        console.log(data);
       });
   };
 
   return (
     <div className="announce">
       <div className="bodyy">
-
         <div className="anccont">
           <div className="anc">
             <div className="ancinfoback">
               <div className="ancinfo">
                 <div className="ancflex">
-                  <h1 >Announcements</h1>
+                  <h1>Announcements</h1>
                   <br />
                   <p>
                     All the camps are carried out by volunteer and certified
@@ -198,7 +195,6 @@ export default function Annoucement() {
               <div></div>
             )}
 
-
             <div className="andlistparent">
               <div className="anclistss" id="anclisti">
                 <h1>Latest Announcements</h1>
@@ -218,68 +214,70 @@ export default function Annoucement() {
                       Description
                     </h3>
                   </li>
-                  <div className="anclistitems"  >
-                    {sortedData.map((annoucements) => (<>{isDate(annoucements.date) ? (<>
-                      <li className="bord" key={annoucements.title}>
-                        <h3 className="p6" >{annoucements.title}</h3>
-                        <h3 className="p1">
-                          {annoucements.date}
-                        </h3 >
-                        <h3 className="p2">
-                          {annoucements.venue}
-                        </h3>
-                        <p className="p3">{annoucements.description} </p>
-
-                      </li>
-                      <hr className="anclistitemsbr" />
-
-                    </>
-                    ) : (
-                      <div id='noneee'></div>
-                    )}
-
-                    </>))}
+                  <div className="anclistitems">
+                    {sortedData.map((annoucements) => (
+                      <>
+                        {isDate(annoucements.date) ? (
+                          <>
+                            <li className="bord" key={annoucements.title}>
+                              <h3 className="p6">{annoucements.title}</h3>
+                              <h3 className="p1">{annoucements.date}</h3>
+                              <h3 className="p2">{annoucements.venue}</h3>
+                              <p className="p3">{annoucements.description} </p>
+                            </li>
+                            <hr className="anclistitemsbr" />
+                          </>
+                        ) : (
+                          <div id="noneee"></div>
+                        )}
+                      </>
+                    ))}
                   </div>
                 </ul>
               </div>
-              <div className="anclistss" >
+              <div className="anclistss">
                 <h1>Past Announcements</h1>
-                <ul >
+                <ul>
                   <li className="bord" id="nonedispa">
-                    <h3 id="pp4" className="p6" > Name</h3>
-                    <h3 id="pp1" className="p1">Date (YY/MM/DD)</h3>
-                    <h3 id="pp3" className="p2">Venue</h3>
-                    <h3 id="pp2" className="p3">Description</h3>
+                    <h3 id="pp4" className="p6">
+                      {" "}
+                      Name
+                    </h3>
+                    <h3 id="pp1" className="p1">
+                      Date (YY/MM/DD)
+                    </h3>
+                    <h3 id="pp3" className="p2">
+                      Venue
+                    </h3>
+                    <h3 id="pp2" className="p3">
+                      Description
+                    </h3>
                   </li>
-                  <div className="anclistitems" >
-                    {sortedData.map((annoucements) => (<>{isDatenow(annoucements.date) ? (<>
-                      <li className="bord" key={annoucements.title}>
-                        <h3 className="p6">{annoucements.title}</h3>
-                        <h3 className="p1">
-                          {annoucements.date}
-                        </h3 >
-                        <h3 className="p2">
-                          {annoucements.venue}
-                        </h3>
-                        <p className="p3">{annoucements.description} </p>
-
-                      </li>
-                      <hr className="anclistitemsbr" />
-
-                    </>
-                    ) : (
-                      <div id='noneee'></div>
-                    )}
-
-                    </>))}
+                  <div className="anclistitems">
+                    {sortedData.map((annoucements) => (
+                      <>
+                        {isDatenow(annoucements.date) ? (
+                          <>
+                            <li className="bord" key={annoucements.title}>
+                              <h3 className="p6">{annoucements.title}</h3>
+                              <h3 className="p1">{annoucements.date}</h3>
+                              <h3 className="p2">{annoucements.venue}</h3>
+                              <p className="p3">{annoucements.description} </p>
+                            </li>
+                            <hr className="anclistitemsbr" />
+                          </>
+                        ) : (
+                          <div id="noneee"></div>
+                        )}
+                      </>
+                    ))}
                   </div>
                 </ul>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

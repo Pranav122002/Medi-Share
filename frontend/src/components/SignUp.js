@@ -65,7 +65,6 @@ export default function SignUp() {
           navigate("/signin");
           notifyB(data.message);
         }
-        console.log(data);
       });
   };
 
@@ -87,8 +86,6 @@ export default function SignUp() {
     data.append("upload_preset", UPLOAD_PRESET);
     data.append("cloud_name", CLOUD_NAME);
 
-    console.log("data = ", data);
-
     fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
       method: "post",
       body: data,
@@ -96,7 +93,6 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         setImgUrl(data.url);
-        console.log("data.url = ", data.url);
       })
       .catch((err) => console.log(err));
   };
@@ -104,7 +100,6 @@ export default function SignUp() {
   return (
     <>
       <div className="mainsignup">
-
         <div className="signUp">
           <div className="left">
             <div className="cover"></div>
@@ -117,21 +112,28 @@ export default function SignUp() {
               <h1>SIGN UP</h1>
 
               <div id="roles">
-
-                <select required
+                <select
+                  required
                   placeholder="Choose your role"
                   name="role"
                   id="role"
-
                   value={role}
                   onChange={(e) => {
                     setRole(e.target.value);
                   }}
                 >
-                  <option className="selopt" value="" disabled selected>Chooose your role </option>
-                  <option className="selopt" value="user">user</option>
-                  <option className="selopt" value="volunteer">volunteer</option>
-                  <option className="selopt" value="doctor">doctor</option>
+                  <option className="selopt" value="" disabled selected>
+                    Chooose your role{" "}
+                  </option>
+                  <option className="selopt" value="user">
+                    user
+                  </option>
+                  <option className="selopt" value="volunteer">
+                    volunteer
+                  </option>
+                  <option className="selopt" value="doctor">
+                    doctor
+                  </option>
                 </select>
               </div>
 
@@ -186,7 +188,7 @@ export default function SignUp() {
                   }}
                 />
               </div>
-              <div >
+              <div>
                 {role === "doctor" || role === "volunteer" ? (
                   <div className="uploadimage">
                     <div>

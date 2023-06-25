@@ -28,7 +28,7 @@ export default function Tasks() {
   const [user, setUser] = useState("");
   const [volunteersList, setVolunteersList] = useState([]);
   const [selectedVolunteer, setSelectedVolunteer] = useState("");
-  const [chats , viewChats] = useState(false);
+  const [chats, viewChats] = useState(false);
   const [sug, showsug] = useState(!false);
 
   const handleShowsug = () => {
@@ -215,11 +215,14 @@ export default function Tasks() {
           <Card className="Card" key={index}>
             <Card.Body>
               <p>
-                <span className="content-detai">Volunteer :</span>{card.volunteer_name}
+                <span className="content-detai">Volunteer :</span>
+                {card.volunteer_name}
               </p>
 
               <p>
-                <span id="fjcnuend" className="content-detai">Task Info :</span>
+                <span id="fjcnuend" className="content-detai">
+                  Task Info :
+                </span>
                 <span id="ndanisda">{card.task_info}</span>
                 <br />
               </p>
@@ -242,13 +245,19 @@ export default function Tasks() {
         {isAdmin ? (
           <div>
             <div className="donate">
-           
               <div className={`donateForm ${chats && "active"}`}>
-              <img onClick={()=> { viewChats(false)}} id="dadcae" src="./back.png" alt="" />
+                <img
+                  onClick={() => {
+                    viewChats(false);
+                  }}
+                  id="dadcae"
+                  src="./back.png"
+                  alt=""
+                />
                 <div className="logo">
                   <h1>Assign Task</h1>
                 </div>
-                
+
                 <div>
                   <input
                     type="text"
@@ -317,7 +326,6 @@ export default function Tasks() {
                       <p>{volunteer.name}</p>
                       <button
                         onClick={() => {
-                          
                           setSelectedVolunteer(volunteer);
                           viewChats("active");
                         }}
@@ -371,7 +379,9 @@ export default function Tasks() {
                           {task.volunteer_name}
                         </p>
                         <p>
-                          <span id="fbuybcsa" className="tasksapnli">Task Info :</span>
+                          <span id="fbuybcsa" className="tasksapnli">
+                            Task Info :
+                          </span>
                           <span id="adfasda">{task.task_info}</span>{" "}
                         </p>
                         <p>

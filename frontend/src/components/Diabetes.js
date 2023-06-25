@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function DiabetesPrediction() {
   const [formData, setFormData] = useState({
@@ -8,41 +8,39 @@ function DiabetesPrediction() {
     skinthickness: 0,
     insulin: 0,
     bmi: 0,
-    dpf: '',
-    age: 0
+    dpf: "",
+    age: 0,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('/diabetes', {
-      method: 'POST',
+    fetch("/diabetes", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
       .then((response) => response.text())
-      .then((data) => {
-        console.log(data); 
-      })
+      .then((data) => {})
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center' }}>Diabetes Prediction</h1>
-      <h5 style={{ textAlign: 'center' }}>Please enter the patient details</h5>
+      <h1 style={{ textAlign: "center" }}>Diabetes Prediction</h1>
+      <h5 style={{ textAlign: "center" }}>Please enter the patient details</h5>
       <form onSubmit={handleSubmit} className="form-inline">
         <fieldset>
           <div className="tabcontent" id="new">
@@ -58,7 +56,7 @@ function DiabetesPrediction() {
                 required
               />
             </div>
-           
+
             <button type="submit" className="btn btn-primary btn-lg">
               Predict
             </button>

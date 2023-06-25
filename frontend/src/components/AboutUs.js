@@ -12,7 +12,6 @@ export const AboutUs = () => {
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
-    console.log(showNavbar);
   };
 
   useEffect(() => {
@@ -20,6 +19,7 @@ export const AboutUs = () => {
   }, []);
 
   const navigate = useNavigate();
+
   const goHome = () => {
     navigate("/");
   };

@@ -13,7 +13,6 @@ export const LandingPage = () => {
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
-    console.log(showNavbar);
   };
 
   useEffect(() => {
@@ -89,14 +88,13 @@ export const LandingPage = () => {
                 <img src="./curve2.png" alt="" />
               </div>
               <div id="wacdase">
-              <img
-                
-                src="./chain.png"
-                data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                alt=""
-              />
+                <img
+                  src="./chain.png"
+                  data-aos="fade-down"
+                  data-aos-easing="linear"
+                  data-aos-duration="1500"
+                  alt=""
+                />
               </div>
             </div>
           </div>

@@ -9,22 +9,20 @@ import { useEffect } from "react";
 import { Latestanc } from "./Latestanc";
 import { UserContext } from "./UserContext";
 import { API_BASE_URL } from "../config";
-import volLocation from './volLocation'
+import volLocation from "./volLocation";
 
 export default function Home() {
-
   const { updateUser } = useContext(UserContext);
-  const [user, setUser] = useState(null)
-  const [currentLocation, setCurrentLocation] = useState('')
+  const [user, setUser] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState("");
 
   useEffect(() => {
     const fetchUser = () => {
       fetch(
-        `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem('user'))._id
-        }`,
+        `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
         {
           headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
           },
         }
       )
@@ -34,54 +32,46 @@ export default function Home() {
           const currentDate = new Date();
 
           if (res.subscription_end_date && subscriptionEndDate < currentDate) {
-
-            const updatedUser = { ...res, subscription: false, subscription_end_date: undefined };
+            const updatedUser = {
+              ...res,
+              subscription: false,
+              subscription_end_date: undefined,
+            };
             updateUser(updatedUser);
 
             fetch(`${API_BASE_URL}/end-subscription/${res._id}`, {
-              method: 'PUT',
+              method: "PUT",
               headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem("jwt"),
               },
-
             })
               .then((res) => res.json())
-              .then((updatedRes) => {
-                console.log('User subscription ended.', updatedRes);
-              })
+              .then((updatedRes) => {})
               .catch((error) => {
                 console.error(error);
               });
           } else {
-
             updateUser(res);
           }
 
-          if(res.role === 'volunteer')
-        {
-          volLocation()
-          .then(coordinates=>{
-            console.log(coordinates)
-            console.log(res.name, res._id)
-            fetch(`${API_BASE_URL}/volunteer-location/${res._id}`,
-            {
-              method:'put',
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(
-                {
+          if (res.role === "volunteer") {
+            volLocation().then((coordinates) => {
+              fetch(`${API_BASE_URL}/volunteer-location/${res._id}`, {
+                method: "put",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
                   lng: coordinates[0],
-                  lat: coordinates[1] 
-                }
-              )
-            }
-            ).then(res=>res.json())
-            .then(res=>console.log(res))
-            .catch(err=>console.error(err))
-          })
-        }
+                  lat: coordinates[1],
+                }),
+              })
+                .then((res) => res.json())
+
+                .catch((err) => console.error(err));
+            });
+          }
         });
     };
 
@@ -126,19 +116,18 @@ export default function Home() {
                   <img src="./curve2.png" alt="" />
                 </div>
                 <div id="wacdase">
-                <img
-                  src="./chain.png"
-                  data-aos="fade-down"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  alt=""
-                />
+                  <img
+                    src="./chain.png"
+                    data-aos="fade-down"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </>
   );

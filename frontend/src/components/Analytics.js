@@ -40,7 +40,6 @@ export default function Analytics() {
     fetch(`${API_BASE_URL}/all-orders`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("order data =", data);
         setAllOrders(data);
       });
   }
@@ -126,7 +125,6 @@ export default function Analytics() {
       },
     });
   }
-
 
   function createBarChart() {
     const orderTypes = allOrders.map((order) => order.order_type);
@@ -249,60 +247,62 @@ export default function Analytics() {
     setChartData(chartData); // Update chartData state
   }
 
-  return (<>
-    <div className="chartsmain">
-      <div className="chartsbody">
-        <div className="charts">
-          <div className="pies">
-            <div className="piechart">
-              <canvas id="medicinePieChart"></canvas>
-            </div>
-            <div className="tablemain">
-              {chartData && (
-                <div className="table" id="hbasihofsd">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Medicine</th>
-                        <th>Color</th>
-                        <th>Count</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {allOrderMedicines.map((medicine, index) => (
-                        <tr key={index}>
-                          <td>{medicine.medicine_name}</td>
-                          <td>
-                            <span
-                              className="color-box"
-                              style={{
-                                backgroundColor:
-                                  chartData.datasets[0].backgroundColor[index],
-                              }}
-                            ></span>
-                          </td>
-                          <td>{medicine.count}</td>
+  return (
+    <>
+      <div className="chartsmain">
+        <div className="chartsbody">
+          <div className="charts">
+            <div className="pies">
+              <div className="piechart">
+                <canvas id="medicinePieChart"></canvas>
+              </div>
+              <div className="tablemain">
+                {chartData && (
+                  <div className="table" id="hbasihofsd">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Medicine</th>
+                          <th>Color</th>
+                          <th>Count</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody>
+                        {allOrderMedicines.map((medicine, index) => (
+                          <tr key={index}>
+                            <td>{medicine.medicine_name}</td>
+                            <td>
+                              <span
+                                className="color-box"
+                                style={{
+                                  backgroundColor:
+                                    chartData.datasets[0].backgroundColor[
+                                      index
+                                    ],
+                                }}
+                              ></span>
+                            </td>
+                            <td>{medicine.count}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="bars">
+              <div className="barchart">
+                <canvas id="userRoleChart"></canvas>
+              </div>
 
-              )}
+              <div className="barchart">
+                <canvas id="orderTypeChart"></canvas>
+              </div>
             </div>
           </div>
-          <div className="bars">
-            <div className="barchart">
-              <canvas id="userRoleChart"></canvas>
-            </div>
-
-            <div className="barchart">
-              <canvas id="orderTypeChart"></canvas>
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
-  </>);
+    </>
+  );
 }

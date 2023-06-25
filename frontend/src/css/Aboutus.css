@@ -1,54 +1,49 @@
-.abou{
-    width: 100vw;
-    background: rgb(240, 254, 255);
-    padding-top: 1px;
-    height: 100vh;
+.abou {
+  width: 100vw;
+  background: rgb(240, 254, 255);
+  padding-top: 1px;
+  height: 100vh;
 }
 
-.aboutus{
-    width: 80vw;
-    margin: auto;
-    background: white;
-    height: max-content;
-    margin-top: 5rem;
-    border-radius: 5px;
-    padding-bottom: 5rem;
-
+.aboutus {
+  width: 80vw;
+  margin: auto;
+  background: white;
+  height: max-content;
+  margin-top: 5rem;
+  border-radius: 5px;
+  padding-bottom: 5rem;
 }
 
-.aboutus p{
-    font-size: 1.1vw;
-    width: 70%;
-    margin: auto;
-
+.aboutus p {
+  font-size: 1.1vw;
+  width: 70%;
+  margin: auto;
 }
 
-.aboutus h1{
-   font-size: 2vw;
-
+.aboutus h1 {
+  font-size: 2vw;
 }
 
-.aboutus .Aboutimage img{
-    border-radius: 100%;
-    width: 13vw;
+.aboutus .Aboutimage img {
+  border-radius: 100%;
+  width: 13vw;
 }
-.Aboutimage{
-    display: flex;
-    margin-top: 2rem;
+.Aboutimage {
+  display: flex;
+  margin-top: 2rem;
 }
-.imageee{
-    width: 20vw;
-}
-
-.imageee h2{
-    margin: 0;
-    margin-top: 1.5rem;
-
+.imageee {
+  width: 20vw;
 }
 
-@media screen and (max-width: 1000px){
-    
-.aboutus{
+.imageee h2 {
+  margin: 0;
+  margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .aboutus {
     width: 90vw;
     margin: auto;
     background: white;
@@ -56,41 +51,36 @@
     margin-top: 5rem;
     border-radius: 5px;
     padding-bottom: 5rem;
-
-}
-.aboutus p{
+  }
+  .aboutus p {
     font-size: 1.1rem;
     width: 90%;
     margin: auto;
+  }
 
-}
+  .aboutus h1 {
+    font-size: 2rem;
+  }
 
-.aboutus h1{
-   font-size: 2rem;
-
-}
-
-
-.aboutus .Aboutimage img{
+  .aboutus .Aboutimage img {
     margin-top: 2rem;
     border-radius: 100%;
     width: 70%;
-}
-.Aboutimage{
+  }
+  .Aboutimage {
     margin: auto;
     width: 95%;
     display: block;
     margin-top: 2rem;
-}
-.imageee{
+  }
+  .imageee {
     margin-top: 2rem;
     width: 100%;
     box-shadow: 2px 2px 8px rgb(217, 217, 217);
-}
+  }
 
-.imageee h2{
+  .imageee h2 {
     margin: 0;
     margin-top: 1.5rem;
-
-}
+  }
 }

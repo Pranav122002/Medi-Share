@@ -41,7 +41,6 @@ export default function FilterOrders() {
     fetch(`${API_BASE_URL}/all-orders`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("order data =", data);
         setAllOrders(data);
       });
   }

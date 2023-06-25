@@ -8,19 +8,17 @@
   background: #48b0df;
   padding: 0.1px;
   height: max-content;
-  min-height: 95vh
+  min-height: 95vh;
 }
 
 .OCards hr {
   width: 92%;
   border: 1.5px solid rgb(230, 230, 230);
-
 }
 
 #mainhe {
   width: 95%;
   border: 2px solid #48b0df;
-  ;
 }
 
 .orderspage {
@@ -67,7 +65,6 @@
 .orderspage .filterOptions .filter-select {
   width: 15%;
   margin-right: 5rem;
-
 }
 
 .orderspage .sada {
@@ -79,7 +76,6 @@
   margin: auto;
   display: flex;
   justify-content: space-evenly;
-
 }
 
 /* .donate {
@@ -147,13 +143,11 @@
 }
 
 .allCards {
-
   width: 100%;
   margin: auto;
   height: max-content;
   position: relative;
   padding: 1px;
-
 }
 
 .OCards {
@@ -163,18 +157,19 @@
   margin: auto;
   height: max-content;
   margin-top: 2rem;
-
 }
- .medsidspan{
+.medsidspan {
   display: none;
- }
+}
 .OCards .button-53 {
   background-color: #b7ffe7;
-  border: 0 solid #E5E7EB;
+  border: 0 solid #e5e7eb;
   box-sizing: border-box;
   color: #000000;
   display: flex;
-  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -191,19 +186,13 @@
   touch-action: manipulation;
   text-align: center;
   margin: auto;
-
-
 }
 
-
 .OCards .card {
-
   max-width: 100%;
   width: 99%;
   margin: auto;
   border: none;
-
-
 }
 
 .OCards .card-body {
@@ -212,15 +201,13 @@
   border: none;
   display: flex;
   padding: 0.1px;
-
-
 }
 
-.OCards .card-body:hover {}
+.OCards .card-body:hover {
+}
 
 .OCards .card-body:hover {
   width: 100%;
-
 }
 
 .OCards .card-text {
@@ -229,7 +216,6 @@
   border: none;
   display: flex;
   justify-content: flex-start;
-
 }
 
 .OCards p {
@@ -247,7 +233,8 @@
   display: none;
 }
 
-.headd {}
+.headd {
+}
 
 .heading {
   height: max-content;
@@ -267,7 +254,6 @@
   float: left;
   margin-top: auto;
   width: 2rem;
-
 }
 
 #action {
@@ -275,9 +261,7 @@
 }
 
 #title {
-
   font-weight: 700;
-
 }
 
 #title img {
@@ -292,7 +276,7 @@
 #req_button {
   background-image: linear-gradient(-180deg, rgb(4, 230, 0) 0%, #01a42ac1 100%);
   border-radius: 1rem;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 16px;
   justify-content: center;
   text-decoration: none;
@@ -303,7 +287,6 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-
 }
 
 #req_button:hover {
@@ -311,7 +294,6 @@
 }
 
 .loadingcont {
-
   width: 80%;
   justify-content: center;
   align-items: center;
@@ -321,9 +303,7 @@
   color: black;
   position: relative;
   top: 50%;
-
 }
-
 
 @media screen and (max-width: 1000px) {
   .orderbody .bodyy {
@@ -392,7 +372,7 @@
     text-align: center;
     padding-bottom: 2rem;
   }
-  #sacjgnasd{ 
+  #sacjgnasd {
     display: none;
   }
 
@@ -402,8 +382,6 @@
     outline: none;
     border: none;
     display: block;
-
-
   }
 
   .OCards .card-text {
@@ -414,12 +392,11 @@
     border: none;
     display: block;
     justify-content: flex-start;
-
   }
 
   .OCards p {
     width: 100%;
-    
+
     padding: 0;
     font-size: 1.5rem;
     display: inline-block;
@@ -434,9 +411,7 @@
     margin-right: 0.5rem;
   }
 
-
   #title {
-
     font-size: 1.1rem;
     margin: 0rem;
     border-radius: 1rem;
@@ -459,11 +434,10 @@
     border-radius: 1rem;
     display: none;
   }
-  #mainhe{
+  #mainhe {
     display: none;
   }
   .heading img {
-
     margin: auto;
     width: 5rem;
   }
@@ -478,16 +452,19 @@
 
   .OCards .button-53 {
     background-color: #b7ffe7;
-    border: 0 solid #E5E7EB;
+    border: 0 solid #e5e7eb;
     box-sizing: border-box;
     color: #000000;
     display: flex;
-    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
     font-size: 1rem;
     font-weight: 700;
     justify-content: center;
     line-height: 1.75rem;
-    padding: .75rem 1.65rem;
+    padding: 0.75rem 1.65rem;
     position: relative;
     text-align: center;
     text-decoration: none #000000 solid;
@@ -504,25 +481,21 @@
     margin-top: 2rem;
     margin: 0;
     display: inline-block;
-
-
   }
-  .medsidspan{
+  .medsidspan {
     display: inline-block;
     width: 35%;
     text-align: left;
     margin-left: 2rem;
     font-weight: 700;
   }
-  .medishaelong{
+  .medishaelong {
     display: inline-block;
     width: 50%;
     margin-left: 40%;
-
   }
-  #locatasacas{
-      position: absolute;
-
+  #locatasacas {
+    position: absolute;
   }
 }
 

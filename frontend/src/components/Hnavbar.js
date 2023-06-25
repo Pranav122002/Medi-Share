@@ -6,20 +6,18 @@ import "../css/Hnavbar.css";
 
 export default function Hnavbar(props) {
   const [showNavbar, setShowNavbar] = useState(false);
-  
-  
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
-    console.log(showNavbar);
   };
-  
 
   const navigate = useNavigate();
 
   return (
     <>
-      {!["/signup", "/signin", "/", "/about-us"].includes(useLocation().pathname) ? (
+      {!["/signup", "/signin", "/", "/about-us"].includes(
+        useLocation().pathname
+      ) ? (
         <>
           {" "}
           <div className="Lnav">
@@ -40,7 +38,7 @@ export default function Hnavbar(props) {
                   <h2>Medi-Share</h2>
                 </div>
               </div>
-              
+
               <div className={`linkscur ${showNavbar && "active"}`}>
                 <Link className="aboutucur " to="/about-us">
                   <span id="Aboutt" style={{ cursor: "pointer" }}>
@@ -86,9 +84,7 @@ export default function Hnavbar(props) {
                     Sign In
                   </span>
                 </Link>
-
               </div>
-             
             </div>
           </div>
         </>

@@ -11,12 +11,9 @@
   width: 82vw;
   margin-left: auto;
   margin-right: 2vw;
-
-
 }
 
 .inventorymain .bodyy {
-
   width: 82vw;
   background: rgb(248, 248, 248);
   height: max-content;
@@ -28,7 +25,6 @@
 
 .searchbox {
   width: 100%;
-
 }
 
 .searchbox ul li {
@@ -99,7 +95,6 @@
   margin-top: 2rem;
 
   width: 95%;
-
 }
 
 .p {
@@ -108,7 +103,6 @@
   font-weight: 600;
   display: flex;
   justify-content: left;
-
 }
 
 .disease {
@@ -130,9 +124,7 @@
   display: flex;
   align-items: flex-start;
   border-radius: none;
-
 }
-
 
 .link {
   color: black;
@@ -148,7 +140,6 @@
   display: block;
   align-items: flex-start;
   border-radius: none;
-
 }
 
 .searchbox ul li {
@@ -179,7 +170,6 @@
   margin-left: 0rem;
   width: 90%;
 }
-
 
 .searchcolumn {
   display: flex;
@@ -281,15 +271,14 @@
   z-index: 9999;
   min-width: 30%;
   width: max-content;
-
 }
-#d2sdvyuaca{
+#d2sdvyuaca {
   font-weight: 700;
 }
-#feedtextd{
-    width: 100%;
-    min-height: 5rem;
-    height: max-content;
+#feedtextd {
+  width: 100%;
+  min-height: 5rem;
+  height: max-content;
 }
 .Modal__container ul {
   list-style: none;
@@ -359,12 +348,12 @@
 @media screen and (max-width: 1000px) {
   .inventorymain h1 {
     color: white;
-    width:95%;
+    width: 95%;
     margin-left: auto;
     margin-right: 0vw;
   }
   .inventorymain .bodyy {
-    width:95%;
+    width: 95%;
     background: rgb(248, 248, 248);
     height: max-content;
     margin-left: auto;
@@ -372,77 +361,75 @@
     padding: 0.1px;
     border-radius: 1rem;
     margin: auto;
-}
-.searchcolumn {
-  display: flex;
-  justify-content: center;
-}
+  }
+  .searchcolumn {
+    display: flex;
+    justify-content: center;
+  }
 
-.searchcolumn {
-  margin: auto;
-  margin-top: 2rem;
-  width: 95%;
-}
-.topsearch {
-  width: 95%;
-  display: flex;
-  justify-content: space-between;
-  height: 5rem;
-  margin: auto;
-}
-.inventorymain .searchinput {
-  border-radius: 10px;
-  border: none;
-  height: 3rem;
-  width: 75%;
-  font-weight: 100;
-  background-color: rgba(60, 172, 161, 0.1);
-  margin-left: 0;
-  font-weight: 700;
-  text-align: left;
-  padding: 0;
-  margin: 0;
-  padding-left: 1rem;
-}
-.cart-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 20%;
-  height: 3.2rem;
-}
-.box {
-  background-color: #f2f2f2;
-  padding: 5%;
-  width: 80%;
-  margin: auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.Modal__container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  min-width: 30%;
-  width: 80%;
-}
-.Modal__container ul li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 95%;
-  margin-bottom: 10px;
-}
-
-
+  .searchcolumn {
+    margin: auto;
+    margin-top: 2rem;
+    width: 95%;
+  }
+  .topsearch {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    margin: auto;
+  }
+  .inventorymain .searchinput {
+    border-radius: 10px;
+    border: none;
+    height: 3rem;
+    width: 75%;
+    font-weight: 100;
+    background-color: rgba(60, 172, 161, 0.1);
+    margin-left: 0;
+    font-weight: 700;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    padding-left: 1rem;
+  }
+  .cart-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 20%;
+    height: 3.2rem;
+  }
+  .box {
+    background-color: #f2f2f2;
+    padding: 5%;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .Modal__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    min-width: 30%;
+    width: 80%;
+  }
+  .Modal__container ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin-bottom: 10px;
+  }
 }

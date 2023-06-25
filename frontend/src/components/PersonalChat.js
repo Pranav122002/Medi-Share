@@ -14,7 +14,7 @@ const PersonalChat = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
   const [users, setUsers] = useState([]);
-  const [chats , viewChats] = useState(false);
+  const [chats, viewChats] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -42,7 +42,6 @@ const PersonalChat = () => {
         .then((response) => response.json())
         .then((data) => {
           setMessages(data);
-          console.log("data = ", data);
         })
         .catch((error) => {
           console.error("Error fetching personal messages:", error);
@@ -115,9 +114,7 @@ const PersonalChat = () => {
         }),
       })
         .then((response) => response.json())
-        .then((data) => {
-          console.log("Personal message saved:", data);
-        })
+        .then((data) => {})
         .catch((error) => {
           console.error("Error saving personal message:", error);
         });
@@ -139,8 +136,13 @@ const PersonalChat = () => {
               <div className="userss">
                 {users.map((user) => (
                   <>
-                 
-                    <p key={user._id} onClick={() => {handleUserSelection(user) ;viewChats("active")}}>
+                    <p
+                      key={user._id}
+                      onClick={() => {
+                        handleUserSelection(user);
+                        viewChats("active");
+                      }}
+                    >
                       {user.name}
                     </p>
                     <hr />
@@ -149,13 +151,20 @@ const PersonalChat = () => {
               </div>
             </div>
             <hr id="midhr" />
-           
-            <div  className={`selchat ${chats && "active"}`} >
+
+            <div className={`selchat ${chats && "active"}`}>
               <div className="seluser">
                 {selectedUser && (
-                  <div  className="userssasd">
+                  <div className="userssasd">
                     {" "}
-                    <img onClick={()=> { viewChats(false)}} id="sdbackpn" src="./back.png" alt="" />
+                    <img
+                      onClick={() => {
+                        viewChats(false);
+                      }}
+                      id="sdbackpn"
+                      src="./back.png"
+                      alt=""
+                    />
                     <img
                       id="profpicc"
                       src="./profile-pic.png"
@@ -163,7 +172,7 @@ const PersonalChat = () => {
                       srcset=""
                     />
                     <p>{selectedUser.name}</p>
-                  </div> 
+                  </div>
                 )}
               </div>
               <div className="messages">
@@ -190,7 +199,7 @@ const PersonalChat = () => {
                     ) : (
                       <>
                         <div className="received-msg">
-                            <p className="flexdisp" key={index}>
+                          <p className="flexdisp" key={index}>
                             <p>{message.message}</p>
 
                             <div className="datemess">
@@ -216,17 +225,19 @@ const PersonalChat = () => {
                   value={inputValue}
                   onChange={handleInputChange}
                 />
-               {inputValue === "" ?(<>
-               </>):(
-                <button
-                  id="sendbutton"
-                 
-                >
-                  <img  onClick={sendPersonalMessage}
-                  disabled={!selectedUser} src="./send.png" id="sendicon" alt="send" />
-                </button>
-               )}
-                
+                {inputValue === "" ? (
+                  <></>
+                ) : (
+                  <button id="sendbutton">
+                    <img
+                      onClick={sendPersonalMessage}
+                      disabled={!selectedUser}
+                      src="./send.png"
+                      id="sendicon"
+                      alt="send"
+                    />
+                  </button>
+                )}
               </div>
             </div>
           </div>

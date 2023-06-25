@@ -26,7 +26,7 @@ const personalmessageSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 

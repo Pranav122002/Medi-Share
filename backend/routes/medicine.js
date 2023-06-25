@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const moment = require('moment-timezone');
+const moment = require("moment-timezone");
 const mongoose = require("mongoose");
 const MEDICINE = mongoose.model("MEDICINE");
-const ORDER = mongoose.model("ORDER")
-const USER = mongoose.model("USER")
-const assignVolunteer = require('../Functions/assignVolunteer')
+const ORDER = mongoose.model("ORDER");
+const USER = mongoose.model("USER");
+const assignVolunteer = require("../Functions/assignVolunteer");
 
 router.get("/api/allmedicines", (req, res) => {
   MEDICINE.find()
@@ -13,7 +13,6 @@ router.get("/api/allmedicines", (req, res) => {
     .sort("-createdAt")
     .then((medicines) => res.json(medicines))
     .catch((err) => console.log(err));
-
 });
 
 router.post("/api/addmedicine", async (req, res, next) => {
@@ -48,83 +47,81 @@ router.post("/api/add-medicines", async (req, res, next) => {
   }
 });
 
-
-router.post('/api/search-medicines', (req, res) => {
-  let userPattern = new RegExp(req.body.query, "i"); // add "^" at start for exact search 
+router.post("/api/search-medicines", (req, res) => {
+  let userPattern = new RegExp(req.body.query, "i"); // add "^" at start for exact search
   MEDICINE.find({ medicine_name: { $regex: userPattern } })
     .select("-__v")
-    .then(medicine => {
-      res.json({ medicine })
-    }).catch(err => {
-      console.log(err)
+    .then((medicine) => {
+      res.json({ medicine });
     })
-})
-router.post('/api/medicine-availablity', async (req, res, next) => {
-  const cart = req.body.cart
-  console.log(cart)
-  const Availability = await Promise.all(cart.map(async (med) => {
-    try {
-      const result = await MEDICINE.findById(med.med_id)
-        .select('medicine_name count');
-      console.log('Medince: ', result)
-      console.log("count quantity",result.count,med.quantity)
-      if (result.count < med.quantity) {
-        return result.medicine_name;
-      } else {
-        return null
-      }
-    } catch (err) {
+    .catch((err) => {
       console.log(err);
-    }
-  }));
-  const filteredAvailability = Availability.filter(item => item !== null);
-  console.log("Availablity: ", Availability)
-  console.log("filteredAvailability: ",filteredAvailability)
+    });
+});
+router.post("/api/medicine-availablity", async (req, res, next) => {
+  const cart = req.body.cart;
+
+  const Availability = await Promise.all(
+    cart.map(async (med) => {
+      try {
+        const result = await MEDICINE.findById(med.med_id).select(
+          "medicine_name count"
+        );
+
+        if (result.count < med.quantity) {
+          return result.medicine_name;
+        } else {
+          return null;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })
+  );
+  const filteredAvailability = Availability.filter((item) => item !== null);
+
   if (filteredAvailability.length > 0) {
     res.json(filteredAvailability);
   } else {
-    const istDate = moment().tz('Asia/Kolkata').format('DD-MM-YYYY');
-    const istTime = moment().tz('Asia/Kolkata').format('HH:mm:ss');
+    const istDate = moment().tz("Asia/Kolkata").format("DD-MM-YYYY");
+    const istTime = moment().tz("Asia/Kolkata").format("HH:mm:ss");
     try {
-      const { cart, userID, location, coordinates } =
-        req.body;
+      const { cart, userID, location, coordinates } = req.body;
 
       const data = await ORDER.create({
         order_type: "request-order",
         medicines: cart,
-        location:{ location,
-        ...(coordinates
-          ? { lng: coordinates[0], lat: coordinates[1] }
-          : {})},
+        location: {
+          location,
+          ...(coordinates ? { lng: coordinates[0], lat: coordinates[1] } : {}),
+        },
         requester: userID,
         no_of_medicines: cart.length,
         order_creation_date: {
           date: istDate,
-          time: istTime
-        }
+          time: istTime,
+        },
       });
       if (data) {
-        console.log("Requested")
-        USER.findByIdAndUpdate(req.body.userID,
+        USER.findByIdAndUpdate(
+          req.body.userID,
           { cart: [] },
           { new: true }
-        )
-          .then((user) => {
-            if (user) {
-               res.json({ success: "Request Order placed successfully" });
-               //volunteer assignment
-                assignVolunteer(data._id, coordinates)
-              
-            } else {
-               res.json({ error: "Failed to update user cart" });
-            }
-          })
+        ).then((user) => {
+          if (user) {
+            res.json({ success: "Request Order placed successfully" });
+            //volunteer assignment
+            assignVolunteer(data._id, coordinates);
+          } else {
+            res.json({ error: "Failed to update user cart" });
+          }
+        });
       } else {
-        return res.json({ error: "Failed to place order" })
-      };
+        return res.json({ error: "Failed to place order" });
+      }
     } catch (ex) {
       next(ex);
     }
   }
-})
+});
 module.exports = router;

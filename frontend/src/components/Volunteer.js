@@ -11,7 +11,7 @@ import Modal from "react-modal";
 import "../css/Modal.css";
 import { auth } from "../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import OtpInput from 'react-otp-input';
+import OtpInput from "react-otp-input";
 
 export default function Volunteer() {
   const [unverifiedorders, setUnverifiedOrders] = useState([]);
@@ -32,7 +32,6 @@ export default function Volunteer() {
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
-  console.log(search);
 
   useEffect(() => {
     const sorted = [...unverifiedorders].sort(
@@ -89,7 +88,6 @@ export default function Volunteer() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("unverifiedorders = ", data);
         setUnverifiedOrders(data);
       });
   }
@@ -97,9 +95,7 @@ export default function Volunteer() {
   const delivery_order = (order_id) => {
     fetch(`${API_BASE_URL}/delivery-executed/${order_id}`, {
       method: "put",
-    }).then((res) => {
-      console.log("Successfully delivered");
-    });
+    }).then((res) => {});
   };
 
   const verify_donate_order = (order_id) => {
@@ -186,7 +182,6 @@ export default function Volunteer() {
       });
   };
   const handleReject = (order) => {
-    console.log(VolunteerId)
     fetch(`${API_BASE_URL}/volunteer-reject/${order.unverifiedorders._id}`, {
       method: "put",
       headers: {
@@ -196,7 +191,6 @@ export default function Volunteer() {
     })
       .then((res) => res.json)
       .then((data) => {
-        console.log(data);
         // Update the unverifiedorders state after successfully rejecting the order
         // remove the rejected order from the state
         const updatedOrder = (preivousOrder) =>
@@ -208,7 +202,6 @@ export default function Volunteer() {
       });
   };
 
-
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -218,18 +211,16 @@ export default function Volunteer() {
           callback: (response) => {
             generateOTP();
           },
-          "expired-callback": () => { },
+          "expired-callback": () => {},
         },
         auth
       );
-
     }
   }
 
   function generateOTP(phoneNumber) {
-    console.log(phoneNumber)
     onCaptchVerify();
-    console.log("generate OTP");
+
     const appVerifier = window.recaptchaVerifier;
 
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
@@ -248,8 +239,6 @@ export default function Volunteer() {
     window.confirmationResult
       .confirm(OTP)
       .then(async (res) => {
-        console.log(res);
-
         notifyB("Delivery Done");
         setUnverifiedOrders((prevOrders) => {
           return prevOrders.map((item) =>
@@ -263,9 +252,7 @@ export default function Volunteer() {
         setDeliverModal(false);
         //update the order list and send feedback to the user
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   const reject_donate_order = (order_id) => {
@@ -279,7 +266,7 @@ export default function Volunteer() {
             item._id === order_id ? { ...item, is_order_rejected: true } : item
           );
         });
-        console.log(data.data);
+
         notifyB(data.msg);
       });
   };
@@ -303,7 +290,7 @@ export default function Volunteer() {
                 name=""
                 id=""
               />
-              <div className="volunteer_cunt" >
+              <div className="volunteer_cunt">
                 <div className="vpending" id="sgaaafas">
                   <p className="p-head"> Order Type </p>
                   <p className="p-head">Order ID </p>{" "}
@@ -320,147 +307,188 @@ export default function Volunteer() {
                     return search.toLowerCase()=== '' ? unverifiedorders : unverifiedorders.medicine_name.toLowerCase().includes(search)
                   }).map((unverifiedorders) => (<> */}
 
-
-                {sortedData.filter((unverifiedorders) => {
-                  return search === '' ? unverifiedorders : unverifiedorders._id.includes(search);
-                }).map((unverifiedorders) => (
-                  <>
-                    <div className="vpending" key={unverifiedorders._id.toString().slice(-4)}>
-                      <p className="vpdetails">order_type : </p>
-                      <p className="h3">{unverifiedorders.order_type}</p>
-                      <p className="vpdetails" >Order ID : </p>{" "}
-                      <p className="h3">{unverifiedorders._id.toString().slice(-4)}</p>
-                      <p className="vpdetails" >No of Meds : </p>{" "}
-                      <p className="h3">{unverifiedorders.no_of_medicines}</p>
-                      <p className="vpdetails" >location : </p>
-                      <p className="h3">{unverifiedorders?.location?.location}</p>
-
-                      {unverifiedorders.order_type == "donate-order" ? (
-                        <>
-                          <p className="vpdetails" >Donar : </p>
-                          <p className="h3">{unverifiedorders.donar.name}</p>
-                        </>
-                      ) : (<>
-                        <p className="vpdetails" >Requester : </p>
-                        <p className="h3">{unverifiedorders.requester.name}</p>
-                      </>
-                      )}
-
-                      {unverifiedorders.acceptance_status === "pending" ? (<>
-                        <p className="vpdetails" >Action / Status : </p>
+                {sortedData
+                  .filter((unverifiedorders) => {
+                    return search === ""
+                      ? unverifiedorders
+                      : unverifiedorders._id.includes(search);
+                  })
+                  .map((unverifiedorders) => (
+                    <>
+                      <div
+                        className="vpending"
+                        key={unverifiedorders._id.toString().slice(-4)}
+                      >
+                        <p className="vpdetails">order_type : </p>
+                        <p className="h3">{unverifiedorders.order_type}</p>
+                        <p className="vpdetails">Order ID : </p>{" "}
                         <p className="h3">
-                          <button
-                            onClick={() => handleAccept({ unverifiedorders })}>
-                            Accept
-                          </button>
-                          <button
-                            onClick={() => handleReject({ unverifiedorders })}>
-                            Deny
-                          </button>
+                          {unverifiedorders._id.toString().slice(-4)}
                         </p>
-                        </>  ) : (
-                        <>
-                          {unverifiedorders.is_order_rejected === true ?
-                            ( <><p className="vpdetails" >Status : </p><p>Cancelled</p> </>)
-                            : unverifiedorders.order_type == "donate-order" ?
+                        <p className="vpdetails">No of Meds : </p>{" "}
+                        <p className="h3">{unverifiedorders.no_of_medicines}</p>
+                        <p className="vpdetails">location : </p>
+                        <p className="h3">
+                          {unverifiedorders?.location?.location}
+                        </p>
+                        {unverifiedorders.order_type == "donate-order" ? (
+                          <>
+                            <p className="vpdetails">Donar : </p>
+                            <p className="h3">{unverifiedorders.donar.name}</p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="vpdetails">Requester : </p>
+                            <p className="h3">
+                              {unverifiedorders.requester.name}
+                            </p>
+                          </>
+                        )}
+                        {unverifiedorders.acceptance_status === "pending" ? (
+                          <>
+                            <p className="vpdetails">Action / Status : </p>
+                            <p className="h3">
+                              <button
+                                onClick={() =>
+                                  handleAccept({ unverifiedorders })
+                                }
+                              >
+                                Accept
+                              </button>
+                              <button
+                                onClick={() =>
+                                  handleReject({ unverifiedorders })
+                                }
+                              >
+                                Deny
+                              </button>
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            {unverifiedorders.is_order_rejected === true ? (
+                              <>
+                                <p className="vpdetails">Status : </p>
+                                <p>Cancelled</p>{" "}
+                              </>
+                            ) : unverifiedorders.order_type ==
+                              "donate-order" ? (
                               unverifiedorders.verify_status === true ? (
-                                <><p className="vpdetails" >Status : </p><p>Verified</p> </>
-                              ) : (
-                                <><p className="h3">
-                                  <button
-                                    // className="button-53"
-                                    onClick={() => verify_donate_order(unverifiedorders._id)}
-                                  >
-                                    Verify
-                                  </button>
-                                  <button
-                                    // className="button-53"
-                                    onClick={() => reject_donate_order(unverifiedorders._id)}
-                                  >
-                                    Reject
-                                  </button>
-                                </p>
-                                </>
-                              ) : unverifiedorders.execute_status === true ? (<>
-                                <p className="vpdetails" >Action / Status : </p>
-                                <p>Delivered</p>
-                             </> ) : (
                                 <>
-                                  <p className="vpdetails" >Action : </p>
-                                  <p className="h3"><button
+                                  <p className="vpdetails">Status : </p>
+                                  <p>Verified</p>{" "}
+                                </>
+                              ) : (
+                                <>
+                                  <p className="h3">
+                                    <button
+                                      // className="button-53"
+                                      onClick={() =>
+                                        verify_donate_order(
+                                          unverifiedorders._id
+                                        )
+                                      }
+                                    >
+                                      Verify
+                                    </button>
+                                    <button
+                                      // className="button-53"
+                                      onClick={() =>
+                                        reject_donate_order(
+                                          unverifiedorders._id
+                                        )
+                                      }
+                                    >
+                                      Reject
+                                    </button>
+                                  </p>
+                                </>
+                              )
+                            ) : unverifiedorders.execute_status === true ? (
+                              <>
+                                <p className="vpdetails">Action / Status : </p>
+                                <p>Delivered</p>
+                              </>
+                            ) : (
+                              <>
+                                <p className="vpdetails">Action : </p>
+                                <p className="h3">
+                                  <button
                                     className="button-53"
-                                    onClick={() => setDeliverModal(true)}>
+                                    onClick={() => setDeliverModal(true)}
+                                  >
                                     Deliver
                                   </button>
-                                  </p>
-                                  <Modal
-                                    className="Modal__container"
-                                    isOpen={deliverModalIsOpen}
-                                    onRequestClose={() => setDeliverModal(false)}
-                                    style={{
-                                      overlay: { zIndex: 9999 },
-                                      content: { zIndex: 9999 },
-                                    }}
-                                  >
-                                    <p>OTP</p>
-                                    <div id="recaptcha-container"> </div>
-                                    <div>
-                                      
+                                </p>
+                                <Modal
+                                  className="Modal__container"
+                                  isOpen={deliverModalIsOpen}
+                                  onRequestClose={() => setDeliverModal(false)}
+                                  style={{
+                                    overlay: { zIndex: 9999 },
+                                    content: { zIndex: 9999 },
+                                  }}
+                                >
+                                  <p>OTP</p>
+                                  <div id="recaptcha-container"> </div>
+                                  <div>
+                                    <button
+                                      onClick={() =>
+                                        generateOTP(
+                                          unverifiedorders.requester.phone_no
+                                        )
+                                      }
+                                    >
+                                      Generate OTP
+                                    </button>
+                                  </div>
+                                  {OTPstatus && (
+                                    <>
+                                      <OtpInput
+                                        value={OTP}
+                                        onChange={setOTP}
+                                        numInputs={6}
+                                        renderSeparator={<span> - </span>}
+                                        renderInput={(props) => (
+                                          <input {...props} />
+                                        )}
+                                      />
                                       <button
                                         onClick={() =>
-                                          generateOTP(
-                                            unverifiedorders.requester.phone_no
-                                          )
+                                          onOTPVerify(unverifiedorders._id)
                                         }
                                       >
-                                        Generate OTP
+                                        Submit
                                       </button>
-                                    </div>
-                                    {OTPstatus && (
-                                      <>
-                                        <OtpInput
-                                          value={OTP}
-                                          onChange={setOTP}
-                                          numInputs={6}
-                                          renderSeparator={<span> - </span>}
-                                          renderInput={(props) => <input {...props} />}
-                                        />
-                                        <button
-                                          onClick={() =>
-                                            onOTPVerify(unverifiedorders._id)
-                                          }
-                                        >
-                                          Submit
-                                        </button>
-                                      </>
-                                    )}
-                                    <button
-                                      onClick={() => setDeliverModal(false)}
-                                    >
-                                      Close
-                                    </button>
-                                  </Modal>
-                                </>
-                              )}
-                        </>
-                      )}
-                      <p className="vpdetails" >Details : </p>
-                      <p className="h3">
-                      <Button
-                        className="button-53"
-                        onClick={() => viewMedicine(unverifiedorders)}
-                      >
-                        Details
-                      </Button>
-                      </p>
-                      <ViewMedModal
-                        viewMedModalIsOpen={viewMedModalIsOpen}
-                        selectOrder={selectOrder}
-                        closeViewMedModal={closeViewMedModal}
-                      />
-                    </div>
-                  </>
-                ))}
+                                    </>
+                                  )}
+                                  <button
+                                    onClick={() => setDeliverModal(false)}
+                                  >
+                                    Close
+                                  </button>
+                                </Modal>
+                              </>
+                            )}
+                          </>
+                        )}
+                        <p className="vpdetails">Details : </p>
+                        <p className="h3">
+                          <Button
+                            className="button-53"
+                            onClick={() => viewMedicine(unverifiedorders)}
+                          >
+                            Details
+                          </Button>
+                        </p>
+                        <ViewMedModal
+                          viewMedModalIsOpen={viewMedModalIsOpen}
+                          selectOrder={selectOrder}
+                          closeViewMedModal={closeViewMedModal}
+                        />
+                      </div>
+                    </>
+                  ))}
               </div>
             </div>
           )}

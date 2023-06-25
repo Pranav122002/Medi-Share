@@ -1,15 +1,12 @@
-
-.chatmain{
+.chatmain {
   width: 100vw;
   background: #48b0df;
   padding: 0.1px;
-  min-height:110vh;
+  min-height: 110vh;
   height: max-content;
-  
-  
-} 
+}
 
-.chatfunc{
+.chatfunc {
   background: white;
   border-radius: 1rem;
   text-align: left;
@@ -20,52 +17,50 @@
   height: 10rem;
 }
 
-.Chatnow{
-    width: 82vw;
-    margin-right: 1.5vw;
-    margin-left: auto;
+.Chatnow {
+  width: 82vw;
+  margin-right: 1.5vw;
+  margin-left: auto;
 }
-.chatfunc img{
+.chatfunc img {
   height: 10rem;
   margin-right: 5vw;
   margin-left: auto;
 }
-#chatsicons{
+#chatsicons {
   float: right;
 }
-.chatfunc h1{
+.chatfunc h1 {
   margin-top: 1rem;
   font-size: 1.7rem;
 }
-.chatfunc p{
-
+.chatfunc p {
   margin-top: 1.5rem;
   font-size: 1vw;
-  width:40vw;
+  width: 40vw;
   font-weight: 500;
-
 }
-.linkcont{
+.linkcont {
   height: max-content;
   /* height: 10%; */
-  background:#C6E6FB;
+  background: #c6e6fb;
   padding-top: 0.1px;
   margin-top: 2rem;
   border-radius: 0.9rem;
   padding-bottom: 2rem;
 }
-.linkcont a{
+.linkcont a {
   width: 20vw;
   background: white;
   margin-top: 2rem;
   text-align: center;
   font-style: none;
   text-decoration: none;
-  height:max-content;
+  height: max-content;
   min-height: 18rem;
   box-shadow: 2px 2px 8px rgb(236, 236, 236);
 }
-.linkcont a:hover{
+.linkcont a:hover {
   width: 20vw;
   background: white;
   margin-top: 2rem;
@@ -73,72 +68,66 @@
   font-style: none;
   font-size: 1.05rem;
   text-decoration: none;
-  height:max-content;
+  height: max-content;
   min-height: 18rem;
   box-shadow: 2px 2px 8px rgb(218, 218, 218);
 }
 
-
-.Cnavli{
-    font-style: none;
-    text-decoration: none;
-    color: black;
-    display: block;
-    text-align: left;
-    width: 90%;
-    height: max-content;
-    background: rgb(255, 255, 255);
-    box-shadow: 2px 2px 9px rgb(232, 232, 232);
-    padding: 0;
-    margin: auto;
-    margin-top: 2rem;
-    border-radius: 1rem;
-
+.Cnavli {
+  font-style: none;
+  text-decoration: none;
+  color: black;
+  display: block;
+  text-align: left;
+  width: 90%;
+  height: max-content;
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 9px rgb(232, 232, 232);
+  padding: 0;
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 1rem;
 }
-.Cnavli img{
+.Cnavli img {
   height: 15rem;
   margin-right: 2;
 }
-.Cnavli  .Cnavliflex{
+.Cnavli .Cnavliflex {
   display: flex;
   padding-left: 2rem;
   border-radius: 0.9rem;
 }
 
-
-.Cnavli h2{
-
-    margin: 0;
-    font-style: none;
-    text-decoration: none;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+.Cnavli h2 {
+  margin: 0;
+  font-style: none;
+  text-decoration: none;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
-.Cnavlime{
+.Cnavlime {
   margin-left: 2rem;
   margin-top: 1rem;
   width: 60%;
 }
 
-
-.Cnavli .button-53{
+.Cnavli .button-53 {
   border-radius: 0.9rem;
-padding-left: 0px;
-padding-right: 0px;
-  
+  padding-left: 0px;
+  padding-right: 0px;
 }
-.Cnavli .button-53:hover{
+.Cnavli .button-53:hover {
   width: 50%;
 }
-.Cnavli .button-53::after{
+.Cnavli .button-53::after {
   border-radius: 0.9rem;
 }
 
-.hEekYD .input-container button{
-    position: relative;
+.hEekYD .input-container button {
+  position: relative;
 }
 @media screen and (max-width: 1000px) {
-  .chatmain{
+  .chatmain {
     position: relative;
     z-index: 23;
   }
@@ -148,8 +137,8 @@ padding-right: 0px;
     margin-right: 0vw;
     margin-left: auto;
     margin: auto;
-}
-  .chatfunc{
+  }
+  .chatfunc {
     width: 100%;
     height: max-content;
     background: white;
@@ -158,52 +147,49 @@ padding-right: 0px;
     padding-bottom: 2rem;
     text-align: center;
     padding: 0.1px;
-    
   }
-  .chatfunc img{
+  .chatfunc img {
     height: 10rem;
     margin-top: auto;
     margin-bottom: auto;
   }
-  .chatfunc h1{
+  .chatfunc h1 {
     margin-top: 1rem;
     text-align: left;
     margin-left: 2rem;
   }
-  .chatfunc p{
+  .chatfunc p {
     margin-top: 1rem;
     font-size: 1.2rem;
-    width:95%;
+    width: 95%;
     text-align: left;
     margin-left: 2rem;
-  
   }
   #chatsicons {
     float: none;
-}
-.chatfunc img {
-  height: 10rem;
-  margin-top: auto;
-  margin-bottom: auto;
-}
+  }
+  .chatfunc img {
+    height: 10rem;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 
-.chatfunc img {
-  height: 30vw;
-  margin-right: 0vw;
-  margin-left: auto;
-}
+  .chatfunc img {
+    height: 30vw;
+    margin-right: 0vw;
+    margin-left: auto;
+  }
 
-  .linkcont{
-    height:max-content;
+  .linkcont {
+    height: max-content;
     width: 100%;
     background: rgb(244, 255, 254);
     display: block;
     padding-top: 0.1px;
     padding-bottom: 1rem;
     margin-top: 2rem;
-  
   }
-  .linkcont a{
+  .linkcont a {
     width: 90%;
     background: white;
     margin-top: 5rem;
@@ -213,9 +199,8 @@ padding-right: 0px;
     height: max-content;
     box-shadow: 2px 2px 8px rgb(236, 236, 236);
     margin-bottom: 2rem;
-
   }
-  .linkcont a:hover{
+  .linkcont a:hover {
     width: 90%;
     background: white;
     margin-top: 2rem;
@@ -226,52 +211,45 @@ padding-right: 0px;
     height: max-content;
     box-shadow: 2px 2px 8px rgb(218, 218, 218);
   }
-  
-  
-  .Cnavli{
-      margin: auto;
-      font-style: none;
-      text-decoration: none;
-      color: black;
-      display: block;
-      text-align: center;
-      width: 90%;
-      background: white;
-      height: max-content;
-      padding: 0;
-      margin-top: 2rem;
-      height: max-content;
-     padding-bottom: 1rem;
 
+  .Cnavli {
+    margin: auto;
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    width: 90%;
+    background: white;
+    height: max-content;
+    padding: 0;
+    margin-top: 2rem;
+    height: max-content;
+    padding-bottom: 1rem;
   }
   .Cnavli .Cnavliflex {
     display: block;
     padding-left: 0rem;
     border-radius: 0.9rem;
     height: max-content;
-  
-}
-.linkcont .Cnavli .button-53 {
- 
-}
-.Cnavlime {
-  margin-left: 0rem;
-  margin-top: 1rem;
-  margin: auto;
-  width: 80%;
-}
-  .Cnavli h2{
-  
-      margin: 0;
-      font-style: none;
-      text-decoration: none;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
   }
-
-  .Cnavli .button-53{
+  .linkcont .Cnavli .button-53 {
+  }
+  .Cnavlime {
+    margin-left: 0rem;
+    margin-top: 1rem;
+    margin: auto;
     width: 80%;
   }
-  
-}
+  .Cnavli h2 {
+    margin: 0;
+    font-style: none;
+    text-decoration: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
 
+  .Cnavli .button-53 {
+    width: 80%;
+  }
+}

@@ -5,7 +5,6 @@
   width: 80vw;
   margin-left: auto;
   margin-right: 2vw;
-
 }
 
 .homeeee .Lcontent .banner1 .img {
@@ -33,9 +32,7 @@
 
 .image:hover {
   box-shadow: 2px 2px 9px rgb(171, 171, 171);
-
 }
-
 
 .image img {
   padding-top: 0.5rem;
@@ -68,7 +65,7 @@
   display: flex;
 }
 
-.card-header>h5 {
+.card-header > h5 {
   margin: 0;
   padding: 11px;
 }
@@ -209,7 +206,6 @@
   color: black;
   text-decoration: none;
   margin-left: 2rem;
-
 }
 
 .footerr a:hover {
@@ -220,16 +216,13 @@
 .homeeee .fbac-slidetrack .bord {
   box-shadow: 2px 2px 9px rgb(234, 234, 234);
   background: rgb(255, 255, 255);
-  ;
 }
 
 .subscri {
   background: rgb(227, 248, 255);
   width: 100vw;
   height: 100vh;
-  ;
   padding: 0.1px;
-
 }
 
 .subsss .subs {
@@ -238,7 +231,6 @@
   margin-right: 2vw;
   padding: 5rem;
   margin-top: 5rem;
-
 }
 
 #orangec {
@@ -251,7 +243,6 @@
   height: 15rem;
 }
 
-
 @media screen and (max-width: 1000px) {
   .homeeee .Lcontent .banner1 .img #wacdase img {
     margin-top: 0;
@@ -259,7 +250,6 @@
     transform: rotate(0);
     position: relative;
     z-index: 2;
-
   }
 
   .subsss .subs img {
@@ -271,7 +261,6 @@
   }
 
   .images {
-
     padding-top: 5%;
     width: 60%;
     height: 45rem;
@@ -279,7 +268,6 @@
   }
 
   .image {
-
     box-shadow: 2px 2px 9px rgb(223, 223, 223);
     margin-top: 2rem;
     display: flex;
@@ -291,9 +279,7 @@
 
   .image:hover {
     box-shadow: 2px 2px 9px rgb(171, 171, 171);
-
   }
-
 
   .image img {
     padding-top: 0.5rem;
@@ -326,7 +312,7 @@
     display: flex;
   }
 
-  .card-header>h5 {
+  .card-header > h5 {
     margin: 0;
     padding: 11px;
   }

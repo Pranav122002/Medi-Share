@@ -42,10 +42,12 @@ export const Latestanc = () => {
                 <>
                   <h3 id="anchead">{annoucements.title}</h3>
                   <h3 className="p1">{annoucements.date}</h3>
-                  <p className="p3" id="sdcaseca">{annoucements.description} <Link  to="/signin">
-                    <button  className="button23">More Info...</button>
-                  </Link> </p>
-                 
+                  <p className="p3" id="sdcaseca">
+                    {annoucements.description}{" "}
+                    <Link to="/signin">
+                      <button className="button23">More Info...</button>
+                    </Link>{" "}
+                  </p>
                 </>
               ) : (
                 <div id="noneee"></div>

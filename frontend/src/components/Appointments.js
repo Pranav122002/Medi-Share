@@ -36,7 +36,6 @@ export default function Appointments() {
   const [DoctorForm, setDoctorForm] = useState(false);
   const [FeedForm, setFeedForm] = useState(false);
 
-  console.log(DoctorForm)
   useEffect(() => {
     fetchUser();
     fetchDoctors();
@@ -56,7 +55,6 @@ export default function Appointments() {
 
   function fetchMyDoctorAppointments() {
     const doctorId = userid;
-    console.log("doctorId = ", doctorId);
 
     fetch(`${API_BASE_URL}/my-doctor-appointments/${doctorId}`, {
       headers: {
@@ -67,7 +65,6 @@ export default function Appointments() {
       .then((data) => {
         setDoctorAppointments(data);
         setIsLoading(false);
-        console.log("appointments = ", data);
       })
       .catch((error) => {
         console.log(error);
@@ -86,7 +83,6 @@ export default function Appointments() {
       .then((data) => {
         setPatientAppointments(data);
         setIsLoading(false);
-        console.log("my app = ", data);
       })
       .catch((error) => {
         console.log(error);
@@ -119,7 +115,6 @@ export default function Appointments() {
           notifyB(data.msg);
           navigate("/profile");
         }
-        console.log(data);
       });
   };
 
@@ -201,8 +196,6 @@ export default function Appointments() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("Doctors list = ", res);
-
         setDoctors(res);
       })
       .catch((error) => {
@@ -212,9 +205,6 @@ export default function Appointments() {
   }
 
   function addLink(appointmentId) {
-    console.log("linktext = ", linkText);
-    console.log("id = ", appointmentId);
-
     fetch(`${API_BASE_URL}/add-appointment-link/${appointmentId}`, {
       method: "put",
       headers: {
@@ -264,7 +254,11 @@ export default function Appointments() {
           <div>
             <h1>Doctor Appointments </h1>
             <div className="doctorp">
-              <p>Book an appointment with our affiliated doctors today. Appointments can be booked with the credits earned on our website.</p>
+              <p>
+                Book an appointment with our affiliated doctors today.
+                Appointments can be booked with the credits earned on our
+                website.
+              </p>
             </div>
           </div>
           <img src="./doctor6.jpg" alt="" />
@@ -277,7 +271,6 @@ export default function Appointments() {
               <>
                 {isDoctor ? (
                   <>
-
                     <div className="appointments-container">
                       <h2>Your Appointments</h2>
                       {/* {appointments.length > 0 ? ( */}
@@ -289,86 +282,110 @@ export default function Appointments() {
                           <p>Time</p>
                           <p>Action/Status</p>
                           <p>Link</p>
-                          
                         </li>
-                        <hr   id="docaphead"/>
-                        {appointments.map((appointment) => (<>
-                          <li key={appointment._id}>
+                        <hr id="docaphead" />
+                        {appointments.map((appointment) => (
+                          <>
+                            <li key={appointment._id}>
+                              <p>
+                                <span className="docotrsidespan">
+                                  Patient Name :
+                                </span>
+                                {appointment.patient.name}
+                              </p>
+                              <p>
+                                <span className="docotrsidespan">Date :</span>
+                                {appointment.appointment_date}
+                              </p>
+                              <p>
+                                <span className="docotrsidespan">Time :</span>
+                                {appointment.appointment_time}
+                              </p>
 
-                            <p><span className="docotrsidespan">Patient Name :</span>{appointment.patient.name}</p>
-                            <p><span className="docotrsidespan">Date :</span>{appointment.appointment_date}</p>
-                            <p><span className="docotrsidespan">Time :</span>{appointment.appointment_time}</p>
-
-                            {!appointment.confirm_status &&
+                              {!appointment.confirm_status &&
                               !appointment.reject_status ? (
-                              <>
+                                <>
+                                  <p id="asfasdfasd">
+                                    <span className="docotrsidespan">
+                                      Action/Status :
+                                    </span>
 
-                                <p id="asfasdfasd" ><span className="docotrsidespan">Action/Status :</span>
-                          
-                                  <button
-                                    className="button-53"
-                                    type="submit"
-                                    onClick={() => {
-                                      confirmAppointment(appointment._id);
+                                    <button
+                                      className="button-53"
+                                      type="submit"
+                                      onClick={() => {
+                                        confirmAppointment(appointment._id);
+                                      }}
+                                    >
+                                      {" "}
+                                      Confirm
+                                    </button>
 
-                                    }}
-                                  >
-
-                                    {" "}
-                                    Confirm
-                                  </button>
-                               
-                                <button
-                                  className="button-53"
-                                  type="submit" id="agfagacas"
-                                  onClick={() => {
-                                    rejectAppointment(appointment._id);
-                                  }}
-                                >
-                                  {" "}
-                                  Reject
-                                </button>
-                             
+                                    <button
+                                      className="button-53"
+                                      type="submit"
+                                      id="agfagacas"
+                                      onClick={() => {
+                                        rejectAppointment(appointment._id);
+                                      }}
+                                    >
+                                      {" "}
+                                      Reject
+                                    </button>
+                                  </p>
+                                </>
+                              ) : appointment.confirm_status ? (
+                                <p className="p2">
+                                  <span className="docotrsidespan">
+                                    Action/Status:{" "}
+                                  </span>
+                                  Confirmed
                                 </p>
-                              </>
-                            ) : appointment.confirm_status ? (
-                              <p className="p2"><span className="docotrsidespan">Action/Status: </span>Confirmed</p>
-                            ) : (
-                              <p className="p2"><span className="docotrsidespan">Action/Status: </span>Rejected</p>
-                            )}
-
-                            {appointment.confirm_status ? (
-                              <>
-                                <p>
-                                <span className="docotrsidespan">Link :</span>
-                                 
-                                  {appointment.appointment_link ? (
-                                    appointment.appointment_link
-                                  ) : (
-                                    <>
-                                      <input
-                                        type="text"
-                                        value={linkText}
-                                        onChange={(e) =>
-                                          setLinkText(e.target.value)
-                                        }
-                                      />
-                                      <button
-                                        onClick={() => addLink(appointment._id)}
-                                      >
-                                        Add Link
-                                      </button>
-                                    </>
-                                  )}
+                              ) : (
+                                <p className="p2">
+                                  <span className="docotrsidespan">
+                                    Action/Status:{" "}
+                                  </span>
+                                  Rejected
                                 </p>
-                              </>
-                            ) : (
-                              <>
-                              <p>-</p>
-                              </>
-                            )}
-                          </li>
-                          <hr  id="docaphead"/>
+                              )}
+
+                              {appointment.confirm_status ? (
+                                <>
+                                  <p>
+                                    <span className="docotrsidespan">
+                                      Link :
+                                    </span>
+
+                                    {appointment.appointment_link ? (
+                                      appointment.appointment_link
+                                    ) : (
+                                      <>
+                                        <input
+                                          type="text"
+                                          value={linkText}
+                                          onChange={(e) =>
+                                            setLinkText(e.target.value)
+                                          }
+                                        />
+                                        <button
+                                          onClick={() =>
+                                            addLink(appointment._id)
+                                          }
+                                        >
+                                          Add Link
+                                        </button>
+                                      </>
+                                    )}
+                                  </p>
+                                </>
+                              ) : (
+                                <>
+                                  <p>-</p>
+                                </>
+                              )}
+                            </li>
+                            <hr id="docaphead" />
                           </>
                         ))}
                       </ul>
@@ -383,13 +400,17 @@ export default function Appointments() {
                   </>
                 ) : (
                   <div className="">
-
                     <div className="Doctorui">
                       <h1>Available doctors</h1>
                       <div>
                         <div className={`book ${DoctorForm && "active"}`}>
                           <div className="bookForm">
-                            <img src="./close.png" onClick={() => setDoctorForm(false)} alt="" srcset="" />
+                            <img
+                              src="./close.png"
+                              onClick={() => setDoctorForm(false)}
+                              alt=""
+                              srcset=""
+                            />
                             <div className="logo">
                               <h1>Book Appointment</h1>
                             </div>
@@ -422,9 +443,9 @@ export default function Appointments() {
                                 }}
                               />
                             </div>
-                            
+
                             <div className="dispflexbook">
-                             <p>Date :</p> 
+                              <p>Date :</p>
                               <input
                                 type="date"
                                 name="appointment_date"
@@ -469,34 +490,68 @@ export default function Appointments() {
                       </div>
 
                       <div className="doctorslist">
-                        <ul >
+                        <ul>
                           <li id="uidispnnoe">
                             <p>Name</p>
                             <p>Qualification</p>
                             <p>Specialization</p>
                             <p>Experience</p>
                             <p>Availability</p>
-                            <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
-                          </li>
-                          <hr id="uidispnnoe"/>
-                          {doctors.map((doctor) => (<>
-
-                            <li
-                              key={doctor._id}
-
+                            <button
+                              style={{
+                                background: "none",
+                                color: "rgb(0, 0, 139)",
+                              }}
+                              className="button"
                             >
+                              Select
+                            </button>
+                          </li>
+                          <hr id="uidispnnoe" />
+                          {doctors.map((doctor) => (
+                            <>
+                              <li key={doctor._id}>
+                                <p>
+                                  <span className="uidocinfonone">Name :</span>
+                                  {doctor.name}
+                                </p>
+                                <p>
+                                  <span className="uidocinfonone">
+                                    Qualification :
+                                  </span>
+                                  {doctor.doctor_details.qualification}
+                                </p>
+                                <p>
+                                  <span className="uidocinfonone">
+                                    Specialization :
+                                  </span>
+                                  {doctor.doctor_details.specialization}
+                                </p>
+                                <p>
+                                  <span className="uidocinfonone">
+                                    Experience :
+                                  </span>
+                                  {doctor.doctor_details.experience}
+                                </p>
+                                <p>
+                                  <span className="uidocinfonone">
+                                    Availability :
+                                  </span>
+                                  {doctor.doctor_details.availability}
+                                </p>
 
-                              <p><span className="uidocinfonone">Name :</span>{doctor.name}</p>
-                              <p><span className="uidocinfonone">Qualification :</span>{doctor.doctor_details.qualification}</p>
-                              <p><span className="uidocinfonone">Specialization :</span>{doctor.doctor_details.specialization}</p>
-                              <p><span className="uidocinfonone">Experience :</span>{doctor.doctor_details.experience}</p>
-                              <p><span className="uidocinfonone">Availability :</span>{doctor.doctor_details.availability}</p>
-
-                              <button onClick={() => { setSelectedDoctor(doctor); setDoctorForm("active") }}
-                                className="button" >Select</button>
-                            </li>
-                            <hr />
-                          </>
+                                <button
+                                  onClick={() => {
+                                    setSelectedDoctor(doctor);
+                                    setDoctorForm("active");
+                                  }}
+                                  className="button"
+                                >
+                                  Select
+                                </button>
+                              </li>
+                              <hr />
+                            </>
                           ))}
                         </ul>
                       </div>
@@ -504,9 +559,10 @@ export default function Appointments() {
                     <div className="feedbackss">
                       <div>
                         <h2>Give feedback</h2>
-                        <p>Your feedback is important for us to improve.  </p>
-                        <p>select the appointment from your
-                          appintment list for which you want to give feedback
+                        <p>Your feedback is important for us to improve. </p>
+                        <p>
+                          select the appointment from your appintment list for
+                          which you want to give feedback
                         </p>
                       </div>
                       <img src="./feedback.png" alt="" srcset="" />
@@ -516,27 +572,46 @@ export default function Appointments() {
                       <div className="appointmentslist">
                         <ul>
                           <li id="uidispnnoe">
-
                             <p>Name</p>
                             <p>Appointment date</p>
-                            <button style={{ background: "none", color: "rgb(0, 0, 139)" }} className="button">Select</button>
-
-                          </li>
-                          <hr  id="uidispnnoe"/>
-                          {patientAppointments.map((appointment) => (<>
-
-                            <li
-                              key={appointment._id}
-
+                            <button
+                              style={{
+                                background: "none",
+                                color: "rgb(0, 0, 139)",
+                              }}
+                              className="button"
                             >
-
-                              <p><span className="uidocinfonone">Doctor Name</span>{appointment.doctor.name}</p>
-                              <p><span className="uidocinfonone">Appointment date</span>{appointment.appointment_date}</p>
-                              <button onClick={() => { setSelectedAppointment(appointment); setFeedForm("active") }}
-                                className="button">Select</button>
-                            </li>
-                            <hr />
-                          </>
+                              Select
+                            </button>
+                          </li>
+                          <hr id="uidispnnoe" />
+                          {patientAppointments.map((appointment) => (
+                            <>
+                              <li key={appointment._id}>
+                                <p>
+                                  <span className="uidocinfonone">
+                                    Doctor Name
+                                  </span>
+                                  {appointment.doctor.name}
+                                </p>
+                                <p>
+                                  <span className="uidocinfonone">
+                                    Appointment date
+                                  </span>
+                                  {appointment.appointment_date}
+                                </p>
+                                <button
+                                  onClick={() => {
+                                    setSelectedAppointment(appointment);
+                                    setFeedForm("active");
+                                  }}
+                                  className="button"
+                                >
+                                  Select
+                                </button>
+                              </li>
+                              <hr />
+                            </>
                           ))}
                         </ul>
                       </div>
@@ -544,17 +619,28 @@ export default function Appointments() {
 
                     <div className={`feedca ${FeedForm && "active"}`}>
                       <div className="feedbackvalue">
-                        <img src="./close.png" onClick={() => setFeedForm(false)} alt="" srcset="" />
+                        <img
+                          src="./close.png"
+                          onClick={() => setFeedForm(false)}
+                          alt=""
+                          srcset=""
+                        />
                         <h2>Give Feedback</h2>
-                        <div className="inputs" style={{ pointerEvents: "none" }}>
+                        <div
+                          className="inputs"
+                          style={{ pointerEvents: "none" }}
+                        >
                           <p>Name :</p>
                           <input
                             type="text"
                             value={selectedAppointment?.doctor?.name}
                           />
                         </div>
-                        <div className="inputs" style={{ pointerEvents: "none" }}>
-                        <p>Date :</p>
+                        <div
+                          className="inputs"
+                          style={{ pointerEvents: "none" }}
+                        >
+                          <p>Date :</p>
                           <input
                             type="text"
                             value={selectedAppointment?.appointment_date}
@@ -564,7 +650,6 @@ export default function Appointments() {
                         <div className="inputs">
                           <p>Rate :</p>
                           <select
-
                             type="text"
                             value={rating}
                             onChange={(e) => setRating(e.target.value)}
@@ -579,7 +664,7 @@ export default function Appointments() {
 
                         <div className="inputs">
                           <p></p>
-                          <input 
+                          <input
                             id="biginput"
                             placeholder="feedback description"
                             type="text"
@@ -588,12 +673,12 @@ export default function Appointments() {
                           />
                         </div>
 
-                        <button className="button"
+                        <button
+                          className="button"
                           onClick={() => {
                             addRatingFeedback(selectedAppointment._id);
                             setFeedForm(false);
-                          }
-                          }
+                          }}
                         >
                           Give feedback
                         </button>

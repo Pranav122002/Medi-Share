@@ -5,11 +5,10 @@ import { toast } from "react-toastify";
 import "../css/Profile.css";
 import { UserContext } from "./UserContext";
 import { API_BASE_URL } from "../config";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import ReactStars from "react-rating-stars-component";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import ViewMedModal from "./ViewMedModal";
-
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -63,12 +62,9 @@ export default function Profile() {
     setSelectOrder(null);
     setViewMedModalIsOpen((preState) => !preState);
   };
-  
-  console.log(appointmentRatingsFeedbacks);
+
   useEffect(() => {
     fetchUser();
-
-
   }, []);
   const fetchUser = () => {
     fetch(
@@ -81,8 +77,6 @@ export default function Profile() {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log("res = ", res);
-
         updateUser(res);
 
         setUserName(res.name);
@@ -137,7 +131,6 @@ export default function Profile() {
 
   useEffect(() => {
     fetchDonateOrders();
-
   }, []);
 
   useEffect(() => {
@@ -154,7 +147,8 @@ export default function Profile() {
 
   function fetchDonateOrders() {
     fetch(
-      `${API_BASE_URL}/mydonatedorders/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/mydonatedorders/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -166,7 +160,8 @@ export default function Profile() {
 
   function fetchRequestOrders() {
     fetch(
-      `${API_BASE_URL}/myrequestedorders/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/myrequestedorders/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -178,7 +173,8 @@ export default function Profile() {
 
   function patientAppointments() {
     fetch(
-      `${API_BASE_URL}/patient-appointments/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/patient-appointments/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -190,7 +186,8 @@ export default function Profile() {
 
   function doctorAppointments() {
     fetch(
-      `${API_BASE_URL}/doctor-appointments/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/doctor-appointments/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`
     )
       .then((response) => response.json())
@@ -260,7 +257,8 @@ export default function Profile() {
 
   const subscribe = () => {
     fetch(
-      `${API_BASE_URL}/subscribe/${JSON.parse(localStorage.getItem("user"))._id
+      `${API_BASE_URL}/subscribe/${
+        JSON.parse(localStorage.getItem("user"))._id
       }`,
       {
         method: "put",
@@ -285,23 +283,22 @@ export default function Profile() {
       });
   };
 
-  const [feedback, setFeedback] = useState(null)
-  const [starRating, setStarRating] = useState(0)
-  const [feedbackText, setFeedbackText] = useState("")
-  const [feedbackIsOpen, setFeedbackIsOpen] = useState(false)
+  const [feedback, setFeedback] = useState(null);
+  const [starRating, setStarRating] = useState(0);
+  const [feedbackText, setFeedbackText] = useState("");
+  const [feedbackIsOpen, setFeedbackIsOpen] = useState(false);
   const handleFeedback = () => {
-    setFeedbackIsOpen(true)
-  }
+    setFeedbackIsOpen(true);
+  };
 
   const handleStarRating = (newRating) => {
-    setStarRating(newRating)
-  }
+    setStarRating(newRating);
+  };
   const handleFeedbackText = (e) => {
-    setFeedbackText(e.target.value)
-  }
+    setFeedbackText(e.target.value);
+  };
 
   const sendFeedback = (order_id) => {
-    console.log(starRating, feedbackText)
     fetch(`${API_BASE_URL}/feedback/${order_id}`, {
       method: "post",
       headers: {
@@ -309,235 +306,294 @@ export default function Profile() {
       },
       body: JSON.stringify({
         stars: starRating,
-        feedback: feedbackText
-      })
-    }
-    ).then(res => res.json())
-      .then(doc => {
-        setFeedbackIsOpen(false)
-        notifyB(doc.success)
+        feedback: feedbackText,
+      }),
+    })
+      .then((res) => res.json())
+      .then((doc) => {
+        setFeedbackIsOpen(false);
+        notifyB(doc.success);
         setDonateOrders((preOrder) => {
-          return (preOrder.map((item) => item._id === order_id ? {
-            ...item,
-            feedback: {
-              stars: starRating,
-              feedback: feedbackText
-            }
-          } : item))
-        })
+          return preOrder.map((item) =>
+            item._id === order_id
+              ? {
+                  ...item,
+                  feedback: {
+                    stars: starRating,
+                    feedback: feedbackText,
+                  },
+                }
+              : item
+          );
+        });
         setRequestOrders((preOrder) => {
-          return (preOrder.map((item) => item._id === order_id ? {
-            ...item,
-            feedback: {
-              stars: starRating,
-              feedback: feedbackText
-            }
-          } : item))
-        })
+          return preOrder.map((item) =>
+            item._id === order_id
+              ? {
+                  ...item,
+                  feedback: {
+                    stars: starRating,
+                    feedback: feedbackText,
+                  },
+                }
+              : item
+          );
+        });
       })
-      .catch(res => {
-        console.error(res)
-        notifyA(res.error)
-      })
-  }
+      .catch((res) => {
+        console.error(res);
+        notifyA(res.error);
+      });
+  };
   return (
     <div className="profilediv">
       <div className="bodyy">
+        {editprofile ? (
+          <>
+            <div className="editparent">
+              <div className="editpromain">
+                <img
+                  onClick={() => {
+                    seteditprofile(false);
+                  }}
+                  id="clossss"
+                  src="./close.png"
+                  alt=""
+                />
 
+                <p>Name: {user.name}</p>
 
-        {editprofile ? (<>
-          <div className="editparent" >
-            <div className="editpromain">
-              <img onClick={() => { seteditprofile(false) }} id="clossss" src="./close.png" alt="" />
-
-              <p>Name: {user.name}</p>
-
-              {user.role === "doctor" && (<>
-                <div>
-                  <p className="pdflex">
-                    <div>Verification: {user.doctor_details.verification}</div>
-
-                  </p>
-                  <p>Fees: {user.doctor_details.fees}</p>
-                  <p>Qualification: {user.doctor_details.qualification}</p>
-                  <p>Specialization: {user.doctor_details.specialization}</p>
-                  <p>Experience: {user.doctor_details.experience}</p>
-                  <p>Availability: {user.doctor_details.availability}</p>
-                  <p>Hospital Name: {user.doctor_details.hospital_name}</p>
-                  <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
-                    <div className={`imgprof ${viewImage && "active"}`}>
-                      <img id="asgaadcag"
-                        src={user.doctor_details.certificate}
-                        alt="doctor certificate"
-                      />
-                      <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
-
-                    </div>
-
-                  </div>
-                  </p>
-                  
-                </div>
-              </>)}
-              {user.role === "volunteer" && (
-                <div>
-                  <p className="pdflex">
-                    <div>Verification: {user.volunteer_details.verification}</div>
-                  </p>
-                  <p>Qualification: {user.volunteer_details.qualification}</p>
-                  <p>Available: {user.volunteer_details.available}</p>
-                  <p>NGO Name: {user.volunteer_details.NGO_name}</p>
-                  <p>
-                    Location: {user.volunteer_details.location.lng},{" "}
-                    {user.volunteer_details.location.lat}
-                  </p>
-                  <p><div className="certfed">Certificate uploaded: <button onClick={() => { setViewImage("active") }}>View Certificate</button>
-                    <div className={`imgprof ${viewImage && "active"}`}>
-                      <img
-                        src={user.volunteer_details.certificate}
-                        alt="volunteer certificate "
-                      />
-                      <div className="gagasda">  <img onClick={() => { setViewImage(false) }} src="./close.png" alt="" srcset="" /></div>
-
-                    </div>
-
-                  </div>
-                  </p>
-
-                </div>
-              )}
-
-              {isMine && !editing && <button id="asagws" onClick={handleEdit}>Edit Profile</button>}
-
-
-              {editing && (
-                <div className="editsprofs">
-                  <h2>Edit Profile</h2>
-                  {user.role === "doctor" && (
-                    <div className="editprofdocs">
-                      <div className="editsapa">
-                        <label>Fees:</label>
-                        <input
-                          type="text"
-                          name="fees"
-                          value={updatedDoctorDetails.fees}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Qualification:</label>
-                        <input
-                          type="text"
-                          name="qualification"
-                          value={updatedDoctorDetails.qualification}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Specialization:</label>
-                        <input
-                          type="text"
-                          name="specialization"
-                          value={updatedDoctorDetails.specialization}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Experience:</label>
-                        <input
-                          type="text"
-                          name="experience"
-                          value={updatedDoctorDetails.experience}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Availability:</label>
-                        <input
-                          type="text"
-                          name="availability"
-                          value={updatedDoctorDetails.availability}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Hospital Name:</label>
-                        <input
-                          type="text"
-                          name="hospital_name"
-                          value={updatedDoctorDetails.hospital_name}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  {user.role === "volunteer" && (
+                {user.role === "doctor" && (
+                  <>
                     <div>
-                      <div className="editsapa">
-                        <label>Qualification:</label>
-                        <input
-                          type="text"
-                          name="qualification"
-                          value={updatedVolunteerDetails.qualification}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Available:</label>
-                        <input
-                          type="text"
-                          name="available"
-                          value={updatedVolunteerDetails.available}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>NGO Name:</label>
-                        <input
-                          type="text"
-                          name="NGO_name"
-                          value={updatedVolunteerDetails.NGO_name}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Location (lng):</label>
-                        <input
-                          type="number"
-                          name="lng"
-                          value={updatedVolunteerDetails.location.long || ""}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-
-                      <div className="editsapa">
-                        <label>Location (lat):</label>
-                        <input
-                          type="number"
-                          name="lat"
-                          value={updatedVolunteerDetails.location.lat || ""}
-                          onChange={handleInputChange}
-                        />
-                      </div>
+                      <p className="pdflex">
+                        <div>
+                          Verification: {user.doctor_details.verification}
+                        </div>
+                      </p>
+                      <p>Fees: {user.doctor_details.fees}</p>
+                      <p>Qualification: {user.doctor_details.qualification}</p>
+                      <p>
+                        Specialization: {user.doctor_details.specialization}
+                      </p>
+                      <p>Experience: {user.doctor_details.experience}</p>
+                      <p>Availability: {user.doctor_details.availability}</p>
+                      <p>Hospital Name: {user.doctor_details.hospital_name}</p>
+                      <p>
+                        <div className="certfed">
+                          Certificate uploaded:{" "}
+                          <button
+                            onClick={() => {
+                              setViewImage("active");
+                            }}
+                          >
+                            View Certificate
+                          </button>
+                          <div className={`imgprof ${viewImage && "active"}`}>
+                            <img
+                              id="asgaadcag"
+                              src={user.doctor_details.certificate}
+                              alt="doctor certificate"
+                            />
+                            <div className="gagasda">
+                              {" "}
+                              <img
+                                onClick={() => {
+                                  setViewImage(false);
+                                }}
+                                src="./close.png"
+                                alt=""
+                                srcset=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </p>
                     </div>
-                  )}
-                  <button id="asagws" onClick={handleSubmit}>Save</button>
-                </div>
+                  </>
+                )}
+                {user.role === "volunteer" && (
+                  <div>
+                    <p className="pdflex">
+                      <div>
+                        Verification: {user.volunteer_details.verification}
+                      </div>
+                    </p>
+                    <p>Qualification: {user.volunteer_details.qualification}</p>
+                    <p>Available: {user.volunteer_details.available}</p>
+                    <p>NGO Name: {user.volunteer_details.NGO_name}</p>
+                    <p>
+                      Location: {user.volunteer_details.location.lng},{" "}
+                      {user.volunteer_details.location.lat}
+                    </p>
+                    <p>
+                      <div className="certfed">
+                        Certificate uploaded:{" "}
+                        <button
+                          onClick={() => {
+                            setViewImage("active");
+                          }}
+                        >
+                          View Certificate
+                        </button>
+                        <div className={`imgprof ${viewImage && "active"}`}>
+                          <img
+                            src={user.volunteer_details.certificate}
+                            alt="volunteer certificate "
+                          />
+                          <div className="gagasda">
+                            {" "}
+                            <img
+                              onClick={() => {
+                                setViewImage(false);
+                              }}
+                              src="./close.png"
+                              alt=""
+                              srcset=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                )}
 
-              )}
+                {isMine && !editing && (
+                  <button id="asagws" onClick={handleEdit}>
+                    Edit Profile
+                  </button>
+                )}
+
+                {editing && (
+                  <div className="editsprofs">
+                    <h2>Edit Profile</h2>
+                    {user.role === "doctor" && (
+                      <div className="editprofdocs">
+                        <div className="editsapa">
+                          <label>Fees:</label>
+                          <input
+                            type="text"
+                            name="fees"
+                            value={updatedDoctorDetails.fees}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Qualification:</label>
+                          <input
+                            type="text"
+                            name="qualification"
+                            value={updatedDoctorDetails.qualification}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Specialization:</label>
+                          <input
+                            type="text"
+                            name="specialization"
+                            value={updatedDoctorDetails.specialization}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Experience:</label>
+                          <input
+                            type="text"
+                            name="experience"
+                            value={updatedDoctorDetails.experience}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Availability:</label>
+                          <input
+                            type="text"
+                            name="availability"
+                            value={updatedDoctorDetails.availability}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Hospital Name:</label>
+                          <input
+                            type="text"
+                            name="hospital_name"
+                            value={updatedDoctorDetails.hospital_name}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                    )}
+                    {user.role === "volunteer" && (
+                      <div>
+                        <div className="editsapa">
+                          <label>Qualification:</label>
+                          <input
+                            type="text"
+                            name="qualification"
+                            value={updatedVolunteerDetails.qualification}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Available:</label>
+                          <input
+                            type="text"
+                            name="available"
+                            value={updatedVolunteerDetails.available}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>NGO Name:</label>
+                          <input
+                            type="text"
+                            name="NGO_name"
+                            value={updatedVolunteerDetails.NGO_name}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Location (lng):</label>
+                          <input
+                            type="number"
+                            name="lng"
+                            value={updatedVolunteerDetails.location.long || ""}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+
+                        <div className="editsapa">
+                          <label>Location (lat):</label>
+                          <input
+                            type="number"
+                            name="lat"
+                            value={updatedVolunteerDetails.location.lat || ""}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <button id="asagws" onClick={handleSubmit}>
+                      Save
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-
-        </>) : (<></>)}
-
+          </>
+        ) : (
+          <></>
+        )}
 
         <div>
           {
@@ -578,9 +634,14 @@ export default function Profile() {
             <h1>
               {" "}
               {user_name}
-              <button id="biewprod" onClick={() => {
-                seteditprofile("active")
-              }} >Profile Details</button>
+              <button
+                id="biewprod"
+                onClick={() => {
+                  seteditprofile("active");
+                }}
+              >
+                Profile Details
+              </button>
             </h1>
             <h1>
               {isLoading ? (
@@ -591,7 +652,6 @@ export default function Profile() {
                     <>
                       <div className="cjec">
                         <p id="sss">Subscription : ACTIVE</p>
-
                       </div>
                     </>
                   ) : (
@@ -627,31 +687,59 @@ export default function Profile() {
               ) : (
                 <div className="procont">
                   {donateorders.map((donateorders) => {
-                    console.log(donateorders)
                     return (
                       <li className="proco" key={donateorders.medicine_name}>
-                        <p className="pm"><span className="profdonspan">Order ID :</span>{donateorders._id.toString().slice(-4)}</p>
+                        <p className="pm">
+                          <span className="profdonspan">Order ID :</span>
+                          {donateorders._id.toString().slice(-4)}
+                        </p>
                         {/* <p className="p1">{donateorders.expiry_date} </p> */}
-                        <p className="p2"><span className="profdonspan">Quantity :</span>{donateorders.no_of_medicines}</p>
-                        <p className="p3"><span id="casedc" className="profdonspan">Location :</span><span id="dasdacaw">{donateorders?.location?.location}</span></p>
-                        {
-                          donateorders.acceptance_status === "accepted" && donateorders.verify_status === false ? (
-                            <p><span className="profdonspan">Status :</span>Volunter is assigned</p>
-                          ) : donateorders.acceptance_status === "pending" ? (
-                            <p><span className="profdonspan">Status :</span>Pending</p>
-                          ) : (<><p>
-                            <div className="asfasfa">
-                              {console.log(donateorders.feedback)}
-                              <span className="profdonspan" >Status :</span>Medicines collected
-                              {
-                                !donateorders.feedback.feedback && (
+                        <p className="p2">
+                          <span className="profdonspan">Quantity :</span>
+                          {donateorders.no_of_medicines}
+                        </p>
+                        <p className="p3">
+                          <span id="casedc" className="profdonspan">
+                            Location :
+                          </span>
+                          <span id="dasdacaw">
+                            {donateorders?.location?.location}
+                          </span>
+                        </p>
+                        {donateorders.acceptance_status === "accepted" &&
+                        donateorders.verify_status === false ? (
+                          <p>
+                            <span className="profdonspan">Status :</span>
+                            Volunter is assigned
+                          </p>
+                        ) : donateorders.acceptance_status === "pending" ? (
+                          <p>
+                            <span className="profdonspan">Status :</span>Pending
+                          </p>
+                        ) : (
+                          <>
+                            <p>
+                              <div className="asfasfa">
+                                <span className="profdonspan">Status :</span>
+                                Medicines collected
+                                {!donateorders.feedback.feedback && (
                                   <>
-                                    <button className="burst" onClick={() => handleFeedback()}>Give Feedback</button>
+                                    <button
+                                      className="burst"
+                                      onClick={() => handleFeedback()}
+                                    >
+                                      Give Feedback
+                                    </button>
                                     <Modal
                                       className="Modal__container"
-                                      onRequestClose={() => setFeedbackIsOpen(false)}
+                                      onRequestClose={() =>
+                                        setFeedbackIsOpen(false)
+                                      }
                                       isOpen={feedbackIsOpen}
-                                      style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
+                                      style={{
+                                        overlay: { zIndex: 9999 },
+                                        content: { zIndex: 9999 },
+                                      }}
                                     >
                                       <ReactStars
                                         className="Modal__containe"
@@ -665,25 +753,33 @@ export default function Profile() {
                                         placeholder="Feedback"
                                         onChange={handleFeedbackText}
                                       />
-                                      <button onClick={() => sendFeedback(donateorders._id)}>submit</button>
-                                      <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
+                                      <button
+                                        onClick={() =>
+                                          sendFeedback(donateorders._id)
+                                        }
+                                      >
+                                        submit
+                                      </button>
+                                      <button
+                                        onClick={() => setFeedbackIsOpen(false)}
+                                      >
+                                        Close
+                                      </button>
                                     </Modal>
                                   </>
-                                )
-                              }
-
-                                </div>
-                              </p>
-                            </>)
-                        }
-                        <p >
-                        <span className="profdonspan">Details :</span>
-                        <button
-                         id="burstes"
-                          onClick={() => viewMedicine(donateorders)}
-                        >
-                          Details
-                        </button>
+                                )}
+                              </div>
+                            </p>
+                          </>
+                        )}
+                        <p>
+                          <span className="profdonspan">Details :</span>
+                          <button
+                            id="burstes"
+                            onClick={() => viewMedicine(donateorders)}
+                          >
+                            Details
+                          </button>
                         </p>
                         <ViewMedModal
                           viewMedModalIsOpen={viewMedModalIsOpen}
@@ -691,7 +787,7 @@ export default function Profile() {
                           closeViewMedModal={closeViewMedModal}
                         />
                       </li>
-                    )
+                    );
                   })}
                 </div>
               )}
@@ -718,67 +814,101 @@ export default function Profile() {
                 <div className="procont">
                   {requestorders.map((requestorders) => (
                     <li className="proco" key={requestorders._id}>
-                      <p className="pm"><span className="profdonspan">Order ID :</span> {requestorders._id.toString().slice(-4)}</p>
+                      <p className="pm">
+                        <span className="profdonspan">Order ID :</span>{" "}
+                        {requestorders._id.toString().slice(-4)}
+                      </p>
                       {/* <p className="p1"> {requestorders.expiry_date}</p> */}
-                      <p className="p2"><span className="profdonspan">Quantity :</span> {requestorders.no_of_medicines}</p>
-                   <p className="p3"><span id="casedc" className="profdonspan">Location :</span><span id="dasdacaw">{requestorders.location?.location}</span></p>
-                      {
-                        requestorders.acceptance_status === "accepted" && requestorders.verify_status === false ? (
-                          <p><span className="profdonspan">Status :</span>Volunter is assigned</p>
-                        ) : requestorders.acceptance_status === "pending" ? (
-                          <p><span className="profdonspan">Status :</span>Pending</p>
-                        ) : (
-                          <>
-                            <p>
-
-                              <div className="">
-                                {console.log(requestorders.feedback)}
-                                <span className="profdonspan">Status :</span>Medicines collected
-                                {
-                                  requestorders.feedback.feedback === null && (
-                                    <>
-                                      <button className="burst" onClick={() => handleFeedback()}>Give Feedback</button>
-                                      <Modal
-                                        className="Modal__container"
-                                        onRequestClose={() => setFeedbackIsOpen(false)}
-                                        isOpen={feedbackIsOpen}
-                                        style={{ overlay: { zIndex: 9999 }, content: { zIndex: 9999 } }}
-                                      >
-                                        <ReactStars
-                                          count={5}
-                                          onChange={handleStarRating}
-                                          size={24}
-                                          activeColor="#ffd700"
-                                        />
-                                        <textarea
-                                          placeholder="Feedback"
-                                          onChange={handleFeedbackText}
-                                        />
-                                        <button onClick={() => sendFeedback(requestorders._id)}>submit</button>
-                                        <button onClick={() => setFeedbackIsOpen(false)}>Close</button>
-                                      </Modal>
-                                    </>
-                                  )
-                                }
-
-                              </div>
-                            </p>
-                          </>)
-                      }
+                      <p className="p2">
+                        <span className="profdonspan">Quantity :</span>{" "}
+                        {requestorders.no_of_medicines}
+                      </p>
+                      <p className="p3">
+                        <span id="casedc" className="profdonspan">
+                          Location :
+                        </span>
+                        <span id="dasdacaw">
+                          {requestorders.location?.location}
+                        </span>
+                      </p>
+                      {requestorders.acceptance_status === "accepted" &&
+                      requestorders.verify_status === false ? (
+                        <p>
+                          <span className="profdonspan">Status :</span>Volunter
+                          is assigned
+                        </p>
+                      ) : requestorders.acceptance_status === "pending" ? (
+                        <p>
+                          <span className="profdonspan">Status :</span>Pending
+                        </p>
+                      ) : (
+                        <>
+                          <p>
+                            <div className="">
+                              <span className="profdonspan">Status :</span>
+                              Medicines collected
+                              {requestorders.feedback.feedback === null && (
+                                <>
+                                  <button
+                                    className="burst"
+                                    onClick={() => handleFeedback()}
+                                  >
+                                    Give Feedback
+                                  </button>
+                                  <Modal
+                                    className="Modal__container"
+                                    onRequestClose={() =>
+                                      setFeedbackIsOpen(false)
+                                    }
+                                    isOpen={feedbackIsOpen}
+                                    style={{
+                                      overlay: { zIndex: 9999 },
+                                      content: { zIndex: 9999 },
+                                    }}
+                                  >
+                                    <ReactStars
+                                      count={5}
+                                      onChange={handleStarRating}
+                                      size={24}
+                                      activeColor="#ffd700"
+                                    />
+                                    <textarea
+                                      placeholder="Feedback"
+                                      onChange={handleFeedbackText}
+                                    />
+                                    <button
+                                      onClick={() =>
+                                        sendFeedback(requestorders._id)
+                                      }
+                                    >
+                                      submit
+                                    </button>
+                                    <button
+                                      onClick={() => setFeedbackIsOpen(false)}
+                                    >
+                                      Close
+                                    </button>
+                                  </Modal>
+                                </>
+                              )}
+                            </div>
+                          </p>
+                        </>
+                      )}
                       <p>
-                      <span className="profdonspan">Details :</span>
-                        <button id="burstes"
+                        <span className="profdonspan">Details :</span>
+                        <button
+                          id="burstes"
                           onClick={() => viewMedicine(requestorders)}
                         >
                           Details
                         </button>
-                        </p>
-                        <ViewMedModal
-                          viewMedModalIsOpen={viewMedModalIsOpen}
-                          selectOrder={selectOrder}
-                          closeViewMedModal={closeViewMedModal}
-                        />
-                       
+                      </p>
+                      <ViewMedModal
+                        viewMedModalIsOpen={viewMedModalIsOpen}
+                        selectOrder={selectOrder}
+                        closeViewMedModal={closeViewMedModal}
+                      />
                     </li>
                   ))}
                 </div>
@@ -808,29 +938,58 @@ export default function Profile() {
                   <div className="procont">
                     {doctorappointments.map((doctorappointments) => (
                       <li className="proco" key={doctorappointments._id}>
-                        <p className="p1"><span className="profdonspan">Patient Name :</span>{doctorappointments.patient.name}</p>
                         <p className="p1">
-                          
-                        <span className="profdonspan">Date :</span>{doctorappointments.appointment_date}
+                          <span className="profdonspan">Patient Name :</span>
+                          {doctorappointments.patient.name}
                         </p>
                         <p className="p1">
-                         
-                        <span className="profdonspan">Time :</span> {doctorappointments.appointment_time}
+                          <span className="profdonspan">Date :</span>
+                          {doctorappointments.appointment_date}
+                        </p>
+                        <p className="p1">
+                          <span className="profdonspan">Time :</span>{" "}
+                          {doctorappointments.appointment_time}
                         </p>
                         {!doctorappointments.confirm_status &&
-                          !doctorappointments.reject_status ? (
-                          <p className="p2"><span className="profdonspan">Status :</span>Pending</p>
+                        !doctorappointments.reject_status ? (
+                          <p className="p2">
+                            <span className="profdonspan">Status :</span>Pending
+                          </p>
                         ) : doctorappointments.confirm_status ? (
-                          <p className="p2"><span className="profdonspan">Status :</span>Confirmed</p>
+                          <p className="p2">
+                            <span className="profdonspan">Status :</span>
+                            Confirmed
+                          </p>
                         ) : (
-                          <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
+                          <p className="p2">
+                            <span className="profdonspan">Status :</span>
+                            Rejected
+                          </p>
                         )}
                         <p className="p1">
-                          
-                          <span  id="casedc"  className="profdonspan">Link :</span><span className="profdonspa">{doctorappointments.appointment_link?(<>{doctorappointments.appointment_link}</>):(<>-</>)}</span>
+                          <span id="casedc" className="profdonspan">
+                            Link :
+                          </span>
+                          <span className="profdonspa">
+                            {doctorappointments.appointment_link ? (
+                              <>{doctorappointments.appointment_link}</>
+                            ) : (
+                              <>-</>
+                            )}
+                          </span>
                         </p>
-                        <p className="p1"><span className="profdonspan">Rating :</span> {doctorappointments.rating}</p>
-                        <p className="p1"><span id="casedc"  className="profdonspan">Feedback :</span><span className="profdonspa">{doctorappointments.feedback}</span> </p>
+                        <p className="p1">
+                          <span className="profdonspan">Rating :</span>{" "}
+                          {doctorappointments.rating}
+                        </p>
+                        <p className="p1">
+                          <span id="casedc" className="profdonspan">
+                            Feedback :
+                          </span>
+                          <span className="profdonspa">
+                            {doctorappointments.feedback}
+                          </span>{" "}
+                        </p>
                       </li>
                     ))}
                   </div>
@@ -859,30 +1018,68 @@ export default function Profile() {
                   <div className="procont">
                     {patientappointments.map((patientappointments) => (
                       <li className="proco" key={patientappointments._id}>
-                        <p className="p1"><span className="profdonspan">Doctor Name :</span> {patientappointments.doctor.name}</p>
-                        <p className="p2">
-                         
-                          <span className="profdonspan">Date :</span>  {patientappointments.appointment_date}
+                        <p className="p1">
+                          <span className="profdonspan">Doctor Name :</span>{" "}
+                          {patientappointments.doctor.name}
                         </p>
                         <p className="p2">
-                       
-                          <span className="profdonspan">Time :</span> {patientappointments.appointment_time}
+                          <span className="profdonspan">Date :</span>{" "}
+                          {patientappointments.appointment_date}
+                        </p>
+                        <p className="p2">
+                          <span className="profdonspan">Time :</span>{" "}
+                          {patientappointments.appointment_time}
                         </p>
                         {!patientappointments.confirm_status &&
-                          !patientappointments.reject_status ? (
-                          <p className="p2"><span className="profdonspan">Status :</span>Pending</p>
+                        !patientappointments.reject_status ? (
+                          <p className="p2">
+                            <span className="profdonspan">Status :</span>Pending
+                          </p>
                         ) : patientappointments.confirm_status ? (
-                          <p className="p2"><span className="profdonspan">Status :</span>Confirmed</p>
+                          <p className="p2">
+                            <span className="profdonspan">Status :</span>
+                            Confirmed
+                          </p>
                         ) : (
-                          <p className="p2"><span className="profdonspan">Status :</span>Rejected</p>
+                          <p className="p2">
+                            <span className="profdonspan">Status :</span>
+                            Rejected
+                          </p>
                         )}
                         <p className="p2">
-                        <span  id="casedc"  className="profdonspan">Link :</span><span className="profdonspa">{patientappointments.appointment_link ?(<>{patientappointments.appointment_link}</>):(<>-</>)}</span>
+                          <span id="casedc" className="profdonspan">
+                            Link :
+                          </span>
+                          <span className="profdonspa">
+                            {patientappointments.appointment_link ? (
+                              <>{patientappointments.appointment_link}</>
+                            ) : (
+                              <>-</>
+                            )}
+                          </span>
                         </p>
 
-                        <p className="p2"><span className="profdonspan">Rating :</span> {patientappointments.rating ?(<>{patientappointments.rating}</>):(<>-</>)}</p>
+                        <p className="p2">
+                          <span className="profdonspan">Rating :</span>{" "}
+                          {patientappointments.rating ? (
+                            <>{patientappointments.rating}</>
+                          ) : (
+                            <>-</>
+                          )}
+                        </p>
 
-                        <p className="p2"><span id="casedc" className="profdonspan">Feedback :</span ><span className="profdonspa">{patientappointments.feedback ?(<>{patientappointments.feedback}</>):(<>-</>)}</span> </p>
+                        <p className="p2">
+                          <span id="casedc" className="profdonspan">
+                            Feedback :
+                          </span>
+                          <span className="profdonspa">
+                            {patientappointments.feedback ? (
+                              <>{patientappointments.feedback}</>
+                            ) : (
+                              <>-</>
+                            )}
+                          </span>{" "}
+                        </p>
                       </li>
                     ))}
                   </div>

@@ -4,10 +4,9 @@
   height: max-content;
   min-height: 120vh;
   background: #48b0df;
-  ;
   padding: 0.1px;
 }
-#asfasdfasd{
+#asfasdfasd {
   display: flex;
 }
 
@@ -16,8 +15,6 @@
   height: max-content;
   margin-left: auto;
   margin-right: 2vw;
-
-
 }
 
 .doctor .bodyy.active {
@@ -56,13 +53,11 @@
   margin-left: 1.5rem;
   font-size: 1.7rem;
 }
-.docotrsidespan{
+.docotrsidespan {
   display: none;
 }
 
-
 .doctor .doctordetail p {
-
   text-align: left;
   font-size: 1.2rem;
   margin-left: 1.5rem;
@@ -70,7 +65,7 @@
 
 .Doctorui {
   width: 82vw;
-  background: #C6E6FB;
+  background: #c6e6fb;
   height: max-content;
   border-radius: 0.9rem;
   padding: 0.1px;
@@ -122,7 +117,6 @@
 
 .doctorslist ul li p {
   width: 13vw;
-
 }
 
 .doctorslist ul li:first-child {
@@ -139,7 +133,7 @@
 }
 
 .doctorslist ul li .button {
-  background: #B7FFE7;
+  background: #b7ffe7;
   width: 7vw;
 
   margin-top: 0.4rem;
@@ -150,7 +144,6 @@
   font-weight: 700;
 
   float: right;
-
 }
 
 .doctorslist ul li .button:hover {
@@ -160,13 +153,10 @@
 .doctorcont img {
   position: absolute;
   left: 0;
-
-
 }
 
 .book.false {
   display: none;
-
 }
 
 .book.active {
@@ -199,7 +189,6 @@
   border-radius: 1rem;
   margin-left: 25vw;
   margin-top: 12rem;
-
 }
 
 .pointnone {
@@ -209,13 +198,11 @@
 .bookForm img {
   height: 2rem;
   float: right;
-
 }
 
 .bookForm h1 {
   color: #000000;
 }
-
 
 .bookForm input {
   font-weight: 700;
@@ -237,7 +224,7 @@
 
 .appoint {
   width: 82vw;
-  background: #C6E6FB;
+  background: #c6e6fb;
   margin: auto;
   margin-left: 0rem;
   height: max-content;
@@ -254,8 +241,6 @@
   margin-left: 1.5rem;
   margin-top: 1.5rem;
   color: rgb(0, 0, 139);
-
-
 }
 
 .appoint ul {
@@ -270,13 +255,12 @@
   padding-right: 2rem;
   margin: auto;
   padding-bottom: 2rem;
-
 }
 
 .appoint ul li img {
   height: 2rem;
 }
-.uidocinfonone{
+.uidocinfonone {
   display: none;
 }
 .appoint ul li {
@@ -300,7 +284,6 @@
 
 .appoint ul li p {
   width: 20vw;
-
 }
 
 .appoint ul li:first-child {
@@ -317,7 +300,7 @@
 }
 
 .appoint ul li .button {
-  background: #B7FFE7;
+  background: #b7ffe7;
   width: 7vw;
 
   margin-top: 0.4rem;
@@ -328,7 +311,6 @@
   font-weight: 700;
 
   float: right;
-
 }
 
 .appoint ul li .button:hover {
@@ -342,7 +324,6 @@
   margin-top: 1rem;
 }
 
-
 .feedbackss {
   box-shadow: 2px 2px 9px rgb(210, 210, 210);
   background: white;
@@ -352,18 +333,12 @@
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-
-
 }
 
 .feedbackss h2 {
   font-size: 1.7rem;
   margin-left: 1.5rem;
-
-
 }
-
-
 
 .feedbackss p {
   text-align: left;
@@ -430,7 +405,7 @@
 }
 
 .feedbackvalue .button {
-  background: #B7FFE7;
+  background: #b7ffe7;
   width: 10vw;
   margin-top: 2rem;
   height: 3rem;
@@ -438,7 +413,6 @@
   font-size: 1rem;
   border-radius: 0.5rem;
   font-weight: 700;
-
 }
 
 .feedbackvalue .button:hover {
@@ -448,12 +422,10 @@
 .feedca {
   position: fixed;
   padding: 2vw;
-
 }
 
 .feedca.false {
   display: none;
-
 }
 
 .feedca.active {
@@ -491,9 +463,7 @@
   font-weight: bold;
   padding: 5px 10px;
   cursor: pointer;
-
 }
-
 
 .noaot {
   position: relative;
@@ -517,13 +487,11 @@
   height: max-content;
   padding-top: 1rem;
   padding-bottom: 2rem;
-
 }
 
 .dispflexbook {
   display: flex;
   justify-content: space-evenly;
-
 }
 
 .dispflexbook p {
@@ -538,7 +506,6 @@
 #docaphead {
   color: #0083c5;
   font-weight: 700;
-  
 }
 
 #docaphead p {
@@ -569,29 +536,30 @@
   display: flex;
   justify-content: space-evenly;
   margin: auto;
-
 }
 
 .accrejbut {
   margin-top: 0;
   margin-bottom: 0;
   display: flex;
-
 }
 
-.appointments-container ul li:hover {}
+.appointments-container ul li:hover {
+}
 
 .appointments-container ul li .button-53 {
   background-color: #b7ffec;
-  border: 0 solid #E5E7EB;
+  border: 0 solid #e5e7eb;
   color: #000000;
   display: block;
-  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
   line-height: 1.75rem;
-  padding: .75rem 1.65rem;
+  padding: 0.75rem 1.65rem;
   position: relative;
   text-align: center;
   text-decoration: none #000000 solid;
@@ -623,7 +591,6 @@
   }
 
   .doctor .doctorp {
-
     position: relative;
     z-index: 2;
     background: none;
@@ -636,7 +603,6 @@
   }
 
   .doctor .doctordetail p {
-
     text-align: left;
     font-size: 1.2rem;
     font-weight: 500;
@@ -653,7 +619,6 @@
     margin: auto;
     float: center;
     align-self: center;
-
   }
 
   #doctorui1 {
@@ -679,14 +644,11 @@
   .doctor .doctordetail {
     width: 100%;
     background: white;
-
   }
 
   .doctorcont {
     position: relative;
     display: block;
-
-
   }
 
   .doctorcont img {
@@ -694,12 +656,11 @@
     left: 0;
     opacity: 0.9;
     width: 80vw;
-
   }
 
   .bookForm {
     min-height: 15rem;
-    
+
     position: relative;
     z-index: 2;
     text-align: center;
@@ -709,12 +670,8 @@
     height: max-content;
     margin: auto;
     box-shadow: 2px 2px 9px rgb(220, 220, 220);
-    margin-top: 10rem;  
-
-
+    margin-top: 10rem;
   }
-
-
 
   .bookForm input {
     font-weight: 700;
@@ -757,13 +714,13 @@
   .doctorslist ul {
     padding-left: 0;
     background: rgb(255, 255, 255);
-    width: 100%;  
+    width: 100%;
     margin-left: 0rem;
     padding-left: 0rem;
     border-radius: 0.9rem;
     padding-bottom: 2rem;
     padding-right: 0rem;
-}
+  }
 
   .doctorslist li {
     font-weight: 700;
@@ -774,8 +731,8 @@
     padding-bottom: 0;
     min-height: 3rem;
     color: rgb(0, 0, 139);
-}
-.doctorslist ul li {
+  }
+  .doctorslist ul li {
     background: rgb(255, 255, 255);
     width: 90%;
     display: block;
@@ -787,37 +744,37 @@
     align-items: start;
     text-align: center;
     height: max-content;
-}
-.doctorslist ul hr {
-  width: 95%;
-  margin-left: 0;
-  margin-left: 1rem;
-}
-.uidocinfonone{
-  display:inline-block;
-  width: 50%;
-  word-break: break-all;
-  white-space: normal;
-}
-#uidispnnoe{
-  display: none;
-}
-.doctorslist ul li .button {
-  background: #B7FFE7;
-  width: 30vw;
-  margin-top: 0.4rem;
-  height: 3rem;
-  color: #000000;
-  font-size: 1rem;
-  border-radius: 0.9rem;
-  font-weight: 700;
-  float:none;
-  margin: auto;
-}
-.doctorslist ul li p {
-  width: 100%;
-  text-align: left;
-}
+  }
+  .doctorslist ul hr {
+    width: 95%;
+    margin-left: 0;
+    margin-left: 1rem;
+  }
+  .uidocinfonone {
+    display: inline-block;
+    width: 50%;
+    word-break: break-all;
+    white-space: normal;
+  }
+  #uidispnnoe {
+    display: none;
+  }
+  .doctorslist ul li .button {
+    background: #b7ffe7;
+    width: 30vw;
+    margin-top: 0.4rem;
+    height: 3rem;
+    color: #000000;
+    font-size: 1rem;
+    border-radius: 0.9rem;
+    font-weight: 700;
+    float: none;
+    margin: auto;
+  }
+  .doctorslist ul li p {
+    width: 100%;
+    text-align: left;
+  }
   .doctorslist h2 {
     margin-left: 0;
     text-align: left;
@@ -838,12 +795,10 @@
     padding-top: 1rem;
     padding-bottom: 2rem;
     margin-top: 2rem;
-
   }
 
   .appointments-container ul {
     padding: 0;
-
   }
 
   .appointments-container ul li {
@@ -859,24 +814,25 @@
     margin-top: 1rem;
     border-radius: 1rem;
     text-align: left;
-
   }
 
   .appointments-container ul li:hover {
-   
   }
 
   .appointments-container ul li .button-53 {
     background-color: #b7ffec;
-    border: 0 solid #E5E7EB;
+    border: 0 solid #e5e7eb;
     color: #000000;
     display: block;
-    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
     font-size: 1rem;
     font-weight: 700;
     justify-content: center;
     line-height: 1.75rem;
-    padding: .75rem 1.65rem;
+    padding: 0.75rem 1.65rem;
     position: relative;
     text-align: center;
     text-decoration: none #000000 solid;
@@ -892,7 +848,7 @@
     margin: auto;
     margin-top: 2rem;
     margin: 0;
-    margin-right: 1rem
+    margin-right: 1rem;
   }
 
   .appointments-container ul li p {
@@ -901,9 +857,9 @@
     margin-top: 1rem;
     margin-left: 0cm;
   }
-#agfagacas{
-  margin-left: 0rem;
-}
+  #agfagacas {
+    margin-left: 0rem;
+  }
   .doctor .bodyy {
     width: 95%;
     height: max-content;
@@ -913,7 +869,7 @@
   }
   .Doctorui {
     width: 100%;
-    background: #C6E6FB;
+    background: #c6e6fb;
     height: max-content;
     border-radius: 0.9rem;
     padding: 0.1px;
@@ -921,178 +877,175 @@
     min-height: 30rem;
     box-shadow: 2px 2px 9px rgb(210, 210, 210);
     text-align: center;
-}
-.feedbackss {
-  box-shadow: 2px 2px 9px rgb(210, 210, 210);
-  background: white;
-  min-height: 11rem;
-  border-radius: 0.9rem;
-  text-align: left;
-  display: block;
-  margin-top: 2rem;
-  height: max-content;
-  padding: 0.1px;
-  width: 100%;
-  text-align: center;
-}
-.feedbackss h2 {
-  font-size: 1.7rem;
-  margin-left: 1.5rem;
-  margin-top: 1rem;
-  text-align: left;
-}
-.feedbackss p {
-  text-align: left;
-  font-size: 1.2rem;
-  margin-left: 1.5rem;
-}
-.feedbackss img {
-  height: 30vw;
-  margin-top: 1rem;
-  float: none;
-  margin-right: 0rem;
-}
-.appoint {
-  width: 100%;
-  background: #C6E6FB;
-  margin: auto;
-  margin-left: 0rem;
-  height: max-content;
-  padding: 0.1px;
-  margin-top: 2rem;
-  border-radius: 0.9rem;
-  padding-bottom: 2rem;
-  box-shadow: 2px 2px 9px rgb(210, 210, 210);
-  text-align: center;
-}
-.appoint ul {
-  padding-left: 0;
-  background: rgb(255, 255, 255);
-  width: 95%;
-  margin-left: 0rem;
-  padding-left: 0rem;
-  border-radius: 0.9rem;
-  padding-right: 0rem;
-  margin: auto;
-  padding-bottom: 2rem;
-  text-align: center;
-}
-.appoint ul li {
-  background: rgb(255, 255, 255);
-  width: 100%;
-  display: block;
-  min-height: 3rem;
-  border-radius: 0.5rem;
-  margin: auto;
-  padding-left: 0rem;
-  justify-content: flex-start;
-  align-items: start;
-  text-align: start;
-  padding-top: 1rem;
-  font-weight: 700;
-  height: max-content;
-  text-align: center;
+  }
+  .feedbackss {
+    box-shadow: 2px 2px 9px rgb(210, 210, 210);
+    background: white;
+    min-height: 11rem;
+    border-radius: 0.9rem;
+    text-align: left;
+    display: block;
+    margin-top: 2rem;
+    height: max-content;
+    padding: 0.1px;
+    width: 100%;
+    text-align: center;
+  }
+  .feedbackss h2 {
+    font-size: 1.7rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+    text-align: left;
+  }
+  .feedbackss p {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+  }
+  .feedbackss img {
+    height: 30vw;
+    margin-top: 1rem;
+    float: none;
+    margin-right: 0rem;
+  }
+  .appoint {
+    width: 100%;
+    background: #c6e6fb;
+    margin: auto;
+    margin-left: 0rem;
+    height: max-content;
+    padding: 0.1px;
+    margin-top: 2rem;
+    border-radius: 0.9rem;
+    padding-bottom: 2rem;
+    box-shadow: 2px 2px 9px rgb(210, 210, 210);
+    text-align: center;
+  }
+  .appoint ul {
+    padding-left: 0;
+    background: rgb(255, 255, 255);
+    width: 95%;
+    margin-left: 0rem;
+    padding-left: 0rem;
+    border-radius: 0.9rem;
+    padding-right: 0rem;
+    margin: auto;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+  .appoint ul li {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    display: block;
+    min-height: 3rem;
+    border-radius: 0.5rem;
+    margin: auto;
+    padding-left: 0rem;
+    justify-content: flex-start;
+    align-items: start;
+    text-align: start;
+    padding-top: 1rem;
+    font-weight: 700;
+    height: max-content;
+    text-align: center;
+  }
+  .appoint ul li p {
+    width: 100%;
+    text-align: left;
+  }
+  .appoint ul li p .uidocinfonone {
+    padding-left: 2rem;
+    width: 50%;
+  }
+  .appoint ul li .button {
+    background: #b7ffe7;
+    width: 30vw;
+    margin-top: 0.4rem;
+    height: 3rem;
+    color: #000000;
+    font-size: 1rem;
+    border-radius: 0.9rem;
+    font-weight: 700;
+    float: none;
+    margin: auto;
+  }
+  .appoint ul hr {
+    width: 95%;
+    margin-left: 0;
+    margin-left: 1rem;
+  }
+  .book.active {
+    display: block;
+    width: 82vw;
+    background: rgba(248, 248, 248, 0.809);
+  }
 
-}
-.appoint ul li p {
-  width: 100%;
-  text-align: left;
-}
-.appoint ul li p .uidocinfonone{
-  padding-left: 2rem;
-  width: 50%;
-}
-.appoint ul li .button {
-  background: #B7FFE7;
-  width: 30vw;
-  margin-top: 0.4rem;
-  height: 3rem;
-  color: #000000;
-  font-size: 1rem;
-  border-radius: 0.9rem;
-  font-weight: 700;
-  float:none;
-  margin: auto;
-}
-.appoint ul hr {
-  width: 95%;
-  margin-left: 0;
-  margin-left: 1rem;
-}
-.book.active {
-  display: block;
-  width: 82vw;
-  background: rgba(248, 248, 248, 0.809);
-}
-
-.book {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  margin-top: -40rem;
-  padding: 20vw;
-  padding-left: 8vw;
-  margin-left: -5vw;
-  z-index: 555;
-}
-.feedca.active {
-  width: 100vw;
-  left: 0%;
-  top: 0%;
-  height: 100rem;
-  display: block;
-  background: rgba(248, 248, 248, 0.809);
-}
-.feedca {
-  position: fixed;
-  padding: 15vw;
-  z-index: 555;
-}
-.feedbackvalue {
-  background: white;
-  min-width: 30rem;
-  width: 80vw;
-  height: max-content;
-  min-height: 30rem;
-  border-radius: 1rem;
-  padding: 0.1px;
-  position: relative;
-  z-index: 2;
-  margin-left: -5vw;
-  margin-top: 10rem;
-  box-shadow: 2px 2px 9px rgb(220, 220, 220);
-}
-.feedbackvalue .button{
-  background: #B7FFE7;
-  width: 30vw;
-  margin-top: 0.4rem;
-  height: 3rem;
-  color: #000000;
-  font-size: 1rem;
-  border-radius: 0.9rem;
-  font-weight: 700;
-  float:none;
-  margin: auto;
-  margin-top: 2rem;
-}
-#docaphead{
+  .book {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -40rem;
+    padding: 20vw;
+    padding-left: 8vw;
+    margin-left: -5vw;
+    z-index: 555;
+  }
+  .feedca.active {
+    width: 100vw;
+    left: 0%;
+    top: 0%;
+    height: 100rem;
+    display: block;
+    background: rgba(248, 248, 248, 0.809);
+  }
+  .feedca {
+    position: fixed;
+    padding: 15vw;
+    z-index: 555;
+  }
+  .feedbackvalue {
+    background: white;
+    min-width: 30rem;
+    width: 80vw;
+    height: max-content;
+    min-height: 30rem;
+    border-radius: 1rem;
+    padding: 0.1px;
+    position: relative;
+    z-index: 2;
+    margin-left: -5vw;
+    margin-top: 10rem;
+    box-shadow: 2px 2px 9px rgb(220, 220, 220);
+  }
+  .feedbackvalue .button {
+    background: #b7ffe7;
+    width: 30vw;
+    margin-top: 0.4rem;
+    height: 3rem;
+    color: #000000;
+    font-size: 1rem;
+    border-radius: 0.9rem;
+    font-weight: 700;
+    float: none;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  #docaphead {
     display: none;
-}
-.docotrsidespan{
-  display:inline-block;
-  width: 50%;
-  word-break: break-all;
-  white-space: normal;
-  font-weight: 700;
-}
-.accrejbut .button-53{
-  width: 20vw;
-}
-#dqwdasfad{
- 
-
-}
-#asfasdfasd{
-  display: flex;
-}
+  }
+  .docotrsidespan {
+    display: inline-block;
+    width: 50%;
+    word-break: break-all;
+    white-space: normal;
+    font-weight: 700;
+  }
+  .accrejbut .button-53 {
+    width: 20vw;
+  }
+  #dqwdasfad {
+  }
+  #asfasdfasd {
+    display: flex;
+  }
 }

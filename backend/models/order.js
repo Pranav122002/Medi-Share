@@ -12,13 +12,13 @@ const orderSchema = new mongoose.Schema({
         required: true,
       },
       expiry_date: {
-        date:{
-            type: Date,
+        date: {
+          type: Date,
         },
         check_isExpired: {
           type: Boolean,
-          default: false
-        }
+          default: false,
+        },
       },
       quantity: {
         type: Number,
@@ -70,34 +70,34 @@ const orderSchema = new mongoose.Schema({
   },
   order_creation_date: {
     date: {
-      type: String
+      type: String,
     },
     time: {
       type: String,
-    }
+    },
   },
   order_assign_date: {
     date: {
-      type: String
+      type: String,
     },
     time: {
       type: String,
-    }
+    },
   },
 
   feedback: {
     stars: {
       type: Number,
     },
-    feedback:{
+    feedback: {
       type: String,
-      default:null
+      default: null,
     },
   },
   is_order_rejected: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("ORDER", orderSchema);

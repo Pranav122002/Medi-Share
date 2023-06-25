@@ -39,11 +39,9 @@ import GeneralPredict from "./components/GeneralPredict";
 import Chatbot from "./components/Chatbot";
 
 function App() {
-  
   const [showvNavbar, setShowvNavbar] = useState(false);
   const handleShowvNavbar = () => {
     setShowvNavbar(!showvNavbar);
-    console.log(showvNavbar);
   };
 
   return (

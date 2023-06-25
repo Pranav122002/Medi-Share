@@ -12,11 +12,10 @@
   padding-bottom: 2rem;
 }
 
-.donatecont{
+.donatecont {
   width: 81vw;
   margin-left: auto;
   margin-right: 2vw;
- 
 }
 
 .donateeapp .bodyy {
@@ -57,12 +56,12 @@
   right: 0;
 }
 .donate {
-  height:max-content;
+  height: max-content;
   margin: auto;
   display: flex;
   justify-content: center;
   border-radius: 0.9rem;
-  background: #C6E6FB;
+  background: #c6e6fb;
   margin-bottom: 1rem;
   padding-bottom: 2rem;
 }
@@ -94,14 +93,13 @@
   background-color: #fbfbfb;
   box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
- 
+
   width: 25vw;
   height: 33rem;
   position: relative;
   border-radius: 0.9rem;
   min-width: 22rem;
   margin-top: 2rem;
- 
 }
 
 .loginForm2 {
@@ -286,48 +284,44 @@ input {
   text-align: left;
 }
 
-.leftrightfunc{
+.leftrightfunc {
   height: 2rem;
   padding-top: 1rem;
 
   margin: auto;
 }
-.leftrightfunc button{
-    border: none;
-    height: 3rem;
-    border-radius: 0.5rem;
-    width: 3rem;
-
+.leftrightfunc button {
+  border: none;
+  height: 3rem;
+  border-radius: 0.5rem;
+  width: 3rem;
 }
-.leftrightfunc button:hover{
-    background: rgb(210, 210, 210);
+.leftrightfunc button:hover {
+  background: rgb(210, 210, 210);
 }
-.leftrightfunc #asdscae{
+.leftrightfunc #asdscae {
   margin-left: 1rem;
   margin-right: 1rem;
   height: 3rem;
   background: #48b0df;
   color: white;
   width: 6rem;
-
 }
-.leftrightfunc #asdscae:hover{
-   width: 6.3rem;
+.leftrightfunc #asdscae:hover {
+  width: 6.3rem;
 }
 
 @media screen and (max-width: 1000px) {
-  
-.donateeapp .bodyy {
-  background: #48b0df;
-  padding: 0.1px;
-  width: 100vw;
-}
+  .donateeapp .bodyy {
+    background: #48b0df;
+    padding: 0.1px;
+    width: 100vw;
+  }
 
-  .donatecont{
+  .donatecont {
     width: 100%;
     margin-left: auto;
     margin-right: 0vw;
-   
   }
   .donate_content {
     width: 90%;
@@ -369,7 +363,7 @@ input {
     min-height: 55rem;
     height: max-content;
     margin-top: 2rem;
-    width:95%;
+    width: 95%;
     display: block;
     background: #f5f7f7;
 

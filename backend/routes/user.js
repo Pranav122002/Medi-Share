@@ -129,14 +129,13 @@ router.get("/api/user-cart/:id", (req, res) => {
 router.delete("/api/delete-cart-item/:id", (req, res) => {
   const userId = req.params.id;
   const medId = req.body.medId;
-  console.log(medId);
+
   USER.findByIdAndUpdate(
     userId,
     { $pull: { cart: { _id: medId } } },
     { new: true }
   )
     .then((updatedUser) => {
-      console.log(updatedUser);
       res.status(200).json({ success: "Item Removed" });
     })
     .catch((err) => {

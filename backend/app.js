@@ -7,7 +7,6 @@ const cors = require("cors");
 const socket = require("socket.io");
 const { MONGOURI, JWT_SECRET } = require("./config/keys");
 
-
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +19,7 @@ require("./models/medicine");
 require("./models/order");
 require("./models/task");
 require("./models/user");
-require("./models/report")
+require("./models/report");
 
 app.use(require("./routes/annoucement"));
 app.use(require("./routes/appointment"));
@@ -30,12 +29,11 @@ app.use(require("./routes/message"));
 app.use(require("./routes/order"));
 app.use(require("./routes/task"));
 app.use(require("./routes/user"));
-app.use(require("./routes/volunteer"))
-app.use(require("./routes/report"))
-
+app.use(require("./routes/volunteer"));
+app.use(require("./routes/report"));
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
-let isMongoDBConnected = false; 
+let isMongoDBConnected = false;
 
 mongoose.connection.on("connected", () => {
   if (!isMongoDBConnected) {
@@ -50,7 +48,7 @@ mongoose.connection.on("error", () => {
 
 //This is a scheduler that discards expired medicines everyday.
 //Do not move this require cron.js before the mongoose connection and app.use code snipped.
-require('./Functions/cron');
+require("./Functions/cron");
 
 const server = app.listen(port, () => {
   console.log("Server is running on port" + " " + port + "");
@@ -66,12 +64,10 @@ const io = socket(server, {
 const onlineUsers = new Map();
 
 io.on("connection", (socket) => {
-
   socket.on("message", (message) => {
     io.emit("message", message);
   });
 
-  
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id);
   });
@@ -98,4 +94,3 @@ io.on("connection", (socket) => {
     });
   });
 });
-

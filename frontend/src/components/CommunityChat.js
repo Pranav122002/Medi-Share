@@ -19,7 +19,6 @@ const Chat = () => {
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
-        console.log("data = ", data);
       })
       .catch((error) => {
         console.error("Error fetching messages:", error);
@@ -79,9 +78,7 @@ const Chat = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log("Message saved:", data);
-      })
+      .then((data) => {})
       .catch((error) => {
         console.error("Error saving message:", error);
       });
@@ -102,7 +99,7 @@ const Chat = () => {
                       <div className="sender-mess">
                         <p className="comssend" key={index}>
                           <p className="wowowow">
-                            <p>{message.sender_name}{" "}</p>
+                            <p>{message.sender_name} </p>
                             <div id="senderrole"> {message.sender_role} </div>
                           </p>
                           <p className="flexdisp">
@@ -117,7 +114,6 @@ const Chat = () => {
                                   hour12: true,
                                 }
                               )}
-
                             </div>
                           </p>
                         </p>
@@ -129,7 +125,7 @@ const Chat = () => {
                       <div className="received-msg">
                         <p className="comssend" key={index}>
                           <p className="wowowow">
-                            <p> {message.sender_name}{" "}</p>
+                            <p> {message.sender_name} </p>
                             <div id="recrole"> {message.sender_role} </div>
                           </p>
                           <p className="flexdisp">
@@ -159,14 +155,18 @@ const Chat = () => {
                 value={inputValue}
                 onChange={handleInputChange}
               />
-              {inputValue === "" ?(<>
-                 
-              </>):(
-                 <button id="sendbutton">
-                 <img  onClick={sendMessage} src="./send.png" id="sendicon" alt="send" />
-               </button>
-              ) }
-             
+              {inputValue === "" ? (
+                <></>
+              ) : (
+                <button id="sendbutton">
+                  <img
+                    onClick={sendMessage}
+                    src="./send.png"
+                    id="sendicon"
+                    alt="send"
+                  />
+                </button>
+              )}
             </div>
           </div>
         </div>

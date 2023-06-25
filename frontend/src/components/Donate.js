@@ -4,27 +4,25 @@ import { Link, json, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import Hnavbar from "./Hnavbar";
-import Medicines from "./Medicines"
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import Medicines from "./Medicines";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { API_BASE_URL } from "../config";
-import geocode from './googleGeocode'
-import * as Yup from 'yup';
-import Modal from 'react-modal'
+import geocode from "./googleGeocode";
+import * as Yup from "yup";
+import Modal from "react-modal";
 
 export default function Donate() {
-  const [medicineForms, setMedicineForms] = useState([])
+  const [medicineForms, setMedicineForms] = useState([]);
   const [medicine_name, setMedicineName] = useState("");
   const [quantity, setQuantity] = useState(null);
-  const [expiry_date, setExpiryDate] = useState(new Date);
+  const [expiry_date, setExpiryDate] = useState(new Date());
   const [location, setLocation] = useState("");
   const [count, setCount] = useState(1);
-  const [formMover, setFormMover] = useState(count) // Keeps track of currect form.
+  const [formMover, setFormMover] = useState(count); // Keeps track of currect form.
   const [sug, showsug] = useState(!false);
-  const [coordinates, setCoordinates] = useState(null)
-  const [medicineList, setMedicineList] = useState([])
-
-
+  const [coordinates, setCoordinates] = useState(null);
+  const [medicineList, setMedicineList] = useState([]);
 
   const handleAddForm = async () => {
     try {
@@ -33,13 +31,17 @@ export default function Donate() {
           medicine_name: medicine_name,
           expiry_date: expiry_date,
           quantity: quantity,
-          location: location
+          location: location,
         },
         { abortEarly: false }
       );
-      console.log("validation", validation);
 
-      if (medicine_name !== "" && expiry_date !== "" && quantity !== "" && location !== "") {
+      if (
+        medicine_name !== "" &&
+        expiry_date !== "" &&
+        quantity !== "" &&
+        location !== ""
+      ) {
         setMedicineForms((previousForms) => [
           ...previousForms,
           {
@@ -49,28 +51,25 @@ export default function Donate() {
             expiry_date: expiry_date,
             location: location,
           },
-        ])
-        setCount((previousCount) => previousCount + 1)
-        setMedicineName("")
-        setExpiryDate("")
-        setQuantity("")
-        console.log(medicineForms)
-        console.log("formMover " + formMover)
-        console.log("count " + count)
-        notifyB("Medicine added")
+        ]);
+        setCount((previousCount) => previousCount + 1);
+        setMedicineName("");
+        setExpiryDate("");
+        setQuantity("");
+
+        notifyB("Medicine added");
       }
     } catch (error) {
       error.inner.forEach((validationError) => {
-        notifyA(validationError.message)
+        notifyA(validationError.message);
       });
     }
-  }
+  };
 
   const handLeftForm = () => {
-    console.log("left")
-    console.log("formMover " + formMover)
-    console.log("count " + count)
-    setFormMover((currentCount) => currentCount === 1 ? count : currentCount - 1)
+    setFormMover((currentCount) =>
+      currentCount === 1 ? count : currentCount - 1
+    );
     const leftForm = medicineForms.filter((form) => form.id === formMover);
 
     if (leftForm.length > 0 && formMover != count) {
@@ -79,15 +78,15 @@ export default function Donate() {
       setExpiryDate(selectedForm.expiry_date);
       setQuantity(selectedForm.quantity);
     } else {
-      setMedicineName("")
-      setExpiryDate("")
-      setQuantity("")
+      setMedicineName("");
+      setExpiryDate("");
+      setQuantity("");
     }
-
-    console.log(medicineForms)
-  }
+  };
   const handleRightForm = () => {
-    setFormMover((currentCount) => currentCount === count ? 1 : currentCount + 1)
+    setFormMover((currentCount) =>
+      currentCount === count ? 1 : currentCount + 1
+    );
     const rightForm = medicineForms.filter((form) => form.id === formMover);
 
     if (rightForm.length > 0 && formMover != count) {
@@ -96,51 +95,45 @@ export default function Donate() {
       setExpiryDate(selectedForm.expiry_date);
       setQuantity(selectedForm.quantity);
     } else {
-      setMedicineName("")
-      setExpiryDate("")
-      setQuantity("")
+      setMedicineName("");
+      setExpiryDate("");
+      setQuantity("");
     }
-    console.log("formMover " + formMover)
-    console.log("count " + count)
-  }
+  };
   const handleShowsug = () => {
     showsug(false);
-    console.log(sug);
   };
   const getMedicine = () => {
     fetch(`${API_BASE_URL}/allmedicines`)
-      .then(res => res.json())
-      .then(doc => {
-        setMedicineList(doc.map((item) => item.medicine_name))
-        console.log(medicineList)
+      .then((res) => res.json())
+      .then((doc) => {
+        setMedicineList(doc.map((item) => item.medicine_name));
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     AOS.init({ duration: 800 });
-    getMedicine()
+    getMedicine();
   }, []);
 
   const locationInput = document.getElementById("location");
   const searchBox = new window.google.maps.places.SearchBox(locationInput);
 
-
-  const handleLocationChange = (e)=>{
-    setLocation(e.target.value)
-  }
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
   useEffect(() => {
-    searchBox.addListener('places_changed', () => {
+    searchBox.addListener("places_changed", () => {
       const places = searchBox.getPlaces();
-  
+
       if (places && places.length > 0) {
         // Set the location place to the first result
-        console.log(places[0])
+
         const selected = places[0].formatted_address;
         setLocation(selected);
       }
     });
-    console.log(location)
   }, [location]);
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
@@ -150,15 +143,13 @@ export default function Donate() {
     try {
       const validation = await AddBtnValidation.validate(
         {
-          count: count
+          count: count,
         },
         { abortEarly: false }
-      )
-      geocode(location)
-        .then(coordinatesRes => {
-          setCoordinates(coordinatesRes)
-          console.log(coordinates)
-        })
+      );
+      geocode(location).then((coordinatesRes) => {
+        setCoordinates(coordinatesRes);
+      });
 
       fetch(
         `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`,
@@ -171,44 +162,41 @@ export default function Donate() {
         .then((res) => res.json())
         .then((result) => {
           const donar = result._id;
-          const formsToSubmit = medicineForms
+          const formsToSubmit = medicineForms;
 
           const formData = {
             medicines: formsToSubmit.map((form) => ({
               medicine_name: form.medicine_name,
               expiry_date: {
-                date: form.expiry_date
+                date: form.expiry_date,
               },
-              quantity: form.quantity
+              quantity: form.quantity,
             })),
             no_of_medicines: formsToSubmit.length,
             location: location,
             coordinates: coordinates,
-            donar: donar
-          }
-          console.log(formData)
+            donar: donar,
+          };
+
           fetch(`${API_BASE_URL}/donate-medicines`, {
             method: "post",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(formData),
-          }).then((res) => res.json())
+          })
+            .then((res) => res.json())
             .then((data) => {
               if (data.error) {
                 notifyA(data.error);
               } else {
                 notifyB(data.msg);
               }
-              console.log(data);
             });
         });
-    }
-
-    catch (error) {
-      console.log("hello")
+    } catch (error) {
       error.inner.forEach((validationError) => {
-        notifyA(validationError.message)
+        notifyA(validationError.message);
       });
     }
   };
@@ -218,25 +206,22 @@ export default function Donate() {
   //Validate form
   const validationSchema = Yup.object().shape({
     medicine_name: Yup.string()
-      .oneOf(medicineList, 'Invalid medicine')
-      .required('Medicine name is required'),
+      .oneOf(medicineList, "Invalid medicine")
+      .required("Medicine name is required"),
     expiry_date: Yup.date()
-      .min(new Date(), 'Expiry date must be in the future')
-      .required('Expiry date is required'),
+      .min(new Date(), "Expiry date must be in the future")
+      .required("Expiry date is required"),
     quantity: Yup.number()
-      .min(1, 'Quantity can not be less than one')
-      .required('Quantity is required'),
-    location: Yup.string()
-      .required('Location is required'),
-   
+      .min(1, "Quantity can not be less than one")
+      .required("Quantity is required"),
+    location: Yup.string().required("Location is required"),
   });
 
   //validate if add button is clicked before donating
   const AddBtnValidation = Yup.object().shape({
-    count: Yup.number()
-    .min(2, "Click Add before Donate")
-  })
-  
+    count: Yup.number().min(2, "Click Add before Donate"),
+  });
+
   return (
     <div className="donateeapp">
       <div className="bodyy">
@@ -247,8 +232,8 @@ export default function Donate() {
               {/* <img data-aos="fade-down-right" src="./medicine.png" alt="" /> */}
               <div className="points">
                 <p>
-                  1.The medicine to be donated should be valid and not expired or
-                  fabricated.
+                  1.The medicine to be donated should be valid and not expired
+                  or fabricated.
                 </p>
                 <p>2.The medicine name , expiry date should be visible.</p>
               </div>
@@ -275,10 +260,8 @@ export default function Donate() {
                     setMedicineName(e.target.value);
                   }}
                 />
-                <datalist
-                  id="medicine"
-                >
-                  {medicineList.map((item =>
+                <datalist id="medicine">
+                  {medicineList.map((item) => (
                     <option>{item}</option>
                   ))}
                 </datalist>
@@ -335,9 +318,29 @@ export default function Donate() {
               </div> */}
               </div>
               <div className="leftrightfunc">
-                <button  onClick={() => { handLeftForm() }}> &lt; </button>
-                <button id="asdscae" onClick={() => { handleAddForm() }}>Add to Cart</button>
-                <button onClick={() => { handleRightForm() }}>&gt; </button>
+                <button
+                  onClick={() => {
+                    handLeftForm();
+                  }}
+                >
+                  {" "}
+                  &lt;{" "}
+                </button>
+                <button
+                  id="asdscae"
+                  onClick={() => {
+                    handleAddForm();
+                  }}
+                >
+                  Add to Cart
+                </button>
+                <button
+                  onClick={() => {
+                    handleRightForm();
+                  }}
+                >
+                  &gt;{" "}
+                </button>
               </div>
               <button
                 className="button-53"
@@ -351,23 +354,21 @@ export default function Donate() {
                 Donate
               </button>
             </div>
-            <div className={`suggestions ${sug && 'active'}`}  >
-
+            <div className={`suggestions ${sug && "active"}`}>
               <ul>
                 <li style={{ color: "black" }}>
                   <h2>Suggestions</h2>
                 </li>
                 {searchResult.map((item) => {
                   return (
-
                     <li className="link">
                       <h3 style={{ color: "black" }}>
-
                         {item.medicine_name + ": " + "-"}
                       </h3>
 
-                      <h3 className="p2" style={{ color: "black" }}>{item.disease}</h3>
-
+                      <h3 className="p2" style={{ color: "black" }}>
+                        {item.disease}
+                      </h3>
                     </li>
                   );
                 })}

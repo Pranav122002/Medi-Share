@@ -1,4 +1,4 @@
-.mainsignup{
+.mainsignup {
   height: 40rem;
 }
 
@@ -6,15 +6,19 @@
   display: flex;
   justify-content: space-between;
   box-shadow: 2px 2px 9px rgb(170, 170, 170);
-  min-height: 20rem;   
+  min-height: 20rem;
   width: 80vw;
   border-radius: 2rem;
   margin: auto;
   margin-top: 5rem;
 }
-.signUp .left{
-  background: rgb(8,70,119);
-  background: linear-gradient(90deg, rgb(27, 95, 147) 0%, rgb(144, 218, 255) 100%);
+.signUp .left {
+  background: rgb(8, 70, 119);
+  background: linear-gradient(
+    90deg,
+    rgb(27, 95, 147) 0%,
+    rgb(144, 218, 255) 100%
+  );
   width: 50rem;
   text-align: center;
   border-radius: 2rem;
@@ -22,12 +26,15 @@
   animation-duration: 0s;
   animation-fill-mode: forwards;
   overflow: hidden;
- 
 }
-.signUp .left .cover{
+.signUp .left .cover {
   position: absolute;
   width: 42vw;
-  background: linear-gradient(90deg, rgb(27, 95, 147) 0%, rgb(144, 218, 255) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(27, 95, 147) 0%,
+    rgb(144, 218, 255) 100%
+  );
   height: 27rem;
   z-index: 254;
   margin-top: 8rem;
@@ -38,12 +45,11 @@
   animation-fill-mode: forwards;
   overflow: hidden;
   opacity: 0;
-  
 }
-.signUp .left img{
-  width:32vw;
-  margin-top:2rem;
-  animation-name:pAnimation;
+.signUp .left img {
+  width: 32vw;
+  margin-top: 2rem;
+  animation-name: pAnimation;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-delay: 0s;
@@ -54,20 +60,20 @@
   z-index: 2;
 }
 
-.signUp .left h1{
+.signUp .left h1 {
   text-align: center;
   width: 42vw;
   color: #ffffff;
   position: relative;
   padding-top: 2rem;
   animation-duration: 0.5s;
-  animation-name:pAnimation;
+  animation-name: pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
   z-index: 25;
 }
- 
+
 .form {
   border-radius: 2rem;
   background-color: #ffffff;
@@ -77,12 +83,11 @@
   margin: auto;
   padding-top: 1rem;
   animation-duration: 1s;
-  animation-name:pAnimation;
+  animation-name: pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
   text-align: center;
-  
 }
 .signUpLogo {
   width: 200px;
@@ -90,10 +95,7 @@
   padding: 10px 0px;
 }
 
-
-
 .signUp input {
-
   height: 3.5rem;
   border-radius: 1.2rem;
   border: none;
@@ -104,14 +106,12 @@
   max-width: 15vw;
 }
 
-
-
 #submit-btn {
   font-size: 1rem;
   margin-top: 1rem;
   border-radius: 1.2rem;
   border: none;
-  background-color: rgba(0,168,255,1);
+  background-color: rgba(0, 168, 255, 1);
   border: none;
   color: white;
   font-weight: bold;
@@ -119,7 +119,6 @@
   cursor: pointer;
   width: 12rem;
 }
-
 
 .form2 {
   text-decoration: none;
@@ -129,35 +128,33 @@
   margin-top: 9rem;
   padding-left: 4rem;
   animation-duration: 1s;
-  animation-name:pAnimation;
+  animation-name: pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
   margin-top: 0rem;
   margin-bottom: 2rem;
 }
-.form2 a{
+.form2 a {
   text-decoration: none;
-  color: rgb(121, 172, 213);  
+  color: rgb(121, 172, 213);
 }
-.form2 a:hover{
+.form2 a:hover {
   box-shadow: none;
 }
-#roles{
-
+#roles {
   border: none;
   margin-top: 2rem;
-  
 }
 
-.selopt{
-
+.selopt {
 }
 
-select:invalid { color: gray; }
-#role{
- 
-  height: 3.5rem; 
+select:invalid {
+  color: gray;
+}
+#role {
+  height: 3.5rem;
   border-radius: 1.2rem;
   border: none;
   background: rgb(243, 251, 255);
@@ -165,70 +162,62 @@ select:invalid { color: gray; }
   margin-top: 0.8rem;
   width: 20vw;
   max-width: 16.5vw;
-
 }
-#roles:focus{
+#roles:focus {
   border: none;
-
 }
-#role *{
+#role * {
   background: rgb(255, 255, 255);
 }
-#role *{
+#role * {
   background: rgb(255, 255, 255);
   height: 2rem;
 }
-.selopt{
+.selopt {
   border: none;
 }
 
-.uploadimage{
+.uploadimage {
   display: flex;
   justify-content: space-between;
-  
 }
-#output{
-    margin: auto;
-    height: 4rem;
-    width: 4rem;
+#output {
+  margin: auto;
+  height: 4rem;
+  width: 4rem;
+}
 
-  }
-
-
-
-#uploadf{
+#uploadf {
   margin-right: 3.5vw;
-  
 }
 
 #uploadf::-webkit-file-upload-button {
   display: none;
-
 }
 
 #uploadf::before {
-  content: 'Select some files';
+  content: "Select some files";
   display: inline-block;
   background: linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
   border-radius: 3px;
   padding: 5px 8px;
   outline: none;
-  white-space: nowrap;  
+  white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
   text-shadow: 1px 1px #fff;
   font-weight: 700;
   font-size: 10pt;
   margin-top: 1rem;
-  margin-right: 1rem; 
+  margin-right: 1rem;
 }
 
 #uploadf:hover::before {
   border-color: black;
 }
 #uploadf:focus::before {
-  margin-top: 0rem
+  margin-top: 0rem;
 }
 .uploadimage input:focus {
   width: 100%;
@@ -239,20 +228,17 @@ select:invalid { color: gray; }
   border: 3px solid #9ed2ccbb;
   transition: 0.5s;
   outline: none;
-  margin-top: 1rem; 
-  
+  margin-top: 1rem;
 }
-
 
 #uploadf:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
-
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1000px) {
   /*nav part already in landing.css*/
-  #role *{
-   text-align: left;
+  #role * {
+    text-align: left;
   }
   .signUp {
     display: block;
@@ -264,41 +250,43 @@ select:invalid { color: gray; }
     margin-top: 2rem;
     width: 100vw;
   }
-  .signUp .left{
-  margin: auto;
-  height: 12rem;
-  background: rgb(8,70,119);
-  background: linear-gradient(90deg, rgb(27, 95, 147) 0%, rgb(144, 218, 255) 100%);
-  width: 90vw;
-  border-radius: 2rem;
-  animation-name: slide;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  text-align: center;
-   
+  .signUp .left {
+    margin: auto;
+    height: 12rem;
+    background: rgb(8, 70, 119);
+    background: linear-gradient(
+      90deg,
+      rgb(27, 95, 147) 0%,
+      rgb(144, 218, 255) 100%
+    );
+    width: 90vw;
+    border-radius: 2rem;
+    animation-name: slide;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    text-align: center;
   }
-  .middle{
+  .middle {
     display: none;
-    
   }
-  .signUp .left h1{
+  .signUp .left h1 {
     text-align: center;
     width: 90vw;
     color: #ffffff;
     position: absolute;
     padding-top: 2rem;
     animation-duration: 3s;
-    animation-name:pAnimation;
+    animation-name: pAnimation;
     animation-fill-mode: forwards;
     visibility: hidden;
     opacity: 0;
     z-index: 25;
   }
 
-  .signUp .left img{
-    width:15rem;
-    margin-top:1rem;
-    animation-name:pAnimation;
+  .signUp .left img {
+    width: 15rem;
+    margin-top: 1rem;
+    animation-name: pAnimation;
     animation-duration: 2.5s;
     animation-fill-mode: forwards;
     visibility: hidden;
@@ -315,14 +303,12 @@ select:invalid { color: gray; }
     margin-right: 0rem;
     padding-top: 2rem;
     animation-duration: 3s;
-    animation-name:pAnimation;
+    animation-name: pAnimation;
     animation-fill-mode: forwards;
     visibility: hidden;
-    opacity: 0; 
-    
+    opacity: 0;
   }
   .signUp input {
-
     height: 3.5rem;
     border-radius: 1.2rem;
     border: none;
@@ -332,24 +318,20 @@ select:invalid { color: gray; }
     width: 70vw;
     max-width: none;
   }
-  #roles{
+  #roles {
     width: 80vw;
     margin: auto;
     margin-top: 2rem;
   }
-  #role{
-
- 
-      height: 3.5rem; 
-      border-radius: 1.2rem;
-      border: none;
-      background: rgb(243, 251, 255);
-      padding-left: 2rem;
-      margin-top: 0.8rem;
-      width: 76vw;
-      max-width: none;
-    
-    
+  #role {
+    height: 3.5rem;
+    border-radius: 1.2rem;
+    border: none;
+    background: rgb(243, 251, 255);
+    padding-left: 2rem;
+    margin-top: 0.8rem;
+    width: 76vw;
+    max-width: none;
   }
   .form2 {
     padding-left: 4rem;
@@ -357,27 +339,21 @@ select:invalid { color: gray; }
     padding-right: 5rem;
     text-align: center;
     margin-top: 3rem;
-    
-    
   }
-  .signUp .left .cover{
+  .signUp .left .cover {
     display: none;
   }
-  .uploadimage{
+  .uploadimage {
     display: block;
-  
-    
   }
   #output {
     margin: auto;
     height: 4rem;
-    
-}
-#uploadf{
-  margin-right: 0;
-}
-#uploadf:focus{
-  width: 70vw;
-}
-
+  }
+  #uploadf {
+    margin-right: 0;
+  }
+  #uploadf:focus {
+    width: 70vw;
+  }
 }

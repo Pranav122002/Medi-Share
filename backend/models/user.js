@@ -23,17 +23,16 @@ const userSchema = new mongoose.Schema({
   cart: [
     {
       medicine_name: {
-        type: String
+        type: String,
       },
       quantity: {
-        type: Number
+        type: Number,
       },
       med_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "MEDICINE"
+        ref: "MEDICINE",
       },
     },
-
   ],
   credits: {
     type: Number,
@@ -102,7 +101,7 @@ const volunteerSchema = new mongoose.Schema({
       {
         order_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "ORDER"
+          ref: "ORDER",
         },
       },
     ],
@@ -110,7 +109,7 @@ const volunteerSchema = new mongoose.Schema({
       {
         order_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "ORDER"
+          ref: "ORDER",
         },
       },
     ],
@@ -118,7 +117,7 @@ const volunteerSchema = new mongoose.Schema({
       {
         order_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "ORDER"
+          ref: "ORDER",
         },
       },
     ],
@@ -127,19 +126,18 @@ const volunteerSchema = new mongoose.Schema({
       {
         order_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "ORDER"
+          ref: "ORDER",
         },
-      }
+      },
     ],
     location: {
       lng: {
         type: Number,
-        default: 0
+        default: 0,
       },
       lat: {
         type: Number,
-        default: 0
-
+        default: 0,
       },
     },
     certificate: {
@@ -148,12 +146,12 @@ const volunteerSchema = new mongoose.Schema({
 
     feedback_count: {
       type: Number,
-      default: 0
+      default: 0,
     },
     avg_stars: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
 });
 

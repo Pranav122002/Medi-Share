@@ -3,7 +3,7 @@ import "../css/SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "../config";
-import {volLocation } from './volLocation'
+import { volLocation } from "./volLocation";
 import { UserContext } from "./UserContext";
 
 export default function SignIn() {
@@ -76,9 +76,7 @@ export default function SignIn() {
                   },
                 })
                   .then((res) => res.json())
-                  .then((updatedRes) => {
-                    console.log("User subscription ended.", updatedRes);
-                  })
+                  .then((updatedRes) => {})
                   .catch((error) => {
                     console.error(error);
                   });
@@ -95,7 +93,6 @@ export default function SignIn() {
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
-    console.log(showNavbar);
   };
 
   const navigatee = useNavigate();
@@ -105,10 +102,7 @@ export default function SignIn() {
 
   return (
     <>
-    
       <div className="mainsignin">
-      
-
         <div className="signIn">
           <div className="left">
             <h1>Welcome to "Medi-Share"</h1>

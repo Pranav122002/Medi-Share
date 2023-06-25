@@ -25,8 +25,6 @@
   align-items: center;
 } */
 .profilediv .contentt {
-
-
   margin-top: 2rem;
   width: 82vw;
   box-shadow: 2px 2px 9px rgb(225, 225, 225);
@@ -46,11 +44,9 @@
   color: white;
   justify-content: space-evenly;
   border-radius: 1rem;
-
 }
 
 .contentt .userdet img {
-
   height: 6rem;
   margin: auto;
   margin-left: 5rem;
@@ -76,7 +72,6 @@
   align-items: center;
   text-align: right;
   margin-left: 5rem;
-
 }
 
 #credits img {
@@ -98,7 +93,6 @@
   padding-top: 0.1px;
   height: max-content;
   padding-bottom: 2rem;
-
 }
 
 .contentt h2 {
@@ -210,7 +204,6 @@
 .contentt .requestorders img {
   width: 2rem;
   margin-left: 1rem;
-
 }
 
 .contentt .myappoint {
@@ -225,7 +218,6 @@
 .contentt .myappoint img {
   width: 2rem;
   margin-left: 1rem;
-
 }
 
 .contentt .appointm {
@@ -235,11 +227,9 @@
 .contentt .appointm img {
   width: 2rem;
   margin-left: 1rem;
-
 }
 
 .subs {
-
   background: rgb(254, 254, 254);
   box-shadow: 2px 2px 9px rgb(238, 238, 238);
   width: 70vw;
@@ -251,8 +241,6 @@
   border-radius: 1rem;
   margin-left: auto;
   margin-right: 8vw;
-
-
 }
 
 .subimg img {
@@ -271,17 +259,15 @@
   background: rgb(86, 255, 210);
   border: none;
   height: 3rem;
-  width:7vw;
+  width: 7vw;
   margin-top: 0.5rem;
   font-size: 0.8vw;
   box-shadow: 2px 2px 9px rgb(211, 211, 211);
   font-weight: 700;
   border-radius: 0.5rem;
-
-
 }
-.procont .proco p .burst:hover{
-  width:8vw;
+.procont .proco p .burst:hover {
+  width: 8vw;
 }
 .subbut {
   background: rgb(255, 102, 0);
@@ -294,7 +280,6 @@
   width: 10rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-
 }
 
 #sss {
@@ -333,7 +318,6 @@
 .editparent p {
   width: 80%;
   padding-left: 10vw;
-
 }
 #burstes {
   background: rgb(86, 255, 210);
@@ -353,7 +337,6 @@
   height: 2rem;
   margin-right: 1rem;
   margin-top: 1rem;
-
 }
 
 .editparent #remli {
@@ -379,7 +362,6 @@
 }
 
 .editparent .editsprofs .editprofdocs {
-
   padding-left: 10vw;
 }
 
@@ -388,8 +370,6 @@
   margin-left: 1rem;
   height: 2.5rem;
   margin-top: -0.5rem;
-
-
 }
 
 .editparent .editsapa {
@@ -398,7 +378,6 @@
   height: 2rem;
   justify-content: space-between;
   display: flex;
-
 }
 
 #asagws {
@@ -413,9 +392,8 @@
 }
 
 .editparent {
-
   width: 100vw;
-  background: (rgba(198, 198, 198, 0.793)00, 200, 200);
+  background: (rgba(198, 198, 198, 0.793) 00, 200, 200);
   position: fixed;
   z-index: 256;
   height: 100vh;
@@ -442,12 +420,10 @@
   margin-left: 1rem;
   padding-top: 0.2rem;
   width: 7rem;
-
 }
 
 #biewprod:hover {
   background: rgb(241, 241, 241);
-
 }
 
 @media screen and (max-width: 1000px) {
@@ -483,7 +459,6 @@
     font-weight: 700;
     margin-top: 1rem;
     margin: auto;
-
   }
 
   #credits h4 {
@@ -501,7 +476,6 @@
     margin-left: 2rem;
     border-radius: 50%;
     margin-left: 5vw;
-
   }
 
   .subimg img {
@@ -545,7 +519,6 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-
 
   .contentt .donatedorders {
     position: relative;
@@ -600,7 +573,6 @@
     height: max-content;
     border-radius: 1rem;
     box-shadow: 2px 2px 9px rgb(210, 210, 210);
-
   }
 
   .procont .proco p {
@@ -610,16 +582,13 @@
     word-break: break-all;
     white-space: normal;
     display: inline-block;
-
-
   }
 
   .asfasfa {
     word-break: break-all;
     white-space: normal;
-
   }
-  #dasdacaw{
+  #dasdacaw {
     word-break: break-all;
     white-space: normal;
     display: inline-block;
@@ -627,7 +596,7 @@
     margin-left: 40%;
   }
 
-  #casedc{
+  #casedc {
     position: absolute;
   }
   .profdonspan {
@@ -636,8 +605,6 @@
     width: 35%;
     font-weight: 700;
     margin-bottom: auto;
-
-
   }
 
   .profdonspa {
@@ -657,10 +624,10 @@
     font-size: 1rem;
     border-radius: 0.5rem;
     font-weight: 700;
-
   }
 
-  #agasgasaf {}
+  #agasgasaf {
+  }
 
   .editpromain {
     position: fixed;
@@ -700,27 +667,26 @@
     margin-left: 1rem;
     height: 2.5rem;
     margin-top: -0.5rem;
+  }
+  #asagws {
+    margin-left: 18vw;
+    background: rgb(69, 240, 217);
+    border: none;
+    border-radius: 0.5rem;
+    width: 20vw;
+    height: 3rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  #burstes {
+    background: rgb(86, 255, 210);
+    border: none;
+    height: 3rem;
+    width: 25vw;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    box-shadow: 2px 2px 9px rgb(211, 211, 211);
+    font-weight: 700;
+    border-radius: 0.5rem;
+  }
 }
-#asagws {
-  margin-left: 18vw;
-  background: rgb(69, 240, 217);
-  border: none;
-  border-radius: 0.5rem;
-  width: 20vw;
-  height: 3rem;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-#burstes {
-  background: rgb(86, 255, 210);
-  border: none;
-  height: 3rem;
-  width: 25vw;
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  box-shadow: 2px 2px 9px rgb(211, 211, 211);
-  font-weight: 700;
-  border-radius: 0.5rem;
-}
-} 
-
