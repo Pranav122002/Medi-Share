@@ -140,7 +140,7 @@
   border: none;
 }
 .received-msg {
-  background: rgba(32, 44, 51, 0.95);
+  background: rgba(48, 65, 76, 0.678);
 
   width: max-content;
   max-width: 70%;
@@ -167,7 +167,7 @@
   border-radius: 0.9rem;
   padding: 0.5rem;
   margin-top: 1rem;
-  background: rgb(108, 150, 187 , 0.9);
+  background: rgba(14, 115, 203, 0.562);
   overflow-wrap: break-word;
   max-width: 60%;
   width: max-content;
@@ -195,16 +195,20 @@
 }
 
 #sendbutton {
-  background: none;
-  border: none;
-  right: 0;
+ background-color: #b7ffe7;
+ height: 70%;
+ margin-top: 0.5rem;
+ border: none;
+ border-radius: 0.8rem;
+ padding-left: 0px;
 }
 #sendbutton img {
   height: 2rem;
   margin-left: 1rem;
   cursor: pointer;
   float: right;
-  filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(92%) contrast(78%);
+  filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(0%) contrast(78%)
+  /* filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(92%) contrast(78%); */
 }
 #sendbutton img:hover {
   transform: translateX(1px);

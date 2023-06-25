@@ -106,6 +106,9 @@
   float: left;
   margin-right: 1vw;
 }
+.proul {
+  border-radius: 0.9rem;
+}
 
 .contentt ul {
   box-shadow: 2px 2px 8px rgb(247, 247, 247);
@@ -134,6 +137,8 @@
   display: flex;
   justify-content: flex-start;
   box-shadow: 2px 2px 9px rgb(238, 238, 238);
+  border-radius: 0.9rem;
+
 }
 
 .contentt .proul .profli h3 {

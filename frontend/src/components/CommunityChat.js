@@ -139,10 +139,10 @@ const Chat = () => {
                               <div id="recrole"> {message.sender_role}</div>
                             }
                             {message.sender_role === "volunteer" &&
-                              <div style={{ color: "#FEEA3D" }} id="recrole"> {message.sender_role}</div>
+                              <div style={{ color: "#FDFF00" }} id="recrole"> {message.sender_role}</div>
                             }
                             {message.sender_role === "doctor" &&
-                              <div style={{ color: "#4DAE51" }} id="recrole"> {message.sender_role}</div>
+                              <div style={{ color: "#39FF14" }} id="recrole"> {message.sender_role}</div>
                             }
 
 
