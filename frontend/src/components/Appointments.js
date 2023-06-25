@@ -189,7 +189,7 @@ export default function Appointments() {
   }
 
   function fetchDoctors() {
-    fetch(`${API_BASE_URL}/all-doctors`, {
+    fetch(`${API_BASE_URL}/all-verified-doctors`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
