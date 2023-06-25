@@ -106,6 +106,9 @@
   float: left;
   margin-right: 1vw;
 }
+.proul {
+  border-radius: 0.9rem;
+}
 
 .contentt ul {
   box-shadow: 2px 2px 8px rgb(247, 247, 247);
@@ -134,6 +137,8 @@
   display: flex;
   justify-content: flex-start;
   box-shadow: 2px 2px 9px rgb(238, 238, 238);
+  border-radius: 0.9rem;
+
 }
 
 .contentt .proul .profli h3 {
@@ -310,7 +315,7 @@
   top: 5rem;
   z-index: 999;
   border-radius: 1rem;
-
+  min-height: 30rem;
   text-align: left;
   padding-bottom: 1rem;
 }
@@ -359,6 +364,7 @@
   background: rgb(251, 251, 251);
   width: 45vw;
   border-radius: 1rem;
+  margin-top: -22rem;
 }
 
 .editparent .editsprofs .editprofdocs {
@@ -387,6 +393,7 @@
   border-radius: 0.5rem;
   width: 8vw;
   height: 3rem;
+  margin-top: 4rem;
   font-weight: 700;
   font-size: 0.8vw;
 }
@@ -612,7 +619,11 @@
     width: 35%;
     margin-left: 40%;
   }
-
+  .editparent .editsprofs h2 {
+    margin: auto;
+    margin-left: 35vw;
+    margin-bottom: 2rem;
+}
   .procont .proco p .burst {
     background: rgb(255, 255, 255);
     margin-top: 2rem;
@@ -649,6 +660,9 @@
     background: rgb(251, 251, 251);
     width: 94vw;
     border-radius: 1rem;
+    min-height: 30rem;
+    margin-top: -24rem;
+  
   }
 
   .editparent .imgprof.active {

@@ -156,6 +156,20 @@ router.get("/api/all-doctors", (req, res) => {
     });
 });
 
+
+router.get("/api/all-verified-doctors", (req, res) => {
+  DOCTOR.find({ "doctor_details.verification": "verified" })
+    .select("-password")
+    .then((doctors) => {
+      res.json(doctors);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Error fetching doctors" });
+    });
+});
+
+
 router.put("/api/subscribe/:id", async (req, res) => {
   try {
     const { id } = req.params;

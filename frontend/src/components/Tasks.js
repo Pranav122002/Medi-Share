@@ -45,11 +45,11 @@ export default function Tasks() {
 
   useEffect(() => {
     fetchMyTasks();
-  }, []);
+  }, [myTasks]);
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [tasks]);
 
   useEffect(() => {
     fetchVolunteers();

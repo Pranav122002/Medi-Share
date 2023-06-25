@@ -40,7 +40,8 @@
 .myinfo h2 {
   margin-top: 1rem;
   margin-left: 1rem;
-  color: rgb(0, 115, 255);
+  color: rgb(47, 151, 211);
+  font-size: 1.5rem;
 }
 
 #profpicc {
@@ -140,7 +141,7 @@
   border: none;
 }
 .received-msg {
-  background: #202c33;
+  background: rgba(48, 65, 76, 0.678);
 
   width: max-content;
   max-width: 70%;
@@ -167,7 +168,7 @@
   border-radius: 0.9rem;
   padding: 0.5rem;
   margin-top: 1rem;
-  background: rgb(108, 150, 187);
+  background: rgba(14, 115, 203, 0.562);
   overflow-wrap: break-word;
   max-width: 60%;
   width: max-content;
@@ -178,7 +179,7 @@
 }
 
 .datemess {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: rgb(216, 216, 216);
   margin-bottom: 0;
   margin-top: auto;
@@ -186,7 +187,7 @@
   margin-left: 0.5rem;
 }
 .datemesss {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: rgb(216, 216, 216);
   margin-bottom: 0;
   margin-top: auto;
@@ -195,15 +196,20 @@
 }
 
 #sendbutton {
-  background: none;
-  border: none;
-  right: 0;
+ background-color: #b7ffe7;
+ height: 80%;
+ margin-top: 0.5rem;
+ border: none;
+ border-radius: 0.8rem;
+ padding-left: 0px;
 }
 #sendbutton img {
   height: 2rem;
   margin-left: 1rem;
   cursor: pointer;
   float: right;
+ 
+  /* filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(92%) contrast(78%); */
 }
 #sendbutton img:hover {
   transform: translateX(1px);

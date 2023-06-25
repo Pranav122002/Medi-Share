@@ -189,7 +189,7 @@ export default function Appointments() {
   }
 
   function fetchDoctors() {
-    fetch(`${API_BASE_URL}/all-doctors`, {
+    fetch(`${API_BASE_URL}/all-verified-doctors`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -368,7 +368,7 @@ export default function Appointments() {
                                             setLinkText(e.target.value)
                                           }
                                         />
-                                        <button
+                                        <button id="jducujna"
                                           onClick={() =>
                                             addLink(appointment._id)
                                           }

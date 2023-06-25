@@ -95,7 +95,7 @@ export default function Profile() {
             hospital_name: res.doctor_details.hospital_name,
           });
 
-          fetchDoctorRatingsFeedbacks(user._id);
+          fetchDoctorRatingsFeedbacks(user?._id);
         } else if (res.role === "volunteer") {
           setUpdatedVolunteerDetails({
             qualification: res.volunteer_details.qualification,
@@ -114,15 +114,18 @@ export default function Profile() {
       });
   };
   const fetchDoctorRatingsFeedbacks = () => {
-    fetch(`${API_BASE_URL}/doctor-ratings-feedbacks/${user._id}`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setAppointmentRatingsFeedbacks(res);
-      });
+    if (user) {
+      fetch(`${API_BASE_URL}/doctor-ratings-feedbacks/${user._id}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          setAppointmentRatingsFeedbacks(res);
+        });
+    }
+    
   };
 
   const handleEdit = () => {

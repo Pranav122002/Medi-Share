@@ -78,7 +78,7 @@ const Chat = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {})
+      .then((data) => { })
       .catch((error) => {
         console.error("Error saving message:", error);
       });
@@ -100,7 +100,16 @@ const Chat = () => {
                         <p className="comssend" key={index}>
                           <p className="wowowow">
                             <p>{message.sender_name} </p>
-                            <div id="senderrole"> {message.sender_role} </div>
+                            {message.sender_role === "user" &&
+                              <div id="senderrole"> {message.sender_role}</div>
+                            }
+                            {message.sender_role === "volunteer" &&
+                              <div style={{ color: "#FEEA3D" }} id="senderrole"> {message.sender_role}</div>
+                            }
+                            {message.sender_role === "doctor" &&
+                              <div style={{ color: "#4DAE51" }} id="senderrole"> {message.sender_role}</div>
+                            }
+
                           </p>
                           <p className="flexdisp">
                             <p> {message.message} </p>
@@ -126,7 +135,17 @@ const Chat = () => {
                         <p className="comssend" key={index}>
                           <p className="wowowow">
                             <p> {message.sender_name} </p>
-                            <div id="recrole"> {message.sender_role} </div>
+                            {message.sender_role === "user" &&
+                              <div id="recrole"> {message.sender_role}</div>
+                            }
+                            {message.sender_role === "volunteer" &&
+                              <div style={{ color: "#FDFF00" }} id="recrole"> {message.sender_role}</div>
+                            }
+                            {message.sender_role === "doctor" &&
+                              <div style={{ color: "#39FF14" }} id="recrole"> {message.sender_role}</div>
+                            }
+
+
                           </p>
                           <p className="flexdisp">
                             <p> {message.message}</p>
@@ -151,12 +170,21 @@ const Chat = () => {
             </div>
             <div className="submitmenu">
               <input
+                 placeholder="Type your message here.."
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
               />
               {inputValue === "" ? (
-                <></>
+                <><button id="sendbutton">
+                <img
+                
+                  style={{opacity:"0.5"}}      
+                  src="./send.png"
+                  id="sendicon"
+                  alt="send"
+                />
+              </button></>
               ) : (
                 <button id="sendbutton">
                   <img

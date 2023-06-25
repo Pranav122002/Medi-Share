@@ -204,7 +204,7 @@
 }
 
 .box button {
-  background-color: #4caf50;
+  background-color: #71caac;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -218,11 +218,11 @@
 }
 
 .box button:not(:disabled):hover {
-  background-color: #45a049;
+  background-color: #4cae8d;
 }
 
 .box button:not(:disabled):active {
-  background-color: #3e8e41;
+  background-color:#4daa8b;
   transform: translateY(1px);
 }
 
@@ -239,7 +239,7 @@
 }
 
 .cart-button {
-  background-color: #4caf50;
+  background-color: #71caac;
   color: white;
   border: none;
   border-radius: 5px;
@@ -251,11 +251,11 @@
 }
 
 .cart-button:hover {
-  background-color: #45a049;
+  background-color:#51b594;
 }
 
 .cart-button:active {
-  background-color: #3e8e41;
+  background-color: #51b594;
   transform: translateY(1px);
 }
 
@@ -308,7 +308,7 @@
 }
 
 .Modal__container button {
-  background-color: #4caf50;
+  background-color: #71caac;
   color: white;
   border: none;
   border-radius: 5px;
@@ -333,11 +333,11 @@
 }
 
 .Modal__container button:hover {
-  background-color: #45a049;
+  background-color: #59b395;
 }
 
 .Modal__container button:active {
-  background-color: #3e8e41;
+  background-color: #56af91;
   transform: translateY(1px);
 }
 

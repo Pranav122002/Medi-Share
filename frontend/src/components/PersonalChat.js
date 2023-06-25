@@ -221,15 +221,26 @@ const PersonalChat = () => {
               </div>
               <div className="submitmenu">
                 <input
+                  placeholder="Type your message here.."
                   type="text"
                   value={inputValue}
                   onChange={handleInputChange}
                 />
                 {inputValue === "" ? (
-                  <></>
+                  <>                  
+                  <button id="sendbutton">
+                  <img
+                  
+                    style={{opacity:"0.5"}}      
+                    src="./send.png"
+                    id="sendicon"
+                    alt="send"
+                  />
+                </button></>
                 ) : (
                   <button id="sendbutton">
                     <img
+                    
                       onClick={sendPersonalMessage}
                       disabled={!selectedUser}
                       src="./send.png"

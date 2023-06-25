@@ -22,7 +22,7 @@ export default function Annoucement() {
   const notifyB = (msg) => toast.success(msg);
   useEffect(() => {
     fetchAnnoucements();
-  }, []);
+  }, [annoucements]);
 
   useEffect(() => {
     fetchUser();
@@ -98,7 +98,6 @@ export default function Annoucement() {
         if (data.error) {
           notifyA(data.error);
         } else {
-          window.location.reload();
           notifyB(data.msg);
         }
       });

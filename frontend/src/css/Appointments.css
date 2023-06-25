@@ -581,7 +581,34 @@
 .appointments-container ul li p {
   width: 20vw;
 }
+.appointments-container ul li p input{
+  width:90%;
+  margin: 0;
+  padding: 0;
+  height: 3rem;
+  background: hwb(209 86% 0%);
+  border-radius: 0.5rem;
+  padding-left: 1rem;
 
+
+}
+.appointments-container ul li p input:focus{
+    width: 90%;
+}
+#jducujna{
+    width: 40%;
+    height: 3rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: #60bfeb;
+    color: white;
+
+}
+#jducujna:hover{
+  background: #439ec7;
+}
 @media screen and (max-width: 1000px) {
   .doctor .doctordetail h1 {
     position: relative;

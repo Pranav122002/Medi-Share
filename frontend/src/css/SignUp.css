@@ -1,12 +1,13 @@
 .mainsignup {
-  height: 40rem;
+  min-height: 40rem;
+  height: max-content;
 }
 
 .signUp {
   display: flex;
   justify-content: space-between;
   box-shadow: 2px 2px 9px rgb(170, 170, 170);
-  min-height: 20rem;
+  height: 40rem;
   width: 80vw;
   border-radius: 2rem;
   margin: auto;
@@ -145,6 +146,31 @@
 #roles {
   border: none;
   margin-top: 2rem;
+}
+.middle {
+  border-radius: 1rem;
+  margin: 2.5rem;
+  width: 0.2rem;
+  height: 85%;
+  background-color: rgba(0, 168, 255, 1);
+  animation-duration: 2s;
+  animation-name: paAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+
+
+}
+@keyframes paAnimation {
+  50% {
+    visibility: hidden;
+    opacity: 0.1;
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .selopt {
