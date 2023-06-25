@@ -40,7 +40,8 @@
 .myinfo h2 {
   margin-top: 1rem;
   margin-left: 1rem;
-  color: rgb(0, 115, 255);
+  color: rgb(47, 151, 211);
+  font-size: 1.5rem;
 }
 
 #profpicc {
@@ -196,7 +197,7 @@
 
 #sendbutton {
  background-color: #b7ffe7;
- height: 70%;
+ height: 80%;
  margin-top: 0.5rem;
  border: none;
  border-radius: 0.8rem;
@@ -207,7 +208,7 @@
   margin-left: 1rem;
   cursor: pointer;
   float: right;
-  filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(0%) contrast(78%)
+ 
   /* filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(92%) contrast(78%); */
 }
 #sendbutton img:hover {
