@@ -106,7 +106,7 @@ export default function SignUp() {
             <h1>Be a part of our "COMMUNITY"</h1>
             <img src="./community.png" alt="" />
           </div>
-          <div className="middle"></div>
+          <div className="middle"> </div>
           <div className="form-container">
             <div className="form">
               <h1>SIGN UP</h1>

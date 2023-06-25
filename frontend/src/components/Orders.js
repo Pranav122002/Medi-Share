@@ -60,19 +60,19 @@ export default function Orders() {
 
   function applyFilters() {
     let filteredData = [...orders];
-   
- 
 
-    if (filterStatus !== "" ) {
+
+
+    if (filterStatus !== "") {
       filteredData = filteredData.filter(
-          
-        (order) => order.verify_status.toString() === filterStatus 
+
+        (order) => order.verify_status.toString() === filterStatus
 
       );
     }
-     
-   
-    
+
+
+
 
 
 
@@ -309,11 +309,11 @@ export default function Orders() {
   const renderCard = (card, index) => {
     return (
       <>
-        { card.order_type == "donate-order"   ?  (
-          
+        {card.order_type == "donate-order" ? (
+
           <>
-           
-            <Card  className="Card" key={index}>
+
+            <Card className="Card" key={index}>
               <Card.Body className="Card_body">
                 <p>
                   <span className="medsidspan">Order Id :</span>
@@ -356,15 +356,21 @@ export default function Orders() {
                     </Button>
                   )}
                 </p>
-                {card.verify_status === true ? (
-                  <p>
-                    <span className="medsidspan">Order Status :</span>Verified
-                  </p>
-                ) : (
-                  <p>
-                    <span className="medsidspan">Order Status :</span>verification pending
-                  </p>
-                )}
+                {card.is_order_rejected === false ? (<>
+                  {card.verify_status === true ? (
+                    <p>
+                      <span className="medsidspan">Order Status :</span>Verified
+                    </p>
+                  ) : (
+                    <p>
+                      <span className="medsidspan">Order Status :</span>verification pending
+                    </p>
+                  )}
+
+                </>) : (<> <p>
+                      <span className="medsidspan">Order Status :</span>Medicines Discarded
+                    </p></>)}
+
                 <p className="notp">
                   <span className="medsidspan">Details :</span>
                   <Button
@@ -464,15 +470,20 @@ export default function Orders() {
                     </Button>
                   )}
                 </p>
-                {card.execute_status === "nani  " ? (
+
+                {card.execute_status === true ? (
+
                   <p>
-                    <span className="medsidspan">Order Status :</span>Order Collected
+                    <span className="medsidspan">Order Status :</span>Order Delivered
                   </p>
                 ) : (
                   <p>
-                    <span className="medsidspan">Order Status :</span>Order not Collected
+                    <span className="medsidspan">Order Status :</span>Order not Delivered
                   </p>
                 )}
+
+
+
 
                 {/* <Button className="button-53" onClick={() => putRequestData(card._id)}>Request</Button> */}
 
@@ -564,7 +575,7 @@ export default function Orders() {
                   <option value="rejected">Rejected</option>
                 </select>
               </div>
-              
+
               <div className="allCards">
                 <div className="OCards">
                   <div className="headd">
@@ -582,13 +593,13 @@ export default function Orders() {
                     </div>
                   </div>
                   <hr id="mainhe" />
-                
+
                   {filteredOrders
-                  .filter((filteredOrders) => {
-                    return search === ""
-                      ? filteredOrders
-                      : filteredOrders._id.includes(search);
-                  }).map(renderCard)}
+                    .filter((filteredOrders) => {
+                      return search === ""
+                        ? filteredOrders
+                        : filteredOrders._id.includes(search);
+                    }).map(renderCard)}
                 </div>
               </div>
             </>
