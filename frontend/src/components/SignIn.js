@@ -106,7 +106,7 @@ export default function SignIn() {
         <div className="signIn">
           <div className="left">
             <h1>Welcome to "Medi-Share"</h1>
-            <img src="./ui1.png" alt="" />
+            <img className="bkimg" src="./ui1.png" alt="" />
           </div>
           <div className="middle"></div>
           <div className="loginForm">
