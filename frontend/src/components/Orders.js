@@ -32,6 +32,11 @@ export default function Orders() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalOrderCount, setTotolOrderCount] = useState(0);
   const [filteredOrderCount, setFilteredOrderCount] = useState(0);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("");
+  const [allOrders, setAllOrders] = useState([]);
+  const [filterOrderType, setFilterOrderType] = useState("");
+  const [search, setSearch] = useState("");
   const filterOptions = [
     { value: "Assigned", label: "Assigned" },
     { value: "Unassigned", label: "Unassigned" },
@@ -44,6 +49,35 @@ export default function Orders() {
     setFilterOption(selectedOption);
     fetchOrders();
   };
+  useEffect(() => {
+    applyFilters();
+  }, [
+    orders,
+    filterStatus,
+    filterOrderType
+
+  ]);
+
+  function applyFilters() {
+    let filteredData = [...orders];
+   
+ 
+
+    if (filterStatus !== "" ) {
+      filteredData = filteredData.filter(
+          
+        (order) => order.verify_status.toString() === filterStatus 
+
+      );
+    }
+     
+   
+    
+
+
+
+    setFilteredOrders(filteredData);
+  }
 
   const onClickAssign = (orderID) => {
     setOrderId(orderID);
@@ -121,8 +155,7 @@ export default function Orders() {
         const verify_status = result.verify_status;
 
         fetch(
-          `${API_BASE_URL}/user/${
-            JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -177,8 +210,7 @@ export default function Orders() {
         const verify_status = result.verify_status;
 
         fetch(
-          `${API_BASE_URL}/user/${
-            JSON.parse(localStorage.getItem("user"))._id
+          `${API_BASE_URL}/user/${JSON.parse(localStorage.getItem("user"))._id
           }`,
           {
             headers: {
@@ -260,13 +292,13 @@ export default function Orders() {
             return preOrders.map((item) =>
               item._id === order_id
                 ? {
-                    ...item,
-                    assigned_vol: {
-                      ...item.assigned_vol,
-                      name: data.data.assigned_vol.name,
-                    },
-                    pickup_deadline: pickupDeadline,
-                  }
+                  ...item,
+                  assigned_vol: {
+                    ...item.assigned_vol,
+                    name: data.data.assigned_vol.name,
+                  },
+                  pickup_deadline: pickupDeadline,
+                }
                 : item
             );
           });
@@ -277,9 +309,11 @@ export default function Orders() {
   const renderCard = (card, index) => {
     return (
       <>
-        {card.order_type == "donate-order" ? (
+        { card.order_type == "donate-order"   ?  (
+          
           <>
-            <Card className="Card" key={index}>
+           
+            <Card  className="Card" key={index}>
               <Card.Body className="Card_body">
                 <p>
                   <span className="medsidspan">Order Id :</span>
@@ -328,7 +362,7 @@ export default function Orders() {
                   </p>
                 ) : (
                   <p>
-                    <span className="medsidspan">Order Status :</span>Pending
+                    <span className="medsidspan">Order Status :</span>verification pending
                   </p>
                 )}
                 <p className="notp">
@@ -430,13 +464,13 @@ export default function Orders() {
                     </Button>
                   )}
                 </p>
-                {card.execute_status === true ? (
+                {card.execute_status === "nani  " ? (
                   <p>
-                    <span className="medsidspan">Order Status :</span>Collected
+                    <span className="medsidspan">Order Status :</span>Order Collected
                   </p>
                 ) : (
                   <p>
-                    <span className="medsidspan">Order Status :</span>Pending
+                    <span className="medsidspan">Order Status :</span>Order not Collected
                   </p>
                 )}
 
@@ -512,23 +546,25 @@ export default function Orders() {
               <h1>Pending Orders</h1>
               <div className="filterOptions">
                 <input
+                  onChange={(e) => setSearch(e.target.value)}
                   className="search-filter"
                   type="text"
                   placeholder="search"
                 />
-                <Select
-                  className="filter-select"
-                  value={filterOption}
-                  defaultValue={defaultFilterOption}
-                  onChange={handleFilterChange}
-                  options={filterOptions}
-                />
-              </div>
-              <div className="sada">
-                <p>Total Orders : {totalOrderCount}</p>
-                <p>Filtered Orders : {filteredOrderCount}</p>
-              </div>
 
+                <select
+                  id="filterStatus"
+                  value={filterStatus}
+                  defaultValue={""}
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="false">Pending</option>
+                  <option value="true">Verified/Collected</option>
+                  <option value="rejected">Rejected</option>
+                </select>
+              </div>
+              
               <div className="allCards">
                 <div className="OCards">
                   <div className="headd">
@@ -546,7 +582,13 @@ export default function Orders() {
                     </div>
                   </div>
                   <hr id="mainhe" />
-                  {orders.map(renderCard)}
+                
+                  {filteredOrders
+                  .filter((filteredOrders) => {
+                    return search === ""
+                      ? filteredOrders
+                      : filteredOrders._id.includes(search);
+                  }).map(renderCard)}
                 </div>
               </div>
             </>
