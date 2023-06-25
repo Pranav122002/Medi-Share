@@ -82,11 +82,13 @@ const ViewMedModal = ({
                         </div>
                         <br />
                       </p>
+                      <p id="dkijajcac">
                       {console.log(selectOrder.verify_status)}
                       {console.log(selectOrder.execute_status)}
                       {selectOrder.execute_status === false && selectOrder.verify_status === false && selectOrder.acceptance_status === "accepted" && (
-                        <button onClick={() => handleRemoveMed(selectOrder._id, med._id, med.quantity)}>Remove</button>
+                        <button  onClick={() => handleRemoveMed(selectOrder._id, med._id, med.quantity)}>Remove</button>
                       )}
+                      </p>
                     </Card.Text>
                   </Card.Body>
                 </Card>
