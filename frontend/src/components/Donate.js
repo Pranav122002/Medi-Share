@@ -141,6 +141,7 @@ export default function Donate() {
 
   const postOrderData = async () => {
     try {
+      // const totalmeds = for
       const validation = await AddBtnValidation.validate(
         {
           count: count,
@@ -172,7 +173,7 @@ export default function Donate() {
               },
               quantity: form.quantity,
             })),
-            no_of_medicines: formsToSubmit.length,
+            no_of_medicines: formsToSubmit.reduce((total, form) => total + Number(form.quantity), 0),
             location: location,
             coordinates: coordinates,
             donar: donar,

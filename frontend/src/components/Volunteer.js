@@ -485,6 +485,9 @@ export default function Volunteer() {
                           viewMedModalIsOpen={viewMedModalIsOpen}
                           selectOrder={selectOrder}
                           closeViewMedModal={closeViewMedModal}
+                          setSelectedOrder={setSelectOrder}
+                          setUnverifiedOrders={setUnverifiedOrders}
+                          removeButton={true}
                         />
                       </div>
                     </>

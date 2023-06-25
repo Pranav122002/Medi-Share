@@ -1,18 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import "../css/Modal.css";
+import { API_BASE_URL } from "../config";
+import { toast } from "react-toastify";
+
 
 const ViewMedModal = ({
   viewMedModalIsOpen,
   selectOrder,
   closeViewMedModal,
+  setSelectedOrder,
+  setUnverifiedOrders,
+  removeButton
 }) => {
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
+
+  const handleRemoveMed = (order_id, med_id, med_quantity) => {
+    console.log(order_id, med_id)
+    fetch(`${API_BASE_URL}/remove-med/${order_id}`,
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ med_id: med_id, med_quantity: med_quantity})
+      }
+    )
+      .then(res => res.json())
+      .then((data) => {
+        notifyB("Remove successfully")
+        setSelectedOrder(data.updatedOrder)
+        setUnverifiedOrders((preOrders) =>
+        preOrders.map((order) =>
+          order._id === data.updatedOrder._id ? data.updatedOrder : order
+        )
+      );
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   return (
     <Modal
       className="Modal__container"
       isOpen={viewMedModalIsOpen}
       onRequestClose={closeViewMedModal}
+      
       style={{
         overlay: {
           zIndex: 9999,
@@ -44,9 +80,13 @@ const ViewMedModal = ({
                         <div className="content-details">
                           Quantity: {med.quantity}
                         </div>
-
                         <br />
                       </p>
+                      {console.log(selectOrder.verify_status)}
+                      {console.log(selectOrder.execute_status)}
+                      {selectOrder.execute_status === false && selectOrder.verify_status === false && selectOrder.acceptance_status === "accepted" && (
+                        <button onClick={() => handleRemoveMed(selectOrder._id, med._id, med.quantity)}>Remove</button>
+                      )}
                     </Card.Text>
                   </Card.Body>
                 </Card>

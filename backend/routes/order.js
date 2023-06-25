@@ -630,4 +630,26 @@ router.post("/api/order-rejected/:id", (req, res) => {
     )
     .catch((err) => console.log(err));
 });
+
+router.delete("/api/remove-med/:order_id", (req, res) => {
+  const order_id = req.params.order_id
+  const med_id = req.body.med_id
+  const med_quantity = req.body.med_quantity
+
+  ORDER.findOneAndUpdate(
+    { _id: order_id, $or: [{ execute_status: false }, { verify_status: false }] },
+    { $pull: { medicines: { _id: med_id } },
+      $inc: {no_of_medicines: -med_quantity}
+     },
+    { new: true }
+  )
+    .then((updatedOrder) => {
+      console.log(updatedOrder)
+      res.status(200).json({ success: "Item Removed",updatedOrder });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Failed to remove item from cart" });
+    });
+});
 module.exports = router;
