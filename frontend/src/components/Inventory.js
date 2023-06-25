@@ -261,8 +261,7 @@ export default function Inventory() {
         <div className="searchcolumn">
           <div className="searchbox">
             <div className="topsearch">
-                <h3>Limit: {totalMedCount}</h3>
-                {!totalMedCount?(<p>{daysLeft}   Days left</p>):<></>}
+               
               <input
                 className="searchinput"
                 type="text"
@@ -270,7 +269,7 @@ export default function Inventory() {
                 value={search}
                 onChange={(e) => fetchMedicines(e.target.value)}
               />
-              {totalMedCount === 0 ? <button disabled={true} className="cart-button" onClick={OpenCartModal}>
+              {totalMedCount === 0 ? <button style={{background:"gray"}} disabled={true} className="cart-button" onClick={OpenCartModal}>
                 Cart
               </button> :
                 <button className="cart-button" onClick={OpenCartModal}>
@@ -329,6 +328,11 @@ export default function Inventory() {
 
               <button onClick={CloseCartModal}>Close</button>
             </Modal>
+            <div className="limits">
+                <h3>Number of medicine requests left: {totalMedCount} medicines</h3>
+                
+                {!totalMedCount?(<h3>Number of days left for more requests: {daysLeft} days</h3>):<></>}
+            </div>
             <div className="box-container">
               {searchResult.map((item) => {
                 return (

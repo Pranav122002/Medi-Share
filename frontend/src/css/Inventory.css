@@ -12,7 +12,12 @@
   margin-left: auto;
   margin-right: 2vw;
 }
-
+.inventorymain .limits{
+    width: 80%;
+    
+    text-align: left;
+    
+}
 .inventorymain .bodyy {
   width: 82vw;
   background: rgb(248, 248, 248);
@@ -346,6 +351,13 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .inventorymain .limits{
+    width: 80%;
+    
+    text-align: left;
+    margin: auto;
+    
+}
   .inventorymain h1 {
     color: white;
     width: 95%;
