@@ -338,7 +338,7 @@ export default function FilterOrders() {
                   <p>
                     <span className="analyticspan">Order Creation :</span>
                   </p>
-                  <p>{order.order_creation_date.date}</p>
+                  <p>{order.order_creation_date?.date}</p>
                   <p>
                     <span className="analyticspan">Feedback Stars :</span>
                   </p>
