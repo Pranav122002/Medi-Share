@@ -334,7 +334,7 @@ export default function Orders() {
                   <span className="medsidspan" id="locatasacas">
                     Location :
                   </span>
-                  <span className="medishaelong">{card.location.location}</span>
+                  <span className="medishaelong">{card?.location?.location}</span>
                   <br />
                 </p>
                 <p>
@@ -448,7 +448,7 @@ export default function Orders() {
                   <span className="medsidspan" id="locatasacas">
                     Location :
                   </span>
-                  <span className="medishaelong">{card.location.location}</span>
+                  <span className="medishaelong">{card?.location?.location}</span>
                   <br />
                 </p>
                 <p>
