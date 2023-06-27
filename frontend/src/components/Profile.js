@@ -30,6 +30,7 @@ export default function Profile() {
   const [isMine, setIsMine] = useState(true);
   const [editprofile, seteditprofile] = useState(false);
   const [viewprofile, setViewProfile] = useState(false);
+  
   const [viewImage, setViewImage] = useState(false);
   const [updatedDoctorDetails, setUpdatedDoctorDetails] = useState({
     fees: "",
@@ -534,7 +535,7 @@ export default function Profile() {
                       </div>
                     )}
                     {user.role === "volunteer" && (
-                      <div>
+                      <div className="editprofdocs">
                         <div className="editsapa">
                           <label>Qualification:</label>
                           <input
@@ -564,7 +565,7 @@ export default function Profile() {
                             onChange={handleInputChange}
                           />
                         </div>
-
+{/* 
                         <div className="editsapa">
                           <label>Location (lng):</label>
                           <input
@@ -583,7 +584,7 @@ export default function Profile() {
                             value={updatedVolunteerDetails.location.lat || ""}
                             onChange={handleInputChange}
                           />
-                        </div>
+                        </div> */}
                       </div>
                     )}
                     <button id="asagws" onClick={handleSubmit}>
@@ -635,9 +636,12 @@ export default function Profile() {
             <img src="./profile-pic.png" alt="" />
 
             <h1>
+              
               {" "}
               {user_name}
-              <button
+              {user?.role === "user" || user?.role === "admin" ? (<></>):(<>
+              
+                <button
                 id="biewprod"
                 onClick={() => {
                   seteditprofile("active");
@@ -645,6 +649,8 @@ export default function Profile() {
               >
                 Profile Details
               </button>
+              </>) }
+              
             </h1>
             <h1>
               {isLoading ? (

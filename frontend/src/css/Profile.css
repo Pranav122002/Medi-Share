@@ -369,6 +369,7 @@
 
 .editparent .editsprofs .editprofdocs {
   padding-left: 10vw;
+  min-height: 20rem;
 }
 
 .editparent .editsprofs .editprofdocs input {
