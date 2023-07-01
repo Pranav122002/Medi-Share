@@ -310,7 +310,7 @@ export default function FilterOrders() {
                   <p>
                     <span className="analyticspan">Location :</span>
                   </p>
-                  <p>{order.location.location}</p>
+                  <p>{order?.location?.location}</p>
                   <p>
                     <span className="analyticspan">Execute Status :</span>
                   </p>
