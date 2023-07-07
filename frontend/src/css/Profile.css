@@ -4,170 +4,65 @@
   font-family: "Nunito", sans-serif;
 }
 
-.profilediv .bodyy {
-  margin: auto;
-  width: 100vw;
-  height: max-content;
-  min-height: 92vh;
-  background: #fbfbfb;
-  padding-top: 1px;
-}
-
-/* .donate {
+.donate {
   background-repeat: no-repeat;
   margin-left:0%;
-
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
   background-size: cover;
   background-size: 100rem;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-} */
-.profilediv .contentt {
-  margin-top: 2rem;
-  width: 82vw;
-  box-shadow: 2px 2px 9px rgb(225, 225, 225);
-  background: rgb(246, 254, 255);
-  margin-left: auto;
-  margin-right: 2vw;
-  border-radius: 1rem;
 }
-
-.contentt .userdet {
-  position: relative;
-  z-index: 2;
-  box-shadow: 2px 2px 9px rgb(216, 216, 216);
-  background: #48b0df;
-  height: 13rem;
-  display: flex;
-  color: white;
-  justify-content: space-evenly;
-  border-radius: 1rem;
+.contentt{
+  margin-top: 7rem;
+  width: 80%;
 }
-
-.contentt .userdet img {
-  height: 6rem;
-  margin: auto;
-  margin-left: 5rem;
-  padding: 1rem;
-  border-radius: 50%;
-  box-shadow: 2px 2px 8px rgb(78, 176, 209);
-  background: white;
+.contentt h1{
+  text-align: start;
+  padding-left: 6rem;
 }
-
-.userdet h1 {
-  width: 30vw;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.userdet #credits {
-  width: 30vw;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 1rem;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  text-align: right;
-  margin-left: 5rem;
-}
-
-#credits img {
-  float: right;
-  height: 3rem;
-  margin: auto;
-  padding: 0rem;
-  border-radius: 0%;
-  box-shadow: none;
-  margin: 0;
-  margin-left: 2rem;
-  border-radius: 50%;
-}
-
-.contentt .donatedorders {
-  position: relative;
-  z-index: 1;
-  background: rgb(246, 254, 255);
-  padding-top: 0.1px;
-  height: max-content;
-  padding-bottom: 2rem;
-}
-
-.contentt h2 {
-  text-align: left;
-  margin: 0rem;
-  margin-top: 1rem;
-  margin-left: 5vw;
-}
-
-.titleimg {
-  float: left;
-  margin-right: 1vw;
-}
-.proul {
-  border-radius: 0.9rem;
-}
-
-.contentt ul {
-  box-shadow: 2px 2px 8px rgb(247, 247, 247);
+.contentt ul li{
   width: 90%;
-  background: white;
-  margin: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  padding-top: 0.1px;
+  height: min-content;
+  align-items: center;
 }
 
-.contentt .proul {
-  padding-left: 0;
+.contentt  li .p1{
+  margin-left: 4rem;
+  width: 100%;
+  text-align: start;
 }
 
-.contentt .donatedorders img {
-  width: 2rem;
-  margin-left: 1rem;
+.contentt  li .p2{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
 }
 
-.contentt .proul .profli {
-  width: 98%;
-  color: white;
-  background: rgb(115, 213, 240);
-  display: flex;
-  justify-content: flex-start;
-  box-shadow: 2px 2px 9px rgb(238, 238, 238);
-  border-radius: 0.9rem;
-
+.contentt  li .p3{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+.contentt  li .pm{
+  text-align: start;
+  margin-right: 2rem;
+  width: 100%;
+ 
 }
 
-.contentt .proul .profli h3 {
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 22vw;
-}
+.donateForm {
+  background-color: #fbfbfb;
+  padding: 30px;
 
-.procont {
-  padding-left: 0;
-}
+  border-radius: 1rem;
+  width: 24rem;
+  height: 23rem;
 
-.profdonspan {
-  display: none;
-}
-
-.procont .proco {
-  box-shadow: 2px 2px 6px rgb(251, 251, 251);
-  width: 98%;
-  margin: 0;
-  display: flex;
-  justify-content: flex-start;
-  height: max-content;
-}
-
-.procont .proco p {
-  width: 22vw;
-  word-break: break-all;
-  white-space: normal;
 }
 
 .loginForm2 {
@@ -201,507 +96,15 @@
   cursor: pointer;
 }
 
-.contentt .requestorders {
-  padding-bottom: 3rem;
-  background: rgb(246, 254, 255);
-}
 
-.contentt .requestorders img {
-  width: 2rem;
-  margin-left: 1rem;
-}
-
-.contentt .myappoint {
-  position: relative;
-  z-index: 1;
-  /* background: hsl(191, 100%, 98%); */
-  padding-top: 0.1px;
-  height: max-content;
-  padding-bottom: 2rem;
-}
-
-.contentt .myappoint img {
-  width: 2rem;
-  margin-left: 1rem;
-}
-
-.contentt .appointm {
-  padding-bottom: 3rem;
-}
-
-.contentt .appointm img {
-  width: 2rem;
-  margin-left: 1rem;
-}
-
-.subs {
-  background: rgb(254, 254, 254);
-  box-shadow: 2px 2px 9px rgb(238, 238, 238);
-  width: 70vw;
-
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  height: max-content;
-  min-height: 10rem;
-  border-radius: 1rem;
-  margin-left: auto;
-  margin-right: 8vw;
-}
-
-.subimg img {
-  margin-right: 2rem;
-  border-radius: 1rem;
-  float: right;
-  height: 10rem;
-}
-
-.headsub h2 {
-  padding-top: 2rem;
-  width: 90%;
-  margin: auto;
-}
-.procont .proco p .burst {
-  background: rgb(86, 255, 210);
-  border: none;
-  height: 3rem;
-  width: 7vw;
-  margin-top: 0.5rem;
-  font-size: 0.8vw;
-  box-shadow: 2px 2px 9px rgb(211, 211, 211);
-  font-weight: 700;
-  border-radius: 0.5rem;
-}
-.procont .proco p .burst:hover {
-  width: 8vw;
-}
-.subbut {
-  background: rgb(255, 102, 0);
-  border: none;
-  height: 3rem;
-  color: white;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 10rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-#sss {
-  margin: 0;
-}
-
-#subpix {
-  height: 2rem;
-  box-shadow: none;
-  margin: 0;
-  padding: 0;
-  margin-right: 3rem;
-}
-
-.cjec {
-  display: flex;
-
-  justify-content: space-around;
-}
-
-.editpromain {
-  position: fixed;
-  width: 45vw;
-  height: max-content;
-  background: rgb(251, 251, 251);
-  left: 30vw;
-  box-shadow: 2px 2px 9px rgb(188, 188, 188);
-  top: 5rem;
-  z-index: 999;
-  border-radius: 1rem;
-  min-height: 30rem;
-  text-align: left;
-  padding-bottom: 1rem;
-}
-
-.editparent p {
+#lin{
   width: 80%;
-  padding-left: 10vw;
-}
-#burstes {
-  background: rgb(86, 255, 210);
-  border: none;
-  height: 3rem;
-  width: 7vw;
-  margin-top: 0.5rem;
-  font-size: 0.8vw;
-  box-shadow: 2px 2px 9px rgb(211, 211, 211);
-  font-weight: 700;
-  border-radius: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
-#clossss {
-  position: absolute;
-  right: 0;
-  height: 2rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-}
 
-.editparent #remli {
-  text-align: left;
+.procont{
+ margin-left: 8%;
   width: 100%;
-}
-
-.editparent #remli p {
-  padding-left: 0;
-  font-size: 1rem;
-}
-
-.editparent .editsprofs h2 {
-  margin: auto;
-  margin-left: 19vw;
-}
-
-.editparent .editsprofs {
-  position: absolute;
-  background: rgb(251, 251, 251);
-  width: 45vw;
-  border-radius: 1rem;
-  margin-top: -22rem;
-}
-
-.editparent .editsprofs .editprofdocs {
-  padding-left: 10vw;
-  min-height: 20rem;
-}
-
-.editparent .editsprofs .editprofdocs input {
-  width: 15vw;
-  margin-left: 1rem;
-  height: 2.5rem;
-  margin-top: -0.5rem;
-}
-
-.editparent .editsapa {
-  padding-top: 1rem;
-  width: 70%;
-  height: 2rem;
-  justify-content: space-between;
-  display: flex;
-}
-
-#asagws {
-  margin-left: 18vw;
-  background: rgb(69, 240, 217);
-  border: none;
-  border-radius: 0.5rem;
-  width: 8vw;
-  height: 3rem;
-  margin-top: 4rem;
-  font-weight: 700;
-  font-size: 0.8vw;
-}
-
-.editparent {
-  width: 100vw;
-  background: (rgba(198, 198, 198, 0.793) 00, 200, 200);
-  position: fixed;
-  z-index: 256;
-  height: 100vh;
-}
-
-.editparent .imgprof.active {
-  left: 0;
-  width: 45vw;
-  top: 0;
-}
-
-.editparent .imgprof.active .gagasda img {
-  left: 0;
-  right: auto;
-  margin-right: 0;
-  margin-left: 1rem;
-}
-
-#biewprod {
-  background: white;
-  border: none;
-  height: 2.5rem;
-  border-radius: 1rem;
-  margin-left: 1rem;
-  padding-top: 0.2rem;
-  width: 7rem;
-}
-
-#biewprod:hover {
-  background: rgb(241, 241, 241);
-}
-
-@media screen and (max-width: 1000px) {
-  .profilediv .bodyy {
-    margin: auto;
-    width: 100vw;
-    height: max-content;
-    min-height: 92vh;
-    background: #fbfbfb;
-    padding-top: 1px;
-  }
-
-  .subs {
-    background: rgb(254, 254, 254);
-    box-shadow: 2px 2px 9px rgb(229, 229, 229);
-    width: 95%;
-    margin-bottom: 1rem;
-    height: max-content;
-    min-height: 10rem;
-    border-radius: 1rem;
-    margin-left: auto;
-    margin-right: 0vw;
-    margin: auto;
-    margin-top: 1rem;
-  }
-
-  .userdet #credits {
-    text-align: center;
-    align-items: center;
-
-    width: 40vw;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 1rem;
-    margin: auto;
-  }
-
-  #credits h4 {
-    margin-left: 6vw;
-  }
-
-  #credits img {
-    float: none;
-    height: 3rem;
-    margin: auto;
-    padding: 0rem;
-    border-radius: 0%;
-    box-shadow: none;
-    margin: 0;
-    margin-left: 2rem;
-    border-radius: 50%;
-    margin-left: 5vw;
-  }
-
-  .subimg img {
-    margin-right: 0rem;
-    border-radius: 1rem;
-    float: none;
-    height: 10rem;
-  }
-
-  .profilediv .contentt {
-    margin: auto;
-    margin-top: 2rem;
-    width: 95vw;
-    box-shadow: 2px 2px 9px rgb(225, 225, 225);
-  }
-
-  .contentt .userdet {
-    position: relative;
-    z-index: 2;
-    box-shadow: 2px 2px 9px rgb(216, 216, 216);
-    background: #48b0df;
-    height: max-content;
-    display: block;
-    margin: auto;
-    text-align: center;
-  }
-
-  .contentt .userdet img {
-    height: 8rem;
-    margin: auto;
-    margin-left: 0rem;
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 50%;
-    box-shadow: 2px 2px 8px rgb(233, 233, 233);
-  }
-
-  .userdet h1 {
-    width: 90%;
-    margin: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .contentt .donatedorders {
-    position: relative;
-    z-index: 1;
-    background: hsl(191, 100%, 98%);
-    padding-top: 0.1px;
-    height: max-content;
-    padding-bottom: 2rem;
-  }
-
-  .contentt h2 {
-    margin: 0rem;
-    margin-top: 1rem;
-  }
-
-  .contentt ul {
-    box-shadow: 2px 2px 8px rgb(247, 247, 247);
-    width: 95%;
-    background: none;
-    margin: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 0.1px;
-  }
-
-  .contentt .proul {
-    padding-left: 0;
-  }
-
-  .contentt .proul .profli {
-    display: none;
-  }
-
-  .contentt .proul .profli h3 {
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 22vw;
-  }
-
-  .procont {
-    padding-left: 0;
-  }
-
-  .procont .proco {
-    box-shadow: 2px 2px 6px rgb(251, 251, 251);
-    background: white;
-    width: 98%;
-    margin: auto;
-    display: block;
-    padding-left: 0;
-    margin-top: 2rem;
-    height: max-content;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 9px rgb(210, 210, 210);
-  }
-
-  .procont .proco p {
-    margin-top: 1rem;
-    width: 90%;
-    text-align: left;
-    word-break: break-all;
-    white-space: normal;
-    display: inline-block;
-  }
-
-  .asfasfa {
-    word-break: break-all;
-    white-space: normal;
-  }
-  #dasdacaw {
-    word-break: break-all;
-    white-space: normal;
-    display: inline-block;
-    width: 50%;
-    margin-left: 40%;
-  }
-
-  #casedc {
-    position: absolute;
-  }
-  .profdonspan {
-    display: inline-block;
-    margin-left: 2rem;
-    width: 35%;
-    font-weight: 700;
-    margin-bottom: auto;
-  }
-
-  .profdonspa {
-    display: inline-block;
-    width: 35%;
-    margin-left: 40%;
-  }
-  .editparent .editsprofs h2 {
-    margin: auto;
-    margin-left: 35vw;
-    margin-bottom: 2rem;
-}
-  .procont .proco p .burst {
-    background: rgb(255, 255, 255);
-    margin-top: 2rem;
-    margin-left: 30vw;
-    border: none;
-    height: 3rem;
-    width: 25vw;
-    background: rgb(108, 255, 209);
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    font-weight: 700;
-  }
-
-  #agasgasaf {
-  }
-
-  .editpromain {
-    position: fixed;
-    width: 94vw;
-    height: max-content;
-    background: rgb(251, 251, 251);
-    left: 3vw;
-    box-shadow: 2px 2px 9px rgb(188, 188, 188);
-    top: 5rem;
-    z-index: 999;
-    border-radius: 1rem;
-
-    text-align: left;
-    padding-bottom: 1rem;
-  }
-
-  .editparent .editsprofs {
-    position: absolute;
-    background: rgb(251, 251, 251);
-    width: 94vw;
-    border-radius: 1rem;
-    min-height: 30rem;
-    margin-top: -24rem;
-  
-  }
-
-  .editparent .imgprof.active {
-    left: 0;
-    width: 94vw;
-    z-index: 242;
-    top: 0;
-  }
-
-  #asgaadcag {
-    width: 90vw;
-    margin-left: 1rem;
-  }
-  .editparent .editsprofs .editprofdocs input {
-    width: 30vw;
-    margin-left: 1rem;
-    height: 2.5rem;
-    margin-top: -0.5rem;
-  }
-  #asagws {
-    margin-left: 18vw;
-    background: rgb(69, 240, 217);
-    border: none;
-    border-radius: 0.5rem;
-    width: 20vw;
-    height: 3rem;
-    font-weight: 700;
-    font-size: 0.8rem;
-  }
-  #burstes {
-    background: rgb(86, 255, 210);
-    border: none;
-    height: 3rem;
-    width: 25vw;
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
-    box-shadow: 2px 2px 9px rgb(211, 211, 211);
-    font-weight: 700;
-    border-radius: 0.5rem;
-  }
 }

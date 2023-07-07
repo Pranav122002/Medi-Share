@@ -3,103 +3,27 @@
 * {
   font-family: "Nunito", sans-serif;
 }
-.bodyy {
-  margin: 0;
-  border: 0;
-  width: 100vw;
-  min-height: 95vh;
-  height: max-content;
-  padding-bottom: 2rem;
-}
 
-.donatecont {
-  width: 81vw;
-  margin-left: auto;
-  margin-right: 2vw;
-}
-
-.donateeapp .bodyy {
-  background: #48b0df;
-  padding: 0.1px;
-}
-
-.requestapp .bodyy {
-  background: #48b0df;
-  padding: 0.1px;
-}
-
-.donate_instru img {
-  height: 10rem;
-  float: right;
-  border-radius: 1rem;
-}
-.donate_instru {
-  box-shadow: 2px 2px 9px rgb(199, 199, 199);
-  width: 81vw;
-  margin: auto;
-  height: max-content;
-  margin-bottom: 2rem;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  background: white;
-}
-.donate_content {
-  margin-left: 3rem;
-}
-
-.donate_content img {
-  width: 15vw;
-  position: relative;
-
-  right: 0;
-}
 .donate {
-  height: max-content;
-  margin: auto;
+  background-repeat: no-repeat;
+  margin-left: 0%;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
+  background-size: cover;
+  background-size: 100rem;
+  flex: 1;
   display: flex;
   justify-content: center;
-  border-radius: 0.9rem;
-  background: #c6e6fb;
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
+  align-items: center;
 }
 
-.donateForm select {
-  width: 100%;
-}
-
-.donate ul {
-  width: max-content;
-}
-
-.points {
-  text-align: left;
-}
-.donate #donui {
-  opacity: 0.8;
-}
-
-#dcurve {
-  transform: rotate(270deg);
-  position: absolute;
-  right: 0;
-  width: 30vw;
-  opacity: 0.1;
-}
 .donateForm {
   text-align: center;
   background-color: #fbfbfb;
-  box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-
-  width: 25vw;
-  height: 33rem;
-  position: relative;
-  border-radius: 0.9rem;
-  min-width: 22rem;
-  margin-top: 2rem;
+  border-radius: 1rem;
+  width: 24rem;
+  height: 23rem;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
 }
 
 .loginForm2 {
@@ -107,13 +31,21 @@
   padding: 20px;
   margin-top: 5px;
   border: 1px solid rgb(129, 121, 121);
-  border-radius: 0.1rem;
+  border-radius: 1rem;
+}
+
+.donate input {
+  height: 3.5rem;
+  border-radius: 1.2rem;
+  border: none;
+
+  margin-top: 0.8rem;
 }
 
 #donate-btn {
   font-size: 1rem;
   margin-top: 3rem;
-
+  border-radius: 1.2rem;
   border: none;
   background-color: #1773ea;
   border: none;
@@ -121,311 +53,5 @@
   font-weight: bold;
   padding: 5px 10px;
   cursor: pointer;
-}
 
-.button-53 {
-  background-color: #b7ffe7;
-  border-radius: 0.9rem;
-  border: 0 solid #e5e7eb;
-  box-sizing: border-box;
-  color: #000000;
-  display: flex;
-  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1.75rem;
-  padding: 0.75rem 1.65rem;
-  position: relative;
-  text-align: center;
-  text-decoration: none #000000 solid;
-  text-decoration-thickness: auto;
-  width: 50%;
-  max-width: 460px;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  text-align: center;
-  margin: auto;
-  margin-top: 2rem;
-}
-.button-53:hover {
-  width: 51%;
-}
-
-.button-53:focus {
-  outline: 0;
-}
-
-.button-53:after {
-}
-
-.button-53:hover:after {
-  bottom: 2px;
-  left: 2px;
-}
-
-/* .suggestions {
-  position: relative;
-  z-index: 24;
-  margin-top: 3rem;
-  margin-bottom: auto;
-  background: rgb(255, 255, 255);
-  width: 22vw;
-  min-width: 20rem;
-  border-radius: 0.5rem;
-} */
-
-.suggestions.active {
-  display: none;
-}
-.suggestions.false {
-  animation-name: wid;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-}
-
-.donateback {
-  border-radius: 0.9rem;
-  color: white;
-  margin-left: 1rem;
-  height: 37rem;
-  width: 15rem;
-
-  background: #48b0df;
-  margin-top: 2rem;
-}
-
-.donateback h1 {
-  margin-top: 10rem;
-}
-.suggestions.false ul h2 {
-  animation-name: pAnimation;
-  animation-fill-mode: forwards;
-  visibility: hidden;
-  animation-duration: 1s;
-  opacity: 0;
-  font-size: 2vw;
-  visibility: hidden;
-  text-align: center;
-  height: max-content;
-  margin: auto;
-}
-.suggestions.false ul h3 {
-  visibility: hidden;
-  animation-name: pAnimation;
-  animation-fill-mode: forwards;
-  visibility: hidden;
-  animation-duration: 1.5s;
-  opacity: 0;
-  font-size: 1.2rem;
-  text-align: left;
-}
-input {
-}
-
-.donate .donateForm input:focus {
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 3px solid #9ed2ccbb;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-}
-.donate .donateForm input {
-  height: 3.5rem;
-  border-radius: 0.9rem;
-  width: 70%;
-  margin-top: 0.8rem;
-  background: rgb(249, 253, 255);
-  color: #000000;
-  text-align: center;
-  background-color: #eaf4fc;
-}
-
-@keyframes pAnimation {
-  0% {
-    visibility: hidden;
-    opacity: 0.1;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-@keyframes wid {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 22vw;
-  }
-}
-
-.suggestions ul {
-  text-align: left;
-}
-.suggestions ul li {
-}
-.suggestions ul h2 {
-  font-size: 1.7vw;
-  text-align: center;
-  height: max-content;
-  margin: auto;
-}
-.suggestions ul h3 {
-  font-size: 1vw;
-  text-align: left;
-}
-
-.leftrightfunc {
-  height: 2rem;
-  padding-top: 1rem;
-
-  margin: auto;
-}
-.leftrightfunc button {
-  border: none;
-  height: 3rem;
-  border-radius: 0.5rem;
-  width: 3rem;
-}
-.leftrightfunc button:hover {
-  background: rgb(210, 210, 210);
-}
-.leftrightfunc #asdscae {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  height: 3rem;
-  background: #48b0df;
-  color: white;
-  width: 6rem;
-}
-.leftrightfunc #asdscae:hover {
-  width: 6.3rem;
-}
-
-@media screen and (max-width: 1000px) {
-  .donateeapp .bodyy {
-    background: #48b0df;
-    padding: 0.1px;
-    width: 100vw;
-  }
-
-  .donatecont {
-    width: 100%;
-    margin-left: auto;
-    margin-right: 0vw;
-  }
-  .donate_content {
-    width: 90%;
-    margin: auto;
-    padding-top: 1rem;
-  }
-
-  .button-53 {
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
-  }
-  .donate_instru img {
-    height: 10rem;
-    float: none;
-    border-radius: 1rem;
-  }
-
-  .donate_instru {
-    box-shadow: 2px 2px 9px rgb(236, 236, 236);
-    width: 95%;
-    margin: auto;
-    height: max-content;
-    margin-bottom: 2rem;
-    border-radius: 1rem;
-    display: block;
-    margin-top: 2rem;
-  }
-  .donate_content {
-    display: block;
-  }
-
-  .donate_content p {
-    font-size: 4vw;
-    position: relative;
-    z-index: 2;
-  }
-
-  .donate {
-    min-height: 55rem;
-    height: max-content;
-    margin-top: 2rem;
-    width: 95%;
-    display: block;
-    background: #f5f7f7;
-
-    padding-top: 0.5rem;
-  }
-  .donateForm {
-    text-align: center;
-    background-color: #fbfbfb;
-    box-shadow: 2px 2px 8px rgb(234, 234, 234);
-    border-radius: 0.5rem;
-    width: 95%;
-    min-height: 30rem;
-    height: max-content;
-    margin: auto;
-    margin-top: 3rem;
-    min-width: 60%;
-    padding: 0;
-    padding-bottom: 2rem;
-  }
-
-  .suggestions.false ul h2 {
-    animation-name: pAnimation;
-    animation-fill-mode: forwards;
-    visibility: hidden;
-    animation-duration: 1s;
-    opacity: 0;
-    font-size: 5vw;
-    visibility: hidden;
-    text-align: center;
-    height: max-content;
-    margin: auto;
-  }
-  .suggestions {
-    position: relative;
-    z-index: 24;
-    margin-top: 3rem;
-    margin-bottom: auto;
-    background: rgb(255, 255, 255);
-    width: 80vw;
-    min-width: 80vw;
-    border-radius: 0.5rem;
-    margin: auto;
-    margin-bottom: 3rem;
-    min-height: 3rem;
-  }
-  .suggestions.false h3:focus {
-  }
-
-  .suggestions.active {
-    display: none;
-  }
-  .suggestions.false {
-    animation-name: wid;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-  }
-
-  .donateback h1 {
-    margin: 0;
-  }
-  .donateback {
-    width: 90%;
-    height: max-content;
-  }
 }

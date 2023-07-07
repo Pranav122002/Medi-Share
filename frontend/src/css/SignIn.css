@@ -3,23 +3,25 @@
 * {
   font-family: "Nunito", sans-serif;
 }
-.banner {
+.banner{
   height: 4rem;
   display: flex;
   justify-content: space-evenly;
   margin: 3rem;
 }
 
-#logo {
-  border-radius: 50%;
-  height: 4rem;
+#logo{
+    border-radius: 50%;
+    height: 4rem;
+  
 }
 
-.banner h1 {
-  width: 25rem;
+.banner h1{
+    width: 25rem;
+    
 }
 
-.aboutus {
+.aboutus{
   text-decoration: none;
   color: black;
   font-size: 2rem;
@@ -27,99 +29,87 @@
   margin-left: 26rem;
   width: 40rem;
   padding-top: 1rem;
+ 
+
+  
 }
 
-#Aboutus {
-}
-
-.mainsignin {
-  height: 40rem;
+#Aboutus{
+ 
 }
 .signIn {
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 2px 2px 9px rgb(170, 170, 170);
-  width: 80vw;
-  height: max-content;
-  border-radius: 2rem;
-  height: 38rem;
-  margin: auto;
-  margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 9px rgb(170, 170, 170);
+    margin-left: 8rem;
+    margin-right: 8rem;
+    border-radius: 2rem;
+    height: 38rem;
+    
 }
-.middle {
+.middle{
   border-radius: 1rem;
   margin: 2.5rem;
   width: 0.2rem;
   height: 85%;
-  background-color: rgba(0, 168, 255, 1);
-  animation-duration: 2s;
-  animation-name: paAnimation;
+  background-color: rgba(0,168,255,1);
+  animation-duration: 3s;
+  animation-name:paAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
 }
-.left {
-  background: rgb(8, 70, 119);
-  background: linear-gradient(
-    90deg,
-    rgb(27, 95, 147) 0%,
-    rgb(144, 218, 255) 100%
-  );
+.left{
+  background: rgb(8,70,119);
+  background: linear-gradient(90deg, rgba(8,70,119,1) 0%, rgba(0,168,255,1) 100%);
   width: 50rem;
-  text-align: start;
+  
   border-radius: 2rem;
-}
-
-.bkimg{
-  height: 100%;
-}
-.left img {
-  max-width: 37rem;
-  margin-left: 0;
-  animation-name: pAnimation;
-  animation-duration: 1.2s;
+  animation-name: slide;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
-  visibility: hidden;
-  opacity: 0;
-  border-radius: 2rem;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-
+  
 }
-.left h1 {
-  text-align: center;
-  width: 42vw;
+.left h1{
   color: #ffffff;
-  position: absolute;
   padding-top: 2rem;
-  animation-duration: 0.5s;
-  animation-name: pAnimation;
+  animation-duration: 3s;
+  animation-name:pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
-  z-index: 25;
 }
 
+.left p{
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 4rem;
+  animation-duration: 4s;
+  animation-name:pAnimation;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
 .signIn .loginForm {
   background-color: #ffffff;
   padding: 30px;
   width: 24rem;
   height: 23rem;
-  margin: auto;
-  padding-top: 1rem;
-  animation-duration: 1.5s;
-  animation-name: pAnimation;
+  margin-right: 6rem;
+  padding-top: 4rem;
+  animation-duration: 3s;
+  animation-name:pAnimation;
   animation-fill-mode: forwards;
   visibility: hidden;
   opacity: 0;
-  padding-left: 0%;
+
 }
 
 @keyframes pAnimation {
   50% {
     visibility: hidden;
     opacity: 0.1;
+    
   }
   100% {
     visibility: visible;
@@ -132,6 +122,7 @@
     visibility: hidden;
     opacity: 0.1;
     height: 0;
+    
   }
   100% {
     visibility: visible;
@@ -140,42 +131,23 @@
 }
 
 .signIn .loginForm2 {
-  background-color: rgba(0, 168, 255, 1);
+  background-color: rgba(0,168,255,1);
   color: white;
   padding: 20px;
   margin-top: 3rem;
-}
+ 
 
-.loginForm .form2 {
-  text-align: center;
-  padding-right: 0;
-  padding-left: 0;
-}
-.mainsignin .form2 {
-  margin-top: 4rem;
 }
 
 @keyframes slide {
   0% {
-    min-width: 0vw;
     width: 0;
+    
   }
   100% {
-    width: 42vw;
-    min-width: 42vw;
+    width:50rem;
   }
-}
-@keyframes slide2 {
-  0% {
-    opacity: 1;
-    min-height: 0rem;
-    height: 0;
-  }
-  100% {
-    opacity: 1;
-    height: 27rem;
-    min-height: 27rem;
-  }
+  
 }
 
 .signIn input {
@@ -185,7 +157,7 @@
   background-color: rgb(243, 251, 255);
   padding-left: 2rem;
   margin-top: 0.8rem;
-  width: 20vw;
+  
 }
 
 #login-btn {
@@ -193,9 +165,9 @@
   margin-top: 1rem;
   border-radius: 1.2rem;
   border: none;
-  background-color: rgba(0, 168, 255, 1);
+  background-color: rgba(0,168,255,1);
   border: none;
-  width: 12rem;
+
   color: white;
   font-weight: bold;
   padding: 5px 10px;
@@ -212,125 +184,4 @@
 #check {
   width: 50%;
   height: 50%;
-}
-
-.signIn .form2 span {
-  color: rgb(121, 172, 213);
-}
-@media screen and (max-width: 1000px) {
-  /*nav part already in landing.css*/
-
-  .signIn {
-    display: block;
-    box-shadow: none;
-    margin-left: 0rem;
-    margin-right: 0rem;
-    border-radius: 0rem;
-    height: max-content;
-    margin-top: 2rem;
-    width: 100vw;
-  }
-  .middle {
-    display: none;
-  }
-  .left {
-    margin: auto;
-    height: 10rem;
-    background: rgb(8, 70, 119);
-    background: linear-gradient(
-      90deg,
-      rgb(27, 95, 147) 0%,
-      rgb(144, 218, 255) 100%
-    );
-    width: 90vw;
-    border-radius: 2rem;
-    animation-name: slide;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    text-align: start;
-  }
-  .left h1 {
-    width: 90vw;
-    margin: auto;
-    position: absolute;
-    z-index: 234;
-  }
-
-  .left img {
-    height: 10rem;
-    width: auto;
-    animation-name: piAnimation;
-    animation-duration: 2.5s;
-    animation-fill-mode: forwards;
-    visibility: hidden;
-    opacity: 0.6;
-    position: relative;
-    z-index: 50;
-  }
-
-  .signIn .loginForm {
-    background-color: #ffffff;
-    padding: 0;
-    width: 100vw;
-    height: max-content;
-    margin-right: 0rem;
-    padding-top: 2rem;
-    animation-duration: 3s;
-    animation-name: pAnimation;
-    animation-fill-mode: forwards;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  .signIn .loginForm .logo h1 {
-    background: #ffffff;
-    position: relative;
-    z-index: 5050;
-  }
-
-  .signIn input {
-    width: 70vw;
-    height: 3.5rem;
-    border-radius: 1.2rem;
-    border: none;
-    background-color: rgb(243, 251, 255);
-    padding-left: 2rem;
-    margin-top: 0.8rem;
-  }
-
-  .loginForm .form2 {
-    text-align: center;
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  @keyframes pAnimation {
-    50% {
-      visibility: hidden;
-      opacity: 0.1;
-    }
-    100% {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-  @keyframes piAnimation {
-    50% {
-      visibility: hidden;
-      opacity: 0.1;
-    }
-    100% {
-      visibility: visible;
-      opacity: 0.7;
-    }
-  }
-
-  @keyframes slide {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 90vw;
-    }
-  }
 }

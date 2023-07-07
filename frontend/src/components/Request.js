@@ -1,170 +1,130 @@
-import React, { useState, useContext, useEffect } from "react";
-import "../css/Request.css";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-
+import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import "../css/Request.css"
 export default function Request() {
-  const [medicine_name, setMedicineName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [expiry_date, setExpiryDate] = useState(new Date());
-  const [location, setLocation] = useState("");
-  const [sug, showsug] = useState(!false);
-
-  const handleShowsug = () => {
-    showsug(false);
-  };
-
-  useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
-  const postOrderData = () => {
-    fetch(
-      `/user/${JSON.parse(localStorage.getItem("user"))._id}`,
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      }
-    )
+  const navigate = useNavigate();
+  const [order_id, setOrderId] = useState("");
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  function fetchOrders() {
+    fetch("/alldonateorders/")
+      .then((response) => response.json())
+      .then((data) => setOrders(data));
+  }
+
+  const putRequestData = (order_id) => {
+    fetch(`/order/${order_id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
       .then((res) => res.json())
       .then((result) => {
-        const requester = result._id;
-        fetch(`/request-medicines`, {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            medicine_name: medicine_name,
-            expiry_date: {
-              date: expiry_date,
+        const execute_status = result.execute_status;
+        const verify_status = result.verify_status;
+
+        fetch(
+          `/user/${JSON.parse(localStorage.getItem("user"))._id
+          }`,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("jwt"),
             },
-            quantity: quantity,
-            location: location,
-            requester: requester,
-          }),
-        })
+          }
+        )
           .then((res) => res.json())
-          .then((data) => {
-            if (data.error) {
-              notifyA(data.error);
-            } else {
-              notifyB(data.msg);
-            }
+          .then((result) => {
+            const requester_id = result._id;
+
+            fetch(`/request/${order_id}`, {
+              method: "put",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                execute_status: execute_status,
+                verify_status: verify_status,
+                requester_id: requester_id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.error) {
+                  notifyA("Failed to request order...");
+                } else {
+                  if (data === "Order is already executed...") {
+                    notifyA(data);
+                  } else if (
+                    data === "Order is not verfied by Volunteer yet..."
+                  ) {
+                    notifyA(data);
+                  } else if (data === "Order Requested successfully...") {
+                    navigate("/profile");
+                    notifyB(data);
+                  }
+                }
+                console.log(data);
+              });
           });
       });
   };
-  const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
 
-  const fetchMedicines = (query) => {
-    setSearch(query);
-    fetch(`/search-medicines`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query,
-      }),
-    })
-      .then((res) => res.json())
-      .then((results) => {
-        setSearchResult(results.medicine);
-      });
-  };
+  const renderCard = (card, index) => {
+    return (
+      <Card className="Card" style={{ width: '18rem', height: '19rem' }} key={index}>
+        <Card.Body>
+          <Card.Title id="title">{card.medicine_name}</Card.Title>
+          <Card.Text id="details">
+            <p>Expiry Date : {card.expiry_date}<br /></p>
+            <p> Quantity : {card.quantity}<br /></p>
+            <p> Location : {card.location}<br /></p>
+            <p> Donor : {card.donar.name}<br /></p>
+            <Button id="req_button" onClick={() => putRequestData(card._id)}>Request</Button>
 
+          </Card.Text>
+
+        </Card.Body>
+        {/* <Button id="CardButton" variant="primary">VOTE</Button> */}
+      </Card>
+    )
+  }
   return (
-    <div className="requestapp">
+    <div>
+      <Hnavbar />
       <div className="bodyy">
-        <div className="donatecont">
-          <div className="donate_instru">
-            <div className="donate_content">
-              <h1>
-                Not able to find your required medicine in our inventory ?
-              </h1>
-              <div className="points">
-                {/* <p>1.The medicine request can me made in limited quantity.</p>
-              <p>2.Medicines which require doctors prescription cannot pe requested directly without it.</p>
-              <p>3.There is no specific delivery time for the request medicine as soon as it is received by us it will be delivered.</p>
-              <p>4.All the medicines are checked by our volunteers, we only accept and provide medicines which have the important information visible on them.</p> */}
-                <h3>
-                  Enter the required medicine name as per your requirement{" "}
-                  <br />
-                  and we will try to add it to our inventory as soon as possible
-                </h3>
-              </div>
-            </div>
-            <img data-aos="fade-right" id="reqim" src="./reque.jpg" alt="" />
-          </div>
-
-          <div className="request">
-            <div data-aos="fade-right" className="requestForm">
-              <div className="logo">
-                <h1>Request Medicine</h1>
-              </div>
-              <div>
-                <input
-                  onClick={handleShowsug}
-                  type="text"
-                  name="medicine_name"
-                  id="medicine_name"
-                  value={medicine_name}
-                  placeholder="Medicine Name"
-                  onChange={(e) => {
-                    setMedicineName(e.target.value);
-                    fetchMedicines(e.target.value);
-                  }}
-                />
-              </div>
-
-              <button
-                className="button-53"
-                onClick={() => {
-                  postOrderData();
-                }}
-                value="Request"
-                type="submit"
-                role="button"
-              >
-                Request
-              </button>
-            </div>
-            {/* <div className={`suggestions ${sug && 'active'}`}>
-
-            <ul>
-              <li style={{ color: "black" }}>
-                <h2>Suggestions</h2>
-              </li>
-              {searchResult.map((item) => {
-                return (
-
-                  <li className="link">
-                    <h3 style={{ color: "black" }}>
-
-                      {item.medicine_name + ": " + "-"}
-                    </h3>
-
-                    <h3 className="p2" style={{ color: "black" }}>{item.disease}</h3>
-
-                  </li>
-                );
-              })}
-            </ul>
-          </div> */}
-          </div>
+      <Navbar />
+      <div className="allCards">
+        <div className="Cards">
+          {orders.map(renderCard)}
         </div>
       </div>
+      {/* <ul>
+        {orders.map((orders) => (
+          <li key={orders.medicine_name}>
+            <p>medicine_name : </p> {orders.medicine_name}
+            <br /> <p>expiry_date : </p> {orders.expiry_date}
+            <br /> <p>quantity : </p> {orders.quantity}
+            <br /> <p>location : </p> {orders.location}
+            <br /> <p>donar : </p> {orders.donar.name}
+            <br />{" "}
+            <button onClick={() => putRequestData(orders._id)}>Request</button>
+          </li>
+        ))}
+      </ul> */}
+    </div>
     </div>
   );
 }

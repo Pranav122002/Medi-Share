@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import { Hnavbar } from "./Hnavbar";
 import "../css/Medicine.css";
 
-
 export default function Request() {
   const [medicines, setMedicines] = useState([]);
 
@@ -12,23 +11,23 @@ export default function Request() {
   }, []);
 
   function fetchMedicines() {
-    fetch(`/allmedicines`)
+    fetch("/allmedicines")
       .then((response) => response.json())
       .then((data) => setMedicines(data));
   }
 
   return (
     <div>
+      <Hnavbar />
       <div className="bodyy">
+        <Navbar />
         <div className="list">
           <ul>
             <li style={{ backgroundColor: "white", color: "black" }}>
               <h3>Medicine</h3>
               <h3 className="p1">Description</h3>
               <h3 className="p2">Disease</h3>
-              <h3 className="p2">Action</h3>
             </li>
-
             {medicines.map((medicines) => (
               <li key={medicines.medicine_name}>
                 <h3>{medicines.medicine_name}:</h3>

@@ -1,14 +1,7 @@
-input[type="date"]:focus-within {
-  padding-right: 5%;
-}
-
 .App {
   text-align: center;
 }
-.Toastify {
-  position: absolute;
-  z-index: 999999999999;
-}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

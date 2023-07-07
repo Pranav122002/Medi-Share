@@ -19,4 +19,4 @@ const annoucementSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("ANNOUCEMENT", annoucementSchema);
+mongoose.model("ANNOUCEMENT", annoucementSchema);

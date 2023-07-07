@@ -2,63 +2,51 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const USER = mongoose.model("USER");
-const DOCTOR = mongoose.model("DOCTOR");
-const VOLUNTEER = mongoose.model("VOLUNTEER");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../config/keys.js");
 
-router.post("/signup", async (req, res) => {
-  try {
-    const { name, email, phone_no, password, role, certificate } = req.body;
-    if (!name || !email || !password || !phone_no) {
-      return res.status(422).json({ error: "Please add all the fields." });
-    }
+router.post("/signup", (req, res) => {
+  // const { name, email, password, role} = req.body;
+  var { name, email, password, role } = req.body;
+  if (!name || !email || !password) {
+    return res.status(422).json({ error: "Please add all the fields..." });
+  }
 
-    const savedUser = await USER.findOne({ email: email });
+  USER.findOne({ $or: [{ email: email }] }).then((savedUser) => {
     if (savedUser) {
       return res
         .status(422)
-        .json({ error: "User already exists with that email." });
+        .json({ error: "User already exist with that email..." });
     }
+    bcrypt.hash(password, 12).then((hashedPassword) => {
+      if (role === "") {
+        role = "user";
+      }
+      const user = new USER({
+        name,
+        email,
+        password: hashedPassword,
+        role: role,
+      });
 
-    const hashedPassword = await bcrypt.hash(password, 12);
-
-    const user = new USER({
-      name,
-      email,
-      phone_no,
-      password: hashedPassword,
-      role: role,
+      user
+        .save()
+        .then((user) => {
+          res.json({ message: "Registered successfully..." });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
-
-    let newUser;
-    if (role === "user") {
-      const userData = await user.save();
-      res.json(userData);
-    } else if (role === "doctor") {
-      newUser = new DOCTOR(user);
-      newUser.doctor_details.certificate = certificate;
-      const userData = await newUser.save();
-      res.json(userData);
-    } else if (role === "volunteer") {
-      newUser = new VOLUNTEER(user);
-      newUser.volunteer_details.certificate = certificate;
-
-      const userData = await newUser.save();
-      res.json(userData);
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "An error occurred while signing up." });
-  }
+  });
 });
 
 router.post("/signin", (req, res) => {
   const { email, password, role } = req.body;
 
   if (!email || !password) {
-    return res.status(422).json({ error: "Please add email and password." });
+    return res.status(422).json({ error: "Please add email and password..." });
   }
 
   USER.findOne({ email: email }).then((savedUser) => {
@@ -69,23 +57,13 @@ router.post("/signin", (req, res) => {
       .compare(password, savedUser.password)
       .then((match) => {
         if (match) {
+          // return res.status(200).json({ message: "Signed in Successfully..." })
           const token = jwt.sign({ _id: savedUser.id }, JWT_SECRET);
-          const { _id, name, email, role, subscription } = savedUser;
-          if (savedUser.role === "doctor") {
-            if (savedUser.doctor_details.verification === "unverified") {
-              return res
-                .status(422)
-                .json({ error: "You have not been verified yet by Admin." });
-            }
-          }
-          if (savedUser.role === "volunteer") {
-            if (savedUser.volunteer_details.verification === "unverified") {
-              return res
-                .status(422)
-                .json({ error: "You have not been verified yet by Admin." });
-            }
-          }
-          res.json({ token, user: { _id, name, email, role, subscription } });
+          const { _id, name, email, role } = savedUser;
+
+          res.json({ token, user: { _id, name, email, role } });
+
+          // console.log({ token, user: { _id, name, email, role} });
         } else {
           return res.status(422).json({ error: "Invalid password" });
         }
@@ -100,20 +78,7 @@ router.get("/allusers/:id", async (req, res, next) => {
       "email",
       "name",
       "_id",
-      "role",
     ]);
-    return res.json(users);
-  } catch (ex) {
-    next(ex);
-  }
-});
-
-router.get("/all-chat-users/:id", async (req, res, next) => {
-  try {
-    const users = await USER.find({
-      _id: { $ne: req.params.id },
-      role: { $ne: "admin" },
-    }).select("-email -password");
     return res.json(users);
   } catch (ex) {
     next(ex);

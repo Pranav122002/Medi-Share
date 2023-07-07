@@ -4,36 +4,33 @@
   font-family: "Nunito", sans-serif;
 }
 
-.request {
-  height: 25rem;
-  margin: auto;
-  display: block;
+.donate {
+  background-repeat: no-repeat;
+  margin-left: 0%;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1lN1hGZAj0MpZ1ZoN7tt7q38JyzTvjmSMQ&usqp=CAU"); */
+  background-size: cover;
+  background-size: 100rem;
+  flex: 1;
+  display: flex;
   justify-content: center;
-  background: #c6e6fb;
-  padding: 0.1px;
-  border-radius: 0.9rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  text-align: center;
 }
 
-#reqim {
-  height: 15rem;
-  float: right;
-  border-radius: 1rem;
-}
-.requestForm {
-  text-align: center;
+.donateForm {
   background-color: #fbfbfb;
-  box-shadow: 2px 2px 8px rgb(234, 234, 234);
   padding: 30px;
-  border-radius: 0.9rem;
-  width: 25vw;
-  height: 15rem;
-  position: relative;
-  margin-top: auto;
-  margin-bottom: auto;
-  min-width: 22rem;
-  margin: auto;
-  margin-top: 3rem;
+  border-radius: 1px;
+  border-radius: 1rem;
+  width: 24rem;
+  height: 23rem;
+  box-shadow: 2px 2px 9px rgb(191, 191, 191);
+  align-items: center;
+  text-align: center;
+}
+
+.donateForm .logo{
+ text-align: center;
 }
 
 .loginForm2 {
@@ -41,97 +38,89 @@
   padding: 20px;
   margin-top: 5px;
   border: 1px solid rgb(129, 121, 121);
-  border-radius: 0.1rem;
+  border-radius: 1rem;
 }
 
-.request .requestForm input {
+.donate input {
   height: 3.5rem;
-  border-radius: 0.9rem;
-
-  width: 70%;
-  margin-top: 0.8rem;
-  outline: none;
-  background: rgb(255, 255, 255);
-  background-color: #eaf4fc;
-}
-
-/* .suggestions {
-  position: relative;
-  z-index: 24;
-  margin-top: 3rem;
-  margin-bottom: auto;
-  background: rgb(255, 255, 255);
-  width: 22vw;
-  min-width: 20rem;
-  border-radius: 0.5rem;
-} */
-
-input {
+  border-radius: 1.2rem;
   border: none;
+
+  margin-top: 0.8rem;
 }
 
-input:focus {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 3px solid #9ed2ccbb;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
+#request-btn {
+  font-size: 1rem;
+  margin-top: 3rem;
+  border-radius: 1.5rem;
+  border: none;
+  background-color: #1773ea;
+  border: none;
+
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+
+  cursor: pointer;
 }
 
-.request .donateback {
-  margin-top: 0rem;
-  height: 20rem;
+.allCards {
+  margin-top: 5rem;
+  height: max-content;
+  width: 90rem;
+  margin-left: 25rem;
+  position: absolute;
+ 
 }
-.request .donateback h1 {
-  margin: auto;
+.Cards {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
-.points h3 {
-  font-weight: 500;
+.Card {
+
+  margin-left: 3rem;
+  align-items: center;
+  border: 2px;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 9px rgb(212, 212, 212);
+  text-align: center;
 }
 
-@media screen and (max-width: 1000px) {
-  .requestapp .bodyy {
-    background: #48b0df;
-    padding: 0.1px;
-    width: 100vw;
-  }
-  #reqim {
-    height: 50vw;
-    float: none;
-    border-radius: 1rem;
-  }
-  .request {
-    height: max-content;
+#title{
+  font-size: 1.5rem;
+  background-color: rgb(125, 212, 255);
+  margin: 1rem;
+  border-radius: 1rem;
+  color: white;
+  height: 2.5rem;
+  padding-top: 1rem;
+}
 
-    width: 95%;
-    margin-top: 2rem;
-    display: block;
-    padding-top: 0.5rem;
-    padding-bottom: 2rem;
-  }
-  .requestForm {
-    text-align: center;
-    background-color: #fbfbfb;
-    box-shadow: 2px 2px 8px rgb(234, 234, 234);
-    border-radius: 0.5rem;
-    width: 80%;
-    height: max-content;
-    margin: auto;
-    margin-top: 3rem;
-    min-width: 60%;
-  }
-  .request .requestForm input {
-    height: 3.5rem;
-    border-radius: 0.9rem;
-    width: 90%;
-    padding-left: 2rem;
-    margin-top: 0.8rem;
-    outline: none;
-    background: rgb(255, 255, 255);
-    background-color: #eaf4fc;
+#req_button{
+  background-image: linear-gradient(-180deg, rgb(4, 230, 0) 0%, #01a42ac1 100%);
+  border-radius: 1rem;
+  color: #FFFFFF;
+  font-size: 16px;
+  justify-content: center;
+  text-decoration: none;
+  width: 50%;
+  border: 0;
+  height: 3rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#req_button:hover {
+  background-image: linear-gradient(-180deg, rgb(3, 198, 0) 0%, #00d736 100%);
+}
+
+@media (min-width: 768px) {
+  #req_button{
+    padding: 1rem 2rem;
   }
 }

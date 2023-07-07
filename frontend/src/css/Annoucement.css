@@ -3,201 +3,40 @@
 * {
   font-family: "Nunito", sans-serif;
 }
-.announce {
-  max-width: 100vw;
-  background: #48b0df;
+.anc{
+  margin-top: 7rem;
+  width: 80%;
 }
 
-.anccont {
-  margin-left: auto;
-  margin-right: 0;
-  width: 100vw;
-}
-
-.announce .bodyy {
-  margin: auto;
-  width: 100vw;
-  height: 100vh;
-
-  padding: 1px;
-}
-
-.anc .bord {
-  width: 100%;
-}
-.anc {
-  border-radius: 1px;
-  margin: auto;
-  width: 100vw;
-  background: #48b0df;
-  min-height: 38vw;
-  height: max-content;
-  margin-top: 0rem;
-  padding: 1px;
-  margin-top: 0rem;
-}
-
-.anc .ancinfo .ancflex {
-}
-
-.anc .ancinfo {
-  height: max-content;
-  background: white;
-  width: 80vw;
-  margin: auto;
-  margin-top: 2rem;
-  height: 10rem;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin-left: auto;
-  margin-right: 2rem;
-}
-.andlistparent {
-  width: 80vw;
-  margin-left: auto;
-  margin-right: 2vw;
-  background: rgb(241, 249, 255);
-  border-radius: 0.9rem;
-  padding-bottom: 2rem;
-}
-.anc .ancinfo h1 {
-  margin: 0;
-  float: left;
-  font-size: 1.7rem;
-  color: black;
-  margin-left: 2rem;
-  margin-top: 1rem;
-}
-.anc .ancinfoback {
-  background: #48b0df;
-  margin: 0;
-  padding: 0.1px;
-  height: 14rem;
-  width: 100vw;
-}
-.anc .ancinfo img {
-  height: 9rem;
-  border-radius: 1rem;
-  margin-right: 2rem;
-  margin-top: 0.5rem;
-}
-
-.anc .formancc {
-  background: #48b0df;
-  width: 100vw;
-  padding: 0.1px;
-  height: 36rem;
-}
-
-.anc .ancinfo p {
-  font-size: 1rem;
-  text-align: left;
-  margin-left: 2rem;
-  float: left;
-  width: 100%;
-  font-weight: 300;
-}
-
-.announce .anc li {
-  height: 2rem;
-  list-style: none;
-  margin-top: 0rem;
+.anc li{
+  text-align: center;
   height: min-content;
-  width: 96%;
-  align-items: center;
-
-  background: white;
-}
-
-.announce .anc #anclistitems li:first-child {
-  background: #3657a7;
-}
-.announce .anc li:first-child {
-  background: #3da8da;
-  color: white;
   width: 90%;
+  align-items: center;
 }
 
-.anc .anclistitems {
-  background: white;
-  width: 92%;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-}
-
-.anc .anclistitemsbr {
-  height: 0.15rem;
-  width: 97%;
-  border: none;
-  background: rgb(230, 230, 230);
-  margin: auto;
-}
-
-.anclistss {
-  width: 80vw;
-  margin: auto;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: 2rem;
-}
-.anclistss h1 {
-  font-size: 1.7rem;
-  color: #00008b;
-  float: left;
-  margin-left: 3rem;
-}
-.anc .bord h3 {
-  font-weight: 500;
-  font-size: 1rem;
-  word-break: break-all;
-  white-space: normal;
-  line-height: 2rem;
-  width: 20vw;
-}
-.anc .bord:first-child h3 {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-.anc .bord:first-child {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-.anc .anclistitems li:first-child {
-  color: black;
-  background: white;
-  text-align: center;
-  width: 98%;
-}
-.anc .anclistitems li:first-child h3 {
-  font-weight: 400;
-  font-size: 1rem;
-}
-.anc li .p1 {
+.anc li .p1{
   margin-left: 4rem;
-  width: 20vw;
+  width: 100%;
   text-align: center;
 }
 
-.anc li .p2 {
-  text-align: center;
-  margin-right: 0rem;
-  width: 20vw;
-}
-
-.anc li .p3 {
+.anc li .p2{
   text-align: center;
   margin-right: 2rem;
-  width: 20vw;
-  word-break: break-all;
-  white-space: normal;
-  line-height: 2rem;
-  font-size: 1rem;
-}
-.anc li .p6 {
+  width: 100%;
+ 
 }
 
-/* .donate {
+.anc li .p3{
+  text-align: center;
+  margin-right: 2rem;
+  width: 100%;
+ 
+}
+
+
+.donate {
   background-repeat: no-repeat;
   margin-left: 0%;
   background-size: cover;
@@ -206,64 +45,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
 
-.AForm {
-  background-color: hsl(0, 0%, 99%);
+.Form {
+  background-color: #fbfbfb;
   padding: 30px;
-  width: 30vw;
-  height: max-content;
-  box-shadow: 2px 2px 8px rgb(213, 213, 213);
-  margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 0.5rem;
+  border: 1px solid rgb(129, 121, 121);
+  border-radius: 1px;
+  border-radius: 1rem;
+  width: 24rem;
+  height: 23rem;
+  box-shadow: 2px 2px 8px rgb(129, 121, 121);
 }
 .Formcont {
-  width: 82vw;
-  margin-left: auto;
-  margin-right: 2vw;
+display: flex;
+justify-content: center;
+margin-bottom: 100px;
 }
 
-.Formcont .button-53 {
-  border-radius: 0.5rem;
-  background: #48b0df;
-  color: white;
-}
-.AForm #title {
-  width: 70%;
-  font-size: 1rem;
-  padding: auto;
-  height: 3rem;
-  text-align: center;
-  border-radius: 0.5rem;
-}
-.AForm #title:focus {
-  height: 3rem;
-}
 
-.AForm input {
-  border-radius: 0.5rem;
-  font-weight: 700;
-  text-align: center;
-  width: 70%;
-  height: 3rem;
-  margin-top: 1rem;
-  background: #ddefff;
-}
-
-.AForm input:focus {
-  border: 2px solid #48b0df;
-  height: 3rem;
-}
-/* 
 .donate input {
   height: 3.5rem;
   border-radius: 1.2rem;
   border: none;
 
   margin-top: 0.8rem;
-} */
+}
 
 #ancmt-btn {
   font-size: 1rem;
@@ -278,255 +85,4 @@
   padding: 5px 10px;
 
   cursor: pointer;
-}
-
-@media screen and (max-width: 1000px) {
-  .announce {
-    max-width: 100vw;
-    background: #48b0df;
-  }
-  .announce .bodyy {
-    margin: auto;
-    width: 100vw;
-    height: max-content;
-    min-height: 100vh;
-    background: #f1fffd;
-    padding: 1px;
-  }
-  .anc .ancinfo {
-    height: max-content;
-  }
-
-  .anc .ancinfo img {
-    height: 30vw;
-  }
-
-  .anc .ancinfo p {
-    font-size: 1.2rem;
-
-    margin-left: 2rem;
-    text-align: left;
-    width: 90%;
-    font-weight: 700;
-  }
-
-  .anc {
-    border-radius: 1px;
-    margin: auto;
-    width: 100%;
-    background: white;
-    min-height: 38vw;
-    height: max-content;
-    margin-top: 0rem;
-    background-image: url(../../public/list.png);
-    background-repeat: no-repeat;
-    background-position: top right;
-    background-size: 15rem;
-    padding: 1px;
-    margin-top: 0rem;
-    padding-right: 0px;
-  }
-  .anc .ancinfo {
-    background: white;
-    width: 90vw;
-    margin: auto;
-    margin-top: 2rem;
-    min-height: 10rem;
-    border-radius: 1rem;
-    display: block;
-    justify-content: space-between;
-    margin-left: auto;
-    margin-right: 2rem;
-    height: max-content;
-  }
-  .anc .ancinfoback {
-    background: #48b0df;
-    margin: 0;
-    padding: 0.1px;
-    height: max-content;
-    padding-bottom: 2rem;
-    width: 100vw;
-  }
-  .andlistparent {
-    width: 100vw;
-    margin-left: auto;
-    margin-right: 2vw;
-    background: rgb(241, 249, 255);
-    border-radius: 0.9rem;
-    padding-bottom: 2rem;
-    background: #48b0df;
-    margin-top: -2rem;
-  }
-  .anclistss {
-    width: 90vw;
-    border-radius: 1rem;
-    background: rgb(233, 245, 255);
-    margin-left: auto;
-    margin-right: 0rem;
-    margin: auto;
-    margin-top: 1rem;
-  }
-  .anclistss h1 {
-    font-size: 1.7rem;
-    color: #00008b;
-    float: left;
-    margin-left: 3rem;
-  }
-  .anc .ancinfo h1 {
-    margin: 0;
-    float: left;
-    font-size: 1.7rem;
-    color: black;
-    margin-left: 2rem;
-    margin-top: 1rem;
-    text-align: left;
-    width: 100%;
-  }
-
-  .announce .anc ul {
-    margin: 0;
-    margin-left: 0;
-    padding: 0;
-    width: 100%;
-    padding-top: 5rem;
-  }
-  .announce .anc li:first-child {
-    color: white;
-    width: 90%;
-  }
-  #nonedispa {
-    display: none;
-  }
-  .anc .anclistitems {
-    background: none;
-    width: 90%;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    margin: auto;
-  }
-
-  .anc .anclistitems li:first-child {
-    color: black;
-    background: white;
-    text-align: center;
-    width: 99.5%;
-  }
-  .anc .anclistitems li:first-child h3 {
-    font-weight: 400;
-    font-size: 3.5vw;
-  }
-  .anc .bord:first-child {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-  }
-
-  .announce .anc li {
-    min-height: 2rem;
-    margin: auto;
-    list-style: none;
-    margin-top: 0rem;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    display: block;
-    padding-left: 0rem;
-    border: 0px;
-    text-align: center;
-    height: min-content;
-    width: 100%;
-    align-items: center;
-    box-shadow: 2px 2px 8px #cdcdcd;
-    background: white;
-    height: max-content;
-    margin-bottom: 2rem;
-    border-radius: 1rem;
-  }
-
-  .anc li .p1 {
-    margin-left: 0rem;
-    width: 90%;
-    text-align: center;
-    margin: auto;
-  }
-
-  .anc li .p2 {
-    text-align: center;
-    margin-right: 0rem;
-    width: 90%;
-    margin: auto;
-  }
-
-  .anc li .p3 {
-    text-align: center;
-    margin-right: 0rem;
-    width: 90%;
-    margin: auto;
-  }
-
-  .anc li .p6 {
-    width: 90%;
-    margin: auto;
-    font-size: 3.5vw;
-  }
-
-  .AForm {
-    background-color: #f9f9f9;
-    padding: 30px;
-    width: 100%;
-    height: max-content;
-    box-shadow: 2px 2px 8px rgb(213, 213, 213);
-    margin-left: 0%;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .Formcont {
-    display: flex;
-    justify-content: center;
-  }
-  .AForm #title {
-    width: 90%;
-    padding: auto;
-    height: 2rem;
-    text-align: center;
-  }
-
-  .AForm input {
-    font-weight: 700;
-    text-align: center;
-    width: 90%;
-    min-height: 2rem;
-    margin-top: 1rem;
-  }
-
-  .AForm input:hover {
-    font-weight: 700;
-    text-align: center;
-    width: 95%;
-    box-shadow: 2px 2px 8px rgb(192, 255, 249);
-    min-height: 2rem;
-    margin-top: 1rem;
-  }
-  .AForm .button-53 {
-    width: 90%;
-  }
-
-  .Formcont {
-    width: 95vw;
-    margin-left: auto;
-    margin-right: 2vw;
-  }
-
-  #pp1 {
-    display: none;
-  }
-  #pp2 {
-    display: none;
-  }
-  #pp3 {
-    display: none;
-  }
-  #pp4 {
-    display: none;
-  }
 }
