@@ -1,0 +1,138 @@
+.chartsmain {
+  width: 100vw;
+  height: max-content;
+  min-height: 95vh;
+  background: #48b0df;
+  padding: 0.1px;
+}
+
+.chartsbody {
+  background: white;
+  border-radius: 1rem;
+  width: 82vw;
+  height: max-content;
+  padding-bottom: 2rem;
+  margin-left: auto;
+  margin-right: 2vw;
+  padding: 0.1px;
+  margin-top: 2rem;
+}
+
+.chartsbody .bars {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+.charts {
+  align-items: center;
+  margin-top: 20px;
+}
+
+.barchart {
+  box-shadow: 2px 2px 9px rgb(209, 209, 209);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 30vw;
+  height: 25vw;
+}
+
+.pies {
+  width: 69vw;
+  border-radius: 1rem;
+  margin: auto;
+  display: flex;
+  box-shadow: 2px 2px 9px rgb(209, 209, 209);
+  margin-top: 3rem;
+  padding: 2rem;
+  height: max-content;
+  min-height: 30rem;
+}
+
+.pies .piechart {
+  width: 24vw;
+  margin-left: 15vw;
+}
+
+.pies .piechart .medicinePieChart {
+}
+
+.color-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.pies .tablemain {
+  margin: 0;
+  margin-top: 5rem;
+  margin-left: 5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .chartsbody {
+    background: white;
+    border-radius: 1rem;
+    width: 98vw;
+    height: max-content;
+    padding-bottom: 2rem;
+    margin-left: auto;
+    margin-right: 0vw;
+    margin: auto;
+    padding: 0.1px;
+    margin-top: 2rem;
+  }
+
+  .chartsbody .bars {
+    display: block;
+    width: 100%;
+
+    margin-top: 2rem;
+  }
+
+  .charts {
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .barchart {
+    box-shadow: 2px 2px 9px rgb(209, 209, 209);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 80vw;
+    height: 70vw;
+    margin: auto;
+  }
+
+  .pies {
+    width: 80vw;
+    border-radius: 1rem;
+    margin: auto;
+    display: block;
+    box-shadow: 2px 2px 9px rgb(209, 209, 209);
+    margin-top: 3rem;
+    padding: 2rem;
+    height: max-content;
+    min-height: 30rem;
+  }
+
+  .pies .piechart {
+    width: 70vw;
+    margin-left: 0vw;
+    margin: auto;
+  }
+
+  .pies .tablemain {
+    margin: 0;
+    margin-left: 0rem;
+    margin: auto;
+    margin-top: 5rem;
+    width: 30vw;
+  }
+  .piechart .tablemain .table {
+  }
+  .piechart .tablemain .table #hbasihofsd {
+  }
+}

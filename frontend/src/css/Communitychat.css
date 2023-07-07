@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.comsca {
+}
+.comsssc {
+  width: 100vw;
+  background: rgb(236, 249, 255);
+  height: 93vh;
+
+  overflow: hidden;
+  padding: 0.1px;
+}
+
+.commchat {
+  position: relative;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: 5vw;
+  width: 75vw;
+  margin-top: 3rem;
+  background: rgb(247, 250, 255);
+  height: 38rem;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
+}
+.commchat .submitmenu {
+  width: 100%;
+  bottom: 0rem;
+  border-bottom-left-radius: 0.9rem;
+}
+
+.commmess {
+  height: 34rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  border-top-right-radius: 0.9rem;
+}
+
+.commchat .datemess {
+  font-size: 0.6rem;
+  color: rgb(216, 216, 216);
+  margin-bottom: 0;
+  margin-top: auto;
+  margin-right: 0.3rem;
+  margin-left: 0.5rem;
+}
+.commchat .datemesss {
+  font-size: 0.6rem;
+  color: rgb(216, 216, 216);
+  margin-bottom: 0;
+  margin-top: auto;
+  margin-right: 0.3rem;
+  margin-left: 0.5rem;
+}
+.comssend {
+  margin: 0;
+}
+.flexdisp {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.commchat .flexdisp p {
+  max-width: 90%;
+  margin-left: 0.3rem;
+}
+
+#senderrole {
+  font-size: 0.7rem;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: -0.4rem;
+  background: rgb(81, 131, 174);
+  padding: 0.4rem;
+  border-radius: 0.7rem;
+}
+#recrole {
+  font-size: 0.7rem;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: -0.4rem;
+  background: #3e4c54;
+  padding: 0.4rem;
+  border-radius: 0.7rem;
+}
+
+.wowowow {
+  font-size: 1.1rem;
+  display: flex;
+  margin: 0;
+  margin-top: 0.3rem;
+}
+.wowowow p {
+  margin: 0;
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.chatbot-container {
+  display: none;
+}
+#daicina {
+  opacity: 0;
+  animation: helloanim;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes helloanim {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .commchat {
+    position: relative;
+    border-radius: 1rem;
+    margin: auto;
+    width: 95vw;
+    margin-top: 2rem;
+    background: rgb(247, 250, 255);
+    height: 49rem;
+  }
+
+  .commmess {
+    height: 45rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-top-right-radius: 0.9rem;
+  }
+}

@@ -1,2 +1,14 @@
 node_modules
 dev.js
+gce.json
+.env
+backend\.env
+*.pkl
+*.csv
+*.h5
+*.
+
+
+xray-chest.h5
+BrainTumor.h5
+heartmodel_updated.pkl

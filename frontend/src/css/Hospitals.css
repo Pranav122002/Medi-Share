@@ -1,0 +1,152 @@
+.hospimain {
+  width: 100vw;
+  background: #48b0df;
+  padding: 0.1px;
+}
+
+.hospi {
+  width: 82vw;
+  height: 10rem;
+  background: white;
+  margin-right: 2vw;
+  margin-left: auto;
+  border-radius: 0.9rem;
+  margin-top: 2rem;
+}
+
+.hospicontent {
+  padding-left: 2rem;
+  display: flex;
+}
+.hospicontent img {
+  height: 10rem;
+  margin-right: 2vw;
+  margin-left: auto;
+}
+.hospicontent h2 {
+  text-align: left;
+  margin-left: 0;
+  font-size: 1.7rem;
+}
+.hospicontent p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.hosp {
+}
+
+.mainmap {
+  width: 82vw;
+  margin-right: 2vw;
+  margin-left: auto;
+  background: white;
+  margin-top: 2rem;
+  border-radius: 0.9rem;
+}
+.mapco {
+  width: 95%;
+  margin: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.mapco li {
+  height: 2rem;
+  list-style: none;
+  width: 50rem;
+  margin-top: 0rem;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 1vw;
+  display: block;
+
+  padding-left: 0rem;
+}
+
+.mapco ul a {
+  height: 4.5rem;
+  box-shadow: 2px 2px 9px rgb(224, 224, 224);
+  display: flex;
+  text-decoration: none;
+  background: white;
+  color: black;
+  font-size: 15px;
+  width: 100%;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  margin: 0;
+  padding-top: 1rem;
+}
+
+.mapco .suggestions {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .hospimain {
+    position: relative;
+
+    min-height: 95vh;
+    height: max-content;
+    width: 100vw;
+    padding: 0.1px;
+  }
+
+  .hospi {
+    width: 95vw;
+    margin: auto;
+    min-height: 10rem;
+    height: max-content;
+    margin-top: 2rem;
+    padding: 0.1px;
+  }
+  .hospicontent {
+    min-height: 15rem;
+    height: max-content;
+    background: white;
+    width: 90%;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-top: 1px;
+    display: block;
+    box-shadow: none;
+    margin: auto;
+    margin-top: 0rem;
+    border-radius: 1rem;
+    padding-left: 0;
+  }
+  .hospicontent p {
+    margin-top: 2rem;
+    margin: auto;
+    margin-left: 0;
+    text-align: left;
+    width: 90%;
+  }
+
+  .hospicontent img {
+    height: 30vw;
+  }
+  .mapsearch {
+    width: 80vw;
+    height: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  .minimap {
+    padding: 0.1px;
+    margin-bottom: 2rem;
+    width: 95%;
+  }
+  .mainmap {
+    padding: 0.1px;
+    width: 95vw;
+    margin: auto;
+    margin-top: 2rem;
+  }
+}

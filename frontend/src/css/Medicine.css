@@ -1,23 +1,22 @@
-.list{
-    margin-top: 7rem;
+.list {
+  margin-top: 7rem;
 }
 
-.list li{
-    text-align: center;
-    height: min-content;
-    width: 90%;
-    align-items: center;
+.list li {
+  text-align: center;
+  height: min-content;
+  width: 90%;
+  align-items: center;
 }
 
-.list li .p1{
-    margin-left: 4rem;
-    width: 300%;
-    text-align: start;
+.list li .p1 {
+  margin-left: 4rem;
+  width: 300%;
+  text-align: start;
 }
 
-.list li .p2{
-    text-align: end;
-    margin-right: 2rem;
-    width: 100%;
-   
+.list li .p2 {
+  text-align: end;
+  margin-right: 2rem;
+  width: 100%;
 }

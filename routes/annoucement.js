@@ -20,8 +20,8 @@ router.post("/add-annoucement", async (req, res, next) => {
       date: date,
       venue: venue,
     });
-    if (data) return res.json({ msg: "Annoucement added successfully..." });
-    else return res.json({ msg: "Failed to add annoucement..." });
+    if (data) return res.json({ msg: "Annoucement added successfully." });
+    else return res.json({ msg: "Failed to add annoucement." });
   } catch (ex) {
     next(ex);
   }

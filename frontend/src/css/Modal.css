@@ -1,0 +1,43 @@
+.Modal__container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-width: 90%;
+  max-height: 80%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+}
+
+h2 {
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.card {
+  max-width: 500px;
+  height: max-content;
+  margin: 25px auto;
+  border: none;
+  border-radius: 5px;
+}
+#dkijajcac{
+  margin-left: 0;
+  text-align: left;
+  
+  
+}
+
+#title {
+  font-size: 1.7rem;
+  text-align: left;
+}
+
+.content-details {
+  font-size: 1.7rem;
+  text-align: left;
+}

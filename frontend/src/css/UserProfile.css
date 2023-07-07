@@ -1,0 +1,457 @@
+.mainuserprofile {
+  width: 100vw;
+  min-height: 100vh;
+  background: #48b0df;
+  padding: 0.1px;
+  height: max-content;
+}
+
+.mainuserprofile .bodyy {
+  width: 82vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  background: rgb(238, 250, 255);
+  margin-top: 2rem;
+  border-radius: 0.9rem;
+  padding: 0.1px;
+}
+
+.mainuserprofile .bodyy h1 {
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 1.7rem;
+  color: #0e76a6;
+}
+
+.mainuserprofile .userprofback {
+  width: 35%;
+  min-height: 40rem;
+  height: max-content;
+  background: rgb(255, 255, 255);
+}
+
+.mainuserprofile .userprofback .scrolll {
+  height: 27rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.sdacsasca {
+  display: none;
+}
+.mainuserprofile .userprofback h2 {
+  text-align: left;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.mainuserprofile .userprofback hr {
+  width: 75%;
+  margin-left: 3vw;
+}
+
+.mainuserprofile .userproflex {
+  width: 95%;
+  display: flex;
+  justify-content: flex-start;
+  height: max-content;
+  margin: auto;
+  background: rgb(255, 255, 255);
+  border-radius: 0.9rem;
+  box-shadow: 2px 2px 9px rgb(213, 213, 213);
+}
+.dgafsasfsac {
+  background: white;
+  width: 90%;
+  height: max-content;
+  border-radius: 1rem;
+  padding-left: 1rem;
+}
+.dgafsasfsac p {
+  width: 100%;
+  word-break: break-all;
+  white-space: normal;
+}
+.singleback li {
+  height: max-content;
+  list-style: none;
+  width: max-content;
+  margin-top: 0rem;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 1vw;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 2rem;
+  width: 90%;
+  box-shadow: 2px 2px 9px rgb(224, 224, 224);
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.mainuserprofile .userprof {
+  width: 100%;
+
+  display: flex;
+}
+
+.mainuserprofile .userprof li {
+  margin: auto;
+  height: max-content;
+  min-height: 3rem;
+}
+
+.mainuserprofile .userprof .proflidiv {
+  width: 7vw;
+  font-size: 0.9vw;
+}
+
+.mainuserprofile .proflidiv button {
+  width: 80%;
+  margin-top: -1rem;
+  height: 3rem;
+  border: none;
+  background: #48b0df;
+  border-radius: 0.9rem;
+  color: white;
+  font-size: 0.7vw;
+}
+
+.mainuserprofile .proflidiv button:hover {
+  width: 90%;
+}
+
+.mainuserprofile .userprof .proflidis {
+  width: 7vw;
+  font-size: 1vw;
+  font-weight: 700;
+
+  color: #0e76a6;
+}
+
+#mas {
+  border: 1.5px solid #48b0df;
+}
+
+#masa {
+  border: 1px solid #d1d1d1;
+}
+
+.singleuser {
+  width: 65%;
+  min-height: 40rem;
+
+  height: max-content;
+  background: #ffffff;
+  border-radius: 0.9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.singleback {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  padding-left: 2rem;
+  padding-top: 0rem;
+}
+
+.singleback p {
+  text-align: left;
+  font-size: 1vw;
+}
+
+.singleback p img {
+}
+
+#userprofmid {
+  height: 35rem;
+  border: 1.5px solid #3ca1d0;
+  margin: 0;
+  margin-top: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.pdflex {
+  display: flex;
+}
+
+.imgprof.active {
+  position: absolute;
+  left: 19vw;
+  top: 13rem;
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 9px rgb(219, 219, 219);
+  height: 35rem;
+  width: 76vw;
+  border-radius: 1rem;
+  padding-top: 1rem;
+}
+
+.imgprof.active img {
+  height: 33rem;
+  margin: auto;
+  margin-left: 5rem;
+}
+
+.imgprof.false {
+  display: none;
+}
+
+.imgprof.active .gagasda img {
+  height: 2rem;
+
+  color: rgb(59, 59, 59);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.certfed button {
+  width: 10vw;
+  border: none;
+  height: 2rem;
+  color: white;
+  background: #48b0df;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  box-shadow: 2px 2px 9px rgb(219, 219, 219);
+}
+
+.certfed button:hover {
+  margin-left: 2.5rem;
+}
+
+#remli {
+  height: 0rem;
+  list-style: none;
+  width: max-content;
+  margin-top: 0rem;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 1vw;
+  display: block;
+
+  padding-left: 0rem;
+}
+
+.verifybut button {
+  width: 10vw;
+  border: none;
+  height: 2rem;
+  color: white;
+  background: #48dfc8;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  box-shadow: 2px 2px 9px rgb(219, 219, 219);
+}
+
+.verifybut button:hover {
+  margin-left: 2.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .certfed button {
+    width: 30vw;
+    border: none;
+    height: 3rem;
+    color: white;
+    background: #48b0df;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    box-shadow: 2px 2px 9px rgb(219, 219, 219);
+  }
+
+  .mainuserprofile .bodyy {
+    width: 95%;
+    margin-left: auto;
+    margin-right: 0vw;
+    background: rgb(238, 250, 255);
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 0.9rem;
+    padding: 0.1px;
+    height: max-content;
+  }
+
+  .mainuserprofile .bodyy h1 {
+    text-align: left;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: #0e76a6;
+  }
+
+  .mainuserprofile .userproflex {
+    width: 95%;
+    display: block;
+    height: max-content;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 0.9rem;
+    box-shadow: 2px 2px 9px rgb(213, 213, 213);
+    border-radius: 1rem;
+  }
+
+  .mainuserprofile .userprofback {
+    width: 100%;
+    min-height: 50rem;
+    height: max-content;
+    background: rgb(255, 255, 255);
+    border-radius: 1rem;
+    padding-left: 0;
+    padding: 0.1px;
+  }
+  .mainuserprofile .userprofback .scrolll {
+    height: 43rem;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .mainuserprofile .userprofback h2 {
+    text-align: left;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .mainuserprofile .userprof {
+    width: 90%;
+    display: block;
+    box-shadow: 2px 2px 9px rgb(220, 220, 220);
+    margin: auto;
+    border-radius: 1rem;
+    margin-top: 1rem;
+  }
+
+  .mainuserprofile li {
+    height: max-content;
+    list-style: none;
+    width: max-content;
+    margin-top: 0rem;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+    padding-left: 0rem;
+    box-shadow: none;
+  }
+
+  .mainuserprofile .userprof .proflidiv {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-left: 2rem;
+    padding: 1rem;
+  }
+
+  .sdacsasca {
+    display: inline-block;
+    width: 40%;
+    font-weight: 700;
+  }
+
+  .mainuserprofile .proflidiv button {
+    width: 30%;
+    margin-top: -1rem;
+    height: 3rem;
+    border: none;
+    background: #48b0df;
+    border-radius: 0.9rem;
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .mainuserprofile .proflidiv button:focus {
+    width: 30%;
+    margin-top: -1rem;
+    height: 3rem;
+    border: none;
+    background: #48b0df;
+    border-radius: 0.9rem;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .mainuserprofile .proflidiv button:hover {
+    width: 30%;
+    margin-top: -1rem;
+    height: 3rem;
+    border: none;
+    background: #48b0df;
+    border-radius: 0.9rem;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .singleback p {
+    text-align: left;
+    font-size: 1.5rem;
+    height: max-content;
+  }
+  .singleback {
+    height: max-content;
+    width: 100%;
+  }
+  .singleuser {
+    width: 100%;
+    min-height: 40rem;
+    height: max-content;
+    background: #ebf8ff;
+    border-radius: 0.9rem;
+    padding-top: 0rem;
+    padding-bottom: 1rem;
+    padding: 0.1px;
+  }
+  .mainuserprofile .singleuser h1 {
+    margin-top: 1rem;
+    margin-left: 3rem;
+    font-size: 2rem;
+  }
+
+  #userprofmid {
+    display: none;
+  }
+  #afscsrc {
+    margin-left: 1rem;
+  }
+  #mas {
+    display: none;
+  }
+
+  #masa {
+    display: none;
+  }
+
+  #asdaacasa {
+    display: none;
+  }
+
+  .mainuserprofile .userprof .proflidiv {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .imgprof.active {
+    position: absolute;
+    left: 5vw;
+    top: 60rem;
+    background: rgb(255, 255, 255);
+    box-shadow: 2px 2px 9px rgb(219, 219, 219);
+    height: 35rem;
+    width: 90vw;
+    border-radius: 1rem;
+    padding-top: 1rem;
+  }
+  .dgafsasfsac {
+    background: white;
+    width: 80vw;
+    height: max-content;
+    border-radius: 1rem;
+    padding-left: 1rem;
+  }
+  .dgafsasfsac p {
+    width: 78vw;
+    word-break: break-all;
+    white-space: normal;
+  }
+}

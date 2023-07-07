@@ -1,6 +1,209 @@
-.dis{
-    position: absolute;
-  top: 30%;
-  left: 30%;
-  width: 30%;
+.dispredd {
+  background: #48b0df;
+  height: max-content;
+  width: 100vw;
+  padding: 0.1px;
+  min-height: 92vh;
+  height: max-content;
+  padding-bottom: 2rem;
+}
+
+.dispredd .chatfunc {
+  width: 81vw;
+  margin-right: 2vw;
+  margin-left: auto;
+  height: 10rem;
+}
+
+.dis {
+  width: 82.6vw;
+  margin-right: 2vw;
+  margin-left: auto;
+  height: max-content;
+
+  border-radius: 1rem;
+  background: rgb(237, 249, 255);
+  margin-top: 2rem;
+  padding: 0.1px;
+  padding-bottom: 2rem;
+}
+.dis h2 {
+  margin-top: 1rem;
+  color: #00008b;
+  text-align: left;
+  margin-left: 2rem;
+  font-size: 1.7rem;
+}
+
+.dise {
+  display: flex;
+
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.diseaa {
+  width: 20vw;
+  background: #ffffff;
+  box-shadow: 2px 2px 8px rgb(236, 236, 236);
+  margin-top: 2rem;
+  height: max-content;
+  min-height: 18rem;
+  padding-bottom: 2rem;
+  border-radius: 0.9rem;
+}
+.dise img {
+  margin-top: 3rem;
+  width: 8vw;
+}
+
+.dise a {
+  box-shadow: none;
+  text-align: center;
+  font-style: none;
+  text-decoration: none;
+}
+
+.dise li {
+  background: none;
+  box-shadow: none;
+}
+
+.diseaa:hover {
+  width: 20vw;
+  background: #f8f8f8;
+  margin-top: 2rem;
+  text-align: center;
+  font-style: none;
+  font-size: 1.05rem;
+  text-decoration: none;
+  height: max-content;
+  min-height: 18rem;
+  box-shadow: 2px 2px 8px rgb(218, 218, 218);
+  margin-top: 1.5rem;
+}
+
+.dise .Cnavli {
+  font-style: none;
+  text-decoration: none;
+  color: black;
+  display: block;
+  text-align: center;
+  width: 15vw;
+  margin-top: 2rem;
+
+  font-weight: 700;
+  height: max-content;
+
+  padding: 0;
+  font-size: 1.8rem;
+  color: #00008b8a;
+}
+
+.Cnavli h2 {
+  margin: 0;
+  font-style: none;
+  text-decoration: none;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.heartdis {
+  width: 90vw;
+  margin: auto;
+}
+
+.heartdis .flexxx {
+  margin: auto;
+  width: 90%;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 2px 2px 9px rgb(236, 236, 236);
+}
+
+.heartdis .flexxx input {
+  width: 70%;
+}
+
+.heartdis .button-53 {
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .dispredd .chatfunc {
+    width: 95vw;
+    margin-right: 0vw;
+    margin-left: auto;
+    margin: auto;
+    height: max-content;
+    margin-top: 2rem;
+  }
+  .dispredd .chatfunc img {
+    height: 30vw;
+  }
+  .dispredd .chatfunc p {
+    width: 90%;
+  }
+  .dis {
+    width: 95vw;
+    margin-right: 0vw;
+    margin-left: auto;
+    margin: auto;
+    height: max-content;
+    border-radius: 1rem;
+    background: rgb(237, 249, 255);
+    margin-top: 2rem;
+    padding: 0.1px;
+    padding-bottom: 2rem;
+  }
+  .dispredd {
+    position: relative;
+  }
+  .dise {
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+  .diseaa {
+    width: 80%;
+    background: #ffffff;
+    box-shadow: 2px 2px 8px rgb(236, 236, 236);
+    margin-top: 2rem;
+    height: max-content;
+    min-height: 18rem;
+    padding-bottom: 2rem;
+    border-radius: 0.9rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+  }
+  .dise img {
+    width: 10rem;
+  }
+
+  .dise .Cnavli {
+    margin: auto;
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    width: 90%;
+    background: white;
+    height: max-content;
+
+    padding: 0;
+  }
+  .dise .Cnavli h2 {
+    margin: 0;
+    font-style: none;
+    text-decoration: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .Cnavli .button-53 {
+    width: 80%;
+  }
 }

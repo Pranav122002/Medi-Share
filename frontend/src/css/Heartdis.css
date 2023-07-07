@@ -1,0 +1,152 @@
+.heartdismain {
+  width: 100vw;
+  padding: 0.1px;
+  height: max-content;
+  min-height: 95vh;
+  background: #48b0df;
+}
+#kidimgp {
+  background: #48b0df;
+  border: none;
+  border-radius: 0.5rem;
+  height: 3rem;
+  margin-bottom: 3rem;
+  color: white;
+  width: 10vw;
+}
+#kidimgp:hover {
+  background: #2498ce;
+}
+.heartdismain .heartdis {
+  width: 82vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  padding: 0.1px;
+  background: rgb(247, 253, 255);
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
+
+.heartdismain .heartdis h2 {
+  text-align: left;
+  font-size: 1.7rem;
+  margin-left: 2rem;
+}
+
+.heartdisflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.heartdismain .heartdis .flexxx {
+  flex: 40%;
+  margin: auto;
+  width: 95%;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+.heartrepo {
+  height: 5rem;
+}
+.heartflexbox {
+  background: white;
+  width: 35vw;
+  margin: auto;
+  margin-top: 2rem;
+  min-height: 5rem;
+  box-shadow: 2px 2px 9px rgb(235, 235, 235);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 2rem;
+}
+.heartdismain .heartdis .flexxx label {
+  margin-left: 2rem;
+  margin-top: 1.8rem;
+  width: 50%;
+  max-width: 40%;
+}
+.heartdismain .heartdis .flexxx input {
+  width: 50%;
+  height: 3rem;
+  margin-top: 1.8rem;
+  margin-right: 2rem;
+  background: #eef5ff;
+  border-radius: 0.5rem;
+  max-width: 50%;
+  padding-left: 2rem;
+  margin-left: 2rem;
+}
+.heartdismain .heartdis .flexxx select {
+  width: 50%;
+  height: 3rem;
+  margin-top: 1.8rem;
+  margin-right: 2rem;
+  background: #eef5ff;
+  border-radius: 0.5rem;
+  max-width: 50%;
+  padding-left: 2rem;
+  margin-left: 2rem;
+}
+.heartdismain .heartdis .flexxx select:focus {
+  border: green;
+}
+.heartdismain .heartdis .flexxx input:focus {
+  width: 50%;
+  height: 3rem;
+  margin-top: 1.8rem;
+  margin-right: 2rem;
+  background: #eef5ff;
+  border-radius: 0.5rem;
+  padding-left: 2rem;
+}
+#hesatdiuscno {
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .heartdismain .heartdis {
+    width: 95vw;
+    margin-left: auto;
+    margin-right: 0vw;
+    margin: auto;
+    padding: 0.1px;
+    background: rgb(247, 253, 255);
+    margin-top: 2rem;
+    border-radius: 1rem;
+  }
+  .heartdismain .heartdis .flexxx {
+    flex: 80%;
+    margin: auto;
+    width: 95%;
+    padding: 2rem;
+    text-align: left;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+  .heartflexbox {
+    background: white;
+    width: 85vw;
+    margin: auto;
+    margin-top: 2rem;
+    min-height: 5rem;
+    box-shadow: 2px 2px 9px rgb(235, 235, 235);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 2rem;
+  }
+  #kidimgp {
+    background: #48b0df;
+    border: none;
+    border-radius: 0.5rem;
+    height: 3rem;
+    margin-bottom: 3rem;
+    color: white;
+    width: 30vw;
+  }
+}

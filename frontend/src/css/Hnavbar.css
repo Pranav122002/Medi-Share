@@ -1,43 +1,104 @@
-.Hnavbar{
-    height: 4rem;
+.Hnavbar {
+  height: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem;
+  box-shadow: 2px 2px 9px rgb(231, 231, 231);
+  border-radius: 1rem;
+  position: fixed;
+  background-color: white;
+  z-index: 99999999;
+  top: 0;
+  width: 100%;
+}
+
+.li {
+}
+
+.Hnavb {
+  top: 0;
+  position: fixed;
+  background-color: white;
+  height: 5rem;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+}
+h2 {
+  margin-left: 4rem;
+  font-size: 1.5rem;
+}
+
+#Nlogo {
+  border-radius: 50%;
+  height: 3rem;
+  margin: 0.5rem;
+}
+
+#About {
+  position: absolute;
+  margin-right: 5rem;
+  right: 0;
+  font-size: 1.5rem;
+  padding-top: 2rem;
+}
+
+.Lnav a {
+  text-decoration: none;
+  color: black;
+  box-shadow: none;
+}
+
+.Lnav a:hover {
+  box-shadow: none;
+}
+
+.links.active .navli {
+}
+
+.prof {
+  float: right;
+  padding: 0rem;
+  margin-top: 0rem;
+  height: 2.5rem;
+  margin-left: 2rem;
+  border-radius: 50%;
+}
+
+.links.active .prof {
+  display: none;
+}
+
+.links.false #nonev {
+  display: none;
+}
+
+#nonev {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+#abcder {
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .onlyleft {
+    width: 70vw;
     display: flex;
-    justify-content:flex-start;
-    margin: 1rem;
-    box-shadow: 2px 2px 9px rgb(231, 231, 231);
-    border-radius: 1rem;
-    position: fixed;
-    background-color: white;
-    z-index: 45;
-    top: 0;
-    width: 98%;
-}
+  }
 
-.Hnavb{
-    top: 0;
-    position: fixed;
-    background-color: white;
-    height: 5rem;
-    width: 100%;
-}
-.logo{
+  .Lnav .logo {
+    margin-left: 0rem;
     display: flex;
-    
-}
-h2{
-    margin-left: 4rem;
-    font-size: 1.5rem;
+  }
+  .Lnav .icon {
+    margin-right: 2rem;
+  }
 
-}
-
-#Nlogo{
-    border-radius: 50%;
-    height: 3rem;
-    margin: 0.5rem;
-}
-
-#About{
-    position: absolute;
-    margin-right: 5rem;
-    right: 0;
-    font-size: 1.5rem;
+  .iconsaf {
+    display: none;
+  }
 }

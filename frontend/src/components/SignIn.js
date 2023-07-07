@@ -3,8 +3,10 @@ import "../css/SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function SignIn() {
+import { volLocation } from "./volLocation";
+import { UserContext } from "./UserContext";
 
+export default function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,13 +18,15 @@ export default function SignIn() {
 
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+  const { updateUser } = useContext(UserContext);
+
   const postData = () => {
     //checking email
     if (!emailRegex.test(email)) {
       notifyA("Invalid email");
       return;
     }
-    fetch("/signin", {
+    fetch(`/signin`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -38,78 +42,118 @@ export default function SignIn() {
         if (data.error) {
           notifyA(data.error);
         } else {
-          notifyB("Signed In successfully...");
-          console.log(data);
+          notifyB("Signed In successfully.");
+
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+
+          fetch(`/user/${data.user._id}`, {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("jwt"),
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              const subscriptionEndDate = new Date(res.subscription_end_date);
+              const currentDate = new Date();
+
+              if (
+                res.subscription_end_date &&
+                subscriptionEndDate < currentDate
+              ) {
+                const updatedUser = {
+                  ...res,
+                  subscription: false,
+                  subscription_end_date: undefined,
+                };
+                updateUser(updatedUser);
+
+                fetch(`/end-subscription/${res._id}`, {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                  },
+                })
+                  .then((res) => res.json())
+                  .then((updatedRes) => {})
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              } else {
+                updateUser(res);
+              }
+            });
 
           navigate("/home");
         }
       });
   };
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  const navigatee = useNavigate();
+  const goHome = () => {
+    navigate("/");
+  };
 
   return (
     <>
-      <div className="banner">
-        <img id="logo" src="./logo1.png" alt="logo" />
-        <h1>Medi Share</h1>
-        <Link className="aboutus" to="/AboutUs">
-          <span id="Aboutus" style={{ cursor: "pointer" }}>About Us</span>
-        </Link>
-      </div>
-
-      <div className="signIn">
-
-        <div className="left">
-          <h1>A Medicine Distribution System</h1>
-        </div>
-        <div className="middle"></div>
-        <div className="loginForm">
-          <div className="logo">
-            <h1>LOGIN</h1>
+      <div className="mainsignin">
+        <div className="signIn">
+          <div className="left">
+            <h1>Welcome to "Medi-Share"</h1>
+            <img className="bkimg" src="./ui1.png" alt="" />
           </div>
-          <div>
+          <div className="middle"></div>
+          <div className="loginForm">
+            <div className="logo">
+              <h1>SIGN IN</h1>
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                placeholder="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
+
             <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
+              type="submit"
+              id="login-btn"
+              onClick={() => {
+                postData();
               }}
+              value="Sign In"
             />
-          </div>
-          <div>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-
-          <input
-            type="submit"
-            id="login-btn"
-            onClick={() => {
-              postData();
-            }}
-            value="Sign In"
-          />
-          <div className="form2">
-            Don't have an account ?
-            <Link to="/signup">
-              <span style={{  color: "blue", cursor: "pointer" }}> Sign Up</span>
-            </Link>
+            <div className="form2">
+              Don't have an account ?
+              <Link to="/signup">
+                <span style={{ cursor: "pointer" }}> Sign Up</span>
+              </Link>
+            </div>
           </div>
         </div>
-
-
       </div>
     </>
   );

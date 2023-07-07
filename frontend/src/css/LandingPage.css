@@ -1,0 +1,724 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+.maina {
+  overflow: none;
+}
+.Lnav {
+  box-shadow: 1px 1px 9px rgb(189, 189, 189);
+  z-index: 99999999;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.Lnav_contents {
+  margin: auto;
+  width: 1080px;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  margin: 0;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+}
+.logo h2 {
+  font-size: 1.4rem;
+  padding-left: 1rem;
+  margin: 0;
+  align-self: center;
+}
+
+.links {
+  margin: auto;
+  margin-right: 0;
+  padding-top: 0rem;
+}
+
+#Aboutt {
+  padding-top: 3rem;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-right: 3rem;
+}
+
+#joinus {
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+}
+
+.Lcontent {
+  top: 0;
+  /* background-color: hsl(147, 100%, 98%); */
+  background-color: rgb(245, 253, 255);
+  height: 40rem;
+}
+
+.Lcontent .banner1 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 90rem;
+}
+
+.linkscur.false .aboutucur {
+  display: none;
+}
+.linkscur.false .aboutucurs span {
+  display: none;
+}
+.linkscur.false .aboutucurs img {
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+.linkscur.active .aboutucur {
+  display: none;
+}
+.linkscur.active .aboutucurs span {
+  display: none;
+}
+.linkscur.active .aboutucurs img {
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.Lcontent .banner1 h1 {
+  font-size: 3rem;
+  /* color: rgb(0, 198, 152); */
+  color: rgb(50, 187, 255);
+  margin-bottom: 3rem;
+}
+.Lcontent .banner1 h2 {
+  font-size: 2rem;
+  /* color: rgb(0, 198, 152); */
+  color: rgb(50, 187, 255);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+.Lcontent .banner1 p {
+  font-size: 1.3rem;
+  color: rgb(107, 107, 107);
+  width: 35rem;
+  margin: auto;
+  text-align: left;
+  position: relative;
+  z-index: 54;
+}
+.Lcontent .banner1 .img img {
+  margin-top: 5rem;
+  width: 42rem;
+  transform: rotate(90deg);
+  position: relative;
+  z-index: 2;
+}
+
+.Lcontent .banner1 .curve img {
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(180deg);
+  opacity: 0.1;
+  margin-top: -5rem;
+  /* filter: invert(88%) sepia(17%) saturate(5923%) hue-rotate(170deg) brightness(124%) contrast(122%); */
+}
+.Lcontent .banner1 .curve2 img {
+  position: absolute;
+  z-index: 1;
+  transform: rotate(360deg);
+  margin-top: -2rem;
+  left: 50%;
+  opacity: 0.2;
+  /* filter: invert(88%) sepia(17%) saturate(5923%) hue-rotate(170deg) brightness(124%) contrast(122%); */
+}
+
+.Goal {
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  width: 70rem;
+  border: 2px solid #00a4bd;
+  padding: 10px;
+  box-shadow: 6px 4px #00a4bd;
+  height: 18rem;
+}
+
+.Goal h1 {
+  color: rgb(69, 69, 69);
+  font-size: 2.5rem;
+}
+.Goal p {
+  margin: auto;
+  width: 50rem;
+  color: rgb(78, 78, 78);
+  font-size: 1.3rem;
+}
+
+.segment {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 50rem;
+}
+.segment img {
+  height: 4rem;
+  margin: auto;
+}
+
+.banner2 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80rem;
+  height: 30rem;
+}
+
+.banner2 img {
+  margin: auto;
+  height: 20rem;
+  border-radius: 1rem;
+}
+
+.info {
+  margin: auto;
+}
+.info h1 {
+  font-size: 2rem;
+  color: rgb(77, 77, 77);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.info p {
+  font-size: 1.3rem;
+  color: rgb(96, 96, 96);
+  width: 35rem;
+  margin: auto;
+  text-align: left;
+  position: relative;
+  z-index: 54;
+}
+.banner3_back {
+  background-color: rgb(240, 249, 255);
+}
+.banner3 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80rem;
+
+  height: 30rem;
+}
+
+.banner3 img {
+  margin: auto;
+  height: 23rem;
+  border-radius: 1rem;
+}
+
+.banner4 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80rem;
+
+  height: 30rem;
+}
+
+.banner4 img {
+  margin: auto;
+  height: 25rem;
+  border-radius: 1rem;
+}
+
+.banner5 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80rem;
+  height: 30rem;
+}
+.banner5 img {
+  margin: auto;
+  height: 25rem;
+  border-radius: 1rem;
+}
+
+.banner6 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80rem;
+  height: 30rem;
+}
+.banner6 img {
+  margin: auto;
+  height: 25rem;
+}
+
+.banner7 {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80rem;
+  height: 30rem;
+}
+.banner7 img {
+  margin: auto;
+  height: 25rem;
+  background: none;
+}
+.fback {
+  background-color: black;
+  color: white;
+}
+.footer {
+  width: 70rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+.footer a {
+  color: white;
+}
+.icon {
+  display: none;
+}
+.fbac .bord {
+  margin: 0;
+  padding: 0;
+  margin-left: 2rem;
+
+  min-height: 0px;
+  height: max-content;
+}
+.fbac .bord h3 {
+  width: 20rem;
+  word-break: break-all;
+  white-space: normal;
+  line-height: 1.2rem;
+  padding: 1rem;
+  background: white;
+}
+#sdcaseca {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2rem;
+  width: 20rem;
+  padding: 1rem;
+  background: white;
+}
+.fbac h1 {
+  color: #64b6cb;
+}
+#noneee {
+  display: none;
+}
+
+.fbac {
+  background-color: rgb(233, 246, 255);
+  min-height: 30rem;
+  height: max-content;
+  padding-bottom: 5rem;
+  margin: auto;
+  position: relative;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.fbac-slidetrack {
+  height: 15rem;
+  display: flex;
+  width: calc(100%);
+  animation: scroll 20s linear infinite;
+}
+.fbac-slidetrack:hover {
+  animation-play-state: paused;
+}
+.fbac-slidetrack .bord {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  background: white;
+  perspective: 100px;
+}
+.fbac-slidetrack .bord:hover {
+  margin-top: -1rem;
+}
+.fbac::before,
+.fbac::after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
+}
+
+.fbac::before {
+  left: 0;
+  top: 0;
+}
+.fbac::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+#anchead {
+}
+.bord a:hover {
+  box-shadow: none;
+}
+
+.bord .button23 {
+  background: none;
+}
+
+.button23 {
+  border: none;
+  box-shadow: none;
+}
+.button23:hover {
+  background: rgb(246, 246, 246);
+}
+
+@media screen and (max-width: 1000px) {
+  /*nav part*/
+
+  .maina {
+    overflow: hidden;
+  }
+
+  .Lnav {
+    box-shadow: 1px 1px 9px rgb(189, 189, 189);
+    z-index: 99999999;
+    position: sticky;
+    top: 0;
+    background-color: white;
+  }
+
+  #Nlogo {
+    border-radius: 50%;
+    height: 2.5rem;
+    margin: 0.5rem;
+  }
+  .logo img {
+    height: 0.5rem;
+    margin: 0;
+  }
+  .Lnav_contents {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .links {
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    transition: 0.5s;
+    height: 0;
+    padding: 0rem;
+    overflow: hidden;
+    box-shadow: 0 8px 6px -6px rgb(207, 207, 207);
+  }
+  .links .aboutu {
+    display: block;
+    text-align: center;
+    width: fit-content;
+    transition: 0.5s;
+    opacity: 0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .links .joinus {
+    display: block;
+    text-align: center;
+    width: fit-content;
+    transition: 0.5s;
+    opacity: 0;
+  }
+
+  .links.active {
+    height: fit-content;
+    opacity: 1;
+    padding: 2rem;
+  }
+
+  .links.active .joinus {
+    padding-top: 2rem;
+    opacity: 1;
+  }
+  .links.active .aboutu {
+    margin-bottom: 1rem;
+    color: black;
+    opacity: 1;
+  }
+
+  .linkscur.false .aboutucur {
+    display: none;
+  }
+  .linkscur.false .aboutucurs span {
+    display: none;
+  }
+  .linkscur.false .aboutucurs img {
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+  }
+  .linkscur.active .aboutucur {
+    display: none;
+  }
+  .linkscur.active .aboutucurs span {
+    display: none;
+  }
+  .linkscur.active .aboutucurs img {
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .icon {
+    display: block;
+    cursor: pointer;
+    padding-top: 0.5rem;
+    margin-right: 0;
+  }
+  .icon .line {
+    width: 2.3rem;
+    height: 0.3rem;
+    background-color: black;
+    margin: 0.3rem 1rem;
+    border-radius: 0.1rem;
+  }
+
+  /*main body part */
+
+  .Lcontent {
+    background-color: rgb(233, 246, 255);
+    height: max-content;
+    width: 100vw;
+    margin-top: -2rem;
+  }
+
+  .Lcontent .banner1 {
+    display: block;
+    justify-content: space-around;
+    margin: auto;
+    width: 100%;
+  }
+
+  .Lcontent .banner1 h1 {
+    padding-top: 3rem;
+    font-size: 10vw;
+    color: rgb(0, 123, 255);
+    margin-bottom: 3rem;
+  }
+  .Lcontent .banner1 h2 {
+    font-size: 2rem;
+    color: rgb(0, 128, 255);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+  .Lcontent .banner1 p {
+    font-size: 1.1rem;
+    color: rgb(107, 107, 107);
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    position: relative;
+    z-index: 54;
+  }
+
+  .Lcontent .banner1 .img img {
+    margin-top: 0;
+    width: 100%;
+    transform: rotate(0);
+    position: relative;
+    z-index: 2;
+  }
+
+  .Lcontent .banner1 .curve img {
+    left: 0;
+    position: absolute;
+    z-index: 1;
+    transform: rotate(90deg);
+    opacity: 0.1;
+    margin-top: -25rem;
+  }
+  .Lcontent .banner1 .curve2 img {
+    position: absolute;
+    z-index: 1;
+    transform: rotate(270deg);
+    margin-top: -2rem;
+    left: 0%;
+    opacity: 0.2;
+  }
+
+  .Goal {
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 80%;
+    border: 2px solid #00a4bd;
+    padding: 10px;
+    box-shadow: 6px 4px #00a4bd;
+    height: max-content;
+  }
+
+  .Goal h1 {
+    color: rgb(69, 69, 69);
+    font-size: 2.5rem;
+    width: 100%;
+  }
+  .Goal p {
+    margin: auto;
+    width: 80vw;
+    color: rgb(78, 78, 78);
+    font-size: 1.1rem;
+  }
+
+  .segment {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+    font-size: 0.8rem;
+  }
+  .segment img {
+    height: 2rem;
+    margin: auto;
+  }
+  .banner2 {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: max-content;
+  }
+
+  .banner2 img {
+    margin: auto;
+    height: 50vw;
+    border-radius: 1rem;
+  }
+
+  .info {
+    margin: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .info h1 {
+    font-size: 2rem;
+    color: rgb(77, 77, 77);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  .info p {
+    font-size: 1.1rem;
+    color: rgb(96, 96, 96);
+    width: 80vw;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 54;
+  }
+
+  .banner3 {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: max-content;
+  }
+
+  .banner3 img {
+    margin: auto;
+    height: 50vw;
+    border-radius: 1rem;
+  }
+
+  .banner4 {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: max-content;
+  }
+
+  .banner4 img {
+    margin: auto;
+    height: 50vw;
+    border-radius: 1rem;
+  }
+
+  .banner5 {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: max-content;
+  }
+  .banner5 img {
+    margin: auto;
+    height: 50vw;
+    border-radius: 1rem;
+  }
+
+  .banner6 {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: max-content;
+  }
+  .banner6 img {
+    margin: auto;
+    height: 50vw;
+    border-radius: 1rem;
+  }
+
+  .banner7 {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: max-content;
+  }
+  .banner7 img {
+    margin: auto;
+    height: 50vw;
+    border-radius: 1rem;
+  }
+
+  .footer {
+    width: 80vw;
+    margin: auto;
+    display: block;
+    justify-content: space-around;
+    color: white;
+  }
+  .footer a {
+    color: white;
+  }
+}

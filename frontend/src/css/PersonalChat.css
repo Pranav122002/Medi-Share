@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+* ::-webkit-scrollbar-thumb {
+  background: #bec4c4;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #a5a5a5;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+.perschat {
+  width: 100vw;
+  height: 93vh;
+  background: rgb(227, 247, 255);
+  padding: 0.1px;
+  overflow-y: hidden;
+}
+
+.chatcont {
+  background: rgb(252, 252, 252);
+
+  width: 82vw;
+  margin-top: 2rem;
+  display: flex;
+  height: 40rem;
+  box-shadow: 2px 2px 9px rgb(220, 220, 220);
+  margin-left: auto;
+  margin-right: 2vw;
+  border-radius: 0.9rem;
+}
+
+.myinfo h2 {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  color: rgb(47, 151, 211);
+  font-size: 1.5rem;
+}
+
+#profpicc {
+  float: left;
+  height: 2rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.chatcont .cinfo {
+  width: 30%;
+  background: #e9f6ff82;
+}
+.chatcont .myinfo {
+  height: 4rem;
+  background: rgb(168, 205, 237);
+  padding: 0.1px;
+  display: flex;
+
+  border-top-left-radius: 0.9rem;
+}
+
+.chatcont .cinfo .userss {
+  text-align: left;
+
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 36rem;
+}
+
+.chatcont .cinfo .userss p {
+  margin: 0;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding-bottom: 1rem;
+}
+.chatcont .cinfo .userss p:hover {
+  background: rgb(238, 248, 255);
+}
+#sendicon {
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(211deg)
+    brightness(104%) contrast(101%);
+}
+.chatcont .cinfo hr {
+  margin: 0;
+  margin-left: 2rem;
+
+  width: 85%;
+  border-top: 1px solid rgb(168, 205, 237);
+}
+#midhr {
+  margin: 0;
+  padding: 0;
+}
+.chatcont .selchat {
+  height: 40rem;
+  background: rgb(247, 250, 255);
+  width: 70%;
+  border-top-right-radius: 0.9rem;
+  border-bottom-right-radius: 0.9rem;
+  position: relative;
+}
+
+.chatcont .seluser {
+  height: 4rem;
+  background: rgb(168, 205, 237);
+  border-top-right-radius: 0.9rem;
+}
+.chatcont .seluser p {
+  margin: 0;
+  padding-top: 1rem;
+  text-align: left;
+  padding-left: 5rem;
+  font-size: 1.5rem;
+}
+
+.selchat .messages {
+  height: 31rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
+.button {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+.received-msg {
+  background: rgba(48, 65, 76, 0.678);
+
+  width: max-content;
+  max-width: 70%;
+  color: rgb(255, 255, 255);
+  margin-left: 1rem;
+  text-align: left;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 0.9rem;
+  overflow-wrap: break-word;
+}
+.flexdisp {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.flexdisp p {
+  max-width: 90%;
+  margin-left: 0.3rem;
+}
+
+.sender-mess {
+  border-radius: 0.9rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background: rgba(14, 115, 203, 0.562);
+  overflow-wrap: break-word;
+  max-width: 60%;
+  width: max-content;
+  color: rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: 1vw;
+  text-align: left;
+}
+
+.datemess {
+  font-size: 0.6rem;
+  color: rgb(216, 216, 216);
+  margin-bottom: 0;
+  margin-top: auto;
+  margin-right: 0.3rem;
+  margin-left: 0.5rem;
+}
+.datemesss {
+  font-size: 0.6rem;
+  color: rgb(216, 216, 216);
+  margin-bottom: 0;
+  margin-top: auto;
+  margin-right: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+#sendbutton {
+ background-color: #b7ffe7;
+ height: 80%;
+ margin-top: 0.5rem;
+ border: none;
+ border-radius: 0.8rem;
+ padding-left: 0px;
+}
+#sendbutton img {
+  height: 2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  float: right;
+ 
+  /* filter: invert(55%) sepia(49%) saturate(574%) hue-rotate(49deg) brightness(92%) contrast(78%); */
+}
+#sendbutton img:hover {
+  transform: translateX(1px);
+}
+
+.submitmenu {
+  position: absolute;
+  height: 4rem;
+  bottom: 0;
+  width: 100%;
+  background: rgb(168, 205, 237);
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom-right-radius: 0.9rem;
+}
+.submitmenu input {
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  width: 85%;
+  height: 3rem;
+  border-radius: 1rem;
+}
+#sdbackpn {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .chatcont {
+    background: none;
+    margin: auto;
+    width: 98vw;
+    display: block;
+    height: max-content;
+    margin: auto;
+    margin-top: 2rem;
+    box-shadow: none;
+    border-radius: 1rem;
+  }
+  .chatcont .cinfo {
+    width: 90vw;
+    background: #ffffff;
+    height: 45rem;
+    margin: auto;
+    margin-left: 5vw;
+    border-radius: 1rem;
+  }
+  .chatcont .selchat.active {
+    min-height: 45rem;
+    height: max-content;
+    background: rgb(247, 250, 255);
+    width: 91vw;
+    position: absolute;
+    border-radius: 1rem;
+    margin-top: -45rem;
+    margin-left: 4vw;
+  }
+  .chatcont .seluser {
+    height: 4rem;
+    width: 100%;
+    background: rgb(168, 205, 237);
+    border-top-right-radius: 0.9rem;
+    border-top-left-radius: 0.9rem;
+  }
+  .chatcont .selchat.false {
+    display: none;
+  }
+  #sdbackpn {
+    display: block;
+    height: 2.5rem;
+    margin-left: 1rem;
+    margin-top: 0.6rem;
+    margin-right: 1rem;
+  }
+  .userssasd {
+    display: flex;
+  }
+  .chatcont .myinfo {
+    height: 4rem;
+    background: rgb(168, 205, 237);
+    padding: 0.1px;
+    display: flex;
+    border-top-left-radius: 0.9rem;
+    border-top-right-radius: 0.9rem;
+  }
+  .chatcont .cinfo .userss {
+    text-align: left;
+    overflow: scroll;
+    overflow-x: hidden;
+    min-height: 40rem;
+  }
+  .selchat .messages {
+    height: 38rem;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  #midhr {
+    display: none;
+  }
+  .chatcont .seluser p {
+    margin: 0;
+    padding-top: 1rem;
+    text-align: left;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+  .perschat {
+    width: 100vw;
+    height: 93vh;
+    background: rgb(227, 247, 255);
+    padding: 0.1px;
+    overflow-y: hidden;
+  }
+}

@@ -1,78 +1,77 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const MESSAGE = require("../models/message");
-const COMMUNITYMESSAGE = require("../models/communitymessage");
+const PERSONAL_MESSAGE = require("../models/personal_message");
 
-router.post("/addmsg", async (req, res, next) => {
+router.get("/all-messages", async (req, res) => {
   try {
-    const { from, to, message } = req.body;
-    const data = await MESSAGE.create({
-      message: { text: message },
-      users: [from, to],
-      sender: from,
-    });
-    if (data) return res.json({ msg: "Message added successfully..." });
-    else return res.json({ msg: "Failed to add message to the database..." });
-  } catch (ex) {
-    next(ex);
+    const messages = await MESSAGE.find().sort({ createdAt: 1 });
+    res.json(messages);
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    res.status(500).json({ error: "Failed to fetch messages" });
   }
 });
 
-router.post("/getmsg", async (req, res, next) => {
+router.get(
+  "/all-personal-messages/:senderId/:receiverId",
+  async (req, res) => {
+    const { senderId, receiverId } = req.params;
+
+    try {
+      const messages = await PERSONAL_MESSAGE.find({
+        $or: [
+          { sender_id: senderId, receiver_id: receiverId },
+          { sender_id: receiverId, receiver_id: senderId },
+        ],
+      }).sort({ createdAt: 1 });
+
+      res.json(messages);
+    } catch (error) {
+      console.error("Error fetching personal messages:", error);
+      res.status(500).json({ error: "Failed to fetch personal messages" });
+    }
+  }
+);
+
+router.post("/save-message", async (req, res) => {
+  const { message, sender_name, sender_id, sender_role } = req.body;
+
   try {
-    const { from, to } = req.body;
-    const messages = await MESSAGE.find({
-      users: {
-        $all: [from, to],
-      },
-    }).sort({ updatedAt: 1 });
-    const projectedMessages = messages.map((msg) => {
-      return {
-        fromSelf: msg.sender.toString() === from,
-        message: msg.message.text,
-      };
+    const newMessage = new MESSAGE({
+      message: message,
+      sender_name: sender_name,
+      sender_id: sender_id,
+      sender_role: sender_role,
     });
-    res.json(projectedMessages);
-  } catch (ex) {
-    next(ex);
+
+    const savedMessage = await newMessage.save();
+    res.json(savedMessage);
+  } catch (error) {
+    console.error("Error saving message:", error);
+    res.status(500).json({ error: "Failed to save message" });
   }
 });
 
-router.post("/addmsgglobal", async (req, res, next) => {
+router.post("/save-personal-message", async (req, res) => {
+  const { message, sender_name, receiver_name, sender_id, receiver_id } =
+    req.body;
+
   try {
-    const { from,  message } = req.body;
-    const data = await COMMUNITYMESSAGE.create({
-      message: { text: message },
-      users: [from],
-      sender: from,
+    const newMessage = new PERSONAL_MESSAGE({
+      message: message,
+      sender_name: sender_name,
+      receiver_name: receiver_name,
+      sender_id: sender_id,
+      receiver_id: receiver_id,
     });
-    if (data) return res.json({ msg: "Message added successfully..." });
-    else return res.json({ msg: "Failed to add message to the database..." });
-  } catch (ex) {
-    next(ex);
+
+    const savedMessage = await newMessage.save();
+    res.json(savedMessage);
+  } catch (error) {
+    console.error("Error saving personal message:", error);
+    res.status(500).json({ error: "Failed to save personal message" });
   }
 });
-
-
-
-router.post("/getmsgglobal", async (req, res, next) => {
-  try {
-    const { from } = req.body;
-    const messages = await COMMUNITYMESSAGE.find().sort({ updatedAt: 1 }).populate('sender');
-   
-    const projectedMessages = messages.map((msg) => {
-      const isFromSelf = msg.sender._id.toString() === from;
-     
-      return {
-        fromSelf: isFromSelf,
-        message: msg.message.text,
-        sender_name: msg.sender.name,
-      };
-    });
-    res.json(projectedMessages);
-  } catch (ex) {
-    next(ex);
-  }
-});
-
 
 module.exports = router;
